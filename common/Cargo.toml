@@ -1,0 +1,15 @@
+[package]
+name = "common"
+description = { workspace = true }
+edition = { workspace = true }
+version = { workspace = true }
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+substreams = { workspace = true }
+substreams-ethereum = { workspace = true }
+bs58 = "0.5"
+sha2 = "0.10"
+hex = "0.4"

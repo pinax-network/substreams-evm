@@ -1,0 +1,17 @@
+specVersion: v0.1.0
+package:
+  name: proto
+  version: v0.0.0
+
+protobuf:
+  files:
+    - v1/transfers.proto
+    - v1/justswap.proto
+    - v1/sunswap.proto
+    - v1/sunpump.proto
+
+  excludePaths:
+    - sf/substreams
+    - sf/tron
+    - google
+    - evm
