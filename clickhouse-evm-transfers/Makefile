@@ -1,4 +1,4 @@
-ENDPOINT ?= mainnet.substreams.pinax.network:443
+ENDPOINT ?= eth.substreams.pinax.network:443
 # START_BLOCK ?= 5451883
 # STOP_BLOCK ?= 5604545
 # START_BLOCK ?= 51009736

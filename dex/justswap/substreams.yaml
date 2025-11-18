@@ -4,18 +4,18 @@ package:
   version: v0.1.4
   url: https://github.com/pinax-network/substreams-evm
   description: JustSwap V1 DEX Events
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/justswap.wasm
+    file: ../../target/wasm32-unknown-unknown/release/justswap.wasm
 
 protobuf:
   files:
     - v1/justswap.proto
   importPaths:
-    - ../proto
+    - ../../proto
 
 modules:
   - name: map_events

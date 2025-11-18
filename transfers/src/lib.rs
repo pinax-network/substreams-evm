@@ -1,4 +1,4 @@
-use proto::pb::tron::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::{Block, Log};

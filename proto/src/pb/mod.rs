@@ -1,12 +1,14 @@
 // @generated
-pub mod tron {
-    pub mod foundational_store {
-        // @@protoc_insertion_point(attribute:tron.foundational_store.v1)
+pub mod evm {
+    pub mod transfers {
+        // @@protoc_insertion_point(attribute:evm.transfers.v1)
         pub mod v1 {
-            include!("tron.foundational_store.v1.rs");
-            // @@protoc_insertion_point(tron.foundational_store.v1)
+            include!("evm.transfers.v1.rs");
+            // @@protoc_insertion_point(evm.transfers.v1)
         }
     }
+}
+pub mod tron {
     pub mod justswap {
         // @@protoc_insertion_point(attribute:tron.justswap.v1)
         pub mod v1 {
@@ -26,13 +28,6 @@ pub mod tron {
         pub mod v1 {
             include!("tron.sunswap.v1.rs");
             // @@protoc_insertion_point(tron.sunswap.v1)
-        }
-    }
-    pub mod transfers {
-        // @@protoc_insertion_point(attribute:tron.transfers.v1)
-        pub mod v1 {
-            include!("tron.transfers.v1.rs");
-            // @@protoc_insertion_point(tron.transfers.v1)
         }
     }
 }

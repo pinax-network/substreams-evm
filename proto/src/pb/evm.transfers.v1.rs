@@ -13,6 +13,10 @@ pub struct Transaction {
     pub hash: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub from: ::prost::alloc::vec::Vec<u8>,
+    /// Possible reasons for None 'to' address:
+    /// - withdrew unstaked asset
+    /// - claim rewards
+    /// - canceled unstaking
     #[prost(bytes="vec", optional, tag="3")]
     pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
     #[prost(uint64, tag="5")]
@@ -41,7 +45,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15")]
+    #[prost(oneof="log::Log", tags="10, 11, 12")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -50,90 +54,41 @@ pub mod log {
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
         #[prost(message, tag="10")]
-        TokenPurchase(super::TokenPurchase),
+        Transfer(super::Transfer),
         #[prost(message, tag="11")]
-        TrxPurchase(super::TrxPurchase),
+        Deposit(super::Deposit),
         #[prost(message, tag="12")]
-        AddLiquidity(super::AddLiquidity),
-        #[prost(message, tag="13")]
-        RemoveLiquidity(super::RemoveLiquidity),
-        #[prost(message, tag="14")]
-        Snapshot(super::Snapshot),
-        #[prost(message, tag="15")]
-        NewExchange(super::NewExchange),
+        Withdrawal(super::Withdrawal),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TokenPurchase {
+pub struct Transfer {
     #[prost(bytes="vec", tag="1")]
-    pub buyer: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub trx_sold: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub tokens_bought: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TrxPurchase {
-    #[prost(bytes="vec", tag="1")]
-    pub buyer: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub tokens_sold: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub trx_bought: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AddLiquidity {
-    #[prost(bytes="vec", tag="1")]
-    pub provider: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub trx_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub token_amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RemoveLiquidity {
-    #[prost(bytes="vec", tag="1")]
-    pub provider: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub trx_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub token_amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Snapshot {
-    #[prost(bytes="vec", tag="1")]
-    pub operator: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub trx_balance: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub token_balance: ::prost::alloc::string::String,
-}
-/// key = <bytes token_address>
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct NewExchange {
-    /// log.address - the factory that created the pair
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// key - the token address
+    pub from: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
-    pub exchange: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
-    pub token: ::prost::alloc::vec::Vec<u8>,
+    pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// WETH events
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Deposit {
+    #[prost(bytes="vec", tag="1")]
+    pub dst: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub wad: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Withdrawal {
+    #[prost(bytes="vec", tag="1")]
+    pub src: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub wad: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)
