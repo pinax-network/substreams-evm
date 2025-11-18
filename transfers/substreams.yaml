@@ -8,7 +8,7 @@ package:
 
 binaries:
   default:
-    type: wasm/rust-v1
+    type: wasm/rust-v1+wasm-bindgen-shims
     file: ../target/wasm32-unknown-unknown/release/transfers.wasm
 
 protobuf:

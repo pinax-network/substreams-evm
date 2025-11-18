@@ -102,6 +102,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = justswap::v1::factory::events::NewExchange::match_and_decode(log) {
                 total_new_exchanges += 1;
                 let event = pb::log::Log::NewExchange(pb::NewExchange {
+                    factory: log.address.to_vec(),
                     exchange: event.exchange.to_vec(),
                     token: event.token.to_vec(),
                 });

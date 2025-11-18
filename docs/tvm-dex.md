@@ -1,6 +1,6 @@
 # TVM DEX protocols
 
-> Ordered by most swaps on TRON Mainnet.
+> Ordered by most swaps on TRON eth.
 
 | DEX                         | Protocol | Factory Address                     |
 | --------------------------- | -------- | ----------------------------------- |

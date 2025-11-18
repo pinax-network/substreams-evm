@@ -4,18 +4,18 @@ package:
   version: v0.1.5
   url: https://github.com/pinax-network/substreams-evm
   description: SunPump LaunchPad Events
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/sunpump.wasm
+    file: ../../target/wasm32-unknown-unknown/release/sunpump.wasm
 
 protobuf:
   files:
     - v1/sunpump.proto
   importPaths:
-    - ../proto
+    - ../../proto
 
 modules:
   - name: map_events

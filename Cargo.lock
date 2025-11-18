@@ -107,7 +107,7 @@ dependencies = [
  "bs58",
  "hex",
  "sha2",
- "substreams 0.7.0",
+ "substreams",
  "substreams-ethereum",
 ]
 
@@ -483,7 +483,7 @@ version = "0.0.0"
 dependencies = [
  "prost 0.13.5",
  "proto",
- "substreams 0.7.0",
+ "substreams",
  "substreams-abis",
  "substreams-ethereum",
 ]
@@ -1150,30 +1150,7 @@ dependencies = [
  "prost 0.13.5",
  "prost-build 0.13.5",
  "prost-types 0.13.5",
- "substreams-macro 0.6.4",
- "thiserror",
-]
-
-[[package]]
-name = "substreams"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72f4b73d245d760af8ba1d2ddab91780cb2e65414c3396ba7c9764a6f025c4a4"
-dependencies = [
- "anyhow",
- "bigdecimal",
- "hex",
- "hex-literal",
- "num-bigint",
- "num-integer",
- "num-traits",
- "pad",
- "pest",
- "pest_derive",
- "prost 0.13.5",
- "prost-build 0.13.5",
- "prost-types 0.13.5",
- "substreams-macro 0.7.0",
+ "substreams-macro",
  "thiserror",
 ]
 
@@ -1187,7 +1164,7 @@ dependencies = [
  "ethabi 18.0.0",
  "num-bigint",
  "prost-build 0.14.1",
- "substreams 0.6.4",
+ "substreams",
  "substreams-ethereum",
  "walkdir",
 ]
@@ -1200,7 +1177,7 @@ checksum = "a2fc683b368e317c60064267dbddc5d8ce290ef00170eb74df8cdde7cda939f3"
 dependencies = [
  "getrandom 0.2.16",
  "num-bigint",
- "substreams 0.6.4",
+ "substreams",
  "substreams-ethereum-abigen",
  "substreams-ethereum-core",
  "substreams-ethereum-derive",
@@ -1236,7 +1213,7 @@ dependencies = [
  "prost 0.13.5",
  "prost-build 0.11.9",
  "prost-types 0.13.5",
- "substreams 0.6.4",
+ "substreams",
 ]
 
 [[package]]
@@ -1268,24 +1245,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "substreams-macro"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d13adb6281069af403be11e7c93ef0026250cc2692387446e4bc1cecda7a6e1d"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
- "thiserror",
-]
-
-[[package]]
 name = "sunpump"
 version = "0.0.0"
 dependencies = [
  "prost 0.13.5",
  "proto",
- "substreams 0.7.0",
+ "substreams",
  "substreams-abis",
  "substreams-ethereum",
 ]
@@ -1297,7 +1262,7 @@ dependencies = [
  "prost 0.13.5",
  "prost-types 0.13.5",
  "proto",
- "substreams 0.7.0",
+ "substreams",
  "substreams-abis",
  "substreams-ethereum",
 ]
@@ -1421,9 +1386,8 @@ dependencies = [
 name = "transfers"
 version = "0.0.0"
 dependencies = [
- "common",
  "proto",
- "substreams 0.7.0",
+ "substreams",
  "substreams-abis",
  "substreams-ethereum",
 ]
