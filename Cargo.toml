@@ -1,0 +1,36 @@
+[workspace]
+members = [
+  # # Clickhouse
+  # "clickhouse-evm-transfers",
+  # "clickhouse-evm-dex",
+
+  # Tokens
+  "transfers",
+
+  # DEX
+  "dex/sunswap",
+  "dex/justswap",
+  "dex/sunpump",
+
+  # Common
+  "proto",
+  "common",
+]
+resolver = "2"
+
+[workspace.package]
+description = "EVM Substreams modules"
+edition = "2021"
+version = "0.0.0"
+license = "Apache-2.0"
+
+[workspace.dependencies]
+substreams = "0.7.0"
+substreams-abis = "0.5.6"
+substreams-ethereum = "0.10.6"
+substreams-database-change = "3.0.0"
+prost = "0.13"
+prost-types = "0.13"
+
+[profile.release]
+lto = true

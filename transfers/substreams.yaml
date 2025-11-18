@@ -1,0 +1,29 @@
+specVersion: v0.1.0
+package:
+  name: evm_transfers
+  version: v0.2.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: ERC-20, Native Transfers & WETH Events
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/transfers.wasm
+
+protobuf:
+  files:
+    - v1/transfers.proto
+  importPaths:
+    - ../proto
+
+modules:
+  - name: map_events
+    kind: map
+    doc: ERC-20, Native Transfers & WETH Events
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.transfers.v1.Events
+
+network: mainnet
