@@ -117,18 +117,21 @@ pub struct Sync {
     #[prost(string, tag="2")]
     pub reserve1: ::prost::alloc::string::String,
 }
-/// key = <bytes pair>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PairCreated {
     /// log.address - the factory that created the pair
     #[prost(bytes="vec", tag="1")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// key - the pair address
+    /// STORE primary key
+    ///
+    /// address
     #[prost(bytes="vec", tag="2")]
     pub pair: ::prost::alloc::vec::Vec<u8>,
+    /// address
     #[prost(bytes="vec", tag="3")]
     pub token0: ::prost::alloc::vec::Vec<u8>,
+    /// address
     #[prost(bytes="vec", tag="4")]
     pub token1: ::prost::alloc::vec::Vec<u8>,
     #[prost(string, tag="5")]

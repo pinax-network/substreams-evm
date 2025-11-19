@@ -58,11 +58,13 @@ message Log {
 /// @param tickSpacing The minimum number of ticks between initialized ticks
 /// @param pool The address of the created pool
 message PoolCreated {
-  bytes token0 = 1;
-  bytes token1 = 2;
-  uint64 fee = 3; // uint24 (e.g., 3000 represents 0.30%)
-  int32 tick_spacing = 4; // int24 (e.g., 60)
-  bytes pool = 5; // address
+  bytes factory = 1; // log.address - the factory that created the pool
+  // STORE primary key
+  bytes pool = 2; // address
+  bytes token0 = 3;
+  bytes token1 = 4;
+  uint64 fee = 5; // uint24 (e.g., 3000 represents 0.30%)
+  int32 tick_spacing = 6; // int24 (e.g., 60)
 }
 
 /**

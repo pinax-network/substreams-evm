@@ -157,14 +157,15 @@ pub struct SaleFeeSet {
     #[prost(string, tag="2")]
     pub new_fee: ::prost::alloc::string::String,
 }
-/// key = <bytes token_address>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenCreate {
     /// log.address - the factory that created the pair
     #[prost(bytes="vec", tag="1")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// key - the token address
+    /// STORE primary key
+    ///
+    /// address
     #[prost(bytes="vec", tag="2")]
     pub token_address: ::prost::alloc::vec::Vec<u8>,
     /// uint256
@@ -173,14 +174,15 @@ pub struct TokenCreate {
     #[prost(bytes="vec", tag="4")]
     pub creator: ::prost::alloc::vec::Vec<u8>,
 }
-/// key = <bytes token_address>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenCreateLegacy {
     /// log.address - the factory that created the pair
     #[prost(bytes="vec", tag="1")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// key - the token address
+    /// STORE primary key
+    ///
+    /// address
     #[prost(bytes="vec", tag="2")]
     pub token_address: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="3")]

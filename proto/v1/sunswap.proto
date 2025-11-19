@@ -57,11 +57,11 @@ message Sync {
   string reserve1 = 2; // uint112
 }
 
-// key = <bytes pair>
 message PairCreated {
   bytes factory = 1; // log.address - the factory that created the pair
-  bytes pair = 2;    // key - the pair address
-  bytes token0 = 3;
-  bytes token1 = 4;
+  // STORE primary key
+  bytes pair = 2;   // address
+  bytes token0 = 3; // address
+  bytes token1 = 4; // address
   string extra_data = 5;
 }
