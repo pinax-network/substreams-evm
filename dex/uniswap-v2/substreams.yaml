@@ -4,18 +4,18 @@ package:
   version: v0.1.3
   url: https://githubcom/pinax-network/substreams-evm-tokens
   description: Uniswap V2 for EVM
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/uniswap_v2.wasm
+    file: ../../target/wasm32-unknown-unknown/release/uniswap_v2.wasm
 
 protobuf:
   files:
     - uniswap-v2.proto
   importPaths:
-    - ../proto/v1
+    - ../../proto/v1
 
 modules:
   - name: map_events
