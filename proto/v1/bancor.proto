@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package evm.bancor.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/types/standard-pool/StandardPoolConverter.sol
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    Activation activation = 10;
+    Conversion conversion = 11;
+    ConversionFeeUpdate conversion_fee_update = 12;
+    LiquidityAdded liquidity_added = 13;
+    LiquidityRemoved liquidity_removed = 14;
+    OwnerUpdate owner_update = 15;
+    TokenRateUpdate token_rate_update = 16;
+  }
+}
+
+/// @notice Emitted when the converter is activated or deactivated
+/// @param converterType The converter type
+/// @param anchor The converter anchor address
+/// @param activated True if the converter was activated, false if deactivated
+message Activation {
+  uint32 converter_type = 1; // uint16 (indexed)
+  bytes anchor = 2; // address (indexed)
+  bool activated = 3; // bool (indexed)
+}
+
+/// @notice Emitted when a conversion between two tokens occurs
+/// @param sourceToken The source token address
+/// @param targetToken The target token address
+/// @param trader The trader address
+/// @param sourceAmount The amount of source tokens
+/// @param targetAmount The amount of target tokens
+/// @param conversionFee The conversion fee
+message Conversion {
+  bytes source_token = 1; // address (indexed)
+  bytes target_token = 2; // address (indexed)
+  bytes trader = 3; // address (indexed)
+  string source_amount = 4; // uint256
+  string target_amount = 5; // uint256
+  string conversion_fee = 6; // int256
+}
+
+/// @notice Emitted when the conversion fee is updated
+/// @param prevFee The previous fee
+/// @param newFee The new fee
+message ConversionFeeUpdate {
+  uint32 prev_fee = 1; // uint32
+  uint32 new_fee = 2; // uint32
+}
+
+/// @notice Emitted when liquidity is added to the pool
+/// @param provider The liquidity provider address
+/// @param reserveToken The reserve token address
+/// @param amount The amount of reserve tokens added
+/// @param newBalance The new reserve balance
+/// @param newSupply The new pool token supply
+message LiquidityAdded {
+  bytes provider = 1; // address (indexed)
+  bytes reserve_token = 2; // address (indexed)
+  string amount = 3; // uint256
+  string new_balance = 4; // uint256
+  string new_supply = 5; // uint256
+}
+
+/// @notice Emitted when liquidity is removed from the pool
+/// @param provider The liquidity provider address
+/// @param reserveToken The reserve token address
+/// @param amount The amount of reserve tokens removed
+/// @param newBalance The new reserve balance
+/// @param newSupply The new pool token supply
+message LiquidityRemoved {
+  bytes provider = 1; // address (indexed)
+  bytes reserve_token = 2; // address (indexed)
+  string amount = 3; // uint256
+  string new_balance = 4; // uint256
+  string new_supply = 5; // uint256
+}
+
+/// @notice Emitted when the owner is updated
+/// @param prevOwner The previous owner address
+/// @param newOwner The new owner address
+message OwnerUpdate {
+  bytes prev_owner = 1; // address (indexed)
+  bytes new_owner = 2; // address (indexed)
+}
+
+/// @notice Emitted when the token rate is updated
+/// @param token1 The first token address
+/// @param token2 The second token address
+/// @param rateN The rate numerator
+/// @param rateD The rate denominator
+message TokenRateUpdate {
+  bytes token1 = 1; // address (indexed)
+  bytes token2 = 2; // address (indexed)
+  string rate_n = 3; // uint256
+  string rate_d = 4; // uint256
+}

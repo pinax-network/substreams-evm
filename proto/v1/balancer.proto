@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package evm.balancer.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// https://github.com/balancer/balancer-v2-monorepo/blob/master/pkg/pool-weighted/contracts/WeightedPool.sol
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    Approval approval = 10;
+    Transfer transfer = 11;
+    SwapFeePercentageChanged swap_fee_percentage_changed = 12;
+    PausedStateChanged paused_state_changed = 13;
+    RecoveryModeStateChanged recovery_mode_state_changed = 14;
+    ProtocolFeePercentageCacheUpdated protocol_fee_percentage_cache_updated = 15;
+  }
+}
+
+/// @notice Emitted when an approval is made
+/// @param owner The address of the token owner
+/// @param spender The address of the spender
+/// @param value The amount of tokens approved
+message Approval {
+  bytes owner = 1; // address (indexed)
+  bytes spender = 2; // address (indexed)
+  string value = 3; // uint256
+}
+
+/// @notice Emitted when tokens are transferred
+/// @param from The address sending tokens
+/// @param to The address receiving tokens
+/// @param value The amount of tokens transferred
+message Transfer {
+  bytes from = 1; // address (indexed)
+  bytes to = 2; // address (indexed)
+  string value = 3; // uint256
+}
+
+/// @notice Emitted when the swap fee percentage is changed
+/// @param swapFeePercentage The new swap fee percentage
+message SwapFeePercentageChanged {
+  string swap_fee_percentage = 1; // uint256
+}
+
+/// @notice Emitted when the paused state is changed
+/// @param paused The new paused state
+message PausedStateChanged {
+  bool paused = 1; // bool
+}
+
+/// @notice Emitted when the recovery mode state is changed
+/// @param enabled The new recovery mode state
+message RecoveryModeStateChanged {
+  bool enabled = 1; // bool
+}
+
+/// @notice Emitted when the protocol fee percentage cache is updated
+/// @param feeType The fee type being updated
+/// @param protocolFeePercentage The new protocol fee percentage
+message ProtocolFeePercentageCacheUpdated {
+  string fee_type = 1; // uint256 (indexed)
+  string protocol_fee_percentage = 2; // uint256
+}

@@ -11,9 +11,13 @@ members = [
   "dex/sunswap",
   "dex/justswap",
   "dex/sunpump",
+  "dex/uniswap-v1",
   "dex/uniswap-v2",
   "dex/uniswap-v3",
   "dex/uniswap-v4",
+  "dex/balancer",
+  "dex/curvefi",
+  "dex/bancor",
 
   # Common
   "proto",
@@ -29,7 +33,7 @@ license = "Apache-2.0"
 
 [workspace.dependencies]
 substreams = "0.7.0"
-substreams-abis = "0.7.1"
+substreams-abis = { git = "https://github.com/pinax-network/substreams-abis.git" }
 substreams-ethereum = "0.11.1"
 substreams-database-change = "3.0.0"
 prost = "0.13"
