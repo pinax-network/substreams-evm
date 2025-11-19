@@ -19,3 +19,6 @@
 - [x] JustSwap V1
 - [x] SunSwap V2
 - [x] SunPump V1
+- [x] Balancer (WeightedPool)
+- [x] CurveFi
+- [x] Bancor (StandardPoolConverter)
