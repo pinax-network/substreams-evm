@@ -2,25 +2,45 @@ syntax = "proto3";
 
 package evm.uniswap.v3;
 
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
 // https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Factory.sol
 // https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Pool.sol
 // https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/pool/IUniswapV3PoolEvents.sol
-message Events {
-  // IUniswapV3Pool
-  repeated Swap swap = 1;
-  repeated Initialize initialize = 2;
-  repeated Mint mint = 3;
-  repeated Collect collect = 4;
-  repeated Burn burn = 5;
-  repeated Flash flash = 6;
-  repeated IncreaseObservationCardinalityNext increase_observation_cardinality_next = 7;
-  repeated SetFeeProtocol set_fee_protocol = 8;
-  repeated CollectProtocol collect_protocol = 9;
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    // IUniswapV3Pool
+    Swap swap = 10;
+    Initialize initialize = 11;
+    Mint mint = 12;
+    Collect collect = 13;
+    Burn burn = 14;
+    Flash flash = 15;
+    IncreaseObservationCardinalityNext increase_observation_cardinality_next = 16;
+    SetFeeProtocol set_fee_protocol = 17;
+    CollectProtocol collect_protocol = 18;
 
-  // IUniswapV3Factory
-  repeated PoolCreated pool_created = 10;
-  repeated OwnerChanged owner_changed = 11;
-  repeated FeeAmountEnabled fee_amount_enabled = 12;
+    // IUniswapV3Factory
+    PoolCreated pool_created = 19;
+    OwnerChanged owner_changed = 20;
+    FeeAmountEnabled fee_amount_enabled = 21;
+  }
 }
 
 /**
@@ -38,22 +58,11 @@ message Events {
 /// @param tickSpacing The minimum number of ticks between initialized ticks
 /// @param pool The address of the created pool
 message PoolCreated {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address (factory)
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes token0 = 10;
-  bytes token1 = 11;
-  uint64 fee = 12; // uint24 (e.g., 3000 represents 0.30%)
-  int32 tick_spacing = 13; // int24 (e.g., 60)
-  bytes pool = 14; // address
+  bytes token0 = 1;
+  bytes token1 = 2;
+  uint64 fee = 3; // uint24 (e.g., 3000 represents 0.30%)
+  int32 tick_spacing = 4; // int24 (e.g., 60)
+  bytes pool = 5; // address
 }
 
 /**
@@ -64,19 +73,8 @@ message PoolCreated {
  * Without this initialization, the pool remains unconfigured and cannot operate properly.
  */
 message Initialize {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  string sqrt_price_x96 = 21; // uint160
-  int32 tick = 22; // int24
+  string sqrt_price_x96 = 1; // uint160
+  int32 tick = 2; // int24
 }
 
 /**
@@ -99,26 +97,13 @@ message Initialize {
  * This calculation method provides high precision and efficient on-chain computation of price ratios.
  */
 message Swap {
-  // -- transaction --
-  bytes tx_hash = 1;
-  bytes tx_from = 2; // tx.from
-  bytes tx_to = 3; // tx.to
-
-  // -- call --
-  optional bytes caller = 4;
-
-  // -- log --
-  bytes contract = 5; // log.address
-  uint64 ordinal = 6; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  bytes recipient = 11; // address
-  string amount0 = 12; // int256
-  string amount1 = 13; // int256
-  string sqrt_price_x96 = 14; // uint160
-  string liquidity = 15; // uint128
-  int32 tick = 16; // int24
+  bytes sender = 1; // address
+  bytes recipient = 2; // address
+  string amount0 = 3; // int256
+  string amount1 = 4; // int256
+  string sqrt_price_x96 = 5; // uint160
+  string liquidity = 6; // uint128
+  int32 tick = 7; // int24
 }
 
 
@@ -126,38 +111,16 @@ message Swap {
 /// @param oldOwner The owner before the owner was changed
 /// @param newOwner The owner after the owner was changed
 message OwnerChanged {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes old_owner = 10; // address
-  bytes new_owner = 11; // address
+  bytes old_owner = 1; // address
+  bytes new_owner = 2; // address
 }
 
 /// @notice Emitted when a new fee amount is enabled for pool creation via the factory
 /// @param fee The enabled fee, denominated in hundredths of a bip
 /// @param tickSpacing The minimum number of ticks between initialized ticks for pools created with the given fee
 message FeeAmountEnabled {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  uint64 fee = 10; // uint24
-  int32 tick_spacing = 11; // int24
+  uint64 fee = 1; // uint24
+  int32 tick_spacing = 2; // int24
 }
 
 
@@ -170,24 +133,13 @@ message FeeAmountEnabled {
 /// @param amount0 How much token0 was required for the minted liquidity
 /// @param amount1 How much token1 was required for the minted liquidity
 message Mint {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  bytes owner = 11; // address
-  int32 tick_lower = 12; // int24
-  int32 tick_upper = 13; // int24
-  string amount = 14; // uint128
-  string amount0 = 15; // uint256
-  string amount1 = 16; // uint256
+  bytes sender = 1; // address
+  bytes owner = 2; // address
+  int32 tick_lower = 3; // int24
+  int32 tick_upper = 4; // int24
+  string amount = 5; // uint128
+  string amount0 = 6; // uint256
+  string amount1 = 7; // uint256
 }
 
 /// @notice Emitted when fees are collected by the owner of a position
@@ -198,23 +150,12 @@ message Mint {
 /// @param amount0 The amount of token0 fees collected
 /// @param amount1 The amount of token1 fees collected
 message Collect {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes owner = 10; // address
-  bytes recipient = 11; // address
-  int32 tick_lower = 12; // int24
-  int32 tick_upper = 13; // int24
-  string amount0 = 14; // uint128
-  string amount1 = 15; // uint128
+  bytes owner = 1; // address
+  bytes recipient = 2; // address
+  int32 tick_lower = 3; // int24
+  int32 tick_upper = 4; // int24
+  string amount0 = 5; // uint128
+  string amount1 = 6; // uint128
 }
 
 /// @notice Emitted when a position's liquidity is removed
@@ -226,23 +167,12 @@ message Collect {
 /// @param amount0 The amount of token0 withdrawn
 /// @param amount1 The amount of token1 withdrawn
 message Burn {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes owner = 10; // address
-  int32 tick_lower = 11; // int24
-  int32 tick_upper = 12; // int24
-  string amount = 13; // uint128
-  string amount0 = 14; // uint256
-  string amount1 = 15; // uint256
+  bytes owner = 1; // address
+  int32 tick_lower = 2; // int24
+  int32 tick_upper = 3; // int24
+  string amount = 4; // uint128
+  string amount0 = 5; // uint256
+  string amount1 = 6; // uint256
 }
 
 /// @notice Emitted by the pool for any flashes of token0/token1
@@ -253,23 +183,12 @@ message Burn {
 /// @param paid0 The amount of token0 paid for the flash, which can exceed the amount0 plus the fee
 /// @param paid1 The amount of token1 paid for the flash, which can exceed the amount1 plus the fee
 message Flash {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  bytes recipient = 11; // address
-  string amount0 = 12; // uint256
-  string amount1 = 13; // uint256
-  string paid0 = 14; // uint256
-  string paid1 = 15; // uint256
+  bytes sender = 1; // address
+  bytes recipient = 2; // address
+  string amount0 = 3; // uint256
+  string amount1 = 4; // uint256
+  string paid0 = 5; // uint256
+  string paid1 = 6; // uint256
 }
 
 /// @notice Emitted by the pool for increases to the number of observations that can be stored
@@ -278,19 +197,8 @@ message Flash {
 /// @param observationCardinalityNextOld The previous value of the next observation cardinality
 /// @param observationCardinalityNextNew The updated value of the next observation cardinality
 message IncreaseObservationCardinalityNext {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  uint64 observation_cardinality_next_old = 10; // uint16
-  uint64 observation_cardinality_next_new = 11; // uint16
+  uint64 observation_cardinality_next_old = 1; // uint16
+  uint64 observation_cardinality_next_new = 2; // uint16
 }
 
 /// @notice Emitted when the protocol fee is changed by the pool
@@ -299,21 +207,10 @@ message IncreaseObservationCardinalityNext {
 /// @param feeProtocol0New The updated value of the token0 protocol fee
 /// @param feeProtocol1New The updated value of the token1 protocol fee
 message SetFeeProtocol {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  uint64 fee_protocol0_old = 10; // uint8
-  uint64 fee_protocol1_old = 11; // uint8
-  uint64 fee_protocol0_new = 12; // uint8
-  uint64 fee_protocol1_new = 13; // uint8
+  uint64 fee_protocol0_old = 1; // uint8
+  uint64 fee_protocol1_old = 2; // uint8
+  uint64 fee_protocol0_new = 3; // uint8
+  uint64 fee_protocol1_new = 4; // uint8
 }
 
 /// @notice Emitted when the collected protocol fees are withdrawn by the factory owner
@@ -322,19 +219,8 @@ message SetFeeProtocol {
 /// @param amount0 The amount of token0 protocol fees that is withdrawn
 /// @param amount0 The amount of token1 protocol fees that is withdrawn
 message CollectProtocol {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  bytes recipient = 11; // address
-  string amount0 = 12; // uint128
-  string amount1 = 13; // uint128
+  bytes sender = 1; // address
+  bytes recipient = 2; // address
+  string amount0 = 3; // uint128
+  string amount1 = 4; // uint128
 }

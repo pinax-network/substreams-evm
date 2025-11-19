@@ -2,106 +2,69 @@ syntax = "proto3";
 
 package evm.uniswap.v2;
 
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
 // https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Pair.sol
 // https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Factory.sol
-message Events {
-  // UniswapV2Pair
-  repeated Swap swap = 1;
-  repeated Sync sync = 2;
-  repeated Mint mint = 3;
-  repeated Burn burn = 4;
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    // UniswapV2Pair
+    Swap swap = 10;
+    Sync sync = 11;
+    Mint mint = 12;
+    Burn burn = 13;
 
-  // UniswapV2Factory
-  repeated PairCreated pair_created = 5;
+    // UniswapV2Factory
+    PairCreated pair_created = 14;
+  }
 }
 
 message PairCreated {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address (factory)
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes token0 = 10;
-  bytes token1 = 11;
-  bytes pair = 12;
-  uint64 all_pairs_length = 13; // total number of pairs created
+  bytes token0 = 1;
+  bytes token1 = 2;
+  bytes pair = 3;
+  uint64 all_pairs_length = 4; // total number of pairs created
 }
 
 message Sync {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  string reserve0 = 21; // uint112
-  string reserve1 = 22; // uint112
+  string reserve0 = 1; // uint112
+  string reserve1 = 2; // uint112
 }
 
 message Swap {
-  // -- transaction --
-  bytes tx_hash = 1;
-  bytes tx_from = 2; // tx.from
-  bytes tx_to = 3; // tx.to
-
-  // -- call --
-  optional bytes caller = 4;
-
-  // -- log --
-  bytes contract = 5; // log.address
-  uint64 ordinal = 6; // log.ordinal
-
-  // -- event --
-  bytes sender = 10;
-  string amount0_in = 11; // uint256
-  string amount0_out = 12; // uint256
-  string amount1_in = 13; // uint256
-  string amount1_out = 14; // uint256
-  bytes to = 15; // address
+  bytes sender = 1;
+  string amount0_in = 2; // uint256
+  string amount0_out = 3; // uint256
+  string amount1_in = 4; // uint256
+  string amount1_out = 5; // uint256
+  bytes to = 6; // address
 }
 
 message Mint {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  string amount0 = 11; // uint256
-  string amount1 = 12; // uint256
+  bytes sender = 1; // address
+  string amount0 = 2; // uint256
+  string amount1 = 3; // uint256
 }
 
 message Burn {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- call --
-  optional bytes caller = 2;
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes sender = 10; // address
-  string amount0 = 11; // uint256
-  string amount1 = 12; // uint256
-  bytes to = 13; // address
+  bytes sender = 1; // address
+  string amount0 = 2; // uint256
+  string amount1 = 3; // uint256
+  bytes to = 4; // address
 }
