@@ -30,7 +30,7 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/curvefi/curve-contract/blob/master/contracts/pools/3pool/StableSwap3Pool.vy
+/// <https://github.com/curvefi/curve-contract/blob/master/contracts/pools/3pool/StableSwap3Pool.vy>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -56,10 +56,10 @@ pub mod log {
         Approval(super::Approval),
     }
 }
-/// @notice Emitted when tokens are transferred
-/// @param from The address sending tokens
-/// @param to The address receiving tokens
-/// @param value The amount of tokens transferred
+/// / @notice Emitted when tokens are transferred
+/// / @param from The address sending tokens
+/// / @param to The address receiving tokens
+/// / @param value The amount of tokens transferred
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transfer {
@@ -73,10 +73,10 @@ pub struct Transfer {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
-/// @notice Emitted when an approval is made
-/// @param owner The address of the token owner
-/// @param spender The address of the spender
-/// @param value The amount of tokens approved
+/// / @notice Emitted when an approval is made
+/// / @param owner The address of the token owner
+/// / @param spender The address of the spender
+/// / @param value The amount of tokens approved
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Approval {
@@ -90,3 +90,4 @@ pub struct Approval {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
+// @@protoc_insertion_point(module)

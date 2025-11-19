@@ -30,7 +30,7 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/balancer/balancer-v2-monorepo/blob/master/pkg/pool-weighted/contracts/WeightedPool.sol
+/// <https://github.com/balancer/balancer-v2-monorepo/blob/master/pkg/pool-weighted/contracts/WeightedPool.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -64,10 +64,10 @@ pub mod log {
         ProtocolFeePercentageCacheUpdated(super::ProtocolFeePercentageCacheUpdated),
     }
 }
-/// @notice Emitted when an approval is made
-/// @param owner The address of the token owner
-/// @param spender The address of the spender
-/// @param value The amount of tokens approved
+/// / @notice Emitted when an approval is made
+/// / @param owner The address of the token owner
+/// / @param spender The address of the spender
+/// / @param value The amount of tokens approved
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Approval {
@@ -81,10 +81,10 @@ pub struct Approval {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
-/// @notice Emitted when tokens are transferred
-/// @param from The address sending tokens
-/// @param to The address receiving tokens
-/// @param value The amount of tokens transferred
+/// / @notice Emitted when tokens are transferred
+/// / @param from The address sending tokens
+/// / @param to The address receiving tokens
+/// / @param value The amount of tokens transferred
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transfer {
@@ -98,8 +98,8 @@ pub struct Transfer {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
-/// @notice Emitted when the swap fee percentage is changed
-/// @param swapFeePercentage The new swap fee percentage
+/// / @notice Emitted when the swap fee percentage is changed
+/// / @param swapFeePercentage The new swap fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapFeePercentageChanged {
@@ -107,27 +107,27 @@ pub struct SwapFeePercentageChanged {
     #[prost(string, tag="1")]
     pub swap_fee_percentage: ::prost::alloc::string::String,
 }
-/// @notice Emitted when the paused state is changed
-/// @param paused The new paused state
+/// / @notice Emitted when the paused state is changed
+/// / @param paused The new paused state
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct PausedStateChanged {
     /// bool
     #[prost(bool, tag="1")]
     pub paused: bool,
 }
-/// @notice Emitted when the recovery mode state is changed
-/// @param enabled The new recovery mode state
+/// / @notice Emitted when the recovery mode state is changed
+/// / @param enabled The new recovery mode state
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct RecoveryModeStateChanged {
     /// bool
     #[prost(bool, tag="1")]
     pub enabled: bool,
 }
-/// @notice Emitted when the protocol fee percentage cache is updated
-/// @param feeType The fee type being updated
-/// @param protocolFeePercentage The new protocol fee percentage
+/// / @notice Emitted when the protocol fee percentage cache is updated
+/// / @param feeType The fee type being updated
+/// / @param protocolFeePercentage The new protocol fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProtocolFeePercentageCacheUpdated {
@@ -138,3 +138,4 @@ pub struct ProtocolFeePercentageCacheUpdated {
     #[prost(string, tag="2")]
     pub protocol_fee_percentage: ::prost::alloc::string::String,
 }
+// @@protoc_insertion_point(module)
