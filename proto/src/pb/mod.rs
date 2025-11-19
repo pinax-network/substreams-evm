@@ -29,6 +29,11 @@ pub mod evm {
         }
     }
     pub mod uniswap {
+        // @@protoc_insertion_point(attribute:evm.uniswap.v1)
+        pub mod v1 {
+            include!("evm.uniswap.v1.rs");
+            // @@protoc_insertion_point(evm.uniswap.v1)
+        }
         // @@protoc_insertion_point(attribute:evm.uniswap.v2)
         pub mod v2 {
             include!("evm.uniswap.v2.rs");
