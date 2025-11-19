@@ -1,3 +1,4 @@
+mod store;
 use proto::pb::evm::uniswap::v1 as pb;
 use substreams_abis::evm::uniswap::v1 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};

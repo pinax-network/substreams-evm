@@ -30,7 +30,7 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/types/standard-pool/StandardPoolConverter.sol
+/// <https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/types/standard-pool/StandardPoolConverter.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -66,10 +66,10 @@ pub mod log {
         TokenRateUpdate(super::TokenRateUpdate),
     }
 }
-/// @notice Emitted when the converter is activated or deactivated
-/// @param converterType The converter type
-/// @param anchor The converter anchor address
-/// @param activated True if the converter was activated, false if deactivated
+/// / @notice Emitted when the converter is activated or deactivated
+/// / @param converterType The converter type
+/// / @param anchor The converter anchor address
+/// / @param activated True if the converter was activated, false if deactivated
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Activation {
@@ -83,13 +83,13 @@ pub struct Activation {
     #[prost(bool, tag="3")]
     pub activated: bool,
 }
-/// @notice Emitted when a conversion between two tokens occurs
-/// @param sourceToken The source token address
-/// @param targetToken The target token address
-/// @param trader The trader address
-/// @param sourceAmount The amount of source tokens
-/// @param targetAmount The amount of target tokens
-/// @param conversionFee The conversion fee
+/// / @notice Emitted when a conversion between two tokens occurs
+/// / @param sourceToken The source token address
+/// / @param targetToken The target token address
+/// / @param trader The trader address
+/// / @param sourceAmount The amount of source tokens
+/// / @param targetAmount The amount of target tokens
+/// / @param conversionFee The conversion fee
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Conversion {
@@ -112,11 +112,11 @@ pub struct Conversion {
     #[prost(string, tag="6")]
     pub conversion_fee: ::prost::alloc::string::String,
 }
-/// @notice Emitted when the conversion fee is updated
-/// @param prevFee The previous fee
-/// @param newFee The new fee
+/// / @notice Emitted when the conversion fee is updated
+/// / @param prevFee The previous fee
+/// / @param newFee The new fee
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ConversionFeeUpdate {
     /// uint32
     #[prost(uint32, tag="1")]
@@ -125,12 +125,12 @@ pub struct ConversionFeeUpdate {
     #[prost(uint32, tag="2")]
     pub new_fee: u32,
 }
-/// @notice Emitted when liquidity is added to the pool
-/// @param provider The liquidity provider address
-/// @param reserveToken The reserve token address
-/// @param amount The amount of reserve tokens added
-/// @param newBalance The new reserve balance
-/// @param newSupply The new pool token supply
+/// / @notice Emitted when liquidity is added to the pool
+/// / @param provider The liquidity provider address
+/// / @param reserveToken The reserve token address
+/// / @param amount The amount of reserve tokens added
+/// / @param newBalance The new reserve balance
+/// / @param newSupply The new pool token supply
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityAdded {
@@ -150,12 +150,12 @@ pub struct LiquidityAdded {
     #[prost(string, tag="5")]
     pub new_supply: ::prost::alloc::string::String,
 }
-/// @notice Emitted when liquidity is removed from the pool
-/// @param provider The liquidity provider address
-/// @param reserveToken The reserve token address
-/// @param amount The amount of reserve tokens removed
-/// @param newBalance The new reserve balance
-/// @param newSupply The new pool token supply
+/// / @notice Emitted when liquidity is removed from the pool
+/// / @param provider The liquidity provider address
+/// / @param reserveToken The reserve token address
+/// / @param amount The amount of reserve tokens removed
+/// / @param newBalance The new reserve balance
+/// / @param newSupply The new pool token supply
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LiquidityRemoved {
@@ -175,9 +175,9 @@ pub struct LiquidityRemoved {
     #[prost(string, tag="5")]
     pub new_supply: ::prost::alloc::string::String,
 }
-/// @notice Emitted when the owner is updated
-/// @param prevOwner The previous owner address
-/// @param newOwner The new owner address
+/// / @notice Emitted when the owner is updated
+/// / @param prevOwner The previous owner address
+/// / @param newOwner The new owner address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OwnerUpdate {
@@ -188,11 +188,11 @@ pub struct OwnerUpdate {
     #[prost(bytes="vec", tag="2")]
     pub new_owner: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted when the token rate is updated
-/// @param token1 The first token address
-/// @param token2 The second token address
-/// @param rateN The rate numerator
-/// @param rateD The rate denominator
+/// / @notice Emitted when the token rate is updated
+/// / @param token1 The first token address
+/// / @param token2 The second token address
+/// / @param rateN The rate numerator
+/// / @param rateD The rate denominator
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenRateUpdate {
@@ -209,3 +209,4 @@ pub struct TokenRateUpdate {
     #[prost(string, tag="4")]
     pub rate_d: ::prost::alloc::string::String,
 }
+// @@protoc_insertion_point(module)

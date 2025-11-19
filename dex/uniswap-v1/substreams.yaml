@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:evm.uniswap.v1.Events
 
+  - name: store_new_exchange
+    kind: store
+    updatePolicy: set
+    valueType: proto:evm.uniswap.v1.NewExchange
+    inputs:
+      - map: map_events
+
 network: mainnet

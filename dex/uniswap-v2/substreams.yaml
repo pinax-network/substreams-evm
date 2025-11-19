@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:evm.uniswap.v2.Events
 
+  - name: store_pair_created
+    kind: store
+    updatePolicy: set
+    valueType: proto:evm.uniswap.v2.PairCreated
+    inputs:
+      - map: map_events
+
 network: mainnet

@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:evm.uniswap.v3.Events
 
+  - name: store_pool_created
+    kind: store
+    updatePolicy: set
+    valueType: proto:evm.uniswap.v3.PoolCreated
+    inputs:
+      - map: map_events
+
 network: mainnet

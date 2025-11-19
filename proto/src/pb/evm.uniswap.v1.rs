@@ -30,8 +30,8 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/Uniswap/v1-contracts/blob/master/contracts/uniswap_exchange.vy
-/// https://github.com/Uniswap/v1-contracts/blob/master/contracts/uniswap_factory.vy
+/// <https://github.com/Uniswap/v1-contracts/blob/master/contracts/uniswap_exchange.vy>
+/// <https://github.com/Uniswap/v1-contracts/blob/master/contracts/uniswap_factory.vy>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -69,10 +69,10 @@ pub mod log {
         NewExchange(super::NewExchange),
     }
 }
-/// @notice Emitted when ETH is sold for tokens
-/// @param buyer The address of the buyer
-/// @param eth_sold The amount of ETH sold
-/// @param tokens_bought The amount of tokens bought
+/// / @notice Emitted when ETH is sold for tokens
+/// / @param buyer The address of the buyer
+/// / @param eth_sold The amount of ETH sold
+/// / @param tokens_bought The amount of tokens bought
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenPurchase {
@@ -86,10 +86,10 @@ pub struct TokenPurchase {
     #[prost(string, tag="3")]
     pub tokens_bought: ::prost::alloc::string::String,
 }
-/// @notice Emitted when tokens are sold for ETH
-/// @param buyer The address of the buyer
-/// @param tokens_sold The amount of tokens sold
-/// @param eth_bought The amount of ETH bought
+/// / @notice Emitted when tokens are sold for ETH
+/// / @param buyer The address of the buyer
+/// / @param tokens_sold The amount of tokens sold
+/// / @param eth_bought The amount of ETH bought
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EthPurchase {
@@ -103,10 +103,10 @@ pub struct EthPurchase {
     #[prost(string, tag="3")]
     pub eth_bought: ::prost::alloc::string::String,
 }
-/// @notice Emitted when liquidity is added to the pool
-/// @param provider The liquidity provider address
-/// @param eth_amount The amount of ETH added
-/// @param token_amount The amount of tokens added
+/// / @notice Emitted when liquidity is added to the pool
+/// / @param provider The liquidity provider address
+/// / @param eth_amount The amount of ETH added
+/// / @param token_amount The amount of tokens added
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AddLiquidity {
@@ -120,10 +120,10 @@ pub struct AddLiquidity {
     #[prost(string, tag="3")]
     pub token_amount: ::prost::alloc::string::String,
 }
-/// @notice Emitted when liquidity is removed from the pool
-/// @param provider The liquidity provider address
-/// @param eth_amount The amount of ETH removed
-/// @param token_amount The amount of tokens removed
+/// / @notice Emitted when liquidity is removed from the pool
+/// / @param provider The liquidity provider address
+/// / @param eth_amount The amount of ETH removed
+/// / @param token_amount The amount of tokens removed
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RemoveLiquidity {
@@ -137,10 +137,10 @@ pub struct RemoveLiquidity {
     #[prost(string, tag="3")]
     pub token_amount: ::prost::alloc::string::String,
 }
-/// @notice Emitted when tokens are transferred
-/// @param from The address sending tokens
-/// @param to The address receiving tokens
-/// @param value The amount of tokens transferred
+/// / @notice Emitted when tokens are transferred
+/// / @param from The address sending tokens
+/// / @param to The address receiving tokens
+/// / @param value The amount of tokens transferred
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transfer {
@@ -154,10 +154,10 @@ pub struct Transfer {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
-/// @notice Emitted when an approval is made
-/// @param owner The address of the token owner
-/// @param spender The address of the spender
-/// @param value The amount of tokens approved
+/// / @notice Emitted when an approval is made
+/// / @param owner The address of the token owner
+/// / @param spender The address of the spender
+/// / @param value The amount of tokens approved
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Approval {
@@ -171,9 +171,9 @@ pub struct Approval {
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
 }
-/// @notice Emitted when a new exchange is created
-/// @param token The token address
-/// @param exchange The exchange address
+/// / @notice Emitted when a new exchange is created
+/// / @param token The token address
+/// / @param exchange The exchange address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NewExchange {
@@ -187,3 +187,4 @@ pub struct NewExchange {
     #[prost(bytes="vec", tag="3")]
     pub exchange: ::prost::alloc::vec::Vec<u8>,
 }
+// @@protoc_insertion_point(module)
