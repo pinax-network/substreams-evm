@@ -1,4 +1,5 @@
 mod store;
+use common::{bigint_to_i32, bigint_to_u64};
 use proto::pb::evm::uniswap::v3 as pb;
 use substreams_abis::evm::uniswap::v3 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
@@ -12,14 +13,6 @@ fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
         data: log.data.to_vec(),
         log: Some(event),
     }
-}
-
-fn bigint_to_i32(value: &substreams::scalar::BigInt) -> i32 {
-    value.to_i32()
-}
-
-fn bigint_to_u64(value: &substreams::scalar::BigInt) -> u64 {
-    value.to_u64()
 }
 
 #[substreams::handlers::map]
@@ -67,7 +60,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1: event.amount1.to_string(),
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
                     liquidity: event.liquidity.to_string(),
-                    tick: bigint_to_i32(&event.tick),
+                    tick: bigint_to_i32(&event.tick).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -77,7 +70,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_initialize += 1;
                 let event = pb::log::Log::Initialize(pb::Initialize {
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
-                    tick: bigint_to_i32(&event.tick),
+                    tick: bigint_to_i32(&event.tick).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -88,8 +81,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::Mint(pb::Mint {
                     sender: event.sender.to_vec(),
                     owner: event.owner.to_vec(),
-                    tick_lower: bigint_to_i32(&event.tick_lower),
-                    tick_upper: bigint_to_i32(&event.tick_upper),
+                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or_default(),
+                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or_default(),
                     amount: event.amount.to_string(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
@@ -103,8 +96,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::Collect(pb::Collect {
                     owner: event.owner.to_vec(),
                     recipient: event.recipient.to_vec(),
-                    tick_lower: bigint_to_i32(&event.tick_lower),
-                    tick_upper: bigint_to_i32(&event.tick_upper),
+                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or_default(),
+                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or_default(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
@@ -116,8 +109,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_burns += 1;
                 let event = pb::log::Log::Burn(pb::Burn {
                     owner: event.owner.to_vec(),
-                    tick_lower: bigint_to_i32(&event.tick_lower),
-                    tick_upper: bigint_to_i32(&event.tick_upper),
+                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or_default(),
+                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or_default(),
                     amount: event.amount.to_string(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
@@ -143,8 +136,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::pool::events::IncreaseObservationCardinalityNext::match_and_decode(log) {
                 total_increase_observation += 1;
                 let event = pb::log::Log::IncreaseObservationCardinalityNext(pb::IncreaseObservationCardinalityNext {
-                    observation_cardinality_next_old: bigint_to_u64(&event.observation_cardinality_next_old),
-                    observation_cardinality_next_new: bigint_to_u64(&event.observation_cardinality_next_new),
+                    observation_cardinality_next_old: bigint_to_u64(&event.observation_cardinality_next_old).unwrap_or_default(),
+                    observation_cardinality_next_new: bigint_to_u64(&event.observation_cardinality_next_new).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -153,10 +146,10 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::pool::events::SetFeeProtocol::match_and_decode(log) {
                 total_set_fee_protocol += 1;
                 let event = pb::log::Log::SetFeeProtocol(pb::SetFeeProtocol {
-                    fee_protocol0_old: bigint_to_u64(&event.fee_protocol0_old),
-                    fee_protocol1_old: bigint_to_u64(&event.fee_protocol1_old),
-                    fee_protocol0_new: bigint_to_u64(&event.fee_protocol0_new),
-                    fee_protocol1_new: bigint_to_u64(&event.fee_protocol1_new),
+                    fee_protocol0_old: bigint_to_u64(&event.fee_protocol0_old).unwrap_or_default(),
+                    fee_protocol1_old: bigint_to_u64(&event.fee_protocol1_old).unwrap_or_default(),
+                    fee_protocol0_new: bigint_to_u64(&event.fee_protocol0_new).unwrap_or_default(),
+                    fee_protocol1_new: bigint_to_u64(&event.fee_protocol1_new).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -181,8 +174,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pool: event.pool.to_vec(),
                     token0: event.token0.to_vec(),
                     token1: event.token1.to_vec(),
-                    fee: bigint_to_u64(&event.fee),
-                    tick_spacing: bigint_to_i32(&event.tick_spacing),
+                    fee: bigint_to_u64(&event.fee).unwrap_or_default(),
+                    tick_spacing: bigint_to_i32(&event.tick_spacing).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -201,8 +194,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::factory::events::FeeAmountEnabled::match_and_decode(log) {
                 total_fee_amount_enabled += 1;
                 let event = pb::log::Log::FeeAmountEnabled(pb::FeeAmountEnabled {
-                    fee: bigint_to_u64(&event.fee),
-                    tick_spacing: bigint_to_i32(&event.tick_spacing),
+                    fee: bigint_to_u64(&event.fee).unwrap_or_default(),
+                    tick_spacing: bigint_to_i32(&event.tick_spacing).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }

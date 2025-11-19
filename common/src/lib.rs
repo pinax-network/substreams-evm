@@ -1,6 +1,6 @@
 pub mod debug;
 use sha2::{Digest, Sha256};
-use substreams::hex;
+use substreams::{hex, log, scalar::BigInt};
 
 pub type Address = Vec<u8>;
 pub type Hash = Vec<u8>;
@@ -75,4 +75,41 @@ pub fn tron_decode_verify(addr: &str) -> Result<[u8; 21], &'static str> {
     let mut out = [0u8; 21];
     out.copy_from_slice(payload);
     Ok(out)
+}
+
+// Used to enforce ERC-20 decimals to be between 0 and 255
+pub fn bigint_to_u8(bigint: &substreams::scalar::BigInt) -> Option<i32> {
+    if bigint.lt(&BigInt::zero()) {
+        log::info!("bigint_to_u8: value is negative");
+        return None;
+    }
+    if bigint.gt(&BigInt::from(255)) {
+        log::info!("bigint_to_u8: value is greater than 255");
+        return None;
+    }
+    Some(bigint.to_i32())
+}
+
+pub fn bigint_to_u64(bigint: &substreams::scalar::BigInt) -> Option<u64> {
+    if bigint.lt(&BigInt::zero()) {
+        log::info!("bigint_to_u64: value is negative");
+        return None;
+    }
+    if bigint.gt(&BigInt::from(u64::MAX)) {
+        log::info!("bigint_to_u64: value is greater than u64::MAX");
+        return None;
+    }
+    Some(bigint.to_u64())
+}
+
+pub fn bigint_to_i32(bigint: &substreams::scalar::BigInt) -> Option<i32> {
+    if bigint.lt(&BigInt::zero()) {
+        log::info!("bigint_to_i32: value is negative");
+        return None;
+    }
+    if bigint.gt(&BigInt::from(i32::MAX)) {
+        log::info!("bigint_to_i32: value is greater than i32::MAX");
+        return None;
+    }
+    Some(bigint.to_i32())
 }
