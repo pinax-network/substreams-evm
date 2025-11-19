@@ -1,6 +1,7 @@
 ENDPOINT ?= eth.substreams.pinax.network:443
-ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-SINK_RANGE := ":"
+START_BLOCK ?= 23828269
+STOP_BLOCK ?= +1000
+PARALLEL_JOBS ?= 500
 
 .PHONY: build
 build:
@@ -12,12 +13,12 @@ pack: build
 
 .PHONY: noop
 noop: build
-	substreams-sink-noop $(ENDPOINT) https://github.com/pinax-network/substreams-evm-tokens/releases/download/uniswaps-v0.1.0/evm-uniswap-v3-v0.1.0.spkg map_events -H "X-Sf-Substreams-Parallel-Jobs: 500"
+	substreams-sink-noop $(ENDPOINT) substreams.yaml map_events -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)" 0:
 
 .PHONY: gui
 gui: build
-	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s 21469410
+	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) --limit-processed-blocks 0
 
 .PHONY: prod
 prod: build
-	substreams gui -e $(ENDPOINT) https://github.com/pinax-network/substreams-evm-tokens/releases/download/uniswaps-v0.1.0/evm-uniswap-v3-v0.1.0.spkg map_events -s 0 -t 0 --limit-processed-blocks 0 --production-mode
+	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode  -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"

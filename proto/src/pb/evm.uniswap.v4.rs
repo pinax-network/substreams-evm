@@ -30,8 +30,8 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IPoolManager.sol
-/// https://github.com/Uniswap/v4-core/blob/59d3ecf53afa9264a16bba0e38f4c5d2231f80bc/src/interfaces/IProtocolFees.sol
+/// <https://github.com/Uniswap/v4-core/blob/main/src/interfaces/IPoolManager.sol>
+/// <https://github.com/Uniswap/v4-core/blob/59d3ecf53afa9264a16bba0e38f4c5d2231f80bc/src/interfaces/IProtocolFees.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -67,17 +67,17 @@ pub mod log {
         ProtocolFeeUpdated(super::ProtocolFeeUpdated),
     }
 }
-/// @notice Emitted when a new pool is initialized
-/// @param id The abi encoded hash of the pool key struct for the new pool
-/// @param currency0 The first currency of the pool by address sort order
-/// @param currency1 The second currency of the pool by address sort order
-/// @param fee The fee collected upon every swap in the pool, denominated in
-/// hundredths of a bip
-/// @param tickSpacing The minimum number of ticks between initialized ticks
-/// @param hooks The hooks contract address for the pool, or address(0) if none
-/// @param sqrtPriceX96 The price of the pool on initialization
-/// @param tick The initial tick of the pool corresponding to the initialized
-/// price
+/// / @notice Emitted when a new pool is initialized
+/// / @param id The abi encoded hash of the pool key struct for the new pool
+/// / @param currency0 The first currency of the pool by address sort order
+/// / @param currency1 The second currency of the pool by address sort order
+/// / @param fee The fee collected upon every swap in the pool, denominated in
+/// / hundredths of a bip
+/// / @param tickSpacing The minimum number of ticks between initialized ticks
+/// / @param hooks The hooks contract address for the pool, or address(0) if none
+/// / @param sqrtPriceX96 The price of the pool on initialization
+/// / @param tick The initial tick of the pool corresponding to the initialized
+/// / price
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Initialize {
@@ -111,17 +111,17 @@ pub struct Initialize {
     #[prost(int32, tag="9")]
     pub tick: i32,
 }
-/// @notice Emitted for swaps between currency0 and currency1
-/// @param id The abi encoded hash of the pool key struct for the pool that was
-/// modified
-/// @param sender The address that initiated the swap call, and that received
-/// the callback
-/// @param amount0 The delta of the currency0 balance of the pool
-/// @param amount1 The delta of the currency1 balance of the pool
-/// @param sqrtPriceX96 The sqrt(price) of the pool after the swap, as a Q64.96
-/// @param liquidity The liquidity of the pool after the swap
-/// @param tick The log base 1.0001 of the price of the pool after the swap
-/// @param fee The swap fee in hundredths of a bip
+/// / @notice Emitted for swaps between currency0 and currency1
+/// / @param id The abi encoded hash of the pool key struct for the pool that was
+/// / modified
+/// / @param sender The address that initiated the swap call, and that received
+/// / the callback
+/// / @param amount0 The delta of the currency0 balance of the pool
+/// / @param amount1 The delta of the currency1 balance of the pool
+/// / @param sqrtPriceX96 The sqrt(price) of the pool after the swap, as a Q64.96
+/// / @param liquidity The liquidity of the pool after the swap
+/// / @param tick The log base 1.0001 of the price of the pool after the swap
+/// / @param fee The swap fee in hundredths of a bip
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Swap {
@@ -150,14 +150,14 @@ pub struct Swap {
     #[prost(string, tag="8")]
     pub fee: ::prost::alloc::string::String,
 }
-/// @notice Emitted when a liquidity position is modified
-/// @param id The abi encoded hash of the pool key struct for the pool that was
-/// modified
-/// @param sender The address that modified the pool
-/// @param tickLower The lower tick of the position
-/// @param tickUpper The upper tick of the position
-/// @param liquidityDelta The amount of liquidity that was added or removed
-/// @param salt The extra data to make positions unique
+/// / @notice Emitted when a liquidity position is modified
+/// / @param id The abi encoded hash of the pool key struct for the pool that was
+/// / modified
+/// / @param sender The address that modified the pool
+/// / @param tickLower The lower tick of the position
+/// / @param tickUpper The upper tick of the position
+/// / @param liquidityDelta The amount of liquidity that was added or removed
+/// / @param salt The extra data to make positions unique
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ModifyLiquidity {
@@ -180,12 +180,12 @@ pub struct ModifyLiquidity {
     #[prost(bytes="vec", tag="6")]
     pub salt: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted for donations
-/// @param id The abi encoded hash of the pool key struct for the pool that was
-/// donated to
-/// @param sender The address that initiated the donate call
-/// @param amount0 The amount donated in currency0
-/// @param amount1 The amount donated in currency1
+/// / @notice Emitted for donations
+/// / @param id The abi encoded hash of the pool key struct for the pool that was
+/// / donated to
+/// / @param sender The address that initiated the donate call
+/// / @param amount0 The amount donated in currency0
+/// / @param amount1 The amount donated in currency1
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Donate {
@@ -202,8 +202,8 @@ pub struct Donate {
     #[prost(string, tag="4")]
     pub amount1: ::prost::alloc::string::String,
 }
-/// @notice Emitted when the protocol fee controller address is updated in
-/// setProtocolFeeController.
+/// / @notice Emitted when the protocol fee controller address is updated in
+/// / setProtocolFeeController.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProtocolFeeControllerUpdated {

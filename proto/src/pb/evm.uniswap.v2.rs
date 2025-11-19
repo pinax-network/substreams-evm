@@ -30,8 +30,8 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Pair.sol
-/// https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Factory.sol
+/// <https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Pair.sol>
+/// <https://github.com/Uniswap/v2-core/blob/master/contracts/UniswapV2Factory.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {

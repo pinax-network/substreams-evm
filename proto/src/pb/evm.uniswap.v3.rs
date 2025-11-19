@@ -30,9 +30,9 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Factory.sol
-/// https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Pool.sol
-/// https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/pool/IUniswapV3PoolEvents.sol
+/// <https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Factory.sol>
+/// <https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/IUniswapV3Pool.sol>
+/// <https://github.com/Uniswap/v3-core/blob/main/contracts/interfaces/pool/IUniswapV3PoolEvents.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -80,18 +80,19 @@ pub mod log {
         FeeAmountEnabled(super::FeeAmountEnabled),
     }
 }
-/// In Uniswap v3, the `PoolCreated` event is emitted when a new liquidity pool is deployed by the factory,
-/// providing key parameters for the pool's configuration; for example, if a pool is established for USDC and USDT
-/// with a fee tier of 3000 (equating to a 0.30% fee) and a tick spacing of 60, the event will log the addresses for
-/// token0 and token1 (USDC and USDT, respectively), the fee of 3000, the tick spacing of 60, and the address of the
-/// newly created pool contract, thereby enabling users and applications to track and interact with the new pool.
-///
-/// @notice Emitted when a pool is created
-/// @param token0 The first token of the pool by address sort order
-/// @param token1 The second token of the pool by address sort order
-/// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
-/// @param tickSpacing The minimum number of ticks between initialized ticks
-/// @param pool The address of the created pool
+// *
+// In Uniswap v3, the `PoolCreated` event is emitted when a new liquidity pool is deployed by the factory,
+// providing key parameters for the pool’s configuration; for example, if a pool is established for USDC and USDT
+// with a fee tier of 3000 (equating to a 0.30% fee) and a tick spacing of 60, the event will log the addresses for
+// token0 and token1 (USDC and USDT, respectively), the fee of 3000, the tick spacing of 60, and the address of the
+// newly created pool contract, thereby enabling users and applications to track and interact with the new pool.
+
+/// / @notice Emitted when a pool is created
+/// / @param token0 The first token of the pool by address sort order
+/// / @param token1 The second token of the pool by address sort order
+/// / @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
+/// / @param tickSpacing The minimum number of ticks between initialized ticks
+/// / @param pool The address of the created pool
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolCreated {
@@ -114,6 +115,7 @@ pub struct PoolCreated {
     #[prost(int32, tag="6")]
     pub tick_spacing: i32,
 }
+/// *
 /// In Uniswap v3, the `initialize` function is a crucial setup step that configures a newly deployed pool
 /// by setting its initial square root price (`sqrtPriceX96`) and corresponding tick value.
 /// After the pool is created via the `PoolCreated` event, calling `initialize` establishes the starting price
@@ -129,6 +131,7 @@ pub struct Initialize {
     #[prost(int32, tag="2")]
     pub tick: i32,
 }
+/// *
 /// In Uniswap v3, the `Swap` event is emitted when a trade occurs in a liquidity pool.
 /// It provides key details of the swap, including the address of the sender initiating the swap,
 /// the recipient of the swapped tokens, and the amounts of token0 and token1 involved in the trade.
@@ -141,7 +144,7 @@ pub struct Initialize {
 /// stored as a Q64.96 fixed-point number (with 64 bits for the integer part and 96 bits for the fraction).
 /// To compute the actual price of token0 in terms of token1, the value is squared and then divided by 2^192:
 ///
-///      price = (sqrtPriceX96 * sqrtPriceX96) / 2^192
+///       price = (sqrtPriceX96 * sqrtPriceX96) / 2^192
 ///
 /// Conversely, to determine the price of token1 in terms of token0, take the reciprocal of the computed price.
 ///
@@ -171,9 +174,9 @@ pub struct Swap {
     #[prost(int32, tag="7")]
     pub tick: i32,
 }
-/// @notice Emitted when the owner of the factory is changed
-/// @param oldOwner The owner before the owner was changed
-/// @param newOwner The owner after the owner was changed
+/// / @notice Emitted when the owner of the factory is changed
+/// / @param oldOwner The owner before the owner was changed
+/// / @param newOwner The owner after the owner was changed
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OwnerChanged {
@@ -184,11 +187,11 @@ pub struct OwnerChanged {
     #[prost(bytes="vec", tag="2")]
     pub new_owner: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted when a new fee amount is enabled for pool creation via the factory
-/// @param fee The enabled fee, denominated in hundredths of a bip
-/// @param tickSpacing The minimum number of ticks between initialized ticks for pools created with the given fee
+/// / @notice Emitted when a new fee amount is enabled for pool creation via the factory
+/// / @param fee The enabled fee, denominated in hundredths of a bip
+/// / @param tickSpacing The minimum number of ticks between initialized ticks for pools created with the given fee
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct FeeAmountEnabled {
     /// uint24
     #[prost(uint64, tag="1")]
@@ -197,14 +200,14 @@ pub struct FeeAmountEnabled {
     #[prost(int32, tag="2")]
     pub tick_spacing: i32,
 }
-/// @notice Emitted when liquidity is minted for a given position
-/// @param sender The address that minted the liquidity
-/// @param owner The owner of the position and recipient of any minted liquidity
-/// @param tickLower The lower tick of the position
-/// @param tickUpper The upper tick of the position
-/// @param amount The amount of liquidity minted to the position range
-/// @param amount0 How much token0 was required for the minted liquidity
-/// @param amount1 How much token1 was required for the minted liquidity
+/// / @notice Emitted when liquidity is minted for a given position
+/// / @param sender The address that minted the liquidity
+/// / @param owner The owner of the position and recipient of any minted liquidity
+/// / @param tickLower The lower tick of the position
+/// / @param tickUpper The upper tick of the position
+/// / @param amount The amount of liquidity minted to the position range
+/// / @param amount0 How much token0 was required for the minted liquidity
+/// / @param amount1 How much token1 was required for the minted liquidity
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Mint {
@@ -230,13 +233,13 @@ pub struct Mint {
     #[prost(string, tag="7")]
     pub amount1: ::prost::alloc::string::String,
 }
-/// @notice Emitted when fees are collected by the owner of a position
-/// @dev Collect events may be emitted with zero amount0 and amount1 when the caller chooses not to collect fees
-/// @param owner The owner of the position for which fees are collected
-/// @param tickLower The lower tick of the position
-/// @param tickUpper The upper tick of the position
-/// @param amount0 The amount of token0 fees collected
-/// @param amount1 The amount of token1 fees collected
+/// / @notice Emitted when fees are collected by the owner of a position
+/// / @dev Collect events may be emitted with zero amount0 and amount1 when the caller chooses not to collect fees
+/// / @param owner The owner of the position for which fees are collected
+/// / @param tickLower The lower tick of the position
+/// / @param tickUpper The upper tick of the position
+/// / @param amount0 The amount of token0 fees collected
+/// / @param amount1 The amount of token1 fees collected
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Collect {
@@ -259,14 +262,14 @@ pub struct Collect {
     #[prost(string, tag="6")]
     pub amount1: ::prost::alloc::string::String,
 }
-/// @notice Emitted when a position's liquidity is removed
-/// @dev Does not withdraw any fees earned by the liquidity position, which must be withdrawn via #collect
-/// @param owner The owner of the position for which liquidity is removed
-/// @param tickLower The lower tick of the position
-/// @param tickUpper The upper tick of the position
-/// @param amount The amount of liquidity to remove
-/// @param amount0 The amount of token0 withdrawn
-/// @param amount1 The amount of token1 withdrawn
+/// / @notice Emitted when a position's liquidity is removed
+/// / @dev Does not withdraw any fees earned by the liquidity position, which must be withdrawn via #collect
+/// / @param owner The owner of the position for which liquidity is removed
+/// / @param tickLower The lower tick of the position
+/// / @param tickUpper The upper tick of the position
+/// / @param amount The amount of liquidity to remove
+/// / @param amount0 The amount of token0 withdrawn
+/// / @param amount1 The amount of token1 withdrawn
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Burn {
@@ -289,13 +292,13 @@ pub struct Burn {
     #[prost(string, tag="6")]
     pub amount1: ::prost::alloc::string::String,
 }
-/// @notice Emitted by the pool for any flashes of token0/token1
-/// @param sender The address that initiated the swap call, and that received the callback
-/// @param recipient The address that received the tokens from flash
-/// @param amount0 The amount of token0 that was flashed
-/// @param amount1 The amount of token1 that was flashed
-/// @param paid0 The amount of token0 paid for the flash, which can exceed the amount0 plus the fee
-/// @param paid1 The amount of token1 paid for the flash, which can exceed the amount1 plus the fee
+/// / @notice Emitted by the pool for any flashes of token0/token1
+/// / @param sender The address that initiated the swap call, and that received the callback
+/// / @param recipient The address that received the tokens from flash
+/// / @param amount0 The amount of token0 that was flashed
+/// / @param amount1 The amount of token1 that was flashed
+/// / @param paid0 The amount of token0 paid for the flash, which can exceed the amount0 plus the fee
+/// / @param paid1 The amount of token1 paid for the flash, which can exceed the amount1 plus the fee
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Flash {
@@ -318,13 +321,13 @@ pub struct Flash {
     #[prost(string, tag="6")]
     pub paid1: ::prost::alloc::string::String,
 }
-/// @notice Emitted by the pool for increases to the number of observations that can be stored
-/// @dev observationCardinalityNext is not the observation cardinality until an observation is written at the index
-/// just before a mint/swap/burn.
-/// @param observationCardinalityNextOld The previous value of the next observation cardinality
-/// @param observationCardinalityNextNew The updated value of the next observation cardinality
+/// / @notice Emitted by the pool for increases to the number of observations that can be stored
+/// / @dev observationCardinalityNext is not the observation cardinality until an observation is written at the index
+/// / just before a mint/swap/burn.
+/// / @param observationCardinalityNextOld The previous value of the next observation cardinality
+/// / @param observationCardinalityNextNew The updated value of the next observation cardinality
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct IncreaseObservationCardinalityNext {
     /// uint16
     #[prost(uint64, tag="1")]
@@ -333,13 +336,13 @@ pub struct IncreaseObservationCardinalityNext {
     #[prost(uint64, tag="2")]
     pub observation_cardinality_next_new: u64,
 }
-/// @notice Emitted when the protocol fee is changed by the pool
-/// @param feeProtocol0Old The previous value of the token0 protocol fee
-/// @param feeProtocol1Old The previous value of the token1 protocol fee
-/// @param feeProtocol0New The updated value of the token0 protocol fee
-/// @param feeProtocol1New The updated value of the token1 protocol fee
+/// / @notice Emitted when the protocol fee is changed by the pool
+/// / @param feeProtocol0Old The previous value of the token0 protocol fee
+/// / @param feeProtocol1Old The previous value of the token1 protocol fee
+/// / @param feeProtocol0New The updated value of the token0 protocol fee
+/// / @param feeProtocol1New The updated value of the token1 protocol fee
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct SetFeeProtocol {
     /// uint8
     #[prost(uint64, tag="1")]
@@ -354,11 +357,11 @@ pub struct SetFeeProtocol {
     #[prost(uint64, tag="4")]
     pub fee_protocol1_new: u64,
 }
-/// @notice Emitted when the collected protocol fees are withdrawn by the factory owner
-/// @param sender The address that collects the protocol fees
-/// @param recipient The address that receives the collected protocol fees
-/// @param amount0 The amount of token0 protocol fees that is withdrawn
-/// @param amount0 The amount of token1 protocol fees that is withdrawn
+/// / @notice Emitted when the collected protocol fees are withdrawn by the factory owner
+/// / @param sender The address that collects the protocol fees
+/// / @param recipient The address that receives the collected protocol fees
+/// / @param amount0 The amount of token0 protocol fees that is withdrawn
+/// / @param amount0 The amount of token1 protocol fees that is withdrawn
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CollectProtocol {
