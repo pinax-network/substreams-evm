@@ -1,219 +1,231 @@
-use common::{bigint_to_i32, bigint_to_uint64, logs_with_caller};
-use proto::pb::evm::uniswap::v3 as uniswap;
-use substreams::errors::Error;
-use substreams_abis::evm::uniswap::v3::factory::events as factory;
-use substreams_abis::evm::uniswap::v3::pool::events as pool;
-use substreams_ethereum::pb::eth::v2::Block;
+mod store;
+use proto::pb::evm::uniswap::v3 as pb;
+use substreams_abis::evm::uniswap::v3 as uniswap;
+use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
+fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
+    pb::Log {
+        address: log.address.to_vec(),
+        ordinal: log.ordinal,
+        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
+        data: log.data.to_vec(),
+        log: Some(event),
+    }
+}
+
+fn bigint_to_i32(value: &substreams::scalar::BigInt) -> i32 {
+    value.to_i32()
+}
+
+fn bigint_to_u64(value: &substreams::scalar::BigInt) -> u64 {
+    value.to_u64()
+}
+
 #[substreams::handlers::map]
-pub fn map_events(block: Block) -> Result<uniswap::Events, Error> {
-    let mut events = uniswap::Events::default();
+fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
+    let mut events = pb::Events::default();
+    let mut total_swaps = 0;
+    let mut total_mints = 0;
+    let mut total_burns = 0;
+    let mut total_collects = 0;
+    let mut total_flashes = 0;
+    let mut total_pool_created = 0;
+    let mut total_initialize = 0;
+    let mut total_increase_observation = 0;
+    let mut total_set_fee_protocol = 0;
+    let mut total_collect_protocol = 0;
+    let mut total_owner_changed = 0;
+    let mut total_fee_amount_enabled = 0;
 
-    // === Uniswap::V3 ===
-    // https://github.com/Uniswap/v3-core
-    // https://github.com/pinax-network/substreams-abis/tree/main/abi/evm/uniswap/v3
     for trx in block.transactions() {
-        for (log, caller) in logs_with_caller(&block, trx) {
-            // Uniswap::V3::Pair:Swap
-            if let Some(event) = pool::Swap::match_and_decode(log) {
-                events.swap.push(uniswap::Swap {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
-                    tx_from: trx.from.to_vec(),
-                    tx_to: trx.to.to_vec(),
-                    // -- call --
-                    caller,
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
+        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
+        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
+        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
+        let mut transaction = pb::Transaction {
+            from: trx.from.to_vec(),
+            to,
+            hash: trx.hash.to_vec(),
+            nonce: trx.nonce,
+            gas_price,
+            gas_limit: trx.gas_limit,
+            gas_used: trx.receipt().receipt.cumulative_gas_used,
+            value: value.to_string(),
+            logs: vec![],
+        };
 
-                    // -- event --
+        for log_view in trx.receipt().logs() {
+            let log = log_view.log;
+
+            // Swap event
+            if let Some(event) = uniswap::pool::events::Swap::match_and_decode(log) {
+                total_swaps += 1;
+                let event = pb::log::Log::Swap(pb::Swap {
+                    sender: event.sender.to_vec(),
+                    recipient: event.recipient.to_vec(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
-                    sender: event.sender,
-                    recipient: event.recipient,
+                    sqrt_price_x96: event.sqrt_price_x96.to_string(),
                     liquidity: event.liquidity.to_string(),
+                    tick: bigint_to_i32(&event.tick),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // Initialize event
+            if let Some(event) = uniswap::pool::events::Initialize::match_and_decode(log) {
+                total_initialize += 1;
+                let event = pb::log::Log::Initialize(pb::Initialize {
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
-                    tick: bigint_to_i32(&event.tick).unwrap_or(i32::MAX),
+                    tick: bigint_to_i32(&event.tick),
                 });
-            // Uniswap::V3::Factory:PoolCreated
-            } else if let Some(event) = factory::PoolCreated::match_and_decode(log) {
-                events.pool_created.push(uniswap::PoolCreated {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
-                    // -- call --
-                    caller,
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-                    // -- event --
-                    pool: event.pool,
-                    token0: event.token0,
-                    token1: event.token1,
-                    tick_spacing: bigint_to_i32(&event.tick_spacing).unwrap_or(i32::MAX),
-                    fee: bigint_to_uint64(&event.fee).unwrap_or(u64::MAX),
-                });
-            // Uniswap::V3::Pool:Initialize
-            } else if let Some(event) = pool::Initialize::match_and_decode(log) {
-                events.initialize.push(uniswap::Initialize {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    sqrt_price_x96: event.sqrt_price_x96.to_string(),
-                    tick: bigint_to_i32(&event.tick).unwrap_or(i32::MAX),
-                });
-            // Uniswap::V3::Pool:Mint
-            } else if let Some(event) = pool::Mint::match_and_decode(log) {
-                events.mint.push(uniswap::Mint {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
-
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    sender: event.sender,
-                    owner: event.owner,
-                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or(i32::MAX),
-                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or(i32::MAX),
+            // Mint event
+            if let Some(event) = uniswap::pool::events::Mint::match_and_decode(log) {
+                total_mints += 1;
+                let event = pb::log::Log::Mint(pb::Mint {
+                    sender: event.sender.to_vec(),
+                    owner: event.owner.to_vec(),
+                    tick_lower: bigint_to_i32(&event.tick_lower),
+                    tick_upper: bigint_to_i32(&event.tick_upper),
                     amount: event.amount.to_string(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
-            // Uniswap::V3::Pool:Collect
-            } else if let Some(event) = pool::Collect::match_and_decode(log) {
-                events.collect.push(uniswap::Collect {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    owner: event.owner,
-                    recipient: event.recipient,
-                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or(i32::MAX),
-                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or(i32::MAX),
+            // Collect event
+            if let Some(event) = uniswap::pool::events::Collect::match_and_decode(log) {
+                total_collects += 1;
+                let event = pb::log::Log::Collect(pb::Collect {
+                    owner: event.owner.to_vec(),
+                    recipient: event.recipient.to_vec(),
+                    tick_lower: bigint_to_i32(&event.tick_lower),
+                    tick_upper: bigint_to_i32(&event.tick_upper),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
-            // Uniswap::V3::Pool:Burn
-            } else if let Some(event) = pool::Burn::match_and_decode(log) {
-                events.burn.push(uniswap::Burn {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    owner: event.owner,
-                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or(i32::MAX),
-                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or(i32::MAX),
+            // Burn event
+            if let Some(event) = uniswap::pool::events::Burn::match_and_decode(log) {
+                total_burns += 1;
+                let event = pb::log::Log::Burn(pb::Burn {
+                    owner: event.owner.to_vec(),
+                    tick_lower: bigint_to_i32(&event.tick_lower),
+                    tick_upper: bigint_to_i32(&event.tick_upper),
                     amount: event.amount.to_string(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
-            // Uniswap::V3::Pool:Flash
-            } else if let Some(event) = pool::Flash::match_and_decode(log) {
-                events.flash.push(uniswap::Flash {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    sender: event.sender,
-                    recipient: event.recipient,
+            // Flash event
+            if let Some(event) = uniswap::pool::events::Flash::match_and_decode(log) {
+                total_flashes += 1;
+                let event = pb::log::Log::Flash(pb::Flash {
+                    sender: event.sender.to_vec(),
+                    recipient: event.recipient.to_vec(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                     paid0: event.paid0.to_string(),
                     paid1: event.paid1.to_string(),
                 });
-            // Uniswap::V3::Pool:IncreaseObservationCardinalityNext
-            } else if let Some(event) = pool::IncreaseObservationCardinalityNext::match_and_decode(log) {
-                events.increase_observation_cardinality_next.push(uniswap::IncreaseObservationCardinalityNext {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    observation_cardinality_next_old: bigint_to_uint64(&event.observation_cardinality_next_old).unwrap_or(u64::MAX),
-                    observation_cardinality_next_new: bigint_to_uint64(&event.observation_cardinality_next_new).unwrap_or(u64::MAX),
+            // IncreaseObservationCardinalityNext event
+            if let Some(event) = uniswap::pool::events::IncreaseObservationCardinalityNext::match_and_decode(log) {
+                total_increase_observation += 1;
+                let event = pb::log::Log::IncreaseObservationCardinalityNext(pb::IncreaseObservationCardinalityNext {
+                    observation_cardinality_next_old: bigint_to_u64(&event.observation_cardinality_next_old),
+                    observation_cardinality_next_new: bigint_to_u64(&event.observation_cardinality_next_new),
                 });
-            // Uniswap::V3::Pool:SetFeeProtocol
-            } else if let Some(event) = pool::SetFeeProtocol::match_and_decode(log) {
-                events.set_fee_protocol.push(uniswap::SetFeeProtocol {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    fee_protocol0_old: bigint_to_uint64(&event.fee_protocol0_old).unwrap_or(u64::MAX),
-                    fee_protocol1_old: bigint_to_uint64(&event.fee_protocol1_old).unwrap_or(u64::MAX),
-                    fee_protocol0_new: bigint_to_uint64(&event.fee_protocol0_new).unwrap_or(u64::MAX),
-                    fee_protocol1_new: bigint_to_uint64(&event.fee_protocol1_new).unwrap_or(u64::MAX),
+            // SetFeeProtocol event
+            if let Some(event) = uniswap::pool::events::SetFeeProtocol::match_and_decode(log) {
+                total_set_fee_protocol += 1;
+                let event = pb::log::Log::SetFeeProtocol(pb::SetFeeProtocol {
+                    fee_protocol0_old: bigint_to_u64(&event.fee_protocol0_old),
+                    fee_protocol1_old: bigint_to_u64(&event.fee_protocol1_old),
+                    fee_protocol0_new: bigint_to_u64(&event.fee_protocol0_new),
+                    fee_protocol1_new: bigint_to_u64(&event.fee_protocol1_new),
                 });
-            // Uniswap::V3::Pool:Collect
-            } else if let Some(event) = pool::CollectProtocol::match_and_decode(log) {
-                events.collect_protocol.push(uniswap::CollectProtocol {
-                    // -- transaction --
-                    tx_hash: trx.hash.to_vec(),
+                transaction.logs.push(create_log(log, event));
+            }
 
-                    // -- call --
-                    caller,
-
-                    // -- log --
-                    contract: log.address.to_vec(),
-                    ordinal: log.ordinal,
-
-                    // -- event --
-                    sender: event.sender,
-                    recipient: event.recipient,
+            // CollectProtocol event
+            if let Some(event) = uniswap::pool::events::CollectProtocol::match_and_decode(log) {
+                total_collect_protocol += 1;
+                let event = pb::log::Log::CollectProtocol(pb::CollectProtocol {
+                    sender: event.sender.to_vec(),
+                    recipient: event.recipient.to_vec(),
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
+                transaction.logs.push(create_log(log, event));
             }
+
+            // PoolCreated event
+            if let Some(event) = uniswap::factory::events::PoolCreated::match_and_decode(log) {
+                total_pool_created += 1;
+                let event = pb::log::Log::PoolCreated(pb::PoolCreated {
+                    factory: log.address.to_vec(),
+                    pool: event.pool.to_vec(),
+                    token0: event.token0.to_vec(),
+                    token1: event.token1.to_vec(),
+                    fee: bigint_to_u64(&event.fee),
+                    tick_spacing: bigint_to_i32(&event.tick_spacing),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // OwnerChanged event
+            if let Some(event) = uniswap::factory::events::OwnerChanged::match_and_decode(log) {
+                total_owner_changed += 1;
+                let event = pb::log::Log::OwnerChanged(pb::OwnerChanged {
+                    old_owner: event.old_owner.to_vec(),
+                    new_owner: event.new_owner.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // FeeAmountEnabled event
+            if let Some(event) = uniswap::factory::events::FeeAmountEnabled::match_and_decode(log) {
+                total_fee_amount_enabled += 1;
+                let event = pb::log::Log::FeeAmountEnabled(pb::FeeAmountEnabled {
+                    fee: bigint_to_u64(&event.fee),
+                    tick_spacing: bigint_to_i32(&event.tick_spacing),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+        }
+
+        if !transaction.logs.is_empty() {
+            events.transactions.push(transaction);
         }
     }
 
+    substreams::log::info!("Total Transactions: {}", block.transaction_traces.len());
+    substreams::log::info!("Total Events: {}", events.transactions.len());
+    substreams::log::info!("Total Swap events: {}", total_swaps);
+    substreams::log::info!("Total Mint events: {}", total_mints);
+    substreams::log::info!("Total Burn events: {}", total_burns);
+    substreams::log::info!("Total Collect events: {}", total_collects);
+    substreams::log::info!("Total Flash events: {}", total_flashes);
+    substreams::log::info!("Total PoolCreated events: {}", total_pool_created);
+    substreams::log::info!("Total Initialize events: {}", total_initialize);
+    substreams::log::info!("Total IncreaseObservationCardinalityNext events: {}", total_increase_observation);
+    substreams::log::info!("Total SetFeeProtocol events: {}", total_set_fee_protocol);
+    substreams::log::info!("Total CollectProtocol events: {}", total_collect_protocol);
+    substreams::log::info!("Total OwnerChanged events: {}", total_owner_changed);
+    substreams::log::info!("Total FeeAmountEnabled events: {}", total_fee_amount_enabled);
     Ok(events)
 }

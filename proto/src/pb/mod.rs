@@ -7,6 +7,23 @@ pub mod evm {
             // @@protoc_insertion_point(evm.transfers.v1)
         }
     }
+    pub mod uniswap {
+        // @@protoc_insertion_point(attribute:evm.uniswap.v2)
+        pub mod v2 {
+            include!("evm.uniswap.v2.rs");
+            // @@protoc_insertion_point(evm.uniswap.v2)
+        }
+        // @@protoc_insertion_point(attribute:evm.uniswap.v3)
+        pub mod v3 {
+            include!("evm.uniswap.v3.rs");
+            // @@protoc_insertion_point(evm.uniswap.v3)
+        }
+        // @@protoc_insertion_point(attribute:evm.uniswap.v4)
+        pub mod v4 {
+            include!("evm.uniswap.v4.rs");
+            // @@protoc_insertion_point(evm.uniswap.v4)
+        }
+    }
 }
 pub mod tron {
     pub mod justswap {
