@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: evm_balancer
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Balancer for EVM
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/balancer.wasm
+
+protobuf:
+  files:
+    - balancer.proto
+  importPaths:
+    - ../../proto/v1
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.balancer.v1.Events
+
+network: mainnet

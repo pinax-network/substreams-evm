@@ -13,9 +13,13 @@
 ### `/dex`
 
 - [x] Uniswap
+  - [x] V1
   - [x] V2
   - [x] V3
   - [x] V4
 - [x] JustSwap V1
 - [x] SunSwap V2
 - [x] SunPump V1
+- [x] Balancer (WeightedPool)
+- [x] CurveFi
+- [x] Bancor (StandardPoolConverter)
