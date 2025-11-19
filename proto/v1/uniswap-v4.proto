@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package evm.uniswap.v4;
 
+message Events { repeated Transaction transactions = 1; }
+
 message Transaction {
   bytes hash = 1;
   bytes from = 2;
