@@ -61,9 +61,9 @@ message Snapshot {
   string token_balance = 3; // uint256
 }
 
-// key = <bytes token_address>
 message NewExchange {
   bytes factory = 1;  // log.address - the factory that created the pair
-  bytes exchange = 2; // key - the token address
+  // STORE primary key
+  bytes exchange = 2; // address
   bytes token = 3;
 }

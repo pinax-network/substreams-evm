@@ -35,11 +35,14 @@ message Log {
   }
 }
 
+// key = <bytes pair>
 message PairCreated {
-  bytes token0 = 1;
-  bytes token1 = 2;
-  bytes pair = 3;
-  uint64 all_pairs_length = 4; // total number of pairs created
+  bytes factory = 1; // log.address - the factory that created the pair
+  // STORE primary key
+  bytes pair = 2;    // address
+  bytes token0 = 3;
+  bytes token1 = 4;
+  string extra_data = 5;
 }
 
 message Sync {
