@@ -1,4 +1,5 @@
 mod store;
+use common::{bigint_to_i32, bigint_to_u64};
 use proto::pb::evm::uniswap::v4 as pb;
 use substreams_abis::evm::uniswap::v4 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
@@ -12,14 +13,6 @@ fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
         data: log.data.to_vec(),
         log: Some(event),
     }
-}
-
-fn bigint_to_i32(value: &substreams::scalar::BigInt) -> i32 {
-    value.to_i32()
-}
-
-fn bigint_to_u64(value: &substreams::scalar::BigInt) -> u64 {
-    value.to_u64()
 }
 
 #[substreams::handlers::map]
@@ -61,7 +54,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1: event.amount1.to_string(),
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
                     liquidity: event.liquidity.to_string(),
-                    tick: bigint_to_i32(&event.tick),
+                    tick: bigint_to_i32(&event.tick).unwrap_or_default(),
                     fee: event.fee.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
@@ -75,11 +68,11 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     id: event.id.to_vec(),
                     currency0: event.currency0.to_vec(),
                     currency1: event.currency1.to_vec(),
-                    fee: bigint_to_u64(&event.fee),
-                    tick_spacing: bigint_to_i32(&event.tick_spacing),
+                    fee: bigint_to_u64(&event.fee).unwrap_or_default(),
+                    tick_spacing: bigint_to_i32(&event.tick_spacing).unwrap_or_default(),
                     hooks: None, // NOT IMPLEMENTED
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
-                    tick: bigint_to_i32(&event.tick),
+                    tick: bigint_to_i32(&event.tick).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -90,8 +83,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::ModifyLiquidity(pb::ModifyLiquidity {
                     id: event.id.to_vec(),
                     sender: event.sender.to_vec(),
-                    tick_lower: bigint_to_i32(&event.tick_lower),
-                    tick_upper: bigint_to_i32(&event.tick_upper),
+                    tick_lower: bigint_to_i32(&event.tick_lower).unwrap_or_default(),
+                    tick_upper: bigint_to_i32(&event.tick_upper).unwrap_or_default(),
                     liquidity_delta: event.liquidity_delta.to_string(),
                     salt: event.salt.to_vec(),
                 });
@@ -124,7 +117,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_protocol_fee_updated += 1;
                 let event = pb::log::Log::ProtocolFeeUpdated(pb::ProtocolFeeUpdated {
                     id: event.id.to_vec(),
-                    protocol_fee: bigint_to_u64(&event.protocol_fee),
+                    protocol_fee: bigint_to_u64(&event.protocol_fee).unwrap_or_default(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
