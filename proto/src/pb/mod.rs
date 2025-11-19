@@ -1,5 +1,26 @@
 // @generated
 pub mod evm {
+    pub mod balancer {
+        // @@protoc_insertion_point(attribute:evm.balancer.v1)
+        pub mod v1 {
+            include!("evm.balancer.v1.rs");
+            // @@protoc_insertion_point(evm.balancer.v1)
+        }
+    }
+    pub mod bancor {
+        // @@protoc_insertion_point(attribute:evm.bancor.v1)
+        pub mod v1 {
+            include!("evm.bancor.v1.rs");
+            // @@protoc_insertion_point(evm.bancor.v1)
+        }
+    }
+    pub mod curvefi {
+        // @@protoc_insertion_point(attribute:evm.curvefi.v1)
+        pub mod v1 {
+            include!("evm.curvefi.v1.rs");
+            // @@protoc_insertion_point(evm.curvefi.v1)
+        }
+    }
     pub mod transfers {
         // @@protoc_insertion_point(attribute:evm.transfers.v1)
         pub mod v1 {
