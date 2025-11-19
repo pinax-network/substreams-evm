@@ -13,6 +13,7 @@
 ### `/dex`
 
 - [x] Uniswap
+  - [x] V1
   - [x] V2
   - [x] V3
   - [x] V4
