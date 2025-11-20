@@ -123,6 +123,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
+name = "clickhouse-evm-transfers"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "hex",
+ "proto",
+ "substreams",
+ "substreams-database-change",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "common"
 version = "0.0.0"
 dependencies = [
@@ -1211,6 +1223,17 @@ dependencies = [
  "substreams",
  "substreams-ethereum",
  "walkdir",
+]
+
+[[package]]
+name = "substreams-database-change"
+version = "3.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "19d3b7d3a19152bde02a29e864a8fc07865bec304356a757c1006a61904a42a5"
+dependencies = [
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "substreams",
 ]
 
 [[package]]
