@@ -154,6 +154,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "cow"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "cpufeatures"
 version = "0.2.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1190,8 +1201,8 @@ dependencies = [
 
 [[package]]
 name = "substreams-abis"
-version = "0.7.3"
-source = "git+https://github.com/pinax-network/substreams-abis.git#62690ebbba189843d952c50b37c8fa07b1f7641a"
+version = "0.7.5"
+source = "git+https://github.com/pinax-network/substreams-abis.git#23788f3aaa9eb0dab60e5c4b9cc5102a96f806d5"
 dependencies = [
  "anyhow",
  "ethabi 18.0.0",
