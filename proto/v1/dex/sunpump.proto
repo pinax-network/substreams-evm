@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package dex.sunpump.v1;
+package sunpump.v1;
 
 message Events { repeated Transaction transactions = 1; }
 

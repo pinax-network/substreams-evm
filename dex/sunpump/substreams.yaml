@@ -24,12 +24,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:dex.sunpump.v1.Events
+      type: proto:sunpump.v1.Events
 
   - name: store_token_create
     kind: store
     updatePolicy: set
-    valueType: proto:dex.sunpump.v1.TokenCreate
+    valuetype: proto:sunpump.v1.TokenCreate
     inputs:
       - map: map_events
 

@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: dex_bancor
+  name: evm_dex_bancor
   version: v0.0.1
   url: https://github.com/pinax-network/substreams-evm
   description: Bancor for EVM
@@ -23,6 +23,6 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:dex.bancor.v1.Events
+      type: proto:bancor.v1.Events
 
 network: mainnet

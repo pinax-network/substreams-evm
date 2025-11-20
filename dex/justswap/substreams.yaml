@@ -24,12 +24,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:dex.justswap.v1.Events
+      type: proto:justswap.v1.Events
 
   - name: store_new_exchange
     kind: store
     updatePolicy: set
-    valueType: proto:dex.justswap.v1.NewExchange
+    valuetype: proto:justswap.v1.NewExchange
     inputs:
       - map: map_events
 

@@ -23,12 +23,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:dex.sunswap.v1.Events
+      type: proto:sunswap.v1.Events
 
   - name: store_pair_created
     kind: store
     updatePolicy: set
-    valueType: proto:dex.sunswap.v1.PairCreated
+    valuetype: proto:sunswap.v1.PairCreated
     inputs:
       - map: map_events
 
