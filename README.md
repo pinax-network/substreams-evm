@@ -20,6 +20,10 @@
 - [x] JustSwap V1
 - [x] SunSwap V2
 - [x] SunPump V1
-- [x] Balancer (WeightedPool)
+- [x] Balancer
+  - [x] V2 WeightedPool
+  - [x] V3 StablePool
+  - [x] V3 Vault
 - [x] CurveFi
 - [x] Bancor (StandardPoolConverter)
+- [x] Cow Protocol (GPv2Settlement)

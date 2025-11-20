@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package cow.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// https://github.com/cowprotocol/contracts/blob/main/src/contracts/GPv2Settlement.sol
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    Interaction interaction = 10;
+    OrderInvalidated order_invalidated = 11;
+    PreSignature pre_signature = 12;
+    Settlement settlement = 13;
+    Trade trade = 14;
+  }
+}
+
+/// @notice Emitted when an interaction is executed
+/// @param target The address of the contract to interact with
+/// @param value The amount of ETH sent with the interaction
+/// @param selector The function selector of the interaction
+message Interaction {
+  bytes target = 1;   // address (indexed)
+  string value = 2;   // uint256
+  bytes selector = 3; // bytes4
+}
+
+/// @notice Emitted when an order is invalidated
+/// @param owner The address of the order owner
+/// @param orderUid The unique identifier of the order
+message OrderInvalidated {
+  bytes owner = 1;      // address (indexed)
+  bytes order_uid = 2;  // bytes
+}
+
+/// @notice Emitted when a pre-signature is set
+/// @param owner The address of the order owner
+/// @param orderUid The unique identifier of the order
+/// @param signed Whether the order is signed or unsigned
+message PreSignature {
+  bytes owner = 1;      // address (indexed)
+  bytes order_uid = 2;  // bytes
+  bool signed = 3;      // bool
+}
+
+/// @notice Emitted when a settlement is executed
+/// @param solver The address of the solver
+message Settlement {
+  bytes solver = 1; // address (indexed)
+}
+
+/// @notice Emitted when a trade is executed
+/// @param owner The address of the order owner
+/// @param sellToken The address of the token being sold
+/// @param buyToken The address of the token being bought
+/// @param sellAmount The amount of sell token
+/// @param buyAmount The amount of buy token
+/// @param feeAmount The fee amount charged
+/// @param orderUid The unique identifier of the order
+message Trade {
+  bytes owner = 1;        // address (indexed)
+  bytes sell_token = 2;   // address
+  bytes buy_token = 3;    // address
+  string sell_amount = 4; // uint256
+  string buy_amount = 5;  // uint256
+  string fee_amount = 6;  // uint256
+  bytes order_uid = 7;    // bytes
+}
