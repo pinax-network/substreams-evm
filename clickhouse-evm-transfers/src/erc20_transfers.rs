@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
@@ -14,7 +14,7 @@ pub fn process_events(tables: &mut Tables, clock: &Clock, events: &pb::Events) {
         for (log_index, log) in tx.logs.iter().enumerate() {
             if let Some(pb::log::Log::Transfer(transfer)) = &log.log {
                 let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("trc20_transfer", key);
+                let row = tables.create_row("erc20_transfer", key);
 
                 // TEMPLATE
                 set_clock(clock, row);

@@ -1,11 +1,11 @@
+mod erc20_transfers;
 mod logs;
 mod native_transfers;
 mod transactions;
 mod weth;
-mod erc20_transfers;
 use substreams::pb::substreams::Clock;
 
-use proto::pb::tron as pb;
+use proto::pb::evm as pb;
 use substreams::errors::Error;
 use substreams_database_change::pb::database::DatabaseChanges;
 
