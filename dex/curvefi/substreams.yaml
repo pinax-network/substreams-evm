@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - curvefi.proto
+    - /v1/dex/curvefi.proto
   importPaths:
-    - ../../proto/v1/dex
+    - ../../proto
 
 modules:
   - name: map_events

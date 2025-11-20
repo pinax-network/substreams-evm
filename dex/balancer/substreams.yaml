@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - balancer.proto
+    - /v1/dex/balancer.proto
   importPaths:
-    - ../../proto/v1/dex
+    - ../../proto
 
 modules:
   - name: map_events

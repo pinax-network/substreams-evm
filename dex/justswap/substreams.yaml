@@ -13,14 +13,13 @@ binaries:
 
 protobuf:
   files:
-    - v1/justswap.proto
+    - /v1/dex/justswap.proto
   importPaths:
     - ../../proto
 
 modules:
   - name: map_events
     kind: map
-    doc: JustSwap V1 TokenPurchase, TrxPurchase, AddLiquidity, and RemoveLiquidity events
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
@@ -29,7 +28,7 @@ modules:
   - name: store_new_exchange
     kind: store
     updatePolicy: set
-    valuetype: proto:justswap.v1.NewExchange
+    valueType: proto:justswap.v1.NewExchange
     inputs:
       - map: map_events
 

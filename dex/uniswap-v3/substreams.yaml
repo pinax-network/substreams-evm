@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - uniswap-v3.proto
+    - /v1/dex/uniswap-v3.proto
   importPaths:
-    - ../../proto/v1
+    - ../../proto
 
 modules:
   - name: map_events
