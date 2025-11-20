@@ -1,5 +1,5 @@
 mod store;
-use proto::pb::dex::uniswap::v1 as pb;
+use proto::pb::uniswap::v1 as pb;
 use substreams_abis::evm::uniswap::v1 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;

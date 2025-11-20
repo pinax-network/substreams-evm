@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::dex::{justswap, sunpump, sunswap};
+use proto::pb::{justswap, sunpump, sunswap};
 use substreams::{pb::substreams::Clock, Hex};
 
 // Helper functions

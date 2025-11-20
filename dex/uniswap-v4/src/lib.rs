@@ -1,6 +1,6 @@
 mod store;
 use common::{bigint_to_i32, bigint_to_u64};
-use proto::pb::dex::uniswap::v4 as pb;
+use proto::pb::uniswap::v4 as pb;
 use substreams_abis::evm::uniswap::v4 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;

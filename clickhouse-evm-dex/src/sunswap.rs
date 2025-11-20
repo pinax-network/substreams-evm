@@ -1,6 +1,6 @@
 use common::tron_base58_from_bytes;
-use proto::pb::dex::foundational_store::v1::PairCreated;
-use proto::pb::dex::sunswap;
+use proto::pb::foundational_store::v1::PairCreated;
+use proto::pb::sunswap;
 // use substreams::store::FoundationalStore;
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
