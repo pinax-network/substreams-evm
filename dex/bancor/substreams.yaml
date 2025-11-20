@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - bancor.proto
+    - /v1/dex/bancor.proto
   importPaths:
-    - ../../proto/v1/dex
+    - ../../proto
 
 modules:
   - name: map_events
