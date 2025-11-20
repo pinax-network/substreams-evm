@@ -30,7 +30,9 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
+/// Balancer V2 WeightedPool, V3 StablePool and V3 Vault events
 /// <https://github.com/balancer/balancer-v2-monorepo/blob/master/pkg/pool-weighted/contracts/WeightedPool.sol>
+/// <https://github.com/balancer/balancer-v3-monorepo>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -42,7 +44,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 20, 21, 30, 31, 32, 33, 34, 35, 36, 37")]
+    #[prost(oneof="log::Log", tags="12, 13, 14, 15, 20, 21, 30, 31, 32, 33, 34, 35, 36, 37")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -50,22 +52,21 @@ pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
-        #[prost(message, tag="10")]
-        Approval(super::Approval),
-        #[prost(message, tag="11")]
-        Transfer(super::Transfer),
+        /// V2 WeightedPool events
         #[prost(message, tag="12")]
-        SwapFeePercentageChanged(super::SwapFeePercentageChanged),
+        SwapFeePercentage(super::SwapFeePercentage),
         #[prost(message, tag="13")]
-        PausedStateChanged(super::PausedStateChanged),
+        Paused(super::Paused),
         #[prost(message, tag="14")]
-        RecoveryModeStateChanged(super::RecoveryModeStateChanged),
+        RecoveryMode(super::RecoveryMode),
         #[prost(message, tag="15")]
-        ProtocolFeePercentageCacheUpdated(super::ProtocolFeePercentageCacheUpdated),
+        ProtocolFeePercentage(super::ProtocolFeePercentage),
+        /// V3 StablePool events
         #[prost(message, tag="20")]
         AmpUpdateStarted(super::AmpUpdateStarted),
         #[prost(message, tag="21")]
         AmpUpdateStopped(super::AmpUpdateStopped),
+        /// V3 Vault events
         #[prost(message, tag="30")]
         VaultSwap(super::VaultSwap),
         #[prost(message, tag="31")]
@@ -77,11 +78,11 @@ pub mod log {
         #[prost(message, tag="34")]
         PoolRegistered(super::PoolRegistered),
         #[prost(message, tag="35")]
-        PoolPausedStateChanged(super::PoolPausedStateChanged),
+        PoolPaused(super::PoolPaused),
         #[prost(message, tag="36")]
-        PoolRecoveryModeStateChanged(super::PoolRecoveryModeStateChanged),
+        PoolRecoveryMode(super::PoolRecoveryMode),
         #[prost(message, tag="37")]
-        AggregateSwapFeePercentageChanged(super::AggregateSwapFeePercentageChanged),
+        AggregateSwapFeePercentage(super::AggregateSwapFeePercentage),
     }
 }
 /// / @notice Emitted when an approval is made
@@ -122,7 +123,7 @@ pub struct Transfer {
 /// / @param swapFeePercentage The new swap fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SwapFeePercentageChanged {
+pub struct SwapFeePercentage {
     /// uint256
     #[prost(string, tag="1")]
     pub swap_fee_percentage: ::prost::alloc::string::String,
@@ -131,7 +132,7 @@ pub struct SwapFeePercentageChanged {
 /// / @param paused The new paused state
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct PausedStateChanged {
+pub struct Paused {
     /// bool
     #[prost(bool, tag="1")]
     pub paused: bool,
@@ -140,7 +141,7 @@ pub struct PausedStateChanged {
 /// / @param enabled The new recovery mode state
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct RecoveryModeStateChanged {
+pub struct RecoveryMode {
     /// bool
     #[prost(bool, tag="1")]
     pub enabled: bool,
@@ -150,7 +151,7 @@ pub struct RecoveryModeStateChanged {
 /// / @param protocolFeePercentage The new protocol fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ProtocolFeePercentageCacheUpdated {
+pub struct ProtocolFeePercentage {
     /// uint256 (indexed)
     #[prost(string, tag="1")]
     pub fee_type: ::prost::alloc::string::String,
@@ -158,7 +159,8 @@ pub struct ProtocolFeePercentageCacheUpdated {
     #[prost(string, tag="2")]
     pub protocol_fee_percentage: ::prost::alloc::string::String,
 }
-/// ===== V3 StablePool Events =====
+// ===== V3 StablePool Events =====
+
 /// / @notice Emitted when an amplification parameter update is started
 /// / @param startValue The starting amplification value
 /// / @param endValue The ending amplification value
@@ -189,7 +191,8 @@ pub struct AmpUpdateStopped {
     #[prost(string, tag="1")]
     pub current_value: ::prost::alloc::string::String,
 }
-/// ===== V3 Vault Events =====
+// ===== V3 Vault Events =====
+
 /// / @notice Emitted when a swap is executed through the Vault
 /// / @param pool The address of the pool
 /// / @param tokenIn The address of the token being swapped in
@@ -245,10 +248,10 @@ pub struct LiquidityAdded {
     /// uint256
     #[prost(string, tag="4")]
     pub total_supply: ::prost::alloc::string::String,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="5")]
     pub amounts_added_raw: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="6")]
     pub swap_fee_amounts_raw: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
@@ -274,10 +277,10 @@ pub struct LiquidityRemoved {
     /// uint256
     #[prost(string, tag="4")]
     pub total_supply: ::prost::alloc::string::String,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="5")]
     pub amounts_removed_raw: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="6")]
     pub swap_fee_amounts_raw: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
@@ -308,7 +311,7 @@ pub struct PoolRegistered {
 /// / @param paused The new paused state
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PoolPausedStateChanged {
+pub struct PoolPaused {
     /// address (indexed)
     #[prost(bytes="vec", tag="1")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
@@ -321,7 +324,7 @@ pub struct PoolPausedStateChanged {
 /// / @param enabled The new recovery mode state
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PoolRecoveryModeStateChanged {
+pub struct PoolRecoveryMode {
     /// address (indexed)
     #[prost(bytes="vec", tag="1")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
@@ -334,7 +337,7 @@ pub struct PoolRecoveryModeStateChanged {
 /// / @param aggregateSwapFeePercentage The new aggregate swap fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AggregateSwapFeePercentageChanged {
+pub struct AggregateSwapFeePercentage {
     /// address (indexed)
     #[prost(bytes="vec", tag="1")]
     pub pool: ::prost::alloc::vec::Vec<u8>,

@@ -26,13 +26,10 @@ message Log {
   bytes data = 4;
   oneof log {
     // V2 WeightedPool events
-    Approval approval = 10;
-    Transfer transfer = 11;
-    SwapFeePercentageChanged swap_fee_percentage_changed = 12;
-    PausedStateChanged paused_state_changed = 13;
-    RecoveryModeStateChanged recovery_mode_state_changed = 14;
-    ProtocolFeePercentageCacheUpdated protocol_fee_percentage_cache_updated =
-        15;
+    SwapFeePercentage swap_fee_percentage = 12;
+    Paused paused = 13;
+    RecoveryMode recovery_mode = 14;
+    ProtocolFeePercentage protocol_fee_percentage = 15;
     // V3 StablePool events
     AmpUpdateStarted amp_update_started = 20;
     AmpUpdateStopped amp_update_stopped = 21;
@@ -42,10 +39,9 @@ message Log {
     LiquidityRemoved liquidity_removed = 32;
     PoolInitialized pool_initialized = 33;
     PoolRegistered pool_registered = 34;
-    PoolPausedStateChanged pool_paused_state_changed = 35;
-    PoolRecoveryModeStateChanged pool_recovery_mode_state_changed = 36;
-    AggregateSwapFeePercentageChanged aggregate_swap_fee_percentage_changed =
-        37;
+    PoolPaused pool_paused = 35;
+    PoolRecoveryMode pool_recovery_mode = 36;
+    AggregateSwapFeePercentage aggregate_swap_fee_percentage = 37;
   }
 }
 
@@ -71,26 +67,26 @@ message Transfer {
 
 /// @notice Emitted when the swap fee percentage is changed
 /// @param swapFeePercentage The new swap fee percentage
-message SwapFeePercentageChanged {
+message SwapFeePercentage {
   string swap_fee_percentage = 1; // uint256
 }
 
 /// @notice Emitted when the paused state is changed
 /// @param paused The new paused state
-message PausedStateChanged {
+message Paused {
   bool paused = 1; // bool
 }
 
 /// @notice Emitted when the recovery mode state is changed
 /// @param enabled The new recovery mode state
-message RecoveryModeStateChanged {
+message RecoveryMode {
   bool enabled = 1; // bool
 }
 
 /// @notice Emitted when the protocol fee percentage cache is updated
 /// @param feeType The fee type being updated
 /// @param protocolFeePercentage The new protocol fee percentage
-message ProtocolFeePercentageCacheUpdated {
+message ProtocolFeePercentage {
   string fee_type = 1;                // uint256 (indexed)
   string protocol_fee_percentage = 2; // uint256
 }
@@ -126,13 +122,13 @@ message AmpUpdateStopped {
 /// @param swapFeePercentage The swap fee percentage
 /// @param swapFeeAmount The swap fee amount
 message VaultSwap {
-  bytes pool = 1;                     // address (indexed)
-  bytes token_in = 2;                 // address (indexed)
-  bytes token_out = 3;                // address (indexed)
-  string amount_in = 4;               // uint256
-  string amount_out = 5;              // uint256
-  string swap_fee_percentage = 6;     // uint256
-  string swap_fee_amount = 7;         // uint256
+  bytes pool = 1;                 // address (indexed)
+  bytes token_in = 2;             // address (indexed)
+  bytes token_out = 3;            // address (indexed)
+  string amount_in = 4;           // uint256
+  string amount_out = 5;          // uint256
+  string swap_fee_percentage = 6; // uint256
+  string swap_fee_amount = 7;     // uint256
 }
 
 /// @notice Emitted when liquidity is added to a pool
@@ -143,12 +139,12 @@ message VaultSwap {
 /// @param amountsAddedRaw The amounts of tokens added (as strings)
 /// @param swapFeeAmountsRaw The swap fee amounts (as strings)
 message LiquidityAdded {
-  bytes pool = 1;                      // address (indexed)
-  bytes liquidity_provider = 2;        // address (indexed)
-  uint32 kind = 3;                     // uint8 (indexed)
-  string total_supply = 4;             // uint256
-  repeated string amounts_added_raw = 5;     // uint256[]
-  repeated string swap_fee_amounts_raw = 6;  // uint256[]
+  bytes pool = 1;                           // address (indexed)
+  bytes liquidity_provider = 2;             // address (indexed)
+  uint32 kind = 3;                          // uint8 (indexed)
+  string total_supply = 4;                  // uint256
+  repeated string amounts_added_raw = 5;    // uint256[]
+  repeated string swap_fee_amounts_raw = 6; // uint256[]
 }
 
 /// @notice Emitted when liquidity is removed from a pool
@@ -159,12 +155,12 @@ message LiquidityAdded {
 /// @param amountsRemovedRaw The amounts of tokens removed (as strings)
 /// @param swapFeeAmountsRaw The swap fee amounts (as strings)
 message LiquidityRemoved {
-  bytes pool = 1;                        // address (indexed)
-  bytes liquidity_provider = 2;          // address (indexed)
-  uint32 kind = 3;                       // uint8 (indexed)
-  string total_supply = 4;               // uint256
-  repeated string amounts_removed_raw = 5;     // uint256[]
-  repeated string swap_fee_amounts_raw = 6;    // uint256[]
+  bytes pool = 1;                           // address (indexed)
+  bytes liquidity_provider = 2;             // address (indexed)
+  uint32 kind = 3;                          // uint8 (indexed)
+  string total_supply = 4;                  // uint256
+  repeated string amounts_removed_raw = 5;  // uint256[]
+  repeated string swap_fee_amounts_raw = 6; // uint256[]
 }
 
 /// @notice Emitted when a pool is initialized
@@ -184,23 +180,23 @@ message PoolRegistered {
 /// @notice Emitted when a pool's paused state is changed
 /// @param pool The address of the pool
 /// @param paused The new paused state
-message PoolPausedStateChanged {
-  bytes pool = 1; // address (indexed)
+message PoolPaused {
+  bytes pool = 1;  // address (indexed)
   bool paused = 2; // bool
 }
 
 /// @notice Emitted when a pool's recovery mode state is changed
 /// @param pool The address of the pool
 /// @param enabled The new recovery mode state
-message PoolRecoveryModeStateChanged {
-  bytes pool = 1;  // address (indexed)
+message PoolRecoveryMode {
+  bytes pool = 1;   // address (indexed)
   bool enabled = 2; // bool
 }
 
 /// @notice Emitted when the aggregate swap fee percentage is changed
 /// @param pool The address of the pool
 /// @param aggregateSwapFeePercentage The new aggregate swap fee percentage
-message AggregateSwapFeePercentageChanged {
+message AggregateSwapFeePercentage {
   bytes pool = 1;                           // address (indexed)
   string aggregate_swap_fee_percentage = 2; // uint256
 }
