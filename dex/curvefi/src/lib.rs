@@ -1,25 +1,8 @@
-use proto::pb::dex::curvefi::v1 as pb;
-use substreams::Hex;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
-
 pub mod store;
-
-// Event topic0 hashes from CurveFi Pool.json ABI
-const TOKEN_EXCHANGE_TOPIC: &str = "8b3e96f2b889fa771c53c981b40daf005f63f637f1869f707052d15a3dd97140";
-const ADD_LIQUIDITY_TOPIC: &str = "26f55a85081d24974e85c6c00045d0f0453991e95873f52bff0d21af4079a768";
-const REMOVE_LIQUIDITY_TOPIC: &str = "7c363854ccf79623411f8995b362bce5eddff18c927edc6f5dbbb5e05819a82c";
-const REMOVE_LIQUIDITY_ONE_TOPIC: &str = "9e96dd3b997a2a257eec4df9bb6eaf626e206df5f543bd963682d143300be310";
-const REMOVE_LIQUIDITY_IMBALANCE_TOPIC: &str = "2b5508378d7e19e0d5fa338419034731416c4f5b219a10379956f764317fd47e";
-const COMMIT_NEW_ADMIN_TOPIC: &str = "181aa3aa17d4cbf99265dd4443eba009433d3cde79d60164fde1d1a192beb935";
-const NEW_ADMIN_TOPIC: &str = "3b81caf78fa51ecbc8acb482fd7012a277b428d9b80f9d156e8a54107496cc40";
-const COMMIT_NEW_FEE_TOPIC: &str = "351fc5da2fbf480f2225debf3664a4bc90fa9923743aad58b4603f648e931fe0";
-const NEW_FEE_TOPIC: &str = "be12859b636aed607d5230b2cc2711f68d70e51060e6cca1f575ef5d2fcc95d1";
-const RAMP_A_TOPIC: &str = "a2b71ec6df949300b59aab36b55e189697b750119dd349fcfa8c0f779e83c254";
-const STOP_RAMP_A_TOPIC: &str = "46e22fb3709ad289f62ce63d469248536dbc78d82b84a3d7e74ad606dc201938";
-
-fn match_topic(log: &Log, topic_hex: &str) -> bool {
-    !log.topics.is_empty() && Hex::encode(&log.topics[0]) == topic_hex
-}
+use proto::pb::dex::curvefi::v1 as pb;
+use substreams_abis::evm::curvefi::pool as curvefi;
+use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::Event;
 
 fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
     pb::Log {
@@ -66,127 +49,122 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             let log = log_view.log;
 
             // TokenExchange event
-            if match_topic(log, TOKEN_EXCHANGE_TOPIC) {
+            if let Some(event) = curvefi::events::TokenExchange::match_and_decode(log) {
                 total_token_exchange += 1;
                 // Decode event data (simplified - would need full ethabi decoding for production)
                 let event = pb::log::Log::TokenExchange(pb::TokenExchange {
                     buyer: vec![], // Would extract from topics[1]
-                    sold_id: "0".to_string(),
-                    tokens_sold: "0".to_string(),
-                    bought_id: "0".to_string(),
-                    tokens_bought: "0".to_string(),
+                    sold_id: event.sold_id,
+                    tokens_sold: event.tokens_sold,
+                    bought_id: event.bought_id,
+                    tokens_bought: event.tokens_bought,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // AddLiquidity event
-            if match_topic(log, ADD_LIQUIDITY_TOPIC) {
+            if let Some(event) = curvefi::events::AddLiquidity::match_and_decode(log) {
                 total_add_liquidity += 1;
                 let event = pb::log::Log::AddLiquidity(pb::AddLiquidity {
-                    provider: vec![], // Would extract from topics[1]
-                    token_amounts: vec![],
-                    fees: vec![],
-                    invariant: "0".to_string(),
-                    token_supply: "0".to_string(),
+                    provider: event.provider,
+                    token_amounts: event.token_amounts,
+                    fees: event.fees,
+                    invariant: event.invariant,
+                    token_supply: event.token_supply,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RemoveLiquidity event
-            if match_topic(log, REMOVE_LIQUIDITY_TOPIC) {
+            if let Some(event) = curvefi::events::RemoveLiquidity::match_and_decode(log) {
                 total_remove_liquidity += 1;
                 let event = pb::log::Log::RemoveLiquidity(pb::RemoveLiquidity {
-                    provider: vec![], // Would extract from topics[1]
-                    token_amounts: vec![],
-                    fees: vec![],
-                    token_supply: "0".to_string(),
+                    provider: event.provider,
+                    token_amounts: event.token_amounts,
+                    fees: event.fees,
+                    token_supply: event.token_supply,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RemoveLiquidityOne event
-            if match_topic(log, REMOVE_LIQUIDITY_ONE_TOPIC) {
+            if let Some(event) = curvefi::events::RemoveLiquidityOne::match_and_decode(log) {
                 total_remove_liquidity_one += 1;
                 let event = pb::log::Log::RemoveLiquidityOne(pb::RemoveLiquidityOne {
-                    provider: vec![], // Would extract from topics[1]
-                    token_amount: "0".to_string(),
-                    coin_amount: "0".to_string(),
+                    provider: event.provider,
+                    token_amount: event.token_amount,
+                    coin_amount: event.coin_amount,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RemoveLiquidityImbalance event
-            if match_topic(log, REMOVE_LIQUIDITY_IMBALANCE_TOPIC) {
+            if let Some(event) = curvefi::events::RemoveLiquidityImbalance::match_and_decode(log) {
                 total_remove_liquidity_imbalance += 1;
                 let event = pb::log::Log::RemoveLiquidityImbalance(pb::RemoveLiquidityImbalance {
-                    provider: vec![], // Would extract from topics[1]
-                    token_amounts: vec![],
-                    fees: vec![],
-                    invariant: "0".to_string(),
-                    token_supply: "0".to_string(),
+                    provider: event.provider,
+                    token_amounts: event.token_amounts,
+                    fees: event.fees,
+                    invariant: event.invariant,
+                    token_supply: event.token_supply,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // CommitNewAdmin event
-            if match_topic(log, COMMIT_NEW_ADMIN_TOPIC) {
+            if let Some(event) = curvefi::events::CommitNewAdmin::match_and_decode(log) {
                 total_commit_new_admin += 1;
                 let event = pb::log::Log::CommitNewAdmin(pb::CommitNewAdmin {
-                    deadline: "0".to_string(),
-                    admin: vec![],
+                    deadline: event.deadline,
+                    admin: event.admin,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // NewAdmin event
-            if match_topic(log, NEW_ADMIN_TOPIC) {
+            if let Some(event) = curvefi::events::NewAdmin::match_and_decode(log) {
                 total_new_admin += 1;
-                let event = pb::log::Log::NewAdmin(pb::NewAdmin {
-                    admin: vec![], // Would extract from topics[1]
-                });
+                let event = pb::log::Log::NewAdmin(pb::NewAdmin { admin: event.admin });
                 transaction.logs.push(create_log(log, event));
             }
 
             // CommitNewFee event
-            if match_topic(log, COMMIT_NEW_FEE_TOPIC) {
+            if let Some(event) = curvefi::events::CommitNewFee::match_and_decode(log) {
                 total_commit_new_fee += 1;
                 let event = pb::log::Log::CommitNewFee(pb::CommitNewFee {
-                    deadline: "0".to_string(),
-                    fee: "0".to_string(),
-                    admin_fee: "0".to_string(),
+                    deadline: event.deadline,
+                    fee: event.fee,
+                    admin_fee: event.admin_fee,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // NewFee event
-            if match_topic(log, NEW_FEE_TOPIC) {
+            if let Some(event) = curvefi::events::NewFee::match_and_decode(log) {
                 total_new_fee += 1;
                 let event = pb::log::Log::NewFee(pb::NewFee {
-                    fee: "0".to_string(),
-                    admin_fee: "0".to_string(),
+                    fee: event.fee,
+                    admin_fee: event.admin_fee,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RampA event
-            if match_topic(log, RAMP_A_TOPIC) {
+            if let Some(event) = curvefi::events::RampA::match_and_decode(log) {
                 total_ramp_a += 1;
                 let event = pb::log::Log::RampA(pb::RampA {
-                    old_a: "0".to_string(),
-                    new_a: "0".to_string(),
-                    initial_time: "0".to_string(),
-                    future_time: "0".to_string(),
+                    old_a: event.old_a,
+                    new_a: event.new_a,
+                    initial_time: event.initial_time,
+                    future_time: event.future_time,
                 });
                 transaction.logs.push(create_log(log, event));
             }
 
             // StopRampA event
-            if match_topic(log, STOP_RAMP_A_TOPIC) {
+            if let Some(event) = curvefi::events::StopRampA::match_and_decode(log) {
                 total_stop_ramp_a += 1;
-                let event = pb::log::Log::StopRampA(pb::StopRampA {
-                    a: "0".to_string(),
-                    t: "0".to_string(),
-                });
+                let event = pb::log::Log::StopRampA(pb::StopRampA { a: event.a, t: event.t });
                 transaction.logs.push(create_log(log, event));
             }
         }

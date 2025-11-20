@@ -393,9 +393,9 @@ dependencies = [
 
 [[package]]
 name = "hashbrown"
-version = "0.16.0"
+version = "0.16.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5419bdc4f6a9207fbeba6d11b604d481addf78ecd10c11ad51e76c2f6482748d"
+checksum = "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100"
 
 [[package]]
 name = "heck"
@@ -1190,8 +1190,8 @@ dependencies = [
 
 [[package]]
 name = "substreams-abis"
-version = "0.7.2"
-source = "git+https://github.com/pinax-network/substreams-abis.git#22fc9cfb415bc518d2c9b7bdb0eddb6386c58fa9"
+version = "0.7.3"
+source = "git+https://github.com/pinax-network/substreams-abis.git#62690ebbba189843d952c50b37c8fa07b1f7641a"
 dependencies = [
  "anyhow",
  "ethabi 18.0.0",
