@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: dex_balancer
+  name: evm_dex_balancer
   version: v0.0.1
   url: https://github.com/pinax-network/substreams-evm
   description: Balancer for EVM
@@ -23,6 +23,6 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:dex.balancer.v1.Events
+      type: proto:balancer.v1.Events
 
 network: mainnet

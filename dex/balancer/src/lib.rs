@@ -1,4 +1,4 @@
-use proto::pb::dex::balancer::v1 as pb;
+use proto::pb::balancer::v1 as pb;
 use substreams_abis::evm::balancer::weightedpool as balancer;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;

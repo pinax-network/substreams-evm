@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package dex.justswap.v1;
+package justswap.v1;
 
 message Events { repeated Transaction transactions = 1; }
 

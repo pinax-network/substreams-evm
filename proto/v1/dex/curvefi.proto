@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package dex.curvefi.v1;
+package curvefi.v1;
 
 message Events { repeated Transaction transactions = 1; }
 

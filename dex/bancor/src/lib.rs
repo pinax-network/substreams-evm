@@ -1,5 +1,5 @@
 use common::bigint_to_u64;
-use proto::pb::dex::bancor::v1 as pb;
+use proto::pb::bancor::v1 as pb;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
