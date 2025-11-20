@@ -1,5 +1,7 @@
 use proto::pb::balancer::v1 as pb;
-use substreams_abis::evm::balancer::weightedpool as balancer;
+use substreams_abis::evm::balancer::v2::weightedpool as balancer_v2;
+use substreams_abis::evm::balancer::v3::stablepool as balancer_v3_stable;
+use substreams_abis::evm::balancer::v3::vault as balancer_v3_vault;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
@@ -16,12 +18,28 @@ fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut events = pb::Events::default();
+    
+    // V2 WeightedPool counters
     let mut total_approvals = 0;
     let mut total_transfers = 0;
     let mut total_swap_fee_percentage_changed = 0;
     let mut total_paused_state_changed = 0;
     let mut total_recovery_mode_state_changed = 0;
     let mut total_protocol_fee_percentage_cache_updated = 0;
+    
+    // V3 StablePool counters
+    let mut total_amp_update_started = 0;
+    let mut total_amp_update_stopped = 0;
+    
+    // V3 Vault counters
+    let mut total_vault_swaps = 0;
+    let mut total_liquidity_added = 0;
+    let mut total_liquidity_removed = 0;
+    let mut total_pool_initialized = 0;
+    let mut total_pool_registered = 0;
+    let mut total_pool_paused_state_changed = 0;
+    let mut total_pool_recovery_mode_state_changed = 0;
+    let mut total_aggregate_swap_fee_percentage_changed = 0;
 
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
@@ -42,8 +60,10 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
 
+            // ===== V2 WeightedPool Events =====
+            
             // Approval event
-            if let Some(event) = balancer::events::Approval::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::Approval::match_and_decode(log) {
                 total_approvals += 1;
                 let event = pb::log::Log::Approval(pb::Approval {
                     owner: event.owner.to_vec(),
@@ -54,7 +74,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // Transfer event
-            if let Some(event) = balancer::events::Transfer::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::Transfer::match_and_decode(log) {
                 total_transfers += 1;
                 let event = pb::log::Log::Transfer(pb::Transfer {
                     from: event.from.to_vec(),
@@ -65,7 +85,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // SwapFeePercentageChanged event
-            if let Some(event) = balancer::events::SwapFeePercentageChanged::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::SwapFeePercentageChanged::match_and_decode(log) {
                 total_swap_fee_percentage_changed += 1;
                 let event = pb::log::Log::SwapFeePercentageChanged(pb::SwapFeePercentageChanged {
                     swap_fee_percentage: event.swap_fee_percentage.to_string(),
@@ -74,25 +94,140 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // PausedStateChanged event
-            if let Some(event) = balancer::events::PausedStateChanged::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::PausedStateChanged::match_and_decode(log) {
                 total_paused_state_changed += 1;
                 let event = pb::log::Log::PausedStateChanged(pb::PausedStateChanged { paused: event.paused });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RecoveryModeStateChanged event
-            if let Some(event) = balancer::events::RecoveryModeStateChanged::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::RecoveryModeStateChanged::match_and_decode(log) {
                 total_recovery_mode_state_changed += 1;
                 let event = pb::log::Log::RecoveryModeStateChanged(pb::RecoveryModeStateChanged { enabled: event.enabled });
                 transaction.logs.push(create_log(log, event));
             }
 
             // ProtocolFeePercentageCacheUpdated event
-            if let Some(event) = balancer::events::ProtocolFeePercentageCacheUpdated::match_and_decode(log) {
+            if let Some(event) = balancer_v2::events::ProtocolFeePercentageCacheUpdated::match_and_decode(log) {
                 total_protocol_fee_percentage_cache_updated += 1;
                 let event = pb::log::Log::ProtocolFeePercentageCacheUpdated(pb::ProtocolFeePercentageCacheUpdated {
                     fee_type: event.fee_type.to_string(),
                     protocol_fee_percentage: event.protocol_fee_percentage.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // ===== V3 StablePool Events =====
+            
+            // AmpUpdateStarted event
+            if let Some(event) = balancer_v3_stable::events::AmpUpdateStarted::match_and_decode(log) {
+                total_amp_update_started += 1;
+                let event = pb::log::Log::AmpUpdateStarted(pb::AmpUpdateStarted {
+                    start_value: event.start_value.to_string(),
+                    end_value: event.end_value.to_string(),
+                    start_time: event.start_time.to_string(),
+                    end_time: event.end_time.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // AmpUpdateStopped event
+            if let Some(event) = balancer_v3_stable::events::AmpUpdateStopped::match_and_decode(log) {
+                total_amp_update_stopped += 1;
+                let event = pb::log::Log::AmpUpdateStopped(pb::AmpUpdateStopped {
+                    current_value: event.current_value.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // ===== V3 Vault Events =====
+            
+            // Swap event
+            if let Some(event) = balancer_v3_vault::events::Swap::match_and_decode(log) {
+                total_vault_swaps += 1;
+                let event = pb::log::Log::VaultSwap(pb::VaultSwap {
+                    pool: event.pool.to_vec(),
+                    token_in: event.token_in.to_vec(),
+                    token_out: event.token_out.to_vec(),
+                    amount_in: event.amount_in.to_string(),
+                    amount_out: event.amount_out.to_string(),
+                    swap_fee_percentage: event.swap_fee_percentage.to_string(),
+                    swap_fee_amount: event.swap_fee_amount.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // LiquidityAdded event
+            if let Some(event) = balancer_v3_vault::events::LiquidityAdded::match_and_decode(log) {
+                total_liquidity_added += 1;
+                let event = pb::log::Log::LiquidityAdded(pb::LiquidityAdded {
+                    pool: event.pool.to_vec(),
+                    liquidity_provider: event.liquidity_provider.to_vec(),
+                    kind: event.kind.to_u64() as u32,
+                    total_supply: event.total_supply.to_string(),
+                    amounts_added_raw: event.amounts_added_raw.iter().map(|v| v.to_string()).collect(),
+                    swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // LiquidityRemoved event
+            if let Some(event) = balancer_v3_vault::events::LiquidityRemoved::match_and_decode(log) {
+                total_liquidity_removed += 1;
+                let event = pb::log::Log::LiquidityRemoved(pb::LiquidityRemoved {
+                    pool: event.pool.to_vec(),
+                    liquidity_provider: event.liquidity_provider.to_vec(),
+                    kind: event.kind.to_u64() as u32,
+                    total_supply: event.total_supply.to_string(),
+                    amounts_removed_raw: event.amounts_removed_raw.iter().map(|v| v.to_string()).collect(),
+                    swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // PoolInitialized event
+            if let Some(event) = balancer_v3_vault::events::PoolInitialized::match_and_decode(log) {
+                total_pool_initialized += 1;
+                let event = pb::log::Log::PoolInitialized(pb::PoolInitialized { pool: event.pool.to_vec() });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // PoolRegistered event
+            if let Some(event) = balancer_v3_vault::events::PoolRegistered::match_and_decode(log) {
+                total_pool_registered += 1;
+                let event = pb::log::Log::PoolRegistered(pb::PoolRegistered {
+                    pool: event.pool.to_vec(),
+                    factory: event.factory.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // PoolPausedStateChanged event
+            if let Some(event) = balancer_v3_vault::events::PoolPausedStateChanged::match_and_decode(log) {
+                total_pool_paused_state_changed += 1;
+                let event = pb::log::Log::PoolPausedStateChanged(pb::PoolPausedStateChanged {
+                    pool: event.pool.to_vec(),
+                    paused: event.paused,
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // PoolRecoveryModeStateChanged event
+            if let Some(event) = balancer_v3_vault::events::PoolRecoveryModeStateChanged::match_and_decode(log) {
+                total_pool_recovery_mode_state_changed += 1;
+                let event = pb::log::Log::PoolRecoveryModeStateChanged(pb::PoolRecoveryModeStateChanged {
+                    pool: event.pool.to_vec(),
+                    enabled: event.recovery_mode,
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // AggregateSwapFeePercentageChanged event
+            if let Some(event) = balancer_v3_vault::events::AggregateSwapFeePercentageChanged::match_and_decode(log) {
+                total_aggregate_swap_fee_percentage_changed += 1;
+                let event = pb::log::Log::AggregateSwapFeePercentageChanged(pb::AggregateSwapFeePercentageChanged {
+                    pool: event.pool.to_vec(),
+                    aggregate_swap_fee_percentage: event.aggregate_swap_fee_percentage.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -105,6 +240,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
     substreams::log::info!("Total Transactions: {}", block.transaction_traces.len());
     substreams::log::info!("Total Events: {}", events.transactions.len());
+    substreams::log::info!("===== V2 WeightedPool Events =====");
     substreams::log::info!("Total Approval events: {}", total_approvals);
     substreams::log::info!("Total Transfer events: {}", total_transfers);
     substreams::log::info!("Total SwapFeePercentageChanged events: {}", total_swap_fee_percentage_changed);
@@ -114,5 +250,17 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
         "Total ProtocolFeePercentageCacheUpdated events: {}",
         total_protocol_fee_percentage_cache_updated
     );
+    substreams::log::info!("===== V3 StablePool Events =====");
+    substreams::log::info!("Total AmpUpdateStarted events: {}", total_amp_update_started);
+    substreams::log::info!("Total AmpUpdateStopped events: {}", total_amp_update_stopped);
+    substreams::log::info!("===== V3 Vault Events =====");
+    substreams::log::info!("Total VaultSwap events: {}", total_vault_swaps);
+    substreams::log::info!("Total LiquidityAdded events: {}", total_liquidity_added);
+    substreams::log::info!("Total LiquidityRemoved events: {}", total_liquidity_removed);
+    substreams::log::info!("Total PoolInitialized events: {}", total_pool_initialized);
+    substreams::log::info!("Total PoolRegistered events: {}", total_pool_registered);
+    substreams::log::info!("Total PoolPausedStateChanged events: {}", total_pool_paused_state_changed);
+    substreams::log::info!("Total PoolRecoveryModeStateChanged events: {}", total_pool_recovery_mode_state_changed);
+    substreams::log::info!("Total AggregateSwapFeePercentageChanged events: {}", total_aggregate_swap_fee_percentage_changed);
     Ok(events)
 }
