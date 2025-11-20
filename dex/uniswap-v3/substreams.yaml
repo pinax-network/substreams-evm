@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - /v1/dex/uniswap-v3.proto
+    - uniswap-v3.proto
   importPaths:
-    - ../../proto
+    - ../../proto/v1/dex
 
 modules:
   - name: map_events
@@ -28,7 +28,7 @@ modules:
   - name: store_pool_created
     kind: store
     updatePolicy: set
-    valuetype: proto:uniswap.v3.PoolCreated
+    valueType: proto:uniswap.v3.PoolCreated
     inputs:
       - map: map_events
 
