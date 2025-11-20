@@ -23,12 +23,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.uniswap.v1.Events
+      type: proto:dex.uniswap.v1.Events
 
   - name: store_new_exchange
     kind: store
     updatePolicy: set
-    valueType: proto:evm.uniswap.v1.NewExchange
+    valueType: proto:dex.uniswap.v1.NewExchange
     inputs:
       - map: map_events
 

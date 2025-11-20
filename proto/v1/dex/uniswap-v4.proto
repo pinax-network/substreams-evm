@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.uniswap.v4;
+package dex.uniswap.v4;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -48,7 +48,7 @@ message Log {
 /// @param tick The initial tick of the pool corresponding to the initialized
 /// price
 message Initialize {
-  bytes factory = 1;         // log.address - the factory that initialized the pool
+  bytes factory = 1; // log.address - the factory that initialized the pool
   // STORE primary key
   bytes id = 2;              // address (Pool ID)
   bytes currency0 = 3;       // address (token0)

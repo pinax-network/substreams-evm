@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.uniswap.v3;
+package dex.uniswap.v3;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -32,7 +32,8 @@ message Log {
     Collect collect = 13;
     Burn burn = 14;
     Flash flash = 15;
-    IncreaseObservationCardinalityNext increase_observation_cardinality_next = 16;
+    IncreaseObservationCardinalityNext increase_observation_cardinality_next =
+        16;
     SetFeeProtocol set_fee_protocol = 17;
     CollectProtocol collect_protocol = 18;
 
@@ -44,17 +45,21 @@ message Log {
 }
 
 /**
- * In Uniswap v3, the `PoolCreated` event is emitted when a new liquidity pool is deployed by the factory,
- * providing key parameters for the pool’s configuration; for example, if a pool is established for USDC and USDT
- * with a fee tier of 3000 (equating to a 0.30% fee) and a tick spacing of 60, the event will log the addresses for
- * token0 and token1 (USDC and USDT, respectively), the fee of 3000, the tick spacing of 60, and the address of the
- * newly created pool contract, thereby enabling users and applications to track and interact with the new pool.
+ * In Uniswap v3, the `PoolCreated` event is emitted when a new liquidity pool
+ * is deployed by the factory, providing key parameters for the pool’s
+ * configuration; for example, if a pool is established for USDC and USDT with a
+ * fee tier of 3000 (equating to a 0.30% fee) and a tick spacing of 60, the
+ * event will log the addresses for token0 and token1 (USDC and USDT,
+ * respectively), the fee of 3000, the tick spacing of 60, and the address of
+ * the newly created pool contract, thereby enabling users and applications to
+ * track and interact with the new pool.
  */
 
 /// @notice Emitted when a pool is created
 /// @param token0 The first token of the pool by address sort order
 /// @param token1 The second token of the pool by address sort order
-/// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
+/// @param fee The fee collected upon every swap in the pool, denominated in
+/// hundredths of a bip
 /// @param tickSpacing The minimum number of ticks between initialized ticks
 /// @param pool The address of the created pool
 message PoolCreated {
@@ -63,51 +68,57 @@ message PoolCreated {
   bytes pool = 2; // address
   bytes token0 = 3;
   bytes token1 = 4;
-  uint64 fee = 5; // uint24 (e.g., 3000 represents 0.30%)
+  uint64 fee = 5;         // uint24 (e.g., 3000 represents 0.30%)
   int32 tick_spacing = 6; // int24 (e.g., 60)
 }
 
 /**
- * In Uniswap v3, the `initialize` function is a crucial setup step that configures a newly deployed pool
- * by setting its initial square root price (`sqrtPriceX96`) and corresponding tick value.
- * After the pool is created via the `PoolCreated` event, calling `initialize` establishes the starting price
- * and essential parameters, thereby enabling the pool to process swaps and support liquidity provisioning.
- * Without this initialization, the pool remains unconfigured and cannot operate properly.
+ * In Uniswap v3, the `initialize` function is a crucial setup step that
+ * configures a newly deployed pool by setting its initial square root price
+ * (`sqrtPriceX96`) and corresponding tick value. After the pool is created via
+ * the `PoolCreated` event, calling `initialize` establishes the starting price
+ * and essential parameters, thereby enabling the pool to process swaps and
+ * support liquidity provisioning. Without this initialization, the pool remains
+ * unconfigured and cannot operate properly.
  */
 message Initialize {
   string sqrt_price_x96 = 1; // uint160
-  int32 tick = 2; // int24
+  int32 tick = 2;            // int24
 }
 
 /**
- * In Uniswap v3, the `Swap` event is emitted when a trade occurs in a liquidity pool.
- * It provides key details of the swap, including the address of the sender initiating the swap,
- * the recipient of the swapped tokens, and the amounts of token0 and token1 involved in the trade.
- * Additionally, the event logs updated state parameters such as the square root price (`sqrtPriceX96`),
- * current liquidity, and the tick after the swap, thereby reflecting the pool's state changes.
- * This event is essential for on-chain tracking of trades, liquidity dynamics, and price updates.
+ * In Uniswap v3, the `Swap` event is emitted when a trade occurs in a liquidity
+ * pool. It provides key details of the swap, including the address of the
+ * sender initiating the swap, the recipient of the swapped tokens, and the
+ * amounts of token0 and token1 involved in the trade. Additionally, the event
+ * logs updated state parameters such as the square root price (`sqrtPriceX96`),
+ * current liquidity, and the tick after the swap, thereby reflecting the pool's
+ * state changes. This event is essential for on-chain tracking of trades,
+ * liquidity dynamics, and price updates.
  *
  * Price Calculation:
- * Uniswap V3 represents the current pool price using a square root price value, `sqrtPriceX96`,
- * stored as a Q64.96 fixed-point number (with 64 bits for the integer part and 96 bits for the fraction).
- * To compute the actual price of token0 in terms of token1, the value is squared and then divided by 2^192:
+ * Uniswap V3 represents the current pool price using a square root price value,
+ * `sqrtPriceX96`, stored as a Q64.96 fixed-point number (with 64 bits for the
+ * integer part and 96 bits for the fraction). To compute the actual price of
+ * token0 in terms of token1, the value is squared and then divided by 2^192:
  *
  *      price = (sqrtPriceX96 * sqrtPriceX96) / 2^192
  *
- * Conversely, to determine the price of token1 in terms of token0, take the reciprocal of the computed price.
+ * Conversely, to determine the price of token1 in terms of token0, take the
+ * reciprocal of the computed price.
  *
- * This calculation method provides high precision and efficient on-chain computation of price ratios.
+ * This calculation method provides high precision and efficient on-chain
+ * computation of price ratios.
  */
 message Swap {
-  bytes sender = 1; // address
-  bytes recipient = 2; // address
-  string amount0 = 3; // int256
-  string amount1 = 4; // int256
+  bytes sender = 1;          // address
+  bytes recipient = 2;       // address
+  string amount0 = 3;        // int256
+  string amount1 = 4;        // int256
   string sqrt_price_x96 = 5; // uint160
-  string liquidity = 6; // uint128
-  int32 tick = 7; // int24
+  string liquidity = 6;      // uint128
+  int32 tick = 7;            // int24
 }
-
 
 /// @notice Emitted when the owner of the factory is changed
 /// @param oldOwner The owner before the owner was changed
@@ -117,14 +128,15 @@ message OwnerChanged {
   bytes new_owner = 2; // address
 }
 
-/// @notice Emitted when a new fee amount is enabled for pool creation via the factory
+/// @notice Emitted when a new fee amount is enabled for pool creation via the
+/// factory
 /// @param fee The enabled fee, denominated in hundredths of a bip
-/// @param tickSpacing The minimum number of ticks between initialized ticks for pools created with the given fee
+/// @param tickSpacing The minimum number of ticks between initialized ticks for
+/// pools created with the given fee
 message FeeAmountEnabled {
-  uint64 fee = 1; // uint24
+  uint64 fee = 1;         // uint24
   int32 tick_spacing = 2; // int24
 }
-
 
 /// @notice Emitted when liquidity is minted for a given position
 /// @param sender The address that minted the liquidity
@@ -135,33 +147,35 @@ message FeeAmountEnabled {
 /// @param amount0 How much token0 was required for the minted liquidity
 /// @param amount1 How much token1 was required for the minted liquidity
 message Mint {
-  bytes sender = 1; // address
-  bytes owner = 2; // address
+  bytes sender = 1;     // address
+  bytes owner = 2;      // address
   int32 tick_lower = 3; // int24
   int32 tick_upper = 4; // int24
-  string amount = 5; // uint128
-  string amount0 = 6; // uint256
-  string amount1 = 7; // uint256
+  string amount = 5;    // uint128
+  string amount0 = 6;   // uint256
+  string amount1 = 7;   // uint256
 }
 
 /// @notice Emitted when fees are collected by the owner of a position
-/// @dev Collect events may be emitted with zero amount0 and amount1 when the caller chooses not to collect fees
+/// @dev Collect events may be emitted with zero amount0 and amount1 when the
+/// caller chooses not to collect fees
 /// @param owner The owner of the position for which fees are collected
 /// @param tickLower The lower tick of the position
 /// @param tickUpper The upper tick of the position
 /// @param amount0 The amount of token0 fees collected
 /// @param amount1 The amount of token1 fees collected
 message Collect {
-  bytes owner = 1; // address
-  bytes recipient = 2; // address
+  bytes owner = 1;      // address
+  bytes recipient = 2;  // address
   int32 tick_lower = 3; // int24
   int32 tick_upper = 4; // int24
-  string amount0 = 5; // uint128
-  string amount1 = 6; // uint128
+  string amount0 = 5;   // uint128
+  string amount1 = 6;   // uint128
 }
 
 /// @notice Emitted when a position's liquidity is removed
-/// @dev Does not withdraw any fees earned by the liquidity position, which must be withdrawn via #collect
+/// @dev Does not withdraw any fees earned by the liquidity position, which must
+/// be withdrawn via #collect
 /// @param owner The owner of the position for which liquidity is removed
 /// @param tickLower The lower tick of the position
 /// @param tickUpper The upper tick of the position
@@ -169,35 +183,41 @@ message Collect {
 /// @param amount0 The amount of token0 withdrawn
 /// @param amount1 The amount of token1 withdrawn
 message Burn {
-  bytes owner = 1; // address
+  bytes owner = 1;      // address
   int32 tick_lower = 2; // int24
   int32 tick_upper = 3; // int24
-  string amount = 4; // uint128
-  string amount0 = 5; // uint256
-  string amount1 = 6; // uint256
+  string amount = 4;    // uint128
+  string amount0 = 5;   // uint256
+  string amount1 = 6;   // uint256
 }
 
 /// @notice Emitted by the pool for any flashes of token0/token1
-/// @param sender The address that initiated the swap call, and that received the callback
+/// @param sender The address that initiated the swap call, and that received
+/// the callback
 /// @param recipient The address that received the tokens from flash
 /// @param amount0 The amount of token0 that was flashed
 /// @param amount1 The amount of token1 that was flashed
-/// @param paid0 The amount of token0 paid for the flash, which can exceed the amount0 plus the fee
-/// @param paid1 The amount of token1 paid for the flash, which can exceed the amount1 plus the fee
+/// @param paid0 The amount of token0 paid for the flash, which can exceed the
+/// amount0 plus the fee
+/// @param paid1 The amount of token1 paid for the flash, which can exceed the
+/// amount1 plus the fee
 message Flash {
-  bytes sender = 1; // address
+  bytes sender = 1;    // address
   bytes recipient = 2; // address
-  string amount0 = 3; // uint256
-  string amount1 = 4; // uint256
-  string paid0 = 5; // uint256
-  string paid1 = 6; // uint256
+  string amount0 = 3;  // uint256
+  string amount1 = 4;  // uint256
+  string paid0 = 5;    // uint256
+  string paid1 = 6;    // uint256
 }
 
-/// @notice Emitted by the pool for increases to the number of observations that can be stored
-/// @dev observationCardinalityNext is not the observation cardinality until an observation is written at the index
-/// just before a mint/swap/burn.
-/// @param observationCardinalityNextOld The previous value of the next observation cardinality
-/// @param observationCardinalityNextNew The updated value of the next observation cardinality
+/// @notice Emitted by the pool for increases to the number of observations that
+/// can be stored
+/// @dev observationCardinalityNext is not the observation cardinality until an
+/// observation is written at the index just before a mint/swap/burn.
+/// @param observationCardinalityNextOld The previous value of the next
+/// observation cardinality
+/// @param observationCardinalityNextNew The updated value of the next
+/// observation cardinality
 message IncreaseObservationCardinalityNext {
   uint64 observation_cardinality_next_old = 1; // uint16
   uint64 observation_cardinality_next_new = 2; // uint16
@@ -215,14 +235,15 @@ message SetFeeProtocol {
   uint64 fee_protocol1_new = 4; // uint8
 }
 
-/// @notice Emitted when the collected protocol fees are withdrawn by the factory owner
+/// @notice Emitted when the collected protocol fees are withdrawn by the
+/// factory owner
 /// @param sender The address that collects the protocol fees
 /// @param recipient The address that receives the collected protocol fees
 /// @param amount0 The amount of token0 protocol fees that is withdrawn
 /// @param amount0 The amount of token1 protocol fees that is withdrawn
 message CollectProtocol {
-  bytes sender = 1; // address
+  bytes sender = 1;    // address
   bytes recipient = 2; // address
-  string amount0 = 3; // uint128
-  string amount1 = 4; // uint128
+  string amount0 = 3;  // uint128
+  string amount1 = 4;  // uint128
 }

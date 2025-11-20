@@ -1,4 +1,4 @@
-use proto::pb::evm::balancer::v1 as pb;
+use proto::pb::dex::balancer::v1 as pb;
 use substreams_abis::evm::balancer::weightedpool as balancer;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
@@ -76,18 +76,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // PausedStateChanged event
             if let Some(event) = balancer::events::PausedStateChanged::match_and_decode(log) {
                 total_paused_state_changed += 1;
-                let event = pb::log::Log::PausedStateChanged(pb::PausedStateChanged {
-                    paused: event.paused,
-                });
+                let event = pb::log::Log::PausedStateChanged(pb::PausedStateChanged { paused: event.paused });
                 transaction.logs.push(create_log(log, event));
             }
 
             // RecoveryModeStateChanged event
             if let Some(event) = balancer::events::RecoveryModeStateChanged::match_and_decode(log) {
                 total_recovery_mode_state_changed += 1;
-                let event = pb::log::Log::RecoveryModeStateChanged(pb::RecoveryModeStateChanged {
-                    enabled: event.enabled,
-                });
+                let event = pb::log::Log::RecoveryModeStateChanged(pb::RecoveryModeStateChanged { enabled: event.enabled });
                 transaction.logs.push(create_log(log, event));
             }
 
@@ -114,6 +110,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total SwapFeePercentageChanged events: {}", total_swap_fee_percentage_changed);
     substreams::log::info!("Total PausedStateChanged events: {}", total_paused_state_changed);
     substreams::log::info!("Total RecoveryModeStateChanged events: {}", total_recovery_mode_state_changed);
-    substreams::log::info!("Total ProtocolFeePercentageCacheUpdated events: {}", total_protocol_fee_percentage_cache_updated);
+    substreams::log::info!(
+        "Total ProtocolFeePercentageCacheUpdated events: {}",
+        total_protocol_fee_percentage_cache_updated
+    );
     Ok(events)
 }

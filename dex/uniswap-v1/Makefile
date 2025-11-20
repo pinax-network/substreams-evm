@@ -1,4 +1,4 @@
-ENDPOINT ?= eth.substreams.pinax.network:443
+ENDPOINT ?= tronevm.substreams.pinax.network:443
 START_BLOCK ?= 23828269
 STOP_BLOCK ?= +1000
 PARALLEL_JOBS ?= 500

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.uniswap.v1;
+package dex.uniswap.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -42,8 +42,8 @@ message Log {
 /// @param eth_sold The amount of ETH sold
 /// @param tokens_bought The amount of tokens bought
 message TokenPurchase {
-  bytes buyer = 1; // address (indexed)
-  string eth_sold = 2; // uint256 (indexed)
+  bytes buyer = 1;          // address (indexed)
+  string eth_sold = 2;      // uint256 (indexed)
   string tokens_bought = 3; // uint256 (indexed)
 }
 
@@ -52,9 +52,9 @@ message TokenPurchase {
 /// @param tokens_sold The amount of tokens sold
 /// @param eth_bought The amount of ETH bought
 message EthPurchase {
-  bytes buyer = 1; // address (indexed)
+  bytes buyer = 1;        // address (indexed)
   string tokens_sold = 2; // uint256 (indexed)
-  string eth_bought = 3; // uint256 (indexed)
+  string eth_bought = 3;  // uint256 (indexed)
 }
 
 /// @notice Emitted when liquidity is added to the pool
@@ -62,8 +62,8 @@ message EthPurchase {
 /// @param eth_amount The amount of ETH added
 /// @param token_amount The amount of tokens added
 message AddLiquidity {
-  bytes provider = 1; // address (indexed)
-  string eth_amount = 2; // uint256 (indexed)
+  bytes provider = 1;      // address (indexed)
+  string eth_amount = 2;   // uint256 (indexed)
   string token_amount = 3; // uint256 (indexed)
 }
 
@@ -72,8 +72,8 @@ message AddLiquidity {
 /// @param eth_amount The amount of ETH removed
 /// @param token_amount The amount of tokens removed
 message RemoveLiquidity {
-  bytes provider = 1; // address (indexed)
-  string eth_amount = 2; // uint256 (indexed)
+  bytes provider = 1;      // address (indexed)
+  string eth_amount = 2;   // uint256 (indexed)
   string token_amount = 3; // uint256 (indexed)
 }
 
@@ -82,8 +82,8 @@ message RemoveLiquidity {
 /// @param to The address receiving tokens
 /// @param value The amount of tokens transferred
 message Transfer {
-  bytes from = 1; // address (indexed as _from)
-  bytes to = 2; // address (indexed as _to)
+  bytes from = 1;   // address (indexed as _from)
+  bytes to = 2;     // address (indexed as _to)
   string value = 3; // uint256 (_value)
 }
 
@@ -92,16 +92,16 @@ message Transfer {
 /// @param spender The address of the spender
 /// @param value The amount of tokens approved
 message Approval {
-  bytes owner = 1; // address (indexed as _owner)
+  bytes owner = 1;   // address (indexed as _owner)
   bytes spender = 2; // address (indexed as _spender)
-  string value = 3; // uint256 (_value)
+  string value = 3;  // uint256 (_value)
 }
 
 /// @notice Emitted when a new exchange is created
 /// @param token The token address
 /// @param exchange The exchange address
 message NewExchange {
-  bytes factory = 1; // log.address - the factory that created the exchange
-  bytes token = 2; // address (indexed)
+  bytes factory = 1;  // log.address - the factory that created the exchange
+  bytes token = 2;    // address (indexed)
   bytes exchange = 3; // address (indexed)
 }

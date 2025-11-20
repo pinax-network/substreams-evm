@@ -23,6 +23,6 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.balancer.v1.Events
+      type: proto:dex.balancer.v1.Events
 
 network: mainnet

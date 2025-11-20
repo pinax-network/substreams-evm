@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package tron.justswap.v1;
+package dex.justswap.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -62,7 +62,7 @@ message Snapshot {
 }
 
 message NewExchange {
-  bytes factory = 1;  // log.address - the factory that created the pair
+  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
   bytes exchange = 2; // address
   bytes token = 3;

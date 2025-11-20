@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::tron::{foundational_store::v1::NewExchange, justswap};
+use proto::pb::dex::{foundational_store::v1::NewExchange, justswap};
 // use substreams::store::FoundationalStore;
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;

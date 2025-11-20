@@ -1,16 +1,17 @@
 [package]
 name = "curvefi"
-description = { workspace = true }
+description = "CurveFi Pool Events"
 edition = { workspace = true }
 version = { workspace = true }
 authors = ["Denis <denis@pinax.network>"]
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
 substreams-abis = { workspace = true }
 proto = { path = "../../proto" }
-common = { path = "../../common" }
+prost = { workspace = true }
+prost-types = { workspace = true }

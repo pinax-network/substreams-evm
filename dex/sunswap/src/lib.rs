@@ -1,5 +1,5 @@
 mod store;
-use proto::pb::tron::sunswap::v1 as pb;
+use proto::pb::dex::sunswap::v1 as pb;
 use substreams_abis::tvm::sunswap::v2 as sunswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;

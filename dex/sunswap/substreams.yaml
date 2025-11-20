@@ -13,7 +13,7 @@ binaries:
 
 protobuf:
   files:
-    - v1/sunswap.proto
+    - v1/dex/sunswap.proto
   importPaths:
     - ../../proto
 
@@ -23,12 +23,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:tron.sunswap.v1.Events
+      type: proto:dex.sunswap.v1.Events
 
   - name: store_pair_created
     kind: store
     updatePolicy: set
-    valueType: proto:tron.sunswap.v1.PairCreated
+    valueType: proto:dex.sunswap.v1.PairCreated
     inputs:
       - map: map_events
 
