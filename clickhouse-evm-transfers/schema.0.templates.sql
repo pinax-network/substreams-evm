@@ -20,7 +20,12 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
     log_index                   UInt32, -- derived from Substreams
     log_address                 LowCardinality(String),
     log_ordinal                 UInt32,
-    log_topic0                  String, -- only available in tron-tokens-v0.1.1
+    log_topics                  String COMMENT 'Comma-separated list of log topics',
+    log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- first topic (topic0), empty string if no topics
+    log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
+    log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
+    log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
+    log_data                    String,
 
     -- INDEXES --
     INDEX idx_tx_value (tx_value) TYPE minmax GRANULARITY 1,
@@ -62,4 +67,9 @@ ALTER TABLE TEMPLATE_TRANSACTION
     DROP COLUMN IF EXISTS log_index,
     DROP COLUMN IF EXISTS log_address,
     DROP COLUMN IF EXISTS log_ordinal,
-    DROP COLUMN IF EXISTS log_topic0;
+    DROP COLUMN IF EXISTS log_topic0,
+    DROP COLUMN IF EXISTS log_topic1,
+    DROP COLUMN IF EXISTS log_topic2,
+    DROP COLUMN IF EXISTS log_topic3,
+    DROP COLUMN IF EXISTS log_topics,
+    DROP COLUMN IF EXISTS log_data;
