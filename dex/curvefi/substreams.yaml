@@ -4,18 +4,18 @@ package:
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
   description: CurveFi Pool Events
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/curvefi.wasm
+    file: ../../target/wasm32-unknown-unknown/release/curvefi.wasm
 
 protobuf:
   files:
-    - v1/dex/curvefi.proto
+    - curvefi.proto
   importPaths:
-    - ../proto
+    - ../../proto/v1/dex
 
 modules:
   - name: map_events

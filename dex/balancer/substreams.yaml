@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: evm_balancer
+  name: dex_balancer
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
   description: Balancer for EVM
@@ -15,7 +15,7 @@ protobuf:
   files:
     - balancer.proto
   importPaths:
-    - ../../proto/v1
+    - ../../proto/v1/dex
 
 modules:
   - name: map_events
