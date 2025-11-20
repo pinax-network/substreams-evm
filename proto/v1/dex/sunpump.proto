@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package tron.sunpump.v1;
+package dex.sunpump.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -82,7 +82,7 @@ message SaleFeeSet {
 }
 
 message TokenCreate {
-  bytes factory = 1;       // log.address - the factory that created the pair
+  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
   bytes token_address = 2; // address
   string token_index = 3;  // uint256
@@ -90,7 +90,7 @@ message TokenCreate {
 }
 
 message TokenCreateLegacy {
-  bytes factory = 1;       // log.address - the factory that created the pair
+  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
   bytes token_address = 2; // address
   bytes creator = 3;

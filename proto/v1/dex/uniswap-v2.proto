@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.uniswap.v2;
+package dex.uniswap.v2;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -39,7 +39,7 @@ message Log {
 message PairCreated {
   bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
-  bytes pair = 2;    // address
+  bytes pair = 2; // address
   bytes token0 = 3;
   bytes token1 = 4;
   string extra_data = 5;
@@ -52,22 +52,22 @@ message Sync {
 
 message Swap {
   bytes sender = 1;
-  string amount0_in = 2; // uint256
+  string amount0_in = 2;  // uint256
   string amount0_out = 3; // uint256
-  string amount1_in = 4; // uint256
+  string amount1_in = 4;  // uint256
   string amount1_out = 5; // uint256
-  bytes to = 6; // address
+  bytes to = 6;           // address
 }
 
 message Mint {
-  bytes sender = 1; // address
+  bytes sender = 1;   // address
   string amount0 = 2; // uint256
   string amount1 = 3; // uint256
 }
 
 message Burn {
-  bytes sender = 1; // address
+  bytes sender = 1;   // address
   string amount0 = 2; // uint256
   string amount1 = 3; // uint256
-  bytes to = 4; // address
+  bytes to = 4;       // address
 }

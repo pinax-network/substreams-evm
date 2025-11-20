@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.bancor.v1;
+package dex.bancor.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -39,8 +39,8 @@ message Log {
 /// @param activated True if the converter was activated, false if deactivated
 message Activation {
   uint32 converter_type = 1; // uint16 (indexed)
-  bytes anchor = 2; // address (indexed)
-  bool activated = 3; // bool (indexed)
+  bytes anchor = 2;          // address (indexed)
+  bool activated = 3;        // bool (indexed)
 }
 
 /// @notice Emitted when a conversion between two tokens occurs
@@ -51,11 +51,11 @@ message Activation {
 /// @param targetAmount The amount of target tokens
 /// @param conversionFee The conversion fee
 message Conversion {
-  bytes source_token = 1; // address (indexed)
-  bytes target_token = 2; // address (indexed)
-  bytes trader = 3; // address (indexed)
-  string source_amount = 4; // uint256
-  string target_amount = 5; // uint256
+  bytes source_token = 1;    // address (indexed)
+  bytes target_token = 2;    // address (indexed)
+  bytes trader = 3;          // address (indexed)
+  string source_amount = 4;  // uint256
+  string target_amount = 5;  // uint256
   string conversion_fee = 6; // int256
 }
 
@@ -64,7 +64,7 @@ message Conversion {
 /// @param newFee The new fee
 message ConversionFeeUpdate {
   uint32 prev_fee = 1; // uint32
-  uint32 new_fee = 2; // uint32
+  uint32 new_fee = 2;  // uint32
 }
 
 /// @notice Emitted when liquidity is added to the pool
@@ -74,11 +74,11 @@ message ConversionFeeUpdate {
 /// @param newBalance The new reserve balance
 /// @param newSupply The new pool token supply
 message LiquidityAdded {
-  bytes provider = 1; // address (indexed)
+  bytes provider = 1;      // address (indexed)
   bytes reserve_token = 2; // address (indexed)
-  string amount = 3; // uint256
-  string new_balance = 4; // uint256
-  string new_supply = 5; // uint256
+  string amount = 3;       // uint256
+  string new_balance = 4;  // uint256
+  string new_supply = 5;   // uint256
 }
 
 /// @notice Emitted when liquidity is removed from the pool
@@ -88,11 +88,11 @@ message LiquidityAdded {
 /// @param newBalance The new reserve balance
 /// @param newSupply The new pool token supply
 message LiquidityRemoved {
-  bytes provider = 1; // address (indexed)
+  bytes provider = 1;      // address (indexed)
   bytes reserve_token = 2; // address (indexed)
-  string amount = 3; // uint256
-  string new_balance = 4; // uint256
-  string new_supply = 5; // uint256
+  string amount = 3;       // uint256
+  string new_balance = 4;  // uint256
+  string new_supply = 5;   // uint256
 }
 
 /// @notice Emitted when the owner is updated
@@ -100,7 +100,7 @@ message LiquidityRemoved {
 /// @param newOwner The new owner address
 message OwnerUpdate {
   bytes prev_owner = 1; // address (indexed)
-  bytes new_owner = 2; // address (indexed)
+  bytes new_owner = 2;  // address (indexed)
 }
 
 /// @notice Emitted when the token rate is updated
@@ -109,8 +109,8 @@ message OwnerUpdate {
 /// @param rateN The rate numerator
 /// @param rateD The rate denominator
 message TokenRateUpdate {
-  bytes token1 = 1; // address (indexed)
-  bytes token2 = 2; // address (indexed)
+  bytes token1 = 1;  // address (indexed)
+  bytes token2 = 2;  // address (indexed)
   string rate_n = 3; // uint256
   string rate_d = 4; // uint256
 }

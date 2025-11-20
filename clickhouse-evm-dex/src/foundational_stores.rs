@@ -1,4 +1,4 @@
-use proto::pb::tron::foundational_store::v1::{NewExchange, PairCreated, TokenCreate};
+use proto::pb::dex::foundational_store::v1::{NewExchange, PairCreated, TokenCreate};
 use substreams::{
     store::{FoundationalStore, StoreGet, StoreGetProto},
     Hex,

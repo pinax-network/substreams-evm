@@ -1,21 +1,21 @@
 specVersion: v0.1.0
 package:
-  name: evm_curvefi
+  name: dex_curvefi
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
-  description: CurveFi for EVM
-  image: ../../image.png
+  description: CurveFi Pool Events
+  image: ../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../../target/wasm32-unknown-unknown/release/curvefi.wasm
+    file: ../target/wasm32-unknown-unknown/release/curvefi.wasm
 
 protobuf:
   files:
-    - curvefi.proto
+    - v1/dex/curvefi.proto
   importPaths:
-    - ../../proto/v1
+    - ../proto
 
 modules:
   - name: map_events
@@ -23,6 +23,13 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.curvefi.v1.Events
+      type: proto:dex.curvefi.v1.Events
 
-network: mainnet
+  - name: store_pool_info
+    kind: store
+    updatePolicy: set
+    valueType: proto:dex.curvefi.v1.PoolInfo
+    inputs:
+      - map: map_events
+
+network: tron

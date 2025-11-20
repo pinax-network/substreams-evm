@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.balancer.v1;
+package dex.balancer.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
@@ -28,7 +28,8 @@ message Log {
     SwapFeePercentageChanged swap_fee_percentage_changed = 12;
     PausedStateChanged paused_state_changed = 13;
     RecoveryModeStateChanged recovery_mode_state_changed = 14;
-    ProtocolFeePercentageCacheUpdated protocol_fee_percentage_cache_updated = 15;
+    ProtocolFeePercentageCacheUpdated protocol_fee_percentage_cache_updated =
+        15;
   }
 }
 
@@ -37,9 +38,9 @@ message Log {
 /// @param spender The address of the spender
 /// @param value The amount of tokens approved
 message Approval {
-  bytes owner = 1; // address (indexed)
+  bytes owner = 1;   // address (indexed)
   bytes spender = 2; // address (indexed)
-  string value = 3; // uint256
+  string value = 3;  // uint256
 }
 
 /// @notice Emitted when tokens are transferred
@@ -47,8 +48,8 @@ message Approval {
 /// @param to The address receiving tokens
 /// @param value The amount of tokens transferred
 message Transfer {
-  bytes from = 1; // address (indexed)
-  bytes to = 2; // address (indexed)
+  bytes from = 1;   // address (indexed)
+  bytes to = 2;     // address (indexed)
   string value = 3; // uint256
 }
 
@@ -74,6 +75,6 @@ message RecoveryModeStateChanged {
 /// @param feeType The fee type being updated
 /// @param protocolFeePercentage The new protocol fee percentage
 message ProtocolFeePercentageCacheUpdated {
-  string fee_type = 1; // uint256 (indexed)
+  string fee_type = 1;                // uint256 (indexed)
   string protocol_fee_percentage = 2; // uint256
 }

@@ -1,5 +1,5 @@
 mod store;
-use proto::pb::evm::uniswap::v1 as pb;
+use proto::pb::dex::uniswap::v1 as pb;
 use substreams_abis::evm::uniswap::v1 as uniswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
@@ -21,8 +21,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_eth_purchases = 0;
     let mut total_add_liquidity = 0;
     let mut total_remove_liquidity = 0;
-    let mut total_transfers = 0;
-    let mut total_approvals = 0;
     let mut total_new_exchanges = 0;
 
     for trx in block.transactions() {
@@ -88,28 +86,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(create_log(log, event));
             }
 
-            // Transfer event
-            if let Some(event) = uniswap::exchange::events::Transfer::match_and_decode(log) {
-                total_transfers += 1;
-                let event = pb::log::Log::Transfer(pb::Transfer {
-                    from: event.from.to_vec(),
-                    to: event.to.to_vec(),
-                    value: event.value.to_string(),
-                });
-                transaction.logs.push(create_log(log, event));
-            }
-
-            // Approval event
-            if let Some(event) = uniswap::exchange::events::Approval::match_and_decode(log) {
-                total_approvals += 1;
-                let event = pb::log::Log::Approval(pb::Approval {
-                    owner: event.owner.to_vec(),
-                    spender: event.spender.to_vec(),
-                    value: event.value.to_string(),
-                });
-                transaction.logs.push(create_log(log, event));
-            }
-
             // NewExchange event
             if let Some(event) = uniswap::factory::events::NewExchange::match_and_decode(log) {
                 total_new_exchanges += 1;
@@ -133,8 +109,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total EthPurchase events: {}", total_eth_purchases);
     substreams::log::info!("Total AddLiquidity events: {}", total_add_liquidity);
     substreams::log::info!("Total RemoveLiquidity events: {}", total_remove_liquidity);
-    substreams::log::info!("Total Transfer events: {}", total_transfers);
-    substreams::log::info!("Total Approval events: {}", total_approvals);
     substreams::log::info!("Total NewExchange events: {}", total_new_exchanges);
     Ok(events)
 }
