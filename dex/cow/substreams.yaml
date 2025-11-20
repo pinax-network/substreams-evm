@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: evm_dex_cow
+  version: v0.0.1
+  url: https://github.com/pinax-network/substreams-evm
+  description: Cow Protocol for EVM
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/cow.wasm
+
+protobuf:
+  files:
+    - cow.proto
+  importPaths:
+    - ../../proto/v1/dex
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:cow.v1.Events
+
+network: mainnet

@@ -6,16 +6,17 @@ package:
 protobuf:
   files:
     - v1/transfers.proto
-    - justswap.proto
-    - sunswap.proto
-    - sunpump.proto
-    - balancer.proto
-    - curvefi.proto
-    - bancor.proto
-    - uniswap-v1.proto
-    - uniswap-v2.proto
-    - uniswap-v3.proto
-    - uniswap-v4.proto
+    - v1/dex/justswap.proto
+    - v1/dex/sunswap.proto
+    - v1/dex/sunpump.proto
+    - v1/dex/balancer.proto
+    - v1/dex/curvefi.proto
+    - v1/dex/bancor.proto
+    - v1/dex/uniswap-v1.proto
+    - v1/dex/uniswap-v2.proto
+    - v1/dex/uniswap-v3.proto
+    - v1/dex/uniswap-v4.proto
+    - v1/dex/cow.proto
 
   excludePaths:
     - sf/substreams

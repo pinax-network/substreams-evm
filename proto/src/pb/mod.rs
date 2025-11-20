@@ -13,6 +13,13 @@ pub mod bancor {
         // @@protoc_insertion_point(bancor.v1)
     }
 }
+pub mod cow {
+    // @@protoc_insertion_point(attribute:cow.v1)
+    pub mod v1 {
+        include!("cow.v1.rs");
+        // @@protoc_insertion_point(cow.v1)
+    }
+}
 pub mod curvefi {
     // @@protoc_insertion_point(attribute:curvefi.v1)
     pub mod v1 {

@@ -16,13 +16,16 @@ message Transaction {
   repeated Log logs = 10;
 }
 
+// Balancer V2 WeightedPool, V3 StablePool and V3 Vault events
 // https://github.com/balancer/balancer-v2-monorepo/blob/master/pkg/pool-weighted/contracts/WeightedPool.sol
+// https://github.com/balancer/balancer-v3-monorepo
 message Log {
   bytes address = 1;
   uint64 ordinal = 2;
   repeated bytes topics = 3;
   bytes data = 4;
   oneof log {
+    // V2 WeightedPool events
     Approval approval = 10;
     Transfer transfer = 11;
     SwapFeePercentageChanged swap_fee_percentage_changed = 12;
@@ -30,6 +33,19 @@ message Log {
     RecoveryModeStateChanged recovery_mode_state_changed = 14;
     ProtocolFeePercentageCacheUpdated protocol_fee_percentage_cache_updated =
         15;
+    // V3 StablePool events
+    AmpUpdateStarted amp_update_started = 20;
+    AmpUpdateStopped amp_update_stopped = 21;
+    // V3 Vault events
+    VaultSwap vault_swap = 30;
+    LiquidityAdded liquidity_added = 31;
+    LiquidityRemoved liquidity_removed = 32;
+    PoolInitialized pool_initialized = 33;
+    PoolRegistered pool_registered = 34;
+    PoolPausedStateChanged pool_paused_state_changed = 35;
+    PoolRecoveryModeStateChanged pool_recovery_mode_state_changed = 36;
+    AggregateSwapFeePercentageChanged aggregate_swap_fee_percentage_changed =
+        37;
   }
 }
 
@@ -77,4 +93,114 @@ message RecoveryModeStateChanged {
 message ProtocolFeePercentageCacheUpdated {
   string fee_type = 1;                // uint256 (indexed)
   string protocol_fee_percentage = 2; // uint256
+}
+
+// ===== V3 StablePool Events =====
+
+/// @notice Emitted when an amplification parameter update is started
+/// @param startValue The starting amplification value
+/// @param endValue The ending amplification value
+/// @param startTime The timestamp when the update starts
+/// @param endTime The timestamp when the update ends
+message AmpUpdateStarted {
+  string start_value = 1; // uint256
+  string end_value = 2;   // uint256
+  string start_time = 3;  // uint256
+  string end_time = 4;    // uint256
+}
+
+/// @notice Emitted when an amplification parameter update is stopped
+/// @param currentValue The current amplification value
+message AmpUpdateStopped {
+  string current_value = 1; // uint256
+}
+
+// ===== V3 Vault Events =====
+
+/// @notice Emitted when a swap is executed through the Vault
+/// @param pool The address of the pool
+/// @param tokenIn The address of the token being swapped in
+/// @param tokenOut The address of the token being swapped out
+/// @param amountIn The amount of token in
+/// @param amountOut The amount of token out
+/// @param swapFeePercentage The swap fee percentage
+/// @param swapFeeAmount The swap fee amount
+message VaultSwap {
+  bytes pool = 1;                     // address (indexed)
+  bytes token_in = 2;                 // address (indexed)
+  bytes token_out = 3;                // address (indexed)
+  string amount_in = 4;               // uint256
+  string amount_out = 5;              // uint256
+  string swap_fee_percentage = 6;     // uint256
+  string swap_fee_amount = 7;         // uint256
+}
+
+/// @notice Emitted when liquidity is added to a pool
+/// @param pool The address of the pool
+/// @param liquidityProvider The address of the liquidity provider
+/// @param kind The type of liquidity addition (enum as uint8)
+/// @param totalSupply The total supply after addition
+/// @param amountsAddedRaw The amounts of tokens added (as strings)
+/// @param swapFeeAmountsRaw The swap fee amounts (as strings)
+message LiquidityAdded {
+  bytes pool = 1;                      // address (indexed)
+  bytes liquidity_provider = 2;        // address (indexed)
+  uint32 kind = 3;                     // uint8 (indexed)
+  string total_supply = 4;             // uint256
+  repeated string amounts_added_raw = 5;     // uint256[]
+  repeated string swap_fee_amounts_raw = 6;  // uint256[]
+}
+
+/// @notice Emitted when liquidity is removed from a pool
+/// @param pool The address of the pool
+/// @param liquidityProvider The address of the liquidity provider
+/// @param kind The type of liquidity removal (enum as uint8)
+/// @param totalSupply The total supply after removal
+/// @param amountsRemovedRaw The amounts of tokens removed (as strings)
+/// @param swapFeeAmountsRaw The swap fee amounts (as strings)
+message LiquidityRemoved {
+  bytes pool = 1;                        // address (indexed)
+  bytes liquidity_provider = 2;          // address (indexed)
+  uint32 kind = 3;                       // uint8 (indexed)
+  string total_supply = 4;               // uint256
+  repeated string amounts_removed_raw = 5;     // uint256[]
+  repeated string swap_fee_amounts_raw = 6;    // uint256[]
+}
+
+/// @notice Emitted when a pool is initialized
+/// @param pool The address of the pool
+message PoolInitialized {
+  bytes pool = 1; // address (indexed)
+}
+
+/// @notice Emitted when a pool is registered
+/// @param pool The address of the pool
+/// @param factory The address of the factory that created the pool
+message PoolRegistered {
+  bytes pool = 1;    // address (indexed)
+  bytes factory = 2; // address (indexed)
+}
+
+/// @notice Emitted when a pool's paused state is changed
+/// @param pool The address of the pool
+/// @param paused The new paused state
+message PoolPausedStateChanged {
+  bytes pool = 1; // address (indexed)
+  bool paused = 2; // bool
+}
+
+/// @notice Emitted when a pool's recovery mode state is changed
+/// @param pool The address of the pool
+/// @param enabled The new recovery mode state
+message PoolRecoveryModeStateChanged {
+  bytes pool = 1;  // address (indexed)
+  bool enabled = 2; // bool
+}
+
+/// @notice Emitted when the aggregate swap fee percentage is changed
+/// @param pool The address of the pool
+/// @param aggregateSwapFeePercentage The new aggregate swap fee percentage
+message AggregateSwapFeePercentageChanged {
+  bytes pool = 1;                           // address (indexed)
+  string aggregate_swap_fee_percentage = 2; // uint256
 }
