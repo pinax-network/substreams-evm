@@ -1,4 +1,4 @@
-use common::tron_base58_from_bytes;
+use common::{bytes_to_string, Encoding};
 use proto::pb::evm::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
@@ -8,7 +8,7 @@ use crate::{
     transactions::{set_template_tx, tx_key},
 };
 
-pub fn process_events(tables: &mut Tables, clock: &Clock, events: &pb::Events) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         // Only process transactions with native value transfers (value > 0)
         if tx.value != "0" && !tx.value.is_empty() {
@@ -17,12 +17,12 @@ pub fn process_events(tables: &mut Tables, clock: &Clock, events: &pb::Events) {
 
             // TEMPLATE
             set_clock(clock, row);
-            set_template_tx(tx, tx_index, row);
+            set_template_tx(encoding, tx, tx_index, row);
 
             // from/to
-            let from = tron_base58_from_bytes(&tx.from).unwrap();
+            let from = bytes_to_string(&tx.from, encoding);
             let tx_to = match &tx.to {
-                Some(addr) => tron_base58_from_bytes(addr).unwrap(),
+                Some(addr) => bytes_to_string(addr, encoding),
                 None => "".to_string(),
             };
             // Possible reasons for None 'to' address:

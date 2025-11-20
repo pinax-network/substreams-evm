@@ -1,26 +1,27 @@
-use common::tron_base58_from_bytes;
+use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::evm::transfers::v1 as pb;
-use substreams::{pb::substreams::Clock, Hex};
+use substreams::pb::substreams::Clock;
 
-pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 5] {
+pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
     let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
     [
+        ("minute", (seconds / 60).to_string()),
         ("timestamp", seconds.to_string()),
         ("block_num", clock.number.to_string()),
-        ("block_hash", clock.id.to_string()),
         ("tx_index", tx_index.to_string()),
         ("log_index", log_index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
     ]
 }
 
-pub fn set_template_log(log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
+pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
     row.set("log_index", log_index as u32);
-    row.set("log_address", tron_base58_from_bytes(log.get_address()).unwrap());
+    row.set("log_address", bytes_to_string(log.get_address(), encoding));
     row.set("log_ordinal", log.get_ordinal());
 
     // handle if topic0 exists, else set to empty string
     if let Some(topic0) = log.get_topic0() {
-        row.set("log_topic0", Hex::encode(topic0));
+        row.set("log_topic0", bytes_to_hex(topic0)); // keep hex encoding for topic0
     } else {
         row.set("log_topic0", "");
     }

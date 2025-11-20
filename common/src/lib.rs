@@ -1,6 +1,6 @@
 pub mod debug;
 use sha2::{Digest, Sha256};
-use substreams::{hex, log, scalar::BigInt};
+use substreams::{hex, log, scalar::BigInt, Hex};
 
 pub type Address = Vec<u8>;
 pub type Hash = Vec<u8>;
@@ -49,6 +49,23 @@ pub fn tron_base58_from_bytes(bytes: &[u8]) -> Result<String, &'static str> {
         }
         _ => Err("expected 20 or 21 bytes"),
     }
+}
+
+#[derive(PartialEq)]
+pub enum Encoding {
+    Hex,
+    TronBase58,
+}
+
+pub fn bytes_to_hex(bytes: &[u8]) -> String {
+    format! {"0x{}", Hex::encode(bytes)}.to_string()
+}
+
+pub fn bytes_to_string(bytes: &[u8], encoding: &Encoding) -> String {
+    if encoding == &Encoding::TronBase58 {
+        return tron_base58_from_bytes(bytes).unwrap_or_default();
+    }
+    bytes_to_hex(bytes)
 }
 
 /// Convenience: hex -> Tron Base58Check (accepts '41' + 20 bytes, or just 20 bytes).
