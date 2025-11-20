@@ -30,7 +30,7 @@ pub struct Transaction {
     #[prost(message, repeated, tag="10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
-/// https://github.com/cowprotocol/contracts/blob/main/src/contracts/GPv2Settlement.sol
+/// <https://github.com/cowprotocol/contracts/blob/main/src/contracts/GPv2Settlement.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -62,10 +62,10 @@ pub mod log {
         Trade(super::Trade),
     }
 }
-/// @notice Emitted when an interaction is executed
-/// @param target The address of the contract to interact with
-/// @param value The amount of ETH sent with the interaction
-/// @param selector The function selector of the interaction
+/// / @notice Emitted when an interaction is executed
+/// / @param target The address of the contract to interact with
+/// / @param value The amount of ETH sent with the interaction
+/// / @param selector The function selector of the interaction
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Interaction {
@@ -79,9 +79,9 @@ pub struct Interaction {
     #[prost(bytes="vec", tag="3")]
     pub selector: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted when an order is invalidated
-/// @param owner The address of the order owner
-/// @param orderUid The unique identifier of the order
+/// / @notice Emitted when an order is invalidated
+/// / @param owner The address of the order owner
+/// / @param orderUid The unique identifier of the order
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct OrderInvalidated {
@@ -92,10 +92,10 @@ pub struct OrderInvalidated {
     #[prost(bytes="vec", tag="2")]
     pub order_uid: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted when a pre-signature is set
-/// @param owner The address of the order owner
-/// @param orderUid The unique identifier of the order
-/// @param signed Whether the order is signed or unsigned
+/// / @notice Emitted when a pre-signature is set
+/// / @param owner The address of the order owner
+/// / @param orderUid The unique identifier of the order
+/// / @param signed Whether the order is signed or unsigned
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PreSignature {
@@ -109,8 +109,8 @@ pub struct PreSignature {
     #[prost(bool, tag="3")]
     pub signed: bool,
 }
-/// @notice Emitted when a settlement is executed
-/// @param solver The address of the solver
+/// / @notice Emitted when a settlement is executed
+/// / @param solver The address of the solver
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Settlement {
@@ -118,14 +118,14 @@ pub struct Settlement {
     #[prost(bytes="vec", tag="1")]
     pub solver: ::prost::alloc::vec::Vec<u8>,
 }
-/// @notice Emitted when a trade is executed
-/// @param owner The address of the order owner
-/// @param sellToken The address of the token being sold
-/// @param buyToken The address of the token being bought
-/// @param sellAmount The amount of sell token
-/// @param buyAmount The amount of buy token
-/// @param feeAmount The fee amount charged
-/// @param orderUid The unique identifier of the order
+/// / @notice Emitted when a trade is executed
+/// / @param owner The address of the order owner
+/// / @param sellToken The address of the token being sold
+/// / @param buyToken The address of the token being bought
+/// / @param sellAmount The amount of sell token
+/// / @param buyAmount The amount of buy token
+/// / @param feeAmount The fee amount charged
+/// / @param orderUid The unique identifier of the order
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Trade {
