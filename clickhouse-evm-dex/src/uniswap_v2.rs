@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::sunswap::v1::{self as sunswap, PairCreated};
+use proto::pb::uniswap::v2::{self as uniswap, PairCreated};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,33 +10,32 @@ use crate::{
     transactions::set_template_tx,
 };
 
-// SunSwap Processing
 pub fn process_events(
     encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
-    events: &sunswap::Events,
+    events: &uniswap::Events,
     store: &StoreGetProto<PairCreated>,
 ) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
-                Some(sunswap::log::Log::Swap(swap)) => {
-                    process_sunswap_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, swap);
+                Some(uniswap::log::Log::Swap(event)) => {
+                    process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(sunswap::log::Log::PairCreated(pair_created)) => {
-                    process_sunswap_pair_created(encoding, tables, clock, tx, log, tx_index, log_index, pair_created);
+                Some(uniswap::log::Log::Sync(event)) => {
+                    process_sync(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(sunswap::log::Log::Mint(event)) => {
-                    process_sunswap_mint(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                Some(uniswap::log::Log::Mint(event)) => {
+                    process_mint(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(sunswap::log::Log::Burn(event)) => {
-                    process_sunswap_burn(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                Some(uniswap::log::Log::Burn(event)) => {
+                    process_burn(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(sunswap::log::Log::Sync(event)) => {
-                    process_sunswap_sync(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                Some(uniswap::log::Log::PairCreated(event)) => {
+                    process_pair_created(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                _ => {} // Ignore other event types
+                _ => {}
             }
         }
     }
@@ -47,43 +46,32 @@ pub fn set_pair_created(encoding: &Encoding, value: Option<PairCreated>, row: &m
         row.set("factory", bytes_to_string(&value.factory, encoding));
         row.set("token0", bytes_to_string(&value.token0, encoding));
         row.set("token1", bytes_to_string(&value.token1, encoding));
-        substreams::log::info!(
-            "PairCreated found: factory={}, token0={}, token1={}",
-            bytes_to_string(&value.factory, encoding),
-            bytes_to_string(&value.token0, encoding),
-            bytes_to_string(&value.token1, encoding),
-        );
     } else {
         row.set("factory", "");
         row.set("token0", "");
         row.set("token1", "");
-        substreams::log::info!("PairCreated not found");
     }
 }
 
-fn process_sunswap_swap(
+fn process_swap(
     encoding: &Encoding,
     store: &StoreGetProto<PairCreated>,
     tables: &mut Tables,
     clock: &Clock,
-    tx: &sunswap::Transaction,
-    log: &sunswap::Log,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
     tx_index: usize,
     log_index: usize,
-    event: &sunswap::Swap,
+    event: &uniswap::Swap,
 ) {
     let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunswap_swap", key);
+    let row = tables.create_row("uniswap_v2_swap", key);
 
-    // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
-
-    // Set PairCreated event data
     set_pair_created(encoding, get_pair_created(store, &log.address), row);
 
-    // Swap info
     row.set("sender", bytes_to_string(&event.sender, encoding));
     row.set("to", bytes_to_string(&event.to, encoding));
     row.set("amount0_in", &event.amount0_in);
@@ -92,110 +80,97 @@ fn process_sunswap_swap(
     row.set("amount1_out", &event.amount1_out);
 }
 
-fn process_sunswap_pair_created(
-    encoding: &Encoding,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &sunswap::Transaction,
-    log: &sunswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &sunswap::PairCreated,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunswap_pair_created", key);
-
-    // Block and transaction info
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-
-    // Pair Created info
-    row.set("token0", bytes_to_string(&event.token0, encoding));
-    row.set("token1", bytes_to_string(&event.token1, encoding));
-    row.set("pair", bytes_to_string(&event.pair, encoding));
-}
-
-fn process_sunswap_mint(
+fn process_sync(
     encoding: &Encoding,
     store: &StoreGetProto<PairCreated>,
     tables: &mut Tables,
     clock: &Clock,
-    tx: &sunswap::Transaction,
-    log: &sunswap::Log,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
     tx_index: usize,
     log_index: usize,
-    event: &sunswap::Mint,
+    event: &uniswap::Sync,
 ) {
     let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunswap_mint", key);
+    let row = tables.create_row("uniswap_v2_sync", key);
 
-    // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
-
-    // Set PairCreated event data
     set_pair_created(encoding, get_pair_created(store, &log.address), row);
 
-    // Event info
+    row.set("reserve0", &event.reserve0);
+    row.set("reserve1", &event.reserve1);
+}
+
+fn process_mint(
+    encoding: &Encoding,
+    store: &StoreGetProto<PairCreated>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &uniswap::Mint,
+) {
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("uniswap_v2_mint", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+    set_pair_created(encoding, get_pair_created(store, &log.address), row);
+
     row.set("sender", bytes_to_string(&event.sender, encoding));
     row.set("amount0", &event.amount0);
     row.set("amount1", &event.amount1);
 }
 
-fn process_sunswap_burn(
+fn process_burn(
     encoding: &Encoding,
     store: &StoreGetProto<PairCreated>,
     tables: &mut Tables,
     clock: &Clock,
-    tx: &sunswap::Transaction,
-    log: &sunswap::Log,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
     tx_index: usize,
     log_index: usize,
-    event: &sunswap::Burn,
+    event: &uniswap::Burn,
 ) {
     let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunswap_burn", key);
+    let row = tables.create_row("uniswap_v2_burn", key);
 
-    // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
-
-    // Set PairCreated event data
     set_pair_created(encoding, get_pair_created(store, &log.address), row);
 
-    // Event info
     row.set("sender", bytes_to_string(&event.sender, encoding));
     row.set("amount0", &event.amount0);
     row.set("amount1", &event.amount1);
     row.set("to", bytes_to_string(&event.to, encoding));
 }
 
-fn process_sunswap_sync(
+fn process_pair_created(
     encoding: &Encoding,
-    store: &StoreGetProto<PairCreated>,
     tables: &mut Tables,
     clock: &Clock,
-    tx: &sunswap::Transaction,
-    log: &sunswap::Log,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
     tx_index: usize,
     log_index: usize,
-    event: &sunswap::Sync,
+    event: &uniswap::PairCreated,
 ) {
     let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunswap_sync", key);
+    let row = tables.create_row("uniswap_v2_pair_created", key);
 
-    // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    // Set PairCreated event data
-    set_pair_created(encoding, get_pair_created(store, &log.address), row);
-
-    // Event info
-    row.set("reserve0", &event.reserve0);
-    row.set("reserve1", &event.reserve1);
+    row.set("token0", bytes_to_string(&event.token0, encoding));
+    row.set("token1", bytes_to_string(&event.token1, encoding));
+    row.set("pair", bytes_to_string(&event.pair, encoding));
+    row.set("extra_data", &event.extra_data);
 }
