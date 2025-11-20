@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - /v1/dex/sunpump.proto
+    - sunpump.proto
   importPaths:
-    - ../../proto
+    - ../../proto/v1/dex
 
 modules:
   - name: map_events
@@ -29,7 +29,7 @@ modules:
   - name: store_token_create
     kind: store
     updatePolicy: set
-    valuetype: proto:sunpump.v1.TokenCreate
+    valueType: proto:sunpump.v1.TokenCreate
     inputs:
       - map: map_events
 

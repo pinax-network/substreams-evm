@@ -13,9 +13,9 @@ binaries:
 
 protobuf:
   files:
-    - v1/dex/sunswap.proto
+    - sunswap.proto
   importPaths:
-    - ../../proto
+    - ../../proto/v1/dex
 
 modules:
   - name: map_events
@@ -28,7 +28,7 @@ modules:
   - name: store_pair_created
     kind: store
     updatePolicy: set
-    valuetype: proto:sunswap.v1.PairCreated
+    valueType: proto:sunswap.v1.PairCreated
     inputs:
       - map: map_events
 
