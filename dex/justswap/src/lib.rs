@@ -1,5 +1,5 @@
 mod store;
-use proto::pb::dex::justswap::v1 as pb;
+use proto::pb::justswap::v1 as pb;
 use substreams_abis::tvm::justswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;

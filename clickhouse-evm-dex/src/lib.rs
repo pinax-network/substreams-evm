@@ -5,7 +5,7 @@ mod sunpump;
 mod sunswap;
 mod transactions;
 
-use proto::pb::dex::foundational_store::v1::{NewExchange, PairCreated, TokenCreate};
+use proto::pb::foundational_store::v1::{NewExchange, PairCreated, TokenCreate};
 use proto::pb::tron as pb;
 use substreams::errors::Error;
 use substreams::pb::substreams::Clock;

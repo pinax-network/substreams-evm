@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::dex::{justswap, sunpump, sunswap};
+use proto::pb::{justswap, sunpump, sunswap};
 use substreams::Hex;
 
 pub fn set_template_tx(tx: &impl TxTemplate, tx_index: usize, row: &mut substreams_database_change::tables::Row) {

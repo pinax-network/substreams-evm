@@ -1,4 +1,4 @@
-use proto::pb::dex::justswap::v1 as pb;
+use proto::pb::justswap::v1 as pb;
 use substreams::store::StoreSetProto;
 use substreams::{prelude::*, Hex};
 

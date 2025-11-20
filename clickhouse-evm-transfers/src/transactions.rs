@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::dex::transfers::v1 as pb;
+use proto::pb::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 
 pub fn tx_key(clock: &Clock, tx_index: usize) -> [(&'static str, String); 4] {

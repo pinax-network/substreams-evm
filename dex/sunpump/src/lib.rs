@@ -1,5 +1,5 @@
 mod store;
-use proto::pb::dex::sunpump::v1 as pb;
+use proto::pb::sunpump::v1 as pb;
 use substreams_abis::tvm::sunpump::legacy::launchpad::events::TokenCreate as TokenCreateLegacy;
 use substreams_abis::tvm::sunpump::v1::launchpadproxy::events;
 use substreams_ethereum::pb::eth::v2::{Block, Log};

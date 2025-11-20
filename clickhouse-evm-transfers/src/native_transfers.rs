@@ -1,5 +1,5 @@
 use common::tron_base58_from_bytes;
-use proto::pb::dex::transfers::v1 as pb;
+use proto::pb::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
