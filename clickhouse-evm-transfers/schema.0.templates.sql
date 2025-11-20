@@ -28,21 +28,22 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
 
     -- PROJECTIONS --
     -- count() --
-    PROJECTION prj_tx_from_count ( SELECT tx_from, count() GROUP BY tx_from ),
-    PROJECTION prj_tx_to_count ( SELECT tx_to, count() GROUP BY tx_to ),
-    PROJECTION prj_tx_to_from_count ( SELECT tx_to, tx_from, count() GROUP BY tx_to, tx_from ),
-    PROJECTION prj_log_topic0_count ( SELECT log_topic0, count() GROUP BY log_topic0 ),
+    PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
+    PROJECTION prj_tx_to_count ( SELECT tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to ),
+    PROJECTION prj_tx_to_from_count ( SELECT tx_to, tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to, tx_from ),
+    PROJECTION prj_log_topic0_count ( SELECT log_topic0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_topic0 ),
     PROJECTION prj_log_address_count ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address ),
 
     -- minute --
-    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count() GROUP BY block_hash, minute,timestamp ),
-    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count() GROUP BY tx_hash, minute, timestamp ),
-    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count() GROUP BY log_address, minute )
+    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute)  GROUP BY block_hash, minute,timestamp ),
+    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_hash, minute, timestamp ),
+    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, minute )
 )
 ENGINE = MergeTree
 ORDER BY (
     minute, timestamp, block_num,
-    tx_index, log_index
+    tx_index, log_index,
+    block_hash
 );
 
 -- Template for Transactions (without log fields) --
@@ -50,7 +51,8 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION AS TEMPLATE_LOG
 ENGINE = MergeTree
 ORDER BY (
     minute, timestamp, block_num,
-    tx_index
+    tx_index,
+    block_hash
 );
 ALTER TABLE TEMPLATE_TRANSACTION
     DROP PROJECTION IF EXISTS prj_log_address_by_minute,

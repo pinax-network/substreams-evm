@@ -10,17 +10,24 @@ use substreams::errors::Error;
 use substreams_database_change::pb::database::DatabaseChanges;
 
 #[substreams::handlers::map]
-pub fn db_out(clock: Clock, transfers: pb::transfers::v1::Events) -> Result<DatabaseChanges, Error> {
+pub fn db_out(params: String, clock: Clock, transfers: pb::transfers::v1::Events) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
+    // Handle support both EVM & TVM address encoding
+    let encoding = if params == "tron_base58" {
+        common::Encoding::TronBase58
+    } else {
+        common::Encoding::Hex
+    };
+
     // Process logs (ERC20 transfers)
-    erc20_transfers::process_events(&mut tables, &clock, &transfers);
+    erc20_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // Process transactions (Native transfers)
-    native_transfers::process_events(&mut tables, &clock, &transfers);
+    native_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // Process WETH events
-    weth::process_events(&mut tables, &clock, &transfers);
+    weth::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
@@ -33,7 +40,7 @@ pub fn db_out(clock: Clock, transfers: pb::transfers::v1::Events) -> Result<Data
 
 pub fn set_clock(clock: &Clock, row: &mut substreams_database_change::tables::Row) {
     row.set("block_num", clock.number);
-    row.set("block_hash", &clock.id);
+    row.set("block_hash", format!("0x{}", clock.id));
     if let Some(timestamp) = &clock.timestamp {
         row.set("timestamp", timestamp.seconds);
         row.set("minute", timestamp.seconds / 60);

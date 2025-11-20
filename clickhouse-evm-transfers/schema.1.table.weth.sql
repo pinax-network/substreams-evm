@@ -11,8 +11,8 @@ ALTER TABLE weth_deposit
 
     -- PROJECTIONS --
     -- count() --
-    ADD PROJECTION IF NOT EXISTS prj_dst_count ( SELECT dst, count() GROUP BY dst ),
-    ADD PROJECTION IF NOT EXISTS prj_log_address_dst_count ( SELECT log_address, dst, count() GROUP BY log_address, dst ),
+    ADD PROJECTION IF NOT EXISTS prj_dst_count ( SELECT dst, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY dst ),
+    ADD PROJECTION IF NOT EXISTS prj_log_address_dst_count ( SELECT log_address, dst, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, dst ),
 
     -- minute --
     ADD PROJECTION IF NOT EXISTS prj_dst_by_minute ( SELECT dst, minute, count() GROUP BY dst, minute ),
@@ -32,8 +32,8 @@ ALTER TABLE weth_withdrawal
 
     -- PROJECTIONS --
     -- count() --
-    ADD PROJECTION IF NOT EXISTS prj_src_count ( SELECT src, count() GROUP BY src ),
-    ADD PROJECTION IF NOT EXISTS prj_log_address_src_count ( SELECT log_address, src, count() GROUP BY log_address, src ),
+    ADD PROJECTION IF NOT EXISTS prj_src_count ( SELECT src, count(),min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY src ),
+    ADD PROJECTION IF NOT EXISTS prj_log_address_src_count ( SELECT log_address, src, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, src ),
     -- minute --
     ADD PROJECTION IF NOT EXISTS prj_src_by_minute ( SELECT src, minute, count() GROUP BY src, minute ),
     ADD PROJECTION IF NOT EXISTS prj_log_address_src_by_minute ( SELECT log_address, src, minute, count() GROUP BY log_address, src, minute);
