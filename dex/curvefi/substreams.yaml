@@ -25,10 +25,17 @@ modules:
     output:
       type: proto:curvefi.v1.Events
 
-  - name: store_pool_info
+  - name: store_plain_pool_deployed
     kind: store
     updatePolicy: set
-    valueType: proto:curvefi.v1.PoolInfo
+    valueType: proto:curvefi.v1.PlainPoolDeployed
+    inputs:
+      - map: map_events
+
+  - name: store_meta_pool_deployed
+    kind: store
+    updatePolicy: set
+    valueType: proto:curvefi.v1.MetaPoolDeployed
     inputs:
       - map: map_events
 

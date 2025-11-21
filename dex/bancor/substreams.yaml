@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:bancor.v1.Events
 
+  - name: store_activation
+    kind: store
+    updatePolicy: set
+    valueType: proto:bancor.v1.Activation
+    inputs:
+      - map: map_events
+
 network: mainnet
