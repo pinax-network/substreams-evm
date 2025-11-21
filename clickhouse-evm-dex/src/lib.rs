@@ -1,3 +1,7 @@
+mod balancer;
+mod bancor;
+mod cow;
+mod curvefi;
 mod foundational_stores;
 mod justswap;
 mod logs;
@@ -27,6 +31,10 @@ pub fn db_out(
     uniswap_v2_events: uniswap::v2::Events,
     uniswap_v3_events: uniswap::v3::Events,
     uniswap_v4_events: uniswap::v4::Events,
+    balancer_events: proto::pb::balancer::v1::Events,
+    bancor_events: proto::pb::bancor::v1::Events,
+    cow_events: proto::pb::cow::v1::Events,
+    curvefi_events: proto::pb::curvefi::v1::Events,
     store_new_exchange_justswap: StoreGetProto<proto::pb::justswap::v1::NewExchange>,
     store_new_exchange_uniswap_v1: StoreGetProto<uniswap::v1::NewExchange>,
     store_pair_created_sunswap: StoreGetProto<proto::pb::sunswap::v1::PairCreated>,
@@ -64,6 +72,18 @@ pub fn db_out(
 
     // Process Uniswap V4 events (EVM)
     uniswap_v4::process_events(&encoding, &mut tables, &clock, &uniswap_v4_events, &store_initialize_uniswap_v4);
+
+    // Process Balancer events (EVM)
+    balancer::process_events(&encoding, &mut tables, &clock, &balancer_events);
+
+    // Process Bancor events (EVM)
+    bancor::process_events(&encoding, &mut tables, &clock, &bancor_events);
+
+    // Process CoW Protocol events (EVM)
+    cow::process_events(&encoding, &mut tables, &clock, &cow_events);
+
+    // Process Curve.fi events (EVM)
+    curvefi::process_events(&encoding, &mut tables, &clock, &curvefi_events);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {

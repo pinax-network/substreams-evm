@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{justswap, sunpump, sunswap, uniswap};
+use proto::pb::{balancer, bancor, cow, curvefi, justswap, sunpump, sunswap, uniswap};
 use substreams::pb::substreams::Clock;
 
 pub fn tx_key(clock: &Clock, tx_index: usize) -> [(&'static str, String); 5] {
@@ -212,6 +212,118 @@ impl TxTemplate for uniswap::v3::Transaction {
 
 // Uniswap V4
 impl TxTemplate for uniswap::v4::Transaction {
+    fn get_hash(&self) -> &Vec<u8> {
+        &self.hash
+    }
+    fn get_from(&self) -> &Vec<u8> {
+        &self.from
+    }
+    fn get_to(&self) -> &Option<Vec<u8>> {
+        &self.to
+    }
+    fn get_nonce(&self) -> u64 {
+        self.nonce
+    }
+    fn get_gas_price(&self) -> &str {
+        &self.gas_price
+    }
+    fn get_gas_limit(&self) -> u64 {
+        self.gas_limit
+    }
+    fn get_gas_used(&self) -> u64 {
+        self.gas_used
+    }
+    fn get_value(&self) -> &str {
+        &self.value
+    }
+}
+
+// Balancer
+impl TxTemplate for balancer::v1::Transaction {
+    fn get_hash(&self) -> &Vec<u8> {
+        &self.hash
+    }
+    fn get_from(&self) -> &Vec<u8> {
+        &self.from
+    }
+    fn get_to(&self) -> &Option<Vec<u8>> {
+        &self.to
+    }
+    fn get_nonce(&self) -> u64 {
+        self.nonce
+    }
+    fn get_gas_price(&self) -> &str {
+        &self.gas_price
+    }
+    fn get_gas_limit(&self) -> u64 {
+        self.gas_limit
+    }
+    fn get_gas_used(&self) -> u64 {
+        self.gas_used
+    }
+    fn get_value(&self) -> &str {
+        &self.value
+    }
+}
+
+// Bancor
+impl TxTemplate for bancor::v1::Transaction {
+    fn get_hash(&self) -> &Vec<u8> {
+        &self.hash
+    }
+    fn get_from(&self) -> &Vec<u8> {
+        &self.from
+    }
+    fn get_to(&self) -> &Option<Vec<u8>> {
+        &self.to
+    }
+    fn get_nonce(&self) -> u64 {
+        self.nonce
+    }
+    fn get_gas_price(&self) -> &str {
+        &self.gas_price
+    }
+    fn get_gas_limit(&self) -> u64 {
+        self.gas_limit
+    }
+    fn get_gas_used(&self) -> u64 {
+        self.gas_used
+    }
+    fn get_value(&self) -> &str {
+        &self.value
+    }
+}
+
+// CoW Protocol
+impl TxTemplate for cow::v1::Transaction {
+    fn get_hash(&self) -> &Vec<u8> {
+        &self.hash
+    }
+    fn get_from(&self) -> &Vec<u8> {
+        &self.from
+    }
+    fn get_to(&self) -> &Option<Vec<u8>> {
+        &self.to
+    }
+    fn get_nonce(&self) -> u64 {
+        self.nonce
+    }
+    fn get_gas_price(&self) -> &str {
+        &self.gas_price
+    }
+    fn get_gas_limit(&self) -> u64 {
+        self.gas_limit
+    }
+    fn get_gas_used(&self) -> u64 {
+        self.gas_used
+    }
+    fn get_value(&self) -> &str {
+        &self.value
+    }
+}
+
+// Curve.fi
+impl TxTemplate for curvefi::v1::Transaction {
     fn get_hash(&self) -> &Vec<u8> {
         &self.hash
     }
