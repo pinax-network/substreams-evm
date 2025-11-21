@@ -45,8 +45,8 @@ message Interaction {
 /// @param owner The address of the order owner
 /// @param orderUid The unique identifier of the order
 message OrderInvalidated {
-  bytes owner = 1;      // address (indexed)
-  bytes order_uid = 2;  // bytes
+  bytes owner = 1;     // address (indexed)
+  bytes order_uid = 2; // bytes
 }
 
 /// @notice Emitted when a pre-signature is set
@@ -54,9 +54,9 @@ message OrderInvalidated {
 /// @param orderUid The unique identifier of the order
 /// @param signed Whether the order is signed or unsigned
 message PreSignature {
-  bytes owner = 1;      // address (indexed)
-  bytes order_uid = 2;  // bytes
-  bool signed = 3;      // bool
+  bytes owner = 1;     // address (indexed)
+  bytes order_uid = 2; // bytes
+  bool signed = 3;     // bool
 }
 
 /// @notice Emitted when a settlement is executed
