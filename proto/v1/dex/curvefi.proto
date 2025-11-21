@@ -22,6 +22,7 @@ message Log {
   repeated bytes topics = 3;
   bytes data = 4;
   oneof log {
+    // Pool
     TokenExchange token_exchange = 10;
     AddLiquidity add_liquidity = 11;
     RemoveLiquidity remove_liquidity = 12;
@@ -33,7 +34,9 @@ message Log {
     NewFee new_fee = 18;
     RampA ramp_a = 19;
     StopRampA stop_ramp_a = 20;
-    Init init = 21;
+    // Factory
+    PlainPoolDeployed plain_pool_deployed = 21;
+    MetaPoolDeployed meta_pool_deployed = 22;
   }
 }
 
@@ -104,18 +107,24 @@ message StopRampA {
   string t = 2; // uint256
 }
 
-message Init {
-  bytes owner = 1;
-  repeated bytes coins = 2;
-  bytes pool_token = 3;
-  string a = 4;        // uint256
-  string fee = 5;      // uint256
-  string admin_fee = 6; // uint256
-}
-
 // Store messages
 message PoolInfo {
   bytes pool_address = 1;
   bytes provider = 2;
   string total_liquidity = 3; // uint256
+}
+
+message PlainPoolDeployed {
+  repeated bytes coins = 1;
+  string A = 2;   // uint256
+  string fee = 3; // uint256
+  bytes deployer = 4;
+}
+
+message MetaPoolDeployed {
+  bytes coin = 1;
+  bytes base_pool = 2;
+  string A = 3;   // uint256
+  string fee = 4; // uint256
+  bytes deployer = 5;
 }

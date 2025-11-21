@@ -1,5 +1,7 @@
+use core::panic;
+
 use proto::pb::curvefi::v1 as pb;
-use substreams_abis::evm::curvefi::pool as curvefi;
+use substreams_abis::evm::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
@@ -27,6 +29,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_new_fee = 0;
     let mut total_ramp_a = 0;
     let mut total_stop_ramp_a = 0;
+    let mut total_plain_pool_deployed = 0;
+    let mut total_meta_pool_deployed = 0;
     let _total_init = 0; // Reserved for future Init event tracking
 
     for trx in block.transactions() {
@@ -49,7 +53,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             let log = log_view.log;
 
             // TokenExchange event
-            if let Some(event) = curvefi::events::TokenExchange::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::TokenExchange::match_and_decode(log) {
                 total_token_exchange += 1;
                 // Decode event data (simplified - would need full ethabi decoding for production)
                 let event = pb::log::Log::TokenExchange(pb::TokenExchange {
@@ -63,7 +67,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // AddLiquidity event
-            if let Some(event) = curvefi::events::AddLiquidity::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::AddLiquidity::match_and_decode(log) {
                 total_add_liquidity += 1;
                 let event = pb::log::Log::AddLiquidity(pb::AddLiquidity {
                     provider: event.provider,
@@ -76,7 +80,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // RemoveLiquidity event
-            if let Some(event) = curvefi::events::RemoveLiquidity::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::RemoveLiquidity::match_and_decode(log) {
                 total_remove_liquidity += 1;
                 let event = pb::log::Log::RemoveLiquidity(pb::RemoveLiquidity {
                     provider: event.provider,
@@ -88,7 +92,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // RemoveLiquidityOne event
-            if let Some(event) = curvefi::events::RemoveLiquidityOne::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::RemoveLiquidityOne::match_and_decode(log) {
                 total_remove_liquidity_one += 1;
                 let event = pb::log::Log::RemoveLiquidityOne(pb::RemoveLiquidityOne {
                     provider: event.provider,
@@ -99,7 +103,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // RemoveLiquidityImbalance event
-            if let Some(event) = curvefi::events::RemoveLiquidityImbalance::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::RemoveLiquidityImbalance::match_and_decode(log) {
                 total_remove_liquidity_imbalance += 1;
                 let event = pb::log::Log::RemoveLiquidityImbalance(pb::RemoveLiquidityImbalance {
                     provider: event.provider,
@@ -112,7 +116,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // CommitNewAdmin event
-            if let Some(event) = curvefi::events::CommitNewAdmin::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::CommitNewAdmin::match_and_decode(log) {
                 total_commit_new_admin += 1;
                 let event = pb::log::Log::CommitNewAdmin(pb::CommitNewAdmin {
                     deadline: event.deadline.to_string(),
@@ -122,14 +126,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // NewAdmin event
-            if let Some(event) = curvefi::events::NewAdmin::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::NewAdmin::match_and_decode(log) {
                 total_new_admin += 1;
                 let event = pb::log::Log::NewAdmin(pb::NewAdmin { admin: event.admin });
                 transaction.logs.push(create_log(log, event));
             }
 
             // CommitNewFee event
-            if let Some(event) = curvefi::events::CommitNewFee::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::CommitNewFee::match_and_decode(log) {
                 total_commit_new_fee += 1;
                 let event = pb::log::Log::CommitNewFee(pb::CommitNewFee {
                     deadline: event.deadline.to_string(),
@@ -140,7 +144,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // NewFee event
-            if let Some(event) = curvefi::events::NewFee::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::NewFee::match_and_decode(log) {
                 total_new_fee += 1;
                 let event = pb::log::Log::NewFee(pb::NewFee {
                     fee: event.fee.to_string(),
@@ -150,7 +154,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // RampA event
-            if let Some(event) = curvefi::events::RampA::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::RampA::match_and_decode(log) {
                 total_ramp_a += 1;
                 let event = pb::log::Log::RampA(pb::RampA {
                     old_a: event.old_a.to_string(),
@@ -162,7 +166,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
 
             // StopRampA event
-            if let Some(event) = curvefi::events::StopRampA::match_and_decode(log) {
+            if let Some(event) = curvefi::pool::events::StopRampA::match_and_decode(log) {
                 total_stop_ramp_a += 1;
                 let event = pb::log::Log::StopRampA(pb::StopRampA {
                     a: event.a.to_string(),
@@ -171,29 +175,30 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(create_log(log, event));
             }
 
-            // Init event
-            // Note: The Init event structure is defined in the proto but CurveFi contracts
-            // don't emit a standard Init event. This handler is commented out until
-            // the event is added to the substreams-abis or a custom implementation is provided.
-            // To enable this, you would need to:
-            // 1. Add the Init event ABI to substreams-abis
-            // 2. Change `_total_init` to `mut total_init` in the variable declarations above
-            // 3. Uncomment the code below
-            // 4. Uncomment the logging statement at the end of the function
-            /*
-            if let Some(event) = curvefi::events::Init::match_and_decode(log) {
-                total_init += 1;
-                let event = pb::log::Log::Init(pb::Init {
-                    owner: event.owner,
-                    coins: event.coins.to_vec(),
-                    pool_token: event.pool_token,
+            // PlainPoolDeploy
+            if let Some(event) = curvefi::factory::events::PlainPoolDeployed::match_and_decode(log) {
+                total_plain_pool_deployed += 1;
+                let event = pb::log::Log::PlainPoolDeployed(pb::PlainPoolDeployed {
                     a: event.a.to_string(),
+                    coins: event.coins,
+                    deployer: event.deployer,
                     fee: event.fee.to_string(),
-                    admin_fee: event.admin_fee.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
-            */
+
+            // MetaPoolDeployed
+            if let Some(event) = curvefi::factory::events::MetaPoolDeployed::match_and_decode(log) {
+                total_meta_pool_deployed += 1;
+                let event = pb::log::Log::MetaPoolDeployed(pb::MetaPoolDeployed {
+                    a: event.a.to_string(),
+                    base_pool: event.base_pool,
+                    coin: event.coin,
+                    deployer: event.deployer,
+                    fee: event.fee.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
         }
 
         if !transaction.logs.is_empty() {
@@ -214,6 +219,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total NewFee events: {}", total_new_fee);
     substreams::log::info!("Total RampA events: {}", total_ramp_a);
     substreams::log::info!("Total StopRampA events: {}", total_stop_ramp_a);
+    substreams::log::info!("Total PlainPoolDeployed events: {}", total_plain_pool_deployed);
+    substreams::log::info!("Total MetaPoolDeployed events: {}", total_meta_pool_deployed);
     // Note: Init event tracking reserved for future implementation
     Ok(events)
 }
