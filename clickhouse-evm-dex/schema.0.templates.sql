@@ -2,13 +2,14 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
     -- block --
     block_num                   UInt32,
     block_hash                  String,
-    timestamp                   DateTime(0, 'UTC'),
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- transaction --
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
     tx_from                     String,
-    tx_to                       String,
+    tx_to                       LowCardinality(String),
     tx_nonce                    UInt64,
     tx_gas_price                UInt256,
     tx_gas_limit                UInt64,
@@ -17,43 +18,58 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
 
     -- log --
     log_index                   UInt32, -- derived from Substreams
-    log_address                 String,
+    log_address                 LowCardinality(String),
     log_ordinal                 UInt32,
-    log_topic0                  String,
+    log_topics                  String COMMENT 'Comma-separated list of log topics',
+    log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- first topic (topic0), empty string if no topics
+    log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
+    log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
+    log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
+    log_data                    String,
 
-    -- indexes --
-    INDEX idx_timestamp         (timestamp)         TYPE minmax                 GRANULARITY 1,
-    INDEX idx_block_num         (block_num)         TYPE minmax                 GRANULARITY 1,
-    INDEX idx_block_hash        (block_hash)        TYPE bloom_filter           GRANULARITY 1,
-    INDEX idx_tx_hash           (tx_hash)           TYPE bloom_filter           GRANULARITY 1,
-    INDEX idx_tx_from           (tx_from)           TYPE bloom_filter           GRANULARITY 1,
-    INDEX idx_tx_to             (tx_to)             TYPE bloom_filter           GRANULARITY 1,
-    INDEX idx_tx_value          (tx_value)          TYPE minmax                 GRANULARITY 1,
-    INDEX idx_tx_nonce          (tx_nonce)          TYPE minmax                 GRANULARITY 1,
-    INDEX idx_tx_gas_price      (tx_gas_price)      TYPE minmax                 GRANULARITY 1,
-    INDEX idx_tx_gas_limit      (tx_gas_limit)      TYPE minmax                 GRANULARITY 1,
-    INDEX idx_tx_gas_used       (tx_gas_used)       TYPE minmax                 GRANULARITY 1,
+    -- INDEXES --
+    INDEX idx_tx_value (tx_value) TYPE minmax GRANULARITY 1,
+    INDEX idx_log_ordinal (log_ordinal) TYPE minmax GRANULARITY 1,
 
-    -- indexes (ordering) --
-    INDEX idx_tx_index          (tx_index)          TYPE minmax                 GRANULARITY 1,
-    INDEX idx_log_index         (log_index)         TYPE minmax                 GRANULARITY 1,
+    -- PROJECTIONS --
+    -- count() --
+    PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
+    PROJECTION prj_tx_to_count ( SELECT tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to ),
+    PROJECTION prj_tx_to_from_count ( SELECT tx_to, tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to, tx_from ),
+    PROJECTION prj_log_topic0_count ( SELECT log_topic0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_topic0 ),
+    PROJECTION prj_log_address_count ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address ),
 
-    -- indexes (log) --
-    INDEX idx_log_address       (log_address)           TYPE bloom_filter           GRANULARITY 1,
-    INDEX idx_log_ordinal       (log_ordinal)           TYPE minmax                 GRANULARITY 1,
-    INDEX idx_log_topic0        (log_topic0)            TYPE bloom_filter           GRANULARITY 1
+    -- minute --
+    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute)  GROUP BY block_hash, minute,timestamp ),
+    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_hash, minute, timestamp ),
+    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, minute )
 )
-ENGINE = ReplacingMergeTree
+ENGINE = MergeTree
 ORDER BY (
-    timestamp, block_num,
-    block_hash, tx_index, log_index
+    minute, timestamp, block_num,
+    tx_index, log_index,
+    block_hash
 );
 
-ALTER TABLE TEMPLATE_LOG
-  MODIFY SETTING deduplicate_merge_projection_mode = 'rebuild';
-
-ALTER TABLE TEMPLATE_LOG
-    ADD PROJECTION IF NOT EXISTS prj_tx_hash (SELECT tx_hash, timestamp, _part_offset ORDER BY (tx_hash, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_tx_from (SELECT tx_from, timestamp, _part_offset ORDER BY (tx_from, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_tx_to (SELECT tx_to, timestamp, _part_offset ORDER BY (tx_to, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_log_address (SELECT log_address, timestamp, _part_offset ORDER BY (log_address, timestamp));
+-- Template for Transactions (without log fields) --
+CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION AS TEMPLATE_LOG
+ENGINE = MergeTree
+ORDER BY (
+    minute, timestamp, block_num,
+    tx_index,
+    block_hash
+);
+ALTER TABLE TEMPLATE_TRANSACTION
+    DROP PROJECTION IF EXISTS prj_log_address_by_minute,
+    DROP PROJECTION IF EXISTS prj_log_topic0_count,
+    DROP PROJECTION IF EXISTS prj_log_address_count,
+    DROP INDEX IF EXISTS idx_log_ordinal,
+    DROP COLUMN IF EXISTS log_index,
+    DROP COLUMN IF EXISTS log_address,
+    DROP COLUMN IF EXISTS log_ordinal,
+    DROP COLUMN IF EXISTS log_topic0,
+    DROP COLUMN IF EXISTS log_topic1,
+    DROP COLUMN IF EXISTS log_topic2,
+    DROP COLUMN IF EXISTS log_topic3,
+    DROP COLUMN IF EXISTS log_topics,
+    DROP COLUMN IF EXISTS log_data;
