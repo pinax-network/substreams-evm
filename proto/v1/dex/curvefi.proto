@@ -33,6 +33,7 @@ message Log {
     NewFee new_fee = 18;
     RampA ramp_a = 19;
     StopRampA stop_ramp_a = 20;
+    Init init = 21;
   }
 }
 
@@ -101,6 +102,15 @@ message RampA {
 message StopRampA {
   string a = 1; // uint256
   string t = 2; // uint256
+}
+
+message Init {
+  bytes owner = 1;
+  repeated bytes coins = 2;
+  bytes pool_token = 3;
+  string a = 4;        // uint256
+  string fee = 5;      // uint256
+  string admin_fee = 6; // uint256
 }
 
 // Store messages
