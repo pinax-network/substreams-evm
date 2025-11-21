@@ -114,6 +114,7 @@ fn process_sunpump_token_purchased(
 }
 
 fn process_sunpump_token_sold(
+    encoding: &Encoding,
     store: &StoreGetProto<TokenCreate>,
     tables: &mut Tables,
     clock: &Clock,
@@ -141,9 +142,9 @@ fn process_sunpump_token_sold(
     row.set("trx_amount", &sold.trx_amount);
     row.set("fee", &sold.fee);
 }
-    encoding: &Encoding,
 
 fn process_sunpump_launch_pending(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -162,10 +163,10 @@ fn process_sunpump_launch_pending(
 
     // Event info
     row.set("token", bytes_to_string(&event.token, encoding));
-    encoding: &Encoding,
 }
 
 fn process_sunpump_launcher_changed(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -184,11 +185,11 @@ fn process_sunpump_launcher_changed(
 
     // Event info
     row.set("old_launcher", bytes_to_string(&event.old_launcher, encoding));
-    encoding: &Encoding,
     row.set("new_launcher", bytes_to_string(&event.new_launcher, encoding));
 }
 
 fn process_sunpump_min_tx_fee_set(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -206,12 +207,12 @@ fn process_sunpump_min_tx_fee_set(
     set_template_log(encoding, log, log_index, row);
 
     // Event info
-    encoding: &Encoding,
     row.set("old_fee", &event.old_fee);
     row.set("new_fee", &event.new_fee);
 }
 
 fn process_sunpump_mint_fee_set(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -228,13 +229,13 @@ fn process_sunpump_mint_fee_set(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    encoding: &Encoding,
     // Event info
     row.set("old_fee", &event.old_fee);
     row.set("new_fee", &event.new_fee);
 }
 
 fn process_sunpump_operator_changed(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -250,7 +251,6 @@ fn process_sunpump_operator_changed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
-    encoding: &Encoding,
 
     // Event info
     row.set("old_operator", bytes_to_string(&event.old_operator, encoding));
@@ -258,6 +258,7 @@ fn process_sunpump_operator_changed(
 }
 
 fn process_sunpump_owner_changed(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -272,7 +273,6 @@ fn process_sunpump_owner_changed(
     // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
-    encoding: &Encoding,
     set_template_log(encoding, log, log_index, row);
 
     // Event info
@@ -281,6 +281,7 @@ fn process_sunpump_owner_changed(
 }
 
 fn process_sunpump_pending_owner_set(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -294,7 +295,6 @@ fn process_sunpump_pending_owner_set(
 
     // Block and transaction info
     set_clock(clock, row);
-    encoding: &Encoding,
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
@@ -304,6 +304,7 @@ fn process_sunpump_pending_owner_set(
 }
 
 fn process_sunpump_purchase_fee_set(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -316,7 +317,6 @@ fn process_sunpump_purchase_fee_set(
     let row = tables.create_row("sunpump_purchase_fee_set", key);
 
     // Block and transaction info
-    encoding: &Encoding,
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
@@ -327,6 +327,7 @@ fn process_sunpump_purchase_fee_set(
 }
 
 fn process_sunpump_sale_fee_set(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -338,7 +339,6 @@ fn process_sunpump_sale_fee_set(
     let key = log_key(clock, tx_index, log_index);
     let row = tables.create_row("sunpump_sale_fee_set", key);
 
-    encoding: &Encoding,
     // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
@@ -350,6 +350,7 @@ fn process_sunpump_sale_fee_set(
 }
 
 fn process_sunpump_token_create(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -361,7 +362,6 @@ fn process_sunpump_token_create(
     let key = log_key(clock, tx_index, log_index);
     let row = tables.create_row("sunpump_token_create", key);
 
-    encoding: &Encoding,
     // Block and transaction info
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
@@ -374,6 +374,7 @@ fn process_sunpump_token_create(
 }
 
 fn process_sunpump_token_create_legacy(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -387,7 +388,6 @@ fn process_sunpump_token_create_legacy(
 
     // Block and transaction info
     set_clock(clock, row);
-    encoding: &Encoding,
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
@@ -401,6 +401,7 @@ fn process_sunpump_token_create_legacy(
 }
 
 fn process_sunpump_token_launched(
+    encoding: &Encoding,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,

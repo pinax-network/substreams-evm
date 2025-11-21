@@ -6,6 +6,8 @@ mod sunswap;
 mod transactions;
 mod uniswap_v1;
 mod uniswap_v2;
+mod uniswap_v3;
+mod uniswap_v4;
 
 use common::Encoding;
 use proto::pb::uniswap;
@@ -23,10 +25,14 @@ pub fn db_out(
     sunpump_events: proto::pb::sunpump::v1::Events,
     uniswap_v1_events: uniswap::v1::Events,
     uniswap_v2_events: uniswap::v2::Events,
+    uniswap_v3_events: uniswap::v3::Events,
+    uniswap_v4_events: uniswap::v4::Events,
     store_new_exchange_justswap: StoreGetProto<proto::pb::justswap::v1::NewExchange>,
     store_new_exchange_uniswap_v1: StoreGetProto<uniswap::v1::NewExchange>,
     store_pair_created_sunswap: StoreGetProto<proto::pb::sunswap::v1::PairCreated>,
     store_pair_created_uniswap_v2: StoreGetProto<uniswap::v2::PairCreated>,
+    store_pool_created_uniswap_v3: StoreGetProto<uniswap::v3::PoolCreated>,
+    store_initialize_uniswap_v4: StoreGetProto<uniswap::v4::Initialize>,
     store_token_create: StoreGetProto<proto::pb::sunpump::v1::TokenCreate>,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
@@ -52,6 +58,12 @@ pub fn db_out(
 
     // Process Uniswap V2 events (EVM)
     uniswap_v2::process_events(&encoding, &mut tables, &clock, &uniswap_v2_events, &store_pair_created_uniswap_v2);
+
+    // Process Uniswap V3 events (EVM)
+    uniswap_v3::process_events(&encoding, &mut tables, &clock, &uniswap_v3_events, &store_pool_created_uniswap_v3);
+
+    // Process Uniswap V4 events (EVM)
+    uniswap_v4::process_events(&encoding, &mut tables, &clock, &uniswap_v4_events, &store_initialize_uniswap_v4);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
