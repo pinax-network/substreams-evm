@@ -24,9 +24,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(curvefi::log::Log::RemoveLiquidityImbalance(event)) => {
                     process_remove_liquidity_imbalance(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(curvefi::log::Log::Init(event)) => {
-                    process_init(encoding, tables, clock, tx, log, tx_index, log_index, event);
-                }
+                // TODO: Init event not yet defined in proto
+                // Some(curvefi::log::Log::Init(event)) => {
+                //     process_init(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                // }
                 _ => {}
             }
         }
@@ -160,30 +161,31 @@ fn process_remove_liquidity_imbalance(
     row.set("token_supply", &event.token_supply);
 }
 
-fn process_init(
-    encoding: &Encoding,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &curvefi::Transaction,
-    log: &curvefi::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &curvefi::Init,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("curvefi_init", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-
-    row.set("owner", bytes_to_string(&event.owner, encoding));
-    // Note: Coins are stored as comma-separated addresses for consistency with other
-    // array fields in this codebase (e.g., token_amounts, fees in AddLiquidity).
-    // CurveFi pools typically have 2-4 coins, so this approach is acceptable.
-    row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
-    row.set("pool_token", bytes_to_string(&event.pool_token, encoding));
-    row.set("a", &event.a);
-    row.set("fee", &event.fee);
-    row.set("admin_fee", &event.admin_fee);
-}
+// TODO: Init event not yet defined in proto - commented out for now
+// fn process_init(
+//     encoding: &Encoding,
+//     tables: &mut Tables,
+//     clock: &Clock,
+//     tx: &curvefi::Transaction,
+//     log: &curvefi::Log,
+//     tx_index: usize,
+//     log_index: usize,
+//     event: &curvefi::Init,
+// ) {
+//     let key = log_key(clock, tx_index, log_index);
+//     let row = tables.create_row("curvefi_init", key);
+//
+//     set_clock(clock, row);
+//     set_template_tx(encoding, tx, tx_index, row);
+//     set_template_log(encoding, log, log_index, row);
+//
+//     row.set("owner", bytes_to_string(&event.owner, encoding));
+//     // Note: Coins are stored as comma-separated addresses for consistency with other
+//     // array fields in this codebase (e.g., token_amounts, fees in AddLiquidity).
+//     // CurveFi pools typically have 2-4 coins, so this approach is acceptable.
+//     row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
+//     row.set("pool_token", bytes_to_string(&event.pool_token, encoding));
+//     row.set("a", &event.a);
+//     row.set("fee", &event.fee);
+//     row.set("admin_fee", &event.admin_fee);
+// }
