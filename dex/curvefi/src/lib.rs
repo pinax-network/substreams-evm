@@ -1,8 +1,7 @@
-use core::panic;
-
+mod store;
 use proto::pb::curvefi::v1 as pb;
 use substreams_abis::evm::curvefi;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::{Block, CallType, Log, TransactionTrace};
 use substreams_ethereum::Event;
 
 fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
@@ -13,6 +12,15 @@ fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
         data: log.data.to_vec(),
         log: Some(event),
     }
+}
+
+fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
+    for call in trx.calls.iter() {
+        if call.call_type == CallType::Create as i32 {
+            return Some(call.address.to_vec());
+        }
+    }
+    None
 }
 
 #[substreams::handlers::map]
@@ -50,7 +58,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             value: value.to_string(),
             logs: vec![],
         };
-
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
 
@@ -179,35 +186,41 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // PlainPoolDeploy
             if let Some(event) = curvefi::factory::events::PlainPoolDeployed::match_and_decode(log) {
-                total_plain_pool_deployed += 1;
-                let event = pb::log::Log::PlainPoolDeployed(pb::PlainPoolDeployed {
-                    a: event.a.to_string(),
-                    coins: event.coins,
-                    deployer: event.deployer,
-                    fee: event.fee.to_string(),
-                });
-                transaction.logs.push(create_log(log, event));
+                if let Some(address) = get_create_address(trx) {
+                    total_plain_pool_deployed += 1;
+                    let event = pb::log::Log::PlainPoolDeployed(pb::PlainPoolDeployed {
+                        factory: log.address.to_vec(),
+                        address,
+                        a: event.a.to_string(),
+                        coins: event.coins,
+                        deployer: event.deployer,
+                        fee: event.fee.to_string(),
+                    });
+                    transaction.logs.push(create_log(log, event));
+                }
             }
 
             // MetaPoolDeployed
             if let Some(event) = curvefi::factory::events::MetaPoolDeployed::match_and_decode(log) {
-                total_meta_pool_deployed += 1;
-                let event = pb::log::Log::MetaPoolDeployed(pb::MetaPoolDeployed {
-                    a: event.a.to_string(),
-                    base_pool: event.base_pool,
-                    coin: event.coin,
-                    deployer: event.deployer,
-                    fee: event.fee.to_string(),
-                });
-                transaction.logs.push(create_log(log, event));
+                if let Some(address) = get_create_address(trx) {
+                    total_meta_pool_deployed += 1;
+                    let event = pb::log::Log::MetaPoolDeployed(pb::MetaPoolDeployed {
+                        factory: log.address.to_vec(),
+                        address,
+                        a: event.a.to_string(),
+                        base_pool: event.base_pool,
+                        coin: event.coin,
+                        deployer: event.deployer,
+                        fee: event.fee.to_string(),
+                    });
+                    transaction.logs.push(create_log(log, event));
+                }
             }
 
             // BasePoolAdded
             if let Some(event) = curvefi::factory::events::BasePoolAdded::match_and_decode(log) {
                 total_base_pool_added += 1;
-                let event = pb::log::Log::BasePoolAdded(pb::BasePoolAdded {
-                    base_pool: event.base_pool,
-                });
+                let event = pb::log::Log::BasePoolAdded(pb::BasePoolAdded { base_pool: event.base_pool });
                 transaction.logs.push(create_log(log, event));
             }
 
