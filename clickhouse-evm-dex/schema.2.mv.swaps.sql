@@ -191,3 +191,165 @@ SELECT
 
 FROM sunpump_token_sold
 WHERE factory != '';  -- exclude invalid events with empty factory address
+
+-- Uniswap V1 TokenPurchase: User buys tokens with ETH (ETH → Token)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
+TO swaps AS
+SELECT
+    'uniswap-v1' AS protocol,
+    -- include everything from uniswap_v1_token_purchase except the non-relevant fields
+    * EXCEPT (
+        buyer,
+        eth_sold,
+        tokens_bought,
+        token
+    ),
+
+    -- mapped swap fields
+    log_address                        AS pool,
+    buyer                              AS user,
+
+    -- Input side: ETH being sold
+    '0x0000000000000000000000000000000000000000'  AS input_contract,  -- ETH native asset
+    eth_sold                           AS input_amount,
+
+    -- Output side: Tokens being bought
+    token                              AS output_contract,
+    tokens_bought                      AS output_amount
+
+FROM uniswap_v1_token_purchase
+WHERE factory != '';  -- exclude invalid events with empty factory address
+
+
+-- Uniswap V1 EthPurchase: User buys ETH with tokens (Token → ETH)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_eth_purchase
+TO swaps AS
+SELECT
+    'uniswap-v1' AS protocol,
+    -- include everything from uniswap_v1_eth_purchase except the non-relevant fields
+    * EXCEPT (
+        buyer,
+        tokens_sold,
+        eth_bought,
+        token
+    ),
+
+    -- mapped swap fields
+    log_address                        AS pool,
+    buyer                              AS user,
+
+    -- Input side: Tokens being sold
+    token                              AS input_contract,
+    tokens_sold                        AS input_amount,
+
+    -- Output side: ETH being bought
+    '0x0000000000000000000000000000000000000000'  AS output_contract,  -- ETH native asset
+    eth_bought                         AS output_amount
+
+FROM uniswap_v1_eth_purchase
+WHERE factory != '';  -- exclude invalid events with empty factory address
+
+
+-- Uniswap V2 Swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
+TO swaps AS
+SELECT
+    'uniswap-v2' AS protocol,
+    -- include everything from uniswap_v2_swap except the non-relevant fields
+    * EXCEPT (
+        sender,
+        `to`,
+        amount0_in,
+        amount1_in,
+        amount0_out,
+        amount1_out,
+        token0,
+        token1
+    ),
+
+    -- mapped swap fields
+    log_address                        AS pool,
+    sender                             AS user,
+
+    -- Input side
+    if (amount0_in > toUInt256(0), token0, token1)      AS input_contract,
+    if (amount0_in > toUInt256(0), amount0_in, amount1_in) AS input_amount,
+
+    -- Output side
+    if (amount0_in > toUInt256(0), token1, token0)      AS output_contract,
+    if (amount0_in > toUInt256(0), amount1_out, amount0_out) AS output_amount
+
+FROM uniswap_v2_swap
+WHERE factory != '';  -- exclude invalid events with empty factory address
+
+
+-- Uniswap V3 Swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
+TO swaps AS
+SELECT
+    'uniswap-v3' AS protocol,
+    -- include everything from uniswap_v3_swap except the non-relevant fields
+    * EXCEPT (
+        sender,
+        recipient,
+        amount0,
+        amount1,
+        sqrt_price_x96,
+        liquidity,
+        tick,
+        token0,
+        token1,
+        fee,
+        tick_spacing
+    ),
+
+    -- mapped swap fields
+    log_address                        AS pool,
+    sender                             AS user,
+
+    -- Input side: negative amount means input
+    if (amount0 < toString(toInt256(0)), token0, token1)      AS input_contract,
+    if (amount0 < toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
+
+    -- Output side: positive amount means output
+    if (amount0 < toString(toInt256(0)), token1, token0)      AS output_contract,
+    if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
+
+FROM uniswap_v3_swap
+WHERE factory != '';  -- exclude invalid events with empty factory address
+
+
+-- Uniswap V4 Swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
+TO swaps AS
+SELECT
+    'uniswap-v4' AS protocol,
+    -- include everything from uniswap_v4_swap except the non-relevant fields
+    * EXCEPT (
+        id,
+        sender,
+        amount0,
+        amount1,
+        sqrt_price_x96,
+        liquidity,
+        tick,
+        fee,
+        currency0,
+        currency1,
+        tick_spacing
+    ),
+
+    -- mapped swap fields
+    log_address                        AS pool,
+    sender                             AS user,
+
+    -- Input side: negative amount means input
+    if (amount0 < toString(toInt256(0)), currency0, currency1)      AS input_contract,
+    if (amount0 < toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
+
+    -- Output side: positive amount means output
+    if (amount0 < toString(toInt256(0)), currency1, currency0)      AS output_contract,
+    if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
+
+FROM uniswap_v4_swap
+WHERE factory != '';  -- exclude invalid events with empty factory address
