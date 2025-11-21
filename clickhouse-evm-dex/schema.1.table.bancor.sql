@@ -10,10 +10,16 @@ ALTER TABLE bancor_conversion
     ADD COLUMN IF NOT EXISTS target_amount      String COMMENT 'Amount of target tokens',
     ADD COLUMN IF NOT EXISTS conversion_fee     String COMMENT 'Conversion fee',
 
+    -- Activation (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
     ADD INDEX IF NOT EXISTS idx_target_token (target_token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_trader (trader) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_trader (trader) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (Activation) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Bancor LiquidityAdded --
 CREATE TABLE IF NOT EXISTS bancor_liquidity_added AS TEMPLATE_LOG
@@ -26,9 +32,15 @@ ALTER TABLE bancor_liquidity_added
     ADD COLUMN IF NOT EXISTS new_balance        String COMMENT 'New reserve balance',
     ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
 
+    -- Activation (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (Activation) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Bancor LiquidityRemoved --
 CREATE TABLE IF NOT EXISTS bancor_liquidity_removed AS TEMPLATE_LOG
@@ -41,9 +53,15 @@ ALTER TABLE bancor_liquidity_removed
     ADD COLUMN IF NOT EXISTS new_balance        String COMMENT 'New reserve balance',
     ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
 
+    -- Activation (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (Activation) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Bancor TokenRateUpdate --
 CREATE TABLE IF NOT EXISTS bancor_token_rate_update AS TEMPLATE_LOG
@@ -55,6 +73,12 @@ ALTER TABLE bancor_token_rate_update
     ADD COLUMN IF NOT EXISTS rate_n             String COMMENT 'Rate numerator',
     ADD COLUMN IF NOT EXISTS rate_d             String COMMENT 'Rate denominator',
 
+    -- Activation (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token2 (token2) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token2 (token2) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (Activation) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
