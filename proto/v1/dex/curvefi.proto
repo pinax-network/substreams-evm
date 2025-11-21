@@ -37,6 +37,8 @@ message Log {
     // Factory
     PlainPoolDeployed plain_pool_deployed = 21;
     MetaPoolDeployed meta_pool_deployed = 22;
+    BasePoolAdded base_pool_added = 23;
+    LiquidityGaugeDeployed liquidity_gauge_deployed = 24;
   }
 }
 
@@ -127,4 +129,11 @@ message MetaPoolDeployed {
   string A = 3;   // uint256
   string fee = 4; // uint256
   bytes deployer = 5;
+}
+
+message BasePoolAdded { bytes base_pool = 1; }
+
+message LiquidityGaugeDeployed {
+  bytes pool = 1;
+  bytes gauge = 2;
 }
