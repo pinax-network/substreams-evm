@@ -36,25 +36,11 @@ pub mod evm {
         }
     }
 }
-pub mod justswap {
-    // @@protoc_insertion_point(attribute:justswap.v1)
-    pub mod v1 {
-        include!("justswap.v1.rs");
-        // @@protoc_insertion_point(justswap.v1)
-    }
-}
 pub mod sunpump {
     // @@protoc_insertion_point(attribute:sunpump.v1)
     pub mod v1 {
         include!("sunpump.v1.rs");
         // @@protoc_insertion_point(sunpump.v1)
-    }
-}
-pub mod sunswap {
-    // @@protoc_insertion_point(attribute:sunswap.v1)
-    pub mod v1 {
-        include!("sunswap.v1.rs");
-        // @@protoc_insertion_point(sunswap.v1)
     }
 }
 pub mod uniswap {

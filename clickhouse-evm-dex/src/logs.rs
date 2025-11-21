@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{balancer, bancor, cow, curvefi, justswap, sunpump, sunswap, uniswap};
+use proto::pb::{balancer, bancor, cow, curvefi, sunpump, uniswap};
 use substreams::pb::substreams::Clock;
 
 pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
@@ -31,38 +31,6 @@ pub trait LogAddress {
     fn get_ordinal(&self) -> u64;
     fn get_topics(&self) -> &Vec<Vec<u8>>;
     fn get_data(&self) -> &Vec<u8>;
-}
-
-// JustSwap
-impl LogAddress for justswap::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
-
-// SunSwap
-impl LogAddress for sunswap::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
 }
 
 // SunPump

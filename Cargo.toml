@@ -7,19 +7,20 @@ members = [
   # Tokens
   "transfers",
 
-  # DEX
-  "dex/sunswap",
-  "dex/justswap",
+  # Tron DEX
   "dex/sunpump",
-  "dex/curvefi",
-  "dex/uniswap-v1",
-  "dex/uniswap-v2",
-  "dex/uniswap-v3",
-  "dex/uniswap-v4",
+
+  # Ethereum DEX
   "dex/balancer",
   "dex/curvefi",
   "dex/bancor",
   "dex/cow",
+
+  # Uniswap DEX
+  "dex/uniswap-v1",
+  "dex/uniswap-v4",
+  "dex/uniswap-v2",
+  "dex/uniswap-v3",
 
   # Common
   "proto",
