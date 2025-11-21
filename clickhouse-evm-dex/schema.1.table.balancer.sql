@@ -25,8 +25,8 @@ ALTER TABLE balancer_liquidity_added
     ADD COLUMN IF NOT EXISTS liquidity_provider String COMMENT 'Liquidity provider address',
     ADD COLUMN IF NOT EXISTS kind               UInt32 COMMENT 'Type of liquidity addition',
     ADD COLUMN IF NOT EXISTS total_supply       String COMMENT 'Total supply after addition',
-    ADD COLUMN IF NOT EXISTS amounts_added_raw  Array(String) COMMENT 'Array of amounts added',
-    ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw Array(String) COMMENT 'Array of swap fee amounts',
+    ADD COLUMN IF NOT EXISTS amounts_added_raw  String COMMENT 'Comma-separated amounts added',
+    ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter GRANULARITY 1,
@@ -41,8 +41,8 @@ ALTER TABLE balancer_liquidity_removed
     ADD COLUMN IF NOT EXISTS liquidity_provider String COMMENT 'Liquidity provider address',
     ADD COLUMN IF NOT EXISTS kind               UInt32 COMMENT 'Type of liquidity removal',
     ADD COLUMN IF NOT EXISTS total_supply       String COMMENT 'Total supply after removal',
-    ADD COLUMN IF NOT EXISTS amounts_removed_raw Array(String) COMMENT 'Array of amounts removed',
-    ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw Array(String) COMMENT 'Array of swap fee amounts',
+    ADD COLUMN IF NOT EXISTS amounts_removed_raw String COMMENT 'Comma-separated amounts removed',
+    ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter GRANULARITY 1,
