@@ -1,0 +1,133 @@
+-- Uniswap V1 TokenPurchase (ETH->Token) --
+CREATE TABLE IF NOT EXISTS uniswap_v1_token_purchase AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 TokenPurchase events (ETH sold for tokens)';
+ALTER TABLE uniswap_v1_token_purchase
+    -- swap event information --
+    ADD COLUMN IF NOT EXISTS buyer              String COMMENT 'buyer wallet address',
+    ADD COLUMN IF NOT EXISTS eth_sold           String COMMENT 'Amount of ETH sold',
+    ADD COLUMN IF NOT EXISTS tokens_bought      String COMMENT 'Amount of tokens bought',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 EthPurchase (Token->ETH) --
+CREATE TABLE IF NOT EXISTS uniswap_v1_eth_purchase AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 EthPurchase events (tokens sold for ETH)';
+ALTER TABLE uniswap_v1_eth_purchase
+    -- swap event information --
+    ADD COLUMN IF NOT EXISTS buyer              String COMMENT 'buyer wallet address',
+    ADD COLUMN IF NOT EXISTS tokens_sold        String COMMENT 'Amount of tokens sold',
+    ADD COLUMN IF NOT EXISTS eth_bought         String COMMENT 'Amount of ETH bought',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 AddLiquidity --
+CREATE TABLE IF NOT EXISTS uniswap_v1_add_liquidity AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 AddLiquidity events';
+ALTER TABLE uniswap_v1_add_liquidity
+    -- event information --
+    ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
+    ADD COLUMN IF NOT EXISTS eth_amount         String COMMENT 'Amount of ETH added',
+    ADD COLUMN IF NOT EXISTS token_amount       String COMMENT 'Amount of tokens added',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 RemoveLiquidity --
+CREATE TABLE IF NOT EXISTS uniswap_v1_remove_liquidity AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 RemoveLiquidity events';
+ALTER TABLE uniswap_v1_remove_liquidity
+    -- event information --
+    ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
+    ADD COLUMN IF NOT EXISTS eth_amount         String COMMENT 'Amount of ETH removed',
+    ADD COLUMN IF NOT EXISTS token_amount       String COMMENT 'Amount of tokens removed',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 Transfer --
+CREATE TABLE IF NOT EXISTS uniswap_v1_transfer AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 Transfer events';
+ALTER TABLE uniswap_v1_transfer
+    -- event information --
+    ADD COLUMN IF NOT EXISTS from               String COMMENT 'From address',
+    ADD COLUMN IF NOT EXISTS to                 String COMMENT 'To address',
+    ADD COLUMN IF NOT EXISTS value              String COMMENT 'Amount transferred',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_from (from) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_to (to) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 Approval --
+CREATE TABLE IF NOT EXISTS uniswap_v1_approval AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 Approval events';
+ALTER TABLE uniswap_v1_approval
+    -- event information --
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Token owner address',
+    ADD COLUMN IF NOT EXISTS spender            String COMMENT 'Approved spender address',
+    ADD COLUMN IF NOT EXISTS value              String COMMENT 'Approved amount',
+
+    -- NewExchange --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_spender (spender) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (NewExchange) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+
+-- Uniswap V1 NewExchange --
+CREATE TABLE IF NOT EXISTS uniswap_v1_new_exchange AS TEMPLATE_LOG
+COMMENT 'Uniswap V1 NewExchange events';
+ALTER TABLE uniswap_v1_new_exchange
+    -- event information --
+    ADD COLUMN IF NOT EXISTS exchange           String COMMENT 'Exchange contract address',
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_exchange (exchange) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
