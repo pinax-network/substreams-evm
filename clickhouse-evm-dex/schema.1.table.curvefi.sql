@@ -64,3 +64,19 @@ ALTER TABLE curvefi_remove_liquidity_imbalance
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1;
+
+-- Curve.fi Init --
+CREATE TABLE IF NOT EXISTS curvefi_init AS TEMPLATE_LOG
+COMMENT 'Curve.fi Init (pool creation) events';
+ALTER TABLE curvefi_init
+    -- event information --
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Contract owner address',
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS pool_token         String COMMENT 'LP token address',
+    ADD COLUMN IF NOT EXISTS a                  String COMMENT 'Amplification coefficient',
+    ADD COLUMN IF NOT EXISTS fee                String COMMENT 'Exchange fee',
+    ADD COLUMN IF NOT EXISTS admin_fee          String COMMENT 'Admin fee',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_pool_token (pool_token) TYPE bloom_filter GRANULARITY 1;
