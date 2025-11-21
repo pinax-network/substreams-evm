@@ -10,13 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(
-    encoding: &Encoding,
-    tables: &mut Tables,
-    clock: &Clock,
-    events: &uniswap::Events,
-    store: &StoreGetProto<PoolCreated>,
-) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<PoolCreated>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {

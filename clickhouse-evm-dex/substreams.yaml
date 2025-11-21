@@ -12,13 +12,17 @@ imports:
   sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # DEX Substreams
-  justswap: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.4/evm-justswap-v0.1.4.spkg
-  sunswap: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.4/evm-sunswap-v0.1.4.spkg
-  sunpump: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.5/evm-sunpump-v0.1.5.spkg
+  justswap: ../dex/justswap/substreams.yaml
+  sunswap: ../dex/sunswap/substreams.yaml
+  sunpump: ../dex/sunpump/substreams.yaml
   balancer: ../dex/balancer/substreams.yaml
   bancor: ../dex/bancor/substreams.yaml
   cow: ../dex/cow/substreams.yaml
   curvefi: ../dex/curvefi/substreams.yaml
+  uniswap_v1: ../dex/uniswap-v1/substreams.yaml
+  uniswap_v2: ../dex/uniswap-v2/substreams.yaml
+  uniswap_v3: ../dex/uniswap-v3/substreams.yaml
+  uniswap_v4: ../dex/uniswap-v4/substreams.yaml
 
 binaries:
   default:
@@ -36,6 +40,15 @@ modules:
       - map: bancor:map_events
       - map: cow:map_events
       - map: curvefi:map_events
+      - map: uniswap_v1:map_events
+      - map: uniswap_v2:map_events
+      - map: uniswap_v3:map_events
+      - map: uniswap_v4:map_events
+      - store: justswap:store_new_exchange
+      - store: sunswap:store_new_exchange
+      - store: sunpump:store_token_create
+      - store: balancer:store_pool_created
+      - store: bancor:store_new_pool
       - store: justswap:store_pair_created
       - store: sunswap:store_new_exchange
       - store: sunpump:store_token_create

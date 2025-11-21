@@ -24,66 +24,77 @@ use substreams_database_change::pb::database::DatabaseChanges;
 pub fn db_out(
     params: String,
     clock: Clock,
-    justswap_events: proto::pb::justswap::v1::Events,
-    sunswap_events: proto::pb::sunswap::v1::Events,
-    sunpump_events: proto::pb::sunpump::v1::Events,
-    uniswap_v1_events: uniswap::v1::Events,
-    uniswap_v2_events: uniswap::v2::Events,
-    uniswap_v3_events: uniswap::v3::Events,
-    uniswap_v4_events: uniswap::v4::Events,
-    balancer_events: proto::pb::balancer::v1::Events,
-    bancor_events: proto::pb::bancor::v1::Events,
-    cow_events: proto::pb::cow::v1::Events,
-    curvefi_events: proto::pb::curvefi::v1::Events,
-    store_new_exchange_justswap: StoreGetProto<proto::pb::justswap::v1::NewExchange>,
-    store_new_exchange_uniswap_v1: StoreGetProto<uniswap::v1::NewExchange>,
-    store_pair_created_sunswap: StoreGetProto<proto::pb::sunswap::v1::PairCreated>,
-    store_pair_created_uniswap_v2: StoreGetProto<uniswap::v2::PairCreated>,
-    store_pool_created_uniswap_v3: StoreGetProto<uniswap::v3::PoolCreated>,
-    store_initialize_uniswap_v4: StoreGetProto<uniswap::v4::Initialize>,
-    store_token_create: StoreGetProto<proto::pb::sunpump::v1::TokenCreate>,
+
+    // TVM events
+    events_justswap: proto::pb::justswap::v1::Events,
+    events_sunswap: proto::pb::sunswap::v1::Events,
+    events_sunpump: proto::pb::sunpump::v1::Events,
+
+    // EVM events
+    events_balancer: proto::pb::balancer::v1::Events,
+    events_bancor: proto::pb::bancor::v1::Events,
+    events_cow: proto::pb::cow::v1::Events,
+    events_curvefi: proto::pb::curvefi::v1::Events,
+
+    // Uniswap events
+    events_uniswap_v1: uniswap::v1::Events,
+    events_uniswap_v2: uniswap::v2::Events,
+    events_uniswap_v3: uniswap::v3::Events,
+    events_uniswap_v4: uniswap::v4::Events,
+
+    // TVM stores
+    store_justswap: StoreGetProto<proto::pb::justswap::v1::NewExchange>,
+    store_sunswap: StoreGetProto<proto::pb::sunswap::v1::PairCreated>,
+    store_sunpump: StoreGetProto<proto::pb::sunpump::v1::TokenCreate>,
+
+    // EVM stores
+    store_balancer: StoreGetProto<proto::pb::balancer::v1::PoolRegistered>,
+    store_bancor: StoreGetProto<proto::pb::bancor::v1::Activation>,
+    store_curvefi: StoreGetProto<proto::pb::curvefi::v1::PlainPoolDeployed>,
+
+    // Uniswap stores
+    store_uniswap_v1: StoreGetProto<uniswap::v1::NewExchange>,
+    store_uniswap_v2: StoreGetProto<uniswap::v2::PairCreated>,
+    store_uniswap_v3: StoreGetProto<uniswap::v3::PoolCreated>,
+    store_uniswap_v4: StoreGetProto<uniswap::v4::Initialize>,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
     // Handle support both EVM & TVM address encoding
-    let encoding = if params == "tron_base58" {
-        Encoding::TronBase58
-    } else {
-        Encoding::Hex
-    };
+    let encoding = if params == "tron_base58" { Encoding::TronBase58 } else { Encoding::Hex };
 
     // Process JustSwap events (TRON)
-    justswap::process_events(&encoding, &mut tables, &clock, &justswap_events, &store_new_exchange_justswap);
+    justswap::process_events(&encoding, &mut tables, &clock, &events_justswap, &store_justswap);
 
     // Process SunSwap events (TRON)
-    sunswap::process_events(&encoding, &mut tables, &clock, &sunswap_events, &store_pair_created_sunswap);
+    sunswap::process_events(&encoding, &mut tables, &clock, &events_sunswap, &store_sunswap);
 
     // Process SunPump events (TRON)
-    sunpump::process_events(&encoding, &mut tables, &clock, &sunpump_events, &store_token_create);
+    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &store_sunpump);
 
     // Process Uniswap V1 events (EVM)
-    uniswap_v1::process_events(&encoding, &mut tables, &clock, &uniswap_v1_events, &store_new_exchange_uniswap_v1);
+    uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);
 
     // Process Uniswap V2 events (EVM)
-    uniswap_v2::process_events(&encoding, &mut tables, &clock, &uniswap_v2_events, &store_pair_created_uniswap_v2);
+    uniswap_v2::process_events(&encoding, &mut tables, &clock, &events_uniswap_v2, &store_uniswap_v2);
 
     // Process Uniswap V3 events (EVM)
-    uniswap_v3::process_events(&encoding, &mut tables, &clock, &uniswap_v3_events, &store_pool_created_uniswap_v3);
+    uniswap_v3::process_events(&encoding, &mut tables, &clock, &events_uniswap_v3, &store_uniswap_v3);
 
     // Process Uniswap V4 events (EVM)
-    uniswap_v4::process_events(&encoding, &mut tables, &clock, &uniswap_v4_events, &store_initialize_uniswap_v4);
+    uniswap_v4::process_events(&encoding, &mut tables, &clock, &events_uniswap_v4, &store_uniswap_v4);
 
     // Process Balancer events (EVM)
-    balancer::process_events(&encoding, &mut tables, &clock, &balancer_events);
+    balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &store_balancer);
 
     // Process Bancor events (EVM)
-    bancor::process_events(&encoding, &mut tables, &clock, &bancor_events);
+    bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &store_bancor);
 
     // Process CoW Protocol events (EVM)
-    cow::process_events(&encoding, &mut tables, &clock, &cow_events);
+    cow::process_events(&encoding, &mut tables, &clock, &events_cow);
 
     // Process Curve.fi events (EVM)
-    curvefi::process_events(&encoding, &mut tables, &clock, &curvefi_events);
+    curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &store_curvefi);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {

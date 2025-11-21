@@ -3,7 +3,11 @@ use proto::pb::balancer::v1::{self as balancer};
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{logs::set_template_log, set_clock, transactions::set_template_tx};
+use crate::{
+    logs::{log_key, set_template_log},
+    set_clock,
+    transactions::set_template_tx,
+};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
@@ -25,16 +29,6 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
             }
         }
     }
-}
-
-fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 5] {
-    [
-        ("block_num", clock.number.to_string()),
-        ("block_hash", format!("0x{}", clock.id)),
-        ("tx_index", tx_index.to_string()),
-        ("log_index", log_index.to_string()),
-        ("timestamp", clock.timestamp.as_ref().map(|t| t.seconds.to_string()).unwrap_or_default()),
-    ]
 }
 
 fn process_vault_swap(

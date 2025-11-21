@@ -113,7 +113,6 @@ impl LogAddress for uniswap::v2::Log {
     }
 }
 
-
 // Uniswap V3
 impl LogAddress for uniswap::v3::Log {
     fn get_address(&self) -> &Vec<u8> {
