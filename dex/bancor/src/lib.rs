@@ -4,6 +4,8 @@ use substreams_abis::evm::bancor::standardpoolconverter as bancor;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
+pub mod store;
+
 fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
     pb::Log {
         address: log.address.to_vec(),
@@ -48,6 +50,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = bancor::events::Activation::match_and_decode(log) {
                 total_activations += 1;
                 let event = pb::log::Log::Activation(pb::Activation {
+                    factory: log.address.to_vec(),
                     converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
                     anchor: event.anchor.to_vec(),
                     activated: event.activated,
