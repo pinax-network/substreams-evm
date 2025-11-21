@@ -27,6 +27,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_new_fee = 0;
     let mut total_ramp_a = 0;
     let mut total_stop_ramp_a = 0;
+    let _total_init = 0; // Reserved for future Init event tracking
 
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
@@ -169,6 +170,30 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(create_log(log, event));
             }
+
+            // Init event
+            // Note: The Init event structure is defined in the proto but CurveFi contracts
+            // don't emit a standard Init event. This handler is commented out until
+            // the event is added to the substreams-abis or a custom implementation is provided.
+            // To enable this, you would need to:
+            // 1. Add the Init event ABI to substreams-abis
+            // 2. Change `_total_init` to `mut total_init` in the variable declarations above
+            // 3. Uncomment the code below
+            // 4. Uncomment the logging statement at the end of the function
+            /*
+            if let Some(event) = curvefi::events::Init::match_and_decode(log) {
+                total_init += 1;
+                let event = pb::log::Log::Init(pb::Init {
+                    owner: event.owner,
+                    coins: event.coins.to_vec(),
+                    pool_token: event.pool_token,
+                    a: event.a.to_string(),
+                    fee: event.fee.to_string(),
+                    admin_fee: event.admin_fee.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+            */
         }
 
         if !transaction.logs.is_empty() {
@@ -189,5 +214,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total NewFee events: {}", total_new_fee);
     substreams::log::info!("Total RampA events: {}", total_ramp_a);
     substreams::log::info!("Total StopRampA events: {}", total_stop_ramp_a);
+    // Note: Init event tracking reserved for future implementation
     Ok(events)
 }
