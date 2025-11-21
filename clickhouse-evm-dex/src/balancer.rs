@@ -1,26 +1,27 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::balancer::v1::{self as balancer};
-use substreams::pb::substreams::Clock;
+use proto::pb::balancer::v1::{self as balancer, PoolRegistered};
+use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
+    foundational_stores::get_pair_created,
     logs::{log_key, set_template_log},
     set_clock,
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events, store: &StoreGetProto<PoolRegistered>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(balancer::log::Log::VaultSwap(event)) => {
-                    process_vault_swap(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_vault_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::LiquidityAdded(event)) => {
-                    process_liquidity_added(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_added(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::LiquidityRemoved(event)) => {
-                    process_liquidity_removed(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_removed(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::PoolRegistered(event)) => {
                     process_pool_registered(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -31,8 +32,17 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
+pub fn set_pool_registered(encoding: &Encoding, value: Option<PoolRegistered>, row: &mut substreams_database_change::tables::Row) {
+    if let Some(value) = value {
+        row.set("factory", bytes_to_string(&value.factory, encoding));
+    } else {
+        row.set("factory", "");
+    }
+}
+
 fn process_vault_swap(
     encoding: &Encoding,
+    store: &StoreGetProto<PoolRegistered>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -47,6 +57,7 @@ fn process_vault_swap(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_pool_registered(encoding, get_pair_created(store, &event.pool), row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("token_in", bytes_to_string(&event.token_in, encoding));
@@ -59,6 +70,7 @@ fn process_vault_swap(
 
 fn process_liquidity_added(
     encoding: &Encoding,
+    store: &StoreGetProto<PoolRegistered>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -73,6 +85,7 @@ fn process_liquidity_added(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_pool_registered(encoding, get_pair_created(store, &event.pool), row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("liquidity_provider", bytes_to_string(&event.liquidity_provider, encoding));
@@ -84,6 +97,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
+    store: &StoreGetProto<PoolRegistered>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -98,6 +112,7 @@ fn process_liquidity_removed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_pool_registered(encoding, get_pair_created(store, &event.pool), row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("liquidity_provider", bytes_to_string(&event.liquidity_provider, encoding));
