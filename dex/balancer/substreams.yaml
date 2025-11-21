@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:balancer.v1.Events
 
+  - name: store_pool_registered
+    kind: store
+    updatePolicy: set
+    valueType: proto:balancer.v1.PoolRegistered
+    inputs:
+      - map: map_events
+
 network: mainnet
