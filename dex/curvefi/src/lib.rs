@@ -31,6 +31,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_stop_ramp_a = 0;
     let mut total_plain_pool_deployed = 0;
     let mut total_meta_pool_deployed = 0;
+    let mut total_base_pool_added = 0;
+    let mut total_liquidity_gauge_deployed = 0;
     let _total_init = 0; // Reserved for future Init event tracking
 
     for trx in block.transactions() {
@@ -199,6 +201,25 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(create_log(log, event));
             }
+
+            // BasePoolAdded
+            if let Some(event) = curvefi::factory::events::BasePoolAdded::match_and_decode(log) {
+                total_base_pool_added += 1;
+                let event = pb::log::Log::BasePoolAdded(pb::BasePoolAdded {
+                    base_pool: event.base_pool,
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // LiquidityGaugeDeployed
+            if let Some(event) = curvefi::factory::events::LiquidityGaugeDeployed::match_and_decode(log) {
+                total_liquidity_gauge_deployed += 1;
+                let event = pb::log::Log::LiquidityGaugeDeployed(pb::LiquidityGaugeDeployed {
+                    pool: event.pool,
+                    gauge: event.gauge,
+                });
+                transaction.logs.push(create_log(log, event));
+            }
         }
 
         if !transaction.logs.is_empty() {
@@ -221,6 +242,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total StopRampA events: {}", total_stop_ramp_a);
     substreams::log::info!("Total PlainPoolDeployed events: {}", total_plain_pool_deployed);
     substreams::log::info!("Total MetaPoolDeployed events: {}", total_meta_pool_deployed);
+    substreams::log::info!("Total BasePoolAdded events: {}", total_base_pool_added);
+    substreams::log::info!("Total LiquidityGaugeDeployed events: {}", total_liquidity_gauge_deployed);
     // Note: Init event tracking reserved for future implementation
     Ok(events)
 }
