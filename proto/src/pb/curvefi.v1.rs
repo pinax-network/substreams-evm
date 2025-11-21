@@ -77,6 +77,10 @@ pub mod log {
         PlainPoolDeployed(super::PlainPoolDeployed),
         #[prost(message, tag="22")]
         MetaPoolDeployed(super::MetaPoolDeployed),
+        #[prost(message, tag="23")]
+        BasePoolAdded(super::BasePoolAdded),
+        #[prost(message, tag="24")]
+        LiquidityGaugeDeployed(super::LiquidityGaugeDeployed),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -265,5 +269,19 @@ pub struct MetaPoolDeployed {
     pub fee: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="5")]
     pub deployer: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BasePoolAdded {
+    #[prost(bytes="vec", tag="1")]
+    pub base_pool: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LiquidityGaugeDeployed {
+    #[prost(bytes="vec", tag="1")]
+    pub pool: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub gauge: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)
