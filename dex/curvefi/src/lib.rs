@@ -177,7 +177,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // the event is added to the substreams-abis or a custom implementation is provided.
             // To enable this, you would need to:
             // 1. Add the Init event ABI to substreams-abis
-            // 2. Uncomment the code below
+            // 2. Change `_total_init` to `mut total_init` in the variable declarations above
+            // 3. Uncomment the code below
+            // 4. Uncomment the logging statement at the end of the function
             /*
             if let Some(event) = curvefi::events::Init::match_and_decode(log) {
                 total_init += 1;
