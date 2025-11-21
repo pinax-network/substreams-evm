@@ -3,6 +3,8 @@ use substreams_abis::evm::balancer;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
+pub mod store;
+
 fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
     pb::Log {
         address: log.address.to_vec(),
