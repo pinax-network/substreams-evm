@@ -178,6 +178,9 @@ fn process_init(
     set_template_log(encoding, log, log_index, row);
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
+    // Note: Coins are stored as comma-separated addresses for consistency with other
+    // array fields in this codebase (e.g., token_amounts, fees in AddLiquidity).
+    // CurveFi pools typically have 2-4 coins, so this approach is acceptable.
     row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
     row.set("pool_token", bytes_to_string(&event.pool_token, encoding));
     row.set("a", &event.a);
