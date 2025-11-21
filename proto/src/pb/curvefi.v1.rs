@@ -41,7 +41,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -49,6 +49,7 @@ pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
+        /// Pool
         #[prost(message, tag="10")]
         TokenExchange(super::TokenExchange),
         #[prost(message, tag="11")]
@@ -71,8 +72,11 @@ pub mod log {
         RampA(super::RampA),
         #[prost(message, tag="20")]
         StopRampA(super::StopRampA),
+        /// Factory
         #[prost(message, tag="21")]
-        Init(super::Init),
+        PlainPoolDeployed(super::PlainPoolDeployed),
+        #[prost(message, tag="22")]
+        MetaPoolDeployed(super::MetaPoolDeployed),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -220,25 +224,6 @@ pub struct StopRampA {
     #[prost(string, tag="2")]
     pub t: ::prost::alloc::string::String,
 }
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Init {
-    #[prost(bytes="vec", tag="1")]
-    pub owner: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", repeated, tag="2")]
-    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
-    #[prost(bytes="vec", tag="3")]
-    pub pool_token: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="4")]
-    pub a: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="5")]
-    pub fee: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="6")]
-    pub admin_fee: ::prost::alloc::string::String,
-}
 /// Store messages
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -250,5 +235,35 @@ pub struct PoolInfo {
     /// uint256
     #[prost(string, tag="3")]
     pub total_liquidity: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct PlainPoolDeployed {
+    #[prost(bytes="vec", repeated, tag="1")]
+    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub fee: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="4")]
+    pub deployer: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MetaPoolDeployed {
+    #[prost(bytes="vec", tag="1")]
+    pub coin: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub base_pool: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub fee: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="5")]
+    pub deployer: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)
