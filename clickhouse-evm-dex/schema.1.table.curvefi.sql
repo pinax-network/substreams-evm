@@ -18,8 +18,8 @@ COMMENT 'Curve.fi AddLiquidity events';
 ALTER TABLE curvefi_add_liquidity
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
-    ADD COLUMN IF NOT EXISTS token_amounts      Array(String) COMMENT 'Array of token amounts added',
-    ADD COLUMN IF NOT EXISTS fees               Array(String) COMMENT 'Array of fees',
+    ADD COLUMN IF NOT EXISTS token_amounts      String COMMENT 'Comma-separated token amounts added',
+    ADD COLUMN IF NOT EXISTS fees               String COMMENT 'Comma-separated fees',
     ADD COLUMN IF NOT EXISTS invariant          String COMMENT 'Invariant value',
     ADD COLUMN IF NOT EXISTS token_supply       String COMMENT 'Total token supply',
 
@@ -32,8 +32,8 @@ COMMENT 'Curve.fi RemoveLiquidity events';
 ALTER TABLE curvefi_remove_liquidity
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
-    ADD COLUMN IF NOT EXISTS token_amounts      Array(String) COMMENT 'Array of token amounts removed',
-    ADD COLUMN IF NOT EXISTS fees               Array(String) COMMENT 'Array of fees',
+    ADD COLUMN IF NOT EXISTS token_amounts      String COMMENT 'Comma-separated token amounts removed',
+    ADD COLUMN IF NOT EXISTS fees               String COMMENT 'Comma-separated fees',
     ADD COLUMN IF NOT EXISTS token_supply       String COMMENT 'Total token supply',
 
     -- indexes --
@@ -57,8 +57,8 @@ COMMENT 'Curve.fi RemoveLiquidityImbalance events';
 ALTER TABLE curvefi_remove_liquidity_imbalance
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
-    ADD COLUMN IF NOT EXISTS token_amounts      Array(String) COMMENT 'Array of token amounts',
-    ADD COLUMN IF NOT EXISTS fees               Array(String) COMMENT 'Array of fees',
+    ADD COLUMN IF NOT EXISTS token_amounts      String COMMENT 'Comma-separated token amounts',
+    ADD COLUMN IF NOT EXISTS fees               String COMMENT 'Comma-separated fees',
     ADD COLUMN IF NOT EXISTS invariant          String COMMENT 'Invariant value',
     ADD COLUMN IF NOT EXISTS token_supply       String COMMENT 'Total token supply',
 
