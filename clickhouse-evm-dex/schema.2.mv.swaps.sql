@@ -353,3 +353,132 @@ SELECT
 
 FROM uniswap_v4_swap
 WHERE factory != '';  -- exclude invalid events with empty factory address
+
+
+-- Curve.fi TokenExchange (Swap)
+-- Note: Curve doesn't have a clear factory/token0/token1 structure like Uniswap
+-- The sold_id and bought_id are indices that need to be mapped to actual token addresses
+-- For now, we'll use the pool address as both pool and factory
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
+TO swaps AS
+SELECT
+    'curvefi' AS protocol,
+    -- include everything from curvefi_token_exchange except the non-relevant fields
+    * EXCEPT (
+        buyer,
+        sold_id,
+        tokens_sold,
+        bought_id,
+        tokens_bought
+    ),
+
+    -- mapped swap fields
+    ''                                 AS factory,  -- Curve doesn't have a factory field
+    log_address                        AS pool,
+    buyer                              AS user,
+
+    -- Note: sold_id and bought_id are token indices, not addresses
+    -- In a full implementation, these would be resolved via store lookups
+    -- For now, we use the indices as placeholders
+    CONCAT('curvefi_token_', sold_id)  AS input_contract,
+    tokens_sold                        AS input_amount,
+
+    CONCAT('curvefi_token_', bought_id) AS output_contract,
+    tokens_bought                      AS output_amount
+
+FROM curvefi_token_exchange;
+
+
+-- Balancer V3 Vault Swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
+TO swaps AS
+SELECT
+    'balancer' AS protocol,
+    -- include everything from balancer_vault_swap except the non-relevant fields
+    * EXCEPT (
+        pool,
+        token_in,
+        token_out,
+        amount_in,
+        amount_out,
+        swap_fee_percentage,
+        swap_fee_amount
+    ),
+
+    -- mapped swap fields
+    ''                                 AS factory,  -- Balancer V3 doesn't have a factory field in swap events
+    pool                               AS pool,
+    tx_from                            AS user,  -- Using tx_from as the user since there's no explicit user in the event
+
+    -- Input side
+    token_in                           AS input_contract,
+    amount_in                          AS input_amount,
+
+    -- Output side
+    token_out                          AS output_contract,
+    amount_out                         AS output_amount
+
+FROM balancer_vault_swap;
+
+
+-- Bancor Conversion (Swap)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
+TO swaps AS
+SELECT
+    'bancor' AS protocol,
+    -- include everything from bancor_conversion except the non-relevant fields
+    * EXCEPT (
+        source_token,
+        target_token,
+        trader,
+        source_amount,
+        target_amount,
+        conversion_fee
+    ),
+
+    -- mapped swap fields
+    ''                                 AS factory,  -- Bancor doesn't have a factory field
+    log_address                        AS pool,
+    trader                             AS user,
+
+    -- Input side
+    source_token                       AS input_contract,
+    source_amount                      AS input_amount,
+
+    -- Output side
+    target_token                       AS output_contract,
+    target_amount                      AS output_amount
+
+FROM bancor_conversion;
+
+
+-- CoW Protocol Trade (Swap)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_cow_trade
+TO swaps AS
+SELECT
+    'cow' AS protocol,
+    -- include everything from cow_trade except the non-relevant fields
+    * EXCEPT (
+        owner,
+        sell_token,
+        buy_token,
+        sell_amount,
+        buy_amount,
+        fee_amount,
+        order_uid
+    ),
+
+    -- mapped swap fields
+    ''                                 AS factory,  -- CoW doesn't have a factory field
+    log_address                        AS pool,     -- Settlement contract address
+    owner                              AS user,
+
+    -- Input side
+    sell_token                         AS input_contract,
+    sell_amount                        AS input_amount,
+
+    -- Output side
+    buy_token                          AS output_contract,
+    buy_amount                         AS output_amount
+
+FROM cow_trade;

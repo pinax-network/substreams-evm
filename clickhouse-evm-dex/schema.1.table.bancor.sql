@@ -1,0 +1,60 @@
+-- Bancor Conversion (Swap) --
+CREATE TABLE IF NOT EXISTS bancor_conversion AS TEMPLATE_LOG
+COMMENT 'Bancor Conversion (swap) events';
+ALTER TABLE bancor_conversion
+    -- event information --
+    ADD COLUMN IF NOT EXISTS source_token       String COMMENT 'Source token contract address',
+    ADD COLUMN IF NOT EXISTS target_token       String COMMENT 'Target token contract address',
+    ADD COLUMN IF NOT EXISTS trader             String COMMENT 'Trader wallet address',
+    ADD COLUMN IF NOT EXISTS source_amount      String COMMENT 'Amount of source tokens',
+    ADD COLUMN IF NOT EXISTS target_amount      String COMMENT 'Amount of target tokens',
+    ADD COLUMN IF NOT EXISTS conversion_fee     String COMMENT 'Conversion fee',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_target_token (target_token) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_trader (trader) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor LiquidityAdded --
+CREATE TABLE IF NOT EXISTS bancor_liquidity_added AS TEMPLATE_LOG
+COMMENT 'Bancor LiquidityAdded events';
+ALTER TABLE bancor_liquidity_added
+    -- event information --
+    ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
+    ADD COLUMN IF NOT EXISTS reserve_token      String COMMENT 'Reserve token contract address',
+    ADD COLUMN IF NOT EXISTS amount             String COMMENT 'Amount of tokens added',
+    ADD COLUMN IF NOT EXISTS new_balance        String COMMENT 'New reserve balance',
+    ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor LiquidityRemoved --
+CREATE TABLE IF NOT EXISTS bancor_liquidity_removed AS TEMPLATE_LOG
+COMMENT 'Bancor LiquidityRemoved events';
+ALTER TABLE bancor_liquidity_removed
+    -- event information --
+    ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
+    ADD COLUMN IF NOT EXISTS reserve_token      String COMMENT 'Reserve token contract address',
+    ADD COLUMN IF NOT EXISTS amount             String COMMENT 'Amount of tokens removed',
+    ADD COLUMN IF NOT EXISTS new_balance        String COMMENT 'New reserve balance',
+    ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor TokenRateUpdate --
+CREATE TABLE IF NOT EXISTS bancor_token_rate_update AS TEMPLATE_LOG
+COMMENT 'Bancor TokenRateUpdate events';
+ALTER TABLE bancor_token_rate_update
+    -- event information --
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'First token contract address',
+    ADD COLUMN IF NOT EXISTS token2             String COMMENT 'Second token contract address',
+    ADD COLUMN IF NOT EXISTS rate_n             String COMMENT 'Rate numerator',
+    ADD COLUMN IF NOT EXISTS rate_d             String COMMENT 'Rate denominator',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_token2 (token2) TYPE bloom_filter GRANULARITY 1;

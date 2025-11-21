@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{justswap, sunpump, sunswap, uniswap};
+use proto::pb::{balancer, bancor, cow, curvefi, justswap, sunpump, sunswap, uniswap};
 use substreams::pb::substreams::Clock;
 
 pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
@@ -132,6 +132,70 @@ impl LogAddress for uniswap::v3::Log {
 
 // Uniswap V4
 impl LogAddress for uniswap::v4::Log {
+    fn get_address(&self) -> &Vec<u8> {
+        &self.address
+    }
+    fn get_ordinal(&self) -> u64 {
+        self.ordinal
+    }
+    fn get_topics(&self) -> &Vec<Vec<u8>> {
+        &self.topics
+    }
+    fn get_data(&self) -> &Vec<u8> {
+        &self.data
+    }
+}
+
+// Balancer
+impl LogAddress for balancer::v1::Log {
+    fn get_address(&self) -> &Vec<u8> {
+        &self.address
+    }
+    fn get_ordinal(&self) -> u64 {
+        self.ordinal
+    }
+    fn get_topics(&self) -> &Vec<Vec<u8>> {
+        &self.topics
+    }
+    fn get_data(&self) -> &Vec<u8> {
+        &self.data
+    }
+}
+
+// Bancor
+impl LogAddress for bancor::v1::Log {
+    fn get_address(&self) -> &Vec<u8> {
+        &self.address
+    }
+    fn get_ordinal(&self) -> u64 {
+        self.ordinal
+    }
+    fn get_topics(&self) -> &Vec<Vec<u8>> {
+        &self.topics
+    }
+    fn get_data(&self) -> &Vec<u8> {
+        &self.data
+    }
+}
+
+// CoW Protocol
+impl LogAddress for cow::v1::Log {
+    fn get_address(&self) -> &Vec<u8> {
+        &self.address
+    }
+    fn get_ordinal(&self) -> u64 {
+        self.ordinal
+    }
+    fn get_topics(&self) -> &Vec<Vec<u8>> {
+        &self.topics
+    }
+    fn get_data(&self) -> &Vec<u8> {
+        &self.data
+    }
+}
+
+// Curve.fi
+impl LogAddress for curvefi::v1::Log {
     fn get_address(&self) -> &Vec<u8> {
         &self.address
     }

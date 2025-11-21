@@ -1,4 +1,4 @@
-use proto::pb::{justswap, sunpump, sunswap, uniswap};
+use proto::pb::sunpump;
 use substreams::{
     store::{StoreGet, StoreGetProto},
     Hex,
