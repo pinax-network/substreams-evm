@@ -41,7 +41,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -71,6 +71,8 @@ pub mod log {
         RampA(super::RampA),
         #[prost(message, tag="20")]
         StopRampA(super::StopRampA),
+        #[prost(message, tag="21")]
+        Init(super::Init),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -217,6 +219,25 @@ pub struct StopRampA {
     /// uint256
     #[prost(string, tag="2")]
     pub t: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Init {
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", repeated, tag="2")]
+    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes="vec", tag="3")]
+    pub pool_token: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub admin_fee: ::prost::alloc::string::String,
 }
 /// Store messages
 #[allow(clippy::derive_partial_eq_without_eq)]
