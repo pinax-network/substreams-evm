@@ -15,6 +15,10 @@ imports:
   justswap: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.4/evm-justswap-v0.1.4.spkg
   sunswap: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.4/evm-sunswap-v0.1.4.spkg
   sunpump: https://github.com/pinax-network/substreams-evm/releases/download/evm-clickhouse-dex-v0.1.5/evm-sunpump-v0.1.5.spkg
+  balancer: ../dex/balancer/substreams.yaml
+  bancor: ../dex/bancor/substreams.yaml
+  cow: ../dex/cow/substreams.yaml
+  curvefi: ../dex/curvefi/substreams.yaml
 
 binaries:
   default:
@@ -28,6 +32,10 @@ modules:
       - map: justswap:map_events
       - map: sunswap:map_events
       - map: sunpump:map_events
+      - map: balancer:map_events
+      - map: bancor:map_events
+      - map: cow:map_events
+      - map: curvefi:map_events
       - store: justswap:store_pair_created
       - store: sunswap:store_new_exchange
       - store: sunpump:store_token_create
