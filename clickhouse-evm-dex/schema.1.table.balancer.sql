@@ -11,10 +11,16 @@ ALTER TABLE balancer_vault_swap
     ADD COLUMN IF NOT EXISTS swap_fee_percentage String COMMENT 'Swap fee percentage',
     ADD COLUMN IF NOT EXISTS swap_fee_amount    String COMMENT 'Swap fee amount',
 
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter GRANULARITY 1,
     ADD INDEX IF NOT EXISTS idx_token_in (token_in) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_out (token_out) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token_out (token_out) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Balancer LiquidityAdded --
 CREATE TABLE IF NOT EXISTS balancer_liquidity_added AS TEMPLATE_LOG
@@ -28,9 +34,15 @@ ALTER TABLE balancer_liquidity_added
     ADD COLUMN IF NOT EXISTS amounts_added_raw  String COMMENT 'Comma-separated amounts added',
     ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Balancer LiquidityRemoved --
 CREATE TABLE IF NOT EXISTS balancer_liquidity_removed AS TEMPLATE_LOG
@@ -44,9 +56,15 @@ ALTER TABLE balancer_liquidity_removed
     ADD COLUMN IF NOT EXISTS amounts_removed_raw String COMMENT 'Comma-separated amounts removed',
     ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter GRANULARITY 1,
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
 -- Balancer PoolRegistered --
 CREATE TABLE IF NOT EXISTS balancer_pool_registered AS TEMPLATE_LOG

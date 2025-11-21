@@ -1,29 +1,30 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::bancor::v1::{self as bancor};
-use substreams::pb::substreams::Clock;
+use proto::pb::bancor::v1::{self as bancor, Activation};
+use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
+    foundational_stores::get_pair_created,
     logs::{log_key, set_template_log},
     set_clock,
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &StoreGetProto<Activation>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(bancor::log::Log::Conversion(event)) => {
-                    process_conversion(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_conversion(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::LiquidityAdded(event)) => {
-                    process_liquidity_added(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_added(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::LiquidityRemoved(event)) => {
-                    process_liquidity_removed(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_removed(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::TokenRateUpdate(event)) => {
-                    process_token_rate_update(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_token_rate_update(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 _ => {}
             }
@@ -31,8 +32,17 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
+pub fn set_activation(encoding: &Encoding, value: Option<Activation>, row: &mut substreams_database_change::tables::Row) {
+    if let Some(value) = value {
+        row.set("factory", bytes_to_string(&value.factory, encoding));
+    } else {
+        row.set("factory", "");
+    }
+}
+
 fn process_conversion(
     encoding: &Encoding,
+    store: &StoreGetProto<Activation>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -47,6 +57,7 @@ fn process_conversion(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_activation(encoding, get_pair_created(store, &log.address), row);
 
     row.set("source_token", bytes_to_string(&event.source_token, encoding));
     row.set("target_token", bytes_to_string(&event.target_token, encoding));
@@ -58,6 +69,7 @@ fn process_conversion(
 
 fn process_liquidity_added(
     encoding: &Encoding,
+    store: &StoreGetProto<Activation>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -72,6 +84,7 @@ fn process_liquidity_added(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_activation(encoding, get_pair_created(store, &log.address), row);
 
     row.set("provider", bytes_to_string(&event.provider, encoding));
     row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
@@ -82,6 +95,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
+    store: &StoreGetProto<Activation>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -96,6 +110,7 @@ fn process_liquidity_removed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_activation(encoding, get_pair_created(store, &log.address), row);
 
     row.set("provider", bytes_to_string(&event.provider, encoding));
     row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
@@ -106,6 +121,7 @@ fn process_liquidity_removed(
 
 fn process_token_rate_update(
     encoding: &Encoding,
+    store: &StoreGetProto<Activation>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -120,6 +136,7 @@ fn process_token_rate_update(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_activation(encoding, get_pair_created(store, &log.address), row);
 
     row.set("token1", bytes_to_string(&event.token1, encoding));
     row.set("token2", bytes_to_string(&event.token2, encoding));
