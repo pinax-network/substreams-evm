@@ -6,8 +6,6 @@ package:
 protobuf:
   files:
     - v1/transfers.proto
-    - v1/dex/justswap.proto
-    - v1/dex/sunswap.proto
     - v1/dex/sunpump.proto
     - v1/dex/balancer.proto
     - v1/dex/curvefi.proto

@@ -11,14 +11,16 @@ imports:
   database_changes: https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v2.0.0/substreams-database-change-v2.0.0.spkg
   sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
 
-  # DEX Substreams
-  justswap: ../dex/justswap/substreams.yaml
-  sunswap: ../dex/sunswap/substreams.yaml
+  # Tron DEX Substreams
   sunpump: ../dex/sunpump/substreams.yaml
+
+  # Ethereum DEX Substreams
   balancer: ../dex/balancer/substreams.yaml
   bancor: ../dex/bancor/substreams.yaml
   cow: ../dex/cow/substreams.yaml
   curvefi: ../dex/curvefi/substreams.yaml
+
+  # Uniswap DEX Substreams
   uniswap_v1: ../dex/uniswap-v1/substreams.yaml
   uniswap_v2: ../dex/uniswap-v2/substreams.yaml
   uniswap_v3: ../dex/uniswap-v3/substreams.yaml
@@ -33,25 +35,28 @@ modules:
     kind: map
     inputs:
       - source: sf.substreams.v1.Clock
-      - map: justswap:map_events
-      - map: sunswap:map_events
+      # Tron DEX
       - map: sunpump:map_events
+      - store: sunpump:store_token_create
+
+      # Ethereum DEX
       - map: balancer:map_events
       - map: bancor:map_events
-      - map: cow:map_events
       - map: curvefi:map_events
+      - map: cow:map_events
+      - store: balancer:store_pool_registered
+      - store: bancor:store_activation
+      - store: curvefi:store_plain_pool_deployed
+
+      # Uniswap DEX
       - map: uniswap_v1:map_events
       - map: uniswap_v2:map_events
       - map: uniswap_v3:map_events
       - map: uniswap_v4:map_events
-      - store: justswap:store_new_exchange
-      - store: sunswap:store_new_exchange
-      - store: sunpump:store_token_create
-      - store: balancer:store_pool_created
-      - store: bancor:store_new_pool
-      - store: justswap:store_pair_created
-      - store: sunswap:store_new_exchange
-      - store: sunpump:store_token_create
+      - store: uniswap_v1:store_new_exchange
+      - store: uniswap_v2:store_pair_created
+      - store: uniswap_v3:store_pool_created
+      - store: uniswap_v4:store_initialize
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
 

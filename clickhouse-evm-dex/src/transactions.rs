@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{balancer, bancor, cow, curvefi, justswap, sunpump, sunswap, uniswap};
+use proto::pb::{balancer, bancor, cow, curvefi, sunpump, uniswap};
 
 pub fn set_template_tx(encoding: &Encoding, tx: &impl TxTemplate, tx_index: usize, row: &mut substreams_database_change::tables::Row) {
     let tx_to = match tx.get_to() {
@@ -27,62 +27,6 @@ pub trait TxTemplate {
     fn get_gas_limit(&self) -> u64;
     fn get_gas_used(&self) -> u64;
     fn get_value(&self) -> &str;
-}
-
-// JustSwap
-impl TxTemplate for justswap::v1::Transaction {
-    fn get_hash(&self) -> &Vec<u8> {
-        &self.hash
-    }
-    fn get_from(&self) -> &Vec<u8> {
-        &self.from
-    }
-    fn get_to(&self) -> &Option<Vec<u8>> {
-        &self.to
-    }
-    fn get_nonce(&self) -> u64 {
-        self.nonce
-    }
-    fn get_gas_price(&self) -> &str {
-        &self.gas_price
-    }
-    fn get_gas_limit(&self) -> u64 {
-        self.gas_limit
-    }
-    fn get_gas_used(&self) -> u64 {
-        self.gas_used
-    }
-    fn get_value(&self) -> &str {
-        &self.value
-    }
-}
-
-// SunSwap
-impl TxTemplate for sunswap::v1::Transaction {
-    fn get_hash(&self) -> &Vec<u8> {
-        &self.hash
-    }
-    fn get_from(&self) -> &Vec<u8> {
-        &self.from
-    }
-    fn get_to(&self) -> &Option<Vec<u8>> {
-        &self.to
-    }
-    fn get_nonce(&self) -> u64 {
-        self.nonce
-    }
-    fn get_gas_price(&self) -> &str {
-        &self.gas_price
-    }
-    fn get_gas_limit(&self) -> u64 {
-        self.gas_limit
-    }
-    fn get_gas_used(&self) -> u64 {
-        self.gas_used
-    }
-    fn get_value(&self) -> &str {
-        &self.value
-    }
 }
 
 // SunPump

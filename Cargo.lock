@@ -548,17 +548,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4a5f13b858c8d314ee3e8f639011f7ccefe71f97f96e50151fb991f267928e2c"
 
 [[package]]
-name = "justswap"
-version = "0.0.0"
-dependencies = [
- "prost 0.13.5",
- "proto",
- "substreams",
- "substreams-abis",
- "substreams-ethereum",
-]
-
-[[package]]
 name = "keccak"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1329,18 +1318,6 @@ name = "sunpump"
 version = "0.0.0"
 dependencies = [
  "prost 0.13.5",
- "proto",
- "substreams",
- "substreams-abis",
- "substreams-ethereum",
-]
-
-[[package]]
-name = "sunswap"
-version = "0.0.0"
-dependencies = [
- "prost 0.13.5",
- "prost-types 0.13.5",
  "proto",
  "substreams",
  "substreams-abis",

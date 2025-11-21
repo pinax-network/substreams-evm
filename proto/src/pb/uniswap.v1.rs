@@ -43,7 +43,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 16")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -54,16 +54,13 @@ pub mod log {
         /// Exchange
         #[prost(message, tag="10")]
         TokenPurchase(super::TokenPurchase),
+        /// TrxPurchase (JustSwap TVM)
         #[prost(message, tag="11")]
         EthPurchase(super::EthPurchase),
         #[prost(message, tag="12")]
         AddLiquidity(super::AddLiquidity),
         #[prost(message, tag="13")]
         RemoveLiquidity(super::RemoveLiquidity),
-        #[prost(message, tag="14")]
-        Transfer(super::Transfer),
-        #[prost(message, tag="15")]
-        Approval(super::Approval),
         /// Factory
         #[prost(message, tag="16")]
         NewExchange(super::NewExchange),

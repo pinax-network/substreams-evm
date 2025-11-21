@@ -1,6 +1,7 @@
 mod store;
 use proto::pb::uniswap::v1 as pb;
 use substreams_abis::evm::uniswap::v1 as uniswap;
+use substreams_abis::tvm::justswap::v1 as justswap;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
 
@@ -60,6 +61,17 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     buyer: event.buyer.to_vec(),
                     tokens_sold: event.tokens_sold.to_string(),
                     eth_bought: event.eth_bought.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // (Justswap TVM) TrxPurchase event
+            if let Some(event) = justswap::exchange::events::TrxPurchase::match_and_decode(log) {
+                total_eth_purchases += 1;
+                let event = pb::log::Log::EthPurchase(pb::EthPurchase {
+                    buyer: event.buyer.to_vec(),
+                    tokens_sold: event.tokens_sold.to_string(),
+                    eth_bought: event.trx_bought.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
             }

@@ -26,12 +26,6 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(uniswap::log::Log::RemoveLiquidity(event)) => {
                     process_remove_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
-                Some(uniswap::log::Log::Transfer(event)) => {
-                    process_transfer(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
-                }
-                Some(uniswap::log::Log::Approval(event)) => {
-                    process_approval(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
-                }
                 Some(uniswap::log::Log::NewExchange(event)) => {
                     process_new_exchange(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
@@ -145,54 +139,6 @@ fn process_remove_liquidity(
     row.set("provider", bytes_to_string(&event.provider, encoding));
     row.set("eth_amount", &event.eth_amount);
     row.set("token_amount", &event.token_amount);
-}
-
-fn process_transfer(
-    encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::Transfer,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_transfer", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
-
-    row.set("from", bytes_to_string(&event.from, encoding));
-    row.set("to", bytes_to_string(&event.to, encoding));
-    row.set("value", &event.value);
-}
-
-fn process_approval(
-    encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::Approval,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_approval", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
-
-    row.set("owner", bytes_to_string(&event.owner, encoding));
-    row.set("spender", bytes_to_string(&event.spender, encoding));
-    row.set("value", &event.value);
 }
 
 fn process_new_exchange(

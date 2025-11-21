@@ -26,11 +26,9 @@ message Log {
   oneof log {
     // Exchange
     TokenPurchase token_purchase = 10;
-    EthPurchase eth_purchase = 11;
+    EthPurchase eth_purchase = 11; // TrxPurchase (JustSwap TVM)
     AddLiquidity add_liquidity = 12;
     RemoveLiquidity remove_liquidity = 13;
-    Transfer transfer = 14;
-    Approval approval = 15;
 
     // Factory
     NewExchange new_exchange = 16;
