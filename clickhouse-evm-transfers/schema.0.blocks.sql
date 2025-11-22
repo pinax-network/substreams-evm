@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS blocks (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- PROJECTIONS --
-    PROJECTION prj_block_hash ( SELECT * ORDER BY block_hash )
+    PROJECTION prj_block_hash ( SELECT * ORDER BY block_hash ),
     PROJECTION prj_timestamp ( SELECT * ORDER BY timestamp )
 )
 ENGINE = ReplacingMergeTree(timestamp)
