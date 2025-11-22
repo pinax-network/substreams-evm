@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS blocks (
     PROJECTION prj_block_hash ( SELECT * ORDER BY block_hash ),
     PROJECTION prj_timestamp ( SELECT * ORDER BY timestamp )
 )
-ENGINE = ReplacingMergeTree(timestamp)
+ENGINE = MergeTree
 ORDER BY ( block_num )
 COMMENT 'blocks';
