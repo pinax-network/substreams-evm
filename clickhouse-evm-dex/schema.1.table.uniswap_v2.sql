@@ -96,7 +96,7 @@ ALTER TABLE uniswap_v2_pair_created
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
     ADD COLUMN IF NOT EXISTS pair               String COMMENT 'Pair contract address',
-    ADD COLUMN IF NOT EXISTS extra_data         UInt64 COMMENT 'Extra data',
+    ADD COLUMN IF NOT EXISTS extra_data         String COMMENT 'Extra data',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
