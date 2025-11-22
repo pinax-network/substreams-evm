@@ -12,31 +12,22 @@ ALTER TABLE swaps
     ADD COLUMN IF NOT EXISTS output_contract    LowCardinality(String) COMMENT 'Output token contract address',
     ADD COLUMN IF NOT EXISTS output_amount      UInt256 COMMENT 'Amount of output tokens received',
 
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_protocol          (protocol)          TYPE set(4)          GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_factory           (factory)           TYPE bloom_filter    GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_pool              (pool)              TYPE bloom_filter    GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_user              (user)              TYPE bloom_filter    GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_input_contract    (input_contract)    TYPE bloom_filter    GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_output_contract   (output_contract)   TYPE bloom_filter    GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_input_amount      (input_amount)      TYPE minmax          GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_output_amount     (output_amount)     TYPE minmax          GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_contract_pair     (input_contract, output_contract)       TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_contract_pair_inv (output_contract, input_contract)       TYPE bloom_filter GRANULARITY 1,
+    -- PROJECTIONS --
+    -- count() --
+    PROJECTION protocol_count ( SELECT protocol, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY protocol ),
+    PROJECTION prj_factory_count ( SELECT factory, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY factory ),
+    PROJECTION prj_pool_count ( SELECT pool, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY pool ),
+    PROJECTION prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user
+    PROJECTION prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
+    PROJECTION prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
 
-    -- projections --
-    ADD PROJECTION IF NOT EXISTS prj_prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp) GROUP BY input_contract ),
-    ADD PROJECTION IF NOT EXISTS prj_prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp) GROUP BY output_contract ),
-
-    ADD PROJECTION IF NOT EXISTS prj_protocol (SELECT protocol, timestamp, _part_offset ORDER BY (protocol, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_factory (SELECT factory, timestamp, _part_offset ORDER BY (factory, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_pool (SELECT pool, timestamp, _part_offset ORDER BY (pool, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_user (SELECT user, timestamp, _part_offset ORDER BY (user, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_input_contract (SELECT input_contract, timestamp, _part_offset ORDER BY (input_contract, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_output_contract (SELECT output_contract, timestamp, _part_offset ORDER BY (output_contract, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_contract_pair (SELECT input_contract, output_contract, timestamp, _part_offset ORDER BY (input_contract, output_contract, timestamp)),
-    ADD PROJECTION IF NOT EXISTS prj_contract_pair_inv (SELECT output_contract, input_contract, timestamp, _part_offset ORDER BY (output_contract, input_contract, timestamp));
-
+    -- minute --
+    PROJECTION prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
+    PROJECTION prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
+    PROJECTION prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
+    PROJECTION prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
+    PROJECTION prj_input_contract_by_minute ( SELECT input_contract, minute, count() GROUP BY input_contract, minute ),
+    PROJECTION prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute );
 
 -- SunPump TokenPurchased: User buys tokens with TRX (TRX → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_purchased

@@ -16,13 +16,13 @@ ALTER TABLE uniswap_v2_swap
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_to (to) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_to (to) TYPE bloom_filter,
 
     -- indexes (PairCreated) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter;
 
 -- Uniswap V2 Mint --
 CREATE TABLE IF NOT EXISTS uniswap_v2_mint AS TEMPLATE_LOG
@@ -39,12 +39,12 @@ ALTER TABLE uniswap_v2_mint
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
 
     -- indexes (PairCreated) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter;
 
 -- Uniswap V2 Burn --
 CREATE TABLE IF NOT EXISTS uniswap_v2_burn AS TEMPLATE_LOG
@@ -62,13 +62,13 @@ ALTER TABLE uniswap_v2_burn
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_to (to) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_to (to) TYPE bloom_filter,
 
     -- indexes (PairCreated) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter;
 
 -- Uniswap V2 Sync --
 CREATE TABLE IF NOT EXISTS uniswap_v2_sync AS TEMPLATE_LOG
@@ -84,9 +84,9 @@ ALTER TABLE uniswap_v2_sync
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
 
     -- indexes (PairCreated) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter;
 
 -- Uniswap V2 PairCreated --
 CREATE TABLE IF NOT EXISTS uniswap_v2_pair_created AS TEMPLATE_LOG
@@ -99,6 +99,6 @@ ALTER TABLE uniswap_v2_pair_created
     ADD COLUMN IF NOT EXISTS extra_data         String COMMENT 'Extra data',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_pair (pair) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token0 (token0) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_pair (pair) TYPE bloom_filter;
