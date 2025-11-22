@@ -76,6 +76,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_sold
 TO swaps AS
 SELECT
     'sunpump' AS protocol,
+    factory,
+
     -- include everything from sunpump_token_sold except the non-relevant fields
     * EXCEPT (
         seller,
@@ -107,6 +109,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
 TO swaps AS
 SELECT
     'uniswap-v1' AS protocol,
+    factory,
+
     -- include everything from uniswap_v1_token_purchase except the non-relevant fields
     * EXCEPT (
         buyer,
@@ -136,6 +140,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_eth_purchase
 TO swaps AS
 SELECT
     'uniswap-v1' AS protocol,
+    factory,
+
     -- include everything from uniswap_v1_eth_purchase except the non-relevant fields
     * EXCEPT (
         buyer,
@@ -165,6 +171,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
 TO swaps AS
 SELECT
     'uniswap-v2' AS protocol,
+    factory,
+
     -- include everything from uniswap_v2_swap except the non-relevant fields
     * EXCEPT (
         sender,
@@ -198,6 +206,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
 TO swaps AS
 SELECT
     'uniswap-v3' AS protocol,
+    factory,
+
     -- include everything from uniswap_v3_swap except the non-relevant fields
     * EXCEPT (
         sender,
@@ -234,6 +244,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
 TO swaps AS
 SELECT
     'uniswap-v4' AS protocol,
+    factory,
+
     -- include everything from uniswap_v4_swap except the non-relevant fields
     * EXCEPT (
         id,
@@ -273,6 +285,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
 TO swaps AS
 SELECT
     'curvefi' AS protocol,
+    factory,
+
     -- include everything from curvefi_token_exchange except the non-relevant fields
     * EXCEPT (
         buyer,
@@ -283,7 +297,6 @@ SELECT
     ),
 
     -- mapped swap fields
-    ''                                 AS factory,  -- Curve doesn't have a factory field
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -296,7 +309,8 @@ SELECT
     CONCAT('curvefi_token_', bought_id) AS output_contract,
     tokens_bought                      AS output_amount
 
-FROM curvefi_token_exchange;
+FROM curvefi_token_exchange
+WHERE factory != '';  -- exclude invalid events with empty factory address
 
 
 -- Balancer V3 Vault Swap
@@ -304,6 +318,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
 TO swaps AS
 SELECT
     'balancer' AS protocol,
+    factory,
+
     -- include everything from balancer_vault_swap except the non-relevant fields
     * EXCEPT (
         pool,
@@ -316,7 +332,6 @@ SELECT
     ),
 
     -- mapped swap fields
-    ''                                 AS factory,  -- Balancer V3 doesn't have a factory field in swap events
     pool                               AS pool,
     tx_from                            AS user,  -- Using tx_from as the user since there's no explicit user in the event
 
@@ -328,7 +343,8 @@ SELECT
     token_out                          AS output_contract,
     amount_out                         AS output_amount
 
-FROM balancer_vault_swap;
+FROM balancer_vault_swap
+WHERE factory != '';  -- exclude invalid events with empty factory address
 
 
 -- Bancor Conversion (Swap)
@@ -336,6 +352,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
 TO swaps AS
 SELECT
     'bancor' AS protocol,
+    factory,
+
     -- include everything from bancor_conversion except the non-relevant fields
     * EXCEPT (
         source_token,
@@ -347,7 +365,6 @@ SELECT
     ),
 
     -- mapped swap fields
-    ''                                 AS factory,  -- Bancor doesn't have a factory field
     log_address                        AS pool,
     trader                             AS user,
 
@@ -359,7 +376,8 @@ SELECT
     target_token                       AS output_contract,
     target_amount                      AS output_amount
 
-FROM bancor_conversion;
+FROM bancor_conversion
+WHERE factory != '';  -- exclude invalid events with empty factory address
 
 
 -- CoW Protocol Trade (Swap)
@@ -367,6 +385,8 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_cow_trade
 TO swaps AS
 SELECT
     'cow' AS protocol,
+    '' AS factory,  -- CoW doesn't have a factory field
+
     -- include everything from cow_trade except the non-relevant fields
     * EXCEPT (
         owner,
@@ -379,7 +399,6 @@ SELECT
     ),
 
     -- mapped swap fields
-    ''                                 AS factory,  -- CoW doesn't have a factory field
     log_address                        AS pool,     -- Settlement contract address
     owner                              AS user,
 
