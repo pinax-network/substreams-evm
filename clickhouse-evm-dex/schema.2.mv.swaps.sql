@@ -67,7 +67,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_sold
 TO swaps AS
 SELECT
     'sunpump' AS protocol,
-    factory,
 
     -- include everything from sunpump_token_sold except the non-relevant fields
     * EXCEPT (
@@ -100,7 +99,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
 TO swaps AS
 SELECT
     'uniswap-v1' AS protocol,
-    factory,
 
     -- include everything from uniswap_v1_token_purchase except the non-relevant fields
     * EXCEPT (
@@ -131,7 +129,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_eth_purchase
 TO swaps AS
 SELECT
     'uniswap-v1' AS protocol,
-    factory,
 
     -- include everything from uniswap_v1_eth_purchase except the non-relevant fields
     * EXCEPT (
@@ -162,7 +159,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
 TO swaps AS
 SELECT
     'uniswap-v2' AS protocol,
-    factory,
 
     -- include everything from uniswap_v2_swap except the non-relevant fields
     * EXCEPT (
@@ -197,7 +193,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
 TO swaps AS
 SELECT
     'uniswap-v3' AS protocol,
-    factory,
 
     -- include everything from uniswap_v3_swap except the non-relevant fields
     * EXCEPT (
@@ -235,7 +230,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
 TO swaps AS
 SELECT
     'uniswap-v4' AS protocol,
-    factory,
 
     -- include everything from uniswap_v4_swap except the non-relevant fields
     * EXCEPT (
@@ -276,7 +270,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
 TO swaps AS
 SELECT
     'curvefi' AS protocol,
-    factory,
 
     -- include everything from curvefi_token_exchange except the non-relevant fields
     * EXCEPT (
@@ -309,7 +302,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
 TO swaps AS
 SELECT
     'balancer' AS protocol,
-    factory,
 
     -- include everything from balancer_vault_swap except the non-relevant fields
     * EXCEPT (
@@ -343,7 +335,6 @@ CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
 TO swaps AS
 SELECT
     'bancor' AS protocol,
-    factory,
 
     -- include everything from bancor_conversion except the non-relevant fields
     * EXCEPT (
