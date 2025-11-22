@@ -54,7 +54,6 @@ pub mod log {
         /// Exchange
         #[prost(message, tag="10")]
         TokenPurchase(super::TokenPurchase),
-        /// TrxPurchase (JustSwap TVM)
         #[prost(message, tag="11")]
         EthPurchase(super::EthPurchase),
         #[prost(message, tag="12")]

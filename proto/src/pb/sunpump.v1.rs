@@ -17,14 +17,14 @@ pub struct Transaction {
     pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
     #[prost(uint64, tag="5")]
     pub nonce: u64,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="6")]
     pub gas_price: ::prost::alloc::string::String,
     #[prost(uint64, tag="7")]
     pub gas_limit: u64,
     #[prost(uint64, tag="8")]
     pub gas_used: u64,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="10")]
@@ -96,20 +96,20 @@ pub struct LauncherChanged {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MinTxFeeSet {
-    /// uint256
+    /// UInt256
     #[prost(string, tag="1")]
     pub old_fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="2")]
     pub new_fee: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MintFeeSet {
-    /// uint256
+    /// UInt256
     #[prost(string, tag="1")]
     pub old_fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="2")]
     pub new_fee: ::prost::alloc::string::String,
 }
@@ -140,20 +140,20 @@ pub struct PendingOwnerSet {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PurchaseFeeSet {
-    /// uint256
+    /// UInt256
     #[prost(string, tag="1")]
     pub old_fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="2")]
     pub new_fee: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SaleFeeSet {
-    /// uint256
+    /// UInt256
     #[prost(string, tag="1")]
     pub old_fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="2")]
     pub new_fee: ::prost::alloc::string::String,
 }
@@ -168,7 +168,7 @@ pub struct TokenCreate {
     /// address
     #[prost(bytes="vec", tag="2")]
     pub token_address: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="3")]
     pub token_index: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="4")]
@@ -187,8 +187,10 @@ pub struct TokenCreateLegacy {
     pub token_address: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="3")]
     pub creator: ::prost::alloc::vec::Vec<u8>,
+    /// UInt256 (stored as uint64 in proto)
     #[prost(uint64, tag="4")]
     pub nft_threshold: u64,
+    /// UInt256 (stored as uint64 in proto)
     #[prost(uint64, tag="5")]
     pub nft_max_supply: u64,
     #[prost(string, tag="6")]
@@ -209,16 +211,16 @@ pub struct TokenPurchased {
     pub token: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub buyer: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="3")]
     pub trx_amount: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="4")]
     pub fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="5")]
     pub token_amount: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="6")]
     pub token_reserve: ::prost::alloc::string::String,
 }
@@ -229,13 +231,13 @@ pub struct TokenSold {
     pub token: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub seller: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="3")]
     pub trx_amount: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="4")]
     pub fee: ::prost::alloc::string::String,
-    /// uint256
+    /// UInt256
     #[prost(string, tag="5")]
     pub token_amount: ::prost::alloc::string::String,
 }

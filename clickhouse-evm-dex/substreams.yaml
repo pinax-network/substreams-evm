@@ -34,6 +34,7 @@ modules:
   - name: db_out
     kind: map
     inputs:
+      - params: string
       - source: sf.substreams.v1.Clock
       # Tron DEX
       - map: sunpump:map_events
