@@ -315,7 +315,12 @@ SELECT
     arrayElement(coin_addresses, toInt32(bought_id) + 1) AS output_contract,
     tokens_bought                      AS output_amount
 
-FROM coin_array;
+FROM coin_array
+WHERE 
+    toInt32(sold_id) >= 0 
+    AND toInt32(bought_id) >= 0
+    AND length(coin_addresses) > toInt32(sold_id)
+    AND length(coin_addresses) > toInt32(bought_id);
 
 
 -- Balancer V3 Vault Swap
