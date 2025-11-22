@@ -4,16 +4,16 @@ COMMENT 'SunPump TokenPurchased and TokenSold swap events';
 ALTER TABLE sunpump_token_purchased
     -- swap event information --
     ADD COLUMN IF NOT EXISTS buyer                  String COMMENT 'User wallet address',
-    ADD COLUMN IF NOT EXISTS trx_amount             String COMMENT 'Amount of input tokens swapped',
+    ADD COLUMN IF NOT EXISTS trx_amount             UInt256 COMMENT 'Amount of input tokens swapped',
     ADD COLUMN IF NOT EXISTS token                  LowCardinality(String) COMMENT 'Token contract address',
-    ADD COLUMN IF NOT EXISTS token_amount           String COMMENT 'Amount of output tokens received',
-    ADD COLUMN IF NOT EXISTS fee                    String COMMENT 'Swap fee amount',
-    ADD COLUMN IF NOT EXISTS token_reserve          String COMMENT 'Token reserve after swap (only for purchases)',
+    ADD COLUMN IF NOT EXISTS token_amount           UInt256 COMMENT 'Amount of output tokens received',
+    ADD COLUMN IF NOT EXISTS fee                    UInt256 COMMENT 'Swap fee amount',
+    ADD COLUMN IF NOT EXISTS token_reserve          UInt256 COMMENT 'Token reserve after swap (only for purchases)',
 
     -- TokenCreate --
     ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS creator                String COMMENT 'Token creator address',
-    ADD COLUMN IF NOT EXISTS token_index            String COMMENT 'Token index',
+    ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
@@ -35,14 +35,14 @@ ALTER TABLE sunpump_token_sold
     -- swap event information --
     ADD COLUMN IF NOT EXISTS seller             String COMMENT 'User wallet address',
     ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address',
-    ADD COLUMN IF NOT EXISTS token_amount       String COMMENT 'Amount of output tokens received',
-    ADD COLUMN IF NOT EXISTS trx_amount         String COMMENT 'Amount of input tokens swapped',
-    ADD COLUMN IF NOT EXISTS fee                String COMMENT 'Swap fee amount',
+    ADD COLUMN IF NOT EXISTS token_amount       UInt256 COMMENT 'Amount of output tokens received',
+    ADD COLUMN IF NOT EXISTS trx_amount         UInt256 COMMENT 'Amount of input tokens swapped',
+    ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'Swap fee amount',
 
     -- TokenCreate --
     ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS creator                String COMMENT 'Token creator address',
-    ADD COLUMN IF NOT EXISTS token_index            String COMMENT 'Token index',
+    ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_seller (seller) TYPE bloom_filter GRANULARITY 1,
@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS sunpump_min_tx_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump MinTxFeeSet events';
 ALTER TABLE sunpump_min_tx_fee_set
     -- event information --
-    ADD COLUMN IF NOT EXISTS old_fee            String COMMENT 'Old minimum transaction fee',
-    ADD COLUMN IF NOT EXISTS new_fee            String COMMENT 'New minimum transaction fee',
+    ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old minimum transaction fee',
+    ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New minimum transaction fee',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
@@ -95,8 +95,8 @@ CREATE TABLE IF NOT EXISTS sunpump_mint_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump MintFeeSet events';
 ALTER TABLE sunpump_mint_fee_set
     -- event information --
-    ADD COLUMN IF NOT EXISTS old_fee            String COMMENT 'Old mint fee',
-    ADD COLUMN IF NOT EXISTS new_fee            String COMMENT 'New mint fee',
+    ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old mint fee',
+    ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New mint fee',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
@@ -143,8 +143,8 @@ CREATE TABLE IF NOT EXISTS sunpump_purchase_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump PurchaseFeeSet events';
 ALTER TABLE sunpump_purchase_fee_set
     -- event information --
-    ADD COLUMN IF NOT EXISTS old_fee            String COMMENT 'Old purchase fee',
-    ADD COLUMN IF NOT EXISTS new_fee            String COMMENT 'New purchase fee',
+    ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old purchase fee',
+    ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New purchase fee',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
@@ -155,8 +155,8 @@ CREATE TABLE IF NOT EXISTS sunpump_sale_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump SaleFeeSet events';
 ALTER TABLE sunpump_sale_fee_set
     -- event information --
-    ADD COLUMN IF NOT EXISTS old_fee            String COMMENT 'Old sale fee',
-    ADD COLUMN IF NOT EXISTS new_fee            String COMMENT 'New sale fee',
+    ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old sale fee',
+    ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New sale fee',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
@@ -168,7 +168,7 @@ COMMENT 'SunPump TokenCreate events';
 ALTER TABLE sunpump_token_create
     -- event information --
     ADD COLUMN IF NOT EXISTS token_address      LowCardinality(String) COMMENT 'Token contract address',
-    ADD COLUMN IF NOT EXISTS token_index        String COMMENT 'Token index',
+    ADD COLUMN IF NOT EXISTS token_index        UInt256 COMMENT 'Token index',
     ADD COLUMN IF NOT EXISTS creator            String COMMENT 'Creator address',
 
     -- indexes --
@@ -183,8 +183,8 @@ ALTER TABLE sunpump_token_create_legacy
     -- event information --
     ADD COLUMN IF NOT EXISTS token_address      LowCardinality(String) COMMENT 'Token contract address',
     ADD COLUMN IF NOT EXISTS creator            String COMMENT 'Creator address',
-    ADD COLUMN IF NOT EXISTS nft_max_supply     UInt64 COMMENT 'Max NFT supply',
-    ADD COLUMN IF NOT EXISTS nft_threshold      UInt64 COMMENT 'NFT threshold',
+    ADD COLUMN IF NOT EXISTS nft_max_supply     UInt256 COMMENT 'Max NFT supply',
+    ADD COLUMN IF NOT EXISTS nft_threshold      UInt256 COMMENT 'NFT threshold',
     ADD COLUMN IF NOT EXISTS name               String COMMENT 'Token name',
     ADD COLUMN IF NOT EXISTS symbol            String COMMENT 'Token symbol',
 
