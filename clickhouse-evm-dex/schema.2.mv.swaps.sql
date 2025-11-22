@@ -279,8 +279,7 @@ WHERE factory != '';  -- exclude invalid events with empty factory address
 
 -- Curve.fi TokenExchange (Swap)
 -- Note: Curve doesn't have a clear factory/token0/token1 structure like Uniswap
--- The sold_id and bought_id are indices that need to be mapped to actual token addresses
--- For now, we'll use the pool address as both pool and factory
+-- The sold_id and bought_id are indices that map to actual token addresses in the coins array
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
 TO swaps AS
 SELECT
@@ -300,17 +299,16 @@ SELECT
     log_address                        AS pool,
     buyer                              AS user,
 
-    -- Note: sold_id and bought_id are token indices, not addresses
-    -- In a full implementation, these would be resolved via store lookups
-    -- For now, we use the indices as placeholders
-    CONCAT('curvefi_token_', sold_id)  AS input_contract,
+    -- Note: sold_id and bought_id are token indices (0-based)
+    -- We use them to index into the coins array (1-based in ClickHouse)
+    arrayElement(splitByChar(',', coins), toInt32(sold_id) + 1)  AS input_contract,
     tokens_sold                        AS input_amount,
 
-    CONCAT('curvefi_token_', bought_id) AS output_contract,
+    arrayElement(splitByChar(',', coins), toInt32(bought_id) + 1) AS output_contract,
     tokens_bought                      AS output_amount
 
 FROM curvefi_token_exchange
-WHERE factory != '';  -- exclude invalid events with empty factory address
+WHERE factory != '' AND coins != '';  -- exclude invalid events with empty factory address or coins
 
 
 -- Balancer V3 Vault Swap
