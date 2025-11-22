@@ -275,9 +275,13 @@ SELECT
     * EXCEPT (
         buyer,
         sold_id,
-        tokens_sold,
+        sold_amount,
+        sold_token,
         bought_id,
-        tokens_bought
+        bought_amount,
+        bought_token,
+        coins,
+        deployer
     ),
 
     -- mapped swap fields
@@ -287,12 +291,11 @@ SELECT
     -- Note: sold_id and bought_id are token indices, not addresses
     -- In a full implementation, these would be resolved via store lookups
     -- For now, we use the indices as placeholders
-    CONCAT('curvefi_token_', sold_id)  AS input_contract,
-    tokens_sold                        AS input_amount,
+    sold_token  AS input_contract,
+    sold_amount AS input_amount,
 
-    CONCAT('curvefi_token_', bought_id) AS output_contract,
-    tokens_bought                      AS output_amount
-
+    bought_token AS output_contract,
+    bought_amount AS output_amount
 FROM curvefi_token_exchange
 WHERE factory != '';  -- exclude invalid events with empty factory address
 
@@ -343,7 +346,8 @@ SELECT
         trader,
         source_amount,
         target_amount,
-        conversion_fee
+        conversion_fee,
+        converter_type
     ),
 
     -- mapped swap fields

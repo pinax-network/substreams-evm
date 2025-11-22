@@ -5,9 +5,11 @@ ALTER TABLE curvefi_token_exchange
     -- event information --
     ADD COLUMN IF NOT EXISTS buyer              String COMMENT 'Buyer wallet address',
     ADD COLUMN IF NOT EXISTS sold_id            Int128 COMMENT 'ID of token sold',
-    ADD COLUMN IF NOT EXISTS tokens_sold        UInt256 COMMENT 'Amount of tokens sold',
+    ADD COLUMN IF NOT EXISTS sold_amount        UInt256 COMMENT 'Amount of tokens sold',
+    ADD COLUMN IF NOT EXISTS sold_token         String COMMENT 'Token sold',
     ADD COLUMN IF NOT EXISTS bought_id          Int128 COMMENT 'ID of token bought',
-    ADD COLUMN IF NOT EXISTS tokens_bought      UInt256 COMMENT 'Amount of tokens bought',
+    ADD COLUMN IF NOT EXISTS bought_amount      UInt256 COMMENT 'Amount of tokens bought',
+    ADD COLUMN IF NOT EXISTS bought_token       String COMMENT 'Token bought',
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
