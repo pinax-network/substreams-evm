@@ -12,19 +12,19 @@ imports:
   sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Tron DEX Substreams
-  sunpump: ../dex/sunpump/substreams.yaml
+  sunpump: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/sunpump-v0.2.0.spkg
 
   # Ethereum DEX Substreams
-  balancer: ../dex/balancer/substreams.yaml
-  bancor: ../dex/bancor/substreams.yaml
-  cow: ../dex/cow/substreams.yaml
-  curvefi: ../dex/curvefi/substreams.yaml
+  balancer: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/balancer-v0.2.0.spkg
+  bancor: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/bancor-v0.2.0.spkg
+  cow: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/cow-v0.2.0.spkg
+  curvefi: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/curvefi-v0.2.0.spkg
 
   # Uniswap DEX Substreams
-  uniswap_v1: ../dex/uniswap-v1/substreams.yaml
-  uniswap_v2: ../dex/uniswap-v2/substreams.yaml
-  uniswap_v3: ../dex/uniswap-v3/substreams.yaml
-  uniswap_v4: ../dex/uniswap-v4/substreams.yaml
+  uniswap_v1: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/uniswap-v1-v0.2.0.spkg
+  uniswap_v2: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/uniswap-v2-v0.2.0.spkg
+  uniswap_v3: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/uniswap-v3-v0.2.0.spkg
+  uniswap_v4: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.0/uniswap-v4-v0.2.0.spkg
 
 binaries:
   default:
