@@ -5,12 +5,12 @@ ALTER TABLE uniswap_v4_swap
     -- swap event information --
     ADD COLUMN IF NOT EXISTS id                 String COMMENT 'Pool ID',
     ADD COLUMN IF NOT EXISTS sender             String COMMENT 'sender wallet address',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of currency0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of currency1',
-    ADD COLUMN IF NOT EXISTS sqrt_price_x96     String COMMENT 'Square root price',
-    ADD COLUMN IF NOT EXISTS liquidity          String COMMENT 'Liquidity',
+    ADD COLUMN IF NOT EXISTS amount0            Int256 COMMENT 'Amount of currency0',
+    ADD COLUMN IF NOT EXISTS amount1            Int256 COMMENT 'Amount of currency1',
+    ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
+    ADD COLUMN IF NOT EXISTS liquidity          UInt128 COMMENT 'Liquidity',
     ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
-    ADD COLUMN IF NOT EXISTS fee                String COMMENT 'Fee',
+    ADD COLUMN IF NOT EXISTS fee                Int256 COMMENT 'Fee',
 
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -37,7 +37,7 @@ ALTER TABLE uniswap_v4_initialize
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
     ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
     ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
-    ADD COLUMN IF NOT EXISTS sqrt_price_x96     String COMMENT 'Square root price',
+    ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
     ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
 
     -- indexes --
@@ -55,7 +55,7 @@ ALTER TABLE uniswap_v4_modify_liquidity
     ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
     ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
     ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
-    ADD COLUMN IF NOT EXISTS liquidity_delta    String COMMENT 'Liquidity delta',
+    ADD COLUMN IF NOT EXISTS liquidity_delta    Int128 COMMENT 'Liquidity delta',
     ADD COLUMN IF NOT EXISTS salt               String COMMENT 'Salt',
 
     -- Initialize --
@@ -81,8 +81,8 @@ ALTER TABLE uniswap_v4_donate
     -- event information --
     ADD COLUMN IF NOT EXISTS id                 String COMMENT 'Pool ID',
     ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of currency0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of currency1',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of currency0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of currency1',
 
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
