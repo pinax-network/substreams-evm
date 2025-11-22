@@ -15,8 +15,6 @@ ALTER TABLE uniswap_v3_swap
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
@@ -40,8 +38,6 @@ ALTER TABLE uniswap_v3_initialize
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_tick (tick) TYPE minmax GRANULARITY 1,
@@ -68,8 +64,6 @@ ALTER TABLE uniswap_v3_mint
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
@@ -98,8 +92,6 @@ ALTER TABLE uniswap_v3_burn
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1,
@@ -127,8 +119,6 @@ ALTER TABLE uniswap_v3_collect
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1,
@@ -157,8 +147,6 @@ ALTER TABLE uniswap_v3_flash
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,
@@ -181,8 +169,6 @@ ALTER TABLE uniswap_v3_increase_observation_cardinality_next
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes (PoolCreated) --
     ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
@@ -203,8 +189,6 @@ ALTER TABLE uniswap_v3_set_fee_protocol
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes (PoolCreated) --
     ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
@@ -225,8 +209,6 @@ ALTER TABLE uniswap_v3_collect_protocol
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter GRANULARITY 1,

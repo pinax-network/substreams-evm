@@ -4,9 +4,9 @@ use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    foundational_stores::get_pair_created,
     logs::{log_key, set_template_log},
     set_clock,
+    store::get_store_by_address,
     transactions::set_template_tx,
 };
 
@@ -38,20 +38,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_initialize_event(encoding: &Encoding, value: Option<InitializeEvent>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("currency0", bytes_to_string(&value.currency0, encoding));
-        row.set("currency1", bytes_to_string(&value.currency1, encoding));
-        row.set("fee", value.fee);
-        row.set("tick_spacing", value.tick_spacing);
-    } else {
-        row.set("factory", "");
-        row.set("currency0", "");
-        row.set("currency1", "");
-        row.set("fee", 0_u64);
-        row.set("tick_spacing", 0_i32);
-    }
+pub fn set_pool(encoding: &Encoding, value: InitializeEvent, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("currency0", bytes_to_string(&value.currency0, encoding));
+    row.set("currency1", bytes_to_string(&value.currency1, encoding));
 }
 
 fn process_swap(
@@ -65,22 +55,125 @@ fn process_swap(
     log_index: usize,
     event: &uniswap::Swap,
 ) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v4_swap", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("id", bytes_to_string(&event.id, encoding));
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("amount0", &event.amount0);
+        row.set("amount1", &event.amount1);
+        row.set("sqrt_price_x96", &event.sqrt_price_x96);
+        row.set("liquidity", &event.liquidity);
+        row.set("tick", event.tick);
+        row.set("fee", &event.fee);
+    }
+}
+
+fn process_modify_liquidity(
+    encoding: &Encoding,
+    store: &StoreGetProto<InitializeEvent>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &uniswap::ModifyLiquidity,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v4_modify_liquidity", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("id", bytes_to_string(&event.id, encoding));
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("tick_lower", event.tick_lower);
+        row.set("tick_upper", event.tick_upper);
+        row.set("liquidity_delta", &event.liquidity_delta);
+        row.set("salt", bytes_to_string(&event.salt, encoding));
+    }
+}
+
+fn process_donate(
+    encoding: &Encoding,
+    store: &StoreGetProto<InitializeEvent>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &uniswap::Donate,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v4_donate", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("id", bytes_to_string(&event.id, encoding));
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("amount0", &event.amount0);
+        row.set("amount1", &event.amount1);
+    }
+}
+
+fn process_protocol_fee_updated(
+    encoding: &Encoding,
+    store: &StoreGetProto<InitializeEvent>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &uniswap::ProtocolFeeUpdated,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v4_protocol_fee_updated", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("id", bytes_to_string(&event.id, encoding));
+        row.set("protocol_fee", event.protocol_fee);
+    }
+}
+
+fn process_protocol_fee_controller_updated(
+    encoding: &Encoding,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &uniswap::Transaction,
+    log: &uniswap::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &uniswap::ProtocolFeeControllerUpdated,
+) {
     let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v4_swap", key);
+    let row = tables.create_row("uniswap_v4_protocol_fee_controller_updated", key);
 
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
-    set_initialize_event(encoding, get_pair_created(store, &event.id), row);
 
-    row.set("id", bytes_to_string(&event.id, encoding));
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("amount0", &event.amount0);
-    row.set("amount1", &event.amount1);
-    row.set("sqrt_price_x96", &event.sqrt_price_x96);
-    row.set("liquidity", &event.liquidity);
-    row.set("tick", event.tick);
-    row.set("fee", &event.fee);
+    row.set("protocol_fee_controller", bytes_to_string(&event.protocol_fee_controller, encoding));
 }
 
 fn process_initialize(
@@ -107,99 +200,4 @@ fn process_initialize(
     row.set("tick_spacing", event.tick_spacing);
     row.set("sqrt_price_x96", &event.sqrt_price_x96);
     row.set("tick", event.tick);
-}
-
-fn process_modify_liquidity(
-    encoding: &Encoding,
-    store: &StoreGetProto<InitializeEvent>,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::ModifyLiquidity,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v4_modify_liquidity", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_initialize_event(encoding, get_pair_created(store, &event.id), row);
-
-    row.set("id", bytes_to_string(&event.id, encoding));
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("tick_lower", event.tick_lower);
-    row.set("tick_upper", event.tick_upper);
-    row.set("liquidity_delta", &event.liquidity_delta);
-    row.set("salt", bytes_to_string(&event.salt, encoding));
-}
-
-fn process_donate(
-    encoding: &Encoding,
-    store: &StoreGetProto<InitializeEvent>,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::Donate,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v4_donate", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_initialize_event(encoding, get_pair_created(store, &event.id), row);
-
-    row.set("id", bytes_to_string(&event.id, encoding));
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("amount0", &event.amount0);
-    row.set("amount1", &event.amount1);
-}
-
-fn process_protocol_fee_controller_updated(
-    encoding: &Encoding,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::ProtocolFeeControllerUpdated,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v4_protocol_fee_controller_updated", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-
-    row.set("protocol_fee_controller", bytes_to_string(&event.protocol_fee_controller, encoding));
-}
-
-fn process_protocol_fee_updated(
-    encoding: &Encoding,
-    store: &StoreGetProto<InitializeEvent>,
-    tables: &mut Tables,
-    clock: &Clock,
-    tx: &uniswap::Transaction,
-    log: &uniswap::Log,
-    tx_index: usize,
-    log_index: usize,
-    event: &uniswap::ProtocolFeeUpdated,
-) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v4_protocol_fee_updated", key);
-
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_initialize_event(encoding, get_pair_created(store, &event.id), row);
-
-    row.set("id", bytes_to_string(&event.id, encoding));
-    row.set("protocol_fee", event.protocol_fee);
 }

@@ -2,8 +2,8 @@ mod balancer;
 mod bancor;
 mod cow;
 mod curvefi;
-mod foundational_stores;
 mod logs;
+mod store;
 mod sunpump;
 mod transactions;
 mod uniswap_v1;
@@ -51,31 +51,19 @@ pub fn db_out(
     // Handle support both EVM & TVM address encoding
     let encoding = if params == "tron_base58" { Encoding::TronBase58 } else { Encoding::Hex };
 
-    // SunPump events (TRON)
+    // Tron DEX Substreams
     sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &store_sunpump);
 
-    // Balancer events (EVM)
+    // Ethereum DEX Substreams
     balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &store_balancer);
-
-    // Bancor events (EVM)
     bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &store_bancor);
-
-    // CoW Protocol events (EVM)
     cow::process_events(&encoding, &mut tables, &clock, &events_cow);
-
-    // Curve.fi events (EVM)
     curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &store_curvefi);
 
-    // Uniswap V1 events (EVM)
+    // Uniswap DEX Substreams
     uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);
-
-    // Uniswap V2 events (EVM)
     uniswap_v2::process_events(&encoding, &mut tables, &clock, &events_uniswap_v2, &store_uniswap_v2);
-
-    // Uniswap V3 events (EVM)
     uniswap_v3::process_events(&encoding, &mut tables, &clock, &events_uniswap_v3, &store_uniswap_v3);
-
-    // Uniswap V4 events (EVM)
     uniswap_v4::process_events(&encoding, &mut tables, &clock, &events_uniswap_v4, &store_uniswap_v4);
 
     // ONLY include blocks if events are present

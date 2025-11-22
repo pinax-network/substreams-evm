@@ -4,9 +4,9 @@ use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    foundational_stores::get_new_exchange,
     logs::{log_key, set_template_log},
     set_clock,
+    store::get_store_by_address,
     transactions::set_template_tx,
 };
 
@@ -35,14 +35,9 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_new_exchange(encoding: &Encoding, value: Option<NewExchange>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("token", bytes_to_string(&value.token, encoding));
-    } else {
-        row.set("factory", "");
-        row.set("token", "");
-    }
+pub fn set_pool(encoding: &Encoding, value: NewExchange, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("token", bytes_to_string(&value.token, encoding));
 }
 
 fn process_token_purchase(
@@ -56,17 +51,19 @@ fn process_token_purchase(
     log_index: usize,
     event: &uniswap::TokenPurchase,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_token_purchase", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v1_token_purchase", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("buyer", bytes_to_string(&event.buyer, encoding));
-    row.set("eth_sold", &event.eth_sold);
-    row.set("tokens_bought", &event.tokens_bought);
+        row.set("buyer", bytes_to_string(&event.buyer, encoding));
+        row.set("eth_sold", &event.eth_sold);
+        row.set("tokens_bought", &event.tokens_bought);
+    }
 }
 
 fn process_eth_purchase(
@@ -80,17 +77,19 @@ fn process_eth_purchase(
     log_index: usize,
     event: &uniswap::EthPurchase,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_eth_purchase", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v1_eth_purchase", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("buyer", bytes_to_string(&event.buyer, encoding));
-    row.set("tokens_sold", &event.tokens_sold);
-    row.set("eth_bought", &event.eth_bought);
+        row.set("buyer", bytes_to_string(&event.buyer, encoding));
+        row.set("tokens_sold", &event.tokens_sold);
+        row.set("eth_bought", &event.eth_bought);
+    }
 }
 
 fn process_add_liquidity(
@@ -104,17 +103,19 @@ fn process_add_liquidity(
     log_index: usize,
     event: &uniswap::AddLiquidity,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_add_liquidity", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v1_add_liquidity", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("provider", bytes_to_string(&event.provider, encoding));
-    row.set("eth_amount", &event.eth_amount);
-    row.set("token_amount", &event.token_amount);
+        row.set("provider", bytes_to_string(&event.provider, encoding));
+        row.set("eth_amount", &event.eth_amount);
+        row.set("token_amount", &event.token_amount);
+    }
 }
 
 fn process_remove_liquidity(
@@ -128,17 +129,19 @@ fn process_remove_liquidity(
     log_index: usize,
     event: &uniswap::RemoveLiquidity,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v1_remove_liquidity", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v1_remove_liquidity", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_new_exchange(encoding, get_new_exchange(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("provider", bytes_to_string(&event.provider, encoding));
-    row.set("eth_amount", &event.eth_amount);
-    row.set("token_amount", &event.token_amount);
+        row.set("provider", bytes_to_string(&event.provider, encoding));
+        row.set("eth_amount", &event.eth_amount);
+        row.set("token_amount", &event.token_amount);
+    }
 }
 
 fn process_new_exchange(

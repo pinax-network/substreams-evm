@@ -12,12 +12,13 @@ ALTER TABLE curvefi_token_exchange
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
 
     -- indexes (PlainPoolDeployed) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Curve.fi AddLiquidity --
 CREATE TABLE IF NOT EXISTS curvefi_add_liquidity AS TEMPLATE_LOG
@@ -33,12 +34,13 @@ ALTER TABLE curvefi_add_liquidity
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (PlainPoolDeployed) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Curve.fi RemoveLiquidity --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity AS TEMPLATE_LOG
@@ -53,12 +55,13 @@ ALTER TABLE curvefi_remove_liquidity
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (PlainPoolDeployed) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Curve.fi RemoveLiquidityOne --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity_one AS TEMPLATE_LOG
@@ -72,12 +75,13 @@ ALTER TABLE curvefi_remove_liquidity_one
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (PlainPoolDeployed) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Curve.fi RemoveLiquidityImbalance --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity_imbalance AS TEMPLATE_LOG
@@ -93,46 +97,44 @@ ALTER TABLE curvefi_remove_liquidity_imbalance
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (PlainPoolDeployed) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Curve.fi PlainPoolDeployed --
 CREATE TABLE IF NOT EXISTS curvefi_plain_pool_deployed AS TEMPLATE_LOG
 COMMENT 'Curve.fi PlainPoolDeployed (pool creation) events';
 ALTER TABLE curvefi_plain_pool_deployed
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS address            String COMMENT 'Pool contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS A                  String COMMENT 'Amplification coefficient',
+    ADD COLUMN IF NOT EXISTS a                  String COMMENT 'Amplification coefficient',
     ADD COLUMN IF NOT EXISTS fee                String COMMENT 'Exchange fee',
     ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_deployer (deployer) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_deployer (deployer) TYPE bloom_filter;
 
 -- Curve.fi MetaPoolDeployed --
 CREATE TABLE IF NOT EXISTS curvefi_meta_pool_deployed AS TEMPLATE_LOG
 COMMENT 'Curve.fi MetaPoolDeployed (pool creation) events';
 ALTER TABLE curvefi_meta_pool_deployed
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS address            String COMMENT 'Pool contract address',
     ADD COLUMN IF NOT EXISTS coin               String COMMENT 'Coin address',
     ADD COLUMN IF NOT EXISTS base_pool          String COMMENT 'Base pool address',
-    ADD COLUMN IF NOT EXISTS A                  String COMMENT 'Amplification coefficient',
+    ADD COLUMN IF NOT EXISTS a                  String COMMENT 'Amplification coefficient',
     ADD COLUMN IF NOT EXISTS fee                String COMMENT 'Exchange fee',
     ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_coin (coin) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_base_pool (base_pool) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_deployer (deployer) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_coin (coin) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_base_pool (base_pool) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_deployer (deployer) TYPE bloom_filter;

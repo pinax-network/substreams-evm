@@ -1,3 +1,12 @@
+-- Reusable Enum type for Bancor converter_type
+CREATE TYPE IF NOT EXISTS BancorConverterType AS Enum8(
+    'Unknown'       = 0,
+    'LiquidToken'   = 1,
+    'LiquidityPool' = 2,
+    'FeeConverter'  = 3,
+    'StablePool'    = 4
+);
+
 -- Bancor Conversion (Swap) --
 CREATE TABLE IF NOT EXISTS bancor_conversion AS TEMPLATE_LOG
 COMMENT 'Bancor Conversion (swap) events';
@@ -11,7 +20,8 @@ ALTER TABLE bancor_conversion
     ADD COLUMN IF NOT EXISTS conversion_fee     String COMMENT 'Conversion fee',
 
     -- Activation (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String               COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS converter_type     BancorConverterType  COMMENT 'Converter type',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
@@ -33,7 +43,8 @@ ALTER TABLE bancor_liquidity_added
     ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
 
     -- Activation (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String               COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS converter_type     BancorConverterType  COMMENT 'Converter type',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -54,7 +65,8 @@ ALTER TABLE bancor_liquidity_removed
     ADD COLUMN IF NOT EXISTS new_supply         String COMMENT 'New pool token supply',
 
     -- Activation (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String               COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS converter_type     BancorConverterType  COMMENT 'Converter type',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -74,7 +86,8 @@ ALTER TABLE bancor_token_rate_update
     ADD COLUMN IF NOT EXISTS rate_d             String COMMENT 'Rate denominator',
 
     -- Activation (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String               COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS converter_type     BancorConverterType  COMMENT 'Converter type',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
@@ -82,3 +95,11 @@ ALTER TABLE bancor_token_rate_update
 
     -- indexes (Activation) --
     ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor Activation --
+CREATE TABLE IF NOT EXISTS bancor_activation AS TEMPLATE_LOG
+COMMENT 'Bancor Activation events';
+ALTER TABLE bancor_activation
+    ADD COLUMN IF NOT EXISTS converter_type BancorConverterType COMMENT 'Converter type',
+    ADD COLUMN IF NOT EXISTS anchor         String              COMMENT 'Converter anchor address',
+    ADD COLUMN IF NOT EXISTS activated      UInt8               COMMENT 'True if the converter was activated';

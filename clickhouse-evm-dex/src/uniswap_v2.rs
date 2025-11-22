@@ -4,9 +4,9 @@ use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    foundational_stores::get_pair_created,
     logs::{log_key, set_template_log},
     set_clock,
+    store::get_store_by_address,
     transactions::set_template_tx,
 };
 
@@ -35,16 +35,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pair_created(encoding: &Encoding, value: Option<PairCreated>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("token0", bytes_to_string(&value.token0, encoding));
-        row.set("token1", bytes_to_string(&value.token1, encoding));
-    } else {
-        row.set("factory", "");
-        row.set("token0", "");
-        row.set("token1", "");
-    }
+pub fn set_pool(encoding: &Encoding, value: PairCreated, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("token0", bytes_to_string(&value.token0, encoding));
+    row.set("token1", bytes_to_string(&value.token1, encoding));
 }
 
 fn process_swap(
@@ -58,20 +52,22 @@ fn process_swap(
     log_index: usize,
     event: &uniswap::Swap,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v2_swap", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v2_swap", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pair_created(encoding, get_pair_created(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("to", bytes_to_string(&event.to, encoding));
-    row.set("amount0_in", &event.amount0_in);
-    row.set("amount1_in", &event.amount1_in);
-    row.set("amount0_out", &event.amount0_out);
-    row.set("amount1_out", &event.amount1_out);
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("to", bytes_to_string(&event.to, encoding));
+        row.set("amount0_in", &event.amount0_in);
+        row.set("amount1_in", &event.amount1_in);
+        row.set("amount0_out", &event.amount0_out);
+        row.set("amount1_out", &event.amount1_out);
+    }
 }
 
 fn process_sync(
@@ -85,16 +81,18 @@ fn process_sync(
     log_index: usize,
     event: &uniswap::Sync,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v2_sync", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v2_sync", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pair_created(encoding, get_pair_created(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("reserve0", &event.reserve0);
-    row.set("reserve1", &event.reserve1);
+        row.set("reserve0", &event.reserve0);
+        row.set("reserve1", &event.reserve1);
+    }
 }
 
 fn process_mint(
@@ -108,17 +106,19 @@ fn process_mint(
     log_index: usize,
     event: &uniswap::Mint,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v2_mint", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v2_mint", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pair_created(encoding, get_pair_created(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("amount0", &event.amount0);
-    row.set("amount1", &event.amount1);
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("amount0", &event.amount0);
+        row.set("amount1", &event.amount1);
+    }
 }
 
 fn process_burn(
@@ -132,18 +132,20 @@ fn process_burn(
     log_index: usize,
     event: &uniswap::Burn,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("uniswap_v2_burn", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("uniswap_v2_burn", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pair_created(encoding, get_pair_created(store, &log.address), row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("sender", bytes_to_string(&event.sender, encoding));
-    row.set("amount0", &event.amount0);
-    row.set("amount1", &event.amount1);
-    row.set("to", bytes_to_string(&event.to, encoding));
+        row.set("sender", bytes_to_string(&event.sender, encoding));
+        row.set("amount0", &event.amount0);
+        row.set("amount1", &event.amount1);
+        row.set("to", bytes_to_string(&event.to, encoding));
+    }
 }
 
 fn process_pair_created(

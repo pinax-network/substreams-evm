@@ -16,17 +16,17 @@ ALTER TABLE sunpump_token_purchased
     ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_trx_amount (trx_amount) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_amount (token_amount) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_fee (fee) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_reserve (token_reserve) TYPE minmax GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_trx_amount (trx_amount) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token_amount (token_amount) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_fee (fee) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_token_reserve (token_reserve) TYPE minmax,
 
     -- indexes (TokenCreate) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax;
 
 -- SunPump TokenSold --
 CREATE TABLE IF NOT EXISTS sunpump_token_sold AS TEMPLATE_LOG
@@ -45,16 +45,16 @@ ALTER TABLE sunpump_token_sold
     ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_seller (seller) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_amount (token_amount) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_trx_amount (trx_amount) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_fee (fee) TYPE minmax GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_seller (seller) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token_amount (token_amount) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_trx_amount (trx_amount) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_fee (fee) TYPE minmax,
 
     -- indexes (TokenCreate) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax;
 
 -- SunPump LaunchPending --
 CREATE TABLE IF NOT EXISTS sunpump_launch_pending AS TEMPLATE_LOG
@@ -64,7 +64,7 @@ ALTER TABLE sunpump_launch_pending
     ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
 
 -- SunPump LauncherChanged --
 CREATE TABLE IF NOT EXISTS sunpump_launcher_changed AS TEMPLATE_LOG
@@ -75,8 +75,8 @@ ALTER TABLE sunpump_launcher_changed
     ADD COLUMN IF NOT EXISTS new_launcher       String COMMENT 'New launcher address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_launcher (old_launcher) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_launcher (new_launcher) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_launcher (old_launcher) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_new_launcher (new_launcher) TYPE bloom_filter;
 
 -- SunPump MinTxFeeSet --
 CREATE TABLE IF NOT EXISTS sunpump_min_tx_fee_set AS TEMPLATE_LOG
@@ -87,8 +87,8 @@ ALTER TABLE sunpump_min_tx_fee_set
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New minimum transaction fee',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax;
 
 -- SunPump MintFeeSet --
 CREATE TABLE IF NOT EXISTS sunpump_mint_fee_set AS TEMPLATE_LOG
@@ -99,8 +99,8 @@ ALTER TABLE sunpump_mint_fee_set
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New mint fee',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax;
 
 -- SunPump OperatorChanged --
 CREATE TABLE IF NOT EXISTS sunpump_operator_changed AS TEMPLATE_LOG
@@ -111,8 +111,8 @@ ALTER TABLE sunpump_operator_changed
     ADD COLUMN IF NOT EXISTS new_operator       String COMMENT 'New operator address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_operator (old_operator) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_operator (new_operator) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_operator (old_operator) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_new_operator (new_operator) TYPE bloom_filter;
 
 -- SunPump OwnerChanged --
 CREATE TABLE IF NOT EXISTS sunpump_owner_changed AS TEMPLATE_LOG
@@ -123,8 +123,8 @@ ALTER TABLE sunpump_owner_changed
     ADD COLUMN IF NOT EXISTS new_owner          String COMMENT 'New owner address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_owner (old_owner) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_owner (new_owner) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_owner (old_owner) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_new_owner (new_owner) TYPE bloom_filter;
 
 -- SunPump PendingOwnerSet --
 CREATE TABLE IF NOT EXISTS sunpump_pending_owner_set AS TEMPLATE_LOG
@@ -135,8 +135,8 @@ ALTER TABLE sunpump_pending_owner_set
     ADD COLUMN IF NOT EXISTS new_pending_owner  String COMMENT 'New pending owner address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_pending_owner (old_pending_owner) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_pending_owner (new_pending_owner) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_pending_owner (old_pending_owner) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_new_pending_owner (new_pending_owner) TYPE bloom_filter;
 
 -- SunPump PurchaseFeeSet --
 CREATE TABLE IF NOT EXISTS sunpump_purchase_fee_set AS TEMPLATE_LOG
@@ -147,8 +147,8 @@ ALTER TABLE sunpump_purchase_fee_set
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New purchase fee',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax;
 
 -- SunPump SaleFeeSet --
 CREATE TABLE IF NOT EXISTS sunpump_sale_fee_set AS TEMPLATE_LOG
@@ -159,8 +159,8 @@ ALTER TABLE sunpump_sale_fee_set
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New sale fee',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_old_fee (old_fee) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_new_fee (new_fee) TYPE minmax;
 
 -- SunPump TokenCreate --
 CREATE TABLE IF NOT EXISTS sunpump_token_create AS TEMPLATE_LOG
@@ -172,9 +172,9 @@ ALTER TABLE sunpump_token_create
     ADD COLUMN IF NOT EXISTS creator            String COMMENT 'Creator address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token_address (token_address) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token_address (token_address) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token_index (token_index) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter;
 
 -- SunPump TokenCreateLegacy --
 CREATE TABLE IF NOT EXISTS sunpump_token_create_legacy AS TEMPLATE_LOG
@@ -189,12 +189,12 @@ ALTER TABLE sunpump_token_create_legacy
     ADD COLUMN IF NOT EXISTS symbol            String COMMENT 'Token symbol',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token_address (token_address) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_nft_max_supply (nft_max_supply) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_nft_threshold (nft_threshold) TYPE minmax GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_name (name) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_symbol (symbol) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token_address (token_address) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_creator (creator) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_nft_max_supply (nft_max_supply) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_nft_threshold (nft_threshold) TYPE minmax,
+    ADD INDEX IF NOT EXISTS idx_name (name) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_symbol (symbol) TYPE bloom_filter;
 
 -- SunPump TokenLaunched --
 CREATE TABLE IF NOT EXISTS sunpump_token_launched AS TEMPLATE_LOG
@@ -204,4 +204,4 @@ ALTER TABLE sunpump_token_launched
     ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;

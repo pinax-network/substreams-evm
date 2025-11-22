@@ -4,9 +4,9 @@ use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    foundational_stores::get_token_create,
     logs::{log_key, set_template_log},
     set_clock,
+    store::get_store_by_address,
     transactions::set_template_tx,
 };
 
@@ -63,23 +63,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_token_create(encoding: &Encoding, value: Option<TokenCreate>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("creator", bytes_to_string(&value.creator, encoding));
-        row.set("token_index", &value.token_index);
-        substreams::log::info!(
-            "TokenCreate found: factory={}, creator={}, token_index={}",
-            bytes_to_string(&value.factory, encoding),
-            bytes_to_string(&value.creator, encoding),
-            &value.token_index,
-        );
-    } else {
-        row.set("factory", "");
-        row.set("creator", "");
-        row.set("token_index", 0);
-        substreams::log::info!("TokenCreate not found");
-    }
+pub fn set_pool(encoding: &Encoding, value: TokenCreate, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("creator", bytes_to_string(&value.creator, encoding));
+    row.set("token_index", &value.token_index);
 }
 
 fn process_sunpump_token_purchased(
@@ -93,24 +80,24 @@ fn process_sunpump_token_purchased(
     log_index: usize,
     purchase: &sunpump::TokenPurchased,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunpump_token_purchased", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("sunpump_token_purchased", key);
 
-    // Block and transaction info
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
+        // Block and transaction info
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    // Set TokenCreate event data
-    set_token_create(encoding, get_token_create(store, &purchase.token), row);
-
-    // Swap info - TRX -> Token purchase
-    row.set("buyer", bytes_to_string(&purchase.buyer, encoding));
-    row.set("trx_amount", &purchase.trx_amount);
-    row.set("token", bytes_to_string(&purchase.token, encoding));
-    row.set("token_amount", &purchase.token_amount);
-    row.set("fee", &purchase.fee);
-    row.set("token_reserve", &purchase.token_reserve);
+        // Swap info - TRX -> Token purchase
+        row.set("buyer", bytes_to_string(&purchase.buyer, encoding));
+        row.set("trx_amount", &purchase.trx_amount);
+        row.set("token", bytes_to_string(&purchase.token, encoding));
+        row.set("token_amount", &purchase.token_amount);
+        row.set("fee", &purchase.fee);
+        row.set("token_reserve", &purchase.token_reserve);
+    }
 }
 
 fn process_sunpump_token_sold(
@@ -124,23 +111,23 @@ fn process_sunpump_token_sold(
     log_index: usize,
     sold: &sunpump::TokenSold,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunpump_token_sold", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("sunpump_token_sold", key);
 
-    // Block and transaction info
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
+        // Block and transaction info
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    // Set TokenCreate event data
-    set_token_create(encoding, get_token_create(store, &sold.token), row);
-
-    // Swap info - Token -> TRX sale
-    row.set("seller", bytes_to_string(&sold.seller, encoding));
-    row.set("token", bytes_to_string(&sold.token, encoding));
-    row.set("token_amount", &sold.token_amount);
-    row.set("trx_amount", &sold.trx_amount);
-    row.set("fee", &sold.fee);
+        // Swap info - Token -> TRX sale
+        row.set("seller", bytes_to_string(&sold.seller, encoding));
+        row.set("token", bytes_to_string(&sold.token, encoding));
+        row.set("token_amount", &sold.token_amount);
+        row.set("trx_amount", &sold.trx_amount);
+        row.set("fee", &sold.fee);
+    }
 }
 
 fn process_sunpump_launch_pending(
