@@ -1,7 +1,6 @@
 -- Bancor Conversion (Swap) --
 CREATE TABLE IF NOT EXISTS bancor_conversion AS TEMPLATE_LOG
 COMMENT 'Bancor Conversion (swap) events';
-
 ALTER TABLE bancor_conversion
     -- event information --
     ADD COLUMN IF NOT EXISTS source_token       String COMMENT 'Source token contract address',
@@ -34,7 +33,6 @@ ALTER TABLE bancor_conversion
 -- Bancor LiquidityAdded --
 CREATE TABLE IF NOT EXISTS bancor_liquidity_added AS TEMPLATE_LOG
 COMMENT 'Bancor LiquidityAdded events';
-
 ALTER TABLE bancor_liquidity_added
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
@@ -65,7 +63,6 @@ ALTER TABLE bancor_liquidity_added
 -- Bancor LiquidityRemoved --
 CREATE TABLE IF NOT EXISTS bancor_liquidity_removed AS TEMPLATE_LOG
 COMMENT 'Bancor LiquidityRemoved events';
-
 ALTER TABLE bancor_liquidity_removed
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
@@ -96,7 +93,6 @@ ALTER TABLE bancor_liquidity_removed
 -- Bancor TokenRateUpdate --
 CREATE TABLE IF NOT EXISTS bancor_token_rate_update AS TEMPLATE_LOG
 COMMENT 'Bancor TokenRateUpdate events';
-
 ALTER TABLE bancor_token_rate_update
     -- event information --
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'First token contract address',
@@ -122,11 +118,9 @@ ALTER TABLE bancor_token_rate_update
     -- indexes (Activation) --
     ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
 
-
 -- Bancor Activation --
 CREATE TABLE IF NOT EXISTS bancor_activation AS TEMPLATE_LOG
 COMMENT 'Bancor Activation events';
-
 ALTER TABLE bancor_activation
     ADD COLUMN IF NOT EXISTS converter_type Enum8(
         'Unknown'       = 0,
