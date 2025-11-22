@@ -26,7 +26,7 @@ message Log {
   oneof log {
     // Exchange
     TokenPurchase token_purchase = 10;
-    EthPurchase eth_purchase = 11; // TrxPurchase (JustSwap TVM)
+    EthPurchase eth_purchase = 11;
     AddLiquidity add_liquidity = 12;
     RemoveLiquidity remove_liquidity = 13;
 
