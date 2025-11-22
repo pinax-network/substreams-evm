@@ -19,7 +19,6 @@ ALTER TABLE bancor_conversion
         'FeeConverter'  = 3,
         'StablePool'    = 4
     ) COMMENT 'Converter type',
-    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
@@ -50,7 +49,6 @@ ALTER TABLE bancor_liquidity_added
         'FeeConverter'  = 3,
         'StablePool'    = 4
     ) COMMENT 'Converter type',
-    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -80,7 +78,6 @@ ALTER TABLE bancor_liquidity_removed
         'FeeConverter'  = 3,
         'StablePool'    = 4
     ) COMMENT 'Converter type',
-    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -109,7 +106,6 @@ ALTER TABLE bancor_token_rate_update
         'FeeConverter'  = 3,
         'StablePool'    = 4
     ) COMMENT 'Converter type',
-    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
