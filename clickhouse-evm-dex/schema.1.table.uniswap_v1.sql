@@ -4,8 +4,8 @@ COMMENT 'Uniswap V1 TokenPurchase events (ETH sold for tokens)';
 ALTER TABLE uniswap_v1_token_purchase
     -- swap event information --
     ADD COLUMN IF NOT EXISTS buyer              String COMMENT 'buyer wallet address',
-    ADD COLUMN IF NOT EXISTS eth_sold           String COMMENT 'Amount of ETH sold',
-    ADD COLUMN IF NOT EXISTS tokens_bought      String COMMENT 'Amount of tokens bought',
+    ADD COLUMN IF NOT EXISTS eth_sold           UInt256 COMMENT 'Amount of ETH sold',
+    ADD COLUMN IF NOT EXISTS tokens_bought      UInt256 COMMENT 'Amount of tokens bought',
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -24,8 +24,8 @@ COMMENT 'Uniswap V1 EthPurchase events (tokens sold for ETH)';
 ALTER TABLE uniswap_v1_eth_purchase
     -- swap event information --
     ADD COLUMN IF NOT EXISTS buyer              String COMMENT 'buyer wallet address',
-    ADD COLUMN IF NOT EXISTS tokens_sold        String COMMENT 'Amount of tokens sold',
-    ADD COLUMN IF NOT EXISTS eth_bought         String COMMENT 'Amount of ETH bought',
+    ADD COLUMN IF NOT EXISTS tokens_sold        UInt256 COMMENT 'Amount of tokens sold',
+    ADD COLUMN IF NOT EXISTS eth_bought         UInt256 COMMENT 'Amount of ETH bought',
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -44,8 +44,8 @@ COMMENT 'Uniswap V1 AddLiquidity events';
 ALTER TABLE uniswap_v1_add_liquidity
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
-    ADD COLUMN IF NOT EXISTS eth_amount         String COMMENT 'Amount of ETH added',
-    ADD COLUMN IF NOT EXISTS token_amount       String COMMENT 'Amount of tokens added',
+    ADD COLUMN IF NOT EXISTS eth_amount         UInt256 COMMENT 'Amount of ETH added',
+    ADD COLUMN IF NOT EXISTS token_amount       UInt256 COMMENT 'Amount of tokens added',
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -64,8 +64,8 @@ COMMENT 'Uniswap V1 RemoveLiquidity events';
 ALTER TABLE uniswap_v1_remove_liquidity
     -- event information --
     ADD COLUMN IF NOT EXISTS provider           String COMMENT 'Liquidity provider address',
-    ADD COLUMN IF NOT EXISTS eth_amount         String COMMENT 'Amount of ETH removed',
-    ADD COLUMN IF NOT EXISTS token_amount       String COMMENT 'Amount of tokens removed',
+    ADD COLUMN IF NOT EXISTS eth_amount         UInt256 COMMENT 'Amount of ETH removed',
+    ADD COLUMN IF NOT EXISTS token_amount       UInt256 COMMENT 'Amount of tokens removed',
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',

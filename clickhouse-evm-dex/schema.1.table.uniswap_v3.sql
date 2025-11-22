@@ -84,9 +84,9 @@ ALTER TABLE uniswap_v3_burn
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Owner address',
     ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
     ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
-    ADD COLUMN IF NOT EXISTS amount             String COMMENT 'Liquidity amount',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of token0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS amount             UInt128 COMMENT 'Liquidity amount',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of token1',
 
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -112,8 +112,8 @@ ALTER TABLE uniswap_v3_collect
     ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
     ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
     ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of token0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS amount0            UInt128 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt128 COMMENT 'Amount of token1',
 
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -138,10 +138,10 @@ ALTER TABLE uniswap_v3_flash
     -- event information --
     ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
     ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of token0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of token1',
-    ADD COLUMN IF NOT EXISTS paid0              String COMMENT 'Amount of token0 paid',
-    ADD COLUMN IF NOT EXISTS paid1              String COMMENT 'Amount of token1 paid',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS paid0              UInt256 COMMENT 'Amount of token0 paid',
+    ADD COLUMN IF NOT EXISTS paid1              UInt256 COMMENT 'Amount of token1 paid',
 
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
@@ -202,8 +202,8 @@ ALTER TABLE uniswap_v3_collect_protocol
     -- event information --
     ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
     ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
-    ADD COLUMN IF NOT EXISTS amount0            String COMMENT 'Amount of token0',
-    ADD COLUMN IF NOT EXISTS amount1            String COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS amount0            UInt128 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt128 COMMENT 'Amount of token1',
 
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
