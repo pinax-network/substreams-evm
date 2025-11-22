@@ -16,7 +16,6 @@ ALTER TABLE uniswap_v4_swap
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter GRANULARITY 1,
@@ -63,8 +62,6 @@ ALTER TABLE uniswap_v4_modify_liquidity
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter GRANULARITY 1,
@@ -91,8 +88,6 @@ ALTER TABLE uniswap_v4_donate
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter GRANULARITY 1,
@@ -125,8 +120,6 @@ ALTER TABLE uniswap_v4_protocol_fee_updated
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
-    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter GRANULARITY 1,
