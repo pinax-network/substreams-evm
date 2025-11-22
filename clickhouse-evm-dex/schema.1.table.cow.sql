@@ -6,9 +6,9 @@ ALTER TABLE cow_trade
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Order owner wallet address',
     ADD COLUMN IF NOT EXISTS sell_token         String COMMENT 'Token being sold',
     ADD COLUMN IF NOT EXISTS buy_token          String COMMENT 'Token being bought',
-    ADD COLUMN IF NOT EXISTS sell_amount        String COMMENT 'Amount of tokens sold',
-    ADD COLUMN IF NOT EXISTS buy_amount         String COMMENT 'Amount of tokens bought',
-    ADD COLUMN IF NOT EXISTS fee_amount         String COMMENT 'Fee amount charged',
+    ADD COLUMN IF NOT EXISTS sell_amount        UInt256 COMMENT 'Amount of tokens sold',
+    ADD COLUMN IF NOT EXISTS buy_amount         UInt256 COMMENT 'Amount of tokens bought',
+    ADD COLUMN IF NOT EXISTS fee_amount         UInt256 COMMENT 'Fee amount charged',
     ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
 
     -- indexes --
