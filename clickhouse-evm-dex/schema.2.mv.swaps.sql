@@ -282,6 +282,13 @@ WHERE factory != '';  -- exclude invalid events with empty factory address
 -- The sold_id and bought_id are indices that map to actual token addresses in the coins array
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
 TO swaps AS
+WITH coin_array AS (
+    SELECT
+        *,
+        splitByChar(',', coins) AS coin_addresses
+    FROM curvefi_token_exchange
+    WHERE factory != '' AND coins != ''  -- exclude invalid events with empty factory address or coins
+)
 SELECT
     'curvefi' AS protocol,
     factory,
@@ -292,7 +299,8 @@ SELECT
         sold_id,
         tokens_sold,
         bought_id,
-        tokens_bought
+        tokens_bought,
+        coin_addresses
     ),
 
     -- mapped swap fields
@@ -301,14 +309,13 @@ SELECT
 
     -- Note: sold_id and bought_id are token indices (0-based)
     -- We use them to index into the coins array (1-based in ClickHouse)
-    arrayElement(splitByChar(',', coins), toInt32(sold_id) + 1)  AS input_contract,
+    arrayElement(coin_addresses, toInt32(sold_id) + 1)  AS input_contract,
     tokens_sold                        AS input_amount,
 
-    arrayElement(splitByChar(',', coins), toInt32(bought_id) + 1) AS output_contract,
+    arrayElement(coin_addresses, toInt32(bought_id) + 1) AS output_contract,
     tokens_bought                      AS output_amount
 
-FROM curvefi_token_exchange
-WHERE factory != '' AND coins != '';  -- exclude invalid events with empty factory address or coins
+FROM coin_array;
 
 
 -- Balancer V3 Vault Swap
