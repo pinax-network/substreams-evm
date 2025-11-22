@@ -285,7 +285,9 @@ TO swaps AS
 WITH coin_array AS (
     SELECT
         *,
-        splitByChar(',', coins) AS coin_addresses
+        splitByChar(',', coins) AS coin_addresses,
+        toInt32OrNull(sold_id) AS sold_id_int,
+        toInt32OrNull(bought_id) AS bought_id_int
     FROM curvefi_token_exchange
     WHERE factory != '' AND coins != ''  -- exclude invalid events with empty factory address or coins
 )
@@ -300,7 +302,9 @@ SELECT
         tokens_sold,
         bought_id,
         tokens_bought,
-        coin_addresses
+        coin_addresses,
+        sold_id_int,
+        bought_id_int
     ),
 
     -- mapped swap fields
@@ -309,18 +313,20 @@ SELECT
 
     -- Note: sold_id and bought_id are token indices (0-based)
     -- We use them to index into the coins array (1-based in ClickHouse)
-    arrayElement(coin_addresses, toInt32(sold_id) + 1)  AS input_contract,
+    arrayElement(coin_addresses, sold_id_int + 1)  AS input_contract,
     tokens_sold                        AS input_amount,
 
-    arrayElement(coin_addresses, toInt32(bought_id) + 1) AS output_contract,
+    arrayElement(coin_addresses, bought_id_int + 1) AS output_contract,
     tokens_bought                      AS output_amount
 
 FROM coin_array
 WHERE 
-    toInt32(sold_id) >= 0 
-    AND toInt32(bought_id) >= 0
-    AND length(coin_addresses) > toInt32(sold_id)
-    AND length(coin_addresses) > toInt32(bought_id);
+    sold_id_int IS NOT NULL
+    AND bought_id_int IS NOT NULL
+    AND sold_id_int >= 0 
+    AND bought_id_int >= 0
+    AND length(coin_addresses) > sold_id_int
+    AND length(coin_addresses) > bought_id_int;
 
 
 -- Balancer V3 Vault Swap
