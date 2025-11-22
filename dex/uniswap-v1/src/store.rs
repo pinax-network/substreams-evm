@@ -3,7 +3,7 @@ use substreams::store::StoreSetProto;
 use substreams::{prelude::*, Hex};
 
 #[substreams::handlers::store]
-pub fn store_pair_created(events: pb::Events, store: StoreSetProto<pb::NewExchange>) {
+pub fn store_new_exchange(events: pb::Events, store: StoreSetProto<pb::NewExchange>) {
     for trx in events.transactions.iter() {
         for log in trx.logs.iter() {
             // ---- NewExchange ----
