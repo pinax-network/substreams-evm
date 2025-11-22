@@ -12,9 +12,9 @@ ALTER TABLE cow_trade
     ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_sell_token (sell_token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_buy_token (buy_token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_sell_token (sell_token) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_buy_token (buy_token) TYPE bloom_filter;
 
 -- CoW Protocol Settlement --
 CREATE TABLE IF NOT EXISTS cow_settlement AS TEMPLATE_LOG
@@ -24,7 +24,7 @@ ALTER TABLE cow_settlement
     ADD COLUMN IF NOT EXISTS solver             String COMMENT 'Solver address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_solver (solver) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_solver (solver) TYPE bloom_filter;
 
 -- CoW Protocol OrderInvalidated --
 CREATE TABLE IF NOT EXISTS cow_order_invalidated AS TEMPLATE_LOG
@@ -35,7 +35,7 @@ ALTER TABLE cow_order_invalidated
     ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter;
 
 -- CoW Protocol PreSignature --
 CREATE TABLE IF NOT EXISTS cow_pre_signature AS TEMPLATE_LOG
@@ -47,4 +47,4 @@ ALTER TABLE cow_pre_signature
     ADD COLUMN IF NOT EXISTS signed             UInt8 COMMENT 'Whether the order is signed',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter;

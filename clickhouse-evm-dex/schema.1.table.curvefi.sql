@@ -133,7 +133,6 @@ ALTER TABLE curvefi_meta_pool_deployed
     ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
     ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter,
     ADD INDEX IF NOT EXISTS idx_coin (coin) TYPE bloom_filter,
     ADD INDEX IF NOT EXISTS idx_base_pool (base_pool) TYPE bloom_filter,

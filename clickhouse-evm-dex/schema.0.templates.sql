@@ -28,21 +28,20 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
     log_data                    String,
 
     -- INDEXES --
-    INDEX idx_tx_value (tx_value) TYPE minmax GRANULARITY 1,
-    INDEX idx_log_ordinal (log_ordinal) TYPE minmax GRANULARITY 1,
+    INDEX idx_tx_value (tx_value) TYPE minmax,
+    INDEX idx_log_ordinal (log_ordinal) TYPE minmax,
 
     -- PROJECTIONS --
     -- count() --
     PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
     PROJECTION prj_tx_to_count ( SELECT tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to ),
-    PROJECTION prj_tx_to_from_count ( SELECT tx_to, tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to, tx_from ),
     PROJECTION prj_log_topic0_count ( SELECT log_topic0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_topic0 ),
     PROJECTION prj_log_address_count ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address ),
 
     -- minute --
-    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute)  GROUP BY block_hash, minute,timestamp ),
-    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_hash, minute, timestamp ),
-    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, minute )
+    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count() GROUP BY block_hash, minute,timestamp ),
+    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count() GROUP BY tx_hash, minute, timestamp ),
+    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count() GROUP BY log_address, minute )
 )
 ENGINE = MergeTree
 ORDER BY (

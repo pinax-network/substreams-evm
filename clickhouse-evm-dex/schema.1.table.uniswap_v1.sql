@@ -12,11 +12,11 @@ ALTER TABLE uniswap_v1_token_purchase
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
 
     -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
 
 -- Uniswap V1 EthPurchase (Token->ETH) --
 CREATE TABLE IF NOT EXISTS uniswap_v1_eth_purchase AS TEMPLATE_LOG
@@ -32,11 +32,11 @@ ALTER TABLE uniswap_v1_eth_purchase
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
 
     -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
 
 -- Uniswap V1 AddLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v1_add_liquidity AS TEMPLATE_LOG
@@ -52,11 +52,11 @@ ALTER TABLE uniswap_v1_add_liquidity
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
 
 -- Uniswap V1 RemoveLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v1_remove_liquidity AS TEMPLATE_LOG
@@ -72,11 +72,11 @@ ALTER TABLE uniswap_v1_remove_liquidity
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
+    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
 
     -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
 
 -- Uniswap V1 NewExchange --
 CREATE TABLE IF NOT EXISTS uniswap_v1_new_exchange AS TEMPLATE_LOG
@@ -87,5 +87,5 @@ ALTER TABLE uniswap_v1_new_exchange
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_exchange (exchange) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter GRANULARITY 1;
+    ADD INDEX IF NOT EXISTS idx_exchange (exchange) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
