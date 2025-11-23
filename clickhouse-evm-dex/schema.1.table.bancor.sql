@@ -1,3 +1,12 @@
+-- -- Bancor Schema to conert type mapping
+-- CREATE FUNCTION bancor_converter_type(type_id UInt8) RETURNS Enum8(
+--     'Unknown'       = 0,
+--     'LiquidToken'   = 1,
+--     'LiquidityPool' = 2,
+--     'FeeConverter'  = 3,
+--     'StablePool'    = 4
+-- );
+
 -- Bancor Conversion (Swap) --
 CREATE TABLE IF NOT EXISTS bancor_conversion AS TEMPLATE_LOG
 COMMENT 'Bancor Conversion (swap) events';
@@ -12,13 +21,7 @@ ALTER TABLE bancor_conversion
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     Enum8(
-        'Unknown'       = 0,
-        'LiquidToken'   = 1,
-        'LiquidityPool' = 2,
-        'FeeConverter'  = 3,
-        'StablePool'    = 4
-    ) COMMENT 'Converter type',
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
@@ -42,13 +45,7 @@ ALTER TABLE bancor_liquidity_added
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     Enum8(
-        'Unknown'       = 0,
-        'LiquidToken'   = 1,
-        'LiquidityPool' = 2,
-        'FeeConverter'  = 3,
-        'StablePool'    = 4
-    ) COMMENT 'Converter type',
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -71,13 +68,7 @@ ALTER TABLE bancor_liquidity_removed
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     Enum8(
-        'Unknown'       = 0,
-        'LiquidToken'   = 1,
-        'LiquidityPool' = 2,
-        'FeeConverter'  = 3,
-        'StablePool'    = 4
-    ) COMMENT 'Converter type',
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
@@ -99,13 +90,7 @@ ALTER TABLE bancor_token_rate_update
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     Enum8(
-        'Unknown'       = 0,
-        'LiquidToken'   = 1,
-        'LiquidityPool' = 2,
-        'FeeConverter'  = 3,
-        'StablePool'    = 4
-    ) COMMENT 'Converter type',
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
@@ -118,12 +103,6 @@ ALTER TABLE bancor_token_rate_update
 CREATE TABLE IF NOT EXISTS bancor_activation AS TEMPLATE_LOG
 COMMENT 'Bancor Activation events';
 ALTER TABLE bancor_activation
-    ADD COLUMN IF NOT EXISTS converter_type Enum8(
-        'Unknown'       = 0,
-        'LiquidToken'   = 1,
-        'LiquidityPool' = 2,
-        'FeeConverter'  = 3,
-        'StablePool'    = 4
-    ) COMMENT 'Converter type',
-    ADD COLUMN IF NOT EXISTS anchor       String COMMENT 'Converter anchor address',
-    ADD COLUMN IF NOT EXISTS activated    Boolean  COMMENT 'True if the converter was activated';
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
+    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
+    ADD COLUMN IF NOT EXISTS activated          Boolean  COMMENT 'True if the converter was activated';
