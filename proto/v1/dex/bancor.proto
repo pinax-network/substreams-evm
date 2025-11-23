@@ -17,6 +17,7 @@ message Transaction {
 }
 
 // https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/types/standard-pool/StandardPoolConverter.sol
+// https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/ConverterRegistry.sol
 message Log {
   bytes address = 1;
   uint64 ordinal = 2;
@@ -30,6 +31,14 @@ message Log {
     LiquidityRemoved liquidity_removed = 14;
     OwnerUpdate owner_update = 15;
     TokenRateUpdate token_rate_update = 16;
+    ConverterAnchorAdded converter_anchor_added = 17;
+    ConverterAnchorRemoved converter_anchor_removed = 18;
+    ConvertibleTokenAdded convertible_token_added = 19;
+    ConvertibleTokenRemoved convertible_token_removed = 20;
+    LiquidityPoolAdded liquidity_pool_added = 21;
+    LiquidityPoolRemoved liquidity_pool_removed = 22;
+    SmartTokenAdded smart_token_added = 23;
+    SmartTokenRemoved smart_token_removed = 24;
   }
 }
 
@@ -114,4 +123,56 @@ message TokenRateUpdate {
   bytes token2 = 2;  // address (indexed)
   string rate_n = 3; // uint256
   string rate_d = 4; // uint256
+}
+
+/// @notice Emitted when a converter anchor is added to the registry
+/// @param anchor The converter anchor address
+message ConverterAnchorAdded {
+  bytes anchor = 1; // address (indexed)
+}
+
+/// @notice Emitted when a converter anchor is removed from the registry
+/// @param anchor The converter anchor address
+message ConverterAnchorRemoved {
+  bytes anchor = 1; // address (indexed)
+}
+
+/// @notice Emitted when a convertible token is added to the registry
+/// @param convertibleToken The convertible token address
+/// @param smartToken The smart token address
+message ConvertibleTokenAdded {
+  bytes convertible_token = 1; // address (indexed)
+  bytes smart_token = 2;       // address (indexed)
+}
+
+/// @notice Emitted when a convertible token is removed from the registry
+/// @param convertibleToken The convertible token address
+/// @param smartToken The smart token address
+message ConvertibleTokenRemoved {
+  bytes convertible_token = 1; // address (indexed)
+  bytes smart_token = 2;       // address (indexed)
+}
+
+/// @notice Emitted when a liquidity pool is added to the registry
+/// @param liquidityPool The liquidity pool address
+message LiquidityPoolAdded {
+  bytes liquidity_pool = 1; // address (indexed)
+}
+
+/// @notice Emitted when a liquidity pool is removed from the registry
+/// @param liquidityPool The liquidity pool address
+message LiquidityPoolRemoved {
+  bytes liquidity_pool = 1; // address (indexed)
+}
+
+/// @notice Emitted when a smart token is added to the registry
+/// @param smartToken The smart token address
+message SmartTokenAdded {
+  bytes smart_token = 1; // address (indexed)
+}
+
+/// @notice Emitted when a smart token is removed from the registry
+/// @param smartToken The smart token address
+message SmartTokenRemoved {
+  bytes smart_token = 1; // address (indexed)
 }
