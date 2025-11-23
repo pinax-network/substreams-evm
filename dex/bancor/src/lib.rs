@@ -1,5 +1,6 @@
 use common::bigint_to_u64;
 use proto::pb::bancor::v1 as pb;
+use substreams_abis::evm::bancor::bancorconverterfactory;
 use substreams_abis::evm::bancor::converterfactory;
 use substreams_abis::evm::bancor::converterregistry;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
@@ -217,6 +218,18 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::NewConverter(pb::NewConverter {
                     factory: log.address.to_vec(),
                     converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
+                    converter: event.converter.to_vec(),
+                    owner: event.owner.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // NewConverter event from BancorConverterFactory (Legacy)
+            if let Some(event) = bancorconverterfactory::events::NewConverter::match_and_decode(log) {
+                total_new_converter += 1;
+                let event = pb::log::Log::NewConverter(pb::NewConverter {
+                    factory: log.address.to_vec(),
+                    converter_type: 1 as u32,
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),
                 });

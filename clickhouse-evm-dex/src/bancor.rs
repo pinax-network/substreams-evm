@@ -1,3 +1,5 @@
+use core::panic;
+
 use common::{bytes_to_string, Encoding};
 use proto::pb::bancor::v1::{self as bancor, NewConverter};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -69,6 +71,8 @@ fn process_conversion(
         row.set("source_amount", &event.source_amount);
         row.set("target_amount", &event.target_amount);
         row.set("conversion_fee", &event.conversion_fee);
+    } else {
+        panic!("Pool not found for address: {}", bytes_to_string(&log.address, encoding));
     }
 }
 
