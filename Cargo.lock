@@ -1215,8 +1215,8 @@ dependencies = [
 
 [[package]]
 name = "substreams-abis"
-version = "0.7.7"
-source = "git+https://github.com/pinax-network/substreams-abis.git#8e29eea0a7c2a2d4fd528325c790546ba41ea2cc"
+version = "0.7.8"
+source = "git+https://github.com/pinax-network/substreams-abis.git#853c8ffeadd460de9c8dfa162d3a7abe0b5578a5"
 dependencies = [
  "anyhow",
  "ethabi 18.0.0",
