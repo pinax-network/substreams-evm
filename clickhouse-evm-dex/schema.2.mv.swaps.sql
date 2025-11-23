@@ -12,6 +12,10 @@ ALTER TABLE swaps
     ADD COLUMN IF NOT EXISTS output_contract    LowCardinality(String) COMMENT 'Output token contract address',
     ADD COLUMN IF NOT EXISTS output_amount      UInt256 COMMENT 'Amount of output tokens received',
 
+   -- materialized token pair (canonical ordering) --
+    ADD COLUMN IF NOT EXISTS token0             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
+    ADD COLUMN IF NOT EXISTS token1             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, output_contract, input_contract) COMMENT 'Lexicographically larger token address',
+
     -- PROJECTIONS --
     -- count() --
     ADD PROJECTION IF NOT EXISTS prj_protocol_count ( SELECT protocol, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY protocol ),
@@ -20,6 +24,26 @@ ALTER TABLE swaps
     ADD PROJECTION IF NOT EXISTS prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user ),
     ADD PROJECTION IF NOT EXISTS prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
     ADD PROJECTION IF NOT EXISTS prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
+    ADD PROJECTION IF NOT EXISTS prj_token0_count ( SELECT token0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token0 ),
+    ADD PROJECTION IF NOT EXISTS prj_token1_count ( SELECT token1, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token1 ),
+
+    -- used for `/pools` endpoint --
+    ADD PROJECTION IF NOT EXISTS prj_all_count (
+        SELECT
+            protocol,
+            factory,
+            pool,
+            count(),
+            min(block_num),
+            max(block_num),
+            min(timestamp),
+            max(timestamp),
+            min(minute),
+            max(minute),
+            token0,
+            token1
+        GROUP BY protocol, factory, pool, token0, token1
+    ),
 
     -- minute --
     ADD PROJECTION IF NOT EXISTS prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
@@ -27,7 +51,9 @@ ALTER TABLE swaps
     ADD PROJECTION IF NOT EXISTS prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
     ADD PROJECTION IF NOT EXISTS prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
     ADD PROJECTION IF NOT EXISTS prj_input_contract_by_minute ( SELECT input_contract, minute, count() GROUP BY input_contract, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute );
+    ADD PROJECTION IF NOT EXISTS prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute ),
+    ADD PROJECTION IF NOT EXISTS prj_token0_by_minute ( SELECT token0, minute, count() GROUP BY token0, minute ),
+    ADD PROJECTION IF NOT EXISTS prj_token1_by_minute ( SELECT token1, minute, count() GROUP BY token1, minute );
 
 -- SunPump TokenPurchased: User buys tokens with TRX (TRX → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_purchased
