@@ -39,6 +39,7 @@ message Log {
     LiquidityPoolRemoved liquidity_pool_removed = 22;
     SmartTokenAdded smart_token_added = 23;
     SmartTokenRemoved smart_token_removed = 24;
+    NewConverter new_converter = 25;
   }
 }
 
@@ -175,4 +176,14 @@ message SmartTokenAdded {
 /// @param smartToken The smart token address
 message SmartTokenRemoved {
   bytes smart_token = 1; // address (indexed)
+}
+
+/// @notice Emitted when a new converter is created
+/// @param converterType The converter type
+/// @param converter The converter address
+/// @param owner The owner address
+message NewConverter {
+  uint32 converter_type = 1; // uint16 (indexed)
+  bytes converter = 2;        // address (indexed)
+  bytes owner = 3;            // address (indexed)
 }
