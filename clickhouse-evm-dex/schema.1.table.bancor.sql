@@ -109,3 +109,21 @@ ALTER TABLE bancor_new_converter
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_converter (converter) TYPE bloom_filter GRANULARITY 1,
     ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor FeaturesAddition --
+CREATE TABLE IF NOT EXISTS bancor_features_addition AS TEMPLATE_LOG
+COMMENT 'Bancor FeaturesAddition events';
+ALTER TABLE bancor_features_addition
+    ADD COLUMN IF NOT EXISTS address      String COMMENT 'Contract address',
+    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features added',
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor FeaturesRemoval --
+CREATE TABLE IF NOT EXISTS bancor_features_removal AS TEMPLATE_LOG
+COMMENT 'Bancor FeaturesRemoval events';
+ALTER TABLE bancor_features_removal
+    ADD COLUMN IF NOT EXISTS address      String COMMENT 'Contract address',
+    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features removed',
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1;
