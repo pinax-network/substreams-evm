@@ -47,7 +47,7 @@ fn process_vault_swap(
     log_index: usize,
     event: &balancer::VaultSwap,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_vault_swap", key);
 
@@ -77,7 +77,7 @@ fn process_liquidity_added(
     log_index: usize,
     event: &balancer::LiquidityAdded,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_liquidity_added", key);
 
@@ -106,7 +106,7 @@ fn process_liquidity_removed(
     log_index: usize,
     event: &balancer::LiquidityRemoved,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_liquidity_removed", key);
 
