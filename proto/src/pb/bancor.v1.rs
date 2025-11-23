@@ -42,7 +42,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -64,6 +64,22 @@ pub mod log {
         OwnerUpdate(super::OwnerUpdate),
         #[prost(message, tag="16")]
         TokenRateUpdate(super::TokenRateUpdate),
+        #[prost(message, tag="17")]
+        ConverterAnchorAdded(super::ConverterAnchorAdded),
+        #[prost(message, tag="18")]
+        ConverterAnchorRemoved(super::ConverterAnchorRemoved),
+        #[prost(message, tag="19")]
+        ConvertibleTokenAdded(super::ConvertibleTokenAdded),
+        #[prost(message, tag="20")]
+        ConvertibleTokenRemoved(super::ConvertibleTokenRemoved),
+        #[prost(message, tag="21")]
+        LiquidityPoolAdded(super::LiquidityPoolAdded),
+        #[prost(message, tag="22")]
+        LiquidityPoolRemoved(super::LiquidityPoolRemoved),
+        #[prost(message, tag="23")]
+        SmartTokenAdded(super::SmartTokenAdded),
+        #[prost(message, tag="24")]
+        SmartTokenRemoved(super::SmartTokenRemoved),
     }
 }
 /// / @notice Emitted when the converter is activated or deactivated
@@ -211,5 +227,85 @@ pub struct TokenRateUpdate {
     /// uint256
     #[prost(string, tag="4")]
     pub rate_d: ::prost::alloc::string::String,
+}
+/// / @notice Emitted when a converter anchor is added to the registry
+/// / @param anchor The converter anchor address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConverterAnchorAdded {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub anchor: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a converter anchor is removed from the registry
+/// / @param anchor The converter anchor address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConverterAnchorRemoved {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub anchor: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a convertible token is added to the registry
+/// / @param convertibleToken The convertible token address
+/// / @param smartToken The smart token address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConvertibleTokenAdded {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub convertible_token: ::prost::alloc::vec::Vec<u8>,
+    /// address (indexed)
+    #[prost(bytes="vec", tag="2")]
+    pub smart_token: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a convertible token is removed from the registry
+/// / @param convertibleToken The convertible token address
+/// / @param smartToken The smart token address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConvertibleTokenRemoved {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub convertible_token: ::prost::alloc::vec::Vec<u8>,
+    /// address (indexed)
+    #[prost(bytes="vec", tag="2")]
+    pub smart_token: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a liquidity pool is added to the registry
+/// / @param liquidityPool The liquidity pool address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LiquidityPoolAdded {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub liquidity_pool: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a liquidity pool is removed from the registry
+/// / @param liquidityPool The liquidity pool address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LiquidityPoolRemoved {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub liquidity_pool: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a smart token is added to the registry
+/// / @param smartToken The smart token address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SmartTokenAdded {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub smart_token: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a smart token is removed from the registry
+/// / @param smartToken The smart token address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SmartTokenRemoved {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub smart_token: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)
