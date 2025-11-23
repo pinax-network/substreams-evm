@@ -126,4 +126,4 @@ ALTER TABLE bancor_activation
         'StablePool'    = 4
     ) COMMENT 'Converter type',
     ADD COLUMN IF NOT EXISTS anchor       String COMMENT 'Converter anchor address',
-    ADD COLUMN IF NOT EXISTS activated    UInt8  COMMENT 'True if the converter was activated';
+    ADD COLUMN IF NOT EXISTS activated    Boolean  COMMENT 'True if the converter was activated';
