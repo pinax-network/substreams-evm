@@ -15,6 +15,8 @@ ALTER TABLE swaps
    -- materialized token pair (canonical ordering) --
     ADD COLUMN IF NOT EXISTS token0             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
     ADD COLUMN IF NOT EXISTS token1             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, output_contract, input_contract) COMMENT 'Lexicographically larger token address',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 MATERIALIZED if(input_contract <= output_contract, input_amount, output_amount) COMMENT 'Amount of token0 swapped',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 MATERIALIZED if(input_contract <= output_contract, output_amount, input_amount) COMMENT 'Amount of token1 swapped',
 
     -- PROJECTIONS --
     -- count() --
