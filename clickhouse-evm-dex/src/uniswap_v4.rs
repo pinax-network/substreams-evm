@@ -55,7 +55,7 @@ fn process_swap(
     log_index: usize,
     event: &uniswap::Swap,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_swap", key);
 
@@ -86,7 +86,7 @@ fn process_modify_liquidity(
     log_index: usize,
     event: &uniswap::ModifyLiquidity,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_modify_liquidity", key);
 
@@ -115,7 +115,7 @@ fn process_donate(
     log_index: usize,
     event: &uniswap::Donate,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_donate", key);
 
@@ -142,7 +142,7 @@ fn process_protocol_fee_updated(
     log_index: usize,
     event: &uniswap::ProtocolFeeUpdated,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_store_by_address(store, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_protocol_fee_updated", key);
 
