@@ -43,7 +43,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -83,6 +83,10 @@ pub mod log {
         SmartTokenRemoved(super::SmartTokenRemoved),
         #[prost(message, tag="25")]
         NewConverter(super::NewConverter),
+        #[prost(message, tag="26")]
+        FeaturesAddition(super::FeaturesAddition),
+        #[prost(message, tag="27")]
+        FeaturesRemoval(super::FeaturesRemoval),
     }
 }
 /// / @notice Emitted when the converter is activated or deactivated
@@ -330,5 +334,25 @@ pub struct NewConverter {
     /// address (indexed)
     #[prost(bytes="vec", tag="4")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct FeaturesAddition {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub features: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct FeaturesRemoval {
+    /// address (indexed)
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub features: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)

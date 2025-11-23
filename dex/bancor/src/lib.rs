@@ -1,6 +1,7 @@
 use common::bigint_to_u64;
 use proto::pb::bancor::v1 as pb;
 use substreams_abis::evm::bancor::bancorconverterfactory;
+use substreams_abis::evm::bancor::contractfeatures;
 use substreams_abis::evm::bancor::converterfactory;
 use substreams_abis::evm::bancor::converterregistry;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
@@ -38,6 +39,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_smart_token_added = 0;
     let mut total_smart_token_removed = 0;
     let mut total_new_converter = 0;
+    let mut total_new_converter_legacy = 0;
+    let mut total_features_addition = 0;
+    let mut total_features_removal = 0;
 
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
@@ -226,12 +230,32 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // NewConverter event from BancorConverterFactory (Legacy)
             if let Some(event) = bancorconverterfactory::events::NewConverter::match_and_decode(log) {
-                total_new_converter += 1;
+                total_new_converter_legacy += 1;
                 let event = pb::log::Log::NewConverter(pb::NewConverter {
                     factory: log.address.to_vec(),
                     converter_type: 1 as u32,
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // FeaturesAddition
+            if let Some(event) = contractfeatures::events::FeaturesAddition::match_and_decode(log) {
+                total_features_addition += 1;
+                let event = pb::log::Log::FeaturesAddition(pb::FeaturesAddition {
+                    address: event.address.to_vec(),
+                    features: event.features.to_string(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // FeaturesRemoval
+            if let Some(event) = contractfeatures::events::FeaturesRemoval::match_and_decode(log) {
+                total_features_removal += 1;
+                let event = pb::log::Log::FeaturesRemoval(pb::FeaturesRemoval {
+                    address: event.address.to_vec(),
+                    features: event.features.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
@@ -260,5 +284,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total SmartTokenAdded events: {}", total_smart_token_added);
     substreams::log::info!("Total SmartTokenRemoved events: {}", total_smart_token_removed);
     substreams::log::info!("Total NewConverter events: {}", total_new_converter);
+    substreams::log::info!("Total NewConverter (Legacy) events: {}", total_new_converter_legacy);
+    substreams::log::info!("Total FeaturesAddition events: {}", total_features_addition);
+    substreams::log::info!("Total FeaturesRemoval events: {}", total_features_removal);
     Ok(events)
 }

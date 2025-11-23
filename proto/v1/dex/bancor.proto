@@ -40,6 +40,8 @@ message Log {
     SmartTokenAdded smart_token_added = 23;
     SmartTokenRemoved smart_token_removed = 24;
     NewConverter new_converter = 25;
+    FeaturesAddition features_addition = 26;
+    FeaturesRemoval features_removal = 27;
   }
 }
 
@@ -187,4 +189,14 @@ message NewConverter {
   uint32 converter_type = 2; // uint16 (indexed)
   bytes converter = 3;       // address (indexed)
   bytes owner = 4;           // address (indexed)
+}
+
+message FeaturesAddition {
+  bytes address = 1;   // address (indexed)
+  string features = 2; // uint256
+}
+
+message FeaturesRemoval {
+  bytes address = 1;   // address (indexed)
+  string features = 2; // uint256
 }

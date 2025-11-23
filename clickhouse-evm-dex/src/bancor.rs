@@ -1,5 +1,3 @@
-use core::panic;
-
 use common::{bytes_to_string, Encoding};
 use proto::pb::bancor::v1::{self as bancor, NewConverter};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
