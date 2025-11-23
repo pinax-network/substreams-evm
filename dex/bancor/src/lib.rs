@@ -1,5 +1,6 @@
 use common::bigint_to_u64;
 use proto::pb::bancor::v1 as pb;
+use substreams_abis::evm::bancor::converterregistry;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
 use substreams_ethereum::Event;
@@ -26,6 +27,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_liquidity_removed = 0;
     let mut total_owner_updates = 0;
     let mut total_token_rate_updates = 0;
+    let mut total_converter_anchor_added = 0;
+    let mut total_converter_anchor_removed = 0;
+    let mut total_convertible_token_added = 0;
+    let mut total_convertible_token_removed = 0;
+    let mut total_liquidity_pool_added = 0;
+    let mut total_liquidity_pool_removed = 0;
+    let mut total_smart_token_added = 0;
+    let mut total_smart_token_removed = 0;
 
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
@@ -129,6 +138,80 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(create_log(log, event));
             }
+
+            // ConverterAnchorAdded event
+            if let Some(event) = converterregistry::events::ConverterAnchorAdded::match_and_decode(log) {
+                total_converter_anchor_added += 1;
+                let event = pb::log::Log::ConverterAnchorAdded(pb::ConverterAnchorAdded {
+                    anchor: event.anchor.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // ConverterAnchorRemoved event
+            if let Some(event) = converterregistry::events::ConverterAnchorRemoved::match_and_decode(log) {
+                total_converter_anchor_removed += 1;
+                let event = pb::log::Log::ConverterAnchorRemoved(pb::ConverterAnchorRemoved {
+                    anchor: event.anchor.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // ConvertibleTokenAdded event
+            if let Some(event) = converterregistry::events::ConvertibleTokenAdded::match_and_decode(log) {
+                total_convertible_token_added += 1;
+                let event = pb::log::Log::ConvertibleTokenAdded(pb::ConvertibleTokenAdded {
+                    convertible_token: event.convertible_token.to_vec(),
+                    smart_token: event.smart_token.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // ConvertibleTokenRemoved event
+            if let Some(event) = converterregistry::events::ConvertibleTokenRemoved::match_and_decode(log) {
+                total_convertible_token_removed += 1;
+                let event = pb::log::Log::ConvertibleTokenRemoved(pb::ConvertibleTokenRemoved {
+                    convertible_token: event.convertible_token.to_vec(),
+                    smart_token: event.smart_token.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // LiquidityPoolAdded event
+            if let Some(event) = converterregistry::events::LiquidityPoolAdded::match_and_decode(log) {
+                total_liquidity_pool_added += 1;
+                let event = pb::log::Log::LiquidityPoolAdded(pb::LiquidityPoolAdded {
+                    liquidity_pool: event.liquidity_pool.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // LiquidityPoolRemoved event
+            if let Some(event) = converterregistry::events::LiquidityPoolRemoved::match_and_decode(log) {
+                total_liquidity_pool_removed += 1;
+                let event = pb::log::Log::LiquidityPoolRemoved(pb::LiquidityPoolRemoved {
+                    liquidity_pool: event.liquidity_pool.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // SmartTokenAdded event
+            if let Some(event) = converterregistry::events::SmartTokenAdded::match_and_decode(log) {
+                total_smart_token_added += 1;
+                let event = pb::log::Log::SmartTokenAdded(pb::SmartTokenAdded {
+                    smart_token: event.smart_token.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
+
+            // SmartTokenRemoved event
+            if let Some(event) = converterregistry::events::SmartTokenRemoved::match_and_decode(log) {
+                total_smart_token_removed += 1;
+                let event = pb::log::Log::SmartTokenRemoved(pb::SmartTokenRemoved {
+                    smart_token: event.smart_token.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
         }
 
         if !transaction.logs.is_empty() {
@@ -145,5 +228,13 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total LiquidityRemoved events: {}", total_liquidity_removed);
     substreams::log::info!("Total OwnerUpdate events: {}", total_owner_updates);
     substreams::log::info!("Total TokenRateUpdate events: {}", total_token_rate_updates);
+    substreams::log::info!("Total ConverterAnchorAdded events: {}", total_converter_anchor_added);
+    substreams::log::info!("Total ConverterAnchorRemoved events: {}", total_converter_anchor_removed);
+    substreams::log::info!("Total ConvertibleTokenAdded events: {}", total_convertible_token_added);
+    substreams::log::info!("Total ConvertibleTokenRemoved events: {}", total_convertible_token_removed);
+    substreams::log::info!("Total LiquidityPoolAdded events: {}", total_liquidity_pool_added);
+    substreams::log::info!("Total LiquidityPoolRemoved events: {}", total_liquidity_pool_removed);
+    substreams::log::info!("Total SmartTokenAdded events: {}", total_smart_token_added);
+    substreams::log::info!("Total SmartTokenRemoved events: {}", total_smart_token_removed);
     Ok(events)
 }
