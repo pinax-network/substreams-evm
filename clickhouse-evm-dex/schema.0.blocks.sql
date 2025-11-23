@@ -10,4 +10,4 @@ CREATE TABLE IF NOT EXISTS blocks (
 )
 ENGINE = MergeTree
 ORDER BY ( block_num )
-COMMENT 'blocks';
+COMMENT 'Blocks';

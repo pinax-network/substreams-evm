@@ -18,7 +18,6 @@ ALTER TABLE weth_deposit
     ADD PROJECTION IF NOT EXISTS prj_dst_by_minute ( SELECT dst, minute, count() GROUP BY dst, minute ),
     ADD PROJECTION IF NOT EXISTS prj_log_address_dst_by_minute ( SELECT log_address, dst, minute, count() GROUP BY log_address, dst, minute);
 
-
 -- WETH Withdrawal Logs --
 CREATE TABLE IF NOT EXISTS weth_withdrawal AS TEMPLATE_LOG
 COMMENT 'WETH Withdrawal events';

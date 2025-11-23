@@ -13,7 +13,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         // Only process transactions with native value transfers (value > 0)
         if tx.value != "0" && !tx.value.is_empty() {
             let key = tx_key(clock, tx_index);
-            let row = tables.create_row("native_transfer", key);
+            let row = tables.create_row("native_transfers", key);
 
             // TEMPLATE
             set_clock(clock, row);
