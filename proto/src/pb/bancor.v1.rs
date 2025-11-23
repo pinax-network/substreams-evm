@@ -80,6 +80,8 @@ pub mod log {
         SmartTokenAdded(super::SmartTokenAdded),
         #[prost(message, tag="24")]
         SmartTokenRemoved(super::SmartTokenRemoved),
+        #[prost(message, tag="25")]
+        NewConverter(super::NewConverter),
     }
 }
 /// / @notice Emitted when the converter is activated or deactivated
@@ -307,5 +309,22 @@ pub struct SmartTokenRemoved {
     /// address (indexed)
     #[prost(bytes="vec", tag="1")]
     pub smart_token: ::prost::alloc::vec::Vec<u8>,
+}
+/// / @notice Emitted when a new converter is created
+/// / @param converterType The converter type
+/// / @param converter The converter address
+/// / @param owner The owner address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct NewConverter {
+    /// uint16 (indexed)
+    #[prost(uint32, tag="1")]
+    pub converter_type: u32,
+    /// address (indexed)
+    #[prost(bytes="vec", tag="2")]
+    pub converter: ::prost::alloc::vec::Vec<u8>,
+    /// address (indexed)
+    #[prost(bytes="vec", tag="3")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)
