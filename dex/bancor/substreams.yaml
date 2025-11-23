@@ -25,10 +25,10 @@ modules:
     output:
       type: proto:bancor.v1.Events
 
-  - name: store_activation
+  - name: store_new_converter
     kind: store
     updatePolicy: set
-    valueType: proto:bancor.v1.Activation
+    valueType: proto:bancor.v1.NewConverter
     inputs:
       - map: map_events
 

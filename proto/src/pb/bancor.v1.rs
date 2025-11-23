@@ -31,6 +31,7 @@ pub struct Transaction {
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
 /// <https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/types/standard-pool/StandardPoolConverter.sol>
+/// <https://github.com/bancorprotocol/contracts-solidity/blob/master/solidity/contracts/converter/ConverterRegistry.sol>
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
@@ -42,7 +43,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -317,14 +318,17 @@ pub struct SmartTokenRemoved {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NewConverter {
+    /// log.address - the factory that emitted this event
+    #[prost(bytes="vec", tag="1")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// uint16 (indexed)
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag="2")]
     pub converter_type: u32,
     /// address (indexed)
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="3")]
     pub converter: ::prost::alloc::vec::Vec<u8>,
     /// address (indexed)
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="4")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)

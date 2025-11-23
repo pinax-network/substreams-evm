@@ -33,7 +33,7 @@ pub fn db_out(
     events_curvefi: proto::pb::curvefi::v1::Events,
     events_cow: proto::pb::cow::v1::Events,
     store_balancer: StoreGetProto<proto::pb::balancer::v1::PoolRegistered>,
-    store_bancor: StoreGetProto<proto::pb::bancor::v1::Activation>,
+    store_bancor: StoreGetProto<proto::pb::bancor::v1::NewConverter>,
     store_curvefi: StoreGetProto<proto::pb::curvefi::v1::PlainPoolDeployed>,
 
     // Uniswap DEX

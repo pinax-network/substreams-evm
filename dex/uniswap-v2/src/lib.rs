@@ -97,7 +97,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token0: event.token0.to_vec(),
                     token1: event.token1.to_vec(),
                     pair: event.pair.to_vec(),
-                    extra_data: event.param3.to_string(),
+                    extra_data: event.extra_data.to_string(),
                 });
                 transaction.logs.push(create_log(log, event));
             }
