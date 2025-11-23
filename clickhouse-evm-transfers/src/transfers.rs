@@ -14,7 +14,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         for (log_index, log) in tx.logs.iter().enumerate() {
             if let Some(pb::log::Log::Transfer(transfer)) = &log.log {
                 let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("erc20_transfer", key);
+                let row = tables.create_row("transfers", key);
 
                 // TEMPLATE
                 set_clock(clock, row);

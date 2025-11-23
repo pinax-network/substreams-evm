@@ -1,7 +1,7 @@
 -- Native TRX Transfer Transactions --
-CREATE TABLE IF NOT EXISTS native_transfer AS TEMPLATE_TRANSACTION
+CREATE TABLE IF NOT EXISTS native_transfers AS TEMPLATE_TRANSACTION
 COMMENT 'Native Transfer events';
-ALTER TABLE native_transfer
+ALTER TABLE native_transfers
     -- transfer --
     ADD COLUMN IF NOT EXISTS `from`        String,
     ADD COLUMN IF NOT EXISTS `to`          String,

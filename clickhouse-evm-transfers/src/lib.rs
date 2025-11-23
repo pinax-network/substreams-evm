@@ -1,7 +1,7 @@
-mod erc20_transfers;
 mod logs;
 mod native_transfers;
 mod transactions;
+mod transfers;
 mod weth;
 use substreams::pb::substreams::Clock;
 
@@ -21,7 +21,7 @@ pub fn db_out(params: String, clock: Clock, transfers: pb::transfers::v1::Events
     };
 
     // Process logs (ERC20 transfers)
-    erc20_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
+    transfers::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // Process transactions (Native transfers)
     native_transfers::process_events(&encoding, &mut tables, &clock, &transfers);

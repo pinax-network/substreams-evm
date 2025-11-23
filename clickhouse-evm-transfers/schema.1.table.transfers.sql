@@ -1,7 +1,7 @@
 -- ERC20 Transfer Logs --
-CREATE TABLE IF NOT EXISTS erc20_transfer AS TEMPLATE_LOG
+CREATE TABLE IF NOT EXISTS transfers AS TEMPLATE_LOG
 COMMENT 'ERC20 Token Transfer events';
-ALTER TABLE erc20_transfer
+ALTER TABLE transfers
     -- transfer --
     ADD COLUMN IF NOT EXISTS `from`        String,
     ADD COLUMN IF NOT EXISTS `to`          String,
