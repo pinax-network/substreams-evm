@@ -6,10 +6,21 @@ use substreams::{prelude::*, Hex};
 pub fn store_new_converter(events: pb::Events, store: StoreSetProto<pb::NewConverter>) {
     for trx in events.transactions.iter() {
         for log in trx.logs.iter() {
+            // ---- FeaturesAddition (for Legacy Pools)----
+            if let Some(pb::log::Log::FeaturesAddition(event)) = &log.log {
+                let payload = pb::NewConverter {
+                    factory: log.address.clone(),
+                    converter_type: 0u32,
+                    owner: [].to_vec(),
+                    converter: event.address.clone(),
+                };
+                store.set(1, Hex::encode(&event.address), &payload);
+            }
+
             // ---- NewConverter ----
             if let Some(pb::log::Log::NewConverter(event)) = &log.log {
                 let payload = pb::NewConverter {
-                    factory: event.factory.clone(),
+                    factory: log.address.clone(),
                     converter_type: event.converter_type,
                     owner: event.owner.clone(),
                     converter: event.converter.clone(),
