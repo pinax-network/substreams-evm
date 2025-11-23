@@ -1,12 +1,3 @@
--- -- Bancor Schema to conert type mapping
--- CREATE FUNCTION bancor_converter_type(type_id UInt8) RETURNS Enum8(
---     'Unknown'       = 0,
---     'LiquidToken'   = 1,
---     'LiquidityPool' = 2,
---     'FeeConverter'  = 3,
---     'StablePool'    = 4
--- );
-
 -- Bancor Conversion (Swap) --
 CREATE TABLE IF NOT EXISTS bancor_conversion AS TEMPLATE_LOG
 COMMENT 'Bancor Conversion (swap) events';
