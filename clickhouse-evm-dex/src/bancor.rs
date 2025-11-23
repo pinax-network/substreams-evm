@@ -32,6 +32,12 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(bancor::log::Log::NewConverter(event)) => {
                     process_new_converter(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                Some(bancor::log::Log::FeaturesAddition(event)) => {
+                    process_features_addition(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                }
+                Some(bancor::log::Log::FeaturesRemoval(event)) => {
+                    process_features_removal(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 _ => {}
             }
         }
@@ -198,4 +204,46 @@ fn process_new_converter(
     row.set("converter_type", event.converter_type);
     row.set("converter", bytes_to_string(&event.converter, encoding));
     row.set("owner", bytes_to_string(&event.owner, encoding));
+}
+
+fn process_features_addition(
+    encoding: &Encoding,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &bancor::Transaction,
+    log: &bancor::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &bancor::FeaturesAddition,
+) {
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("bancor_features_addition", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+
+    row.set("address", bytes_to_string(&event.address, encoding));
+    row.set("features", &event.features);
+}
+
+fn process_features_removal(
+    encoding: &Encoding,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &bancor::Transaction,
+    log: &bancor::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &bancor::FeaturesRemoval,
+) {
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("bancor_features_removal", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+
+    row.set("address", bytes_to_string(&event.address, encoding));
+    row.set("features", &event.features);
 }
