@@ -7,7 +7,7 @@ WITH all_dexes AS (
         uniqMerge(uaw) as uaw,
         max(timestamp) as last_activity
     FROM ohlc_prices
-    WHERE interval_min = 1440
+    WHERE interval_min = 10080
     GROUP BY
         protocol,
         factory
@@ -22,15 +22,19 @@ WITH all_dexes AS (
         protocol,
         factory,
         pool,
+        token0,
+        token1,
         sum(transactions) as transactions,
         uniqMerge(uaw) as uaw,
         max(timestamp) as last_activity
     FROM ohlc_prices
-    WHERE interval_min = 1440
+    WHERE interval_min = 10080
     GROUP BY
         protocol,
         factory,
-        pool
+        pool,
+        token0,
+        token1
 )
 SELECT * FROM all_dexes
 ORDER BY transactions DESC

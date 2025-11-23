@@ -1,21 +1,21 @@
 -- OHLCV prices --
 CREATE TABLE IF NOT EXISTS ohlc_prices (
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
-    interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1min,1hr,1day)',
+    interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
 
     -- chain + DEX identity
-    protocol                LowCardinality(String),
-    factory                 LowCardinality(String),
-    pool                    LowCardinality(String),
+    protocol                LowCardinality(String) COMMENT 'DEX protocol name',
+    factory                 LowCardinality(String) COMMENT 'Factory contract address',
+    pool                    LowCardinality(String) COMMENT 'Pool/exchange contract address',
 
     -- token identity (normalized ids as strings)
-    token0                  LowCardinality(String),
-    token1                  LowCardinality(String),
+    token0                  LowCardinality(String) COMMENT 'Lexicographically smaller token address',
+    token1                  LowCardinality(String) COMMENT 'Lexicographically larger token address',
 
     -- Aggregate --
-    open0                   AggregateFunction(argMin, Float64, UInt64),
-    quantile0               AggregateFunction(quantileDeterministic, Float64, UInt64),
-    close0                  AggregateFunction(argMax, Float64, UInt64),
+    open0                   AggregateFunction(argMin, Float64, UInt64) COMMENT 'opening price of token0 in the window',
+    quantile0               AggregateFunction(quantileDeterministic, Float64, UInt64) COMMENT 'quantile price of token0 in the window',
+    close0                  AggregateFunction(argMax, Float64, UInt64) COMMENT 'closing price of token0 in the window',
 
     -- volume --
     gross_volume0           SimpleAggregateFunction(sum, Int256) COMMENT 'gross volume of token0 in the window',
