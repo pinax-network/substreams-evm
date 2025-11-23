@@ -144,18 +144,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // ConverterAnchorAdded event
             if let Some(event) = converterregistry::events::ConverterAnchorAdded::match_and_decode(log) {
                 total_converter_anchor_added += 1;
-                let event = pb::log::Log::ConverterAnchorAdded(pb::ConverterAnchorAdded {
-                    anchor: event.anchor.to_vec(),
-                });
+                let event = pb::log::Log::ConverterAnchorAdded(pb::ConverterAnchorAdded { anchor: event.anchor.to_vec() });
                 transaction.logs.push(create_log(log, event));
             }
 
             // ConverterAnchorRemoved event
             if let Some(event) = converterregistry::events::ConverterAnchorRemoved::match_and_decode(log) {
                 total_converter_anchor_removed += 1;
-                let event = pb::log::Log::ConverterAnchorRemoved(pb::ConverterAnchorRemoved {
-                    anchor: event.anchor.to_vec(),
-                });
+                let event = pb::log::Log::ConverterAnchorRemoved(pb::ConverterAnchorRemoved { anchor: event.anchor.to_vec() });
                 transaction.logs.push(create_log(log, event));
             }
 
@@ -219,6 +215,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = converterfactory::events::NewConverter::match_and_decode(log) {
                 total_new_converter += 1;
                 let event = pb::log::Log::NewConverter(pb::NewConverter {
+                    factory: log.address.to_vec(),
                     converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),

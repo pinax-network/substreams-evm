@@ -46,7 +46,7 @@ modules:
       - map: curvefi:map_events
       - map: cow:map_events
       - store: balancer:store_pool_registered
-      - store: bancor:store_activation
+      - store: bancor:store_new_converter
       - store: curvefi:store_plain_pool_deployed
 
       # Uniswap DEX

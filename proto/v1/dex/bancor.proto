@@ -48,7 +48,7 @@ message Log {
 /// @param anchor The converter anchor address
 /// @param activated True if the converter was activated, false if deactivated
 message Activation {
-  bytes factory = 1;         // log.address - the converter that emitted this event
+  bytes factory = 1; // log.address - the converter that emitted this event
   uint32 converter_type = 2; // uint16 (indexed)
   bytes anchor = 3;          // address (indexed)
   bool activated = 4;        // bool (indexed)
@@ -183,7 +183,8 @@ message SmartTokenRemoved {
 /// @param converter The converter address
 /// @param owner The owner address
 message NewConverter {
-  uint32 converter_type = 1; // uint16 (indexed)
-  bytes converter = 2;        // address (indexed)
-  bytes owner = 3;            // address (indexed)
+  bytes factory = 1; // log.address - the factory that emitted this event
+  uint32 converter_type = 2; // uint16 (indexed)
+  bytes converter = 3;       // address (indexed)
+  bytes owner = 4;           // address (indexed)
 }
