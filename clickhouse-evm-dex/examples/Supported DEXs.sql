@@ -1,4 +1,4 @@
--- Supported DEXs --
+-- `/evm/dexes` - Supported DEXs --
 WITH all_dexes AS (
     SELECT
         protocol,
@@ -16,7 +16,7 @@ SELECT * FROM all_dexes
 ORDER BY transactions DESC
 LIMIT 20;
 
--- Supported DEXs by Pools --
+-- `/evm/dexes` - Supported DEXs by Pools --
 WITH all_dexes AS (
     SELECT
         protocol,
