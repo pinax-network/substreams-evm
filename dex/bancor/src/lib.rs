@@ -1,5 +1,6 @@
 use common::bigint_to_u64;
 use proto::pb::bancor::v1 as pb;
+use substreams_abis::evm::bancor::converterfactory;
 use substreams_abis::evm::bancor::converterregistry;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
@@ -35,6 +36,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_liquidity_pool_removed = 0;
     let mut total_smart_token_added = 0;
     let mut total_smart_token_removed = 0;
+    let mut total_new_converter = 0;
 
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
@@ -212,6 +214,17 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(create_log(log, event));
             }
+
+            // NewConverter event
+            if let Some(event) = converterfactory::events::NewConverter::match_and_decode(log) {
+                total_new_converter += 1;
+                let event = pb::log::Log::NewConverter(pb::NewConverter {
+                    converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
+                    converter: event.converter.to_vec(),
+                    owner: event.owner.to_vec(),
+                });
+                transaction.logs.push(create_log(log, event));
+            }
         }
 
         if !transaction.logs.is_empty() {
@@ -236,5 +249,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total LiquidityPoolRemoved events: {}", total_liquidity_pool_removed);
     substreams::log::info!("Total SmartTokenAdded events: {}", total_smart_token_added);
     substreams::log::info!("Total SmartTokenRemoved events: {}", total_smart_token_removed);
+    substreams::log::info!("Total NewConverter events: {}", total_new_converter);
     Ok(events)
 }
