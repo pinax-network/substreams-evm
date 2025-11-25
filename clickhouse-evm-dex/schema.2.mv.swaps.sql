@@ -275,8 +275,8 @@ SELECT
     ),
 
     -- mapped swap fields
-    log_address                        AS pool,
-    sender                             AS user,
+    id              AS pool,
+    sender          AS user,
 
     -- Input side: negative amount means input
     if (amount0 < toString(toInt256(0)), currency0, currency1)      AS input_contract,
