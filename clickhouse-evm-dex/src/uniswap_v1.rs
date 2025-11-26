@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::uniswap::v1::{self as uniswap, NewExchange};
+use proto::pb::uniswap::v1::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<NewExchange>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -35,14 +35,14 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: NewExchange, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("token", bytes_to_string(&value.token, encoding));
+    row.set("token", bytes_to_string(&value.currency0, encoding));
 }
 
 fn process_token_purchase(
     encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -68,7 +68,7 @@ fn process_token_purchase(
 
 fn process_eth_purchase(
     encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -94,7 +94,7 @@ fn process_eth_purchase(
 
 fn process_add_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -120,7 +120,7 @@ fn process_add_liquidity(
 
 fn process_remove_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<NewExchange>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,

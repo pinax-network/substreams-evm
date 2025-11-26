@@ -173,14 +173,23 @@ pub struct Approval {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NewExchange {
-    /// log.address - the factory that created the exchange
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// address (indexed)
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub token: ::prost::alloc::vec::Vec<u8>,
     /// address (indexed)
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub exchange: ::prost::alloc::vec::Vec<u8>,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: exchange address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// token address (ETH is the other currency)
+    #[prost(bytes="vec", tag="1")]
+    pub currency0: ::prost::alloc::vec::Vec<u8>,
+    /// factory address that created the exchange
+    #[prost(bytes="vec", tag="2")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)

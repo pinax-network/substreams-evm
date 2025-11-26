@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::curvefi::v1::{self as curvefi, PlainPoolDeployed};
+use proto::pb::curvefi::v1::{self as curvefi, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &curvefi::Events, store: &StoreGetProto<PlainPoolDeployed>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &curvefi::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -41,9 +41,8 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PlainPoolDeployed, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("deployer", bytes_to_string(&value.deployer, encoding));
     row.set("coins", value.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
 }
 
@@ -56,7 +55,7 @@ fn parse_coin(encoding: &Encoding, id: String, coins: &Vec<Vec<u8>>) -> Option<S
 
 fn process_token_exchange(
     encoding: &Encoding,
-    store: &StoreGetProto<PlainPoolDeployed>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -94,7 +93,7 @@ fn process_token_exchange(
 
 fn process_add_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<PlainPoolDeployed>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -122,7 +121,7 @@ fn process_add_liquidity(
 
 fn process_remove_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<PlainPoolDeployed>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -149,7 +148,7 @@ fn process_remove_liquidity(
 
 fn process_remove_liquidity_one(
     encoding: &Encoding,
-    store: &StoreGetProto<PlainPoolDeployed>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -175,7 +174,7 @@ fn process_remove_liquidity_one(
 
 fn process_remove_liquidity_imbalance(
     encoding: &Encoding,
-    store: &StoreGetProto<PlainPoolDeployed>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,

@@ -117,22 +117,27 @@ message PoolInfo {
 }
 
 message PlainPoolDeployed {
-  bytes factory = 1; // log.address - the factory that created the pool
-  bytes address = 2; // call.address CREATE
-  repeated bytes coins = 3;
+  bytes address = 1; // call.address CREATE
+  repeated bytes coins = 2;
+  string A = 3;   // uint256
+  string fee = 4; // uint256
+  bytes deployer = 5;
+}
+
+message MetaPoolDeployed {
+  bytes address = 1; // call.address CREATE
+  bytes coin = 2;
+  bytes base_pool = 3;
   string A = 4;   // uint256
   string fee = 5; // uint256
   bytes deployer = 6;
 }
 
-message MetaPoolDeployed {
-  bytes factory = 1; // log.address - the factory that created the pool
-  bytes address = 2; // call.address CREATE
-  bytes coin = 3;
-  bytes base_pool = 4;
-  string A = 5;   // uint256
-  string fee = 6; // uint256
-  bytes deployer = 7;
+// StorePool - minimal pool storage type
+// Primary key: pool address
+message StorePool {
+  repeated bytes coins = 1; // array of coin addresses
+  bytes factory = 2;        // factory address that created the pool
 }
 
 message BasePoolAdded { bytes base_pool = 1; }
