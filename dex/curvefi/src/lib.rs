@@ -189,7 +189,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 if let Some(address) = get_create_address(trx) {
                     total_plain_pool_deployed += 1;
                     let event = pb::log::Log::PlainPoolDeployed(pb::PlainPoolDeployed {
-                        factory: log.address.to_vec(),
                         address,
                         a: event.a.to_string(),
                         coins: event.coins,
@@ -205,7 +204,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 if let Some(address) = get_create_address(trx) {
                     total_meta_pool_deployed += 1;
                     let event = pb::log::Log::MetaPoolDeployed(pb::MetaPoolDeployed {
-                        factory: log.address.to_vec(),
                         address,
                         a: event.a.to_string(),
                         base_pool: event.base_pool,

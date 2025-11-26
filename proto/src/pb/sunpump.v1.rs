@@ -160,43 +160,46 @@ pub struct SaleFeeSet {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenCreate {
-    /// log.address - the factory that created the pair
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// STORE primary key
     ///
     /// address
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub token_address: ::prost::alloc::vec::Vec<u8>,
     /// UInt256
-    #[prost(string, tag="3")]
+    #[prost(string, tag="2")]
     pub token_index: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes="vec", tag="3")]
     pub creator: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TokenCreateLegacy {
-    /// log.address - the factory that created the pair
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// STORE primary key
     ///
     /// address
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub token_address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub creator: ::prost::alloc::vec::Vec<u8>,
     /// UInt256 (stored as uint64 in proto)
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag="3")]
     pub nft_threshold: u64,
     /// UInt256 (stored as uint64 in proto)
-    #[prost(uint64, tag="5")]
+    #[prost(uint64, tag="4")]
     pub nft_max_supply: u64,
-    #[prost(string, tag="6")]
+    #[prost(string, tag="5")]
     pub name: ::prost::alloc::string::String,
-    #[prost(string, tag="7")]
+    #[prost(string, tag="6")]
     pub symbol: ::prost::alloc::string::String,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: token address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// factory address that created the token
+    #[prost(bytes="vec", tag="1")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

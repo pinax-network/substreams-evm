@@ -172,7 +172,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_pool_registered += 1;
                 let event = pb::log::Log::PoolRegistered(pb::PoolRegistered {
                     pool: event.pool.to_vec(),
-                    factory: event.factory.to_vec(),
                 });
                 transaction.logs.push(create_log(log, event));
             }

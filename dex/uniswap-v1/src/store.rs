@@ -3,15 +3,14 @@ use substreams::store::StoreSetProto;
 use substreams::{prelude::*, Hex};
 
 #[substreams::handlers::store]
-pub fn store_new_exchange(events: pb::Events, store: StoreSetProto<pb::NewExchange>) {
+pub fn store_new_exchange(events: pb::Events, store: StoreSetProto<pb::StorePool>) {
     for trx in events.transactions.iter() {
         for log in trx.logs.iter() {
             // ---- NewExchange ----
             if let Some(pb::log::Log::NewExchange(new_exchange)) = &log.log {
-                let payload = pb::NewExchange {
+                let payload = pb::StorePool {
                     factory: log.address.clone(),
-                    exchange: new_exchange.exchange.clone(),
-                    token: new_exchange.token.clone(),
+                    currency0: new_exchange.token.clone(),
                 };
                 store.set(1, Hex::encode(&new_exchange.exchange), &payload);
             }

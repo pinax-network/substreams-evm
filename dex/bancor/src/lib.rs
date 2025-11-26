@@ -66,7 +66,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = bancor::events::Activation::match_and_decode(log) {
                 total_activations += 1;
                 let event = pb::log::Log::Activation(pb::Activation {
-                    factory: log.address.to_vec(),
                     converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
                     anchor: event.anchor.to_vec(),
                     activated: event.activated,
@@ -220,7 +219,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = converterfactory::events::NewConverter::match_and_decode(log) {
                 total_new_converter += 1;
                 let event = pb::log::Log::NewConverter(pb::NewConverter {
-                    factory: log.address.to_vec(),
                     converter_type: bigint_to_u64(&event.converter_type).unwrap_or_default() as u32,
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),
@@ -232,7 +230,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = bancorconverterfactory::events::NewConverter::match_and_decode(log) {
                 total_new_converter_legacy += 1;
                 let event = pb::log::Log::NewConverter(pb::NewConverter {
-                    factory: log.address.to_vec(),
                     converter_type: 1 as u32,
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),

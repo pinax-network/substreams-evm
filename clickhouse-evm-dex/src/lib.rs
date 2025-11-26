@@ -25,26 +25,26 @@ pub fn db_out(
 
     // Tron DEX
     events_sunpump: proto::pb::sunpump::v1::Events,
-    store_sunpump: StoreGetProto<proto::pb::sunpump::v1::TokenCreate>,
+    store_sunpump: StoreGetProto<proto::pb::sunpump::v1::StorePool>,
 
     // Ethereum DEX
     events_balancer: proto::pb::balancer::v1::Events,
     events_bancor: proto::pb::bancor::v1::Events,
     events_curvefi: proto::pb::curvefi::v1::Events,
     events_cow: proto::pb::cow::v1::Events,
-    store_balancer: StoreGetProto<proto::pb::balancer::v1::PoolRegistered>,
-    store_bancor: StoreGetProto<proto::pb::bancor::v1::NewConverter>,
-    store_curvefi: StoreGetProto<proto::pb::curvefi::v1::PlainPoolDeployed>,
+    store_balancer: StoreGetProto<proto::pb::balancer::v1::StorePool>,
+    store_bancor: StoreGetProto<proto::pb::bancor::v1::StorePool>,
+    store_curvefi: StoreGetProto<proto::pb::curvefi::v1::StorePool>,
 
     // Uniswap DEX
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
     events_uniswap_v3: uniswap::v3::Events,
     events_uniswap_v4: uniswap::v4::Events,
-    store_uniswap_v1: StoreGetProto<uniswap::v1::NewExchange>,
-    store_uniswap_v2: StoreGetProto<uniswap::v2::PairCreated>,
-    store_uniswap_v3: StoreGetProto<uniswap::v3::PoolCreated>,
-    store_uniswap_v4: StoreGetProto<uniswap::v4::Initialize>,
+    store_uniswap_v1: StoreGetProto<uniswap::v1::StorePool>,
+    store_uniswap_v2: StoreGetProto<uniswap::v2::StorePool>,
+    store_uniswap_v3: StoreGetProto<uniswap::v3::StorePool>,
+    store_uniswap_v4: StoreGetProto<uniswap::v4::StorePool>,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 

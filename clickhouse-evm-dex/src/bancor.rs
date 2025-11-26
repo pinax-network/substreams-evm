@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::bancor::v1::{self as bancor, NewConverter};
+use proto::pb::bancor::v1::{self as bancor, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &StoreGetProto<NewConverter>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -44,19 +44,17 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-fn set_pool(encoding: &Encoding, value: Option<NewConverter>, row: &mut substreams_database_change::tables::Row) {
+fn set_pool(encoding: &Encoding, value: Option<StorePool>, row: &mut substreams_database_change::tables::Row) {
     if let Some(value) = value {
         row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("converter_type", value.converter_type);
     } else {
         row.set("factory", "");
-        row.set("converter_type", 0u32);
     }
 }
 
 fn process_conversion(
     encoding: &Encoding,
-    store: &StoreGetProto<NewConverter>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -84,7 +82,7 @@ fn process_conversion(
 
 fn process_liquidity_added(
     encoding: &Encoding,
-    store: &StoreGetProto<NewConverter>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -111,7 +109,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
-    store: &StoreGetProto<NewConverter>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -138,7 +136,7 @@ fn process_liquidity_removed(
 
 fn process_token_rate_update(
     encoding: &Encoding,
-    store: &StoreGetProto<NewConverter>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
