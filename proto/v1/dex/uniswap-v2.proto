@@ -37,12 +37,19 @@ message Log {
 
 // key = <bytes pair>
 message PairCreated {
-  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
-  bytes pair = 2; // address
-  bytes token0 = 3;
-  bytes token1 = 4;
-  string extra_data = 5;
+  bytes pair = 1; // address
+  bytes token0 = 2;
+  bytes token1 = 3;
+  string extra_data = 4;
+}
+
+// StorePool - minimal pool storage type
+// Primary key: pair address
+message StorePool {
+  bytes currency0 = 1; // token0 address
+  bytes currency1 = 2; // token1 address
+  bytes factory = 3;   // factory address that created the pair
 }
 
 message Sync {

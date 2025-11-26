@@ -93,7 +93,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::factory::events::PairCreated::match_and_decode(log) {
                 total_pair_created += 1;
                 let event = pb::log::Log::PairCreated(pb::PairCreated {
-                    factory: log.address.to_vec(),
                     token0: event.token0.to_vec(),
                     token1: event.token1.to_vec(),
                     pair: event.pair.to_vec(),

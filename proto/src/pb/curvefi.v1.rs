@@ -243,14 +243,30 @@ pub struct PoolInfo {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlainPoolDeployed {
-    /// log.address - the factory that created the pool
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// call.address CREATE
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", repeated, tag="3")]
+    #[prost(bytes="vec", repeated, tag="2")]
     pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub fee: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="5")]
+    pub deployer: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MetaPoolDeployed {
+    /// call.address CREATE
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub coin: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="3")]
+    pub base_pool: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="4")]
     pub a: ::prost::alloc::string::String,
@@ -260,27 +276,17 @@ pub struct PlainPoolDeployed {
     #[prost(bytes="vec", tag="6")]
     pub deployer: ::prost::alloc::vec::Vec<u8>,
 }
+/// StorePool - minimal pool storage type for PlainPool
+/// Primary key: pool address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MetaPoolDeployed {
-    /// log.address - the factory that created the pool
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// call.address CREATE
+pub struct StorePool {
+    /// array of coin addresses
+    #[prost(bytes="vec", repeated, tag="1")]
+    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// factory address that created the pool
     #[prost(bytes="vec", tag="2")]
-    pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
-    pub coin: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="4")]
-    pub base_pool: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="5")]
-    pub a: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="6")]
-    pub fee: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="7")]
-    pub deployer: ::prost::alloc::vec::Vec<u8>,
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

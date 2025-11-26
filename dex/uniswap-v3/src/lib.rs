@@ -170,7 +170,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::factory::events::PoolCreated::match_and_decode(log) {
                 total_pool_created += 1;
                 let event = pb::log::Log::PoolCreated(pb::PoolCreated {
-                    factory: log.address.to_vec(),
                     pool: event.pool.to_vec(),
                     token0: event.token0.to_vec(),
                     token1: event.token1.to_vec(),

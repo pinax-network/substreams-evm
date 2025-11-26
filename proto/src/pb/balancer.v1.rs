@@ -302,8 +302,14 @@ pub struct PoolRegistered {
     /// address (indexed)
     #[prost(bytes="vec", tag="1")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
-    /// address (indexed)
-    #[prost(bytes="vec", tag="2")]
+}
+/// StorePool - minimal pool storage type
+/// Primary key: pool address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// factory address that created the pool
+    #[prost(bytes="vec", tag="1")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 /// / @notice Emitted when a pool's paused state is changed

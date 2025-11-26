@@ -99,7 +99,13 @@ message Approval {
 /// @param token The token address
 /// @param exchange The exchange address
 message NewExchange {
-  bytes factory = 1;  // log.address - the factory that created the exchange
-  bytes token = 2;    // address (indexed)
-  bytes exchange = 3; // address (indexed)
+  bytes token = 1;    // address (indexed)
+  bytes exchange = 2; // address (indexed)
+}
+
+// StorePool - minimal pool storage type
+// Primary key: exchange address
+message StorePool {
+  bytes currency0 = 1; // token address (ETH is the other currency)
+  bytes factory = 2;   // factory address that created the exchange
 }

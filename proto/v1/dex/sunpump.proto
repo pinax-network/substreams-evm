@@ -82,22 +82,26 @@ message SaleFeeSet {
 }
 
 message TokenCreate {
-  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
-  bytes token_address = 2; // address
-  string token_index = 3;  // UInt256
-  bytes creator = 4;
+  bytes token_address = 1; // address
+  string token_index = 2;  // UInt256
+  bytes creator = 3;
 }
 
 message TokenCreateLegacy {
-  bytes factory = 1; // log.address - the factory that created the pair
   // STORE primary key
-  bytes token_address = 2; // address
-  bytes creator = 3;
-  uint64 nft_threshold = 4;    // UInt256 (stored as uint64 in proto)
-  uint64 nft_max_supply = 5;   // UInt256 (stored as uint64 in proto)
-  string name = 6;
-  string symbol = 7;
+  bytes token_address = 1; // address
+  bytes creator = 2;
+  uint64 nft_threshold = 3;    // UInt256 (stored as uint64 in proto)
+  uint64 nft_max_supply = 4;   // UInt256 (stored as uint64 in proto)
+  string name = 5;
+  string symbol = 6;
+}
+
+// StorePool - minimal pool storage type
+// Primary key: token address
+message StorePool {
+  bytes factory = 1; // factory address that created the token
 }
 
 message TokenLaunched { bytes token = 1; }

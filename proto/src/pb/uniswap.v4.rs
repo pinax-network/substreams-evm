@@ -81,35 +81,47 @@ pub mod log {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Initialize {
-    /// log.address - the factory that initialized the pool
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// STORE primary key
     ///
     /// address (Pool ID)
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub id: ::prost::alloc::vec::Vec<u8>,
     /// address (token0)
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub currency0: ::prost::alloc::vec::Vec<u8>,
     /// address (token1)
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes="vec", tag="3")]
     pub currency1: ::prost::alloc::vec::Vec<u8>,
     /// uint24 (e.g., 3000 represents 0.30%)
-    #[prost(uint64, tag="5")]
+    #[prost(uint64, tag="4")]
     pub fee: u64,
     /// int24 (e.g., 60)
-    #[prost(int32, tag="6")]
+    #[prost(int32, tag="5")]
     pub tick_spacing: i32,
     /// NOT IMPLEMENTED
-    #[prost(string, optional, tag="7")]
+    #[prost(string, optional, tag="6")]
     pub hooks: ::core::option::Option<::prost::alloc::string::String>,
     /// uint160
-    #[prost(string, tag="8")]
+    #[prost(string, tag="7")]
     pub sqrt_price_x96: ::prost::alloc::string::String,
     /// int24
-    #[prost(int32, tag="9")]
+    #[prost(int32, tag="8")]
     pub tick: i32,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: pool id
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// token0 address
+    #[prost(bytes="vec", tag="1")]
+    pub currency0: ::prost::alloc::vec::Vec<u8>,
+    /// token1 address
+    #[prost(bytes="vec", tag="2")]
+    pub currency1: ::prost::alloc::vec::Vec<u8>,
+    /// factory address that initialized the pool
+    #[prost(bytes="vec", tag="3")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 /// / @notice Emitted for swaps between currency0 and currency1
 /// / @param id The abi encoded hash of the pool key struct for the pool that was

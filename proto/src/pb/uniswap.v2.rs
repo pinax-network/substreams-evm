@@ -69,20 +69,32 @@ pub mod log {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PairCreated {
-    /// log.address - the factory that created the pair
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// STORE primary key
     ///
     /// address
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub pair: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub token0: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes="vec", tag="3")]
     pub token1: ::prost::alloc::vec::Vec<u8>,
-    #[prost(string, tag="5")]
+    #[prost(string, tag="4")]
     pub extra_data: ::prost::alloc::string::String,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: pair address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// token0 address
+    #[prost(bytes="vec", tag="1")]
+    pub currency0: ::prost::alloc::vec::Vec<u8>,
+    /// token1 address
+    #[prost(bytes="vec", tag="2")]
+    pub currency1: ::prost::alloc::vec::Vec<u8>,
+    /// factory address that created the pair
+    #[prost(bytes="vec", tag="3")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
