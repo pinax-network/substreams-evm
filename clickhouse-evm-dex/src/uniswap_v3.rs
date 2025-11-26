@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::uniswap::v3::{self as uniswap, PoolCreated};
+use proto::pb::uniswap::v3::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<PoolCreated>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -56,15 +56,15 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool_created(encoding: &Encoding, value: PoolCreated, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool_created(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("token0", bytes_to_string(&value.token0, encoding));
-    row.set("token1", bytes_to_string(&value.token1, encoding));
+    row.set("token0", bytes_to_string(&value.currency0, encoding));
+    row.set("token1", bytes_to_string(&value.currency1, encoding));
 }
 
 fn process_swap(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -94,7 +94,7 @@ fn process_swap(
 
 fn process_initialize(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -119,7 +119,7 @@ fn process_initialize(
 
 fn process_mint(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -149,7 +149,7 @@ fn process_mint(
 
 fn process_collect(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -178,7 +178,7 @@ fn process_collect(
 
 fn process_burn(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -207,7 +207,7 @@ fn process_burn(
 
 fn process_flash(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -236,7 +236,7 @@ fn process_flash(
 
 fn process_increase_observation(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -261,7 +261,7 @@ fn process_increase_observation(
 
 fn process_set_fee_protocol(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -288,7 +288,7 @@ fn process_set_fee_protocol(
 
 fn process_collect_protocol(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolCreated>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,

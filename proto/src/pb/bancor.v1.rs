@@ -96,17 +96,14 @@ pub mod log {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Activation {
-    /// log.address - the converter that emitted this event
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// uint16 (indexed)
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag="1")]
     pub converter_type: u32,
     /// address (indexed)
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub anchor: ::prost::alloc::vec::Vec<u8>,
     /// bool (indexed)
-    #[prost(bool, tag="4")]
+    #[prost(bool, tag="3")]
     pub activated: bool,
 }
 /// / @notice Emitted when a conversion between two tokens occurs
@@ -322,18 +319,24 @@ pub struct SmartTokenRemoved {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NewConverter {
-    /// log.address - the factory that emitted this event
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// uint16 (indexed)
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag="1")]
     pub converter_type: u32,
     /// address (indexed)
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub converter: ::prost::alloc::vec::Vec<u8>,
     /// address (indexed)
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes="vec", tag="3")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: converter address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// factory address that created the converter
+    #[prost(bytes="vec", tag="1")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

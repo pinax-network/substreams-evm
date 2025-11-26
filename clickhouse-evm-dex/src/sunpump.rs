@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::sunpump::v1::{self as sunpump, TokenCreate};
+use proto::pb::sunpump::v1::{self as sunpump, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -11,7 +11,7 @@ use crate::{
 };
 
 // SunPump Processing
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &sunpump::Events, store: &StoreGetProto<TokenCreate>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &sunpump::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -63,15 +63,13 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: TokenCreate, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("creator", bytes_to_string(&value.creator, encoding));
-    row.set("token_index", &value.token_index);
 }
 
 fn process_sunpump_token_purchased(
     encoding: &Encoding,
-    store: &StoreGetProto<TokenCreate>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -102,7 +100,7 @@ fn process_sunpump_token_purchased(
 
 fn process_sunpump_token_sold(
     encoding: &Encoding,
-    store: &StoreGetProto<TokenCreate>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,

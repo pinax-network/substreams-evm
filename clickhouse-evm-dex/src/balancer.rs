@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::balancer::v1::{self as balancer, PoolRegistered};
+use proto::pb::balancer::v1::{self as balancer, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
@@ -10,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events, store: &StoreGetProto<PoolRegistered>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -32,13 +32,13 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolRegistered, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
 }
 
 fn process_vault_swap(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolRegistered>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -68,7 +68,7 @@ fn process_vault_swap(
 
 fn process_liquidity_added(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolRegistered>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -97,7 +97,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
-    store: &StoreGetProto<PoolRegistered>,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,

@@ -100,24 +100,36 @@ pub mod log {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolCreated {
-    /// log.address - the factory that created the pool
-    #[prost(bytes="vec", tag="1")]
-    pub factory: ::prost::alloc::vec::Vec<u8>,
     /// STORE primary key
     ///
     /// address
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes="vec", tag="1")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes="vec", tag="2")]
     pub token0: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes="vec", tag="3")]
     pub token1: ::prost::alloc::vec::Vec<u8>,
     /// uint24 (e.g., 3000 represents 0.30%)
-    #[prost(uint64, tag="5")]
+    #[prost(uint64, tag="4")]
     pub fee: u64,
     /// int24 (e.g., 60)
-    #[prost(int32, tag="6")]
+    #[prost(int32, tag="5")]
     pub tick_spacing: i32,
+}
+/// StorePool - minimal pool storage type
+/// Primary key: pool address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StorePool {
+    /// token0 address
+    #[prost(bytes="vec", tag="1")]
+    pub currency0: ::prost::alloc::vec::Vec<u8>,
+    /// token1 address
+    #[prost(bytes="vec", tag="2")]
+    pub currency1: ::prost::alloc::vec::Vec<u8>,
+    /// factory address that created the pool
+    #[prost(bytes="vec", tag="3")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
 }
 /// *
 /// In Uniswap v3, the `initialize` function is a crucial setup step that

@@ -48,16 +48,23 @@ message Log {
 /// @param tick The initial tick of the pool corresponding to the initialized
 /// price
 message Initialize {
-  bytes factory = 1; // log.address - the factory that initialized the pool
   // STORE primary key
-  bytes id = 2;              // address (Pool ID)
-  bytes currency0 = 3;       // address (token0)
-  bytes currency1 = 4;       // address (token1)
-  uint64 fee = 5;            // uint24 (e.g., 3000 represents 0.30%)
-  int32 tick_spacing = 6;    // int24 (e.g., 60)
-  optional string hooks = 7; // NOT IMPLEMENTED
-  string sqrt_price_x96 = 8; // uint160
-  int32 tick = 9;            // int24
+  bytes id = 1;              // address (Pool ID)
+  bytes currency0 = 2;       // address (token0)
+  bytes currency1 = 3;       // address (token1)
+  uint64 fee = 4;            // uint24 (e.g., 3000 represents 0.30%)
+  int32 tick_spacing = 5;    // int24 (e.g., 60)
+  optional string hooks = 6; // NOT IMPLEMENTED
+  string sqrt_price_x96 = 7; // uint160
+  int32 tick = 8;            // int24
+}
+
+// StorePool - minimal pool storage type
+// Primary key: pool id
+message StorePool {
+  bytes currency0 = 1; // token0 address
+  bytes currency1 = 2; // token1 address
+  bytes factory = 3;   // factory address that initialized the pool
 }
 
 /// @notice Emitted for swaps between currency0 and currency1

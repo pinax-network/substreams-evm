@@ -64,7 +64,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = uniswap::poolmanager::events::Initialize::match_and_decode(log) {
                 total_initialize += 1;
                 let event = pb::log::Log::Initialize(pb::Initialize {
-                    factory: log.address.to_vec(),
                     id: event.id.to_vec(),
                     currency0: event.currency0.to_vec(),
                     currency1: event.currency1.to_vec(),

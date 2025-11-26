@@ -173,8 +173,13 @@ message PoolInitialized {
 /// @param pool The address of the pool
 /// @param factory The address of the factory that created the pool
 message PoolRegistered {
-  bytes pool = 1;    // address (indexed)
-  bytes factory = 2; // address (indexed)
+  bytes pool = 1; // address (indexed)
+}
+
+// StorePool - minimal pool storage type
+// Primary key: pool address
+message StorePool {
+  bytes factory = 1; // factory address that created the pool
 }
 
 /// @notice Emitted when a pool's paused state is changed

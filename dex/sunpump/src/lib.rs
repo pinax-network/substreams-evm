@@ -55,7 +55,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = events::TokenCreate::match_and_decode(log) {
                 total_token_create += 1;
                 let event = pb::log::Log::TokenCreate(pb::TokenCreate {
-                    factory: log.address.to_vec(),
                     token_address: event.token_address.to_vec(),
                     token_index: event.token_index.to_string(),
                     creator: event.creator.to_vec(),
@@ -67,7 +66,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = TokenCreateLegacy::match_and_decode(log) {
                 total_token_create += 1;
                 let event = pb::log::Log::TokenCreateLegacy(pb::TokenCreateLegacy {
-                    factory: log.address.to_vec(),
                     token_address: event.token_address.to_vec(),
                     creator: event.creator.to_vec(),
                     nft_threshold: event.nft_threshold.to_u64(),
