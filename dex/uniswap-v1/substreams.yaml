@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: uniswap_v1
-  version: v0.2.0
+  version: v0.2.3
   url: https://github.com/pinax-network/substreams-evm
   description: Uniswap V1 for EVM
   image: ../../image.png
@@ -25,10 +25,10 @@ modules:
     output:
       type: proto:uniswap.v1.Events
 
-  - name: store_new_exchange
+  - name: store_pool
     kind: store
     updatePolicy: set
-    valueType: proto:uniswap.v1.NewExchange
+    valueType: proto:uniswap.v1.StorePool
     inputs:
       - map: map_events
 

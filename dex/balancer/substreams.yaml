@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: balancer
-  version: v0.2.0
+  version: v0.2.3
   url: https://github.com/pinax-network/substreams-evm
   description: Balancer for EVM
   image: ../../image.png
@@ -25,10 +25,10 @@ modules:
     output:
       type: proto:balancer.v1.Events
 
-  - name: store_pool_registered
+  - name: store_pool
     kind: store
     updatePolicy: set
-    valueType: proto:balancer.v1.PoolRegistered
+    valueType: proto:balancer.v1.StorePool
     inputs:
       - map: map_events
 
