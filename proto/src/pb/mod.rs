@@ -28,11 +28,22 @@ pub mod curvefi {
     }
 }
 pub mod evm {
-    pub mod transfers {
-        // @@protoc_insertion_point(attribute:evm.transfers.v1)
-        pub mod v1 {
-            include!("evm.transfers.v1.rs");
-            // @@protoc_insertion_point(evm.transfers.v1)
+    pub mod erc20 {
+        pub mod transfers {
+            // @@protoc_insertion_point(attribute:evm.erc20.transfers.v1)
+            pub mod v1 {
+                include!("evm.erc20.transfers.v1.rs");
+                // @@protoc_insertion_point(evm.erc20.transfers.v1)
+            }
+        }
+    }
+    pub mod native {
+        pub mod transfers {
+            // @@protoc_insertion_point(attribute:evm.native.transfers.v1)
+            pub mod v1 {
+                include!("evm.native.transfers.v1.rs");
+                // @@protoc_insertion_point(evm.native.transfers.v1)
+            }
         }
     }
 }
