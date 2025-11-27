@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: uniswap_v4
-  version: v0.2.0
+  version: v0.2.3
   url: https://githubcom/pinax-network/substreams-evm-tokens
   description: Uniswap V4 for EVM
   image: ../../image.png
@@ -25,10 +25,10 @@ modules:
     output:
       type: proto:uniswap.v4.Events
 
-  - name: store_initialize
+  - name: store_pool
     kind: store
     updatePolicy: set
-    valueType: proto:uniswap.v4.Initialize
+    valueType: proto:uniswap.v4.StorePool
     inputs:
       - map: map_events
 

@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: curvefi
-  version: v0.2.0
+  version: v0.2.3
   url: https://github.com/pinax-network/substreams-evm
   description: CurveFi Pool Events
   image: ../../image.png
@@ -25,17 +25,10 @@ modules:
     output:
       type: proto:curvefi.v1.Events
 
-  - name: store_plain_pool_deployed
+  - name: store_pool
     kind: store
     updatePolicy: set
-    valueType: proto:curvefi.v1.PlainPoolDeployed
-    inputs:
-      - map: map_events
-
-  - name: store_meta_pool_deployed
-    kind: store
-    updatePolicy: set
-    valueType: proto:curvefi.v1.MetaPoolDeployed
+    valueType: proto:curvefi.v1.StorePool
     inputs:
       - map: map_events
 
