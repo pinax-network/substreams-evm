@@ -1,16 +1,15 @@
 [package]
-name = "transfers"
-description = "ERC-20, Native Transfers & WETH Events"
+name = "native_transfers"
+description = "EVM Native Transfers"
 edition = { workspace = true }
 version = { workspace = true }
 authors = ["Denis <denis@pinax.network>"]
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
-substreams-abis = { workspace = true }
+common = { path = "../common" }
 proto = { path = "../proto" }
-# common = { path = "../common" }

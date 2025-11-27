@@ -276,7 +276,7 @@ pub struct MetaPoolDeployed {
     #[prost(bytes="vec", tag="6")]
     pub deployer: ::prost::alloc::vec::Vec<u8>,
 }
-/// StorePool - minimal pool storage type for PlainPool
+/// StorePool - minimal pool storage type
 /// Primary key: pool address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

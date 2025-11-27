@@ -5,7 +5,8 @@ members = [
   "clickhouse-evm-dex",
 
   # Tokens
-  "transfers",
+  "erc20-transfers",
+  "native-transfers",
 
   # Tron DEX
   "dex/sunpump",
