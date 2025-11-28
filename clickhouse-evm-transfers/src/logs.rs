@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::evm::transfers::v1 as pb;
+use proto::pb::evm::erc20::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 
 pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {

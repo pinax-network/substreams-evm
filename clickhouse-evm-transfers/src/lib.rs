@@ -1,8 +1,7 @@
+mod erc20_transfers;
 mod logs;
 mod native_transfers;
 mod transactions;
-mod transfers;
-mod weth;
 use substreams::pb::substreams::Clock;
 
 use proto::pb::evm as pb;
@@ -10,7 +9,7 @@ use substreams::errors::Error;
 use substreams_database_change::pb::database::DatabaseChanges;
 
 #[substreams::handlers::map]
-pub fn db_out(params: String, clock: Clock, transfers: pb::transfers::v1::Events) -> Result<DatabaseChanges, Error> {
+pub fn db_out(params: String, clock: Clock, transfers: pb::erc20::transfers::v1::Events) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
     // Handle support both EVM & TVM address encoding
@@ -21,13 +20,10 @@ pub fn db_out(params: String, clock: Clock, transfers: pb::transfers::v1::Events
     };
 
     // Process logs (ERC20 transfers)
-    transfers::process_events(&encoding, &mut tables, &clock, &transfers);
+    erc20_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // Process transactions (Native transfers)
     native_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
-
-    // Process WETH events
-    weth::process_events(&encoding, &mut tables, &clock, &transfers);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
