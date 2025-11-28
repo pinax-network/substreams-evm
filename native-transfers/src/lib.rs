@@ -40,7 +40,6 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
         let fee_paid = transaction_fee.clone() - burn_fee.clone();
 
         let mut transaction = pb::Transaction {
-            // -- transaction --
             from: trx.from.to_vec(),
             to,
             hash: trx.hash.to_vec(),
