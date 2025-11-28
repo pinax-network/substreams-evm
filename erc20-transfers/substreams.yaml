@@ -9,11 +9,11 @@ package:
 binaries:
   default:
     type: wasm/rust-v1+wasm-bindgen-shims
-    file: ../target/wasm32-unknown-unknown/release/transfers.wasm
+    file: ../target/wasm32-unknown-unknown/release/erc20_transfers.wasm
 
 protobuf:
   files:
-    - v1/transfers.proto
+    - v1/erc20-transfers.proto
   importPaths:
     - ../proto
 
