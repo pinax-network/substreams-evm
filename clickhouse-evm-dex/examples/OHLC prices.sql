@@ -32,7 +32,30 @@ WITH (
       uniqMerge(uaw)          AS uaw,
       sum(transactions)       AS transactions
 FROM ohlc_prices
-WHERE interval_min = 1 AND pool = '0x97dec872013f6b5fb443861090ad931542878126' -- USDC-ETH on Uniswap V1
+WHERE interval_min = 1 AND pool = '0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36' -- USDC-ETH on Uniswap V3
 GROUP BY pool, timestamp
 ORDER BY timestamp DESC
 LIMIT 10;
+
+-- 0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36 USDT-ETH V3
+-- 0x72331fcb696b0151904c03584b66dc8365bc63f8a144d89a773384e3a579ca73 USDT-ETH V4
+
+-- Check if Token0/Token1 have no duplicates --
+SELECT token0, token1, count()
+FROM ohlc_prices
+WHERE pool = lower('0x72331fcb696b0151904c03584b66dc8365bc63f8a144d89a773384e3a579ca73')
+GROUP BY pool, token0, token1
+LIMIT 10;
+
+-- Check no duplicates in bulk
+WITH pools AS (
+      SELECT pool, count() as count
+      FROM ohlc_prices
+      WHERE interval_min = 1
+      GROUP BY pool, token0, token1
+)
+SELECT pool, count()
+FROM pools
+GROUP BY pool
+ORDER BY count() DESC
+LIMIT 20;
