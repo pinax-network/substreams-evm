@@ -41,34 +41,105 @@ pub struct Transaction {
     pub gas_used: u64,
     /// uint256
     #[prost(string, tag="9")]
+    pub base_fee_per_gas: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="10")]
+    pub transaction_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="11")]
+    pub burn_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="12")]
+    pub fee_paid: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="13")]
     pub value: ::prost::alloc::string::String,
-    #[prost(message, repeated, tag="10")]
+    #[prost(message, repeated, tag="14")]
     pub calls: ::prost::alloc::vec::Vec<Call>,
+    /// let you know if the transaction was successful or not.
+    ///
+    /// ## Explanation relevant only for blocks with `DetailLevel: EXTENDED`
+    ///
+    /// A successful transaction has been recorded to the blockchain's state for
+    /// calls in it that were successful. This means it's possible only a subset of
+    /// the calls were properly recorded, refer to \[calls[\].state_reverted] field
+    /// to determine which calls were reverted.
+    ///
+    /// A quirks of the Ethereum protocol is that a transaction `FAILED` or
+    /// `REVERTED` still affects the blockchain's state for **some** of the state
+    /// changes. Indeed, in those cases, the transactions fees are still paid to
+    /// the miner which means there is a balance change for the transaction's
+    /// emitter (e.g. `from`) to pay the gas fees, an optional balance change for
+    /// gas refunded to the transaction's emitter (e.g. `from`) and a balance
+    /// change for the miner who received the transaction fees. There is also a
+    /// nonce change for the transaction's emitter (e.g. `from`).
+    ///
+    /// This means that to properly record the state changes for a transaction, you
+    /// need to conditionally procees the transaction's status.
+    ///
+    /// For a `SUCCEEDED` transaction, you iterate over the `calls` array and
+    /// record the state changes for each call for which `state_reverted == false`
+    /// (if a transaction succeeded, the call at #0 will always `state_reverted ==
+    /// false` because it aligns with the transaction).
+    ///
+    /// For a `FAILED` or `REVERTED` transaction, you iterate over the root call
+    /// (e.g. at #0, will always exist) for balance changes you process those where
+    /// `reason` is either `REASON_GAS_BUY`, `REASON_GAS_REFUND` or
+    /// `REASON_REWARD_TRANSACTION_FEE` and for nonce change, still on the root
+    /// call, you pick the nonce change which the smallest ordinal (if more than
+    /// one).
+    #[prost(enumeration="TransactionTraceStatus", tag="15")]
+    pub status: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Call {
-    #[prost(oneof="call::Call", tags="10")]
-    pub call: ::core::option::Option<call::Call>,
-}
-/// Nested message and enum types in `Call`.
-pub mod call {
-    #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Call {
-        #[prost(message, tag="10")]
-        Transfer(super::Transfer),
-    }
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Transfer {
+    /// sender
     #[prost(bytes="vec", tag="1")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    /// recipient
     #[prost(bytes="vec", tag="2")]
-    pub to: ::prost::alloc::vec::Vec<u8>,
+    pub address: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="3")]
-    pub amount: ::prost::alloc::string::String,
+    pub value: ::prost::alloc::string::String,
+    #[prost(uint64, tag="4")]
+    pub gas_consumed: u64,
+    #[prost(uint64, tag="5")]
+    pub gas_limit: u64,
+    #[prost(uint32, tag="7")]
+    pub depth: u32,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum TransactionTraceStatus {
+    Unknown = 0,
+    Succeeded = 1,
+    Failed = 2,
+    Reverted = 3,
+}
+impl TransactionTraceStatus {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            TransactionTraceStatus::Unknown => "UNKNOWN",
+            TransactionTraceStatus::Succeeded => "SUCCEEDED",
+            TransactionTraceStatus::Failed => "FAILED",
+            TransactionTraceStatus::Reverted => "REVERTED",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "UNKNOWN" => Some(Self::Unknown),
+            "SUCCEEDED" => Some(Self::Succeeded),
+            "FAILED" => Some(Self::Failed),
+            "REVERTED" => Some(Self::Reverted),
+            _ => None,
+        }
+    }
 }
 // @@protoc_insertion_point(module)
