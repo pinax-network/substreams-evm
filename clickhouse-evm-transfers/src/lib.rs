@@ -34,7 +34,6 @@ pub fn db_out(
     if !tables.tables.is_empty() {
         set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
     }
-
     substreams::log::info!("Total rows {}", tables.all_row_count());
     Ok(tables.to_database_changes())
 }

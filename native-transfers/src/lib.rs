@@ -106,9 +106,7 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 });
             }
         }
-        if !transaction.calls.is_empty() {
-            events.transactions.push(transaction);
-        }
+        events.transactions.push(transaction);
     }
     Ok(events)
 }

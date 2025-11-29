@@ -12,30 +12,30 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         // Transactions
         let key = tx_key(clock, tx_index);
-        let row = tables.create_row("transactions", key);
-        set_clock(clock, row);
-        set_template_tx(encoding, tx, tx_index, row);
+        let tx_row = tables.create_row("transactions", key);
+        set_clock(clock, tx_row);
+        set_template_tx(encoding, tx, tx_index, tx_row);
 
-        row.set("tx_base_fee_per_gas", &tx.base_fee_per_gas);
-        row.set("tx_transaction_fee", &tx.transaction_fee);
-        row.set("tx_burn_fee", &tx.burn_fee);
-        row.set("tx_fee_paid", &tx.fee_paid);
+        tx_row.set("tx_base_fee_per_gas", &tx.base_fee_per_gas);
+        tx_row.set("tx_transaction_fee", &tx.transaction_fee);
+        tx_row.set("tx_burn_fee", &tx.burn_fee);
+        tx_row.set("tx_fee_paid", &tx.fee_paid);
 
         // Calls
         for (call_index, call) in tx.calls.iter().enumerate() {
             let key = tx_key(clock, tx_index);
-            let row = tables.create_row("calls", key);
+            let call_row = tables.create_row("calls", key);
 
-            set_clock(clock, row);
-            set_template_tx(encoding, tx, tx_index, row);
+            set_clock(clock, call_row);
+            set_template_tx(encoding, tx, tx_index, call_row);
 
-            row.set("call_index", call_index as u32);
-            row.set("caller", bytes_to_string(&call.caller, encoding));
-            row.set("address", bytes_to_string(&call.address, encoding));
-            row.set("value", &call.value);
-            row.set("gas_consumed", call.gas_consumed);
-            row.set("gas_limit", call.gas_limit);
-            row.set("depth", call.depth);
+            call_row.set("call_index", call_index as u32);
+            call_row.set("caller", bytes_to_string(&call.caller, encoding));
+            call_row.set("address", bytes_to_string(&call.address, encoding));
+            call_row.set("value", &call.value);
+            call_row.set("gas_consumed", call.gas_consumed);
+            call_row.set("gas_limit", call.gas_limit);
+            call_row.set("depth", call.depth);
         }
     }
 }
