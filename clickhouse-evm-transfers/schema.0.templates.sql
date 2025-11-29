@@ -73,3 +73,18 @@ ALTER TABLE TEMPLATE_TRANSACTION
     DROP COLUMN IF EXISTS log_topic3,
     DROP COLUMN IF EXISTS log_topics,
     DROP COLUMN IF EXISTS log_data;
+
+-- Template for Calls (extends Transaction template with call-specific fields) --
+CREATE TABLE IF NOT EXISTS TEMPLATE_CALL AS TEMPLATE_TRANSACTION
+ENGINE = MergeTree
+ORDER BY (
+    minute, timestamp, block_num,
+    tx_index, call_index,
+    block_hash
+);
+ALTER TABLE TEMPLATE_CALL
+    -- call --
+    ADD COLUMN IF NOT EXISTS call_index         UInt32,
+    ADD COLUMN IF NOT EXISTS call_gas_consumed  UInt64,
+    ADD COLUMN IF NOT EXISTS call_gas_limit     UInt64,
+    ADD COLUMN IF NOT EXISTS call_depth         UInt32;
