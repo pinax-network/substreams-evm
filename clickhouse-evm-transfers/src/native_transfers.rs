@@ -5,6 +5,9 @@ use substreams_database_change::tables::Tables;
 
 use crate::set_clock;
 
+/// Default call index for transaction-level transfers (no internal call)
+const DEFAULT_CALL_INDEX: usize = 0;
+
 /// Generate a key for a transaction-based native transfer
 pub fn native_tx_key(clock: &Clock, tx_index: usize) -> [(&'static str, String); 6] {
     let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
@@ -13,7 +16,7 @@ pub fn native_tx_key(clock: &Clock, tx_index: usize) -> [(&'static str, String);
         ("timestamp", seconds.to_string()),
         ("block_num", clock.number.to_string()),
         ("tx_index", tx_index.to_string()),
-        ("call_index", "0".to_string()), // No call index for transactions
+        ("call_index", DEFAULT_CALL_INDEX.to_string()),
         ("block_hash", format!("0x{}", &clock.id)),
     ]
 }
@@ -27,6 +30,18 @@ pub fn native_call_key(clock: &Clock, tx_index: usize, call_index: usize) -> [(&
         ("block_num", clock.number.to_string()),
         ("tx_index", tx_index.to_string()),
         ("call_index", call_index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
+    ]
+}
+
+/// Generate a key for a transaction in the transactions table (no call_index needed)
+pub fn tx_fee_key(clock: &Clock, tx_index: usize) -> [(&'static str, String); 5] {
+    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
+    [
+        ("minute", (seconds / 60).to_string()),
+        ("timestamp", seconds.to_string()),
+        ("block_num", clock.number.to_string()),
+        ("tx_index", tx_index.to_string()),
         ("block_hash", format!("0x{}", &clock.id)),
     ]
 }
@@ -56,6 +71,14 @@ pub fn set_template_call(call: &native_pb::Call, call_index: usize, row: &mut su
     row.set("call_depth", call.depth);
 }
 
+/// Set default call fields for transaction-level transfers (no internal call)
+pub fn set_default_call_fields(row: &mut substreams_database_change::tables::Row) {
+    row.set("call_index", DEFAULT_CALL_INDEX as u32);
+    row.set("call_gas_consumed", 0u64);
+    row.set("call_gas_limit", 0u64);
+    row.set("call_depth", 0u32);
+}
+
 /// Process native transfer events from native-transfers substream
 pub fn process_native_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &native_pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
@@ -66,12 +89,7 @@ pub fn process_native_events(encoding: &Encoding, tables: &mut Tables, clock: &C
 
             set_clock(clock, row);
             set_native_template_tx(encoding, tx, tx_index, row);
-
-            // Set call fields to default for transaction-type transfers
-            row.set("call_index", 0u32);
-            row.set("call_gas_consumed", 0u64);
-            row.set("call_gas_limit", 0u64);
-            row.set("call_depth", 0u32);
+            set_default_call_fields(row);
 
             // Transfer details
             row.set("type", "transaction");
@@ -114,14 +132,7 @@ pub fn process_native_events(encoding: &Encoding, tables: &mut Tables, clock: &C
 /// Process transactions with fee information for the transactions table
 pub fn process_transaction_fees(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &native_pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
-        let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
-        let key: [(&str, String); 5] = [
-            ("minute", (seconds / 60).to_string()),
-            ("timestamp", seconds.to_string()),
-            ("block_num", clock.number.to_string()),
-            ("tx_index", tx_index.to_string()),
-            ("block_hash", format!("0x{}", &clock.id)),
-        ];
+        let key = tx_fee_key(clock, tx_index);
         let row = tables.create_row("transactions", key);
 
         set_clock(clock, row);
