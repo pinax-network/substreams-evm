@@ -1,8 +1,9 @@
--- Native TRX Transfer Transactions --
-CREATE TABLE IF NOT EXISTS native_transfers AS TEMPLATE_TRANSACTION
+-- Native Transfer events (from transactions and calls) --
+CREATE TABLE IF NOT EXISTS native_transfers AS TEMPLATE_CALL
 COMMENT 'Native Transfer events';
 ALTER TABLE native_transfers
     -- transfer --
+    ADD COLUMN IF NOT EXISTS `type`        LowCardinality(String) COMMENT 'transaction or call',
     ADD COLUMN IF NOT EXISTS `from`        String,
     ADD COLUMN IF NOT EXISTS `to`          String,
     ADD COLUMN IF NOT EXISTS amount        UInt256,
@@ -12,11 +13,13 @@ ALTER TABLE native_transfers
 
     -- PROJECTIONS --
     -- count() --
+    ADD PROJECTION IF NOT EXISTS prj_type_count ( SELECT `type`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `type` ),
     ADD PROJECTION IF NOT EXISTS prj_from_count ( SELECT `from`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `from` ),
     ADD PROJECTION IF NOT EXISTS prj_to_count ( SELECT `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `to` ),
     ADD PROJECTION IF NOT EXISTS prj_from_to_count ( SELECT `from`, `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `from`, `to` ),
     ADD PROJECTION IF NOT EXISTS prj_to_from_count ( SELECT `to`, `from`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `to`, `from` ),
 
-    -- minute: from | to --
+    -- minute: from | to | type --
     ADD PROJECTION IF NOT EXISTS prj_from_by_minute ( SELECT `from`, minute, count() GROUP BY `from`, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_to_by_minute ( SELECT `to`, minute, count() GROUP BY `to`, minute );
+    ADD PROJECTION IF NOT EXISTS prj_to_by_minute ( SELECT `to`, minute, count() GROUP BY `to`, minute ),
+    ADD PROJECTION IF NOT EXISTS prj_type_by_minute ( SELECT `type`, minute, count() GROUP BY `type`, minute );

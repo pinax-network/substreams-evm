@@ -22,8 +22,32 @@ pub fn db_out(params: String, clock: Clock, transfers: pb::erc20::transfers::v1:
     // Process logs (ERC20 transfers)
     erc20_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
 
-    // Process transactions (Native transfers)
-    native_transfers::process_events(&encoding, &mut tables, &clock, &transfers);
+    // ONLY include blocks if events are present
+    if !tables.tables.is_empty() {
+        set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
+    }
+
+    substreams::log::info!("Total rows {}", tables.all_row_count());
+    Ok(tables.to_database_changes())
+}
+
+/// Handler for native transfers from native-transfers substream
+#[substreams::handlers::map]
+pub fn native_db_out(params: String, clock: Clock, events: pb::native::transfers::v1::Events) -> Result<DatabaseChanges, Error> {
+    let mut tables = substreams_database_change::tables::Tables::new();
+
+    // Handle support both EVM & TVM address encoding
+    let encoding = if params == "tron_base58" {
+        common::Encoding::TronBase58
+    } else {
+        common::Encoding::Hex
+    };
+
+    // Process native transfers (from transactions and calls)
+    native_transfers::process_native_events(&encoding, &mut tables, &clock, &events);
+
+    // Process transaction fees
+    native_transfers::process_transaction_fees(&encoding, &mut tables, &clock, &events);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
