@@ -170,9 +170,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // PoolRegistered event
             if let Some(event) = balancer::v3::vault::events::PoolRegistered::match_and_decode(log) {
                 total_pool_registered += 1;
-                let event = pb::log::Log::PoolRegistered(pb::PoolRegistered {
-                    pool: event.pool.to_vec(),
-                });
+                let event = pb::log::Log::PoolRegistered(pb::PoolRegistered { pool: event.pool.to_vec() });
                 transaction.logs.push(create_log(log, event));
             }
 
