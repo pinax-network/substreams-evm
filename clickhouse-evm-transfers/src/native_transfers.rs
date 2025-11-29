@@ -16,7 +16,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
 
-        row.set("tx_base_fee_per_gas", tx.base_fee_per_gas);
+        row.set("tx_base_fee_per_gas", &tx.base_fee_per_gas);
         row.set("tx_transaction_fee", &tx.transaction_fee);
         row.set("tx_burn_fee", &tx.burn_fee);
         row.set("tx_fee_paid", &tx.fee_paid);
