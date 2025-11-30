@@ -58,7 +58,7 @@ ALTER TABLE TEMPLATE_LOG
 -- Template Calls --
 CREATE TABLE IF NOT EXISTS TEMPLATE_CALL AS TEMPLATE_TRANSACTION;
 ALTER TABLE TEMPLATE_CALL
-    ADD COLUMN IF NOT EXISTS call_index              UInt32,
+    ADD COLUMN IF NOT EXISTS call_index              UInt32, -- derived from Substreams
     ADD COLUMN IF NOT EXISTS call_begin_ordinal      UInt64,
     ADD COLUMN IF NOT EXISTS call_end_ordinal        UInt64,
     ADD COLUMN IF NOT EXISTS call_caller             String,
