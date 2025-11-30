@@ -1,7 +1,7 @@
 use substreams::scalar::BigInt;
 use substreams_ethereum::pb::eth::v2::{balance_change::Reason, BalanceChange, Call, TransactionTrace, TransactionTraceStatus};
 
-pub fn is_failed_transaction(trx: &TransactionTrace) -> bool {
+pub fn _is_failed_transaction(trx: &TransactionTrace) -> bool {
     let status: TransactionTraceStatus = trx.status();
     if status == TransactionTraceStatus::Reverted || status == TransactionTraceStatus::Failed {
         return true;

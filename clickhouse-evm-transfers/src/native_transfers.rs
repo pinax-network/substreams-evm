@@ -16,11 +16,6 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         set_clock(clock, tx_row);
         set_template_tx(encoding, tx, tx_index, tx_row);
 
-        tx_row.set("tx_base_fee_per_gas", &tx.base_fee_per_gas);
-        tx_row.set("tx_transaction_fee", &tx.transaction_fee);
-        tx_row.set("tx_burn_fee", &tx.burn_fee);
-        tx_row.set("tx_fee_paid", &tx.fee_paid);
-
         // Calls
         for (call_index, call) in tx.calls.iter().enumerate() {
             let key = tx_key(clock, tx_index);
@@ -29,13 +24,16 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
             set_clock(clock, call_row);
             set_template_tx(encoding, tx, tx_index, call_row);
 
-            call_row.set("call_index", call_index as u32);
-            call_row.set("caller", bytes_to_string(&call.caller, encoding));
-            call_row.set("address", bytes_to_string(&call.address, encoding));
-            call_row.set("value", &call.value);
-            call_row.set("gas_consumed", call.gas_consumed);
-            call_row.set("gas_limit", call.gas_limit);
-            call_row.set("depth", call.depth);
+            call_row.set("call_index", call_index as u64);
+            call_row.set("call_begin_ordinal", call.begin_ordinal);
+            call_row.set("call_end_ordinal", call.end_ordinal);
+            call_row.set("call_parent_index", call.parent_index);
+            call_row.set("call_caller", bytes_to_string(&call.caller, encoding));
+            call_row.set("call_address", bytes_to_string(&call.address, encoding));
+            call_row.set("call_value", &call.value);
+            call_row.set("call_gas_consumed", call.gas_consumed);
+            call_row.set("call_gas_limit", call.gas_limit);
+            call_row.set("call_depth", call.depth);
         }
     }
 }

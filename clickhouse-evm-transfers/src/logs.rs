@@ -1,18 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::evm::erc20::transfers::v1 as pb;
-use substreams::pb::substreams::Clock;
-
-pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
-    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
-    [
-        ("minute", (seconds / 60).to_string()),
-        ("timestamp", seconds.to_string()),
-        ("block_num", clock.number.to_string()),
-        ("tx_index", tx_index.to_string()),
-        ("log_index", log_index.to_string()),
-        ("block_hash", format!("0x{}", &clock.id)),
-    ]
-}
 
 pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
     row.set("log_index", log_index as u32);

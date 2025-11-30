@@ -24,60 +24,19 @@ message Transaction {
   string gas_price = 6; // uint256
   uint64 gas_limit = 7;
   uint64 gas_used = 8;
-  string base_fee_per_gas = 9; // uint256
-  string transaction_fee = 10; // uint256
-  string burn_fee = 11;        // uint256
-  string fee_paid = 12;        // uint256
-  string value = 13;           // uint256
-  repeated Call calls = 14;
-
-  // let you know if the transaction was successful or not.
-  //
-  // ## Explanation relevant only for blocks with `DetailLevel: EXTENDED`
-  //
-  // A successful transaction has been recorded to the blockchain's state for
-  // calls in it that were successful. This means it's possible only a subset of
-  // the calls were properly recorded, refer to [calls[].state_reverted] field
-  // to determine which calls were reverted.
-  //
-  // A quirks of the Ethereum protocol is that a transaction `FAILED` or
-  // `REVERTED` still affects the blockchain's state for **some** of the state
-  // changes. Indeed, in those cases, the transactions fees are still paid to
-  // the miner which means there is a balance change for the transaction's
-  // emitter (e.g. `from`) to pay the gas fees, an optional balance change for
-  // gas refunded to the transaction's emitter (e.g. `from`) and a balance
-  // change for the miner who received the transaction fees. There is also a
-  // nonce change for the transaction's emitter (e.g. `from`).
-  //
-  // This means that to properly record the state changes for a transaction, you
-  // need to conditionally procees the transaction's status.
-  //
-  // For a `SUCCEEDED` transaction, you iterate over the `calls` array and
-  // record the state changes for each call for which `state_reverted == false`
-  // (if a transaction succeeded, the call at #0 will always `state_reverted ==
-  // false` because it aligns with the transaction).
-  //
-  // For a `FAILED` or `REVERTED` transaction, you iterate over the root call
-  // (e.g. at #0, will always exist) for balance changes you process those where
-  // `reason` is either `REASON_GAS_BUY`, `REASON_GAS_REFUND` or
-  // `REASON_REWARD_TRANSACTION_FEE` and for nonce change, still on the root
-  // call, you pick the nonce change which the smallest ordinal (if more than
-  // one).
-  TransactionTraceStatus status = 15;
-}
-
-enum TransactionTraceStatus {
-  UNKNOWN = 0;
-  SUCCEEDED = 1;
-  FAILED = 2;
-  REVERTED = 3;
+  string value = 9; // uint256
+  repeated Call calls = 10;
 }
 
 message Call {
-  bytes caller = 1;  // sender
-  bytes address = 2; // recipient
-  string value = 3;  // uint256
-  uint64 gas_consumed = 4;
-  uint64 gas_limit = 5;
-  uint32 depth = 7;
+  uint32 index = 1;
+  uint64 begin_ordinal = 2;
+  uint64 end_ordinal = 3;
+  bytes caller = 4;  // sender
+  bytes address = 5; // recipient
+  string value = 6;  // uint256
+  uint64 gas_consumed = 7;
+  uint64 gas_limit = 8;
+  uint32 depth = 9;
+  uint32 parent_index = 10;
 }
