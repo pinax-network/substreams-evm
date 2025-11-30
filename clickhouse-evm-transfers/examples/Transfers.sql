@@ -1,3 +1,18 @@
+-- `/evm/transfers` by from (0.12s) --
+WITH minutes AS (
+    SELECT minute
+    FROM transfers
+    WHERE
+        `from` = '0x22a956c4755d8c4294b358dc346e74250e175622' AND
+        log_address = ''
+    GROUP BY minute
+    LIMIT 10
+)
+SELECT * FROM transfers
+WHERE minute IN minutes
+ORDER BY minute DESC
+LIMIT 10;
+
 -- `/evm/transfers` by from (0.05s) --
 WITH minutes AS (
     SELECT minute
