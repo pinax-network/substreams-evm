@@ -25,7 +25,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
         let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
+        let to: Option<Vec<u8>> = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
         let mut transaction = pb::Transaction {
             // -- transaction --
             from: trx.from.to_vec(),
@@ -34,7 +34,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             nonce: trx.nonce as u64,
             gas_price: gas_price.to_string(),
             gas_limit: trx.gas_limit as u64,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
+            gas_used: trx.gas_used,
             value: value.to_string(),
             logs: vec![],
         };
