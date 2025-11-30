@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     PROJECTION prj_log_address_to_from_count ( SELECT log_address, `from`, `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute)  GROUP BY log_address, `from`, `to` ),
 
     -- minute: log_address | from | to --
+    PROJECTION prj_transfer_type_by_minute ( SELECT transfer_type, minute GROUP BY transfer_type, minute ),
     PROJECTION prj_from_by_minute ( SELECT `from`, minute GROUP BY `from`, minute ),
     PROJECTION prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute ),
     PROJECTION prj_from_to_by_minute ( SELECT `from`, `to`, minute GROUP BY `from`, `to`, minute ),
@@ -157,12 +158,12 @@ SELECT
 
     -- log --
     log_index,
-    log_address,
+    log_address,  -- WETH contract
     log_ordinal,
 
-    -- transfer --
-    dst AS `from`,
-    dst AS `to`,
+    -- transfer (native ETH leg) --
+    dst AS `from`,          -- user
+    log_address AS `to`,    -- WETH contract
     wad AS amount,
     'deposit' AS transfer_type
 FROM weth_deposit
@@ -185,12 +186,12 @@ SELECT
 
     -- log --
     log_index,
-    log_address,
+    log_address,  -- WETH contract
     log_ordinal,
 
-    -- transfer --
-    src AS `from`,
-    src AS `to`,
+    -- transfer (native ETH leg) --
+    log_address AS `from`,  -- WETH contract
+    src AS `to`,            -- user
     wad AS amount,
     'withdrawal' AS transfer_type
 FROM weth_withdrawal
