@@ -1,0 +1,35 @@
+specVersion: v0.1.0
+package:
+  name: erc20_balances
+  version: v0.2.0
+  url: https://github.com/pinax-network/substreams-evm-tokens
+  description: ERC20 Balances via RPC
+  image: ../image.png
+
+imports:
+  erc20_transfers: ../erc20-transfers/substreams.yaml
+
+protobuf:
+  files:
+    - erc20-balances.proto
+  importPaths:
+    - ../proto/v1
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/erc20_balances.wasm
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - params: string
+      - map: erc20_transfers:map_events
+    output:
+      type: proto:evm.balances.v1.Events
+
+network: mainnet
+
+params:
+  map_events: 25 # CHUNK_SIZE (Batch RPC Calls)

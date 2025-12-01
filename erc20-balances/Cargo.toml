@@ -1,0 +1,15 @@
+[package]
+name = "erc20-balances"
+description = "EVM ERC20 Balances"
+edition = { workspace = true }
+version = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+substreams = { workspace = true }
+substreams-ethereum = { workspace = true }
+substreams-abis = { workspace = true }
+proto = { path = "../proto" }
+common = { path = "../common" }
