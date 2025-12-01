@@ -16,6 +16,6 @@ pub struct Balance {
     pub account: ::prost::alloc::vec::Vec<u8>,
     /// balanceOf(address account) -> uint256
     #[prost(string, tag="3")]
-    pub amount: ::prost::alloc::string::String,
+    pub balance: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)
