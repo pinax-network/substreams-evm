@@ -14,7 +14,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         set_clock(clock, row);
         row.set("miner", bytes_to_string(&event.miner, encoding));
         row.set("value", &event.value);
-        row.set("reason", &event.reason.to_string());
+        row.set("reason", &event.reason().as_str_name().to_string());
     }
 
     for (tx_index, tx) in events.transactions.iter().enumerate() {

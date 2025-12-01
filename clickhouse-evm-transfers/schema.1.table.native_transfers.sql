@@ -30,6 +30,4 @@ CREATE TABLE IF NOT EXISTS block_rewards (
     PROJECTION prj_miner_by_minute ( SELECT miner, minute, count() GROUP BY miner, minute ),
 )
 ENGINE = MergeTree
-ORDER BY (
-    minute, timestamp, block_num
-);
+ORDER BY block_num;

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     amount                      UInt256,
 
     -- type --
-    transfer_type               LowCardinality(String),
+    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'transfer' = 3, 'deposit' = 4, 'withdrawal' = 5, 'block_reward' = 6),
 
     -- INDEXES --
     INDEX idx_amount (amount) TYPE minmax,
@@ -197,7 +197,6 @@ SELECT
 FROM weth_withdrawal
 WHERE amount > 0;
 
-
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_block_rewards TO transfers AS
 SELECT
     -- block --
@@ -222,6 +221,6 @@ SELECT
     '' AS `from`,
     miner AS `to`,
     value AS amount,
-    lower(reason) AS transfer_type
+    'block_reward' AS transfer_type
 FROM block_rewards
 WHERE amount > 0;
