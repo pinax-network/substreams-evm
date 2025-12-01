@@ -12,8 +12,8 @@ use substreams_database_change::pb::database::DatabaseChanges;
 pub fn db_out(
     params: String,
     clock: Clock,
-    events_erc20_transfers: pb::erc20::transfers::v1::Events,
-    events_native_transfers: pb::native::transfers::v1::Events,
+    events_erc20_transfers: pb::transfers::v1::Events,
+    events_native_transfers: pb::transfers::v1::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 

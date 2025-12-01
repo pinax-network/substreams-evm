@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::evm::erc20::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 
 pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
     row.set("log_index", log_index as u32);

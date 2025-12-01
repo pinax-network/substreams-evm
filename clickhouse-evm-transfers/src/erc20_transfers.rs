@@ -1,5 +1,5 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::evm::erc20::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
