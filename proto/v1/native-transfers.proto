@@ -8,8 +8,9 @@ message Events {
 }
 
 message BlockReward {
-  bytes coinbase = 1;
+  bytes miner = 1;
   string value = 2; // uint256
+  Reason reason = 3;
 }
 
 message Transaction {
@@ -39,4 +40,124 @@ message Call {
   uint64 gas_limit = 8;
   uint32 depth = 9;
   uint32 parent_index = 10;
+}
+
+enum Reason {
+  REASON_UNKNOWN = 0;
+
+  // REASON_REWARD_MINE_UNCLE is a reward for mining an uncle block.
+  // Triggered when uncle blocks are processed during block finalization.
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/ethash/consensus.go#L589
+  REASON_REWARD_MINE_UNCLE = 1;
+
+  // REASON_REWARD_MINE_BLOCK is a reward for mining a block.
+  // Triggered when the block miner receives their mining reward.
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/ethash/consensus.go#L594
+  REASON_REWARD_MINE_BLOCK = 2;
+
+  // REASON_DAO_REFUND_CONTRACT is ether sent to the DAO refund contract.
+  // Used during the DAO hard fork to move funds to the refund contract.
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/misc/dao.go#L85
+  REASON_DAO_REFUND_CONTRACT = 3;
+
+  // REASON_DAO_ADJUST_BALANCE is ether taken from a DAO account to be moved to
+  // the refund contract. Used during the DAO hard fork to extract funds from
+  // DAO-related accounts. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/misc/dao.go#L86
+  REASON_DAO_ADJUST_BALANCE = 4;
+
+  // REASON_TRANSFER is ether transferred via a call.
+  // This is a decrease for the sender and an increase for the recipient during
+  // value transfers. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/evm.go#L144 See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/evm.go#L145
+  REASON_TRANSFER = 5;
+
+  // REASON_GENESIS_BALANCE is ether allocated at the genesis block.
+  // Triggered when accounts are initialized with balances during genesis block
+  // creation. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/genesis.go#L154
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/genesis.go#L180
+  REASON_GENESIS_BALANCE = 6;
+
+  // REASON_GAS_BUY is spent to purchase gas for executing a transaction.
+  // The transaction sender's balance is decreased by gasLimit * gasPrice at
+  // transaction start. Note: This balance change persists even for failed
+  // transactions (see Block documentation). See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L306
+  REASON_GAS_BUY = 7;
+
+  // REASON_REWARD_TRANSACTION_FEE is the transaction tip increasing block
+  // builder's balance. The coinbase (block miner) receives the transaction fees
+  // as a reward. Note: This balance change persists even for failed
+  // transactions (see Block documentation). See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L560
+  REASON_REWARD_TRANSACTION_FEE = 8;
+
+  // REASON_GAS_REFUND is ether returned for unused gas at the end of execution.
+  // Any unused gas from the transaction is refunded to the sender.
+  // Note: This balance change persists even for failed transactions (see Block
+  // documentation). See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L658
+  REASON_GAS_REFUND = 9;
+
+  // REASON_TOUCH_ACCOUNT is a transfer of zero value. It is only there to
+  // touch-create an account. Used to create an account without transferring
+  // value, often for contract interactions. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/evm.go#L442
+  REASON_TOUCH_ACCOUNT = 10;
+
+  // REASON_SUICIDE_REFUND is added to the recipient as indicated by a
+  // selfdestructing account. When a contract self-destructs, its remaining
+  // balance is sent to a designated recipient. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L890
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L910
+  REASON_SUICIDE_REFUND = 11;
+
+  // REASON_CALL_BALANCE_OVERRIDE represents a balance change due to call
+  // balance override. This is a Firehose-specific reason not directly mapped to
+  // Geth tracing reasons.
+  REASON_CALL_BALANCE_OVERRIDE = 12;
+
+  // REASON_SUICIDE_WITHDRAW is deducted from a contract due to self-destruct.
+  // The self-destructing contract's balance is reduced to zero.
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L909
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L230
+  // See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L256
+  REASON_SUICIDE_WITHDRAW = 13;
+
+  // REASON_REWARD_FEE_RESET represents a fee reset reward.
+  // This is a Firehose-specific reason not directly mapped to Geth tracing
+  // reasons.
+  REASON_REWARD_FEE_RESET = 14;
+
+  // Used on chain(s) where some Ether burning happens
+  // This represents ether that is effectively burned when sent to a destroyed
+  // contract. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L288
+  REASON_BURN = 15;
+
+  // REASON_WITHDRAWAL is ether withdrawn from the beacon chain.
+  // Used for validator withdrawals from the Ethereum 2.0 beacon chain to the
+  // execution layer. See:
+  // https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/beacon/consensus.go#L339
+  REASON_WITHDRAWAL = 16;
+
+  // Rewards for Blob processing on BNB chain added in Tycho hard-fork, refers
+  // to BNB documentation to check the timestamp at which it was activated.
+  REASON_REWARD_BLOB_FEE = 17;
+
+  // This reason is used only on Optimism chain for minting operations.
+  REASON_INCREASE_MINT = 18;
+
+  // This reason is used only on Optimism chain for balance reverts.
+  REASON_REVERT = 19;
 }

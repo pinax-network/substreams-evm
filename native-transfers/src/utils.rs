@@ -33,7 +33,7 @@ pub fn get_balances(balance_change: &BalanceChange) -> (BigInt, BigInt) {
 }
 
 pub fn get_block_reward_amount(balance_change: &BalanceChange) -> Option<BigInt> {
-    if balance_change.reason() != Reason::RewardMineBlock {
+    if !is_block_reward_reason(balance_change.reason()) {
         return None;
     }
 
@@ -43,6 +43,15 @@ pub fn get_block_reward_amount(balance_change: &BalanceChange) -> Option<BigInt>
         return None;
     }
     Some(value)
+}
+
+fn is_block_reward_reason(reason: Reason) -> bool {
+    match reason {
+        Reason::RewardMineBlock | Reason::RewardTransactionFee | Reason::RewardBlobFee | Reason::RewardMineUncle |
+        // Optimism sequencer "block rewards"
+        Reason::IncreaseMint => true,
+        _ => false,
+    }
 }
 
 pub fn get_gas_price(gas_price: &Option<substreams_ethereum::pb::eth::v2::BigInt>) -> BigInt {

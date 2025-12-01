@@ -12,10 +12,12 @@ pub struct Events {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockReward {
     #[prost(bytes="vec", tag="1")]
-    pub coinbase: ::prost::alloc::vec::Vec<u8>,
+    pub miner: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="2")]
     pub value: ::prost::alloc::string::String,
+    #[prost(enumeration="Reason", tag="3")]
+    pub reason: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -71,5 +73,163 @@ pub struct Call {
     pub depth: u32,
     #[prost(uint32, tag="10")]
     pub parent_index: u32,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum Reason {
+    Unknown = 0,
+    /// REASON_REWARD_MINE_UNCLE is a reward for mining an uncle block.
+    /// Triggered when uncle blocks are processed during block finalization.
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/ethash/consensus.go#L589>
+    RewardMineUncle = 1,
+    /// REASON_REWARD_MINE_BLOCK is a reward for mining a block.
+    /// Triggered when the block miner receives their mining reward.
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/ethash/consensus.go#L594>
+    RewardMineBlock = 2,
+    /// REASON_DAO_REFUND_CONTRACT is ether sent to the DAO refund contract.
+    /// Used during the DAO hard fork to move funds to the refund contract.
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/misc/dao.go#L85>
+    DaoRefundContract = 3,
+    /// REASON_DAO_ADJUST_BALANCE is ether taken from a DAO account to be moved to
+    /// the refund contract. Used during the DAO hard fork to extract funds from
+    /// DAO-related accounts. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/misc/dao.go#L86>
+    DaoAdjustBalance = 4,
+    /// REASON_TRANSFER is ether transferred via a call.
+    /// This is a decrease for the sender and an increase for the recipient during
+    /// value transfers. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/evm.go#L144> See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/evm.go#L145>
+    Transfer = 5,
+    /// REASON_GENESIS_BALANCE is ether allocated at the genesis block.
+    /// Triggered when accounts are initialized with balances during genesis block
+    /// creation. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/genesis.go#L154>
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/genesis.go#L180>
+    GenesisBalance = 6,
+    /// REASON_GAS_BUY is spent to purchase gas for executing a transaction.
+    /// The transaction sender's balance is decreased by gasLimit * gasPrice at
+    /// transaction start. Note: This balance change persists even for failed
+    /// transactions (see Block documentation). See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L306>
+    GasBuy = 7,
+    /// REASON_REWARD_TRANSACTION_FEE is the transaction tip increasing block
+    /// builder's balance. The coinbase (block miner) receives the transaction fees
+    /// as a reward. Note: This balance change persists even for failed
+    /// transactions (see Block documentation). See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L560>
+    RewardTransactionFee = 8,
+    /// REASON_GAS_REFUND is ether returned for unused gas at the end of execution.
+    /// Any unused gas from the transaction is refunded to the sender.
+    /// Note: This balance change persists even for failed transactions (see Block
+    /// documentation). See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state_transition.go#L658>
+    GasRefund = 9,
+    /// REASON_TOUCH_ACCOUNT is a transfer of zero value. It is only there to
+    /// touch-create an account. Used to create an account without transferring
+    /// value, often for contract interactions. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/evm.go#L442>
+    TouchAccount = 10,
+    /// REASON_SUICIDE_REFUND is added to the recipient as indicated by a
+    /// selfdestructing account. When a contract self-destructs, its remaining
+    /// balance is sent to a designated recipient. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L890>
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L910>
+    SuicideRefund = 11,
+    /// REASON_CALL_BALANCE_OVERRIDE represents a balance change due to call
+    /// balance override. This is a Firehose-specific reason not directly mapped to
+    /// Geth tracing reasons.
+    CallBalanceOverride = 12,
+    /// REASON_SUICIDE_WITHDRAW is deducted from a contract due to self-destruct.
+    /// The self-destructing contract's balance is reduced to zero.
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/vm/instructions.go#L909>
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L230>
+    /// See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L256>
+    SuicideWithdraw = 13,
+    /// REASON_REWARD_FEE_RESET represents a fee reset reward.
+    /// This is a Firehose-specific reason not directly mapped to Geth tracing
+    /// reasons.
+    RewardFeeReset = 14,
+    /// Used on chain(s) where some Ether burning happens
+    /// This represents ether that is effectively burned when sent to a destroyed
+    /// contract. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/core/state/statedb_hooked.go#L288>
+    Burn = 15,
+    /// REASON_WITHDRAWAL is ether withdrawn from the beacon chain.
+    /// Used for validator withdrawals from the Ethereum 2.0 beacon chain to the
+    /// execution layer. See:
+    /// <https://github.com/ethereum/go-ethereum/blob/v1.16.4/consensus/beacon/consensus.go#L339>
+    Withdrawal = 16,
+    /// Rewards for Blob processing on BNB chain added in Tycho hard-fork, refers
+    /// to BNB documentation to check the timestamp at which it was activated.
+    RewardBlobFee = 17,
+    /// This reason is used only on Optimism chain for minting operations.
+    IncreaseMint = 18,
+    /// This reason is used only on Optimism chain for balance reverts.
+    Revert = 19,
+}
+impl Reason {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            Reason::Unknown => "REASON_UNKNOWN",
+            Reason::RewardMineUncle => "REASON_REWARD_MINE_UNCLE",
+            Reason::RewardMineBlock => "REASON_REWARD_MINE_BLOCK",
+            Reason::DaoRefundContract => "REASON_DAO_REFUND_CONTRACT",
+            Reason::DaoAdjustBalance => "REASON_DAO_ADJUST_BALANCE",
+            Reason::Transfer => "REASON_TRANSFER",
+            Reason::GenesisBalance => "REASON_GENESIS_BALANCE",
+            Reason::GasBuy => "REASON_GAS_BUY",
+            Reason::RewardTransactionFee => "REASON_REWARD_TRANSACTION_FEE",
+            Reason::GasRefund => "REASON_GAS_REFUND",
+            Reason::TouchAccount => "REASON_TOUCH_ACCOUNT",
+            Reason::SuicideRefund => "REASON_SUICIDE_REFUND",
+            Reason::CallBalanceOverride => "REASON_CALL_BALANCE_OVERRIDE",
+            Reason::SuicideWithdraw => "REASON_SUICIDE_WITHDRAW",
+            Reason::RewardFeeReset => "REASON_REWARD_FEE_RESET",
+            Reason::Burn => "REASON_BURN",
+            Reason::Withdrawal => "REASON_WITHDRAWAL",
+            Reason::RewardBlobFee => "REASON_REWARD_BLOB_FEE",
+            Reason::IncreaseMint => "REASON_INCREASE_MINT",
+            Reason::Revert => "REASON_REVERT",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "REASON_UNKNOWN" => Some(Self::Unknown),
+            "REASON_REWARD_MINE_UNCLE" => Some(Self::RewardMineUncle),
+            "REASON_REWARD_MINE_BLOCK" => Some(Self::RewardMineBlock),
+            "REASON_DAO_REFUND_CONTRACT" => Some(Self::DaoRefundContract),
+            "REASON_DAO_ADJUST_BALANCE" => Some(Self::DaoAdjustBalance),
+            "REASON_TRANSFER" => Some(Self::Transfer),
+            "REASON_GENESIS_BALANCE" => Some(Self::GenesisBalance),
+            "REASON_GAS_BUY" => Some(Self::GasBuy),
+            "REASON_REWARD_TRANSACTION_FEE" => Some(Self::RewardTransactionFee),
+            "REASON_GAS_REFUND" => Some(Self::GasRefund),
+            "REASON_TOUCH_ACCOUNT" => Some(Self::TouchAccount),
+            "REASON_SUICIDE_REFUND" => Some(Self::SuicideRefund),
+            "REASON_CALL_BALANCE_OVERRIDE" => Some(Self::CallBalanceOverride),
+            "REASON_SUICIDE_WITHDRAW" => Some(Self::SuicideWithdraw),
+            "REASON_REWARD_FEE_RESET" => Some(Self::RewardFeeReset),
+            "REASON_BURN" => Some(Self::Burn),
+            "REASON_WITHDRAWAL" => Some(Self::Withdrawal),
+            "REASON_REWARD_BLOB_FEE" => Some(Self::RewardBlobFee),
+            "REASON_INCREASE_MINT" => Some(Self::IncreaseMint),
+            "REASON_REVERT" => Some(Self::Revert),
+            _ => None,
+        }
+    }
 }
 // @@protoc_insertion_point(module)

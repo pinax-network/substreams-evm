@@ -16,11 +16,12 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
     // EXTENDED
     // balance changes at block level
     for balance_change in &block.balance_changes {
-        // Block Rewards as transfer
+        // Block Rewards
         if let Some(value) = get_block_reward_amount(balance_change) {
             events.block_rewards.push(pb::BlockReward {
-                coinbase: balance_change.address.to_vec(),
+                miner: balance_change.address.to_vec(),
                 value: value.to_string(),
+                reason: balance_change.reason,
             });
         }
     }
