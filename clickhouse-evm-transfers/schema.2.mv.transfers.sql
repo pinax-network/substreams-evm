@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     amount                      UInt256,
 
     -- type --
-    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'transfer' = 3, 'deposit' = 4, 'withdrawal' = 5, 'block_reward' = 6),
+    transfer_type               LowCardinality(String),
 
     -- INDEXES --
     INDEX idx_amount (amount) TYPE minmax,
@@ -220,8 +220,8 @@ SELECT
 
     -- transfer (native ETH leg) --
     '' AS `from`,
-    coinbase AS `to`,
+    miner AS `to`,
     value AS amount,
-    'block_reward' AS transfer_type
+    lower(reason) AS transfer_type
 FROM block_rewards
 WHERE amount > 0;
