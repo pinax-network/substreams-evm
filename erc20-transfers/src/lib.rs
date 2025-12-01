@@ -1,4 +1,4 @@
-use proto::pb::evm::erc20::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::{Block, Log};
@@ -37,6 +37,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             gas_used: trx.gas_used,
             value: value.to_string(),
             logs: vec![],
+            calls: vec![],
         };
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
