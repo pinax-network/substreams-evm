@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     amount                      UInt256,
 
     -- type --
-    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'transfer' = 3, 'deposit' = 4, 'withdrawal' = 5),
+    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'transfer' = 3, 'deposit' = 4, 'withdrawal' = 5, 'block_reward' = 6),
 
     -- INDEXES --
     INDEX idx_amount (amount) TYPE minmax,
@@ -57,7 +57,7 @@ ORDER BY (
 COMMENT 'Transfers including ERC-20, WETH & Native value from calls & transactions';
 
 -- MV's for Transfers --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_transactions TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_transactions TO transfers AS
 SELECT
     -- block --
     block_num,
@@ -85,7 +85,7 @@ SELECT
 FROM transactions
 WHERE amount > 0 AND `from` != `to`;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_calls TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_calls TO transfers AS
 SELECT
     -- block --
     block_num,
@@ -113,7 +113,7 @@ SELECT
 FROM calls
 WHERE amount > 0 AND `from` != `to`;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_erc20_transfers TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_erc20_transfers TO transfers AS
 SELECT
     -- block --
     block_num,
@@ -141,7 +141,7 @@ SELECT
 FROM erc20_transfers
 WHERE amount > 0 AND `from` != `to`;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_weth_deposit TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_weth_deposit TO transfers AS
 SELECT
     -- block --
     block_num,
@@ -169,7 +169,7 @@ SELECT
 FROM weth_deposit
 WHERE amount > 0;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_weth_withdrawal TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_weth_withdrawal TO transfers AS
 SELECT
     -- block --
     block_num,
@@ -195,4 +195,33 @@ SELECT
     wad AS amount,
     'withdrawal' AS transfer_type
 FROM weth_withdrawal
+WHERE amount > 0;
+
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_block_rewards TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    0 AS tx_index,
+    '' AS tx_hash,
+
+    -- call --
+    cast(NULL AS Nullable(UInt32)) AS call_index,
+
+    -- log --
+    cast(NULL AS Nullable(UInt32)) AS log_index,
+    '' AS log_address,
+    cast(NULL AS Nullable(UInt32)) AS log_ordinal,
+
+    -- transfer (native ETH leg) --
+    '' AS `from`,
+    coinbase AS `to`,
+    value AS amount,
+    'block_reward' AS transfer_type
+FROM block_rewards
 WHERE amount > 0;

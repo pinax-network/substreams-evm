@@ -12,10 +12,10 @@ pub struct Events {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockReward {
     #[prost(bytes="vec", tag="1")]
-    pub miner: ::prost::alloc::vec::Vec<u8>,
+    pub coinbase: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="2")]
-    pub amount: ::prost::alloc::string::String,
+    pub value: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

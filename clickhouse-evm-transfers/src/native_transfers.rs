@@ -9,6 +9,13 @@ use crate::{
 };
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
+    for event in &events.block_rewards {
+        let row = tables.create_row("block_rewards", clock.number.to_string());
+        set_clock(clock, row);
+        row.set("coinbase", bytes_to_string(&event.coinbase, encoding));
+        row.set("value", &event.value);
+    }
+
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         // Transactions
         let key = tx_key(clock, tx_index);
