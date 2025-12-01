@@ -98,7 +98,7 @@ pub fn map_events(params: String, block: Block) -> Result<Events, Error> {
             events.balances.push(Balance {
                 contract: None,
                 account,
-                amount: balance.to_string(),
+                balance: balance.to_string(),
             });
         }
     }
