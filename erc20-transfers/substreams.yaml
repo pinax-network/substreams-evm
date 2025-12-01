@@ -24,6 +24,6 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.erc20.transfers.v1.Events
+      type: proto:evm.transfers.v1.Events
 
 network: mainnet

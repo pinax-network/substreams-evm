@@ -1,6 +1,6 @@
 mod utils;
 
-use proto::pb::evm::native::transfers::v1 as pb;
+use proto::pb::evm::transfers::v1 as pb;
 use substreams::{
     errors::Error,
     scalar::{BigDecimal, BigInt},
@@ -41,6 +41,7 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
             gas_limit: trx.gas_limit as u64,
             gas_used: trx.gas_used,
             value: value.to_string(),
+            logs: vec![],
             calls: vec![],
         };
 

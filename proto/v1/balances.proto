@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package evm.balances.v1;
+
+message Block { repeated Balance balances = 1; }
+
+message Balance {
+  optional bytes contract = 1; // log.address
+  bytes account = 2;
+  string amount = 3; // balanceOf(address account) -> uint256
+}
