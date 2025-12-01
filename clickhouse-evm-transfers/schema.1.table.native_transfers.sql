@@ -15,18 +15,19 @@ CREATE TABLE IF NOT EXISTS block_rewards (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- block reward --
-    coinbase                    String,
+    miner                       String,
     value                       UInt256,
+    reason                      LowCardinality(String),
 
     -- INDEXES --
     INDEX idx_value (value)     TYPE minmax,
 
     -- PROJECTIONS --
     -- count() --
-    PROJECTION prj_coinbase_count ( SELECT coinbase, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY coinbase ),
+    PROJECTION prj_miner_count ( SELECT miner, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY miner ),
 
     -- minute --
-    PROJECTION prj_coinbase_by_minute ( SELECT coinbase, minute, count() GROUP BY coinbase, minute ),
+    PROJECTION prj_miner_by_minute ( SELECT miner, minute, count() GROUP BY miner, minute ),
 )
 ENGINE = MergeTree
 ORDER BY (
