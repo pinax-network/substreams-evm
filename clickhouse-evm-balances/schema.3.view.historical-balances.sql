@@ -7,7 +7,7 @@ SELECT
 
     -- keys
     contract,
-    account,
+    address,
 
     -- OHLC finalized
     argMinMerge(open)                      AS open,            -- from AggregateFunction(argMin, UInt256, UInt32)
@@ -19,7 +19,7 @@ SELECT
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
 FROM historical_erc20_balances_state
 GROUP BY
-    account, contract, timestamp;
+    address, contract, timestamp;
 
 CREATE VIEW IF NOT EXISTS historical_erc20_balances_by_contract AS
 SELECT
@@ -29,7 +29,7 @@ SELECT
 
     -- keys
     contract,
-    account,
+    address,
 
     -- OHLC finalized
     argMinMerge(open)                      AS open,            -- from AggregateFunction(argMin, UInt256, UInt32)
@@ -41,4 +41,4 @@ SELECT
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
 FROM historical_erc20_balances_state_by_contract
 GROUP BY
-    contract, account, timestamp;
+    contract, address, timestamp;
