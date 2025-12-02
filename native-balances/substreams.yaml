@@ -6,16 +6,14 @@ package:
   description: Extracts Native balances for EVM blockchains.
   image: ../image.png
 
+imports:
+  # ERC-20
+  erc20_balances: ../erc20-balances/substreams.yaml
+
 binaries:
   default:
     type: wasm/rust-v1
     file: ../target/wasm32-unknown-unknown/release/native_balances.wasm
-
-protobuf:
-  files:
-    - v1/balances.proto
-  importPaths:
-    - ../proto
 
 modules:
   - name: map_events
