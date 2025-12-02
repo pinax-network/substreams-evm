@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS historical_erc20_balances_state (
     -- block --
     timestamp            DateTime(0, 'UTC') COMMENT 'the start of the aggregate window',
-    block_num            SimpleAggregateFunction(min, UInt32) COMMENT 'the minimum block number in the aggregate window',
+    min_block_num        SimpleAggregateFunction(min, UInt32) COMMENT 'the minimum block number in the aggregate window',
+    max_block_num        SimpleAggregateFunction(max, UInt32) COMMENT 'the maximum block number in the aggregate window',
 
     -- balance change --
     contract             String COMMENT 'contract address',
@@ -24,7 +25,8 @@ AS
 SELECT
     -- block --
     toStartOfHour(timestamp) AS timestamp,
-    min(block_num) AS block_num,
+    min(block_num) AS min_block_num,
+    max(block_num) AS max_block_num,
 
     -- balance change --
     address,
