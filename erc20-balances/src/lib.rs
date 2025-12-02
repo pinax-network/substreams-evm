@@ -11,7 +11,7 @@ fn map_events(params: String, transfers: pb::transfers::v1::Events) -> Result<pb
     let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
 
     // Collect unique tokens by owners
-    let contracts_by_owner = transfers
+    let contracts_by_address = transfers
         .transactions
         .iter()
         .flat_map(|tx| tx.logs.iter())
@@ -27,13 +27,13 @@ fn map_events(params: String, transfers: pb::transfers::v1::Events) -> Result<pb
         .collect::<Vec<(&common::Address, &common::Address)>>();
 
     // Fetch RPC calls for Balance Of
-    let balance_ofs = batch_balance_of(&contracts_by_owner, chunk_size);
+    let balance_ofs = batch_balance_of(&contracts_by_address, chunk_size);
 
-    for (contract, owner) in &contracts_by_owner {
-        if let Some(balance) = balance_ofs.get(&(contract, owner)) {
+    for (contract, address) in &contracts_by_address {
+        if let Some(balance) = balance_ofs.get(&(contract, address)) {
             events.balances.push(pb::balances::v1::Balance {
                 contract: Some(contract.to_vec()),
-                account: owner.to_vec(),
+                address: address.to_vec(),
                 balance: balance.to_string(),
             });
         };

@@ -1,3 +1,5 @@
+use core::panic;
+
 use prost_types::Timestamp;
 mod erc20_balances;
 mod native_balances;
@@ -18,11 +20,7 @@ pub fn db_out(
     clock = update_genesis_clock(clock);
 
     // Handle support both EVM & TVM address encoding
-    let encoding = if params == "tron_base58" {
-        common::Encoding::TronBase58
-    } else {
-        common::Encoding::Hex
-    };
+    let encoding = common::handle_encoding_param(&params);
 
     // -- ERC20 Balances --
     erc20_balances::process_events(&encoding, &mut tables, &clock, &erc20_balances);

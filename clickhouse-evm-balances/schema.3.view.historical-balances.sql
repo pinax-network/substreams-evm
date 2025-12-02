@@ -1,5 +1,5 @@
 -- Finalized read view over the AggregatingMergeTree "state" table
-CREATE VIEW IF NOT EXISTS historical_balances AS
+CREATE VIEW IF NOT EXISTS historical_erc20_balances AS
 SELECT
     -- block/window
     timestamp,
@@ -7,7 +7,7 @@ SELECT
 
     -- keys
     contract,
-    address,
+    account,
 
     -- OHLC finalized
     argMinMerge(open)                      AS open,            -- from AggregateFunction(argMin, UInt256, UInt32)
@@ -17,11 +17,11 @@ SELECT
 
     -- activity finalized
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
-FROM historical_balances_state
+FROM historical_erc20_balances_state
 GROUP BY
-    address, contract, timestamp;
+    account, contract, timestamp;
 
-CREATE VIEW IF NOT EXISTS historical_balances_by_contract AS
+CREATE VIEW IF NOT EXISTS historical_erc20_balances_by_contract AS
 SELECT
     -- block/window
     timestamp,
@@ -29,7 +29,7 @@ SELECT
 
     -- keys
     contract,
-    address,
+    account,
 
     -- OHLC finalized
     argMinMerge(open)                      AS open,            -- from AggregateFunction(argMin, UInt256, UInt32)
@@ -39,6 +39,6 @@ SELECT
 
     -- activity finalized
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
-FROM historical_balances_state_by_contract
+FROM historical_erc20_balances_state_by_contract
 GROUP BY
-    contract, address, timestamp;
+    contract, account, timestamp;

@@ -9,17 +9,17 @@ CREATE TABLE IF NOT EXISTS erc20_balances (
 
     -- balance --
     contract            String COMMENT 'token contract address',
-    account             String COMMENT 'token account address',
+    address             String COMMENT 'token holder address',
     balance             UInt256 COMMENT 'token balance',
 
     -- indexes --
-    INDEX idx_balance (balance) TYPE minmax
+    INDEX idx_balance (balance) TYPE minmax,
 
     -- projections --
-    PROJECTION prj_account_contract (SELECT * ORDER BY (account, contract))
+    PROJECTION prj_address_contract (SELECT * ORDER BY (address, contract))
 )
 ENGINE = ReplacingMergeTree(block_num)
-ORDER BY (contract, account)
+ORDER BY (contract, address)
 SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'ERC-20 & Native balance changes per block for a given address / contract pair';
 
@@ -33,13 +33,13 @@ CREATE TABLE IF NOT EXISTS native_balances (
     minute               UInt32 MATERIALIZED toRelativeMinuteNum(timestamp),
 
     -- balance --
-    account             String COMMENT 'token account address',
+    address             String COMMENT 'token holder address',
     balance             UInt256 COMMENT 'token balance',
 
     -- indexes --
     INDEX idx_balance (balance) TYPE minmax
 )
 ENGINE = ReplacingMergeTree(block_num)
-ORDER BY (account)
+ORDER BY (address)
 COMMENT 'Native balance changes per block for a given address';
 

@@ -13,7 +13,7 @@ pub struct Balance {
     #[prost(bytes="vec", optional, tag="1")]
     pub contract: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="2")]
-    pub account: ::prost::alloc::vec::Vec<u8>,
+    pub address: ::prost::alloc::vec::Vec<u8>,
     /// balanceOf(address account) -> uint256
     #[prost(string, tag="3")]
     pub balance: ::prost::alloc::string::String,

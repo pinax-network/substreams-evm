@@ -18,11 +18,7 @@ pub fn db_out(
     let mut tables = substreams_database_change::tables::Tables::new();
 
     // Handle support both EVM & TVM address encoding
-    let encoding = if params == "tron_base58" {
-        common::Encoding::TronBase58
-    } else {
-        common::Encoding::Hex
-    };
+    let encoding = common::handle_encoding_param(&params);
 
     // Process logs (ERC20 transfers)
     erc20_transfers::process_events(&encoding, &mut tables, &clock, &events_erc20_transfers);
