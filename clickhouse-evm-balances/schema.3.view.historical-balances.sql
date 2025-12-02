@@ -3,7 +3,8 @@ CREATE VIEW IF NOT EXISTS historical_erc20_balances AS
 SELECT
     -- block/window
     timestamp,
-    min(block_num)                         AS block_num,       -- SimpleAggregateFunction(min)
+    min(min_block_num)                     AS min_block_num,       -- SimpleAggregateFunction(min)
+    max(max_block_num)                     AS max_block_num,       -- SimpleAggregateFunction(max)
 
     -- keys
     contract,
@@ -25,7 +26,8 @@ CREATE VIEW IF NOT EXISTS historical_erc20_balances_by_contract AS
 SELECT
     -- block/window
     timestamp,
-    min(block_num)                         AS block_num,       -- SimpleAggregateFunction(min)
+    min(min_block_num)                     AS min_block_num,       -- SimpleAggregateFunction(min)
+    max(max_block_num)                     AS max_block_num,       -- SimpleAggregateFunction(max)
 
     -- keys
     contract,
