@@ -49,7 +49,7 @@ pub fn db_out(
     let mut tables = substreams_database_change::tables::Tables::new();
 
     // Handle support both EVM & TVM address encoding
-    let encoding = if params == "tron_base58" { Encoding::TronBase58 } else { Encoding::Hex };
+    let encoding = common::handle_encoding_param(&params);
 
     // Tron DEX Substreams
     sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &store_sunpump);

@@ -41,3 +41,6 @@ sink:
       enabled: false
 
 network: mainnet
+
+params:
+  db_out: "hex"  # Supported encodings: hex, tron_base58

@@ -7,12 +7,12 @@ use crate::set_clock;
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for balance in events.balances.iter() {
-        let account = bytes_to_string(&balance.account, encoding);
-        let row = tables.create_row("native_balances", &account);
+        let address = bytes_to_string(&balance.address, encoding);
+        let row = tables.create_row("native_balances", &address);
 
         set_clock(clock, row);
 
-        row.set("account", &account);
+        row.set("address", &address);
         row.set("balance", &balance.balance);
     }
 }

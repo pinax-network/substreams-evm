@@ -57,6 +57,17 @@ pub enum Encoding {
     TronBase58,
 }
 
+pub fn handle_encoding_param(params: &String) -> Encoding {
+    // Handle support both EVM & TVM address encoding
+    if params.len() > 0 && params != "hex" && params != "tron_base58" {
+        panic!("Invalid encoding parameter, supported: hex, tron_base58");
+    }
+    if params == "tron_base58" {
+        return Encoding::TronBase58;
+    }
+    Encoding::Hex
+}
+
 pub fn bytes_to_hex(bytes: &[u8]) -> String {
     format! {"0x{}", Hex::encode(bytes)}.to_string()
 }

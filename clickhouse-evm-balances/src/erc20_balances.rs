@@ -9,14 +9,14 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     for balance in events.balances.iter() {
         if let Some(contract) = &balance.contract {
             let contract = bytes_to_string(&contract, encoding);
-            let account = bytes_to_string(&balance.account, encoding);
-            let key = [("contract", contract.to_string()), ("account", account.to_string())];
+            let address = bytes_to_string(&balance.address, encoding);
+            let key = [("contract", contract.to_string()), ("address", address.to_string())];
             let row = tables.create_row("erc20_balances", key);
 
             set_clock(clock, row);
 
             row.set("contract", &contract);
-            row.set("account", &account);
+            row.set("address", &address);
             row.set("balance", &balance.balance);
         }
     }
