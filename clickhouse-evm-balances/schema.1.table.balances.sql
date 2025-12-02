@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS erc20_balances (
     balance             UInt256 COMMENT 'token balance',
 
     -- indexes --
-    INDEX idx_balance (balance) TYPE minmax,
+    INDEX idx_balance (balance) TYPE minmax 1,
 
-    -- projections --
-    PROJECTION prj_address_contract (SELECT * ORDER BY (address, contract))
+    -- count() --
+    PROJECTION prj_contract_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) GROUP BY contract )
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (contract, address)
@@ -37,9 +37,13 @@ CREATE TABLE IF NOT EXISTS native_balances (
     balance             UInt256 COMMENT 'token balance',
 
     -- indexes --
-    INDEX idx_balance (balance) TYPE minmax
+    INDEX idx_balance (balance) TYPE minmax 1,
+
+    -- count() --
+    PROJECTION prj_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) )
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (address)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Native balance changes per block for a given address';
 
