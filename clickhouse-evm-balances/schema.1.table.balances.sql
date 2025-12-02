@@ -15,8 +15,10 @@ CREATE TABLE IF NOT EXISTS erc20_balances (
     -- indexes --
     INDEX idx_balance (balance) TYPE minmax GRANULARITY 1,
 
-    -- count() --
-    PROJECTION prj_contract_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) GROUP BY contract )
+    -- projections --
+    PROJECTION prj_contract_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) GROUP BY contract ),
+    PROJECTION prj_balance ( SELECT * ORDER BY balance ),
+    PROJECTION prj_contract_balance ( SELECT * ORDER BY contract, balance )
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (contract, address)
@@ -39,8 +41,9 @@ CREATE TABLE IF NOT EXISTS native_balances (
     -- indexes --
     INDEX idx_balance (balance) TYPE minmax GRANULARITY 1,
 
-    -- count() --
-    PROJECTION prj_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) )
+    -- projections --
+    PROJECTION prj_count ( SELECT min(balance), max(balance), count(), max(block_num), min(block_num), max(timestamp), min(timestamp), max(minute), min(minute) ),
+    PROJECTION prj_balance ( SELECT * ORDER BY balance )
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (address)
