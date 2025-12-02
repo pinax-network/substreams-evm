@@ -2,6 +2,7 @@
 CREATE VIEW IF NOT EXISTS historical_erc20_balances AS
 SELECT
     -- block/window
+    interval_min,
     timestamp,
     min(min_block_num)                     AS min_block_num,       -- SimpleAggregateFunction(min)
     max(max_block_num)                     AS max_block_num,       -- SimpleAggregateFunction(max)
@@ -20,11 +21,12 @@ SELECT
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
 FROM historical_erc20_balances_state
 GROUP BY
-    address, contract, timestamp;
+    interval_min, address, contract, timestamp;
 
 CREATE VIEW IF NOT EXISTS historical_erc20_balances_by_contract AS
 SELECT
     -- block/window
+    interval_min,
     timestamp,
     min(min_block_num)                     AS min_block_num,       -- SimpleAggregateFunction(min)
     max(max_block_num)                     AS max_block_num,       -- SimpleAggregateFunction(max)
@@ -43,4 +45,4 @@ SELECT
     sum(transactions)                      AS transactions     -- SimpleAggregateFunction(sum)
 FROM historical_erc20_balances_state_by_contract
 GROUP BY
-    contract, address, timestamp;
+    interval_min, contract, address, timestamp;
