@@ -32,4 +32,4 @@ modules:
 network: mainnet
 
 params:
-  map_events: 25 # CHUNK_SIZE (Batch RPC Calls)
+  map_events: 100 # CHUNK_SIZE (Batch RPC Calls)
