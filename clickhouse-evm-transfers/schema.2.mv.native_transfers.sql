@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS native_transfers (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- transaction --
-    tx_index                    Nullable(UInt32), -- derived from Substreams
+    tx_index                    Nullable(UInt32) COMMENT 'Nullable because of block rewards', -- derived from Substreams
     tx_hash                     String,
 
     -- call --
@@ -47,7 +47,7 @@ ORDER BY (
 COMMENT 'Transfers Native value from calls & transactions';
 
 -- MV's for Transfers --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_transactions TO native_transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_transactions TO native_transfers AS
 SELECT
     -- block --
     block_num,
@@ -70,7 +70,7 @@ SELECT
 FROM transactions
 WHERE amount > 0 AND `from` != `to`;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_calls TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_calls TO native_transfers AS
 SELECT
     -- block --
     block_num,
@@ -93,7 +93,7 @@ SELECT
 FROM calls
 WHERE amount > 0 AND `from` != `to`;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_block_rewards TO transfers AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_block_rewards TO native_transfers AS
 SELECT
     -- block --
     block_num,
