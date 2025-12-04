@@ -17,17 +17,7 @@ CREATE TABLE IF NOT EXISTS block_rewards (
     -- block reward --
     miner                       String,
     value                       UInt256,
-    reason                      LowCardinality(String),
-
-    -- INDEXES --
-    INDEX idx_value (value)     TYPE minmax,
-
-    -- PROJECTIONS --
-    -- count() --
-    PROJECTION prj_miner_count ( SELECT miner, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY miner ),
-
-    -- minute --
-    PROJECTION prj_miner_by_minute ( SELECT miner, minute, count() GROUP BY miner, minute ),
+    reason                      LowCardinality(String)
 )
 ENGINE = MergeTree
 ORDER BY block_num;
