@@ -12,8 +12,8 @@ imports:
   sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Transfers Substreams
-  erc20_transfers: ../erc20-transfers/substreams.yaml
-  native_transfers: ../native-transfers/substreams.yaml
+  erc20_transfers: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-transfers-v0.2.0/erc20-transfers-v0.2.0.spkg
+  native_transfers: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-transfers-v0.2.0/evm-native-transfers-v0.2.0.spkg
 
 binaries:
   default:
