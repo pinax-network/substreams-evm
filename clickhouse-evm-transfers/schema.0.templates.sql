@@ -15,19 +15,7 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
     tx_gas_price                UInt256,
     tx_gas_limit                UInt64,
     tx_gas_used                 UInt64,
-    tx_value                    UInt256,
-
-    -- INDEXES --
-    INDEX idx_tx_value (tx_value) TYPE minmax,
-
-    -- PROJECTIONS --
-    -- count() --
-    PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
-    PROJECTION prj_tx_to_count ( SELECT tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to ),
-    PROJECTION prj_tx_from_to_count ( SELECT tx_from, tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from, tx_to ),
-
-    -- minute --
-    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp GROUP BY tx_hash, minute, timestamp ),
+    tx_value                    UInt256
 )
 ENGINE = MergeTree
 ORDER BY (
@@ -46,14 +34,7 @@ ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
     ADD COLUMN IF NOT EXISTS log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
     ADD COLUMN IF NOT EXISTS log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
-    ADD COLUMN IF NOT EXISTS log_data                    String,
-
-    -- PROJECTIONS --
-    -- count() --
-    ADD PROJECTION IF NOT EXISTS prj_log_address_count ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address ),
-
-    -- minute --
-    ADD PROJECTION IF NOT EXISTS prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute );
+    ADD COLUMN IF NOT EXISTS log_data                    String;
 
 -- Template Calls --
 CREATE TABLE IF NOT EXISTS TEMPLATE_CALL AS TEMPLATE_TRANSACTION;
@@ -67,14 +48,4 @@ ALTER TABLE TEMPLATE_CALL
     ADD COLUMN IF NOT EXISTS call_gas_consumed       UInt64,
     ADD COLUMN IF NOT EXISTS call_gas_limit          UInt64,
     ADD COLUMN IF NOT EXISTS call_depth              UInt32,
-    ADD COLUMN IF NOT EXISTS call_parent_index       UInt32,
-
-    -- PROJECTIONS --
-    -- count() --
-    ADD PROJECTION IF NOT EXISTS prj_call_caller_count ( SELECT call_caller, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY call_caller ),
-    ADD PROJECTION IF NOT EXISTS prj_call_address_count ( SELECT call_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY call_address ),
-    ADD PROJECTION IF NOT EXISTS prj_call_address_caller_count ( SELECT call_address, call_caller, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY call_address, call_caller ),
-
-    -- minute --
-    ADD PROJECTION IF NOT EXISTS prj_call_caller_by_minute ( SELECT call_caller, minute GROUP BY call_caller, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_call_address_by_minute ( SELECT call_address, minute GROUP BY call_address, minute );
+    ADD COLUMN IF NOT EXISTS call_parent_index       UInt32;
