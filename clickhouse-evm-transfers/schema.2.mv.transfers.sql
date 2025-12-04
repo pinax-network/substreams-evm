@@ -10,9 +10,6 @@ CREATE TABLE IF NOT EXISTS transfers (
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
 
-    -- call --
-    call_index                  Nullable(UInt32),
-
     -- log --
     log_index                   Nullable(UInt32), -- derived from Substreams
     log_address                 LowCardinality(String),
@@ -55,8 +52,7 @@ CREATE TABLE IF NOT EXISTS transfers (
 )
 ENGINE = MergeTree
 ORDER BY (
-    minute, timestamp, block_num,
-    tx_index
+    minute, timestamp, block_num
 )
 COMMENT 'Transfers including ERC-20, WETH transfers';
 
@@ -71,9 +67,6 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
-
-    -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
 
     -- log --
     log_index,
@@ -101,9 +94,6 @@ SELECT
     tx_index,
     tx_hash,
 
-    -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
-
     -- log --
     log_index,
     log_address,  -- WETH contract
@@ -129,9 +119,6 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
-
-    -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
 
     -- log --
     log_index,
