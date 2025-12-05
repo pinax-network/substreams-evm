@@ -48,6 +48,7 @@ ALTER TABLE swaps
     ),
 
     -- minute --
+    ADD PROJECTION IF NOT EXISTS prj_all_by_minute ( SELECT protocol, factory, pool, input_contract, output_contract, minute, count() GROUP BY protocol, factory, pool, input_contract, output_contract, minute ),
     ADD PROJECTION IF NOT EXISTS prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
     ADD PROJECTION IF NOT EXISTS prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
     ADD PROJECTION IF NOT EXISTS prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
@@ -392,36 +393,3 @@ SELECT
 
 FROM bancor_conversion
 WHERE factory != '';  -- exclude invalid events with empty factory address
-
-
--- CoW Protocol Trade (Swap)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_cow_trade
-TO swaps AS
-SELECT
-    'cow' AS protocol,
-    '' AS factory,  -- CoW doesn't have a factory field
-
-    -- include everything from cow_trade except the non-relevant fields
-    * EXCEPT (
-        owner,
-        sell_token,
-        buy_token,
-        sell_amount,
-        buy_amount,
-        fee_amount,
-        order_uid
-    ),
-
-    -- mapped swap fields
-    log_address                        AS pool,     -- Settlement contract address
-    owner                              AS user,
-
-    -- Input side
-    sell_token                         AS input_contract,
-    sell_amount                        AS input_amount,
-
-    -- Output side
-    buy_token                          AS output_contract,
-    buy_amount                         AS output_amount
-
-FROM cow_trade;

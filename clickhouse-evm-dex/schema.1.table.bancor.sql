@@ -12,15 +12,7 @@ ALTER TABLE bancor_conversion
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_source_token (source_token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_target_token (target_token) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_trader (trader) TYPE bloom_filter GRANULARITY 1,
-
-    -- indexes (Activation) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)';
 
 
 -- Bancor LiquidityAdded --
@@ -36,14 +28,7 @@ ALTER TABLE bancor_liquidity_added
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1,
-
-    -- indexes (Activation) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)';
 
 
 -- Bancor LiquidityRemoved --
@@ -59,14 +44,7 @@ ALTER TABLE bancor_liquidity_removed
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_reserve_token (reserve_token) TYPE bloom_filter GRANULARITY 1,
-
-    -- indexes (Activation) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)';
 
 
 -- Bancor TokenRateUpdate --
@@ -81,14 +59,7 @@ ALTER TABLE bancor_token_rate_update
 
     -- Activation (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_token1 (token1) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_token2 (token2) TYPE bloom_filter GRANULARITY 1,
-
-    -- indexes (Activation) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)';
 
 -- Bancor Activation --
 CREATE TABLE IF NOT EXISTS bancor_activation AS TEMPLATE_LOG
@@ -104,26 +75,18 @@ COMMENT 'Bancor NewConverter events';
 ALTER TABLE bancor_new_converter
     ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
     ADD COLUMN IF NOT EXISTS converter    String COMMENT 'Converter contract address',
-    ADD COLUMN IF NOT EXISTS owner        String COMMENT 'Owner address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_converter (converter) TYPE bloom_filter GRANULARITY 1,
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS owner        String COMMENT 'Owner address';
 
 -- Bancor FeaturesAddition --
 CREATE TABLE IF NOT EXISTS bancor_features_addition AS TEMPLATE_LOG
 COMMENT 'Bancor FeaturesAddition events';
 ALTER TABLE bancor_features_addition
     ADD COLUMN IF NOT EXISTS address      String COMMENT 'Contract address',
-    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features added',
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features added';
 
 -- Bancor FeaturesRemoval --
 CREATE TABLE IF NOT EXISTS bancor_features_removal AS TEMPLATE_LOG
 COMMENT 'Bancor FeaturesRemoval events';
 ALTER TABLE bancor_features_removal
     ADD COLUMN IF NOT EXISTS address      String COMMENT 'Contract address',
-    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features removed',
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features removed';
