@@ -19,8 +19,7 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
 )
 ENGINE = MergeTree
 ORDER BY (
-    minute, timestamp, block_num,
-    tx_index
+    minute, timestamp, block_num
 );
 
 -- Template Logs --

@@ -4,9 +4,7 @@ use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    logs::set_template_log,
-    set_clock,
-    transactions::{set_template_tx, tx_key},
+    clock_key, logs::set_template_log, set_clock, transactions::{set_template_tx}
 };
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
@@ -14,7 +12,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         for (log_index, log) in tx.logs.iter().enumerate() {
             // Transfer
             if let Some(pb::log::Log::Transfer(transfer)) = &log.log {
-                let key = tx_key(clock, tx_index);
+                let key = clock_key(clock);
                 let row = tables.create_row("erc20_transfers", key);
 
                 set_clock(clock, row);
@@ -28,7 +26,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
             // Deposit
             if let Some(pb::log::Log::Deposit(event)) = &log.log {
-                let key = tx_key(clock, tx_index);
+                let key = clock_key(clock);
                 let row = tables.create_row("weth_deposit", key);
 
                 set_clock(clock, row);
@@ -41,7 +39,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
             // Withdrawal
             if let Some(pb::log::Log::Withdrawal(event)) = &log.log {
-                let key = tx_key(clock, tx_index);
+                let key = clock_key(clock);
                 let row = tables.create_row("weth_withdrawal", key);
 
                 set_clock(clock, row);
@@ -54,7 +52,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
             // Approval
             if let Some(pb::log::Log::Approval(event)) = &log.log {
-                let key = tx_key(clock, tx_index);
+                let key = clock_key(clock);
                 let row = tables.create_row("erc20_approvals", key);
 
                 set_clock(clock, row);
