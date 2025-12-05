@@ -15,17 +15,7 @@ ALTER TABLE uniswap_v4_swap
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
-    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_tick (tick) TYPE minmax,
-
-    -- indexes (Initialize) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency0 (currency0) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency1 (currency1) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address';
 
 -- Uniswap V4 Initialize --
 CREATE TABLE IF NOT EXISTS uniswap_v4_initialize AS TEMPLATE_LOG
@@ -38,13 +28,7 @@ ALTER TABLE uniswap_v4_initialize
     ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
     ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
     ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
-    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency0 (currency0) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency1 (currency1) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_tick (tick) TYPE minmax;
+    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick';
 
 -- Uniswap V4 ModifyLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v4_modify_liquidity AS TEMPLATE_LOG
@@ -61,18 +45,7 @@ ALTER TABLE uniswap_v4_modify_liquidity
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
-    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_tick_lower (tick_lower) TYPE minmax,
-    ADD INDEX IF NOT EXISTS idx_tick_upper (tick_upper) TYPE minmax,
-
-    -- indexes (Initialize) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency0 (currency0) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency1 (currency1) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address';
 
 -- Uniswap V4 Donate --
 CREATE TABLE IF NOT EXISTS uniswap_v4_donate AS TEMPLATE_LOG
@@ -87,26 +60,14 @@ ALTER TABLE uniswap_v4_donate
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
-    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_sender (sender) TYPE bloom_filter,
-
-    -- indexes (Initialize) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency0 (currency0) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency1 (currency1) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address';
 
 -- Uniswap V4 ProtocolFeeControllerUpdated --
 CREATE TABLE IF NOT EXISTS uniswap_v4_protocol_fee_controller_updated AS TEMPLATE_LOG
 COMMENT 'Uniswap V4 ProtocolFeeControllerUpdated events';
 ALTER TABLE uniswap_v4_protocol_fee_controller_updated
     -- event information --
-    ADD COLUMN IF NOT EXISTS protocol_fee_controller  String COMMENT 'Protocol fee controller address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_protocol_fee_controller (protocol_fee_controller) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS protocol_fee_controller  String COMMENT 'Protocol fee controller address';
 
 -- Uniswap V4 ProtocolFeeUpdated --
 CREATE TABLE IF NOT EXISTS uniswap_v4_protocol_fee_updated AS TEMPLATE_LOG
@@ -119,12 +80,4 @@ ALTER TABLE uniswap_v4_protocol_fee_updated
     -- Initialize --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
-    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_id (id) TYPE bloom_filter,
-
-    -- indexes (Initialize) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency0 (currency0) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_currency1 (currency1) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address';
