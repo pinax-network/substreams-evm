@@ -4,8 +4,7 @@ use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
 use crate::{
-    set_clock,
-    transactions::{set_template_tx, tx_key},
+    clock_key, set_clock, transactions::{set_template_tx}
 };
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
@@ -19,14 +18,14 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         // Transactions
-        let key = tx_key(clock, tx_index);
+        let key = clock_key(clock);
         let tx_row = tables.create_row("transactions", key);
         set_clock(clock, tx_row);
         set_template_tx(encoding, tx, tx_index, tx_row);
 
         // Calls
         for (call_index, call) in tx.calls.iter().enumerate() {
-            let key = tx_key(clock, tx_index);
+            let key = clock_key(clock);
             let call_row = tables.create_row("calls", key);
 
             set_clock(clock, call_row);

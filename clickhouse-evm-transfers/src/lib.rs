@@ -42,3 +42,12 @@ pub fn set_clock(clock: &Clock, row: &mut substreams_database_change::tables::Ro
         row.set("minute", timestamp.seconds / 60);
     }
 }
+
+pub fn clock_key(clock: &Clock) -> [(&'static str, String); 3] {
+    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
+    [
+        ("minute", (seconds / 60).to_string()),
+        ("timestamp", seconds.to_string()),
+        ("block_num", clock.number.to_string()),
+    ]
+}
