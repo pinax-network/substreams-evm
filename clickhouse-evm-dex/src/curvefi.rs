@@ -35,15 +35,26 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(curvefi::log::Log::MetaPoolDeployed(event)) => {
                     process_meta_pool_deployed(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                Some(curvefi::log::Log::CommitNewFee(event)) => {
+                    process_commit_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
+                Some(curvefi::log::Log::NewFee(event)) => {
+                    process_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 _ => {}
             }
         }
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
-    row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("coins", value.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
+pub fn set_pool(encoding: &Encoding, value: Option<StorePool>, row: &mut substreams_database_change::tables::Row) {
+    if let Some(value) = value {
+        row.set("factory", bytes_to_string(&value.factory, encoding));
+        row.set("coins", value.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
+    } else {
+        row.set("factory", "");
+        row.set("coins", "");
+    }
 }
 
 fn parse_coin(encoding: &Encoding, id: String, coins: &Vec<Vec<u8>>) -> Option<String> {
@@ -79,7 +90,7 @@ fn process_token_exchange(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
         row.set("sold_id", &event.sold_id);
@@ -109,7 +120,7 @@ fn process_add_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -137,7 +148,7 @@ fn process_remove_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -164,7 +175,7 @@ fn process_remove_liquidity_one(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amount", &event.token_amount);
@@ -190,7 +201,7 @@ fn process_remove_liquidity_imbalance(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -247,4 +258,55 @@ fn process_meta_pool_deployed(
     row.set("a", &event.a);
     row.set("fee", &event.fee);
     row.set("deployer", bytes_to_string(&event.deployer, encoding));
+}
+
+fn process_commit_new_fee(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &curvefi::Transaction,
+    log: &curvefi::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &curvefi::CommitNewFee,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("curvefi_commit_new_fee", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, Some(pool), row);
+
+        row.set("deadline", &event.deadline);
+        row.set("fee", &event.fee);
+        row.set("admin_fee", &event.admin_fee);
+    }
+}
+
+fn process_new_fee(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &curvefi::Transaction,
+    log: &curvefi::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &curvefi::NewFee,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("curvefi_new_fee", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, Some(pool), row);
+
+        row.set("fee", &event.fee);
+        row.set("admin_fee", &event.admin_fee);
+    }
 }

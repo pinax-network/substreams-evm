@@ -26,14 +26,27 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(balancer::log::Log::PoolRegistered(event)) => {
                     process_pool_registered(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                Some(balancer::log::Log::SwapFeePercentage(event)) => {
+                    process_swap_fee_percentage(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
+                Some(balancer::log::Log::ProtocolFeePercentage(event)) => {
+                    process_protocol_fee_percentage(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
+                Some(balancer::log::Log::AggregateSwapFeePercentage(event)) => {
+                    process_aggregate_swap_fee_percentage(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 _ => {}
             }
         }
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
-    row.set("factory", bytes_to_string(&value.factory, encoding));
+pub fn set_pool(encoding: &Encoding, value: Option<StorePool>, row: &mut substreams_database_change::tables::Row) {
+    if let Some(value) = value {
+        row.set("factory", bytes_to_string(&value.factory, encoding));
+    } else {
+        row.set("factory", "");
+    }
 }
 
 fn process_vault_swap(
@@ -54,7 +67,7 @@ fn process_vault_swap(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
         row.set("token_in", bytes_to_string(&event.token_in, encoding));
@@ -84,7 +97,7 @@ fn process_liquidity_added(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
         row.set("liquidity_provider", bytes_to_string(&event.liquidity_provider, encoding));
@@ -113,7 +126,7 @@ fn process_liquidity_removed(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, pool, row);
+        set_pool(encoding, Some(pool), row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
         row.set("liquidity_provider", bytes_to_string(&event.liquidity_provider, encoding));
@@ -142,4 +155,76 @@ fn process_pool_registered(
     set_template_log(encoding, log, log_index, row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
+}
+
+fn process_swap_fee_percentage(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &balancer::Transaction,
+    log: &balancer::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &balancer::SwapFeePercentage,
+) {
+    let pool = get_store_by_address(store, &log.address);
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("balancer_swap_fee_percentage", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+    set_pool(encoding, pool, row);
+
+    row.set("swap_fee_percentage", &event.swap_fee_percentage);
+}
+
+fn process_protocol_fee_percentage(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &balancer::Transaction,
+    log: &balancer::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &balancer::ProtocolFeePercentage,
+) {
+    let pool = get_store_by_address(store, &log.address);
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("balancer_protocol_fee_percentage", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+    set_pool(encoding, pool, row);
+
+    row.set("fee_type", &event.fee_type);
+    row.set("protocol_fee_percentage", &event.protocol_fee_percentage);
+}
+
+fn process_aggregate_swap_fee_percentage(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &balancer::Transaction,
+    log: &balancer::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &balancer::AggregateSwapFeePercentage,
+) {
+    if let Some(pool_data) = get_store_by_address(store, &event.pool) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("balancer_aggregate_swap_fee_percentage", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, Some(pool_data), row);
+
+        row.set("pool", bytes_to_string(&event.pool, encoding));
+        row.set("aggregate_swap_fee_percentage", &event.aggregate_swap_fee_percentage);
+    }
 }
