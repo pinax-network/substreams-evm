@@ -17,7 +17,16 @@ CREATE TABLE IF NOT EXISTS swaps (
     log_topic0                  LowCardinality(String),
 
     -- swap event information --
-    protocol                    LowCardinality(String) COMMENT 'DEX protocol name',
+    protocol                    Enum8(
+        'sunpump' = 1,
+        'uniswap-v1' = 2,
+        'uniswap-v2' = 3,
+        'uniswap-v3' = 4,
+        'uniswap-v4' = 5,
+        'curvefi' = 6,
+        'balancer' = 7,
+        'bancor' = 8
+    ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
     pool                        LowCardinality(String) COMMENT 'Pool/exchange contract address',
     user                        String COMMENT 'User wallet address',
