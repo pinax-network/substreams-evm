@@ -38,6 +38,9 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(bancor::log::Log::FeaturesRemoval(event)) => {
                     process_features_removal(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                Some(bancor::log::Log::ConversionFeeUpdate(event)) => {
+                    process_conversion_fee_update(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 _ => {}
             }
         }
@@ -244,4 +247,28 @@ fn process_features_removal(
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("features", &event.features);
+}
+
+fn process_conversion_fee_update(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &bancor::Transaction,
+    log: &bancor::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &bancor::ConversionFeeUpdate,
+) {
+    let pool = get_store_by_address(store, &log.address);
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("bancor_conversion_fee_update", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+    set_pool(encoding, pool, row);
+
+    row.set("prev_fee", event.prev_fee);
+    row.set("new_fee", event.new_fee);
 }
