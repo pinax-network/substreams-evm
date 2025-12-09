@@ -139,3 +139,37 @@ ALTER TABLE curvefi_meta_pool_deployed
     ADD INDEX IF NOT EXISTS idx_coin (coin) TYPE bloom_filter,
     ADD INDEX IF NOT EXISTS idx_base_pool (base_pool) TYPE bloom_filter,
     ADD INDEX IF NOT EXISTS idx_deployer (deployer) TYPE bloom_filter;
+
+-- Curve.fi CommitNewFee --
+CREATE TABLE IF NOT EXISTS curvefi_commit_new_fee AS TEMPLATE_LOG
+COMMENT 'Curve.fi CommitNewFee events';
+ALTER TABLE curvefi_commit_new_fee
+    -- event information --
+    ADD COLUMN IF NOT EXISTS deadline           UInt256 COMMENT 'Deadline timestamp',
+    ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'New fee',
+    ADD COLUMN IF NOT EXISTS admin_fee          UInt256 COMMENT 'New admin fee',
+
+    -- PlainPoolDeployed (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
+
+    -- indexes (PlainPoolDeployed) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+
+-- Curve.fi NewFee --
+CREATE TABLE IF NOT EXISTS curvefi_new_fee AS TEMPLATE_LOG
+COMMENT 'Curve.fi NewFee events';
+ALTER TABLE curvefi_new_fee
+    -- event information --
+    ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'New fee',
+    ADD COLUMN IF NOT EXISTS admin_fee          UInt256 COMMENT 'New admin fee',
+
+    -- PlainPoolDeployed (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
+    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address',
+
+    -- indexes (PlainPoolDeployed) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+
