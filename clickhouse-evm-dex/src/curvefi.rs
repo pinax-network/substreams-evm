@@ -35,6 +35,12 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(curvefi::log::Log::MetaPoolDeployed(event)) => {
                     process_meta_pool_deployed(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                Some(curvefi::log::Log::CommitNewFee(event)) => {
+                    process_commit_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
+                Some(curvefi::log::Log::NewFee(event)) => {
+                    process_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 _ => {}
             }
         }
@@ -247,4 +253,55 @@ fn process_meta_pool_deployed(
     row.set("a", &event.a);
     row.set("fee", &event.fee);
     row.set("deployer", bytes_to_string(&event.deployer, encoding));
+}
+
+fn process_commit_new_fee(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &curvefi::Transaction,
+    log: &curvefi::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &curvefi::CommitNewFee,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("curvefi_commit_new_fee", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("deadline", &event.deadline);
+        row.set("fee", &event.fee);
+        row.set("admin_fee", &event.admin_fee);
+    }
+}
+
+fn process_new_fee(
+    encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &curvefi::Transaction,
+    log: &curvefi::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &curvefi::NewFee,
+) {
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("curvefi_new_fee", key);
+
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        row.set("fee", &event.fee);
+        row.set("admin_fee", &event.admin_fee);
+    }
 }
