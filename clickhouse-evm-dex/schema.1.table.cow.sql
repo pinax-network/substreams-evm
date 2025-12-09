@@ -9,22 +9,14 @@ ALTER TABLE cow_trade
     ADD COLUMN IF NOT EXISTS sell_amount        UInt256 COMMENT 'Amount of tokens sold',
     ADD COLUMN IF NOT EXISTS buy_amount         UInt256 COMMENT 'Amount of tokens bought',
     ADD COLUMN IF NOT EXISTS fee_amount         UInt256 COMMENT 'Fee amount charged',
-    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_sell_token (sell_token) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_buy_token (buy_token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier';
 
 -- CoW Protocol Settlement --
 CREATE TABLE IF NOT EXISTS cow_settlement AS TEMPLATE_LOG
 COMMENT 'CoW Protocol Settlement events';
 ALTER TABLE cow_settlement
     -- event information --
-    ADD COLUMN IF NOT EXISTS solver             String COMMENT 'Solver address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_solver (solver) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS solver             String COMMENT 'Solver address';
 
 -- CoW Protocol OrderInvalidated --
 CREATE TABLE IF NOT EXISTS cow_order_invalidated AS TEMPLATE_LOG
@@ -32,10 +24,7 @@ COMMENT 'CoW Protocol OrderInvalidated events';
 ALTER TABLE cow_order_invalidated
     -- event information --
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Order owner address',
-    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier';
 
 -- CoW Protocol PreSignature --
 CREATE TABLE IF NOT EXISTS cow_pre_signature AS TEMPLATE_LOG
@@ -44,7 +33,4 @@ ALTER TABLE cow_pre_signature
     -- event information --
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Order owner address',
     ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
-    ADD COLUMN IF NOT EXISTS signed             UInt8 COMMENT 'Whether the order is signed',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_owner (owner) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS signed             UInt8 COMMENT 'Whether the order is signed';
