@@ -89,4 +89,22 @@ CREATE TABLE IF NOT EXISTS bancor_features_removal AS TEMPLATE_LOG
 COMMENT 'Bancor FeaturesRemoval events';
 ALTER TABLE bancor_features_removal
     ADD COLUMN IF NOT EXISTS address      String COMMENT 'Contract address',
-    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features removed';
+    ADD COLUMN IF NOT EXISTS features     UInt256 COMMENT 'Features removed',
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_address (address) TYPE bloom_filter GRANULARITY 1;
+
+-- Bancor ConversionFeeUpdate --
+CREATE TABLE IF NOT EXISTS bancor_conversion_fee_update AS TEMPLATE_LOG
+COMMENT 'Bancor ConversionFeeUpdate events';
+ALTER TABLE bancor_conversion_fee_update
+    -- event information --
+    ADD COLUMN IF NOT EXISTS prev_fee           UInt32 COMMENT 'Previous conversion fee',
+    ADD COLUMN IF NOT EXISTS new_fee            UInt32 COMMENT 'New conversion fee',
+
+    -- Activation (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
+
+    -- indexes (Activation) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter GRANULARITY 1;
+
