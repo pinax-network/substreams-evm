@@ -1,36 +1,62 @@
--- Swaps --
-CREATE TABLE IF NOT EXISTS swaps AS TEMPLATE_LOG
-COMMENT 'Swaps';
-ALTER TABLE swaps
-    -- swap event information --
-    ADD COLUMN IF NOT EXISTS protocol           LowCardinality(String) COMMENT 'DEX protocol name',
-    ADD COLUMN IF NOT EXISTS factory            LowCardinality(String) COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS pool               LowCardinality(String) COMMENT 'Pool/exchange contract address',
-    ADD COLUMN IF NOT EXISTS user               String COMMENT 'User wallet address',
-    ADD COLUMN IF NOT EXISTS input_contract     LowCardinality(String) COMMENT 'Input token contract address',
-    ADD COLUMN IF NOT EXISTS input_amount       UInt256 COMMENT 'Amount of input tokens swapped',
-    ADD COLUMN IF NOT EXISTS output_contract    LowCardinality(String) COMMENT 'Output token contract address',
-    ADD COLUMN IF NOT EXISTS output_amount      UInt256 COMMENT 'Amount of output tokens received',
+-- Swaps table to store DEX swap events from various protocols --
+CREATE TABLE IF NOT EXISTS swaps (
+    -- block --
+    block_num                   UInt32,
+    block_hash                  String,
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
-   -- materialized token pair (canonical ordering) --
-    ADD COLUMN IF NOT EXISTS token0             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
-    ADD COLUMN IF NOT EXISTS token1             LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, output_contract, input_contract) COMMENT 'Lexicographically larger token address',
-    ADD COLUMN IF NOT EXISTS amount0            UInt256 MATERIALIZED if(input_contract <= output_contract, input_amount, output_amount) COMMENT 'Amount of token0 swapped',
-    ADD COLUMN IF NOT EXISTS amount1            UInt256 MATERIALIZED if(input_contract <= output_contract, output_amount, input_amount) COMMENT 'Amount of token1 swapped',
+    -- transaction --
+    tx_index                    UInt32, -- derived from Substreams
+    tx_hash                     String,
+
+    -- log --
+    log_index                   Nullable(UInt32), -- derived from Substreams
+    log_address                 LowCardinality(String),
+    log_ordinal                 Nullable(UInt32),
+    log_topic0                  LowCardinality(String),
+
+    -- swap event information --
+    protocol                    Enum8(
+        'sunpump' = 1,
+        'uniswap-v1' = 2,
+        'uniswap-v2' = 3,
+        'uniswap-v3' = 4,
+        'uniswap-v4' = 5,
+        'curvefi' = 6,
+        'balancer' = 7,
+        'bancor' = 8
+    ) COMMENT 'protocol identifier',
+    factory                     LowCardinality(String) COMMENT 'Factory contract address',
+    pool                        LowCardinality(String) COMMENT 'Pool/exchange contract address',
+    user                        String COMMENT 'User wallet address',
+    input_contract              LowCardinality(String) COMMENT 'Input token contract address',
+    input_amount                UInt256 COMMENT 'Amount of input tokens swapped',
+    output_contract             LowCardinality(String) COMMENT 'Output token contract address',
+    output_amount               UInt256 COMMENT 'Amount of output tokens received',
+
+    -- materialized token pair (canonical ordering) --
+    token0                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
+    token1                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, output_contract, input_contract) COMMENT 'Lexicographically larger token address',
+    amount0                     UInt256 MATERIALIZED if(input_contract <= output_contract, input_amount, output_amount) COMMENT 'Amount of token0 swapped',
+    amount1                     UInt256 MATERIALIZED if(input_contract <= output_contract, output_amount, input_amount) COMMENT 'Amount of token1 swapped',
+
+    -- INDEXES --
+    INDEX idx_amount (amount) TYPE minmax,
 
     -- PROJECTIONS --
     -- count() --
-    ADD PROJECTION IF NOT EXISTS prj_protocol_count ( SELECT protocol, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY protocol ),
-    ADD PROJECTION IF NOT EXISTS prj_factory_count ( SELECT factory, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY factory ),
-    ADD PROJECTION IF NOT EXISTS prj_pool_count ( SELECT pool, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY pool ),
-    ADD PROJECTION IF NOT EXISTS prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user ),
-    ADD PROJECTION IF NOT EXISTS prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
-    ADD PROJECTION IF NOT EXISTS prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
-    ADD PROJECTION IF NOT EXISTS prj_token0_count ( SELECT token0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token0 ),
-    ADD PROJECTION IF NOT EXISTS prj_token1_count ( SELECT token1, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token1 ),
+    PROJECTION prj_protocol_count ( SELECT protocol, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY protocol ),
+    PROJECTION prj_factory_count ( SELECT factory, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY factory ),
+    PROJECTION prj_pool_count ( SELECT pool, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY pool ),
+    PROJECTION prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user ),
+    PROJECTION prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
+    PROJECTION prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
+    PROJECTION prj_token0_count ( SELECT token0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token0 ),
+    PROJECTION prj_token1_count ( SELECT token1, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY token1 ),
 
     -- used for `/pools` endpoint --
-    ADD PROJECTION IF NOT EXISTS prj_all_count (
+    PROJECTION prj_all_count (
         SELECT
             protocol,
             factory,
@@ -47,15 +73,29 @@ ALTER TABLE swaps
         GROUP BY protocol, factory, pool, token0, token1
     ),
 
+    -- minute + timestamp --
+    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp GROUP BY tx_hash, minute, timestamp ),
+
     -- minute --
-    ADD PROJECTION IF NOT EXISTS prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_input_contract_by_minute ( SELECT input_contract, minute, count() GROUP BY input_contract, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_token0_by_minute ( SELECT token0, minute, count() GROUP BY token0, minute ),
-    ADD PROJECTION IF NOT EXISTS prj_token1_by_minute ( SELECT token1, minute, count() GROUP BY token1, minute );
+    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute ),
+
+    -- minute --
+    PROJECTION prj_all_by_minute ( SELECT protocol, factory, pool, input_contract, output_contract, minute, count() GROUP BY protocol, factory, pool, input_contract, output_contract, minute ),
+    PROJECTION prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
+    PROJECTION prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
+    PROJECTION prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
+    PROJECTION prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
+    PROJECTION prj_input_contract_by_minute ( SELECT input_contract, minute, count() GROUP BY input_contract, minute ),
+    PROJECTION prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute ),
+    PROJECTION prj_token0_by_minute ( SELECT token0, minute, count() GROUP BY token0, minute ),
+    PROJECTION prj_token1_by_minute ( SELECT token1, minute, count() GROUP BY token1, minute );
+)
+ENGINE = MergeTree
+ORDER BY (
+    minute, timestamp, block_num
+)
+COMMENT 'Transfers including ERC-20, WETH transfers';
+
 
 -- SunPump TokenPurchased: User buys tokens with TRX (TRX → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_purchased
@@ -79,7 +119,7 @@ SELECT
     buyer                              AS user,
 
     -- Input side: TRX being paid
-    'T0000000000000000000000000000000000000001'                                 AS input_contract,  -- TRX native asset
+    ''                                 AS input_contract,  -- TRX native asset
     trx_amount                         AS input_amount,
 
     -- Output side: Tokens being purchased
@@ -116,7 +156,7 @@ SELECT
     token_amount                       AS input_amount,
 
     -- Output side: TRX being received
-    'T0000000000000000000000000000000000000001'                                 AS output_contract,  -- TRX native asset
+    ''                                 AS output_contract,  -- TRX native asset
     trx_amount                         AS output_amount
 
 FROM sunpump_token_sold
@@ -141,7 +181,7 @@ SELECT
     buyer                              AS user,
 
     -- Input side: ETH being sold
-    '0x0000000000000000000000000000000000000000'  AS input_contract,  -- ETH native asset
+    ''  AS input_contract,  -- ETH native asset
     eth_sold                           AS input_amount,
 
     -- Output side: Tokens being bought
@@ -175,7 +215,7 @@ SELECT
     tokens_sold                        AS input_amount,
 
     -- Output side: ETH being bought
-    '0x0000000000000000000000000000000000000000'  AS output_contract,  -- ETH native asset
+    ''                                 AS output_contract,  -- ETH native asset
     eth_bought                         AS output_amount
 
 FROM uniswap_v1_eth_purchase
@@ -392,36 +432,3 @@ SELECT
 
 FROM bancor_conversion
 WHERE factory != '';  -- exclude invalid events with empty factory address
-
-
--- CoW Protocol Trade (Swap)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_cow_trade
-TO swaps AS
-SELECT
-    'cow' AS protocol,
-    '' AS factory,  -- CoW doesn't have a factory field
-
-    -- include everything from cow_trade except the non-relevant fields
-    * EXCEPT (
-        owner,
-        sell_token,
-        buy_token,
-        sell_amount,
-        buy_amount,
-        fee_amount,
-        order_uid
-    ),
-
-    -- mapped swap fields
-    log_address                        AS pool,     -- Settlement contract address
-    owner                              AS user,
-
-    -- Input side
-    sell_token                         AS input_contract,
-    sell_amount                        AS input_amount,
-
-    -- Output side
-    buy_token                          AS output_contract,
-    buy_amount                         AS output_amount
-
-FROM cow_trade;

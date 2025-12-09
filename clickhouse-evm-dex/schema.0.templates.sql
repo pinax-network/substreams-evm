@@ -1,4 +1,5 @@
-CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
+-- Template Transactions --
+CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
     -- block --
     block_num                   UInt32,
     block_hash                  String,
@@ -14,61 +15,22 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
     tx_gas_price                UInt256,
     tx_gas_limit                UInt64,
     tx_gas_used                 UInt64,
-    tx_value                    UInt256,
-
-    -- log --
-    log_index                   UInt32, -- derived from Substreams
-    log_address                 LowCardinality(String),
-    log_ordinal                 UInt32,
-    log_topics                  String COMMENT 'Comma-separated list of log topics',
-    log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- first topic (topic0), empty string if no topics
-    log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
-    log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
-    log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
-    log_data                    String,
-
-    -- INDEXES --
-    INDEX idx_tx_value (tx_value) TYPE minmax,
-    INDEX idx_log_ordinal (log_ordinal) TYPE minmax,
-
-    -- PROJECTIONS --
-    -- count() --
-    PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
-    PROJECTION prj_tx_to_count ( SELECT tx_to, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_to ),
-    PROJECTION prj_log_topic0_count ( SELECT log_topic0, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_topic0 ),
-    PROJECTION prj_log_address_count ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address ),
-
-    -- minute --
-    PROJECTION prj_block_hash_by_timestamp ( SELECT block_hash, minute, timestamp, count() GROUP BY block_hash, minute,timestamp ),
-    PROJECTION prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp, count() GROUP BY tx_hash, minute, timestamp ),
-    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute, count() GROUP BY log_address, minute )
+    tx_value                    UInt256
 )
 ENGINE = MergeTree
 ORDER BY (
-    minute, timestamp, block_num,
-    tx_index, log_index,
-    block_hash
+    minute, timestamp, block_num
 );
 
--- Template for Transactions (without log fields) --
-CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION AS TEMPLATE_LOG
-ENGINE = MergeTree
-ORDER BY (
-    minute, timestamp, block_num,
-    tx_index,
-    block_hash
-);
-ALTER TABLE TEMPLATE_TRANSACTION
-    DROP PROJECTION IF EXISTS prj_log_address_by_minute,
-    DROP PROJECTION IF EXISTS prj_log_topic0_count,
-    DROP PROJECTION IF EXISTS prj_log_address_count,
-    DROP INDEX IF EXISTS idx_log_ordinal,
-    DROP COLUMN IF EXISTS log_index,
-    DROP COLUMN IF EXISTS log_address,
-    DROP COLUMN IF EXISTS log_ordinal,
-    DROP COLUMN IF EXISTS log_topic0,
-    DROP COLUMN IF EXISTS log_topic1,
-    DROP COLUMN IF EXISTS log_topic2,
-    DROP COLUMN IF EXISTS log_topic3,
-    DROP COLUMN IF EXISTS log_topics,
-    DROP COLUMN IF EXISTS log_data;
+-- Template Logs --
+CREATE TABLE IF NOT EXISTS TEMPLATE_LOG AS TEMPLATE_TRANSACTION;
+ALTER TABLE TEMPLATE_LOG
+    ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
+    ADD COLUMN IF NOT EXISTS log_address                 LowCardinality(String),
+    ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32,
+    ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',
+    ADD COLUMN IF NOT EXISTS log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- event signature
+    ADD COLUMN IF NOT EXISTS log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_data                    String;

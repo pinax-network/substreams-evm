@@ -9,14 +9,7 @@ ALTER TABLE uniswap_v1_token_purchase
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
-
-    -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';
 
 -- Uniswap V1 EthPurchase (Token->ETH) --
 CREATE TABLE IF NOT EXISTS uniswap_v1_eth_purchase AS TEMPLATE_LOG
@@ -29,14 +22,7 @@ ALTER TABLE uniswap_v1_eth_purchase
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_buyer (buyer) TYPE bloom_filter,
-
-    -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';
 
 -- Uniswap V1 AddLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v1_add_liquidity AS TEMPLATE_LOG
@@ -49,14 +35,7 @@ ALTER TABLE uniswap_v1_add_liquidity
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
-
-    -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';
 
 -- Uniswap V1 RemoveLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v1_remove_liquidity AS TEMPLATE_LOG
@@ -69,14 +48,7 @@ ALTER TABLE uniswap_v1_remove_liquidity
 
     -- NewExchange --
     ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_provider (provider) TYPE bloom_filter,
-
-    -- indexes (NewExchange) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';
 
 -- Uniswap V1 NewExchange --
 CREATE TABLE IF NOT EXISTS uniswap_v1_new_exchange AS TEMPLATE_LOG
@@ -84,8 +56,4 @@ COMMENT 'Uniswap V1 NewExchange events';
 ALTER TABLE uniswap_v1_new_exchange
     -- event information --
     ADD COLUMN IF NOT EXISTS exchange           String COMMENT 'Exchange contract address',
-    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_exchange (exchange) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token (token) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';
