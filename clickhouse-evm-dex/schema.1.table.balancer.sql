@@ -75,3 +75,48 @@ ALTER TABLE balancer_pool_registered
 
     -- indexes --
     ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter;
+
+-- Balancer SwapFeePercentage --
+CREATE TABLE IF NOT EXISTS balancer_swap_fee_percentage AS TEMPLATE_LOG
+COMMENT 'Balancer V2 SwapFeePercentage events';
+ALTER TABLE balancer_swap_fee_percentage
+    -- event information --
+    ADD COLUMN IF NOT EXISTS swap_fee_percentage UInt256 COMMENT 'Swap fee percentage',
+
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+
+-- Balancer ProtocolFeePercentage --
+CREATE TABLE IF NOT EXISTS balancer_protocol_fee_percentage AS TEMPLATE_LOG
+COMMENT 'Balancer V2 ProtocolFeePercentage events';
+ALTER TABLE balancer_protocol_fee_percentage
+    -- event information --
+    ADD COLUMN IF NOT EXISTS fee_type           UInt256 COMMENT 'Fee type being updated',
+    ADD COLUMN IF NOT EXISTS protocol_fee_percentage UInt256 COMMENT 'Protocol fee percentage',
+
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+
+-- Balancer AggregateSwapFeePercentage --
+CREATE TABLE IF NOT EXISTS balancer_aggregate_swap_fee_percentage AS TEMPLATE_LOG
+COMMENT 'Balancer V3 AggregateSwapFeePercentage events';
+ALTER TABLE balancer_aggregate_swap_fee_percentage
+    -- event information --
+    ADD COLUMN IF NOT EXISTS pool               String COMMENT 'Pool contract address',
+    ADD COLUMN IF NOT EXISTS aggregate_swap_fee_percentage UInt256 COMMENT 'Aggregate swap fee percentage',
+
+    -- PoolRegistered (store) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+
+    -- indexes --
+    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter,
+
+    -- indexes (PoolRegistered) --
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+
