@@ -12,15 +12,7 @@ ALTER TABLE balancer_vault_swap
     ADD COLUMN IF NOT EXISTS swap_fee_amount    UInt256 COMMENT 'Swap fee amount',
 
     -- PoolRegistered (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token_in (token_in) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_token_out (token_out) TYPE bloom_filter,
-
-    -- indexes (PoolRegistered) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
 
 -- Balancer LiquidityAdded --
 CREATE TABLE IF NOT EXISTS balancer_liquidity_added AS TEMPLATE_LOG
@@ -35,14 +27,7 @@ ALTER TABLE balancer_liquidity_added
     ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
     -- PoolRegistered (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter,
-
-    -- indexes (PoolRegistered) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
 
 -- Balancer LiquidityRemoved --
 CREATE TABLE IF NOT EXISTS balancer_liquidity_removed AS TEMPLATE_LOG
@@ -57,14 +42,7 @@ ALTER TABLE balancer_liquidity_removed
     ADD COLUMN IF NOT EXISTS swap_fee_amounts_raw String COMMENT 'Comma-separated swap fee amounts',
 
     -- PoolRegistered (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-
-    -- indexes --
-    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter,
-    ADD INDEX IF NOT EXISTS idx_liquidity_provider (liquidity_provider) TYPE bloom_filter,
-
-    -- indexes (PoolRegistered) --
-    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
 
 -- Balancer PoolRegistered --
 CREATE TABLE IF NOT EXISTS balancer_pool_registered AS TEMPLATE_LOG
