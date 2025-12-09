@@ -46,7 +46,7 @@ SELECT
 
     -- event --
     log_address AS pool,
-    toUInt32(toFloat64(swap_fee_percentage) / 10000000000000000) AS fee, -- Convert from basis points (1e18) to basis points (1e4)
+    toUInt32(toFloat64(swap_fee_percentage) / 100000000000000) AS fee, -- Convert from 1e18 fixed-point to basis points (1e4): divide by 1e14
     'balancer' AS protocol
 FROM balancer_swap_fee_percentage;
 
@@ -65,7 +65,7 @@ SELECT
 
     -- event --
     pool,
-    toUInt32(toFloat64(aggregate_swap_fee_percentage) / 10000000000000000) AS fee, -- Convert from basis points (1e18) to basis points (1e4)
+    toUInt32(toFloat64(aggregate_swap_fee_percentage) / 100000000000000) AS fee, -- Convert from 1e18 fixed-point to basis points (1e4): divide by 1e14
     'balancer' AS protocol
 FROM balancer_aggregate_swap_fee_percentage;
 
