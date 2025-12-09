@@ -192,7 +192,9 @@ SELECT
     toUInt32(fee) AS fee, -- CurveFi fee is provided at pool creation
     'curvefi' AS protocol
 FROM curvefi_plain_pool_deployed
-WHERE length(splitByChar(',', coins)) >= 2;
+WHERE length(splitByChar(',', coins)) >= 2
+  AND arrayElement(splitByChar(',', coins), 1) != ''
+  AND arrayElement(splitByChar(',', coins), 2) != '';
 
 -- Curve.fi::MetaPoolDeployed --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_meta_pool_deployed
