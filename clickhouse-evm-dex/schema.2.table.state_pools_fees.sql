@@ -1,5 +1,5 @@
 -- Pool Fees Tracking for Protocols with Dynamic Fees --
-CREATE TABLE IF NOT EXISTS pools_fees (
+CREATE TABLE IF NOT EXISTS state_pools_fees (
     -- block --
     block_num                   UInt32,
     block_hash                  String,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS pools_fees (
 
     -- event --
     pool                        LowCardinality(String) COMMENT 'pool address',
-    fee                         UInt32 COMMENT 'updated pool fee (e.g., 3000 represents 0.30%)',
+    fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)',
     protocol                    Enum8(
         'sunpump' = 1,
         'uniswap-v1' = 2,
@@ -30,6 +30,120 @@ CREATE TABLE IF NOT EXISTS pools_fees (
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (pool, protocol);
+
+-- Uniswap::V1::Factory:NewExchange (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_new_exchange_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    exchange AS pool,
+    3000 AS fee, -- default Uniswap V1 fee (0.3%)
+    'uniswap_v1' AS protocol
+FROM uniswap_v1_new_exchange;
+
+-- Uniswap::V2::Factory:PairCreated (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    pair AS pool,
+    3000 AS fee, -- default Uniswap V2 fee (0.3%)
+    'uniswap_v2' AS protocol
+FROM uniswap_v2_pair_created;
+
+-- Uniswap::V3::Factory:PoolCreated (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_pool_created_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    pool,
+    fee,
+    'uniswap_v3' AS protocol
+FROM uniswap_v3_pool_created;
+
+-- Uniswap::V4::IPoolManager:Initialize (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_initialize_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    id AS pool,
+    fee,
+    'uniswap_v4' AS protocol
+FROM uniswap_v4_initialize;
+
+-- Curve.fi::PlainPoolDeployed (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_plain_pool_deployed_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    address AS pool,
+    toUInt32(fee) AS fee,
+    'curvefi' AS protocol
+FROM curvefi_plain_pool_deployed;
+
+-- Curve.fi::MetaPoolDeployed (Initialize) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_meta_pool_deployed_fee
+TO state_pools_fees AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    address AS pool,
+    toUInt32(fee) AS fee,
+    'curvefi' AS protocol
+FROM curvefi_meta_pool_deployed;
 
 -- Balancer::SwapFeePercentage (V2) --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_swap_fee_percentage
