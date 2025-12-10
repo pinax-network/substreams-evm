@@ -9,14 +9,22 @@ ALTER TABLE cow_trade
     ADD COLUMN IF NOT EXISTS sell_amount        UInt256 COMMENT 'Amount of tokens sold',
     ADD COLUMN IF NOT EXISTS buy_amount         UInt256 COMMENT 'Amount of tokens bought',
     ADD COLUMN IF NOT EXISTS fee_amount         UInt256 COMMENT 'Fee amount charged',
-    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier';
+    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
+
+    -- Settlement contract (factory equivalent) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'GPv2Settlement contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Lexicographically smaller token (normalized)',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Lexicographically larger token (normalized)';
 
 -- CoW Protocol Settlement --
 CREATE TABLE IF NOT EXISTS cow_settlement AS TEMPLATE_LOG
 COMMENT 'CoW Protocol Settlement events';
 ALTER TABLE cow_settlement
     -- event information --
-    ADD COLUMN IF NOT EXISTS solver             String COMMENT 'Solver address';
+    ADD COLUMN IF NOT EXISTS solver             String COMMENT 'Solver address',
+
+    -- Settlement contract (factory equivalent) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'GPv2Settlement contract address';
 
 -- CoW Protocol OrderInvalidated --
 CREATE TABLE IF NOT EXISTS cow_order_invalidated AS TEMPLATE_LOG
@@ -24,7 +32,10 @@ COMMENT 'CoW Protocol OrderInvalidated events';
 ALTER TABLE cow_order_invalidated
     -- event information --
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Order owner address',
-    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier';
+    ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
+
+    -- Settlement contract (factory equivalent) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'GPv2Settlement contract address';
 
 -- CoW Protocol PreSignature --
 CREATE TABLE IF NOT EXISTS cow_pre_signature AS TEMPLATE_LOG
@@ -33,4 +44,7 @@ ALTER TABLE cow_pre_signature
     -- event information --
     ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Order owner address',
     ADD COLUMN IF NOT EXISTS order_uid          String COMMENT 'Unique order identifier',
-    ADD COLUMN IF NOT EXISTS signed             UInt8 COMMENT 'Whether the order is signed';
+    ADD COLUMN IF NOT EXISTS signed             UInt8 COMMENT 'Whether the order is signed',
+
+    -- Settlement contract (factory equivalent) --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'GPv2Settlement contract address';
