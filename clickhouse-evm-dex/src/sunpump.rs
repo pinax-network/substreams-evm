@@ -307,7 +307,7 @@ fn process_sunpump_purchase_fee_set(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    // Get factory from store using pool address
+    // Get factory from store using event emitter address (token/pool contract)
     if let Some(pool) = get_store_by_address(store, &log.address) {
         set_pool(encoding, pool, row);
     } else {
@@ -338,7 +338,7 @@ fn process_sunpump_sale_fee_set(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    // Get factory from store using pool address
+    // Get factory from store using event emitter address (token/pool contract)
     if let Some(pool) = get_store_by_address(store, &log.address) {
         set_pool(encoding, pool, row);
     } else {
