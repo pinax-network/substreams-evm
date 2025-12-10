@@ -216,15 +216,19 @@ fn process_pool_registered(
 }
 
 fn serialize_token_config(encoding: &Encoding, token_configs: &[balancer::TokenConfig]) -> String {
+    if token_configs.is_empty() {
+        return "[]".to_string();
+    }
+
     let configs: Vec<String> = token_configs
         .iter()
         .map(|tc| {
+            // Use proper JSON string escaping for safety
+            let token = bytes_to_string(&tc.token, encoding).replace('\\', "\\\\").replace('"', "\\\"");
+            let rate_provider = bytes_to_string(&tc.rate_provider, encoding).replace('\\', "\\\\").replace('"', "\\\"");
             format!(
                 r#"{{"token":"{}","token_type":{},"rate_provider":"{}","paysYieldFees":{}}}"#,
-                bytes_to_string(&tc.token, encoding),
-                tc.token_type,
-                bytes_to_string(&tc.rate_provider, encoding),
-                tc.pays_yield_fees
+                token, tc.token_type, rate_provider, tc.pays_yield_fees
             )
         })
         .collect();
