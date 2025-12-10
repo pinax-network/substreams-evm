@@ -146,6 +146,7 @@ CREATE TABLE IF NOT EXISTS uniswap_v3_pool_created AS TEMPLATE_LOG
 COMMENT 'Uniswap V3 PoolCreated events';
 ALTER TABLE uniswap_v3_pool_created
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
     ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
