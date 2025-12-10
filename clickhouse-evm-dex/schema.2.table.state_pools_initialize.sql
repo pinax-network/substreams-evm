@@ -53,7 +53,7 @@ SELECT
     address AS factory,
     pair AS pool,
     [token0, token1] AS tokens,
-    'uniswap_v2' AS protocol
+    'uniswap-v2' AS protocol
 FROM uniswap_v2_pair_created;
 
 -- Uniswap::V3::Factory:PoolCreated --
@@ -73,7 +73,7 @@ SELECT
     address AS factory,
     pool,
     [token0, token1] AS tokens,
-    'uniswap_v3' AS protocol
+    'uniswap-v3' AS protocol
 FROM uniswap_v3_pool_created;
 
 -- Uniswap::V4::IPoolManager:Initialize --
@@ -95,7 +95,7 @@ SELECT
     -- event --
     id as pool,
     [currency0, currency1] AS tokens,
-    'uniswap_v4' AS protocol
+    'uniswap-v4' AS protocol
 FROM uniswap_v4_initialize;
 
 -- Uniswap::V1::Factory:NewExchange --
@@ -115,7 +115,7 @@ SELECT
     log_address AS factory,
     exchange AS pool,
     ['0x0000000000000000000000000000000000000000', token] AS tokens, -- ETH (represented as zero address) and token
-    'uniswap_v1' AS protocol
+    'uniswap-v1' AS protocol
 FROM uniswap_v1_new_exchange;
 
 -- SunPump::TokenCreate --
