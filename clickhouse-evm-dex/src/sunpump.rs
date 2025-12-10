@@ -43,10 +43,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                     process_sunpump_pending_owner_set(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(sunpump::log::Log::PurchaseFeeSet(event)) => {
-                    process_sunpump_purchase_fee_set(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_sunpump_purchase_fee_set(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(sunpump::log::Log::SaleFeeSet(event)) => {
-                    process_sunpump_sale_fee_set(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_sunpump_sale_fee_set(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(sunpump::log::Log::TokenCreate(event)) => {
                     process_sunpump_token_create(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -290,6 +290,7 @@ fn process_sunpump_pending_owner_set(
 
 fn process_sunpump_purchase_fee_set(
     encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -306,6 +307,13 @@ fn process_sunpump_purchase_fee_set(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
+    // Get factory from store using event emitter address (token/pool contract)
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        set_pool(encoding, pool, row);
+    } else {
+        row.set("factory", "");
+    }
+
     // Event info
     row.set("old_fee", &event.old_fee);
     row.set("new_fee", &event.new_fee);
@@ -313,6 +321,7 @@ fn process_sunpump_purchase_fee_set(
 
 fn process_sunpump_sale_fee_set(
     encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -328,6 +337,13 @@ fn process_sunpump_sale_fee_set(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+
+    // Get factory from store using event emitter address (token/pool contract)
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        set_pool(encoding, pool, row);
+    } else {
+        row.set("factory", "");
+    }
 
     // Event info
     row.set("old_fee", &event.old_fee);

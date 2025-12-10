@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS uniswap_v2_pair_created AS TEMPLATE_LOG
 COMMENT 'Uniswap V2 PairCreated events';
 ALTER TABLE uniswap_v2_pair_created
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
     ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
     ADD COLUMN IF NOT EXISTS pair               String COMMENT 'Pair contract address',
