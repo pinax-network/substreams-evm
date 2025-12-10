@@ -159,7 +159,6 @@ fn process_pool_registered(
 
     // Serialize token_config as JSON string
     row.set("token_config", serialize_token_config(encoding, &event.token_config));
-
     row.set("swap_fee_percentage", &event.swap_fee_percentage);
     row.set("pause_window_end_time", &event.pause_window_end_time);
 
@@ -168,10 +167,6 @@ fn process_pool_registered(
         row.set("pause_manager", bytes_to_string(&role_accounts.pause_manager, encoding));
         row.set("swap_fee_manager", bytes_to_string(&role_accounts.swap_fee_manager, encoding));
         row.set("pool_creator", bytes_to_string(&role_accounts.pool_creator, encoding));
-    } else {
-        row.set("pause_manager", "");
-        row.set("swap_fee_manager", "");
-        row.set("pool_creator", "");
     }
 
     // Set hooks config
@@ -187,18 +182,6 @@ fn process_pool_registered(
         row.set("should_call_before_remove_liquidity", hooks_config.should_call_before_remove_liquidity);
         row.set("should_call_after_remove_liquidity", hooks_config.should_call_after_remove_liquidity);
         row.set("hooks_address", bytes_to_string(&hooks_config.hooks_address, encoding));
-    } else {
-        row.set("enable_hook_adjusted_amounts", false);
-        row.set("should_call_before_initialize", false);
-        row.set("should_call_after_initialize", false);
-        row.set("should_call_compute_dynamic_swap_fee", false);
-        row.set("should_call_before_swap", false);
-        row.set("should_call_after_swap", false);
-        row.set("should_call_before_add_liquidity", false);
-        row.set("should_call_after_add_liquidity", false);
-        row.set("should_call_before_remove_liquidity", false);
-        row.set("should_call_after_remove_liquidity", false);
-        row.set("hooks_address", "");
     }
 
     // Set liquidity management
@@ -207,11 +190,6 @@ fn process_pool_registered(
         row.set("enable_add_liquidity_custom", liquidity_management.enable_add_liquidity_custom);
         row.set("enable_remove_liquidity_custom", liquidity_management.enable_remove_liquidity_custom);
         row.set("enable_donation", liquidity_management.enable_donation);
-    } else {
-        row.set("disable_unbalanced_liquidity", false);
-        row.set("enable_add_liquidity_custom", false);
-        row.set("enable_remove_liquidity_custom", false);
-        row.set("enable_donation", false);
     }
 }
 
