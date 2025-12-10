@@ -173,14 +173,16 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::PoolRegistered(pb::PoolRegistered {
                     pool: event.pool.to_vec(),
                     factory: event.factory.to_vec(),
-                    token_config: event.token_config.iter().map(|(token, token_type, rate_provider, pays_yield_fees)| {
-                        pb::TokenConfig {
+                    token_config: event
+                        .token_config
+                        .iter()
+                        .map(|(token, token_type, rate_provider, pays_yield_fees)| pb::TokenConfig {
                             token: token.to_vec(),
                             token_type: token_type.to_u64().min(u32::MAX as u64) as u32,
                             rate_provider: rate_provider.to_vec(),
                             pays_yield_fees: *pays_yield_fees,
-                        }
-                    }).collect(),
+                        })
+                        .collect(),
                     swap_fee_percentage: event.swap_fee_percentage.to_string(),
                     pause_window_end_time: event.pause_window_end_time.to_string(),
                     role_accounts: Some(pb::RoleAccounts {

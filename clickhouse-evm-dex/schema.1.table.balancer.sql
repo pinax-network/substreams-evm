@@ -50,9 +50,38 @@ COMMENT 'Balancer PoolRegistered events';
 ALTER TABLE balancer_pool_registered
     -- event information --
     ADD COLUMN IF NOT EXISTS pool               String COMMENT 'Pool contract address',
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token_config       String COMMENT 'JSON array of token configurations',
+    ADD COLUMN IF NOT EXISTS swap_fee_percentage UInt256 COMMENT 'Swap fee percentage for the pool',
+    ADD COLUMN IF NOT EXISTS pause_window_end_time UInt256 COMMENT 'Timestamp when the pause window ends',
+    
+    -- role accounts --
+    ADD COLUMN IF NOT EXISTS pause_manager      String COMMENT 'Pause manager address',
+    ADD COLUMN IF NOT EXISTS swap_fee_manager   String COMMENT 'Swap fee manager address',
+    ADD COLUMN IF NOT EXISTS pool_creator       String COMMENT 'Pool creator address',
+    
+    -- hooks config --
+    ADD COLUMN IF NOT EXISTS enable_hook_adjusted_amounts Bool COMMENT 'Hook adjusted amounts flag',
+    ADD COLUMN IF NOT EXISTS should_call_before_initialize Bool COMMENT 'Should call before initialize flag',
+    ADD COLUMN IF NOT EXISTS should_call_after_initialize Bool COMMENT 'Should call after initialize flag',
+    ADD COLUMN IF NOT EXISTS should_call_compute_dynamic_swap_fee Bool COMMENT 'Should call compute dynamic swap fee flag',
+    ADD COLUMN IF NOT EXISTS should_call_before_swap Bool COMMENT 'Should call before swap flag',
+    ADD COLUMN IF NOT EXISTS should_call_after_swap Bool COMMENT 'Should call after swap flag',
+    ADD COLUMN IF NOT EXISTS should_call_before_add_liquidity Bool COMMENT 'Should call before add liquidity flag',
+    ADD COLUMN IF NOT EXISTS should_call_after_add_liquidity Bool COMMENT 'Should call after add liquidity flag',
+    ADD COLUMN IF NOT EXISTS should_call_before_remove_liquidity Bool COMMENT 'Should call before remove liquidity flag',
+    ADD COLUMN IF NOT EXISTS should_call_after_remove_liquidity Bool COMMENT 'Should call after remove liquidity flag',
+    ADD COLUMN IF NOT EXISTS hooks_address      String COMMENT 'Hooks contract address',
+    
+    -- liquidity management --
+    ADD COLUMN IF NOT EXISTS disable_unbalanced_liquidity Bool COMMENT 'Disable unbalanced liquidity flag',
+    ADD COLUMN IF NOT EXISTS enable_add_liquidity_custom Bool COMMENT 'Enable add liquidity custom flag',
+    ADD COLUMN IF NOT EXISTS enable_remove_liquidity_custom Bool COMMENT 'Enable remove liquidity custom flag',
+    ADD COLUMN IF NOT EXISTS enable_donation    Bool COMMENT 'Enable donation flag',
 
     -- indexes --
-    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter;
+    ADD INDEX IF NOT EXISTS idx_pool (pool) TYPE bloom_filter,
+    ADD INDEX IF NOT EXISTS idx_factory (factory) TYPE bloom_filter;
 
 -- Balancer SwapFeePercentage --
 CREATE TABLE IF NOT EXISTS balancer_swap_fee_percentage AS TEMPLATE_LOG
