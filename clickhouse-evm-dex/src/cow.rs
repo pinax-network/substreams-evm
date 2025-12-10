@@ -53,14 +53,14 @@ fn process_trade(
     
     // Normalize token0/token1 lexicographically
     let (token0, token1) = if sell_token_str <= buy_token_str {
-        (sell_token_str.clone(), buy_token_str.clone())
+        (&sell_token_str, &buy_token_str)
     } else {
-        (buy_token_str.clone(), sell_token_str.clone())
+        (&buy_token_str, &sell_token_str)
     };
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
-    row.set("sell_token", sell_token_str);
-    row.set("buy_token", buy_token_str);
+    row.set("sell_token", &sell_token_str);
+    row.set("buy_token", &buy_token_str);
     row.set("sell_amount", &event.sell_amount);
     row.set("buy_amount", &event.buy_amount);
     row.set("fee_amount", &event.fee_amount);
