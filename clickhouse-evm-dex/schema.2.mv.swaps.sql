@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     PROJECTION prj_input_contract_by_minute ( SELECT input_contract, minute, count() GROUP BY input_contract, minute ),
     PROJECTION prj_output_contract_by_minute ( SELECT output_contract, minute, count() GROUP BY output_contract, minute ),
     PROJECTION prj_token0_by_minute ( SELECT token0, minute, count() GROUP BY token0, minute ),
-    PROJECTION prj_token1_by_minute ( SELECT token1, minute, count() GROUP BY token1, minute );
+    PROJECTION prj_token1_by_minute ( SELECT token1, minute, count() GROUP BY token1, minute )
 )
 ENGINE = MergeTree
 ORDER BY (
@@ -101,20 +101,25 @@ COMMENT 'Transfers including ERC-20, WETH transfers';
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_purchased
 TO swaps AS
 SELECT
-    'sunpump' AS protocol,
-    -- include everything from sunpump_token_purchased except the non-relevant fields
-    * EXCEPT (
-        buyer,
-        trx_amount,
-        token,
-        token_amount,
-        fee,
-        token_reserve,
-        creator,
-        token_index
-    ),
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
 
-    -- mapped swap fields
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'sunpump' AS protocol,
+    factory,
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -126,28 +131,30 @@ SELECT
     token                              AS output_contract,
     token_amount                       AS output_amount
 
-FROM sunpump_token_purchased
-WHERE factory != '';  -- exclude invalid events with empty factory address
-
+FROM sunpump_token_purchased;
 
 -- SunPump TokenSold: User sells tokens for TRX (Token → TRX)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_sold
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'sunpump' AS protocol,
-
-    -- include everything from sunpump_token_sold except the non-relevant fields
-    * EXCEPT (
-        seller,
-        token,
-        token_amount,
-        trx_amount,
-        fee,
-        creator,
-        token_index
-    ),
-
-    -- mapped swap fields
     log_address                        AS pool,
     seller                             AS user,
 
@@ -159,24 +166,30 @@ SELECT
     ''                                 AS output_contract,  -- TRX native asset
     trx_amount                         AS output_amount
 
-FROM sunpump_token_sold
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM sunpump_token_sold;
 
 -- Uniswap V1 TokenPurchase: User buys tokens with ETH (ETH → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'uniswap-v1' AS protocol,
-
-    -- include everything from uniswap_v1_token_purchase except the non-relevant fields
-    * EXCEPT (
-        buyer,
-        eth_sold,
-        tokens_bought,
-        token
-    ),
-
-    -- mapped swap fields
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -188,25 +201,31 @@ SELECT
     token                              AS output_contract,
     tokens_bought                      AS output_amount
 
-FROM uniswap_v1_token_purchase
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM uniswap_v1_token_purchase;
 
 
 -- Uniswap V1 EthPurchase: User buys ETH with tokens (Token → ETH)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_eth_purchase
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'uniswap-v1' AS protocol,
-
-    -- include everything from uniswap_v1_eth_purchase except the non-relevant fields
-    * EXCEPT (
-        buyer,
-        tokens_sold,
-        eth_bought,
-        token
-    ),
-
-    -- mapped swap fields
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -218,31 +237,33 @@ SELECT
     ''                                 AS output_contract,  -- ETH native asset
     eth_bought                         AS output_amount
 
-FROM uniswap_v1_eth_purchase
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM uniswap_v1_eth_purchase;
 
 
 -- Uniswap V2 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'uniswap-v2' AS protocol,
-
-    -- include everything from uniswap_v2_swap except the non-relevant fields
-    * EXCEPT (
-        sender,
-        `to`,
-        amount0_in,
-        amount1_in,
-        amount0_out,
-        amount1_out,
-        token0,
-        token1
-    ),
-
-    -- mapped swap fields
-    log_address                        AS pool,
-    sender                             AS user,
+    log_address  AS pool,
+    sender       AS user,
 
     -- Input side
     if (amount0_in > toUInt256(0), token0, token1)      AS input_contract,
@@ -252,34 +273,33 @@ SELECT
     if (amount0_in > toUInt256(0), token1, token0)      AS output_contract,
     if (amount0_in > toUInt256(0), amount1_out, amount0_out) AS output_amount
 
-FROM uniswap_v2_swap
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM uniswap_v2_swap;
 
 
 -- Uniswap V3 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'uniswap-v3' AS protocol,
-
-    -- include everything from uniswap_v3_swap except the non-relevant fields
-    * EXCEPT (
-        sender,
-        recipient,
-        amount0,
-        amount1,
-        sqrt_price_x96,
-        liquidity,
-        tick,
-        token0,
-        token1,
-        fee,
-        tick_spacing
-    ),
-
-    -- mapped swap fields
-    log_address                        AS pool,
-    sender                             AS user,
+    log_address  AS pool,
+    sender       AS user,
 
     -- Input side: negative amount means input
     if (amount0 < toString(toInt256(0)), token0, token1)      AS input_contract,
@@ -289,34 +309,33 @@ SELECT
     if (amount0 < toString(toInt256(0)), token1, token0)      AS output_contract,
     if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
-FROM uniswap_v3_swap
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM uniswap_v3_swap;
 
 
 -- Uniswap V4 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'uniswap-v4' AS protocol,
-
-    -- include everything from uniswap_v4_swap except the non-relevant fields
-    * EXCEPT (
-        id,
-        sender,
-        amount0,
-        amount1,
-        sqrt_price_x96,
-        liquidity,
-        tick,
-        fee,
-        currency0,
-        currency1,
-        tick_spacing
-    ),
-
-    -- mapped swap fields
-    id              AS pool,
-    sender          AS user,
+    id           AS pool,
+    sender       AS user,
 
     -- Input side: negative amount means input
     if (amount0 < toString(toInt256(0)), currency0, currency1)      AS input_contract,
@@ -326,8 +345,7 @@ SELECT
     if (amount0 < toString(toInt256(0)), currency1, currency0)      AS output_contract,
     if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
-FROM uniswap_v4_swap
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM uniswap_v4_swap;
 
 
 -- Curve.fi TokenExchange (Swap)
@@ -337,22 +355,24 @@ WHERE factory != '';  -- exclude invalid events with empty factory address
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'curvefi' AS protocol,
-
-    -- include everything from curvefi_token_exchange except the non-relevant fields
-    * EXCEPT (
-        buyer,
-        sold_id,
-        sold_amount,
-        sold_token,
-        bought_id,
-        bought_amount,
-        bought_token,
-        coins,
-        deployer
-    ),
-
-    -- mapped swap fields
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -364,30 +384,32 @@ SELECT
 
     bought_token AS output_contract,
     bought_amount AS output_amount
-FROM curvefi_token_exchange
-WHERE factory != '';  -- exclude invalid events with empty factory address
-
+FROM curvefi_token_exchange;
 
 -- Balancer V3 Vault Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'balancer' AS protocol,
-
-    -- include everything from balancer_vault_swap except the non-relevant fields
-    * EXCEPT (
-        pool,
-        token_in,
-        token_out,
-        amount_in,
-        amount_out,
-        swap_fee_percentage,
-        swap_fee_amount
-    ),
-
-    -- mapped swap fields
-    pool                               AS pool,
-    tx_from                            AS user,  -- Using tx_from as the user since there's no explicit user in the event
+    pool       AS pool,
+    tx_from    AS user,  -- Using tx_from as the user since there's no explicit user in the event
 
     -- Input side
     token_in                           AS input_contract,
@@ -397,28 +419,30 @@ SELECT
     token_out                          AS output_contract,
     amount_out                         AS output_amount
 
-FROM balancer_vault_swap
-WHERE factory != '';  -- exclude invalid events with empty factory address
-
+FROM balancer_vault_swap;
 
 -- Bancor Conversion (Swap)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
 TO swaps AS
 SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
     'bancor' AS protocol,
-
-    -- include everything from bancor_conversion except the non-relevant fields
-    * EXCEPT (
-        source_token,
-        target_token,
-        trader,
-        source_amount,
-        target_amount,
-        conversion_fee,
-        converter_type
-    ),
-
-    -- mapped swap fields
     log_address                        AS pool,
     trader                             AS user,
 
@@ -430,5 +454,4 @@ SELECT
     target_token                       AS output_contract,
     target_amount                      AS output_amount
 
-FROM bancor_conversion
-WHERE factory != '';  -- exclude invalid events with empty factory address
+FROM bancor_conversion;
