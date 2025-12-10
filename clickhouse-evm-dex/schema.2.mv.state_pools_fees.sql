@@ -41,6 +41,7 @@ SELECT
     tx_hash,
 
     -- event --
+    log_address AS factory,
     exchange AS pool,
     3000 AS fee, -- default Uniswap V1 fee (0.3%)
     'uniswap-v1' AS protocol
@@ -60,6 +61,7 @@ SELECT
     tx_hash,
 
     -- event --
+    log_address AS factory,
     pair AS pool,
     3000 AS fee, -- default Uniswap V2 fee (0.3%)
     'uniswap-v2' AS protocol
@@ -79,6 +81,7 @@ SELECT
     tx_hash,
 
     -- event --
+    log_address AS factory,
     pool,
     fee,
     'uniswap-v3' AS protocol
@@ -98,6 +101,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     id AS pool,
     fee,
     'uniswap-v4' AS protocol
@@ -117,6 +121,7 @@ SELECT
     tx_hash,
 
     -- event --
+    log_address AS factory,
     address AS pool,
     toUInt32(fee) AS fee,
     'curvefi' AS protocol
@@ -136,6 +141,7 @@ SELECT
     tx_hash,
 
     -- event --
+    log_address AS factory,
     address AS pool,
     toUInt32(fee) AS fee,
     'curvefi' AS protocol
@@ -155,6 +161,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     toUInt32(toFloat64(swap_fee_percentage) / 100000000000000) AS fee, -- Convert from 1e18 fixed-point to basis points (1e4): divide by 1e14
     'balancer' AS protocol
@@ -174,6 +181,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     pool,
     toUInt32(toFloat64(aggregate_swap_fee_percentage) / 100000000000000) AS fee, -- Convert from 1e18 fixed-point to basis points (1e4): divide by 1e14
     'balancer' AS protocol
@@ -193,6 +201,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     new_fee AS fee,
     'bancor' AS protocol
@@ -212,6 +221,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     toUInt32(fee) AS fee,
     'curvefi' AS protocol
@@ -231,6 +241,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     toUInt32(fee) AS fee,
     'curvefi' AS protocol
@@ -250,6 +261,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     toUInt32(new_fee) AS fee,
     'sunpump' AS protocol
@@ -269,6 +281,7 @@ SELECT
     tx_hash,
 
     -- event --
+    factory,
     log_address AS pool,
     toUInt32(new_fee) AS fee,
     'sunpump' AS protocol
