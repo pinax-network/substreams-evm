@@ -47,14 +47,9 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: Option<StorePool>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-        row.set("coins", value.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
-    } else {
-        row.set("factory", "");
-        row.set("coins", "");
-    }
+pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("coins", value.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
 }
 
 fn parse_coin(encoding: &Encoding, id: String, coins: &Vec<Vec<u8>>) -> Option<String> {
@@ -90,7 +85,7 @@ fn process_token_exchange(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
         row.set("sold_id", &event.sold_id);
@@ -120,7 +115,7 @@ fn process_add_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -148,7 +143,7 @@ fn process_remove_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -175,7 +170,7 @@ fn process_remove_liquidity_one(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amount", &event.token_amount);
@@ -201,7 +196,7 @@ fn process_remove_liquidity_imbalance(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
         row.set("token_amounts", event.token_amounts.join(","));
@@ -228,7 +223,6 @@ fn process_plain_pool_deployed(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
     row.set("a", &event.a);
@@ -253,7 +247,6 @@ fn process_meta_pool_deployed(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coin", bytes_to_string(&event.coin, encoding));
     row.set("base_pool", bytes_to_string(&event.base_pool, encoding));
@@ -280,7 +273,7 @@ fn process_commit_new_fee(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("deadline", &event.deadline);
         row.set("fee", &event.fee);
@@ -306,7 +299,7 @@ fn process_new_fee(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
-        set_pool(encoding, Some(pool), row);
+        set_pool(encoding, pool, row);
 
         row.set("fee", &event.fee);
         row.set("admin_fee", &event.admin_fee);

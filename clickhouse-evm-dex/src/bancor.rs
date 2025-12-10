@@ -47,12 +47,8 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-fn set_pool(encoding: &Encoding, value: Option<StorePool>, row: &mut substreams_database_change::tables::Row) {
-    if let Some(value) = value {
-        row.set("factory", bytes_to_string(&value.factory, encoding));
-    } else {
-        row.set("factory", "");
-    }
+fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+    row.set("factory", bytes_to_string(&value.factory, encoding));
 }
 
 fn process_conversion(
@@ -66,21 +62,22 @@ fn process_conversion(
     log_index: usize,
     event: &bancor::Conversion,
 ) {
-    let pool = get_store_by_address(store, &log.address);
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("bancor_conversion", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("bancor_conversion", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pool(encoding, pool, row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("source_token", bytes_to_string(&event.source_token, encoding));
-    row.set("target_token", bytes_to_string(&event.target_token, encoding));
-    row.set("trader", bytes_to_string(&event.trader, encoding));
-    row.set("source_amount", &event.source_amount);
-    row.set("target_amount", &event.target_amount);
-    row.set("conversion_fee", &event.conversion_fee);
+        row.set("source_token", bytes_to_string(&event.source_token, encoding));
+        row.set("target_token", bytes_to_string(&event.target_token, encoding));
+        row.set("trader", bytes_to_string(&event.trader, encoding));
+        row.set("source_amount", &event.source_amount);
+        row.set("target_amount", &event.target_amount);
+        row.set("conversion_fee", &event.conversion_fee);
+    }
 }
 
 fn process_liquidity_added(
@@ -94,20 +91,21 @@ fn process_liquidity_added(
     log_index: usize,
     event: &bancor::LiquidityAdded,
 ) {
-    let pool = get_store_by_address(store, &log.address);
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("bancor_liquidity_added", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("bancor_liquidity_added", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pool(encoding, pool, row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("provider", bytes_to_string(&event.provider, encoding));
-    row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
-    row.set("amount", &event.amount);
-    row.set("new_balance", &event.new_balance);
-    row.set("new_supply", &event.new_supply);
+        row.set("provider", bytes_to_string(&event.provider, encoding));
+        row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
+        row.set("amount", &event.amount);
+        row.set("new_balance", &event.new_balance);
+        row.set("new_supply", &event.new_supply);
+    }
 }
 
 fn process_liquidity_removed(
@@ -121,20 +119,21 @@ fn process_liquidity_removed(
     log_index: usize,
     event: &bancor::LiquidityRemoved,
 ) {
-    let pool = get_store_by_address(store, &log.address);
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("bancor_liquidity_removed", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("bancor_liquidity_removed", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pool(encoding, pool, row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("provider", bytes_to_string(&event.provider, encoding));
-    row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
-    row.set("amount", &event.amount);
-    row.set("new_balance", &event.new_balance);
-    row.set("new_supply", &event.new_supply);
+        row.set("provider", bytes_to_string(&event.provider, encoding));
+        row.set("reserve_token", bytes_to_string(&event.reserve_token, encoding));
+        row.set("amount", &event.amount);
+        row.set("new_balance", &event.new_balance);
+        row.set("new_supply", &event.new_supply);
+    }
 }
 
 fn process_token_rate_update(
@@ -148,19 +147,20 @@ fn process_token_rate_update(
     log_index: usize,
     event: &bancor::TokenRateUpdate,
 ) {
-    let pool = get_store_by_address(store, &log.address);
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("bancor_token_rate_update", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("bancor_token_rate_update", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pool(encoding, pool, row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("token1", bytes_to_string(&event.token1, encoding));
-    row.set("token2", bytes_to_string(&event.token2, encoding));
-    row.set("rate_n", &event.rate_n);
-    row.set("rate_d", &event.rate_d);
+        row.set("token1", bytes_to_string(&event.token1, encoding));
+        row.set("token2", bytes_to_string(&event.token2, encoding));
+        row.set("rate_n", &event.rate_n);
+        row.set("rate_d", &event.rate_d);
+    }
 }
 
 fn process_activation(
@@ -260,15 +260,16 @@ fn process_conversion_fee_update(
     log_index: usize,
     event: &bancor::ConversionFeeUpdate,
 ) {
-    let pool = get_store_by_address(store, &log.address);
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("bancor_conversion_fee_update", key);
+    if let Some(pool) = get_store_by_address(store, &log.address) {
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("bancor_conversion_fee_update", key);
 
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-    set_pool(encoding, pool, row);
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
 
-    row.set("prev_fee", event.prev_fee);
-    row.set("new_fee", event.new_fee);
+        row.set("prev_fee", event.prev_fee);
+        row.set("new_fee", event.new_fee);
+    }
 }

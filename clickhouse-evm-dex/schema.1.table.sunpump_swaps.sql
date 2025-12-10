@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS sunpump_token_create AS TEMPLATE_LOG
 COMMENT 'SunPump TokenCreate events';
 ALTER TABLE sunpump_token_create
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token_address      LowCardinality(String) COMMENT 'Token contract address',
     ADD COLUMN IF NOT EXISTS token_index        UInt256 COMMENT 'Token index',
     ADD COLUMN IF NOT EXISTS creator            String COMMENT 'Creator address';
@@ -118,6 +119,7 @@ CREATE TABLE IF NOT EXISTS sunpump_token_create_legacy AS TEMPLATE_LOG
 COMMENT 'SunPump TokenCreate - Legacy events';
 ALTER TABLE sunpump_token_create_legacy
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token_address      LowCardinality(String) COMMENT 'Token contract address',
     ADD COLUMN IF NOT EXISTS creator            String COMMENT 'Creator address',
     ADD COLUMN IF NOT EXISTS nft_max_supply     UInt256 COMMENT 'Max NFT supply',

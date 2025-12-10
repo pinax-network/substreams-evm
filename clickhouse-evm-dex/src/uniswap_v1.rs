@@ -161,7 +161,6 @@ fn process_new_exchange(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
-    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("exchange", bytes_to_string(&event.exchange, encoding));
     row.set("token", bytes_to_string(&event.token, encoding));
 }

@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS balancer_pool_registered AS TEMPLATE_LOG
 COMMENT 'Balancer PoolRegistered events';
 ALTER TABLE balancer_pool_registered
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS pool               String COMMENT 'Pool contract address',
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token_config       String COMMENT 'JSON array of token configurations',
     ADD COLUMN IF NOT EXISTS swap_fee_percentage UInt256 COMMENT 'Swap fee percentage for the pool',
     ADD COLUMN IF NOT EXISTS pause_window_end_time UInt256 COMMENT 'Timestamp when the pause window ends',
@@ -84,10 +84,10 @@ CREATE TABLE IF NOT EXISTS balancer_swap_fee_percentage AS TEMPLATE_LOG
 COMMENT 'Balancer V2 SwapFeePercentage events';
 ALTER TABLE balancer_swap_fee_percentage
     -- event information --
-    ADD COLUMN IF NOT EXISTS swap_fee_percentage UInt256 COMMENT 'Swap fee percentage',
+    ADD COLUMN IF NOT EXISTS swap_fee_percentage    UInt256 COMMENT 'Swap fee percentage',
 
     -- PoolRegistered (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
+    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address';
 
 -- Balancer ProtocolFeePercentage --
 CREATE TABLE IF NOT EXISTS balancer_protocol_fee_percentage AS TEMPLATE_LOG
@@ -95,10 +95,7 @@ COMMENT 'Balancer V2 ProtocolFeePercentage events';
 ALTER TABLE balancer_protocol_fee_percentage
     -- event information --
     ADD COLUMN IF NOT EXISTS fee_type           UInt256 COMMENT 'Fee type being updated',
-    ADD COLUMN IF NOT EXISTS protocol_fee_percentage UInt256 COMMENT 'Protocol fee percentage',
-
-    -- PoolRegistered (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
+    ADD COLUMN IF NOT EXISTS protocol_fee_percentage UInt256 COMMENT 'Protocol fee percentage';
 
 -- Balancer AggregateSwapFeePercentage --
 CREATE TABLE IF NOT EXISTS balancer_aggregate_swap_fee_percentage AS TEMPLATE_LOG

@@ -214,7 +214,6 @@ SELECT
 
     -- event --
     log_address AS factory,
-    anchor AS pool,
+    converter AS pool,
     'bancor' AS protocol
-FROM bancor_activation
-WHERE activated = true;
+FROM bancor_new_converter;

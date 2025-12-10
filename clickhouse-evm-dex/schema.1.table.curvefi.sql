@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS curvefi_plain_pool_deployed AS TEMPLATE_LOG
 COMMENT 'Curve.fi PlainPoolDeployed (pool creation) events';
 ALTER TABLE curvefi_plain_pool_deployed
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS address            String COMMENT 'Pool contract address',
     ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
     ADD COLUMN IF NOT EXISTS a                  UInt256 COMMENT 'Amplification coefficient',
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS curvefi_meta_pool_deployed AS TEMPLATE_LOG
 COMMENT 'Curve.fi MetaPoolDeployed (pool creation) events';
 ALTER TABLE curvefi_meta_pool_deployed
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS address            String COMMENT 'Pool contract address',
     ADD COLUMN IF NOT EXISTS coin               String COMMENT 'Coin address',
     ADD COLUMN IF NOT EXISTS base_pool          String COMMENT 'Base pool address',
