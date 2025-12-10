@@ -42,7 +42,10 @@ CREATE TABLE IF NOT EXISTS swaps (
     amount1                     UInt256 MATERIALIZED if(input_contract <= output_contract, output_amount, input_amount) COMMENT 'Amount of token1 swapped',
 
     -- INDEXES --
-    INDEX idx_amount (amount) TYPE minmax,
+    INDEX idx_amount0 (amount0) TYPE minmax,
+    INDEX idx_amount1 (amount1) TYPE minmax,
+    INDEX idx_input_amount (input_amount) TYPE minmax,
+    INDEX idx_output_amount (output_amount) TYPE minmax,
 
     -- PROJECTIONS --
     -- count() --
