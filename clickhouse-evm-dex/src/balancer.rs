@@ -155,6 +155,84 @@ fn process_pool_registered(
     set_template_log(encoding, log, log_index, row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
+    row.set("factory", bytes_to_string(&event.factory, encoding));
+
+    // Serialize token_config as JSON string
+    row.set("token_config", serialize_token_config(encoding, &event.token_config));
+
+    row.set("swap_fee_percentage", &event.swap_fee_percentage);
+    row.set("pause_window_end_time", &event.pause_window_end_time);
+
+    // Set role accounts
+    if let Some(role_accounts) = &event.role_accounts {
+        row.set("pause_manager", bytes_to_string(&role_accounts.pause_manager, encoding));
+        row.set("swap_fee_manager", bytes_to_string(&role_accounts.swap_fee_manager, encoding));
+        row.set("pool_creator", bytes_to_string(&role_accounts.pool_creator, encoding));
+    } else {
+        row.set("pause_manager", "");
+        row.set("swap_fee_manager", "");
+        row.set("pool_creator", "");
+    }
+
+    // Set hooks config
+    if let Some(hooks_config) = &event.hooks_config {
+        row.set("enable_hook_adjusted_amounts", hooks_config.enable_hook_adjusted_amounts);
+        row.set("should_call_before_initialize", hooks_config.should_call_before_initialize);
+        row.set("should_call_after_initialize", hooks_config.should_call_after_initialize);
+        row.set("should_call_compute_dynamic_swap_fee", hooks_config.should_call_compute_dynamic_swap_fee);
+        row.set("should_call_before_swap", hooks_config.should_call_before_swap);
+        row.set("should_call_after_swap", hooks_config.should_call_after_swap);
+        row.set("should_call_before_add_liquidity", hooks_config.should_call_before_add_liquidity);
+        row.set("should_call_after_add_liquidity", hooks_config.should_call_after_add_liquidity);
+        row.set("should_call_before_remove_liquidity", hooks_config.should_call_before_remove_liquidity);
+        row.set("should_call_after_remove_liquidity", hooks_config.should_call_after_remove_liquidity);
+        row.set("hooks_address", bytes_to_string(&hooks_config.hooks_address, encoding));
+    } else {
+        row.set("enable_hook_adjusted_amounts", false);
+        row.set("should_call_before_initialize", false);
+        row.set("should_call_after_initialize", false);
+        row.set("should_call_compute_dynamic_swap_fee", false);
+        row.set("should_call_before_swap", false);
+        row.set("should_call_after_swap", false);
+        row.set("should_call_before_add_liquidity", false);
+        row.set("should_call_after_add_liquidity", false);
+        row.set("should_call_before_remove_liquidity", false);
+        row.set("should_call_after_remove_liquidity", false);
+        row.set("hooks_address", "");
+    }
+
+    // Set liquidity management
+    if let Some(liquidity_management) = &event.liquidity_management {
+        row.set("disable_unbalanced_liquidity", liquidity_management.disable_unbalanced_liquidity);
+        row.set("enable_add_liquidity_custom", liquidity_management.enable_add_liquidity_custom);
+        row.set("enable_remove_liquidity_custom", liquidity_management.enable_remove_liquidity_custom);
+        row.set("enable_donation", liquidity_management.enable_donation);
+    } else {
+        row.set("disable_unbalanced_liquidity", false);
+        row.set("enable_add_liquidity_custom", false);
+        row.set("enable_remove_liquidity_custom", false);
+        row.set("enable_donation", false);
+    }
+}
+
+fn serialize_token_config(encoding: &Encoding, token_configs: &[balancer::TokenConfig]) -> String {
+    if token_configs.is_empty() {
+        return "[]".to_string();
+    }
+
+    let configs: Vec<String> = token_configs
+        .iter()
+        .map(|tc| {
+            // Use proper JSON string escaping for safety
+            let token = bytes_to_string(&tc.token, encoding).replace('\\', "\\\\").replace('"', "\\\"");
+            let rate_provider = bytes_to_string(&tc.rate_provider, encoding).replace('\\', "\\\\").replace('"', "\\\"");
+            format!(
+                r#"{{"token":"{}","token_type":{},"rate_provider":"{}","paysYieldFees":{}}}"#,
+                token, tc.token_type, rate_provider, tc.pays_yield_fees
+            )
+        })
+        .collect();
+    format!("[{}]", configs.join(","))
 }
 
 fn process_swap_fee_percentage(

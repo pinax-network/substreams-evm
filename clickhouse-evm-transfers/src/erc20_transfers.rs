@@ -3,9 +3,7 @@ use proto::pb::evm::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{
-    clock_key, logs::set_template_log, set_clock, transactions::{set_template_tx}
-};
+use crate::{clock_key, logs::set_template_log, set_clock, transactions::set_template_tx};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
