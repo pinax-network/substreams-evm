@@ -12,11 +12,6 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     -- event --
     factory                     LowCardinality(String) COMMENT 'factory address',
     pool                        LowCardinality(String) COMMENT 'pool address',
-    tokens                      Array(String) COMMENT 'token addresses in the pool',
-    token0                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 1, tokens[1], '') COMMENT 'first token address',
-    token1                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 2, tokens[2], '') COMMENT 'second token address',
-    token2                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 3, tokens[3], '') COMMENT 'third token address',
-    token3                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 4, tokens[4], '') COMMENT 'fourth token address',
     protocol                    Enum8(
         'sunpump' = 1,
         'uniswap-v1' = 2,
@@ -26,12 +21,7 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
-    ) COMMENT 'protocol identifier',
-
-    -- indexes --
-    INDEX idx_tx_hash              (tx_hash)           TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_factory              (factory)           TYPE set(64) GRANULARITY 4,
-    INDEX idx_protocol             (protocol)          TYPE set(8) GRANULARITY 4
+    ) COMMENT 'protocol identifier'
 )
 ENGINE = ReplacingMergeTree
 ORDER BY (pool, factory);
@@ -52,7 +42,6 @@ SELECT
     -- event --
     log_address AS factory,
     pair AS pool,
-    [token0, token1] AS tokens,
     'uniswap-v2' AS protocol
 FROM uniswap_v2_pair_created;
 
@@ -72,7 +61,6 @@ SELECT
     -- event --
     log_address AS factory,
     pool,
-    [token0, token1] AS tokens,
     'uniswap-v3' AS protocol
 FROM uniswap_v3_pool_created;
 
@@ -94,7 +82,6 @@ SELECT
 
     -- event --
     id as pool,
-    [currency0, currency1] AS tokens,
     'uniswap-v4' AS protocol
 FROM uniswap_v4_initialize;
 
@@ -114,7 +101,6 @@ SELECT
     -- event --
     log_address AS factory,
     exchange AS pool,
-    ['0x0000000000000000000000000000000000000000', token] AS tokens, -- ETH (represented as zero address) and token
     'uniswap-v1' AS protocol
 FROM uniswap_v1_new_exchange;
 
@@ -134,7 +120,6 @@ SELECT
     -- event --
     log_address AS factory,
     token_address AS pool,
-    ['0x0000000000000000000000000000000000000000', token_address] AS tokens, -- TRX (represented as zero address) and token
     'sunpump' AS protocol
 FROM sunpump_token_create;
 
@@ -154,7 +139,6 @@ SELECT
     -- event --
     log_address AS factory,
     token_address AS pool,
-    ['0x0000000000000000000000000000000000000000', token_address] AS tokens, -- TRX (represented as zero address) and token
     'sunpump' AS protocol
 FROM sunpump_token_create_legacy;
 
@@ -174,12 +158,8 @@ SELECT
     -- event --
     log_address AS factory,
     address AS pool,
-    splitByChar(',', coins) AS tokens,
     'curvefi' AS protocol
-FROM curvefi_plain_pool_deployed
-WHERE length(splitByChar(',', coins)) >= 2
-  AND arrayElement(splitByChar(',', coins), 1) != ''
-  AND arrayElement(splitByChar(',', coins), 2) != '';
+FROM curvefi_plain_pool_deployed;
 
 -- Curve.fi::MetaPoolDeployed --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_meta_pool_deployed
@@ -197,7 +177,6 @@ SELECT
     -- event --
     log_address AS factory,
     address AS pool,
-    [coin, base_pool] AS tokens,
     'curvefi' AS protocol
 FROM curvefi_meta_pool_deployed;
 
@@ -217,7 +196,6 @@ SELECT
     -- event --
     log_address AS factory,
     pool,
-    CAST([] AS Array(String)) AS tokens, -- Balancer pools have variable tokens, populated separately
     'balancer' AS protocol
 FROM balancer_pool_registered;
 
@@ -237,7 +215,6 @@ SELECT
     -- event --
     log_address AS factory,
     anchor AS pool,
-    CAST([] AS Array(String)) AS tokens, -- Bancor converters have variable reserve tokens, populated separately
     'bancor' AS protocol
 FROM bancor_activation
 WHERE activated = true;
