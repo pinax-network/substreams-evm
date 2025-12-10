@@ -85,40 +85,6 @@ pub mod log {
         AggregateSwapFeePercentage(super::AggregateSwapFeePercentage),
     }
 }
-/// / @notice Emitted when an approval is made
-/// / @param owner The address of the token owner
-/// / @param spender The address of the spender
-/// / @param value The amount of tokens approved
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Approval {
-    /// address (indexed)
-    #[prost(bytes="vec", tag="1")]
-    pub owner: ::prost::alloc::vec::Vec<u8>,
-    /// address (indexed)
-    #[prost(bytes="vec", tag="2")]
-    pub spender: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub value: ::prost::alloc::string::String,
-}
-/// / @notice Emitted when tokens are transferred
-/// / @param from The address sending tokens
-/// / @param to The address receiving tokens
-/// / @param value The amount of tokens transferred
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Transfer {
-    /// address (indexed)
-    #[prost(bytes="vec", tag="1")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
-    /// address (indexed)
-    #[prost(bytes="vec", tag="2")]
-    pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub value: ::prost::alloc::string::String,
-}
 /// / @notice Emitted when the swap fee percentage is changed
 /// / @param swapFeePercentage The new swap fee percentage
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -410,6 +376,9 @@ pub struct StorePool {
     /// factory address that created the pool
     #[prost(bytes="vec", tag="1")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
+    /// TokenConfig\[\]
+    #[prost(message, repeated, tag="3")]
+    pub token_config: ::prost::alloc::vec::Vec<TokenConfig>,
 }
 /// / @notice Emitted when a pool's paused state is changed
 /// / @param pool The address of the pool
