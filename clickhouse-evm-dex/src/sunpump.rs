@@ -299,24 +299,20 @@ fn process_sunpump_purchase_fee_set(
     log_index: usize,
     event: &sunpump::PurchaseFeeSet,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunpump_purchase_fee_set", key);
-
-    // Block and transaction info
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-
-    // Get factory from store using event emitter address (token/pool contract)
     if let Some(pool) = get_store_by_address(store, &log.address) {
-        set_pool(encoding, pool, row);
-    } else {
-        row.set("factory", "");
-    }
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("sunpump_purchase_fee_set", key);
 
-    // Event info
-    row.set("old_fee", &event.old_fee);
-    row.set("new_fee", &event.new_fee);
+        // Block and transaction info
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        // Event info
+        row.set("old_fee", &event.old_fee);
+        row.set("new_fee", &event.new_fee);
+    }
 }
 
 fn process_sunpump_sale_fee_set(
@@ -330,24 +326,20 @@ fn process_sunpump_sale_fee_set(
     log_index: usize,
     event: &sunpump::SaleFeeSet,
 ) {
-    let key = log_key(clock, tx_index, log_index);
-    let row = tables.create_row("sunpump_sale_fee_set", key);
-
-    // Block and transaction info
-    set_clock(clock, row);
-    set_template_tx(encoding, tx, tx_index, row);
-    set_template_log(encoding, log, log_index, row);
-
-    // Get factory from store using event emitter address (token/pool contract)
     if let Some(pool) = get_store_by_address(store, &log.address) {
-        set_pool(encoding, pool, row);
-    } else {
-        row.set("factory", "");
-    }
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("sunpump_sale_fee_set", key);
 
-    // Event info
-    row.set("old_fee", &event.old_fee);
-    row.set("new_fee", &event.new_fee);
+        // Block and transaction info
+        set_clock(clock, row);
+        set_template_tx(encoding, tx, tx_index, row);
+        set_template_log(encoding, log, log_index, row);
+        set_pool(encoding, pool, row);
+
+        // Event info
+        row.set("old_fee", &event.old_fee);
+        row.set("new_fee", &event.new_fee);
+    }
 }
 
 fn process_sunpump_token_create(

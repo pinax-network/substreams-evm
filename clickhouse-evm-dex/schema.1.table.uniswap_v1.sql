@@ -55,6 +55,6 @@ CREATE TABLE IF NOT EXISTS uniswap_v1_new_exchange AS TEMPLATE_LOG
 COMMENT 'Uniswap V1 NewExchange events';
 ALTER TABLE uniswap_v1_new_exchange
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS exchange           String COMMENT 'Exchange contract address',
     ADD COLUMN IF NOT EXISTS token              String COMMENT 'Token contract address';

@@ -66,16 +66,17 @@ CREATE TABLE IF NOT EXISTS bancor_activation AS TEMPLATE_LOG
 COMMENT 'Bancor Activation events';
 ALTER TABLE bancor_activation
     ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-    ADD COLUMN IF NOT EXISTS anchor       String COMMENT 'Converter anchor address',
-    ADD COLUMN IF NOT EXISTS activated    Boolean  COMMENT 'True if the converter was activated';
+    ADD COLUMN IF NOT EXISTS anchor             String COMMENT 'Converter anchor address',
+    ADD COLUMN IF NOT EXISTS activated          Boolean  COMMENT 'True if the converter was activated';
 
 -- Bancor NewConverter --
 CREATE TABLE IF NOT EXISTS bancor_new_converter AS TEMPLATE_LOG
 COMMENT 'Bancor NewConverter events';
 ALTER TABLE bancor_new_converter
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)',
-    ADD COLUMN IF NOT EXISTS converter    String COMMENT 'Converter contract address',
-    ADD COLUMN IF NOT EXISTS owner        String COMMENT 'Owner address';
+    ADD COLUMN IF NOT EXISTS converter          String COMMENT 'Converter contract address',
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Owner address';
 
 -- Bancor FeaturesAddition --
 CREATE TABLE IF NOT EXISTS bancor_features_addition AS TEMPLATE_LOG

@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS uniswap_v4_initialize AS TEMPLATE_LOG
 COMMENT 'Uniswap V4 Initialize events';
 ALTER TABLE uniswap_v4_initialize
     -- event information --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS id                 String COMMENT 'Pool ID',
     ADD COLUMN IF NOT EXISTS currency0          String COMMENT 'Currency0 address',
     ADD COLUMN IF NOT EXISTS currency1          String COMMENT 'Currency1 address',
