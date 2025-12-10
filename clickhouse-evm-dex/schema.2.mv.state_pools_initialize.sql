@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     factory                     LowCardinality(String) COMMENT 'factory address',
     pool                        LowCardinality(String) COMMENT 'pool address',
     tokens                      Array(String) COMMENT 'token addresses in the pool',
-    token0                      LowCardinality(String) COMMENT 'first token address' MATERIALIZED if(length(tokens) >= 1, tokens[1], ''),
-    token1                      LowCardinality(String) COMMENT 'second token address' MATERIALIZED if(length(tokens) >= 2, tokens[2], ''),
-    token2                      LowCardinality(String) COMMENT 'third token address' MATERIALIZED if(length(tokens) >= 3, tokens[3], ''),
-    token3                      LowCardinality(String) COMMENT 'fourth token address' MATERIALIZED if(length(tokens) >= 4, tokens[4], ''),
+    token0                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 1, tokens[1], '') COMMENT 'first token address',
+    token1                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 2, tokens[2], '') COMMENT 'second token address',
+    token2                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 3, tokens[3], '') COMMENT 'third token address',
+    token3                      LowCardinality(String) MATERIALIZED if(length(tokens) >= 4, tokens[4], '') COMMENT 'fourth token address',
     protocol                    Enum8(
         'sunpump' = 1,
         'uniswap-v1' = 2,
@@ -50,7 +50,7 @@ SELECT
     tx_hash,
 
     -- event --
-    address AS factory,
+    log_address AS factory,
     pair AS pool,
     [token0, token1] AS tokens,
     'uniswap-v2' AS protocol
@@ -70,7 +70,7 @@ SELECT
     tx_hash,
 
     -- event --
-    address AS factory,
+    log_address AS factory,
     pool,
     [token0, token1] AS tokens,
     'uniswap-v3' AS protocol
@@ -90,7 +90,7 @@ SELECT
     tx_hash,
 
     -- log --
-    address AS factory,
+    log_address AS factory,
 
     -- event --
     id as pool,
@@ -217,7 +217,7 @@ SELECT
     -- event --
     log_address AS factory,
     pool,
-    [] AS tokens, -- Balancer pools have variable tokens, populated separately
+    CAST([] AS Array(String)) AS tokens, -- Balancer pools have variable tokens, populated separately
     'balancer' AS protocol
 FROM balancer_pool_registered;
 
@@ -237,7 +237,7 @@ SELECT
     -- event --
     log_address AS factory,
     anchor AS pool,
-    [] AS tokens, -- Bancor converters have variable reserve tokens, populated separately
+    CAST([] AS Array(String)) AS tokens, -- Bancor converters have variable reserve tokens, populated separately
     'bancor' AS protocol
 FROM bancor_activation
 WHERE activated = true;
