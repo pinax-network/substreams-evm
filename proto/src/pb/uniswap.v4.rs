@@ -98,9 +98,9 @@ pub struct Initialize {
     /// int24 (e.g., 60)
     #[prost(int32, tag="5")]
     pub tick_spacing: i32,
-    /// NOT IMPLEMENTED
-    #[prost(string, optional, tag="6")]
-    pub hooks: ::core::option::Option<::prost::alloc::string::String>,
+    /// address, or address(0) if none
+    #[prost(bytes="vec", tag="6")]
+    pub hooks: ::prost::alloc::vec::Vec<u8>,
     /// uint160
     #[prost(string, tag="7")]
     pub sqrt_price_x96: ::prost::alloc::string::String,

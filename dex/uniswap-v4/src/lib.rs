@@ -69,7 +69,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     currency1: event.currency1.to_vec(),
                     fee: bigint_to_u64(&event.fee).unwrap_or_default(),
                     tick_spacing: bigint_to_i32(&event.tick_spacing).unwrap_or_default(),
-                    hooks: None, // NOT IMPLEMENTED
+                    hooks: event.hooks.to_vec(),
                     sqrt_price_x96: event.sqrt_price_x96.to_string(),
                     tick: bigint_to_i32(&event.tick).unwrap_or_default(),
                 });
