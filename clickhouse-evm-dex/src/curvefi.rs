@@ -228,6 +228,7 @@ fn process_plain_pool_deployed(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
+    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
     row.set("a", &event.a);
@@ -252,6 +253,7 @@ fn process_meta_pool_deployed(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
+    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coin", bytes_to_string(&event.coin, encoding));
     row.set("base_pool", bytes_to_string(&event.base_pool, encoding));

@@ -330,6 +330,7 @@ fn process_pool_created(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
+    row.set("factory", bytes_to_string(&log.address, encoding));
     row.set("token0", bytes_to_string(&event.token0, encoding));
     row.set("token1", bytes_to_string(&event.token1, encoding));
     row.set("fee", event.fee);

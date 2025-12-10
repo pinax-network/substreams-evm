@@ -18,7 +18,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                     process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Initialize(event)) => {
-                    process_initialize(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                    process_initialize(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::ModifyLiquidity(event)) => {
                     process_modify_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
@@ -178,6 +178,7 @@ fn process_protocol_fee_controller_updated(
 
 fn process_initialize(
     encoding: &Encoding,
+    store: &StoreGetProto<StorePool>,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -192,6 +193,13 @@ fn process_initialize(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+
+    // Get factory from store using pool ID
+    if let Some(pool) = get_store_by_address(store, &event.id) {
+        row.set("factory", bytes_to_string(&pool.factory, encoding));
+    } else {
+        row.set("factory", "");
+    }
 
     row.set("id", bytes_to_string(&event.id, encoding));
     row.set("currency0", bytes_to_string(&event.currency0, encoding));
