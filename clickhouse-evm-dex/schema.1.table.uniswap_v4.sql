@@ -28,7 +28,8 @@ ALTER TABLE uniswap_v4_initialize
     ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
     ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
     ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
-    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick';
+    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
+    ADD COLUMN IF NOT EXISTS hooks              String COMMENT 'Hooks contract address for the pool, or address(0) if none';
 
 -- Uniswap V4 ModifyLiquidity --
 CREATE TABLE IF NOT EXISTS uniswap_v4_modify_liquidity AS TEMPLATE_LOG
