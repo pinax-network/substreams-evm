@@ -45,26 +45,6 @@ message Log {
   }
 }
 
-/// @notice Emitted when an approval is made
-/// @param owner The address of the token owner
-/// @param spender The address of the spender
-/// @param value The amount of tokens approved
-message Approval {
-  bytes owner = 1;   // address (indexed)
-  bytes spender = 2; // address (indexed)
-  string value = 3;  // uint256
-}
-
-/// @notice Emitted when tokens are transferred
-/// @param from The address sending tokens
-/// @param to The address receiving tokens
-/// @param value The amount of tokens transferred
-message Transfer {
-  bytes from = 1;   // address (indexed)
-  bytes to = 2;     // address (indexed)
-  string value = 3; // uint256
-}
-
 /// @notice Emitted when the swap fee percentage is changed
 /// @param swapFeePercentage The new swap fee percentage
 message SwapFeePercentage {
@@ -231,6 +211,7 @@ message LiquidityManagement {
 // Primary key: pool address
 message StorePool {
   bytes factory = 1; // factory address that created the pool
+  repeated TokenConfig token_config = 3; // TokenConfig[]
 }
 
 /// @notice Emitted when a pool's paused state is changed
