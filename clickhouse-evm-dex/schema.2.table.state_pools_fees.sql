@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
     -- indexes --
     INDEX idx_tx_hash              (tx_hash)           TYPE bloom_filter GRANULARITY 4,
     INDEX idx_pool                 (pool)              TYPE set(64) GRANULARITY 4,
-    INDEX idx_protocol             (protocol)          TYPE set(8) GRANULARITY 4,
+    INDEX idx_protocol             (protocol)          TYPE set(8) GRANULARITY 4
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (pool, protocol);

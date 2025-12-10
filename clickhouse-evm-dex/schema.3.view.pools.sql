@@ -17,13 +17,13 @@ SELECT
     f.fee
 FROM state_pools_initialize AS i
 LEFT JOIN (
-    SELECT 
+    SELECT
         pool,
         protocol,
         fee
     FROM state_pools_fees
     WHERE (pool, protocol, block_num) IN (
-        SELECT 
+        SELECT
             pool,
             protocol,
             max(block_num) AS block_num
