@@ -48,13 +48,26 @@ fn process_trade(
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
 
+    let sell_token_str = bytes_to_string(&event.sell_token, encoding);
+    let buy_token_str = bytes_to_string(&event.buy_token, encoding);
+    
+    // Normalize token0/token1 lexicographically
+    let (token0, token1) = if sell_token_str <= buy_token_str {
+        (sell_token_str.clone(), buy_token_str.clone())
+    } else {
+        (buy_token_str.clone(), sell_token_str.clone())
+    };
+
     row.set("owner", bytes_to_string(&event.owner, encoding));
-    row.set("sell_token", bytes_to_string(&event.sell_token, encoding));
-    row.set("buy_token", bytes_to_string(&event.buy_token, encoding));
+    row.set("sell_token", sell_token_str);
+    row.set("buy_token", buy_token_str);
     row.set("sell_amount", &event.sell_amount);
     row.set("buy_amount", &event.buy_amount);
     row.set("fee_amount", &event.fee_amount);
     row.set("order_uid", bytes_to_string(&event.order_uid, encoding));
+    row.set("factory", bytes_to_string(&log.address, encoding));
+    row.set("token0", token0);
+    row.set("token1", token1);
 }
 
 fn process_settlement(
@@ -75,6 +88,7 @@ fn process_settlement(
     set_template_log(encoding, log, log_index, row);
 
     row.set("solver", bytes_to_string(&event.solver, encoding));
+    row.set("factory", bytes_to_string(&log.address, encoding));
 }
 
 fn process_order_invalidated(
@@ -96,6 +110,7 @@ fn process_order_invalidated(
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
     row.set("order_uid", bytes_to_string(&event.order_uid, encoding));
+    row.set("factory", bytes_to_string(&log.address, encoding));
 }
 
 fn process_pre_signature(
@@ -118,4 +133,5 @@ fn process_pre_signature(
     row.set("owner", bytes_to_string(&event.owner, encoding));
     row.set("order_uid", bytes_to_string(&event.order_uid, encoding));
     row.set("signed", if event.signed { 1u8 } else { 0u8 });
+    row.set("factory", bytes_to_string(&log.address, encoding));
 }
