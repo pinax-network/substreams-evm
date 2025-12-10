@@ -14,12 +14,13 @@ CREATE TABLE IF NOT EXISTS state_pools_tokens (
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'Total number of swaps for this token pair direction',
     
     -- indexes
-    INDEX idx_pool          (pool)          TYPE bloom_filter   GRANULARITY 1,
-    INDEX idx_factory       (factory)       TYPE set(1024)      GRANULARITY 1,
-    INDEX idx_protocol      (protocol)      TYPE set(4)         GRANULARITY 1,
-    INDEX idx_input_token   (input_token)   TYPE bloom_filter   GRANULARITY 1,
-    INDEX idx_output_token  (output_token)  TYPE bloom_filter   GRANULARITY 1,
-    INDEX idx_transactions  (transactions)  TYPE minmax         GRANULARITY 1
+    INDEX idx_pool          (pool)              TYPE bloom_filter   GRANULARITY 1,
+    INDEX idx_factory       (factory)           TYPE set(1024)      GRANULARITY 1,
+    INDEX idx_protocol      (protocol)          TYPE set(4)         GRANULARITY 1,
+    INDEX idx_input_token   (input_token)       TYPE bloom_filter   GRANULARITY 1,
+    INDEX idx_output_token  (output_token)      TYPE bloom_filter   GRANULARITY 1,
+    INDEX idx_token_pair    (input_token, output_token) TYPE bloom_filter GRANULARITY 1,
+    INDEX idx_transactions  (transactions)      TYPE minmax         GRANULARITY 1
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (
