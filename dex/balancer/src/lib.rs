@@ -138,7 +138,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::LiquidityAdded(pb::LiquidityAdded {
                     pool: event.pool.to_vec(),
                     liquidity_provider: event.liquidity_provider.to_vec(),
-                    kind: event.kind.to_u64() as u32,
+                    kind: event.kind.to_u64().min(u32::MAX as u64) as u32,
                     total_supply: event.total_supply.to_string(),
                     amounts_added_raw: event.amounts_added_raw.iter().map(|v| v.to_string()).collect(),
                     swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
@@ -152,7 +152,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::LiquidityRemoved(pb::LiquidityRemoved {
                     pool: event.pool.to_vec(),
                     liquidity_provider: event.liquidity_provider.to_vec(),
-                    kind: event.kind.to_u64() as u32,
+                    kind: event.kind.to_u64().min(u32::MAX as u64) as u32,
                     total_supply: event.total_supply.to_string(),
                     amounts_removed_raw: event.amounts_removed_raw.iter().map(|v| v.to_string()).collect(),
                     swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
@@ -176,7 +176,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_config: event.token_config.iter().map(|(token, token_type, rate_provider, pays_yield_fees)| {
                         pb::TokenConfig {
                             token: token.to_vec(),
-                            token_type: token_type.to_u64() as u32,
+                            token_type: token_type.to_u64().min(u32::MAX as u64) as u32,
                             rate_provider: rate_provider.to_vec(),
                             pays_yield_fees: *pays_yield_fees,
                         }
