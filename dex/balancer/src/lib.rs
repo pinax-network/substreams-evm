@@ -170,7 +170,44 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // PoolRegistered event
             if let Some(event) = balancer::v3::vault::events::PoolRegistered::match_and_decode(log) {
                 total_pool_registered += 1;
-                let event = pb::log::Log::PoolRegistered(pb::PoolRegistered { pool: event.pool.to_vec() });
+                let event = pb::log::Log::PoolRegistered(pb::PoolRegistered {
+                    pool: event.pool.to_vec(),
+                    factory: event.factory.to_vec(),
+                    token_config: event.token_config.iter().map(|(token, token_type, rate_provider, pays_yield_fees)| {
+                        pb::TokenConfig {
+                            token: token.to_vec(),
+                            token_type: token_type.to_u64() as u32,
+                            rate_provider: rate_provider.to_vec(),
+                            pays_yield_fees: *pays_yield_fees,
+                        }
+                    }).collect(),
+                    swap_fee_percentage: event.swap_fee_percentage.to_string(),
+                    pause_window_end_time: event.pause_window_end_time.to_string(),
+                    role_accounts: Some(pb::RoleAccounts {
+                        pause_manager: event.role_accounts.0.to_vec(),
+                        swap_fee_manager: event.role_accounts.1.to_vec(),
+                        pool_creator: event.role_accounts.2.to_vec(),
+                    }),
+                    hooks_config: Some(pb::HooksConfig {
+                        enable_hook_adjusted_amounts: event.hooks_config.0,
+                        should_call_before_initialize: event.hooks_config.1,
+                        should_call_after_initialize: event.hooks_config.2,
+                        should_call_compute_dynamic_swap_fee: event.hooks_config.3,
+                        should_call_before_swap: event.hooks_config.4,
+                        should_call_after_swap: event.hooks_config.5,
+                        should_call_before_add_liquidity: event.hooks_config.6,
+                        should_call_after_add_liquidity: event.hooks_config.7,
+                        should_call_before_remove_liquidity: event.hooks_config.8,
+                        should_call_after_remove_liquidity: event.hooks_config.9,
+                        hooks_address: event.hooks_config.10.to_vec(),
+                    }),
+                    liquidity_management: Some(pb::LiquidityManagement {
+                        disable_unbalanced_liquidity: event.liquidity_management.0,
+                        enable_add_liquidity_custom: event.liquidity_management.1,
+                        enable_remove_liquidity_custom: event.liquidity_management.2,
+                        enable_donation: event.liquidity_management.3,
+                    }),
+                });
                 transaction.logs.push(create_log(log, event));
             }
 

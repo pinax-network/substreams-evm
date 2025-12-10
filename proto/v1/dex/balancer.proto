@@ -170,10 +170,61 @@ message PoolInitialized {
 }
 
 /// @notice Emitted when a pool is registered
-/// @param pool The address of the pool
-/// @param factory The address of the factory that created the pool
+/// @param pool The address of the pool (indexed)
+/// @param factory The address of the factory that created the pool (indexed)
+/// @param tokenConfig Array of token configurations (token address, token type, rate provider, yield fee exempt)
+/// @param swapFeePercentage The swap fee percentage for the pool
+/// @param pauseWindowEndTime The timestamp when the pause window ends
+/// @param roleAccounts Tuple of role account addresses (pause manager, swap fee manager, pool creator)
+/// @param hooksConfig Hooks configuration flags and address
+/// @param liquidityManagement Liquidity management configuration flags
 message PoolRegistered {
-  bytes pool = 1; // address (indexed)
+  bytes pool = 1;                                    // address (indexed)
+  bytes factory = 2;                                 // address (indexed)
+  repeated TokenConfig token_config = 3;             // TokenConfig[]
+  string swap_fee_percentage = 4;                    // uint256
+  string pause_window_end_time = 5;                  // uint32
+  RoleAccounts role_accounts = 6;                    // (address, address, address)
+  HooksConfig hooks_config = 7;                      // hooks configuration
+  LiquidityManagement liquidity_management = 8;      // liquidity management flags
+}
+
+/// @notice Token configuration for a pool
+message TokenConfig {
+  bytes token = 1;            // address
+  uint32 token_type = 2;      // uint8 (token type enum)
+  bytes rate_provider = 3;    // address
+  bool paysYieldFees = 4;     // bool
+}
+
+/// @notice Role accounts for pool management
+message RoleAccounts {
+  bytes pause_manager = 1;      // address
+  bytes swap_fee_manager = 2;   // address
+  bytes pool_creator = 3;       // address
+}
+
+/// @notice Hooks configuration
+message HooksConfig {
+  bool enable_hook_adjusted_amounts = 1;
+  bool should_call_before_initialize = 2;
+  bool should_call_after_initialize = 3;
+  bool should_call_compute_dynamic_swap_fee = 4;
+  bool should_call_before_swap = 5;
+  bool should_call_after_swap = 6;
+  bool should_call_before_add_liquidity = 7;
+  bool should_call_after_add_liquidity = 8;
+  bool should_call_before_remove_liquidity = 9;
+  bool should_call_after_remove_liquidity = 10;
+  bytes hooks_address = 11;  // address
+}
+
+/// @notice Liquidity management configuration
+message LiquidityManagement {
+  bool disable_unbalanced_liquidity = 1;
+  bool enable_add_liquidity_custom = 2;
+  bool enable_remove_liquidity_custom = 3;
+  bool enable_donation = 4;
 }
 
 // StorePool - minimal pool storage type
