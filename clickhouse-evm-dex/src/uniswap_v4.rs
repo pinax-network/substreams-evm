@@ -200,4 +200,5 @@ fn process_initialize(
     row.set("tick_spacing", event.tick_spacing);
     row.set("sqrt_price_x96", &event.sqrt_price_x96);
     row.set("tick", event.tick);
+    row.set("hooks", bytes_to_string(&event.hooks, encoding));
 }
