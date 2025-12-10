@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS sunpump_purchase_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump PurchaseFeeSet events';
 ALTER TABLE sunpump_purchase_fee_set
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old purchase fee',
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New purchase fee';
 
@@ -99,6 +100,7 @@ CREATE TABLE IF NOT EXISTS sunpump_sale_fee_set AS TEMPLATE_LOG
 COMMENT 'SunPump SaleFeeSet events';
 ALTER TABLE sunpump_sale_fee_set
     -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS old_fee            UInt256 COMMENT 'Old sale fee',
     ADD COLUMN IF NOT EXISTS new_fee            UInt256 COMMENT 'New sale fee';
 
