@@ -41,10 +41,11 @@ GROUP BY
     pool,
     factory,
     protocol,
-    input_contract
+    token;
 
-UNION ALL
-
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_tokens_inverse
+TO state_pools_tokens
+AS
 SELECT
     pool,
     factory,
@@ -55,4 +56,4 @@ GROUP BY
     pool,
     factory,
     protocol,
-    output_contract;
+    token;
