@@ -11,9 +11,7 @@ ALTER TABLE sunpump_token_purchased
     ADD COLUMN IF NOT EXISTS token_reserve          UInt256 COMMENT 'Token reserve after swap (only for purchases)',
 
     -- TokenCreate --
-    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS creator                String COMMENT 'Token creator address',
-    ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index';
+    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address';
 
 -- SunPump TokenSold --
 CREATE TABLE IF NOT EXISTS sunpump_token_sold AS TEMPLATE_LOG
@@ -27,9 +25,7 @@ ALTER TABLE sunpump_token_sold
     ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'Swap fee amount',
 
     -- TokenCreate --
-    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS creator                String COMMENT 'Token creator address',
-    ADD COLUMN IF NOT EXISTS token_index            UInt256 COMMENT 'Token index';
+    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address';
 
 -- SunPump LaunchPending --
 CREATE TABLE IF NOT EXISTS sunpump_launch_pending AS TEMPLATE_LOG

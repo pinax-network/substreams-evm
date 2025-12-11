@@ -1,24 +1,38 @@
--- Pools VIEW combining state_pools_initialize and state_pools_fees --
 CREATE VIEW IF NOT EXISTS pools AS
 SELECT
-    -- tokens --
-    t.factory as factory,
-    t.pool as pool,
-    t.protocol as protocol,
-    t.input_contract as input_contract,
-    t.output_contract as output_contract,
+    t.factory AS factory,
+    t.pool AS pool,
+    t.protocol AS protocol,
+    t.tokens AS tokens,  -- Array of tokens
 
     -- initialize --
-    i.block_num as initialize_block_num,
-    i.timestamp as initialize_timestamp,
-    i.tx_hash as initialize_tx_hash,
+    i.block_num  AS initialize_block_num,
+    i.timestamp  AS initialize_timestamp,
+    i.tx_hash    AS initialize_tx_hash,
 
     -- fees --
-    f.fee as fee,
-    f.block_num as fee_block_num,
-    f.timestamp as fee_timestamp,
-    f.tx_hash as fee_tx_hash
-
-FROM state_pools_tokens AS t
-LEFT JOIN state_pools_fees AS f ON t.pool = f.pool AND t.factory = f.factory
-LEFT JOIN state_pools_initialize AS i ON t.pool = i.pool AND t.factory = i.factory;
+    f.fee        AS fee,
+    f.block_num  AS fee_block_num,
+    f.timestamp  AS fee_timestamp,
+    f.tx_hash    AS fee_tx_hash
+FROM
+(
+    SELECT
+        factory,
+        pool,
+        protocol,
+        groupArrayDistinct(token) AS tokens
+    FROM state_pools_tokens
+    GROUP BY
+        factory,
+        pool,
+        protocol
+) AS t
+LEFT JOIN state_pools_fees AS f
+    ON t.pool = f.pool
+   AND t.factory = f.factory
+   AND t.protocol = f.protocol
+LEFT JOIN state_pools_initialize AS i
+    ON t.pool = i.pool
+   AND t.factory = i.factory
+   AND t.protocol = i.protocol;
