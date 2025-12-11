@@ -35,6 +35,17 @@ CREATE TABLE IF NOT EXISTS swaps (
     output_contract             LowCardinality(String) COMMENT 'Output token contract address',
     output_amount               UInt256 COMMENT 'Amount of output tokens received',
 
+    -- contraints data validation --
+    CONSTRAINT log_address_not_empty CHECK log_address != '',
+    CONSTRAINT tx_hash_not_empty CHECK tx_hash != '',
+    CONSTRAINT factory_not_empty CHECK factory != '',
+    CONSTRAINT pool_not_empty CHECK pool != '',
+    CONSTRAINT user_not_empty CHECK user != '',
+    CONSTRAINT input_contract_not_empty CHECK input_contract != '',
+    CONSTRAINT output_contract_not_empty CHECK output_contract != '',
+    CONSTRAINT input_amount_nonzero CHECK input_amount > 0,
+    CONSTRAINT output_amount_nonzero CHECK output_amount > 0,
+
     -- materialized token pair (canonical ordering) --
     token0                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
     token1                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, output_contract, input_contract) COMMENT 'Lexicographically larger token address',
@@ -127,7 +138,7 @@ SELECT
     buyer                              AS user,
 
     -- Input side: TRX being paid
-    ''                                 AS input_contract,  -- TRX native asset
+    '0x'                                 AS input_contract,  -- TRX native asset
     trx_amount                         AS input_amount,
 
     -- Output side: Tokens being purchased
@@ -158,6 +169,7 @@ SELECT
 
     -- swap --
     'sunpump' AS protocol,
+    factory,
     log_address                        AS pool,
     seller                             AS user,
 
@@ -193,6 +205,7 @@ SELECT
 
     -- swap --
     'uniswap-v1' AS protocol,
+    factory,
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -229,6 +242,7 @@ SELECT
 
     -- swap --
     'uniswap-v1' AS protocol,
+    factory,
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -265,6 +279,7 @@ SELECT
 
     -- swap --
     'uniswap-v2' AS protocol,
+    factory,
     log_address  AS pool,
     sender       AS user,
 
@@ -301,6 +316,7 @@ SELECT
 
     -- swap --
     'uniswap-v3' AS protocol,
+    factory,
     log_address  AS pool,
     sender       AS user,
 
@@ -337,6 +353,7 @@ SELECT
 
     -- swap --
     'uniswap-v4' AS protocol,
+    factory,
     id           AS pool,
     sender       AS user,
 
@@ -376,6 +393,7 @@ SELECT
 
     -- swap --
     'curvefi' AS protocol,
+    factory,
     log_address                        AS pool,
     buyer                              AS user,
 
@@ -411,6 +429,7 @@ SELECT
 
     -- swap --
     'balancer' AS protocol,
+    factory,
     pool       AS pool,
     tx_from    AS user,  -- Using tx_from as the user since there's no explicit user in the event
 
@@ -446,6 +465,7 @@ SELECT
 
     -- swap --
     'bancor' AS protocol,
+    factory,
     log_address                        AS pool,
     trader                             AS user,
 
