@@ -21,7 +21,7 @@ FROM
         factory,
         pool,
         protocol,
-        groupArrayDistinct(token) AS tokens
+        arraySort(groupArrayDistinct(token)) AS tokens
     FROM state_pools_tokens
     GROUP BY
         factory,
