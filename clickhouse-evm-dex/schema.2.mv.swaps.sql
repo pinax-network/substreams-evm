@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS swaps (
 
     -- contraints data validation --
     CONSTRAINT log_address_not_empty CHECK log_address != '',
+    CONSTRAINT log_topic0_not_empty CHECK log_topic0 != '',
     CONSTRAINT tx_hash_not_empty CHECK tx_hash != '',
     CONSTRAINT factory_not_empty CHECK factory != '',
     CONSTRAINT pool_not_empty CHECK pool != '',
@@ -138,7 +139,7 @@ SELECT
     buyer                              AS user,
 
     -- Input side: TRX being paid
-    '0x'                                 AS input_contract,  -- TRX native asset
+    eth                                AS input_contract,  -- TRX native asset
     trx_amount                         AS input_amount,
 
     -- Output side: Tokens being purchased

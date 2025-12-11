@@ -2,6 +2,7 @@ use common::{bytes_to_string, Encoding};
 use proto::pb::sunpump::v1::{self as sunpump, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
+use substreams_ethereum::NULL_ADDRESS;
 
 use crate::{
     logs::{log_key, set_template_log},
@@ -65,6 +66,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
 pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
+    row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
 
 fn process_sunpump_token_purchased(
@@ -148,6 +150,7 @@ fn process_sunpump_launch_pending(
 
     // Event info
     row.set("token", bytes_to_string(&event.token, encoding));
+    row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
 
 fn process_sunpump_launcher_changed(
@@ -413,4 +416,5 @@ fn process_sunpump_token_launched(
 
     // Event info
     row.set("token", bytes_to_string(&event.token, encoding));
+    row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
