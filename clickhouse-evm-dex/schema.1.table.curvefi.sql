@@ -13,8 +13,7 @@ ALTER TABLE curvefi_token_exchange
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi AddLiquidity --
 CREATE TABLE IF NOT EXISTS curvefi_add_liquidity AS TEMPLATE_LOG
@@ -29,8 +28,7 @@ ALTER TABLE curvefi_add_liquidity
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi RemoveLiquidity --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity AS TEMPLATE_LOG
@@ -44,8 +42,7 @@ ALTER TABLE curvefi_remove_liquidity
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi RemoveLiquidityOne --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity_one AS TEMPLATE_LOG
@@ -58,8 +55,7 @@ ALTER TABLE curvefi_remove_liquidity_one
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi RemoveLiquidityImbalance --
 CREATE TABLE IF NOT EXISTS curvefi_remove_liquidity_imbalance AS TEMPLATE_LOG
@@ -74,8 +70,7 @@ ALTER TABLE curvefi_remove_liquidity_imbalance
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi PlainPoolDeployed --
 CREATE TABLE IF NOT EXISTS curvefi_plain_pool_deployed AS TEMPLATE_LOG
@@ -113,8 +108,7 @@ ALTER TABLE curvefi_commit_new_fee
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 
 -- Curve.fi NewFee --
 CREATE TABLE IF NOT EXISTS curvefi_new_fee AS TEMPLATE_LOG
@@ -126,6 +120,5 @@ ALTER TABLE curvefi_new_fee
 
     -- PlainPoolDeployed (store) --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses',
-    ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin addresses';
 

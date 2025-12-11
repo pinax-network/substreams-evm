@@ -11,8 +11,7 @@ ALTER TABLE bancor_conversion
     ADD COLUMN IF NOT EXISTS conversion_fee     Int256 COMMENT 'Conversion fee',
 
     -- Activation (store) --
-    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
-    ADD COLUMN IF NOT EXISTS converter_type     UInt8 COMMENT 'Converter type (LiquidityToken = 1, LiquidityPool = 2, FeeConverter = 3, StablePool = 4)';
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address';
 
 -- Bancor LiquidityAdded --
 CREATE TABLE IF NOT EXISTS bancor_liquidity_added AS TEMPLATE_LOG
