@@ -8,25 +8,25 @@ package:
 
 imports:
   # SQL Sink Substreams
-  database_changes: https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v2.0.0/substreams-database-change-v2.0.0.spkg
-  sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
+  database_changes: ./packages/substreams-database-change-v2.0.0.spkg
+  sql: ./packages/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Tron DEX Substreams
-  sunpump: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/sunpump-v0.2.3.spkg
+  sunpump: ./packages/sunpump-v0.2.3.spkg
 
   # Ethereum DEX Substreams
-  balancer_store: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/balancer-v0.2.3.spkg
-  balancer: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.4/balancer-v0.2.4.spkg
-  bancor: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/bancor-v0.2.3.spkg
-  cow: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/cow-v0.2.3.spkg
-  curvefi: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/curvefi-v0.2.3.spkg
+  balancer_store: ./packages/balancer-v0.2.3.spkg
+  balancer: ./packages/balancer-v0.2.4.spkg
+  bancor: ./packages/bancor-v0.2.3.spkg
+  cow: ./packages/cow-v0.2.3.spkg
+  curvefi: ./packages/curvefi-v0.2.3.spkg
 
   # Uniswap DEX Substreams
-  uniswap_v1: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/uniswap-v1-v0.2.3.spkg
-  uniswap_v2: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/uniswap-v2-v0.2.3.spkg
-  uniswap_v3: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/uniswap-v3-v0.2.3.spkg
-  uniswap_v4_store: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.3/uniswap-v4-v0.2.3.spkg
-  uniswap_v4: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.4/uniswap-v4-v0.2.4.spkg
+  uniswap_v1: ./packages/uniswap-v1-v0.2.3.spkg
+  uniswap_v2: ./packages/uniswap-v2-v0.2.3.spkg
+  uniswap_v3: ./packages/uniswap-v3-v0.2.3.spkg
+  uniswap_v4_store: ./packages/uniswap-v4-v0.2.3.spkg
+  uniswap_v4: ./packages/uniswap-v4-v0.2.4.spkg
 
 binaries:
   default:
