@@ -35,4 +35,5 @@ LEFT JOIN state_pools_fees AS f
 LEFT JOIN state_pools_initialize AS i
     ON t.pool = i.pool
    AND t.factory = i.factory
-   AND t.protocol = i.protocol;
+   AND t.protocol = i.protocol
+SETTINGS join_use_nulls = 1;
