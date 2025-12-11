@@ -11,7 +11,8 @@ ALTER TABLE sunpump_token_purchased
     ADD COLUMN IF NOT EXISTS token_reserve          UInt256 COMMENT 'Token reserve after swap (only for purchases)',
 
     -- TokenCreate --
-    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address';
+    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS eth                    String COMMENT 'ETH contract address, Null (0) address used to represent ETH';
 
 -- SunPump TokenSold --
 CREATE TABLE IF NOT EXISTS sunpump_token_sold AS TEMPLATE_LOG
@@ -25,14 +26,16 @@ ALTER TABLE sunpump_token_sold
     ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'Swap fee amount',
 
     -- TokenCreate --
-    ADD COLUMN IF NOT EXISTS factory                String COMMENT 'Factory contract address';
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS eth                String COMMENT 'ETH contract address, Null (0) address used to represent ETH';
 
 -- SunPump LaunchPending --
 CREATE TABLE IF NOT EXISTS sunpump_launch_pending AS TEMPLATE_LOG
 COMMENT 'SunPump LaunchPending events';
 ALTER TABLE sunpump_launch_pending
     -- event information --
-    ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address';
+    ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address',
+    ADD COLUMN IF NOT EXISTS eth                String COMMENT 'ETH contract address, Null (0) address used to represent ETH';
 
 -- SunPump LauncherChanged --
 CREATE TABLE IF NOT EXISTS sunpump_launcher_changed AS TEMPLATE_LOG
@@ -128,4 +131,5 @@ CREATE TABLE IF NOT EXISTS sunpump_token_launched AS TEMPLATE_LOG
 COMMENT 'SunPump TokenLaunched events';
 ALTER TABLE sunpump_token_launched
     -- event information --
-    ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address';
+    ADD COLUMN IF NOT EXISTS token              LowCardinality(String) COMMENT 'Token contract address',
+    ADD COLUMN IF NOT EXISTS eth                String COMMENT 'ETH contract address, Null (0) address used to represent ETH';

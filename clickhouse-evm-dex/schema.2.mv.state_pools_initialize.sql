@@ -40,7 +40,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     pair AS pool,
     'uniswap-v2' AS protocol
 FROM uniswap_v2_pair_created;
@@ -59,7 +59,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     pool,
     'uniswap-v3' AS protocol
 FROM uniswap_v3_pool_created;
@@ -78,7 +78,7 @@ SELECT
     tx_hash,
 
     -- log --
-    log_address AS factory,
+    factory,
 
     -- event --
     id as pool,
@@ -99,7 +99,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     exchange AS pool,
     'uniswap-v1' AS protocol
 FROM uniswap_v1_new_exchange;
@@ -118,7 +118,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     token_address AS pool,
     'sunpump' AS protocol
 FROM sunpump_token_create;
@@ -137,7 +137,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     token_address AS pool,
     'sunpump' AS protocol
 FROM sunpump_token_create_legacy;
@@ -156,7 +156,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     address AS pool,
     'curvefi' AS protocol
 FROM curvefi_plain_pool_deployed;
@@ -175,7 +175,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     address AS pool,
     'curvefi' AS protocol
 FROM curvefi_meta_pool_deployed;
@@ -194,7 +194,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     pool,
     'balancer' AS protocol
 FROM balancer_pool_registered;
@@ -213,7 +213,7 @@ SELECT
     tx_hash,
 
     -- event --
-    log_address AS factory,
+    factory,
     converter AS pool,
     'bancor' AS protocol
 FROM bancor_new_converter;
