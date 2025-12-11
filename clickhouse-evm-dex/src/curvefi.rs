@@ -71,16 +71,16 @@ fn process_token_exchange(
     event: &curvefi::TokenExchange,
 ) {
     if let Some(pool) = get_store_by_address(store, &log.address) {
-        // proceed only if pool details are available
-        let key = log_key(clock, tx_index, log_index);
-        let row = tables.create_row("curvefi_token_exchange", key);
-
         // compute token indices from `coins` of the pool
         let sold_token = parse_coin(encoding, event.sold_id.clone(), &pool.coins);
         let bought_token = parse_coin(encoding, event.bought_id.clone(), &pool.coins);
         if sold_token.is_none() || bought_token.is_none() {
             return;
         }
+
+        // proceed only if pool details are available
+        let key = log_key(clock, tx_index, log_index);
+        let row = tables.create_row("curvefi_token_exchange", key);
 
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
