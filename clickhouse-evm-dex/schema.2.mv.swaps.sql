@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS swaps (
     CONSTRAINT user_not_empty CHECK user != '',
     CONSTRAINT input_contract_not_empty CHECK input_contract != '',
     CONSTRAINT output_contract_not_empty CHECK output_contract != '',
-    CONSTRAINT input_amount_nonzero CHECK input_amount > 0,
-    CONSTRAINT output_amount_nonzero CHECK output_amount > 0,
+    -- CONSTRAINT input_amount_nonzero CHECK input_amount > 0, --
+    -- CONSTRAINT output_amount_nonzero CHECK output_amount > 0, --
 
     -- materialized token pair (canonical ordering) --
     token0                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
@@ -179,7 +179,7 @@ SELECT
     token_amount                       AS input_amount,
 
     -- Output side: TRX being received
-    ''                                 AS output_contract,  -- TRX native asset
+    eth                                AS output_contract,  -- TRX native asset
     trx_amount                         AS output_amount
 
 FROM sunpump_token_sold;
@@ -211,7 +211,7 @@ SELECT
     buyer                              AS user,
 
     -- Input side: ETH being sold
-    ''  AS input_contract,  -- ETH native asset
+    eth  AS input_contract,  -- ETH native asset
     eth_sold                           AS input_amount,
 
     -- Output side: Tokens being bought
@@ -252,7 +252,7 @@ SELECT
     tokens_sold                        AS input_amount,
 
     -- Output side: ETH being bought
-    ''                                 AS output_contract,  -- ETH native asset
+    eth                                AS output_contract,  -- ETH native asset
     eth_bought                         AS output_amount
 
 FROM uniswap_v1_eth_purchase;
