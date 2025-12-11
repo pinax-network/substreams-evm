@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS swaps (
     CONSTRAINT user_not_empty CHECK user != '',
     CONSTRAINT input_contract_not_empty CHECK input_contract != '',
     CONSTRAINT output_contract_not_empty CHECK output_contract != '',
-    -- CONSTRAINT input_amount_nonzero CHECK input_amount > 0, --
-    -- CONSTRAINT output_amount_nonzero CHECK output_amount > 0, --
+    CONSTRAINT input_amount_nonzero CHECK input_amount > 0,
+    CONSTRAINT output_amount_nonzero CHECK output_amount > 0,
 
     -- materialized token pair (canonical ordering) --
     token0                      LowCardinality(String) MATERIALIZED if(input_contract <= output_contract, input_contract, output_contract) COMMENT 'Lexicographically smaller token address',
@@ -146,7 +146,8 @@ SELECT
     token                              AS output_contract,
     token_amount                       AS output_amount
 
-FROM sunpump_token_purchased;
+FROM sunpump_token_purchased
+WHERE input_amount > 0 AND output_amount > 0;
 
 -- SunPump TokenSold: User sells tokens for TRX (Token → TRX)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_sold
@@ -182,7 +183,8 @@ SELECT
     eth                                AS output_contract,  -- TRX native asset
     trx_amount                         AS output_amount
 
-FROM sunpump_token_sold;
+FROM sunpump_token_sold
+WHERE input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V1 TokenPurchase: User buys tokens with ETH (ETH → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
@@ -218,7 +220,8 @@ SELECT
     token                              AS output_contract,
     tokens_bought                      AS output_amount
 
-FROM uniswap_v1_token_purchase;
+FROM uniswap_v1_token_purchase
+WHERE input_amount > 0 AND output_amount > 0;
 
 
 -- Uniswap V1 EthPurchase: User buys ETH with tokens (Token → ETH)
@@ -255,10 +258,12 @@ SELECT
     eth                                AS output_contract,  -- ETH native asset
     eth_bought                         AS output_amount
 
-FROM uniswap_v1_eth_purchase;
+FROM uniswap_v1_eth_purchase
+WHERE input_amount > 0 AND output_amount > 0;
 
 
--- Uniswap V2 Swap
+-- Uniswap V2 Swap (not Flash Swaps)
+-- https://github.com/pinax-network/substreams-evm/issues/66
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
 TO swaps AS
 SELECT
@@ -284,16 +289,32 @@ SELECT
     log_address  AS pool,
     sender       AS user,
 
-    -- Input side
+    -- Input side (only one of amount0_in / amount1_in is > 0 here)
     if (amount0_in > toUInt256(0), token0, token1)      AS input_contract,
     if (amount0_in > toUInt256(0), amount0_in, amount1_in) AS input_amount,
 
-    -- Output side
+    -- Output side (only one of amount0_out / amount1_out is > 0 here)
     if (amount0_in > toUInt256(0), token1, token0)      AS output_contract,
     if (amount0_in > toUInt256(0), amount1_out, amount0_out) AS output_amount
 
-FROM uniswap_v2_swap;
-
+FROM uniswap_v2_swap
+WHERE
+    -- token0 -> token1
+    (
+        amount0_in  >  toUInt256(0) AND
+        amount1_in  =  toUInt256(0) AND
+        amount0_out =  toUInt256(0) AND
+        amount1_out >  toUInt256(0)
+    )
+    OR
+    -- token1 -> token0
+    (
+        amount1_in  >  toUInt256(0) AND
+        amount0_in  =  toUInt256(0) AND
+        amount1_out =  toUInt256(0) AND
+        amount0_out >  toUInt256(0)
+    ) AND
+    input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V3 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
@@ -329,8 +350,8 @@ SELECT
     if (amount0 < toString(toInt256(0)), token1, token0)      AS output_contract,
     if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
-FROM uniswap_v3_swap;
-
+FROM uniswap_v3_swap
+WHERE input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V4 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
@@ -366,7 +387,8 @@ SELECT
     if (amount0 < toString(toInt256(0)), currency1, currency0)      AS output_contract,
     if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
-FROM uniswap_v4_swap;
+FROM uniswap_v4_swap
+WHERE input_amount > 0 AND output_amount > 0;
 
 
 -- Curve.fi TokenExchange (Swap)
@@ -406,7 +428,8 @@ SELECT
 
     bought_token AS output_contract,
     bought_amount AS output_amount
-FROM curvefi_token_exchange;
+FROM curvefi_token_exchange
+WHERE input_amount > 0 AND output_amount > 0;
 
 -- Balancer V3 Vault Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
@@ -442,7 +465,8 @@ SELECT
     token_out                          AS output_contract,
     amount_out                         AS output_amount
 
-FROM balancer_vault_swap;
+FROM balancer_vault_swap
+WHERE input_amount > 0 AND output_amount > 0;
 
 -- Bancor Conversion (Swap)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
@@ -478,4 +502,5 @@ SELECT
     target_token                       AS output_contract,
     target_amount                      AS output_amount
 
-FROM bancor_conversion;
+FROM bancor_conversion
+WHERE input_amount > 0 AND output_amount > 0;
