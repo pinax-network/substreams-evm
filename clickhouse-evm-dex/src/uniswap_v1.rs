@@ -2,6 +2,7 @@ use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v1::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
+use substreams_ethereum::NULL_ADDRESS;
 
 use crate::{
     logs::{log_key, set_template_log},
@@ -38,6 +39,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("token", bytes_to_string(&value.currency0, encoding));
+    row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
 
 fn process_token_purchase(
@@ -163,4 +165,5 @@ fn process_new_exchange(
 
     row.set("exchange", bytes_to_string(&event.exchange, encoding));
     row.set("token", bytes_to_string(&event.token, encoding));
+    row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
