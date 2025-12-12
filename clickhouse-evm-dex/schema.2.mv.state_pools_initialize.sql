@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     ) COMMENT 'protocol identifier',
 
     -- indexes --
-    INDEX idx_factory           (factory)           TYPE set(1024)              GRANULARITY 1,
-    INDEX idx_pool              (pool)              TYPE bloom_filter           GRANULARITY 1
+    INDEX idx_factory           (factory)           TYPE set(1024)        GRANULARITY 1,
+    INDEX idx_protocol          (protocol)          TYPE set(8)           GRANULARITY 1
 )
 ENGINE = ReplacingMergeTree(inv_block_num)
-ORDER BY (protocol, factory, pool);
+ORDER BY (pool, factory, protocol);
 
 -- Uniswap::V2::Factory:PairCreated --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created

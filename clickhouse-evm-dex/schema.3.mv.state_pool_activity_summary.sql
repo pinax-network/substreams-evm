@@ -18,13 +18,12 @@ CREATE TABLE IF NOT EXISTS state_pool_activity_summary (
     transactions         UInt64,
 
     -- indexes --
-    INDEX idx_protocol          (protocol)                  TYPE set(4)             GRANULARITY 1,
-    INDEX idx_factory           (factory)                   TYPE set(256)           GRANULARITY 1,
-    INDEX idx_pool              (pool)                      TYPE set(1024)          GRANULARITY 1,
+    INDEX idx_protocol          (protocol)                  TYPE set(8)             GRANULARITY 1,
+    INDEX idx_factory           (factory)                   TYPE set(1024)          GRANULARITY 1,
     INDEX idx_transactions      (transactions)              TYPE minmax             GRANULARITY 1
 )
 ENGINE = SummingMergeTree
-ORDER BY (protocol, factory, pool);
+ORDER BY (pool, factory, protocol);
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pool_activity_summary
 TO state_pool_activity_summary

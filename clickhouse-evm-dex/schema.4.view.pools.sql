@@ -32,20 +32,20 @@ FROM state_pool_activity_summary AS s
 
 -- initialize (required) --
 JOIN state_pools_initialize AS i
-    ON s.protocol = i.protocol
+    ON s.pool = i.pool
    AND s.factory = i.factory
-   AND s.pool = i.pool
+   AND s.protocol = i.protocol
 
 -- fees (optional) --
 LEFT JOIN state_pools_fees AS f
-    ON s.protocol = f.protocol
+    ON s.pool = f.pool
    AND s.factory = f.factory
-   AND s.pool = f.pool
+   AND s.protocol = f.protocol
 
 LEFT ANY JOIN state_pools_tokens AS t
-    ON s.protocol = t.protocol
+    ON s.pool = t.pool
    AND s.factory = t.factory
-   AND s.pool = t.pool
+   AND s.protocol = t.protocol
 
 -- must have at least 2 tokens --
 WHERE length(tokens) >= 2

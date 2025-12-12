@@ -27,14 +27,19 @@ CREATE TABLE IF NOT EXISTS state_pools_tokens (
     -- state --
     token                   String COMMENT 'token contract address',
 
+    -- indexes --
+    INDEX idx_protocol          (protocol)                  TYPE set(8)             GRANULARITY 1,
+    INDEX idx_factory           (factory)                   TYPE set(1024)          GRANULARITY 1,
+
     -- Projections --
     -- optimize for grouped array token --
-    PROJECTION prj_group_array_distinct ( SELECT arraySort(groupArrayDistinct(token)), protocol, factory, pool GROUP BY protocol, factory, pool, token ),
+    PROJECTION prj_group_array_distinct ( SELECT arraySort(groupArrayDistinct(token)), pool, factory, protocol GROUP BY pool, factory, protocol ),
+
     -- optimized for single token --
-    PROJECTION prj_order_by_token ( SELECT token, protocol, factory, pool ORDER BY token, protocol, factory, pool ),
+    PROJECTION prj_order_by_token ( SELECT token, pool, factory, protocol ORDER BY token, pool, factory, protocol ),
 )
 ENGINE = ReplacingMergeTree(block_num)
-ORDER BY (protocol, factory, pool, token)
+ORDER BY (pool, factory, protocol, token)
 SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'State table aggregating token pair swap data per pool';
 
