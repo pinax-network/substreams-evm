@@ -3,14 +3,23 @@ CREATE TABLE IF NOT EXISTS ohlc_prices (
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
 
-    -- chain + DEX identity
-    protocol                LowCardinality(String) COMMENT 'DEX protocol name',
+    -- DEX identity
+    protocol                    Enum8(
+        'sunpump' = 1,
+        'uniswap_v1' = 2,
+        'uniswap_v2' = 3,
+        'uniswap_v3' = 4,
+        'uniswap_v4' = 5,
+        'curvefi' = 6,
+        'balancer' = 7,
+        'bancor' = 8
+    ) COMMENT 'protocol identifier',
     factory                 LowCardinality(String) COMMENT 'Factory contract address',
-    pool                    LowCardinality(String) COMMENT 'Pool/exchange contract address',
+    pool                    String COMMENT 'Pool/exchange contract address',
 
     -- token identity (normalized ids as strings)
-    token0                  LowCardinality(String) COMMENT 'Lexicographically smaller token address',
-    token1                  LowCardinality(String) COMMENT 'Lexicographically larger token address',
+    token0                  String COMMENT 'Lexicographically smaller token address',
+    token1                  String COMMENT 'Lexicographically larger token address',
 
     -- Aggregate --
     open0                   AggregateFunction(argMin, Float64, UInt64) COMMENT 'opening price of token0 in the window',

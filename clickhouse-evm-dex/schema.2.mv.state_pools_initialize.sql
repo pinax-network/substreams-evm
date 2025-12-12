@@ -6,25 +6,32 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     timestamp                   DateTime('UTC'),
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
+    -- version: larger = "wins" => smallest block_num wins
+    inv_block_num Int64 MATERIALIZED (-toInt64(block_num)),
+
     -- transaction --
     tx_hash                     String,
 
-    -- event --
-    factory                     LowCardinality(String) COMMENT 'factory address',
-    pool                        LowCardinality(String) COMMENT 'pool address',
-    protocol                    Enum8(
+    -- DEX identity
+    factory                 LowCardinality(String) COMMENT 'Factory contract address',
+    pool                    String COMMENT 'Pool/exchange contract address',
+    protocol                Enum8(
         'sunpump' = 1,
-        'uniswap-v1' = 2,
-        'uniswap-v2' = 3,
-        'uniswap-v3' = 4,
-        'uniswap-v4' = 5,
+        'uniswap_v1' = 2,
+        'uniswap_v2' = 3,
+        'uniswap_v3' = 4,
+        'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
-    ) COMMENT 'protocol identifier'
+    ) COMMENT 'protocol identifier',
+
+    -- indexes --
+    INDEX idx_factory           (factory)           TYPE set(1024)        GRANULARITY 1,
+    INDEX idx_protocol          (protocol)          TYPE set(8)           GRANULARITY 1
 )
-ENGINE = ReplacingMergeTree
-ORDER BY (pool, factory);
+ENGINE = ReplacingMergeTree(inv_block_num)
+ORDER BY (pool, factory, protocol);
 
 -- Uniswap::V2::Factory:PairCreated --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created
@@ -42,7 +49,7 @@ SELECT
     -- event --
     factory,
     pair AS pool,
-    'uniswap-v2' AS protocol
+    'uniswap_v2' AS protocol
 FROM uniswap_v2_pair_created;
 
 -- Uniswap::V3::Factory:PoolCreated --
@@ -61,7 +68,7 @@ SELECT
     -- event --
     factory,
     pool,
-    'uniswap-v3' AS protocol
+    'uniswap_v3' AS protocol
 FROM uniswap_v3_pool_created;
 
 -- Uniswap::V4::IPoolManager:Initialize --
@@ -82,7 +89,7 @@ SELECT
 
     -- event --
     id as pool,
-    'uniswap-v4' AS protocol
+    'uniswap_v4' AS protocol
 FROM uniswap_v4_initialize;
 
 -- Uniswap::V1::Factory:NewExchange --
@@ -101,7 +108,7 @@ SELECT
     -- event --
     factory,
     exchange AS pool,
-    'uniswap-v1' AS protocol
+    'uniswap_v1' AS protocol
 FROM uniswap_v1_new_exchange;
 
 -- SunPump::TokenCreate --
