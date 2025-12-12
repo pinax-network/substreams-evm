@@ -33,10 +33,10 @@ CREATE TABLE IF NOT EXISTS state_pools_tokens (
 
     -- Projections --
     -- optimize for grouped array token --
-    PROJECTION prj_group_array_distinct ( SELECT arraySort(groupArrayDistinct(token)), pool, factory, protocol GROUP BY pool, factory, protocol ),
+    PROJECTION prj_group_array_distinct_token ( SELECT arraySort(groupArrayDistinct(token)), pool, factory, protocol GROUP BY pool, factory, protocol ),
 
     -- optimized for single token --
-    PROJECTION prj_order_by_token ( SELECT token, pool, factory, protocol ORDER BY token, pool, factory, protocol ),
+    PROJECTION prj_group_by_pool ( SELECT token, pool, factory, protocol GROUP BY token, pool, factory, protocol ),
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (pool, factory, protocol, token)
