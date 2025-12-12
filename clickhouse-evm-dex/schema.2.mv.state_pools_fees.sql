@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
 
     -- event --
     factory                     LowCardinality(String) COMMENT 'factory address',
-    pool                        LowCardinality(String) COMMENT 'pool address',
+    pool                        String COMMENT 'pool address',
     fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)',
     protocol                    Enum8(
         'sunpump' = 1,
@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
-    ) COMMENT 'protocol identifier'
+    ) COMMENT 'protocol identifier',
 )
 ENGINE = ReplacingMergeTree(block_num)
-ORDER BY (pool, protocol);
+ORDER BY (protocol, factory, pool);
 
 -- Uniswap::V1::Factory:NewExchange (Initialize) --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_new_exchange_fee

@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
 
     -- event --
     factory                     LowCardinality(String) COMMENT 'factory address',
-    pool                        LowCardinality(String) COMMENT 'pool address',
+    pool                        String COMMENT 'pool address',
     protocol                    Enum8(
         'sunpump' = 1,
         'uniswap-v1' = 2,
@@ -21,10 +21,14 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
-    ) COMMENT 'protocol identifier'
+    ) COMMENT 'protocol identifier',
+
+    -- indexes --
+    INDEX idx_factory           (factory)           TYPE set(1024)              GRANULARITY 1,
+    INDEX idx_pool              (pool)              TYPE bloom_filter           GRANULARITY 1
 )
-ENGINE = ReplacingMergeTree
-ORDER BY (pool, factory);
+ENGINE = MergeTree
+ORDER BY (protocol, factory, pool);
 
 -- Uniswap::V2::Factory:PairCreated --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created
