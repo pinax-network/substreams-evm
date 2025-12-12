@@ -13,16 +13,19 @@ SELECT
 
     -- fees (optional) --
     f.fee           AS fee,
-    f.block_num     AS fee_block_num,
-    f.timestamp     AS fee_timestamp,
-    f.tx_hash       AS fee_tx_hash,
+    f.block_num     AS last_fee_block_num,
+    f.timestamp     AS last_fee_timestamp,
+    f.tx_hash       AS last_fee_tx_hash,
 
     -- tokens (required >=2 token) --
     (
         SELECT arraySort(groupArrayDistinct(token))
         FROM state_pools_tokens
         WHERE factory = s.factory AND pool = s.pool AND protocol = s.protocol
-    ) AS tokens
+    ) AS tokens,
+    t.block_num     AS last_activity_block_num,
+    t.timestamp     AS last_activity_timestamp,
+    t.tx_hash       AS last_activity_tx_hash
 
 -- transactions (summing) --
 FROM state_pool_activity_summary AS s
@@ -38,6 +41,11 @@ LEFT JOIN state_pools_fees AS f
     ON s.protocol = f.protocol
    AND s.factory = f.factory
    AND s.pool = f.pool
+
+LEFT JOIN state_pools_tokens AS t
+    ON s.protocol = t.protocol
+   AND s.factory = t.factory
+   AND s.pool = t.pool
 
 -- must have at least 2 tokens --
 WHERE length(tokens) >= 2
