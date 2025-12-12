@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
     tx_from                     String,
-    tx_to                       LowCardinality(String),
+    tx_to                       String,
     tx_nonce                    UInt64,
     tx_gas_price                UInt256,
     tx_gas_limit                UInt64,
@@ -26,7 +26,7 @@ ORDER BY (
 CREATE TABLE IF NOT EXISTS TEMPLATE_LOG AS TEMPLATE_TRANSACTION;
 ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
-    ADD COLUMN IF NOT EXISTS log_address                 LowCardinality(String),
+    ADD COLUMN IF NOT EXISTS log_address                 String,
     ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32,
     ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',
     ADD COLUMN IF NOT EXISTS log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- event signature

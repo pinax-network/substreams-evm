@@ -11,28 +11,28 @@ CREATE TABLE IF NOT EXISTS swaps (
     tx_hash                     String,
 
     -- log --
-    log_index                   Nullable(UInt32), -- derived from Substreams
-    log_address                 LowCardinality(String),
-    log_ordinal                 Nullable(UInt32),
+    log_index                   UInt32, -- derived from Substreams
+    log_address                 String,
+    log_ordinal                 UInt32,
     log_topic0                  LowCardinality(String),
 
     -- swap event information --
     protocol                    Enum8(
         'sunpump' = 1,
-        'uniswap-v1' = 2,
-        'uniswap-v2' = 3,
-        'uniswap-v3' = 4,
-        'uniswap-v4' = 5,
+        'uniswap_v1' = 2,
+        'uniswap_v2' = 3,
+        'uniswap_v3' = 4,
+        'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
     ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
-    pool                        LowCardinality(String) COMMENT 'Pool/exchange contract address',
+    pool                        String COMMENT 'Pool/exchange contract address',
     user                        String COMMENT 'User wallet address',
-    input_contract              LowCardinality(String) COMMENT 'Input token contract address',
+    input_contract              String COMMENT 'Input token contract address',
     input_amount                UInt256 COMMENT 'Amount of input tokens swapped',
-    output_contract             LowCardinality(String) COMMENT 'Output token contract address',
+    output_contract             String COMMENT 'Output token contract address',
     output_amount               UInt256 COMMENT 'Amount of output tokens received',
 
     -- contraints data validation --
@@ -207,7 +207,7 @@ SELECT
     log_topic0,
 
     -- swap --
-    'uniswap-v1' AS protocol,
+    'uniswap_v1' AS protocol,
     factory,
     log_address                        AS pool,
     buyer                              AS user,
@@ -245,7 +245,7 @@ SELECT
     log_topic0,
 
     -- swap --
-    'uniswap-v1' AS protocol,
+    'uniswap_v1' AS protocol,
     factory,
     log_address                        AS pool,
     buyer                              AS user,
@@ -284,7 +284,7 @@ SELECT
     log_topic0,
 
     -- swap --
-    'uniswap-v2' AS protocol,
+    'uniswap_v2' AS protocol,
     factory,
     log_address  AS pool,
     sender       AS user,
@@ -337,7 +337,7 @@ SELECT
     log_topic0,
 
     -- swap --
-    'uniswap-v3' AS protocol,
+    'uniswap_v3' AS protocol,
     factory,
     log_address  AS pool,
     sender       AS user,
@@ -374,7 +374,7 @@ SELECT
     log_topic0,
 
     -- swap --
-    'uniswap-v4' AS protocol,
+    'uniswap_v4' AS protocol,
     factory,
     id           AS pool,
     sender       AS user,
