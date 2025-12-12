@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS ohlc_prices (
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
 
-    -- chain + DEX identity
+    -- DEX identity
     protocol                    Enum8(
         'sunpump' = 1,
         'uniswap_v1' = 2,
