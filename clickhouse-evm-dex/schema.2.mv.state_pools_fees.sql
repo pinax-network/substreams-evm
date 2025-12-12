@@ -9,20 +9,22 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
     -- transaction --
     tx_hash                     String,
 
-    -- event --
-    factory                     LowCardinality(String) COMMENT 'factory address',
-    pool                        String COMMENT 'pool address',
-    fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)',
-    protocol                    Enum8(
+    -- DEX identity
+    factory                 LowCardinality(String) COMMENT 'Factory contract address',
+    pool                    String COMMENT 'Pool/exchange contract address',
+    protocol                Enum8(
         'sunpump' = 1,
-        'uniswap-v1' = 2,
-        'uniswap-v2' = 3,
-        'uniswap-v3' = 4,
-        'uniswap-v4' = 5,
+        'uniswap_v1' = 2,
+        'uniswap_v2' = 3,
+        'uniswap_v3' = 4,
+        'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
     ) COMMENT 'protocol identifier',
+
+    -- state --
+    fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)'
 )
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (protocol, factory, pool);
@@ -44,7 +46,7 @@ SELECT
     log_address AS factory,
     exchange AS pool,
     3000 AS fee, -- default Uniswap V1 fee (0.3%)
-    'uniswap-v1' AS protocol
+    'uniswap_v1' AS protocol
 FROM uniswap_v1_new_exchange;
 
 -- Uniswap::V2::Factory:PairCreated (Initialize) --
@@ -64,7 +66,7 @@ SELECT
     log_address AS factory,
     pair AS pool,
     3000 AS fee, -- default Uniswap V2 fee (0.3%)
-    'uniswap-v2' AS protocol
+    'uniswap_v2' AS protocol
 FROM uniswap_v2_pair_created;
 
 -- Uniswap::V3::Factory:PoolCreated (Initialize) --
@@ -84,7 +86,7 @@ SELECT
     log_address AS factory,
     pool,
     fee,
-    'uniswap-v3' AS protocol
+    'uniswap_v3' AS protocol
 FROM uniswap_v3_pool_created;
 
 -- Uniswap::V4::IPoolManager:Initialize (Initialize) --
@@ -104,7 +106,7 @@ SELECT
     factory,
     id AS pool,
     fee,
-    'uniswap-v4' AS protocol
+    'uniswap_v4' AS protocol
 FROM uniswap_v4_initialize;
 
 -- Curve.fi::PlainPoolDeployed (Initialize) --
