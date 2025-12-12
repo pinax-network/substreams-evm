@@ -6,10 +6,10 @@ CREATE TABLE IF NOT EXISTS ohlc_prices (
     -- chain + DEX identity
     protocol                    Enum8(
         'sunpump' = 1,
-        'uniswap-v1' = 2,
-        'uniswap-v2' = 3,
-        'uniswap-v3' = 4,
-        'uniswap-v4' = 5,
+        'uniswap_v1' = 2,
+        'uniswap_v2' = 3,
+        'uniswap_v3' = 4,
+        'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
