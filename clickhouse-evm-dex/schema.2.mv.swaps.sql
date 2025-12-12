@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     -- transaction --
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
+    tx_from                     String,
 
     -- log --
     log_index                   UInt32, -- derived from Substreams
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     CONSTRAINT log_address_not_empty CHECK log_address != '',
     CONSTRAINT log_topic0_not_empty CHECK log_topic0 != '',
     CONSTRAINT tx_hash_not_empty CHECK tx_hash != '',
+    CONSTRAINT tx_from_not_empty CHECK tx_from != '',
     CONSTRAINT factory_not_empty CHECK factory != '',
     CONSTRAINT pool_not_empty CHECK pool != '',
     CONSTRAINT user_not_empty CHECK user != '',
@@ -64,6 +66,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     PROJECTION prj_protocol_count ( SELECT protocol, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY protocol ),
     PROJECTION prj_factory_count ( SELECT factory, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY factory ),
     PROJECTION prj_pool_count ( SELECT pool, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY pool ),
+    PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
     PROJECTION prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user ),
     PROJECTION prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
     PROJECTION prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
@@ -97,6 +100,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     -- minute --
     PROJECTION prj_all_by_minute ( SELECT protocol, factory, pool, input_contract, output_contract, minute, count() GROUP BY protocol, factory, pool, input_contract, output_contract, minute ),
     PROJECTION prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
+    PROJECTION prj_tx_from_by_minute ( SELECT tx_from, minute, count() GROUP BY tx_from, minute ),
     PROJECTION prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
     PROJECTION prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
     PROJECTION prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
@@ -125,6 +129,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -162,6 +167,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -199,6 +205,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -237,6 +244,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -276,6 +284,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -329,6 +338,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -366,6 +376,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -407,6 +418,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -444,6 +456,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
@@ -481,6 +494,7 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
 
     -- log --
     log_index,
