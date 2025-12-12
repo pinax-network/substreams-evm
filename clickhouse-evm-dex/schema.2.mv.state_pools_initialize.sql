@@ -6,6 +6,9 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     timestamp                   DateTime('UTC'),
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
+    -- version: larger = "wins" => smallest block_num wins
+    inv_block_num Int64 MATERIALIZED (-toInt64(block_num)),
+
     -- transaction --
     tx_hash                     String,
 
@@ -27,7 +30,7 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     INDEX idx_factory           (factory)           TYPE set(1024)              GRANULARITY 1,
     INDEX idx_pool              (pool)              TYPE bloom_filter           GRANULARITY 1
 )
-ENGINE = MergeTree
+ENGINE = ReplacingMergeTree(inv_block_num)
 ORDER BY (protocol, factory, pool);
 
 -- Uniswap::V2::Factory:PairCreated --
