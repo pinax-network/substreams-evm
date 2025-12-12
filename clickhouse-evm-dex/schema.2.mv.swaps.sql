@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS swaps (
     tx_hash                     String,
 
     -- log --
-    log_index                   Nullable(UInt32), -- derived from Substreams
-    log_address                 LowCardinality(String),
-    log_ordinal                 Nullable(UInt32),
+    log_index                   UInt32, -- derived from Substreams
+    log_address                 String,
+    log_ordinal                 UInt32,
     log_topic0                  LowCardinality(String),
 
     -- swap event information --
@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS swaps (
         'bancor' = 8
     ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
-    pool                        LowCardinality(String) COMMENT 'Pool/exchange contract address',
+    pool                        String COMMENT 'Pool/exchange contract address',
     user                        String COMMENT 'User wallet address',
-    input_contract              LowCardinality(String) COMMENT 'Input token contract address',
+    input_contract              String COMMENT 'Input token contract address',
     input_amount                UInt256 COMMENT 'Amount of input tokens swapped',
-    output_contract             LowCardinality(String) COMMENT 'Output token contract address',
+    output_contract             String COMMENT 'Output token contract address',
     output_amount               UInt256 COMMENT 'Amount of output tokens received',
 
     -- contraints data validation --

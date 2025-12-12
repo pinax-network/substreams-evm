@@ -2,8 +2,9 @@
 -- Aggregates token pair swap data per pool
 CREATE TABLE IF NOT EXISTS state_pools_tokens (
     -- chain + DEX identity
-    pool                    LowCardinality(String) COMMENT 'Pool/exchange contract address',
     factory                 LowCardinality(String) COMMENT 'Factory contract address',
+    pool                    String COMMENT 'Pool/exchange contract address',
+    token                   String COMMENT 'token contract address',
     protocol                Enum8(
         'sunpump' = 1,
         'uniswap-v1' = 2,
@@ -14,17 +15,17 @@ CREATE TABLE IF NOT EXISTS state_pools_tokens (
         'balancer' = 7,
         'bancor' = 8
     ) COMMENT 'protocol identifier',
-    token                   LowCardinality(String) COMMENT 'token contract address',
 
-    -- indexes
-    INDEX idx_factory           (factory)                           TYPE set(1024)      GRANULARITY 1,
-    INDEX idx_protocol          (protocol)                          TYPE set(8)         GRANULARITY 1,
-    INDEX idx_token             (token)                             TYPE bloom_filter   GRANULARITY 1,
+    -- Projections --
+    -- Search By Array Tokens --
+    PROJECTION prj_group_token ( SELECT arraySort(groupArrayDistinct(token)), protocol, factory, pool GROUP BY protocol, factory, pool, token ),
 )
 ENGINE = ReplacingMergeTree
+-- optimized for single token search --
 ORDER BY (
-    pool, factory, token, protocol
+    token, protocol, factory, pool
 )
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'State table aggregating token pair swap data per pool';
 
 -- Materialized view to populate state_pools_tokens from swaps
