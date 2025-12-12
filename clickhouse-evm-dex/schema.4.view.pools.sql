@@ -42,7 +42,7 @@ LEFT JOIN state_pools_fees AS f
    AND s.factory = f.factory
    AND s.pool = f.pool
 
-LEFT JOIN state_pools_tokens AS t
+JOIN state_pools_tokens AS t
     ON s.protocol = t.protocol
    AND s.factory = t.factory
    AND s.pool = t.pool
