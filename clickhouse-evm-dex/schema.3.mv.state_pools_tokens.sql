@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS state_pools_tokens (
     token                   String COMMENT 'token contract address',
 
     -- indexes --
+    INDEX idx_block_num         (block_num)                 TYPE minmax             GRANULARITY 1,
+    INDEX idx_timestamp         (timestamp)                 TYPE minmax             GRANULARITY 1,
+    INDEX idx_minute            (minute)                    TYPE minmax             GRANULARITY 1,
     INDEX idx_protocol          (protocol)                  TYPE set(8)             GRANULARITY 1,
     INDEX idx_factory           (factory)                   TYPE set(1024)          GRANULARITY 1,
 
