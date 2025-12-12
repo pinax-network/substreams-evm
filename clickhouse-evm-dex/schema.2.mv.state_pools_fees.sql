@@ -24,10 +24,14 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
     ) COMMENT 'protocol identifier',
 
     -- state --
-    fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)'
+    fee                         UInt32 COMMENT 'pool fee (e.g., 3000 represents 0.30%)',
+
+    -- indexes --
+    INDEX idx_factory           (factory)           TYPE set(1024)        GRANULARITY 1,
+    INDEX idx_protocol          (protocol)          TYPE set(8)           GRANULARITY 1
 )
 ENGINE = ReplacingMergeTree(block_num)
-ORDER BY (protocol, factory, pool);
+ORDER BY (pool, factory, protocol);
 
 -- Uniswap::V1::Factory:NewExchange (Initialize) --
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_new_exchange_fee
