@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token ON CLUSTER 'tokenapi
     -- optimize for grouped array token --
     PROJECTION prj_group_array_distinct_token ( SELECT arraySort(groupArrayDistinct(token)), pool, factory, protocol GROUP BY pool, factory, protocol )
 )
-ENGINE = AggregatingMergeTree
+ENGINE = ReplicatedAggregatingMergeTree
 ORDER BY (token, pool, factory, protocol)
 SETTINGS deduplicate_merge_projection_mode = 'rebuild';
 
