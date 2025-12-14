@@ -8,7 +8,10 @@ WITH
     )
 SELECT
     p.*,
-    pt.tokens
+    pt.tokens,
+    pt.uaw,
 FROM pools AS p
 INNER JOIN filter_by_pools AS f ON f.pool = p.pool
-LEFT JOIN pools_tokens AS pt ON pt.pool = p.pool;
+LEFT JOIN pools_tokens AS pt ON pt.pool = p.pool
+ORDER BY p.transactions DESC
+LIMIT 5;
