@@ -1,4 +1,4 @@
-CREATE VIEW IF NOT EXISTS pools_tokens AS
+CREATE VIEW IF NOT EXISTS pools_tokens ON CLUSTER 'tokenapis-a' AS
 SELECT
     pool,
     factory,
@@ -7,7 +7,7 @@ SELECT
     FROM state_pools_aggregating_by_token
     GROUP BY pool, factory, protocol;
 
-CREATE VIEW IF NOT EXISTS pools AS
+CREATE VIEW IF NOT EXISTS pools ON CLUSTER 'tokenapis-a' AS
 SELECT
     -- transactions (summing) --
     s.factory        AS factory,
