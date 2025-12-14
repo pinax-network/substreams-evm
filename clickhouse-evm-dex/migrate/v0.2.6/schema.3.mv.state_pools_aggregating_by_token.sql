@@ -35,7 +35,19 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token ON CLUSTER 'tokenapi
 
     -- projections --
     -- optimize for grouped array token --
-    PROJECTION prj_group_array_distinct_token ( SELECT arraySort(groupArrayDistinct(token)), pool, factory, protocol GROUP BY pool, factory, protocol )
+    PROJECTION prj_group_array_distinct_token (
+        SELECT
+            arraySort(groupArrayDistinct(token)),
+            pool,
+            factory,
+            protocol,
+            sum(transactions),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
+        GROUP BY pool, factory, protocol
+    )
 )
 ENGINE = ReplicatedAggregatingMergeTree
 ORDER BY (token, pool, factory, protocol)
