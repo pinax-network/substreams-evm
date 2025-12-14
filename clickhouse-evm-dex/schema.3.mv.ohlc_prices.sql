@@ -1,8 +1,14 @@
 -- OHLCV prices --
 CREATE TABLE IF NOT EXISTS ohlc_prices (
+    -- bar interval --
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
-    last_updated            DateTime('UTC', 0) COMMENT 'last swaps update time',
+
+    -- timestamp & block number --
+    min_timestamp           SimpleAggregateFunction(min, DateTime('UTC', 0)) COMMENT 'first timestamp seen',
+    max_timestamp           SimpleAggregateFunction(max, DateTime('UTC', 0)) COMMENT 'last timestamp seen',
+    min_block_num           SimpleAggregateFunction(min, UInt32) COMMENT 'first block number seen',
+    max_block_num           SimpleAggregateFunction(max, UInt32) COMMENT 'last block number seen',
 
     -- DEX identity
     protocol                    Enum8(
@@ -88,7 +94,12 @@ SELECT
     arrayJoin(intervals) AS interval_min,
     -- floor to the interval in seconds
     toDateTime(intDiv(toUInt32(s.timestamp), interval_min * 60) * interval_min * 60) AS timestamp,
-    max(s.timestamp) AS last_updated,
+
+    -- timestamp & block number --
+    min(s.timestamp) AS min_timestamp,
+    max(s.timestamp) AS max_timestamp,
+    min(s.block_num) AS min_block_num,
+    max(s.block_num) AS max_block_num,
 
     -- toStartOfMinute(s.timestamp) AS timestamp,
     protocol, factory, pool, token0, token1,
