@@ -47,7 +47,7 @@ SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'State table aggregating token pair swap data per pool';
 
 -- Materialized view to populate state_pools_tokens from swaps
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_tokens
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_tokens_swaps_input_contract
 TO state_pools_tokens
 AS
 SELECT
@@ -74,7 +74,7 @@ GROUP BY
     protocol,
     token;
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_tokens_inverse
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_tokens_swaps_output_contract
 TO state_pools_tokens
 AS
 SELECT

@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS ohlc_prices (
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
+    last_updated            DateTime('UTC', 0) COMMENT 'last swaps update time',
 
     -- DEX identity
     protocol                    Enum8(
@@ -61,7 +62,7 @@ ORDER BY (
 )
 COMMENT 'OHLCV prices for AMM pools, aggregated by interval';
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_ohlc_prices
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_ohlc_prices_swaps
 TO ohlc_prices
 AS
 WITH
@@ -87,6 +88,7 @@ SELECT
     arrayJoin(intervals) AS interval_min,
     -- floor to the interval in seconds
     toDateTime(intDiv(toUInt32(s.timestamp), interval_min * 60) * interval_min * 60) AS timestamp,
+    max(s.timestamp) AS last_updated,
 
     -- toStartOfMinute(s.timestamp) AS timestamp,
     protocol, factory, pool, token0, token1,

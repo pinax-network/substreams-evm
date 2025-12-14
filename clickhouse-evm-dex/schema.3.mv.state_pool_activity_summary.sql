@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS state_pool_activity_summary (
 ENGINE = SummingMergeTree
 ORDER BY (pool, factory, protocol);
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pool_activity_summary
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pool_activity_summary_swaps
 TO state_pool_activity_summary
 AS
 SELECT

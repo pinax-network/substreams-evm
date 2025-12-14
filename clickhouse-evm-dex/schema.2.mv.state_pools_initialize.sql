@@ -37,7 +37,7 @@ ENGINE = ReplacingMergeTree(inv_block_num)
 ORDER BY (pool, factory, protocol);
 
 -- Uniswap::V2::Factory:PairCreated --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_uniswap_v2_pair_created
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -56,7 +56,7 @@ SELECT
 FROM uniswap_v2_pair_created;
 
 -- Uniswap::V3::Factory:PoolCreated --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_pool_created
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_uniswap_v3_pool_created
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -75,7 +75,7 @@ SELECT
 FROM uniswap_v3_pool_created;
 
 -- Uniswap::V4::IPoolManager:Initialize --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_initialize
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_uniswap_v4_initialize
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -96,7 +96,7 @@ SELECT
 FROM uniswap_v4_initialize;
 
 -- Uniswap::V1::Factory:NewExchange --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_new_exchange
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_uniswap_v1_new_exchange
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -115,7 +115,7 @@ SELECT
 FROM uniswap_v1_new_exchange;
 
 -- SunPump::TokenCreate --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_create
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_sunpump_token_create
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -134,7 +134,7 @@ SELECT
 FROM sunpump_token_create;
 
 -- SunPump::TokenCreateLegacy --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_create_legacy
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_sunpump_token_create_legacy
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -153,7 +153,7 @@ SELECT
 FROM sunpump_token_create_legacy;
 
 -- Curve.fi::PlainPoolDeployed --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_plain_pool_deployed
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_curvefi_plain_pool_deployed
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -172,7 +172,7 @@ SELECT
 FROM curvefi_plain_pool_deployed;
 
 -- Curve.fi::MetaPoolDeployed --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_meta_pool_deployed
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_curvefi_meta_pool_deployed
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -191,7 +191,7 @@ SELECT
 FROM curvefi_meta_pool_deployed;
 
 -- Balancer::PoolRegistered --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_pool_registered
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_balancer_pool_registered
 TO state_pools_initialize AS
 SELECT
     -- block --
@@ -210,7 +210,7 @@ SELECT
 FROM balancer_pool_registered;
 
 -- Bancor::Activation --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_activation
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_bancor_activation
 TO state_pools_initialize AS
 SELECT
     -- block --
