@@ -37,7 +37,7 @@ ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (pool, factory, protocol);
 
 -- Uniswap::V1::Factory:NewExchange (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_new_exchange_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_uniswap_v1_new_exchange_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -57,7 +57,7 @@ SELECT
 FROM uniswap_v1_new_exchange;
 
 -- Uniswap::V2::Factory:PairCreated (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_pair_created_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_uniswap_v2_pair_created_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -77,7 +77,7 @@ SELECT
 FROM uniswap_v2_pair_created;
 
 -- Uniswap::V3::Factory:PoolCreated (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_pool_created_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_uniswap_v3_pool_created_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -97,7 +97,7 @@ SELECT
 FROM uniswap_v3_pool_created;
 
 -- Uniswap::V4::IPoolManager:Initialize (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_initialize_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_uniswap_v4_initialize_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -117,7 +117,7 @@ SELECT
 FROM uniswap_v4_initialize;
 
 -- Curve.fi::PlainPoolDeployed (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_plain_pool_deployed_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_curvefi_plain_pool_deployed_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -137,7 +137,7 @@ SELECT
 FROM curvefi_plain_pool_deployed;
 
 -- Curve.fi::MetaPoolDeployed (Initialize) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_meta_pool_deployed_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_curvefi_meta_pool_deployed_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -157,7 +157,7 @@ SELECT
 FROM curvefi_meta_pool_deployed;
 
 -- Balancer::SwapFeePercentage (V2) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_swap_fee_percentage
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_balancer_swap_fee_percentage
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -177,7 +177,7 @@ SELECT
 FROM balancer_swap_fee_percentage;
 
 -- Balancer::AggregateSwapFeePercentage (V3) --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_aggregate_swap_fee_percentage
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_balancer_aggregate_swap_fee_percentage
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -197,7 +197,7 @@ SELECT
 FROM balancer_aggregate_swap_fee_percentage;
 
 -- Bancor::ConversionFeeUpdate --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion_fee_update
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_bancor_conversion_fee_update
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -217,7 +217,7 @@ SELECT
 FROM bancor_conversion_fee_update;
 
 -- Curve.fi::CommitNewFee --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_commit_new_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_curvefi_commit_new_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -237,7 +237,7 @@ SELECT
 FROM curvefi_commit_new_fee;
 
 -- Curve.fi::NewFee --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_new_fee
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_curvefi_new_fee
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -257,7 +257,7 @@ SELECT
 FROM curvefi_new_fee;
 
 -- SunPump::PurchaseFeeSet --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_purchase_fee_set
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_sunpump_purchase_fee_set
 TO state_pools_fees AS
 SELECT
     -- block --
@@ -277,7 +277,7 @@ SELECT
 FROM sunpump_purchase_fee_set;
 
 -- SunPump::SaleFeeSet --
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_sale_fee_set
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_fees_sunpump_sale_fee_set
 TO state_pools_fees AS
 SELECT
     -- block --

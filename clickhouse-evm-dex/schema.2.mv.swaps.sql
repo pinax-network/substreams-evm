@@ -120,7 +120,7 @@ COMMENT 'Transfers including ERC-20, WETH transfers';
 
 
 -- SunPump TokenPurchased: User buys tokens with TRX (TRX → Token)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_purchased
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_sunpump_token_purchased
 TO swaps AS
 SELECT
     -- block --
@@ -158,7 +158,7 @@ FROM sunpump_token_purchased
 WHERE input_amount > 0 AND output_amount > 0;
 
 -- SunPump TokenSold: User sells tokens for TRX (Token → TRX)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_sunpump_token_sold
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_sunpump_token_sold
 TO swaps AS
 SELECT
     -- block --
@@ -196,7 +196,7 @@ FROM sunpump_token_sold
 WHERE input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V1 TokenPurchase: User buys tokens with ETH (ETH → Token)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_token_purchase
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v1_token_purchase
 TO swaps AS
 SELECT
     -- block --
@@ -235,7 +235,7 @@ WHERE input_amount > 0 AND output_amount > 0;
 
 
 -- Uniswap V1 EthPurchase: User buys ETH with tokens (Token → ETH)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v1_eth_purchase
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v1_eth_purchase
 TO swaps AS
 SELECT
     -- block --
@@ -275,7 +275,7 @@ WHERE input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V2 Swap (not Flash Swaps)
 -- https://github.com/pinax-network/substreams-evm/issues/66
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v2_swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v2_swap
 TO swaps AS
 SELECT
     -- block --
@@ -329,7 +329,7 @@ WHERE
     input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V3 Swap
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v3_swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v3_swap
 TO swaps AS
 SELECT
     -- block --
@@ -367,7 +367,7 @@ FROM uniswap_v3_swap
 WHERE input_amount > 0 AND output_amount > 0;
 
 -- Uniswap V4 Swap
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_uniswap_v4_swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v4_swap
 TO swaps AS
 SELECT
     -- block --
@@ -409,7 +409,7 @@ WHERE input_amount > 0 AND output_amount > 0;
 -- Note: Curve doesn't have a clear factory/token0/token1 structure like Uniswap
 -- The sold_id and bought_id are indices that need to be mapped to actual token addresses
 -- For now, we'll use the pool address as both pool and factory
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_curvefi_token_exchange
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_curvefi_token_exchange
 TO swaps AS
 SELECT
     -- block --
@@ -447,7 +447,7 @@ FROM curvefi_token_exchange
 WHERE input_amount > 0 AND output_amount > 0;
 
 -- Balancer V3 Vault Swap
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_balancer_vault_swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_balancer_vault_swap
 TO swaps AS
 SELECT
     -- block --
@@ -485,7 +485,7 @@ FROM balancer_vault_swap
 WHERE input_amount > 0 AND output_amount > 0;
 
 -- Bancor Conversion (Swap)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_bancor_conversion
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_bancor_conversion
 TO swaps AS
 SELECT
     -- block --
