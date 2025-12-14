@@ -1,0 +1,4 @@
+OPTIMIZE TABLE state_pools_fees FINAL;
+OPTIMIZE TABLE state_pools_initialize FINAL;
+OPTIMIZE TABLE state_pools_aggregating_by_pool FINAL;
+OPTIMIZE TABLE state_pools_aggregating_by_token FINAL;
