@@ -3,9 +3,14 @@ SELECT
     pool,
     factory,
     protocol,
-    arraySort(groupArrayDistinct(token)) as tokens
-    FROM state_pools_aggregating_by_token
-    GROUP BY pool, factory, protocol;
+    arraySort(groupArrayDistinct(token)) as tokens,
+    sum(transactions) as transactions,
+    min(min_timestamp) as min_timestamp,
+    max(max_timestamp) as max_timestamp,
+    min(min_block_num) as min_block_num,
+    max(max_block_num) as max_block_num
+FROM state_pools_aggregating_by_token
+GROUP BY pool, factory, protocol;
 
 CREATE VIEW IF NOT EXISTS pools ON CLUSTER 'tokenapis-a' AS
 SELECT
