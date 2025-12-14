@@ -9,10 +9,10 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token ON CLUSTER 'tokenapi
     -- DEX identity
     protocol                    Enum8(
         'sunpump' = 1,
-        'uniswap_v1' = 2,
-        'uniswap_v2' = 3,
-        'uniswap_v3' = 4,
-        'uniswap_v4' = 5,
+        'uniswap-v1' = 2,
+        'uniswap-v2' = 3,
+        'uniswap-v3' = 4,
+        'uniswap-v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
         'bancor' = 8
