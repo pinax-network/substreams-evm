@@ -1,37 +1,14 @@
--- `/evm/pools` by pool --
+-- Query By pool --
+EXPLAIN indexes = 1
+WITH
+    filter_by_pools AS (
+        SELECT DISTINCT pool
+        FROM state_pools_aggregating_by_token
+        WHERE token = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    )
 SELECT
-    protocol,
-    factory,
-    pool,
-    token0,
-    token1,
-    count() as swaps,
-    min(block_num) as min_block_num,
-    min(timestamp) as min_timestamp,
-    max(block_num) as max_block_num,
-    max(timestamp) as max_timestamp
-FROM swaps
-GROUP BY
-    protocol,
-    factory,
-    pool,
-    token0,
-    token1
-ORDER BY swaps DESC
-LIMIT 10;
-
--- `/evm/pools` by protocol/factory --
-SELECT
-    protocol,
-    factory,
-    count() as swaps,
-    min(block_num) as min_block_num,
-    min(timestamp) as min_timestamp,
-    max(block_num) as max_block_num,
-    max(timestamp) as max_timestamp
-FROM swaps
-GROUP BY
-    protocol,
-    factory
-ORDER BY swaps DESC
-LIMIT 10;
+    p.*,
+    pt.tokens
+FROM pools AS p
+INNER JOIN filter_by_pools AS f ON f.pool = p.pool
+LEFT JOIN pools_tokens AS pt ON pt.pool = p.pool;
