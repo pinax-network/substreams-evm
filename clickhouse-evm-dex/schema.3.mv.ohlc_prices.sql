@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS ohlc_prices (
     net_flow1               SimpleAggregateFunction(sum, Int256) COMMENT 'net flow of token1 in the window',
 
     -- universal --
-    uaw                     AggregateFunction(uniq, String) COMMENT 'unique wallet addresses in the window',
+    uniq_user               AggregateFunction(uniq, String) COMMENT 'unique user addresses in the window',
+    uniq_tx_from            AggregateFunction(uniq, String) COMMENT 'unique transaction from addresses in the window',
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'number of transactions in the window',
 
     -- indexes --
@@ -116,7 +117,8 @@ SELECT
     sum(nf1)                AS net_flow1,
 
     /* universal */
-    uniqState(user)         AS uaw,
+    uniqState(user)         AS uniq_user,
+    uniqState(tx_from)      AS uniq_tx_from,
     count()                 AS transactions
 FROM swaps s
 GROUP BY

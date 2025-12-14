@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token (
     token                String,
 
     -- universal --
-    uaw                     AggregateFunction(uniq, String) COMMENT 'unique wallet addresses',
+    uniq_user               AggregateFunction(uniq, String) COMMENT 'unique user addresses',
+    uniq_tx_from            AggregateFunction(uniq, String) COMMENT 'unique transaction from addresses',
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'total number of transactions',
 
     -- indexes --
@@ -69,7 +70,8 @@ SELECT
     input_contract AS token,
 
     -- universal --
-    uniqState(user) AS uaw,
+    uniqState(user) AS uniq_user,
+    uniqState(tx_from) AS uniq_tx_from,
     count() as transactions
 FROM swaps
 GROUP BY token, protocol, factory, pool;
@@ -89,7 +91,8 @@ SELECT
     output_contract AS token,
 
     -- universal --
-    uniqState(user) AS uaw,
+    uniqState(user) AS uniq_user,
+    uniqState(tx_from) AS uniq_tx_from,
     count() as transactions
 FROM swaps
 GROUP BY token, protocol, factory, pool;
