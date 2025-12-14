@@ -1,10 +1,14 @@
 CREATE VIEW IF NOT EXISTS pools AS
 SELECT
     -- transactions (summing) --
-    s.factory       AS factory,
-    s.pool          AS pool,
-    s.protocol      AS protocol,
-    s.transactions  AS transactions,
+    s.factory        AS factory,
+    s.pool           AS pool,
+    s.protocol       AS protocol,
+    s.min_timestamp  AS min_timestamp,
+    s.max_timestamp  AS max_timestamp,
+    s.min_block_num  AS min_block_num,
+    s.max_block_num  AS max_block_num,
+    s.transactions   AS transactions,
 
     -- initialize (required) --
     i.block_num     AS initialize_block_num,
@@ -22,10 +26,7 @@ SELECT
         SELECT arraySort(groupArrayDistinct(token))
         FROM state_pools_tokens
         WHERE factory = s.factory AND pool = s.pool AND protocol = s.protocol
-    ) AS tokens,
-    t.block_num     AS last_activity_block_num,
-    t.timestamp     AS last_activity_timestamp,
-    t.tx_hash       AS last_activity_tx_hash
+    ) AS tokens
 
 -- transactions (summing) --
 FROM state_pool_activity_summary AS s
@@ -41,13 +42,5 @@ LEFT JOIN state_pools_fees AS f
     ON s.pool = f.pool
    AND s.factory = f.factory
    AND s.protocol = f.protocol
-
-LEFT ANY JOIN state_pools_tokens AS t
-    ON s.pool = t.pool
-   AND s.factory = t.factory
-   AND s.protocol = t.protocol
-
--- must have at least 2 tokens --
-WHERE length(tokens) >= 2
 
 SETTINGS allow_experimental_correlated_subqueries = 1, join_use_nulls = 1;
