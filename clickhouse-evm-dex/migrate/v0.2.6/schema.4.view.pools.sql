@@ -5,6 +5,7 @@ SELECT
     protocol,
     arraySort(groupArrayDistinct(token)) as tokens,
     sum(transactions) as transactions,
+    uniqMerge(uaw) as uaw,
     min(min_timestamp) as min_timestamp,
     max(max_timestamp) as max_timestamp,
     min(min_block_num) as min_block_num,
