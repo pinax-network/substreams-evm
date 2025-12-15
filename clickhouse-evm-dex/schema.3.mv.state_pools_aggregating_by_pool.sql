@@ -32,10 +32,34 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_pool (
     INDEX idx_max_block_num     (max_block_num)              TYPE minmax             GRANULARITY 1,
     INDEX idx_protocol          (protocol)                   TYPE set(8)             GRANULARITY 1,
     INDEX idx_factory           (factory)                    TYPE set(1024)          GRANULARITY 1,
-    INDEX idx_transactions      (transactions)               TYPE minmax             GRANULARITY 1
+    INDEX idx_transactions      (transactions)               TYPE minmax             GRANULARITY 1,
+
+    -- projections --
+    -- optimize for universal summary --
+    PROJECTION prj_group_by_pool (
+        SELECT
+            -- timestamp & block number --
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num),
+
+            -- DEX identity --
+            pool,
+            factory,
+            protocol,
+
+            -- universal --
+            sum(transactions),
+            uniqMerge(uniq_user),
+            uniqMerge(uniq_tx_from)
+        GROUP BY pool, factory, protocol
+    )
 )
 ENGINE = AggregatingMergeTree
-ORDER BY (pool, factory, protocol);
+ORDER BY (pool, factory, protocol)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
+COMMENT 'Aggregating pools optimize for universal summary';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_aggregating_by_pool_swaps
 TO state_pools_aggregating_by_pool

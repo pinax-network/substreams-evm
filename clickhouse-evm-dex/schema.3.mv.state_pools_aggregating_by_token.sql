@@ -36,24 +36,32 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token (
     INDEX idx_transactions      (transactions)               TYPE minmax             GRANULARITY 1,
 
     -- projections --
-    -- optimize for grouped array token --
-    PROJECTION prj_group_array_distinct_token (
+    -- optimize for universal summary & distinct tokens --
+    PROJECTION prj_group_by_pool (
         SELECT
-            arraySort(groupArrayDistinct(token)),
-            pool,
-            factory,
-            protocol,
-            sum(transactions),
+            -- timestamp & block number --
             min(min_timestamp),
             max(max_timestamp),
             min(min_block_num),
-            max(max_block_num)
+            max(max_block_num),
+
+            -- DEX identity --
+            pool,
+            factory,
+            protocol,
+            arraySort(groupArrayDistinct(token)),
+
+            -- universal --
+            sum(transactions),
+            uniqMerge(uniq_user),
+            uniqMerge(uniq_tx_from)
         GROUP BY pool, factory, protocol
     )
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (token, pool, factory, protocol)
-SETTINGS deduplicate_merge_projection_mode = 'rebuild';
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
+COMMENT 'Aggregating pools by token optimize for universal summary & distinct tokens';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_aggregating_by_token_input_contract
 TO state_pools_aggregating_by_token
