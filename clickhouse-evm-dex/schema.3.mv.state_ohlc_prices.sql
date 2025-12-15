@@ -1,5 +1,5 @@
 -- OHLCV prices --
-CREATE TABLE IF NOT EXISTS ohlc_prices (
+CREATE TABLE IF NOT EXISTS state_ohlc_prices (
     -- bar interval --
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
@@ -70,7 +70,7 @@ ORDER BY (
 COMMENT 'OHLCV prices for AMM pools, aggregated by interval';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_ohlc_prices_swaps
-TO ohlc_prices
+TO state_ohlc_prices
 AS
 WITH
     -- predefined intervals --
