@@ -1,5 +1,5 @@
 -- OHLCV prices --
-CREATE TABLE IF NOT EXISTS state_ohlc_prices (
+CREATE TABLE IF NOT EXISTS state_ohlc_prices ON CLUSTER 'tokenapis-a' (
     -- bar interval --
     timestamp               DateTime('UTC', 0) COMMENT 'beginning of the bar',
     interval_min            UInt16 DEFAULT 1 COMMENT 'bar interval in minutes (1m, 5m, 10m, 30m, 1h, 4h, 1d, 1w)',
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS state_ohlc_prices (
     INDEX idx_net_flow1         (net_flow1)         TYPE minmax         GRANULARITY 1,
     INDEX idx_transactions      (transactions)      TYPE minmax         GRANULARITY 1
 )
-ENGINE = AggregatingMergeTree
+ENGINE = ReplicatedAggregatingMergeTree
 ORDER BY (
     interval_min,
     pool, factory, protocol, token0, token1,
@@ -69,7 +69,7 @@ ORDER BY (
 )
 COMMENT 'OHLCV prices for AMM pools, aggregated by interval';
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_ohlc_prices_swaps
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_ohlc_prices_swaps ON CLUSTER 'tokenapis-a'
 TO state_ohlc_prices
 AS
 WITH
