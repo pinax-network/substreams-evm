@@ -1,4 +1,4 @@
-CREATE VIEW IF NOT EXISTS ohlc_prices AS
+CREATE VIEW IF NOT EXISTS ohlc_prices ON CLUSTER 'tokenapis-a' AS
 SELECT
     -- bar interval --
     timestamp,
