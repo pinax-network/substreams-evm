@@ -10,16 +10,16 @@ fn map_events(params: String, transfers: pb::transfers::v1::Events) -> Result<pb
     let mut events = pb::balances::v1::Events::default();
     let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
 
-    // Collect unique tokens by owners
+    // Collect unique tokens by owners (both sender and recipient)
     let contracts_by_address = transfers
         .transactions
         .iter()
         .flat_map(|tx| tx.logs.iter())
-        .filter_map(|log| {
+        .flat_map(|log| {
             if let Some(pb::transfers::v1::log::Log::Transfer(transfer)) = &log.log {
-                Some((&log.address, &transfer.from))
+                vec![(&log.address, &transfer.from), (&log.address, &transfer.to)]
             } else {
-                None
+                vec![]
             }
         })
         .collect::<HashSet<(&common::Address, &common::Address)>>()
