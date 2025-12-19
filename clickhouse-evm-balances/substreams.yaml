@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_clickhouse_balances
-  version: v0.2.0
+  version: v0.2.1
   url: https://github.com/pinax-network/substreams-evm
   description: ERC-20 & Native balances for EVM blockchains.
   image: ../image.png
@@ -12,10 +12,10 @@ imports:
   sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Native
-  native_balances: ../native-balances/substreams.yaml
+  native_balances: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-balances-v0.2.1/erc20-balances-v0.2.1.spkg
 
   # ERC-20
-  erc20_balances: ../erc20-balances/substreams.yaml
+  erc20_balances: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-balances-v0.2.1/evm-native-balances-v0.2.0.spkg
 
 binaries:
   default:
