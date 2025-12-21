@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS polymarket_token_registered AS TEMPLATE_LOG
 COMMENT 'Polymarket TokenRegistered events';
 ALTER TABLE polymarket_token_registered
     -- event information --
-    ADD COLUMN IF NOT EXISTS condition_id         String COMMENT 'Condition ID (bytes32 as hex)',
+    ADD COLUMN IF NOT EXISTS condition_id         String COMMENT 'Condition ID (bytes32 as hex with 0x prefix)',
     ADD COLUMN IF NOT EXISTS token0               UInt256 COMMENT 'Token0 ID',
     ADD COLUMN IF NOT EXISTS token1               UInt256 COMMENT 'Token1 ID';
 

@@ -554,7 +554,8 @@ SELECT
     taker                              AS user,
 
     -- Input side: taker gives their asset
-    -- Note: Using toString to convert token IDs to strings for consistency
+    -- Note: Converting token IDs (not contract addresses) to strings
+    -- These are uint256 token identifiers for conditional tokens
     toString(taker_asset_id)           AS input_contract,
     taker_amount_filled                AS input_amount,
 
