@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_token (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'polymarket' = 9
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
