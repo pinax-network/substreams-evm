@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package ohlc.v1;
+
+// OHLCV represents Open-High-Low-Close-Volume data for DEX trading pairs
+message OHLCV {
+  // Timestamp of the data point
+  uint64 timestamp = 1;
+  
+  // Block information
+  uint64 block_num = 2;
+  bytes block_hash = 3;
+  
+  // DEX protocol identifier
+  string protocol = 4;
+  
+  // Pool and token information
+  bytes factory = 5;
+  bytes pool = 6;
+  bytes token0 = 7;  // Lexicographically smaller token address
+  bytes token1 = 8;  // Lexicographically larger token address
+  
+  // OHLC prices for token0 in terms of token1
+  double open = 9;
+  double high = 10;  // quantile 0.95
+  double low = 11;   // quantile 0.05
+  double close = 12;
+  
+  // Volume data
+  string gross_volume0 = 13;  // uint256
+  string gross_volume1 = 14;  // uint256
+  string net_flow0 = 15;      // int256
+  string net_flow1 = 16;      // int256
+  
+  // Transaction statistics
+  uint64 transactions = 17;
+  uint64 unique_users = 18;
+  uint64 unique_tx_from = 19;
+}
+
+// Events contains a collection of OHLCV data points
+message Events {
+  repeated OHLCV ohlcv = 1;
+}
