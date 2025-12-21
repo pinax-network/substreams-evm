@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package polymarket;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// https://github.com/pinax-network/substreams-abis/blob/main/abi/evm/polymarket/CFTExchange.json
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    // CFTExchange events
+    FeeCharged fee_charged = 10;
+    NewAdmin new_admin = 11;
+    NewOperator new_operator = 12;
+    OrderCancelled order_cancelled = 13;
+    OrderFilled order_filled = 14;
+    OrdersMatched orders_matched = 15;
+    ProxyFactoryUpdated proxy_factory_updated = 16;
+    RemovedAdmin removed_admin = 17;
+    RemovedOperator removed_operator = 18;
+    SafeFactoryUpdated safe_factory_updated = 19;
+    TokenRegistered token_registered = 20;
+    TradingPaused trading_paused = 21;
+    TradingUnpaused trading_unpaused = 22;
+  }
+}
+
+message FeeCharged {
+  bytes receiver = 1; // address
+  string token_id = 2; // uint256
+  string amount = 3; // uint256
+}
+
+message NewAdmin {
+  bytes new_admin_address = 1; // address
+  bytes admin = 2; // address
+}
+
+message NewOperator {
+  bytes new_operator_address = 1; // address
+  bytes admin = 2; // address
+}
+
+message OrderCancelled {
+  bytes order_hash = 1; // bytes32
+}
+
+message OrderFilled {
+  bytes order_hash = 1; // bytes32
+  bytes maker = 2; // address
+  bytes taker = 3; // address
+  string maker_asset_id = 4; // uint256
+  string taker_asset_id = 5; // uint256
+  string maker_amount_filled = 6; // uint256
+  string taker_amount_filled = 7; // uint256
+  string fee = 8; // uint256
+}
+
+message OrdersMatched {
+  bytes taker_order_hash = 1; // bytes32
+  bytes taker_order_maker = 2; // address
+  string maker_asset_id = 3; // uint256
+  string taker_asset_id = 4; // uint256
+  string maker_amount_filled = 5; // uint256
+  string taker_amount_filled = 6; // uint256
+}
+
+message ProxyFactoryUpdated {
+  bytes old_proxy_factory = 1; // address
+  bytes new_proxy_factory = 2; // address
+}
+
+message RemovedAdmin {
+  bytes removed_admin = 1; // address
+  bytes admin = 2; // address
+}
+
+message RemovedOperator {
+  bytes removed_operator = 1; // address
+  bytes admin = 2; // address
+}
+
+message SafeFactoryUpdated {
+  bytes old_safe_factory = 1; // address
+  bytes new_safe_factory = 2; // address
+}
+
+// key = <bytes32 conditionId>
+message TokenRegistered {
+  // STORE primary key
+  bytes condition_id = 1; // bytes32
+  string token0 = 2; // uint256
+  string token1 = 3; // uint256
+}
+
+// StoreToken - minimal token storage type
+// Primary key: conditionId
+message StoreToken {
+  string token0 = 1; // uint256 token ID
+  string token1 = 2; // uint256 token ID
+  bytes exchange = 3; // exchange address that registered the token
+}
+
+message TradingPaused {
+  bytes pauser = 1; // address
+}
+
+message TradingUnpaused {
+  bytes pauser = 1; // address
+}
