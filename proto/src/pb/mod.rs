@@ -6,6 +6,13 @@ pub mod balancer {
         // @@protoc_insertion_point(balancer.v1)
     }
 }
+pub mod ohlc {
+    // @@protoc_insertion_point(attribute:ohlc.v1)
+    pub mod v1 {
+        include!("ohlc.v1.rs");
+        // @@protoc_insertion_point(ohlc.v1)
+    }
+}
 pub mod bancor {
     // @@protoc_insertion_point(attribute:bancor.v1)
     pub mod v1 {

@@ -6,6 +6,9 @@ members = [
   "clickhouse-evm-balances",
   "clickhouse-blocks",
 
+  # Webhook
+  "webhook-ohlc",
+
   # Tokens
   "erc20-transfers",
   "native-transfers",
