@@ -278,13 +278,82 @@ fn process_cow_events(
 }
 
 fn process_uniswap_v1_events(
-    _encoding: &Encoding,
+    encoding: &Encoding,
     _clock: &Clock,
-    _events: &uniswap::v1::Events,
-    _store: &StoreGetProto<uniswap::v1::StorePool>,
-    _ohlc_data: &mut HashMap<PoolKey, OhlcAccumulator>,
+    events: &uniswap::v1::Events,
+    store: &StoreGetProto<uniswap::v1::StorePool>,
+    ohlc_data: &mut HashMap<PoolKey, OhlcAccumulator>,
 ) {
-    // TODO: Implement Uniswap V1 event processing
+    for tx in &events.transactions {
+        for log in &tx.logs {
+            match &log.log {
+                Some(uniswap::v1::log::Log::TokenPurchase(purchase)) => {
+                    // TokenPurchase: ETH -> Token
+                    if let Some(pool_info) = store.get_last(&bytes_to_string(&log.address, encoding)) {
+                        let eth_sold = purchase.eth_sold.parse::<i128>().unwrap_or(0);
+                        let tokens_bought = purchase.tokens_bought.parse::<i128>().unwrap_or(0);
+
+                        // ETH is typically stored as a special address or empty
+                        let eth_address = vec![]; // Representing ETH as empty bytes
+                        let token_address = &pool_info.currency0;
+
+                        let (token0, token1) = normalize_token_pair(&eth_address, token_address);
+
+                        let acc = get_or_create_accumulator(
+                            ohlc_data,
+                            "uniswap_v1",
+                            &pool_info.factory,
+                            &log.address,
+                            &token0,
+                            &token1,
+                        );
+
+                        acc.add_swap(
+                            &eth_address,
+                            token_address,
+                            eth_sold,
+                            tokens_bought,
+                            &token0,
+                            &purchase.buyer,
+                            &tx.from,
+                        );
+                    }
+                }
+                Some(uniswap::v1::log::Log::EthPurchase(purchase)) => {
+                    // EthPurchase: Token -> ETH
+                    if let Some(pool_info) = store.get_last(&bytes_to_string(&log.address, encoding)) {
+                        let tokens_sold = purchase.tokens_sold.parse::<i128>().unwrap_or(0);
+                        let eth_bought = purchase.eth_bought.parse::<i128>().unwrap_or(0);
+
+                        let eth_address = vec![]; // Representing ETH as empty bytes
+                        let token_address = &pool_info.currency0;
+
+                        let (token0, token1) = normalize_token_pair(&eth_address, token_address);
+
+                        let acc = get_or_create_accumulator(
+                            ohlc_data,
+                            "uniswap_v1",
+                            &pool_info.factory,
+                            &log.address,
+                            &token0,
+                            &token1,
+                        );
+
+                        acc.add_swap(
+                            token_address,
+                            &eth_address,
+                            tokens_sold,
+                            eth_bought,
+                            &token0,
+                            &purchase.buyer,
+                            &tx.from,
+                        );
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
 }
 
 fn process_uniswap_v2_events(
@@ -394,11 +463,53 @@ fn process_uniswap_v3_events(
 }
 
 fn process_uniswap_v4_events(
-    _encoding: &Encoding,
+    encoding: &Encoding,
     _clock: &Clock,
-    _events: &uniswap::v4::Events,
-    _store: &StoreGetProto<uniswap::v4::StorePool>,
-    _ohlc_data: &mut HashMap<PoolKey, OhlcAccumulator>,
+    events: &uniswap::v4::Events,
+    store: &StoreGetProto<uniswap::v4::StorePool>,
+    ohlc_data: &mut HashMap<PoolKey, OhlcAccumulator>,
 ) {
-    // TODO: Implement Uniswap V4 event processing
+    for tx in &events.transactions {
+        for log in &tx.logs {
+            if let Some(uniswap::v4::log::Log::Swap(swap)) = &log.log {
+                // In V4, the pool ID is stored in the swap event
+                if let Some(pool_info) = store.get_last(&bytes_to_string(&swap.id, encoding)) {
+                    // Parse amounts (signed integers as strings)
+                    let amount0 = swap.amount0.parse::<i128>().unwrap_or(0);
+                    let amount1 = swap.amount1.parse::<i128>().unwrap_or(0);
+
+                    // In V4, like V3, negative means input, positive means output
+                    let (input_token, _output_token, input_amount, output_amount) = if amount0 < 0 {
+                        // currency0 -> currency1
+                        (&pool_info.currency0, &pool_info.currency1, amount0.abs(), amount1.abs())
+                    } else {
+                        // currency1 -> currency0
+                        (&pool_info.currency1, &pool_info.currency0, amount1.abs(), amount0.abs())
+                    };
+
+                    // Normalize token pair (alphabetical ordering)
+                    let (token0, token1) = normalize_token_pair(&pool_info.currency0, &pool_info.currency1);
+
+                    let acc = get_or_create_accumulator(
+                        ohlc_data,
+                        "uniswap_v4",
+                        &pool_info.factory,
+                        &swap.id, // Use pool ID as the pool address
+                        &token0,
+                        &token1,
+                    );
+
+                    acc.add_swap(
+                        input_token,
+                        _output_token,
+                        input_amount,
+                        output_amount,
+                        &token0,
+                        &swap.sender,
+                        &tx.from,
+                    );
+                }
+            }
+        }
+    }
 }
