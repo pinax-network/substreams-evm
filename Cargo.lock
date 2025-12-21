@@ -1632,6 +1632,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "webhook-ohlc"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "hex",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "which"
 version = "4.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
