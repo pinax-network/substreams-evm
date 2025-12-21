@@ -104,9 +104,12 @@ impl OhlcAccumulator {
         user: &[u8],
         tx_from: &[u8],
     ) {
-        // Calculate price as output/input
-        let price = if input_amount > 0 {
-            output_amount as f64 / input_amount as f64
+        // Calculate price as output/input (using absolute values to handle signed amounts)
+        let abs_input = input_amount.abs();
+        let abs_output = output_amount.abs();
+        
+        let price = if abs_input > 0 {
+            abs_output as f64 / abs_input as f64
         } else {
             0.0
         };
@@ -123,18 +126,19 @@ impl OhlcAccumulator {
         // Determine direction: token0 -> token1 or token1 -> token0
         let is_token0_to_token1 = input_token == token0;
 
+        // Use absolute values for volume tracking
         if is_token0_to_token1 {
             // Selling token0 for token1
-            self.gross_volume0 += input_amount;
-            self.gross_volume1 += output_amount;
-            self.net_flow0 -= input_amount; // token0 flows out
-            self.net_flow1 += output_amount; // token1 flows in
+            self.gross_volume0 += abs_input;
+            self.gross_volume1 += abs_output;
+            self.net_flow0 -= abs_input; // token0 flows out
+            self.net_flow1 += abs_output; // token1 flows in
         } else {
             // Selling token1 for token0
-            self.gross_volume1 += input_amount;
-            self.gross_volume0 += output_amount;
-            self.net_flow1 -= input_amount; // token1 flows out
-            self.net_flow0 += output_amount; // token0 flows in
+            self.gross_volume1 += abs_input;
+            self.gross_volume0 += abs_output;
+            self.net_flow1 -= abs_input; // token1 flows out
+            self.net_flow0 += abs_output; // token0 flows in
         }
 
         self.transactions += 1;
@@ -158,7 +162,14 @@ impl OhlcAccumulator {
         let low = quantile(&sorted_prices, 0.05);
 
         let timestamp = clock.timestamp.as_ref()?.seconds as u64;
-        let block_hash = hex::decode(&clock.id).unwrap_or_default();
+        // Decode block hash from hex, log info if it fails
+        let block_hash = match hex::decode(&clock.id) {
+            Ok(hash) => hash,
+            Err(_) => {
+                substreams::log::info!("Failed to decode block hash: {}", clock.id);
+                vec![]
+            }
+        };
 
         Some(Ohlcv {
             timestamp,
