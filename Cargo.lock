@@ -803,6 +803,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "polymarket"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "ppv-lite86"
 version = "0.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1279,8 +1290,8 @@ dependencies = [
 
 [[package]]
 name = "substreams-abis"
-version = "0.7.11"
-source = "git+https://github.com/pinax-network/substreams-abis.git#8609e4489a80f231d8bb8dfa787e56bfe279474e"
+version = "0.7.12"
+source = "git+https://github.com/pinax-network/substreams-abis.git#5bad45d9d7636179ca27617822fe6eb1b4acadb9"
 dependencies = [
  "anyhow",
  "ethabi 18.0.0",

@@ -174,18 +174,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // TradingPaused event
             if let Some(event) = polymarket::events::TradingPaused::match_and_decode(log) {
                 total_trading_paused += 1;
-                let event = pb::log::Log::TradingPaused(pb::TradingPaused {
-                    pauser: event.pauser.to_vec(),
-                });
+                let event = pb::log::Log::TradingPaused(pb::TradingPaused { pauser: event.pauser.to_vec() });
                 transaction.logs.push(create_log(log, event));
             }
 
             // TradingUnpaused event
             if let Some(event) = polymarket::events::TradingUnpaused::match_and_decode(log) {
                 total_trading_unpaused += 1;
-                let event = pb::log::Log::TradingUnpaused(pb::TradingUnpaused {
-                    pauser: event.pauser.to_vec(),
-                });
+                let event = pb::log::Log::TradingUnpaused(pb::TradingUnpaused { pauser: event.pauser.to_vec() });
                 transaction.logs.push(create_log(log, event));
             }
         }
