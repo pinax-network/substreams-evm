@@ -3,6 +3,7 @@ mod bancor;
 mod cow;
 mod curvefi;
 mod logs;
+mod polymarket;
 mod store;
 mod sunpump;
 mod transactions;
@@ -31,6 +32,7 @@ pub fn db_out(
     events_bancor: proto::pb::bancor::v1::Events,
     events_curvefi: proto::pb::curvefi::v1::Events,
     events_cow: proto::pb::cow::v1::Events,
+    events_polymarket: proto::pb::polymarket::v1::Events,
     store_balancer: StoreGetProto<proto::pb::balancer::v1::StorePool>,
     store_bancor: StoreGetProto<proto::pb::bancor::v1::StorePool>,
     store_curvefi: StoreGetProto<proto::pb::curvefi::v1::StorePool>,
@@ -58,6 +60,7 @@ pub fn db_out(
     bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &store_bancor);
     cow::process_events(&encoding, &mut tables, &clock, &events_cow);
     curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &store_curvefi);
+    polymarket::process_events(&encoding, &mut tables, &clock, &events_polymarket);
 
     // Uniswap DEX Substreams
     uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);

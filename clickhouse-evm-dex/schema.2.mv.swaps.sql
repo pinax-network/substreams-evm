@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS swaps (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'polymarket' = 9
     ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
     pool                        String COMMENT 'Pool/exchange contract address',
@@ -520,4 +521,46 @@ SELECT
     target_amount                      AS output_amount
 
 FROM bancor_conversion
+WHERE input_amount > 0 AND output_amount > 0;
+
+-- Polymarket OrderFilled (Swap)
+-- Polymarket uses token IDs (uint256) to represent conditional tokens
+-- The exchange address is used as both factory and pool
+-- We represent the swap from the taker's perspective
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_polymarket_order_filled
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'polymarket' AS protocol,
+    log_address                        AS factory,
+    log_address                        AS pool,
+    taker                              AS user,
+
+    -- Input side: taker gives their asset
+    -- Note: Using toString to convert token IDs to strings for consistency
+    toString(taker_asset_id)           AS input_contract,
+    taker_amount_filled                AS input_amount,
+
+    -- Output side: taker receives maker's asset
+    toString(maker_asset_id)           AS output_contract,
+    maker_amount_filled                AS output_amount
+
+FROM polymarket_order_filled
 WHERE input_amount > 0 AND output_amount > 0;
