@@ -23,12 +23,12 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:polymarket.Events
+      type: proto:polymarket.v1.Events
 
   - name: store_token
     kind: store
     updatePolicy: set
-    valueType: proto:polymarket.StoreToken
+    valueType: proto:polymarket.v1.StoreToken
     inputs:
       - map: map_events
 
