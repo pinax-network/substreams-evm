@@ -563,4 +563,4 @@ SELECT
     maker_amount_filled                AS output_amount
 
 FROM polymarket_order_filled
-WHERE input_amount > 0 AND output_amount > 0;
+WHERE taker_amount_filled > 0 AND maker_amount_filled > 0;
