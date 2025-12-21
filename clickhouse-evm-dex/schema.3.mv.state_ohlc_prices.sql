@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS state_ohlc_prices (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'polymarket' = 9
     ) COMMENT 'protocol identifier',
     factory                 LowCardinality(String) COMMENT 'Factory contract address',
     pool                    String COMMENT 'Pool/exchange contract address',
