@@ -803,17 +803,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "polymarket"
-version = "0.0.0"
-dependencies = [
- "common",
- "proto",
- "substreams",
- "substreams-abis",
- "substreams-ethereum",
-]
-
-[[package]]
 name = "ppv-lite86"
 version = "0.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1629,19 +1618,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0562428422c63773dad2c345a1882263bbf4d65cf3f42e90921f787ef5ad58e7"
 dependencies = [
  "wit-bindgen",
-]
-
-[[package]]
-name = "webhook-ohlc"
-version = "0.0.0"
-dependencies = [
- "common",
- "hex",
- "prost 0.13.5",
- "prost-types 0.13.5",
- "proto",
- "substreams",
- "substreams-ethereum",
 ]
 
 [[package]]

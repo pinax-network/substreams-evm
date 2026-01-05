@@ -6,9 +6,6 @@ members = [
   "clickhouse-evm-balances",
   "clickhouse-blocks",
 
-  # Webhook
-  "webhook-ohlc",
-
   # Tokens
   "erc20-transfers",
   "native-transfers",
@@ -23,7 +20,6 @@ members = [
   "dex/curvefi",
   "dex/bancor",
   "dex/cow",
-  "dex/polymarket",
 
   # Uniswap DEX
   "dex/uniswap-v1",
