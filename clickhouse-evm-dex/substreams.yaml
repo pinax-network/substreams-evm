@@ -20,7 +20,6 @@ imports:
   bancor: ./packages/bancor-v0.2.3.spkg
   cow: ./packages/cow-v0.2.3.spkg
   curvefi: ./packages/curvefi-v0.2.3.spkg
-  polymarket: ../dex/polymarket/substreams.yaml
 
   # Uniswap DEX Substreams
   uniswap_v1: ./packages/uniswap-v1-v0.2.3.spkg
@@ -48,7 +47,6 @@ modules:
       - map: bancor:map_events
       - map: curvefi:map_events
       - map: cow:map_events
-      - map: polymarket:map_events
       - store: balancer_store:store_pool
       - store: bancor:store_pool
       - store: curvefi:store_pool

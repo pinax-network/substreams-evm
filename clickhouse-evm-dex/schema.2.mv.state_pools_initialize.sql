@@ -23,8 +23,7 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8,
-        'polymarket' = 9
+        'bancor' = 8
     ) COMMENT 'protocol identifier',
 
     -- indexes --
