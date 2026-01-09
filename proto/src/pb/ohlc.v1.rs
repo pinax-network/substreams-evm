@@ -5,63 +5,65 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Ohlcv {
     /// Timestamp of the data point
-    #[prost(uint64, tag = "1")]
+    #[prost(uint64, tag="1")]
     pub timestamp: u64,
     /// Block information
-    #[prost(uint64, tag = "2")]
+    #[prost(uint64, tag="2")]
     pub block_num: u64,
-    #[prost(bytes = "vec", tag = "3")]
+    #[prost(bytes="vec", tag="3")]
     pub block_hash: ::prost::alloc::vec::Vec<u8>,
     /// DEX protocol identifier
-    #[prost(string, tag = "4")]
+    #[prost(string, tag="4")]
     pub protocol: ::prost::alloc::string::String,
     /// Pool and token information
-    #[prost(bytes = "vec", tag = "5")]
+    #[prost(bytes="vec", tag="5")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes = "vec", tag = "6")]
+    #[prost(bytes="vec", tag="6")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
     /// Lexicographically smaller token address
-    #[prost(bytes = "vec", tag = "7")]
+    #[prost(bytes="vec", tag="7")]
     pub token0: ::prost::alloc::vec::Vec<u8>,
     /// Lexicographically larger token address
-    #[prost(bytes = "vec", tag = "8")]
+    #[prost(bytes="vec", tag="8")]
     pub token1: ::prost::alloc::vec::Vec<u8>,
     /// OHLC prices for token0 in terms of token1
-    #[prost(double, tag = "9")]
+    #[prost(double, tag="9")]
     pub open: f64,
     /// quantile 0.95
-    #[prost(double, tag = "10")]
+    #[prost(double, tag="10")]
     pub high: f64,
     /// quantile 0.05
-    #[prost(double, tag = "11")]
+    #[prost(double, tag="11")]
     pub low: f64,
-    #[prost(double, tag = "12")]
+    #[prost(double, tag="12")]
     pub close: f64,
     /// Volume data
+    ///
     /// uint256
-    #[prost(string, tag = "13")]
+    #[prost(string, tag="13")]
     pub gross_volume0: ::prost::alloc::string::String,
     /// uint256
-    #[prost(string, tag = "14")]
+    #[prost(string, tag="14")]
     pub gross_volume1: ::prost::alloc::string::String,
     /// int256
-    #[prost(string, tag = "15")]
+    #[prost(string, tag="15")]
     pub net_flow0: ::prost::alloc::string::String,
     /// int256
-    #[prost(string, tag = "16")]
+    #[prost(string, tag="16")]
     pub net_flow1: ::prost::alloc::string::String,
     /// Transaction statistics
-    #[prost(uint64, tag = "17")]
+    #[prost(uint64, tag="17")]
     pub transactions: u64,
-    #[prost(uint64, tag = "18")]
+    #[prost(uint64, tag="18")]
     pub unique_users: u64,
-    #[prost(uint64, tag = "19")]
+    #[prost(uint64, tag="19")]
     pub unique_tx_from: u64,
 }
 /// Events contains a collection of OHLCV data points
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Events {
-    #[prost(message, repeated, tag = "1")]
+    #[prost(message, repeated, tag="1")]
     pub ohlcv: ::prost::alloc::vec::Vec<Ohlcv>,
 }
+// @@protoc_insertion_point(module)

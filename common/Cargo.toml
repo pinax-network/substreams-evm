@@ -10,6 +10,7 @@ crate-type = ["rlib"]
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
+proto = { path = "../proto" }
 bs58 = "0.5"
 sha2 = "0.10"
 hex = "0.4"

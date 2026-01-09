@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package erc1155.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// https://github.com/pinax-network/substreams-abis/blob/main/abi/evm/polymarket/CFTExchange.json
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    // events
+    TransferSingle transfer_single = 10;
+    TransferBatch transfer_batch = 11;
+    ApprovalForAll approval_for_all = 12;
+    URI uri = 13;
+  }
+}
+
+message TransferSingle {
+  bytes operator = 10; // address
+  bytes from = 11; // address
+  bytes to = 12; // address
+  string id = 13; // uint256
+  string value = 14; // uint256
+}
+
+message TransferBatch {
+  bytes operator = 10; // address
+  bytes from = 11; // address
+  bytes to = 12; // address
+  repeated string ids = 13; // uint256[]
+  repeated string values = 14; // uint256[]
+}
+
+message ApprovalForAll {
+  bytes account = 10; // address
+  bytes operator = 11; // address
+  bool approved = 12; // true/false
+}
+
+// ERC1155 Metadata
+// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol
+message URI {
+  string value = 10;
+  string id = 11; // uint256
+}
