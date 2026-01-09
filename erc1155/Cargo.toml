@@ -1,0 +1,17 @@
+[package]
+name = "erc1155"
+description = "ERC1155 events substreams package"
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+authors = ["Yaro Shkvorets <yaro@pinax.network>"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+substreams = { workspace = true }
+substreams-ethereum = { workspace = true }
+substreams-abis = { workspace = true }
+proto = { path = "../proto" }
+common = { path = "../common" }

@@ -6,13 +6,6 @@ pub mod balancer {
         // @@protoc_insertion_point(balancer.v1)
     }
 }
-pub mod ohlc {
-    // @@protoc_insertion_point(attribute:ohlc.v1)
-    pub mod v1 {
-        include!("ohlc.v1.rs");
-        // @@protoc_insertion_point(ohlc.v1)
-    }
-}
 pub mod bancor {
     // @@protoc_insertion_point(attribute:bancor.v1)
     pub mod v1 {
@@ -34,6 +27,13 @@ pub mod curvefi {
         // @@protoc_insertion_point(curvefi.v1)
     }
 }
+pub mod erc1155 {
+    // @@protoc_insertion_point(attribute:erc1155.v1)
+    pub mod v1 {
+        include!("erc1155.v1.rs");
+        // @@protoc_insertion_point(erc1155.v1)
+    }
+}
 pub mod evm {
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
@@ -50,11 +50,11 @@ pub mod evm {
         }
     }
 }
-pub mod polymarket {
-    // @@protoc_insertion_point(attribute:polymarket.v1)
+pub mod ohlc {
+    // @@protoc_insertion_point(attribute:ohlc.v1)
     pub mod v1 {
-        include!("polymarket.v1.rs");
-        // @@protoc_insertion_point(polymarket.v1)
+        include!("ohlc.v1.rs");
+        // @@protoc_insertion_point(ohlc.v1)
     }
 }
 pub mod sunpump {
