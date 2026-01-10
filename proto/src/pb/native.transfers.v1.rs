@@ -40,83 +40,8 @@ pub struct Transaction {
     /// uint256
     #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
-    #[prost(message, repeated, tag="10")]
-    pub logs: ::prost::alloc::vec::Vec<Log>,
     #[prost(message, repeated, tag="11")]
     pub calls: ::prost::alloc::vec::Vec<Call>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Log {
-    #[prost(bytes="vec", tag="1")]
-    pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint64, tag="2")]
-    pub ordinal: u64,
-    #[prost(bytes="vec", repeated, tag="3")]
-    pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
-    #[prost(bytes="vec", tag="4")]
-    pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13")]
-    pub log: ::core::option::Option<log::Log>,
-}
-/// Nested message and enum types in `Log`.
-pub mod log {
-    #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Log {
-        /// ERC-20 events
-        #[prost(message, tag="10")]
-        Transfer(super::Transfer),
-        #[prost(message, tag="11")]
-        Approval(super::Approval),
-        /// WETH events
-        #[prost(message, tag="12")]
-        Deposit(super::Deposit),
-        #[prost(message, tag="13")]
-        Withdrawal(super::Withdrawal),
-    }
-}
-/// ERC-20 events
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Transfer {
-    #[prost(bytes="vec", tag="1")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="2")]
-    pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Approval {
-    #[prost(bytes="vec", tag="1")]
-    pub owner: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="2")]
-    pub spender: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub value: ::prost::alloc::string::String,
-}
-/// WETH events
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Deposit {
-    #[prost(bytes="vec", tag="1")]
-    pub dst: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub wad: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Withdrawal {
-    #[prost(bytes="vec", tag="1")]
-    pub src: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub wad: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

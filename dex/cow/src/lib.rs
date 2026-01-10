@@ -1,17 +1,8 @@
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::cow::v1 as pb;
 use substreams_abis::evm::cow::gpv2settlement as cow;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -23,20 +14,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_trades = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
 
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
@@ -49,7 +27,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     value: event.value.to_string(),
                     selector: event.selector.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // OrderInvalidated event
@@ -59,7 +37,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     owner: event.owner.to_vec(),
                     order_uid: event.order_uid.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PreSignature event
@@ -70,14 +48,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     order_uid: event.order_uid.to_vec(),
                     signed: event.signed,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Settlement event
             if let Some(event) = cow::events::Settlement::match_and_decode(log) {
                 total_settlements += 1;
                 let event = pb::log::Log::Settlement(pb::Settlement { solver: event.solver.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Trade event
@@ -92,7 +70,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee_amount: event.fee_amount.to_string(),
                     order_uid: event.order_uid.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 
