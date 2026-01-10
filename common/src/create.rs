@@ -51,3 +51,53 @@ mod erc1155_impl {
     use super::*;
     impl_create_log_and_transaction!(proto::pb::erc1155::v1);
 }
+
+mod uniswap_v1_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::uniswap::v1);
+}
+
+mod uniswap_v2_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::uniswap::v2);
+}
+
+mod uniswap_v3_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::uniswap::v3);
+}
+
+mod uniswap_v4_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::uniswap::v4);
+}
+
+mod balancer_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::balancer::v1);
+}
+
+mod bancor_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::bancor::v1);
+}
+
+mod cow_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::cow::v1);
+}
+
+mod curvefi_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::curvefi::v1);
+}
+
+mod sunpump_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::sunpump::v1);
+}
+
+mod erc20_transfers_impl {
+    use super::*;
+    impl_create_log_and_transaction!(proto::pb::erc20::transfers::v1);
+}

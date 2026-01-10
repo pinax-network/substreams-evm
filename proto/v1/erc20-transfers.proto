@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package erc20.transfers.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  oneof log {
+    // ERC-20 events
+    Transfer transfer = 10;
+    Approval approval = 11;
+
+    // WETH events
+    Deposit deposit = 12;
+    Withdrawal withdrawal = 13;
+  }
+}
+
+// ERC-20 events
+message Transfer {
+  bytes from = 1;
+  bytes to = 2;
+  string amount = 3; // uint256
+}
+
+message Approval {
+  bytes owner = 1;
+  bytes spender = 2;
+  string value = 3; // uint256
+}
+
+// WETH events
+message Deposit {
+  bytes dst = 1;
+  string wad = 2; // uint256
+}
+message Withdrawal {
+  bytes src = 1;
+  string wad = 2; // uint256
+}

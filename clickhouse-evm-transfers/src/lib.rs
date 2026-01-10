@@ -4,7 +4,8 @@ mod native_transfers;
 mod transactions;
 use substreams::pb::substreams::Clock;
 
-use proto::pb::evm as pb;
+use proto::pb::erc20::transfers::v1 as erc20_pb;
+use proto::pb::native::transfers::v1 as native_pb;
 use substreams::errors::Error;
 use substreams_database_change::pb::database::DatabaseChanges;
 
@@ -12,8 +13,8 @@ use substreams_database_change::pb::database::DatabaseChanges;
 pub fn db_out(
     params: String,
     clock: Clock,
-    events_erc20_transfers: pb::transfers::v1::Events,
-    events_native_transfers: pb::transfers::v1::Events,
+    events_erc20_transfers: erc20_pb::Events,
+    events_native_transfers: native_pb::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 

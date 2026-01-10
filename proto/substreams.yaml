@@ -5,7 +5,8 @@ package:
 
 protobuf:
   files:
-    - v1/transfers.proto
+    - v1/erc20-transfers.proto
+    - v1/native-transfers.proto
     - v1/balances.proto
     - v1/ohlc.proto
     - v1/dex/sunpump.proto

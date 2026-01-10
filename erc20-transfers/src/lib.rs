@@ -1,18 +1,9 @@
-use proto::pb::evm::transfers::v1 as pb;
+use common::create::{CreateLog, CreateTransaction};
+use proto::pb::erc20::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -23,22 +14,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_weth_withdrawals = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to: Option<Vec<u8>> = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            // -- transaction --
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce as u64,
-            gas_price: gas_price.to_string(),
-            gas_limit: trx.gas_limit as u64,
-            gas_used: trx.gas_used,
-            value: value.to_string(),
-            logs: vec![],
-            calls: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
+
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
             // ERC-20 Transfer event
@@ -49,7 +26,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     to: event.to.to_vec(),
                     amount: event.value.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ERC-20 Approval event
@@ -60,7 +37,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     spender: event.spender.to_vec(),
                     value: event.value.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // WETH Deposit/Withdraw event
@@ -70,7 +47,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     dst: event.dst.to_vec(),
                     wad: event.wad.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
             if let Some(event) = weth_events::Withdrawal::match_and_decode(log) {
                 total_weth_withdrawals += 1;
@@ -78,11 +55,11 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     src: event.src.to_vec(),
                     wad: event.wad.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
         // Only include transactions with logs
-        if transaction.logs.len() > 0 {
+        if !transaction.logs.is_empty() {
             events.transactions.push(transaction);
         }
     }
