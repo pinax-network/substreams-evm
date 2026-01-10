@@ -1,14 +1,12 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc1155::v1 as pb;
-use substreams::Hex;
 use substreams_abis::evm::token::erc1155::events as erc1155;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
 #[substreams::handlers::map]
-fn map_events(params: String, block: Block) -> Result<pb::Events, substreams::errors::Error> {
+fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut events = pb::Events::default();
-    let matcher = substreams::expr_matcher(&params);
     let mut total_transfer_single = 0;
     let mut total_transfer_batch = 0;
     let mut total_approval_for_all = 0;
@@ -18,11 +16,6 @@ fn map_events(params: String, block: Block) -> Result<pb::Events, substreams::er
         let mut transaction = pb::Transaction::create_transaction(trx);
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
-
-            // Skip logs that don't match the filter (if params provided)
-            if !matcher.matches_keys(&vec![format!("evt_addr:0x{}", Hex::encode(&log.address))]) {
-                continue;
-            }
 
             // TransferSingle event
             if let Some(event) = erc1155::TransferSingle::match_and_decode(log) {
