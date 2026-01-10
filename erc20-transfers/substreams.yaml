@@ -13,7 +13,7 @@ binaries:
 
 protobuf:
   files:
-    - v1/transfers.proto
+    - v1/erc20-transfers.proto
   importPaths:
     - ../proto
 
@@ -24,6 +24,6 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.transfers.v1.Events
+      type: proto:erc20.transfers.v1.Events
 
 network: mainnet

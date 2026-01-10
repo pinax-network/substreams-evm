@@ -1,19 +1,10 @@
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::balancer::v1 as pb;
 use substreams_abis::evm::balancer;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
 pub mod store;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -40,20 +31,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_aggregate_swap_fee_percentage = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
 
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
@@ -65,21 +43,21 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::SwapFeePercentage(pb::SwapFeePercentage {
                     swap_fee_percentage: event.swap_fee_percentage.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PausedStateChanged event
             if let Some(event) = balancer::v2::weightedpool::events::PausedStateChanged::match_and_decode(log) {
                 total_paused += 1;
                 let event = pb::log::Log::Paused(pb::Paused { paused: event.paused });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // RecoveryModeStateChanged event
             if let Some(event) = balancer::v2::weightedpool::events::RecoveryModeStateChanged::match_and_decode(log) {
                 total_recovery_mode += 1;
                 let event = pb::log::Log::RecoveryMode(pb::RecoveryMode { enabled: event.enabled });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ProtocolFeePercentageCacheUpdated event
@@ -89,7 +67,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee_type: event.fee_type.to_string(),
                     protocol_fee_percentage: event.protocol_fee_percentage.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ===== V3 StablePool Events =====
@@ -103,7 +81,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     start_time: event.start_time.to_string(),
                     end_time: event.end_time.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // AmpUpdateStopped event
@@ -112,7 +90,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::AmpUpdateStopped(pb::AmpUpdateStopped {
                     current_value: event.current_value.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ===== V3 Vault Events =====
@@ -129,7 +107,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     swap_fee_percentage: event.swap_fee_percentage.to_string(),
                     swap_fee_amount: event.swap_fee_amount.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityAdded event
@@ -143,7 +121,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amounts_added_raw: event.amounts_added_raw.iter().map(|v| v.to_string()).collect(),
                     swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityRemoved event
@@ -157,14 +135,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amounts_removed_raw: event.amounts_removed_raw.iter().map(|v| v.to_string()).collect(),
                     swap_fee_amounts_raw: event.swap_fee_amounts_raw.iter().map(|v| v.to_string()).collect(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PoolInitialized event
             if let Some(event) = balancer::v3::vault::events::PoolInitialized::match_and_decode(log) {
                 total_pool_initialized += 1;
                 let event = pb::log::Log::PoolInitialized(pb::PoolInitialized { pool: event.pool.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PoolRegistered event
@@ -210,7 +188,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                         enable_donation: event.liquidity_management.3,
                     }),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PoolPausedStateChanged event
@@ -220,7 +198,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pool: event.pool.to_vec(),
                     paused: event.paused,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PoolRecoveryModeStateChanged event
@@ -230,7 +208,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pool: event.pool.to_vec(),
                     enabled: event.recovery_mode,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // AggregateSwapFeePercentageChanged event
@@ -240,7 +218,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pool: event.pool.to_vec(),
                     aggregate_swap_fee_percentage: event.aggregate_swap_fee_percentage.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 

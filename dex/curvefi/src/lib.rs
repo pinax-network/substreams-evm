@@ -1,18 +1,9 @@
 mod store;
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
 use substreams_abis::evm::curvefi;
-use substreams_ethereum::pb::eth::v2::{Block, CallType, Log, TransactionTrace};
+use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
@@ -44,20 +35,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let _total_init = 0; // Reserved for future Init event tracking
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
+
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
 
@@ -72,7 +51,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     bought_id: event.bought_id.to_string(),
                     tokens_bought: event.tokens_bought.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // AddLiquidity event
@@ -85,7 +64,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     invariant: event.invariant.to_string(),
                     token_supply: event.token_supply.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // RemoveLiquidity event
@@ -97,7 +76,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fees: event.fees.iter().map(|fee| fee.to_string()).collect(),
                     token_supply: event.token_supply.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // RemoveLiquidityOne event
@@ -108,7 +87,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_amount: event.token_amount.to_string(),
                     coin_amount: event.coin_amount.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // RemoveLiquidityImbalance event
@@ -121,7 +100,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     invariant: event.invariant.to_string(),
                     token_supply: event.token_supply.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // CommitNewAdmin event
@@ -131,14 +110,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     deadline: event.deadline.to_string(),
                     admin: event.admin,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // NewAdmin event
             if let Some(event) = curvefi::pool::events::NewAdmin::match_and_decode(log) {
                 total_new_admin += 1;
                 let event = pb::log::Log::NewAdmin(pb::NewAdmin { admin: event.admin });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // CommitNewFee event
@@ -149,7 +128,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee: event.fee.to_string(),
                     admin_fee: event.admin_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // NewFee event
@@ -159,7 +138,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee: event.fee.to_string(),
                     admin_fee: event.admin_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // RampA event
@@ -171,7 +150,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     initial_time: event.initial_time.to_string(),
                     future_time: event.future_time.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // StopRampA event
@@ -181,7 +160,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     a: event.a.to_string(),
                     t: event.t.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PlainPoolDeploy
@@ -195,7 +174,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                         deployer: event.deployer,
                         fee: event.fee.to_string(),
                     });
-                    transaction.logs.push(create_log(log, event));
+                    transaction.logs.push(pb::Log::create_log(log, event));
                 }
             }
 
@@ -211,7 +190,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                         deployer: event.deployer,
                         fee: event.fee.to_string(),
                     });
-                    transaction.logs.push(create_log(log, event));
+                    transaction.logs.push(pb::Log::create_log(log, event));
                 }
             }
 
@@ -219,7 +198,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = curvefi::factory::events::BasePoolAdded::match_and_decode(log) {
                 total_base_pool_added += 1;
                 let event = pb::log::Log::BasePoolAdded(pb::BasePoolAdded { base_pool: event.base_pool });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityGaugeDeployed
@@ -229,7 +208,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pool: event.pool,
                     gauge: event.gauge,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 

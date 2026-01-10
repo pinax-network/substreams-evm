@@ -1,19 +1,10 @@
 mod store;
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::sunpump::v1 as pb;
 use substreams_abis::tvm::sunpump::legacy::launchpad::events::TokenCreate as TokenCreateLegacy;
 use substreams_abis::tvm::sunpump::v1::launchpadproxy::events;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -33,20 +24,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_token_sold = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
 
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
@@ -59,7 +37,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_index: event.token_index.to_string(),
                     creator: event.creator.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Legacy - TokenCreate event
@@ -73,14 +51,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     name: event.name,
                     symbol: event.symbol,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LaunchPending event
             if let Some(event) = events::LaunchPending::match_and_decode(log) {
                 total_launch_pending += 1;
                 let event = pb::log::Log::LaunchPending(pb::LaunchPending { token: event.token.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LauncherChanged event
@@ -90,7 +68,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_launcher: event.old_launcher.to_vec(),
                     new_launcher: event.new_launcher.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // MinTxFeeSet event
@@ -100,7 +78,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // MintFeeSet event
@@ -110,7 +88,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // OperatorChanged event
@@ -120,7 +98,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_operator: event.old_operator.to_vec(),
                     new_operator: event.new_operator.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // OwnerChanged event
@@ -130,7 +108,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_owner: event.old_owner.to_vec(),
                     new_owner: event.new_owner.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PendingOwnerSet event
@@ -140,7 +118,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_pending_owner: event.old_pending_owner.to_vec(),
                     new_pending_owner: event.new_pending_owner.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PurchaseFeeSet event
@@ -150,7 +128,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // SaleFeeSet event
@@ -160,14 +138,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // TokenLaunched event
             if let Some(event) = events::TokenLaunched::match_and_decode(log) {
                 total_token_launched += 1;
                 let event = pb::log::Log::TokenLaunched(pb::TokenLaunched { token: event.token.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // TokenPurchased event
@@ -181,7 +159,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_amount: event.token_amount.to_string(),
                     token_reserve: event.token_reserve.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // TokenSold event
@@ -194,7 +172,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee: event.fee.to_string(),
                     token_amount: event.token_amount.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 

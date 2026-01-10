@@ -1,9 +1,9 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::evm::transfers::v1 as pb;
+use proto::pb::native::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{clock_key, set_clock, transactions::set_template_tx};
+use crate::{clock_key, set_clock, transactions::set_template_native_tx};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for event in &events.block_rewards {
@@ -19,7 +19,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = clock_key(clock);
         let tx_row = tables.create_row("transactions", key);
         set_clock(clock, tx_row);
-        set_template_tx(encoding, tx, tx_index, tx_row);
+        set_template_native_tx(encoding, tx, tx_index, tx_row);
 
         // Calls
         for (call_index, call) in tx.calls.iter().enumerate() {
@@ -27,7 +27,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
             let call_row = tables.create_row("calls", key);
 
             set_clock(clock, call_row);
-            set_template_tx(encoding, tx, tx_index, call_row);
+            set_template_native_tx(encoding, tx, tx_index, call_row);
 
             call_row.set("call_index", call_index as u64);
             call_row.set("call_begin_ordinal", call.begin_ordinal);

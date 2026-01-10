@@ -1,9 +1,9 @@
 use common::{bytes_to_string, Encoding};
-use proto::pb::evm::transfers::v1 as pb;
+use proto::pb::erc20::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{clock_key, logs::set_template_log, set_clock, transactions::set_template_tx};
+use crate::{clock_key, logs::set_template_log, set_clock, transactions::set_template_erc20_tx};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
@@ -15,7 +15,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
-                set_template_tx(encoding, tx, tx_index, row);
+                set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("from", bytes_to_string(&transfer.from, encoding));
                 row.set("to", bytes_to_string(&transfer.to, encoding));
@@ -29,7 +29,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
-                set_template_tx(encoding, tx, tx_index, row);
+                set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("dst", bytes_to_string(&event.dst, encoding));
                 row.set("wad", &event.wad);
@@ -42,7 +42,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
-                set_template_tx(encoding, tx, tx_index, row);
+                set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("src", bytes_to_string(&event.src, encoding));
                 row.set("wad", &event.wad);
@@ -55,7 +55,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
-                set_template_tx(encoding, tx, tx_index, row);
+                set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("owner", bytes_to_string(&event.owner, encoding));
                 row.set("spender", bytes_to_string(&event.spender, encoding));

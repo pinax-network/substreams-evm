@@ -1,18 +1,9 @@
 mod store;
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::uniswap::v2 as pb;
 use substreams_abis::evm::uniswap::v2 as uniswap;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -24,20 +15,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_pair_created = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
 
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
@@ -53,7 +31,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1_out: event.amount1_out.to_string(),
                     to: event.to.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Mint event
@@ -64,7 +42,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Burn event
@@ -76,7 +54,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1: event.amount1.to_string(),
                     to: event.to.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Sync event
@@ -86,7 +64,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     reserve0: event.reserve0.to_string(),
                     reserve1: event.reserve1.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // PairCreated event
@@ -98,7 +76,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pair: event.pair.to_vec(),
                     extra_data: event.extra_data.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 
