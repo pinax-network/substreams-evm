@@ -4,7 +4,10 @@ description = "ERC1155 events substreams package"
 version = { workspace = true }
 edition = { workspace = true }
 license = { workspace = true }
-authors = ["Yaro Shkvorets <yaro@pinax.network>"]
+authors = [
+    "Yaro Shkvorets <yaro@pinax.network>",
+    "Denis Carriere <denis@pinax.network>",
+]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
