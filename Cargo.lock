@@ -229,6 +229,7 @@ dependencies = [
 name = "curvefi"
 version = "0.0.0"
 dependencies = [
+ "common",
  "prost 0.13.5",
  "prost-types 0.13.5",
  "proto",
@@ -285,6 +286,7 @@ dependencies = [
 name = "erc20-transfers"
 version = "0.0.0"
 dependencies = [
+ "common",
  "proto",
  "substreams",
  "substreams-abis",
@@ -1393,6 +1395,7 @@ dependencies = [
 name = "sunpump"
 version = "0.0.0"
 dependencies = [
+ "common",
  "prost 0.13.5",
  "proto",
  "substreams",

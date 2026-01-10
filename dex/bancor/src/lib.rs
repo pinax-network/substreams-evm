@@ -1,24 +1,15 @@
 use common::bigint_to_u64;
+use common::create::{CreateLog, CreateTransaction};
 use proto::pb::bancor::v1 as pb;
 use substreams_abis::evm::bancor::bancorconverterfactory;
 use substreams_abis::evm::bancor::contractfeatures;
 use substreams_abis::evm::bancor::converterfactory;
 use substreams_abis::evm::bancor::converterregistry;
 use substreams_abis::evm::bancor::standardpoolconverter as bancor;
-use substreams_ethereum::pb::eth::v2::{Block, Log};
+use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
 pub mod store;
-
-fn create_log(log: &Log, event: pb::log::Log) -> pb::Log {
-    pb::Log {
-        address: log.address.to_vec(),
-        ordinal: log.ordinal,
-        topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-        data: log.data.to_vec(),
-        log: Some(event),
-    }
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -44,20 +35,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_features_removal = 0;
 
     for trx in block.transactions() {
-        let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-        let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-        let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-        let mut transaction = pb::Transaction {
-            from: trx.from.to_vec(),
-            to,
-            hash: trx.hash.to_vec(),
-            nonce: trx.nonce,
-            gas_price,
-            gas_limit: trx.gas_limit,
-            gas_used: trx.receipt().receipt.cumulative_gas_used,
-            value: value.to_string(),
-            logs: vec![],
-        };
+        let mut transaction = pb::Transaction::create_transaction(trx);
 
         for log_view in trx.receipt().logs() {
             let log = log_view.log;
@@ -70,7 +48,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     anchor: event.anchor.to_vec(),
                     activated: event.activated,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // Conversion event
@@ -84,7 +62,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     target_amount: event.target_amount.to_string(),
                     conversion_fee: event.conversion_fee.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ConversionFeeUpdate event
@@ -94,7 +72,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     prev_fee: bigint_to_u64(&event.prev_fee).unwrap_or_default() as u32,
                     new_fee: bigint_to_u64(&event.new_fee).unwrap_or_default() as u32,
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityAdded event
@@ -107,7 +85,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     new_balance: event.new_balance.to_string(),
                     new_supply: event.new_supply.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityRemoved event
@@ -120,7 +98,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     new_balance: event.new_balance.to_string(),
                     new_supply: event.new_supply.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // OwnerUpdate event
@@ -130,7 +108,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     prev_owner: event.prev_owner.to_vec(),
                     new_owner: event.new_owner.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // TokenRateUpdate event
@@ -142,21 +120,21 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     rate_n: event.rate_n.to_string(),
                     rate_d: event.rate_d.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ConverterAnchorAdded event
             if let Some(event) = converterregistry::events::ConverterAnchorAdded::match_and_decode(log) {
                 total_converter_anchor_added += 1;
                 let event = pb::log::Log::ConverterAnchorAdded(pb::ConverterAnchorAdded { anchor: event.anchor.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ConverterAnchorRemoved event
             if let Some(event) = converterregistry::events::ConverterAnchorRemoved::match_and_decode(log) {
                 total_converter_anchor_removed += 1;
                 let event = pb::log::Log::ConverterAnchorRemoved(pb::ConverterAnchorRemoved { anchor: event.anchor.to_vec() });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ConvertibleTokenAdded event
@@ -166,7 +144,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     convertible_token: event.convertible_token.to_vec(),
                     smart_token: event.smart_token.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // ConvertibleTokenRemoved event
@@ -176,7 +154,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     convertible_token: event.convertible_token.to_vec(),
                     smart_token: event.smart_token.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityPoolAdded event
@@ -185,7 +163,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::LiquidityPoolAdded(pb::LiquidityPoolAdded {
                     liquidity_pool: event.liquidity_pool.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // LiquidityPoolRemoved event
@@ -194,7 +172,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::LiquidityPoolRemoved(pb::LiquidityPoolRemoved {
                     liquidity_pool: event.liquidity_pool.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // SmartTokenAdded event
@@ -203,7 +181,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::SmartTokenAdded(pb::SmartTokenAdded {
                     smart_token: event.smart_token.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // SmartTokenRemoved event
@@ -212,7 +190,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::SmartTokenRemoved(pb::SmartTokenRemoved {
                     smart_token: event.smart_token.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // NewConverter event
@@ -223,7 +201,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // NewConverter event from BancorConverterFactory (Legacy)
@@ -234,7 +212,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     converter: event.converter.to_vec(),
                     owner: event.owner.to_vec(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // FeaturesAddition
@@ -244,7 +222,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     address: event.address.to_vec(),
                     features: event.features.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
 
             // FeaturesRemoval
@@ -254,7 +232,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     address: event.address.to_vec(),
                     features: event.features.to_string(),
                 });
-                transaction.logs.push(create_log(log, event));
+                transaction.logs.push(pb::Log::create_log(log, event));
             }
         }
 
