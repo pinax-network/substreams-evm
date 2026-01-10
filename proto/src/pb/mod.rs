@@ -43,21 +43,21 @@ pub mod erc20 {
         }
     }
 }
-pub mod native {
-    pub mod transfers {
-        // @@protoc_insertion_point(attribute:native.transfers.v1)
-        pub mod v1 {
-            include!("native.transfers.v1.rs");
-            // @@protoc_insertion_point(native.transfers.v1)
-        }
-    }
-}
 pub mod evm {
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
         pub mod v1 {
             include!("evm.balances.v1.rs");
             // @@protoc_insertion_point(evm.balances.v1)
+        }
+    }
+}
+pub mod native {
+    pub mod transfers {
+        // @@protoc_insertion_point(attribute:native.transfers.v1)
+        pub mod v1 {
+            include!("native.transfers.v1.rs");
+            // @@protoc_insertion_point(native.transfers.v1)
         }
     }
 }
