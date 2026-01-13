@@ -44,11 +44,48 @@ pub fn set_clock(clock: &Clock, row: &mut substreams_database_change::tables::Ro
     }
 }
 
-pub fn clock_key(clock: &Clock) -> [(&'static str, String); 3] {
+pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
     let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
     [
         ("minute", (seconds / 60).to_string()),
         ("timestamp", seconds.to_string()),
         ("block_num", clock.number.to_string()),
+        ("tx_index", tx_index.to_string()),
+        ("log_index", log_index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
+    ]
+}
+
+pub fn tx_key(clock: &Clock, tx_index: usize) -> [(&'static str, String); 5] {
+    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
+    [
+        ("minute", (seconds / 60).to_string()),
+        ("timestamp", seconds.to_string()),
+        ("block_num", clock.number.to_string()),
+        ("tx_index", tx_index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
+    ]
+}
+
+pub fn call_key(clock: &Clock, tx_index: usize, call_index: usize) -> [(&'static str, String); 6] {
+    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
+    [
+        ("minute", (seconds / 60).to_string()),
+        ("timestamp", seconds.to_string()),
+        ("block_num", clock.number.to_string()),
+        ("tx_index", tx_index.to_string()),
+        ("call_index", call_index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
+    ]
+}
+
+pub fn reward_key(clock: &Clock, index: usize) -> [(&'static str, String); 5] {
+    let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
+    [
+        ("minute", (seconds / 60).to_string()),
+        ("timestamp", seconds.to_string()),
+        ("block_num", clock.number.to_string()),
+        ("index", index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
     ]
 }
