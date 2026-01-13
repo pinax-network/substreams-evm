@@ -1,6 +1,5 @@
 -- ERC20 Transfer Logs --
 CREATE TABLE IF NOT EXISTS erc20_transfers AS TEMPLATE_LOG
-TTL timestamp + INTERVAL 1 DAY
 COMMENT 'ERC20 Token Transfer events';
 ALTER TABLE erc20_transfers
     -- transfer --
@@ -10,7 +9,6 @@ ALTER TABLE erc20_transfers
 
 -- ERC20 Approvals Logs --
 CREATE TABLE IF NOT EXISTS erc20_approvals AS TEMPLATE_LOG
-TTL timestamp + INTERVAL 1 DAY
 COMMENT 'ERC20 Token Approvals events';
 ALTER TABLE erc20_approvals
     -- Approval --

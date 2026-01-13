@@ -1,6 +1,5 @@
 -- WETH Deposit/Withdrawal Logs --
 CREATE TABLE IF NOT EXISTS weth_deposit AS TEMPLATE_LOG
-TTL timestamp + INTERVAL 1 DAY
 COMMENT 'WETH Deposit events';
 ALTER TABLE weth_deposit
     -- event --
@@ -12,7 +11,6 @@ ALTER TABLE weth_deposit
 
 -- WETH Withdrawal Logs --
 CREATE TABLE IF NOT EXISTS weth_withdrawal AS TEMPLATE_LOG
-TTL timestamp + INTERVAL 1 DAY
 COMMENT 'WETH Withdrawal events';
 ALTER TABLE weth_withdrawal
     -- event --
