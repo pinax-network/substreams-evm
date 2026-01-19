@@ -8,25 +8,25 @@ package:
 
 imports:
   # SQL Sink Substreams
-  database_changes: ./packages/substreams-database-change-v2.0.0.spkg
-  sql: ./packages/substreams-sink-sql-protodefs-v1.0.7.spkg
+  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
+  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Tron DEX Substreams
-  sunpump: ./packages/sunpump-v0.2.3.spkg
+  sunpump: ../spkg/sunpump-v0.2.3.spkg
 
   # Ethereum DEX Substreams
-  balancer_store: ./packages/balancer-v0.2.3.spkg
-  balancer: ./packages/balancer-v0.2.4.spkg
-  bancor: ./packages/bancor-v0.2.3.spkg
-  cow: ./packages/cow-v0.2.3.spkg
-  curvefi: ./packages/curvefi-v0.2.3.spkg
+  balancer_store: ../spkg/balancer-v0.2.3.spkg
+  balancer: ../spkg/balancer-v0.2.4.spkg
+  bancor: ../spkg/bancor-v0.2.3.spkg
+  cow: ../spkg/cow-v0.2.3.spkg
+  curvefi: ../spkg/curvefi-v0.2.3.spkg
 
   # Uniswap DEX Substreams
-  uniswap_v1: ./packages/uniswap-v1-v0.2.3.spkg
-  uniswap_v2: ./packages/uniswap-v2-v0.2.3.spkg
-  uniswap_v3: ./packages/uniswap-v3-v0.2.3.spkg
-  uniswap_v4_store: ./packages/uniswap-v4-v0.2.3.spkg
-  uniswap_v4: ./packages/uniswap-v4-v0.2.4.spkg
+  uniswap_v1: ../spkg/uniswap-v1-v0.2.3.spkg
+  uniswap_v2: ../spkg/uniswap-v2-v0.2.3.spkg
+  uniswap_v3: ../spkg/uniswap-v3-v0.2.3.spkg
+  uniswap_v4_store: ../spkg/uniswap-v4-v0.2.3.spkg
+  uniswap_v4: ../spkg/uniswap-v4-v0.2.4.spkg
 
 binaries:
   default:
