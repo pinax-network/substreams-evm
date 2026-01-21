@@ -1,19 +1,19 @@
 specVersion: v0.1.0
 package:
   name: clickhouse_evm_transfers
-  version: v0.2.2
+  version: v0.2.3
   url: https://github.com/pinax-network/substreams-evm
   description: ERC-20, Native transfers & WETH Events
   image: ../image.png
 
 imports:
   # SQL Sink Substreams
-  database_changes: ./packages/substreams-database-change-v2.0.0.spkg
-  sql: ./packages/substreams-sink-sql-protodefs-v1.0.7.spkg
+  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
+  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Transfers Substreams
-  erc20_transfers: ./packages/erc20-transfers-v0.2.0.spkg
-  native_transfers: ./packages/evm-native-transfers-v0.2.0.spkg
+  erc20_transfers: ../spkg/erc20-transfers-v0.2.0.spkg
+  native_transfers: ../spkg/evm-native-transfers-v0.2.0.spkg
 
 binaries:
   default:
