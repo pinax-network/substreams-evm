@@ -37,8 +37,7 @@ CREATE TABLE IF NOT EXISTS native_transfers (
     -- minute --
     PROJECTION prj_transfer_type_by_minute ( SELECT transfer_type, minute GROUP BY transfer_type, minute ),
     PROJECTION prj_from_by_minute ( SELECT `from`, minute GROUP BY `from`, minute ),
-    PROJECTION prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute ),
-    PROJECTION prj_from_to_by_minute ( SELECT `from`, `to`, minute GROUP BY `from`, `to`, minute ),
+    PROJECTION prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute )
 )
 ENGINE = MergeTree
 ORDER BY (

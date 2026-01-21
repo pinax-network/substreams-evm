@@ -45,11 +45,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     PROJECTION prj_transfer_type_by_minute ( SELECT transfer_type, minute GROUP BY transfer_type, minute ),
     PROJECTION prj_from_by_minute ( SELECT `from`, minute GROUP BY `from`, minute ),
     PROJECTION prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute ),
-    PROJECTION prj_from_to_by_minute ( SELECT `from`, `to`, minute GROUP BY `from`, `to`, minute ),
-    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute ),
-    PROJECTION prj_log_address_from_by_minute ( SELECT log_address, `from`, minute GROUP BY log_address, `from`, minute ),
-    PROJECTION prj_log_address_to_by_minute ( SELECT log_address, `to`, minute GROUP BY log_address, `to`, minute ),
-    PROJECTION prj_log_address_from_to_by_minute ( SELECT log_address, `from`, `to`, minute GROUP BY log_address, `from`, `to`, minute ),
+    PROJECTION prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute )
 )
 ENGINE = MergeTree
 ORDER BY (
