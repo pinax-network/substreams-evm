@@ -4,10 +4,7 @@ COMMENT 'WETH Deposit events';
 ALTER TABLE weth_deposit
     -- event --
     ADD COLUMN IF NOT EXISTS dst        String,
-    ADD COLUMN IF NOT EXISTS wad        UInt256,
-
-    -- INDEXES --
-    ADD INDEX IF NOT EXISTS idx_wad (wad) TYPE minmax GRANULARITY 1;
+    ADD COLUMN IF NOT EXISTS wad        UInt256;
 
 -- WETH Withdrawal Logs --
 CREATE TABLE IF NOT EXISTS weth_withdrawal AS TEMPLATE_LOG
