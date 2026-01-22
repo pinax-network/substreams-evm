@@ -22,11 +22,6 @@ pub fn map_events(params: String, block: Block) -> Result<Events, Error> {
         // Block Rewards as balance change
         if is_valid_balance_change(balance_change) {
             let (_, new_balance) = get_balances(balance_change);
-            // events.extended_balances_by_account_from_block_rewards.push(BalanceByAccount {
-            //     tx_hash: None,
-            //     account: balance_change.address.to_vec(),
-            //     amount: new_balance.to_string(),
-            // });
             balances.insert(balance_change.address.to_vec(), new_balance);
         }
     }
