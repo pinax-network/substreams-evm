@@ -11,17 +11,43 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
     let mut events = balances_pb::Events::default();
     let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
 
-    // Collect unique tokens by owners (both sender and recipient)
+    // Collect unique tokens by owners
+    // Include addresses from:
+    // - Transfer events: from, to
+    // - WETH Deposit events: dst
+    // - WETH Withdrawal events: src
+    // - Approval events: owner, spender
+    // - transaction.from for all transactions
+    // - log.address for all logs (token contract itself)
     let contracts_by_address = transfers
         .transactions
         .iter()
-        .flat_map(|tx| tx.logs.iter())
-        .flat_map(|log| {
-            if let Some(transfers_pb::log::Log::Transfer(transfer)) = &log.log {
-                vec![(&log.address, &transfer.from), (&log.address, &transfer.to)]
-            } else {
-                vec![]
-            }
+        .flat_map(|tx| {
+            tx.logs.iter().flat_map(|log| {
+                let mut addresses: Vec<(&common::Address, &common::Address)> = vec![];
+                // Always track transaction.from and log.address (token contract)
+                addresses.push((&log.address, &tx.from));
+                addresses.push((&log.address, &log.address));
+
+                match &log.log {
+                    Some(transfers_pb::log::Log::Transfer(transfer)) => {
+                        addresses.push((&log.address, &transfer.from));
+                        addresses.push((&log.address, &transfer.to));
+                    }
+                    Some(transfers_pb::log::Log::Approval(approval)) => {
+                        addresses.push((&log.address, &approval.owner));
+                        addresses.push((&log.address, &approval.spender));
+                    }
+                    Some(transfers_pb::log::Log::Deposit(deposit)) => {
+                        addresses.push((&log.address, &deposit.dst));
+                    }
+                    Some(transfers_pb::log::Log::Withdrawal(withdrawal)) => {
+                        addresses.push((&log.address, &withdrawal.src));
+                    }
+                    None => {}
+                }
+                addresses
+            })
         })
         .collect::<HashSet<(&common::Address, &common::Address)>>()
         .into_iter()
