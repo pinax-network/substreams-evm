@@ -19,6 +19,10 @@ noop: build
 gui: build
 	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) --limit-processed-blocks 0
 
+.PHONY: gui-tron
+gui-tron: build
+	substreams gui -e tronevm.substreams.pinax.network:443 substreams.yaml map_events -s 79000000 --limit-processed-blocks 0 -H "X-substreams-acknowledge-non-deterministic: true"
+
 .PHONY: prod
 prod: build
 	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode  -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"

@@ -31,6 +31,10 @@ prod: build
 dev: build
 	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 1 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --infinite-retry --development-mode
 
+.PHONY: dev-tron
+dev-tron: build
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e tronevm.substreams.pinax.network:443 79000000: --undo-buffer-size 1 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --infinite-retry --development-mode -H "X-substreams-acknowledge-non-deterministic: true" -p "db_out=tron_base58"
+
 .PHONY: setup
 setup: pack
 	substreams-sink-sql setup clickhouse://default:@localhost:9000/default substreams.yaml
