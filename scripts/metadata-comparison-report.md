@@ -93,16 +93,49 @@
 
 ---
 
+## 🎯 Top 10,000 Most-Transferred Contracts
+
+To measure **practical quality impact**, we compared metadata coverage for the top 10,000 contracts by transfer count (from the `mainnet:evm-transfers@v0.2.2` database).
+
+### Coverage Results
+
+| Database | Contracts with Metadata | Coverage |
+|----------|------------------------|----------|
+| **Legacy** | 9,920 | **99.20%** |
+| **New** | 9,912 | **99.12%** |
+| **Difference** | -8 | -0.08% |
+
+### Batch Breakdown
+
+| Batch | Contracts | Legacy | New |
+|-------|-----------|--------|-----|
+| 0 | 1-1000 | 990 | 989 |
+| 1 | 1001-2000 | 992 | 992 |
+| 2 | 2001-3000 | 996 | 992 |
+| 3 | 3001-4000 | 991 | 991 |
+| 4 | 4001-5000 | 998 | 998 |
+| 5 | 5001-6000 | 991 | 992 |
+| 6 | 6001-7000 | 992 | 991 |
+| 7 | 7001-8000 | 989 | 988 |
+| 8 | 8001-9000 | 990 | 989 |
+| 9 | 9001-10000 | 991 | 990 |
+| **Total** | | **9,920** | **9,912** |
+
+### Key Insight
+Both databases have **excellent coverage** (~99%) for the most important tokens. Legacy has a slight edge with 8 more contracts covered among the top 10,000 most transferred tokens.
+
+---
+
 ## 🛠️ Recommended Fixes for New Database
 
 ```sql
 -- Fix whitespace issues
-ALTER TABLE metadata UPDATE name = trim(name) WHERE name != trim(name);
-ALTER TABLE metadata UPDATE symbol = trim(symbol) WHERE symbol != trim(symbol);
+ALTER TABLE metadata ON CLUSTER 'tokenapis-b' UPDATE name = trim(name) WHERE name != trim(name);
+ALTER TABLE metadata ON CLUSTER 'tokenapis-b' UPDATE symbol = trim(symbol) WHERE symbol != trim(symbol);
 
 -- Fix NULL byte issues
-ALTER TABLE metadata UPDATE name = replaceAll(name, '\0', '') WHERE position(name, '\0') > 0;
-ALTER TABLE metadata UPDATE symbol = replaceAll(symbol, '\0', '') WHERE position(symbol, '\0') > 0;
+ALTER TABLE metadata ON CLUSTER 'tokenapis-b' UPDATE name = replaceAll(name, '\0', '') WHERE position(name, '\0') > 0;
+ALTER TABLE metadata ON CLUSTER 'tokenapis-b' UPDATE symbol = replaceAll(symbol, '\0', '') WHERE position(symbol, '\0') > 0;
 ```
 
 ---
