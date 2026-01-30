@@ -405,6 +405,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "evm-postgres-balances"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-database-change",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "fastrand"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
