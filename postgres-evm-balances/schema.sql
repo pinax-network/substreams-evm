@@ -31,6 +31,19 @@ CREATE INDEX IF NOT EXISTS idx_erc20_balances_address ON erc20_balances (address
 CREATE INDEX IF NOT EXISTS idx_erc20_balances_block_num ON erc20_balances (block_num);
 CREATE INDEX IF NOT EXISTS idx_erc20_balances_balance ON erc20_balances (balance);
 
+-- Rule to convert INSERT to UPSERT for erc20_balances (handles duplicate keys)
+CREATE OR REPLACE RULE upsert_erc20_balances AS
+    ON INSERT TO erc20_balances
+    WHERE EXISTS (SELECT 1 FROM erc20_balances WHERE contract = NEW.contract AND address = NEW.address)
+    DO INSTEAD
+        UPDATE erc20_balances SET
+            block_num = NEW.block_num,
+            block_hash = NEW.block_hash,
+            timestamp = NEW.timestamp,
+            balance = NEW.balance
+        WHERE contract = NEW.contract AND address = NEW.address;
+
+
 -- Native balances table for PostgreSQL
 -- There can only be a single native balance per address (latest balance)
 CREATE TABLE IF NOT EXISTS native_balances (
@@ -46,5 +59,17 @@ CREATE TABLE IF NOT EXISTS native_balances (
 
 CREATE INDEX IF NOT EXISTS idx_native_balances_block_num ON native_balances (block_num);
 CREATE INDEX IF NOT EXISTS idx_native_balances_balance ON native_balances (balance);
+
+-- Rule to convert INSERT to UPSERT for native_balances (handles duplicate keys)
+CREATE OR REPLACE RULE upsert_native_balances AS
+    ON INSERT TO native_balances
+    WHERE EXISTS (SELECT 1 FROM native_balances WHERE address = NEW.address)
+    DO INSTEAD
+        UPDATE native_balances SET
+            block_num = NEW.block_num,
+            block_hash = NEW.block_hash,
+            timestamp = NEW.timestamp,
+            balance = NEW.balance
+        WHERE address = NEW.address;
 
 
