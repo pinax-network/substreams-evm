@@ -6,6 +6,9 @@ members = [
   "clickhouse-evm-balances",
   "clickhouse-blocks",
 
+  # Postgres
+  "postgres-evm-balances",
+
   # Tokens
   "erc20-transfers",
   "native-transfers",
