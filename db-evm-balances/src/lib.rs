@@ -10,18 +10,18 @@ use substreams_database_change::{pb::database::DatabaseChanges, tables::Row};
 pub fn db_out(
     mut clock: Clock,
     // Native
-    native_balances: pb::Events,
+    native_balance_events: pb::Events,
     // ERC-20
-    erc20_balances: pb::Events,
+    erc20_balance_events: pb::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
     clock = update_genesis_clock(clock);
 
     // -- ERC20 Balances --
-    erc20_balances::process_events(&mut tables, &clock, &erc20_balances);
+    erc20_balances::process_events(&mut tables, &clock, &erc20_balance_events);
 
     // -- Native Balances --
-    native_balances::process_events(&mut tables, &clock, &native_balances);
+    native_balances::process_events(&mut tables, &clock, &native_balance_events);
 
     substreams::log::info!("Total rows {}", tables.all_row_count());
     Ok(tables.to_database_changes())
