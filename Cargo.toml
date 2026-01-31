@@ -1,5 +1,8 @@
 [workspace]
 members = [
+  # DB (engine-agnostic)
+  "db-evm-balances",
+
   # Clickhouse
   "clickhouse-evm-transfers",
   "clickhouse-evm-dex",

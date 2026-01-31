@@ -7,21 +7,11 @@ package:
   image: ../image.png
 
 imports:
-  # SQL Sink Substreams
-  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
-  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
-
-  # Clickhouse Balances
-  clickhouse: ../spkg/evm-clickhouse-balances-v0.2.3.spkg
-
-binaries:
-  default:
-    type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/evm_postgres_balances.wasm
+  db: ../db-evm-balances/substreams.yaml
 
 modules:
   - name: db_out
-    use: clickhouse:db_out
+    use: db:db_out
 
 sink:
   module: db_out
@@ -33,6 +23,3 @@ sink:
       enabled: false
 
 network: mainnet
-
-params:
-  db_out: "hex"  # Supported encodings: hex, tron_base58

@@ -135,7 +135,6 @@ make dev ENDPOINT=base.substreams.pinax.network:443
 
 | Table | Description |
 |-------|-------------|
-| `blocks` | Block metadata (number, hash, timestamp) |
 | `erc20_balances` | Latest ERC-20 token balances per address/contract |
 | `native_balances` | Latest native currency (ETH) balances per address |
 
@@ -167,15 +166,7 @@ CREATE TABLE native_balances (
 
 ## How Upserts Work
 
-The schema uses PostgreSQL `RULE`s to handle balance updates. When the same address receives multiple balance changes within a block, only the latest value is stored:
-
-```sql
--- Automatically converts INSERT to UPDATE when key exists
-CREATE RULE upsert_erc20_balances AS
-    ON INSERT TO erc20_balances
-    WHERE EXISTS (SELECT 1 FROM erc20_balances WHERE contract = NEW.contract AND address = NEW.address)
-    DO INSTEAD UPDATE ...
-```
+The substreams uses `upsert_row` to handle balance updates. When the same address receives multiple balance changes within a block, only the latest value is stored.
 
 ## Troubleshooting
 
