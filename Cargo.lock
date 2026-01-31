@@ -252,6 +252,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "db-evm-balances"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-database-change",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
