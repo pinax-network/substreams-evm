@@ -8,6 +8,7 @@ use substreams_database_change::{pb::database::DatabaseChanges, tables::Row};
 
 #[substreams::handlers::map]
 pub fn db_out(
+    params: String,
     mut clock: Clock,
     // Native
     native_balance_events: pb::Events,
@@ -17,11 +18,14 @@ pub fn db_out(
     let mut tables = substreams_database_change::tables::Tables::new();
     clock = update_genesis_clock(clock);
 
+    // Handle support both EVM & TVM address encoding
+    let encoding = common::handle_encoding_param(&params);
+
     // -- ERC20 Balances --
-    erc20_balances::process_events(&mut tables, &clock, &erc20_balance_events);
+    erc20_balances::process_events(&encoding, &mut tables, &clock, &erc20_balance_events);
 
     // -- Native Balances --
-    native_balances::process_events(&mut tables, &clock, &native_balance_events);
+    native_balances::process_events(&encoding, &mut tables, &clock, &native_balance_events);
 
     substreams::log::info!("Total rows {}", tables.all_row_count());
     Ok(tables.to_database_changes())
