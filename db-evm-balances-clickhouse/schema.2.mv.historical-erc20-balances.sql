@@ -47,12 +47,3 @@ SELECT
     count() AS transactions
 FROM erc20_balances AS b
 GROUP BY interval_min, address, contract, timestamp;
-
--- latest balances by contract/address --
-CREATE TABLE IF NOT EXISTS historical_erc20_balances_state_by_contract AS historical_erc20_balances_state
-ENGINE = AggregatingMergeTree
-ORDER BY (interval_min, contract, address, timestamp);
-
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_historical_erc20_balances_state_by_contract
-TO historical_erc20_balances_state_by_contract AS
-SELECT * FROM historical_erc20_balances_state;
