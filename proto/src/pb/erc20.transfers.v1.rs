@@ -232,8 +232,11 @@ pub struct StethTransferShares {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StethExternalSharesBurnt {
+    /// Address of the caller whose shares are being burned (msg.sender)
+    #[prost(bytes="vec", tag="1")]
+    pub sender: ::prost::alloc::vec::Vec<u8>,
     /// uint256
-    #[prost(string, tag="1")]
+    #[prost(string, tag="2")]
     pub amount_of_shares: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]

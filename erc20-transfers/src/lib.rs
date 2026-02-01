@@ -146,10 +146,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
             if let Some(event) = steth_events::ExternalSharesBurnt::match_and_decode(log) {
                 total_steth_external_shares_burnt += 1;
+                // ExternalSharesBurnt event doesn't include the account address in the event data,
+                // but we can get it from call.caller (msg.sender) since burnExternalShares() burns from msg.sender
+                let sender = call.map(|c| c.caller.to_vec()).unwrap_or_default();
                 let event = pb::log::Log::StethExternalSharesBurnt(pb::StethExternalSharesBurnt {
+                    sender,
                     amount_of_shares: event.amount_of_shares.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
         // Only include transactions with logs
