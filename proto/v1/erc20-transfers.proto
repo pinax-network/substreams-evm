@@ -29,6 +29,11 @@ message Log {
     // WETH events
     Deposit deposit = 12;
     Withdrawal withdrawal = 13;
+
+    // USDT events (affects balances without Transfer events)
+    Issue issue = 14;
+    Redeem redeem = 15;
+    DestroyedBlackFunds destroyed_black_funds = 16;
   }
 }
 
@@ -53,4 +58,21 @@ message Deposit {
 message Withdrawal {
   bytes src = 1;
   string wad = 2; // uint256
+}
+
+// USDT events (balance changes without standard Transfer events)
+// Issue: Mints new tokens to the contract owner
+message Issue {
+  bytes owner = 1;       // Owner address (retrieved from contract)
+  string amount = 2;     // uint256
+}
+// Redeem: Burns tokens from the contract owner
+message Redeem {
+  bytes owner = 1;       // Owner address (retrieved from contract)
+  string amount = 2;     // uint256
+}
+// DestroyedBlackFunds: Burns tokens from a blacklisted address
+message DestroyedBlackFunds {
+  bytes black_listed_user = 1;
+  string balance = 2;    // uint256
 }

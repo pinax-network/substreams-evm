@@ -44,6 +44,18 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
                     Some(transfers_pb::log::Log::Withdrawal(withdrawal)) => {
                         addresses.push((&log.address, &withdrawal.src));
                     }
+                    // USDT Issue event: track owner address balance
+                    Some(transfers_pb::log::Log::Issue(issue)) => {
+                        addresses.push((&log.address, &issue.owner));
+                    }
+                    // USDT Redeem event: track owner address balance
+                    Some(transfers_pb::log::Log::Redeem(redeem)) => {
+                        addresses.push((&log.address, &redeem.owner));
+                    }
+                    // USDT DestroyedBlackFunds event: track blacklisted user balance
+                    Some(transfers_pb::log::Log::DestroyedBlackFunds(destroyed)) => {
+                        addresses.push((&log.address, &destroyed.black_listed_user));
+                    }
                     None => {}
                 }
                 addresses
