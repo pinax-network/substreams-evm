@@ -1,5 +1,5 @@
 ENDPOINT ?= eth.substreams.pinax.network:443
-START_BLOCK ?= 23145742
+START_BLOCK ?= 0
 STOP_BLOCK ?= 23145745
 PARALLEL_JOBS ?= 500
 
