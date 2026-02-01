@@ -41,7 +41,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -59,6 +59,13 @@ pub mod log {
         Deposit(super::Deposit),
         #[prost(message, tag="13")]
         Withdrawal(super::Withdrawal),
+        /// USDT events (affects balances without Transfer events)
+        #[prost(message, tag="14")]
+        Issue(super::Issue),
+        #[prost(message, tag="15")]
+        Redeem(super::Redeem),
+        #[prost(message, tag="16")]
+        DestroyedBlackFunds(super::DestroyedBlackFunds),
     }
 }
 /// ERC-20 events
@@ -102,5 +109,38 @@ pub struct Withdrawal {
     /// uint256
     #[prost(string, tag="2")]
     pub wad: ::prost::alloc::string::String,
+}
+/// USDT events (balance changes without standard Transfer events)
+/// Issue: Mints new tokens to the contract owner
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Issue {
+    /// Owner address (retrieved from contract)
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// Redeem: Burns tokens from the contract owner
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Redeem {
+    /// Owner address (retrieved from contract)
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// DestroyedBlackFunds: Burns tokens from a blacklisted address
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DestroyedBlackFunds {
+    #[prost(bytes="vec", tag="1")]
+    pub black_listed_user: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub balance: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)

@@ -1,8 +1,11 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
+use substreams_abis::evm::tokens::usdt::events as usdt_events;
+use substreams_abis::evm::tokens::usdt::functions as usdt_functions;
 use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::Block;
+use substreams_ethereum::rpc::RpcBatch;
 use substreams_ethereum::Event;
 
 #[substreams::handlers::map]
@@ -12,6 +15,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_erc20_approvals = 0;
     let mut total_weth_deposits = 0;
     let mut total_weth_withdrawals = 0;
+    let mut total_usdt_issues = 0;
+    let mut total_usdt_redeems = 0;
+    let mut total_usdt_destroyed_black_funds = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
@@ -57,6 +63,72 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(pb::Log::create_log(log, event));
             }
+
+            // USDT Issue event (mints to owner - requires RPC call to get owner address)
+            if let Some(issue_event) = usdt_events::Issue::match_and_decode(log) {
+                // Get owner address via RPC call
+                let owner = RpcBatch::new()
+                    .add(usdt_functions::Owner {}, log.address.clone())
+                    .execute()
+                    .unwrap()
+                    .responses
+                    .into_iter()
+                    .next()
+                    .and_then(|r| {
+                        if r.failed {
+                            None
+                        } else {
+                            usdt_functions::Owner::output(&r.raw).ok()
+                        }
+                    });
+
+                if let Some(owner_address) = owner {
+                    total_usdt_issues += 1;
+                    let event = pb::log::Log::Issue(pb::Issue {
+                        owner: owner_address,
+                        amount: issue_event.amount.to_string(),
+                    });
+                    transaction.logs.push(pb::Log::create_log(log, event));
+                }
+            }
+
+            // USDT Redeem event (burns from owner - requires RPC call to get owner address)
+            if let Some(redeem_event) = usdt_events::Redeem::match_and_decode(log) {
+                // Get owner address via RPC call
+                let owner = RpcBatch::new()
+                    .add(usdt_functions::Owner {}, log.address.clone())
+                    .execute()
+                    .unwrap()
+                    .responses
+                    .into_iter()
+                    .next()
+                    .and_then(|r| {
+                        if r.failed {
+                            None
+                        } else {
+                            usdt_functions::Owner::output(&r.raw).ok()
+                        }
+                    });
+
+                if let Some(owner_address) = owner {
+                    total_usdt_redeems += 1;
+                    let event = pb::log::Log::Redeem(pb::Redeem {
+                        owner: owner_address,
+                        amount: redeem_event.amount.to_string(),
+                    });
+                    transaction.logs.push(pb::Log::create_log(log, event));
+                }
+            }
+
+            // USDT DestroyedBlackFunds event (burns from blacklisted address)
+            if let Some(event) = usdt_events::DestroyedBlackFunds::match_and_decode(log) {
+                total_usdt_destroyed_black_funds += 1;
+                let event = pb::log::Log::DestroyedBlackFunds(pb::DestroyedBlackFunds {
+                    black_listed_user: event.black_listed_user.to_vec(),
+                    balance: event.balance.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
         }
         // Only include transactions with logs
         if !transaction.logs.is_empty() {
@@ -69,5 +141,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total ERC20 Approval events: {}", total_erc20_approvals);
     substreams::log::info!("Total WETH Deposit events: {}", total_weth_deposits);
     substreams::log::info!("Total WETH Withdrawal events: {}", total_weth_withdrawals);
+    substreams::log::info!("Total USDT Issue events: {}", total_usdt_issues);
+    substreams::log::info!("Total USDT Redeem events: {}", total_usdt_redeems);
+    substreams::log::info!("Total USDT DestroyedBlackFunds events: {}", total_usdt_destroyed_black_funds);
     Ok(events)
 }
