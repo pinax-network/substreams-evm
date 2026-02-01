@@ -51,4 +51,5 @@ ALTER TABLE TEMPLATE_CALL
     ADD COLUMN IF NOT EXISTS call_gas_consumed       UInt64,
     ADD COLUMN IF NOT EXISTS call_gas_limit          UInt64,
     ADD COLUMN IF NOT EXISTS call_depth              UInt32,
-    ADD COLUMN IF NOT EXISTS call_parent_index       UInt32;
+    ADD COLUMN IF NOT EXISTS call_parent_index       UInt32,
+    ADD COLUMN IF NOT EXISTS call_type               LowCardinality(String);

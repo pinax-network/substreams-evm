@@ -5,12 +5,28 @@ package native.transfers.v1;
 message Events {
   repeated BlockReward block_rewards = 1;
   repeated Transaction transactions = 2;
+  repeated Withdrawal withdrawals = 3;
+  repeated Selfdestruct selfdestructs = 4;
 }
 
 message BlockReward {
   bytes miner = 1;
   string value = 2; // uint256
   Reason reason = 3;
+}
+
+// Validator withdrawals (post-Shanghai)
+message Withdrawal {
+  bytes address = 1;
+  string value = 2; // uint256
+}
+
+// Contract self-destruct transfers
+message Selfdestruct {
+  bytes from = 1;    // self-destructing contract
+  bytes to = 2;      // beneficiary
+  string value = 3;  // uint256
+  bytes tx_hash = 4; // transaction hash
 }
 
 message Transaction {
@@ -36,6 +52,13 @@ message Call {
   uint64 gas_limit = 8;
   uint32 depth = 9;
   uint32 parent_index = 10;
+  CallType call_type = 11;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CREATE = 5;
 }
 
 enum Reason {
