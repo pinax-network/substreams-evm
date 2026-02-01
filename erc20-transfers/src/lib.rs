@@ -22,6 +22,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_steth_token_rebased = 0;
     let mut total_steth_shares_burnt = 0;
     let mut total_steth_transfer_shares = 0;
+    let mut total_steth_external_shares_burnt = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
@@ -136,6 +137,13 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(pb::Log::create_log(log, event));
             }
+            if let Some(event) = steth_events::ExternalSharesBurnt::match_and_decode(log) {
+                total_steth_external_shares_burnt += 1;
+                let event = pb::log::Log::StethExternalSharesBurnt(pb::StethExternalSharesBurnt {
+                    amount_of_shares: event.amount_of_shares.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
         }
         // Only include transactions with logs
         if !transaction.logs.is_empty() {
@@ -155,5 +163,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total stETH TokenRebased events: {}", total_steth_token_rebased);
     substreams::log::info!("Total stETH SharesBurnt events: {}", total_steth_shares_burnt);
     substreams::log::info!("Total stETH TransferShares events: {}", total_steth_transfer_shares);
+    substreams::log::info!("Total stETH ExternalSharesBurnt events: {}", total_steth_external_shares_burnt);
     Ok(events)
 }
