@@ -159,6 +159,18 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 row.set("to", bytes_to_string(&event.to, encoding));
                 row.set("shares_value", &event.shares_value);
             }
+
+            // stETH ExternalSharesBurnt
+            if let Some(pb::log::Log::StethExternalSharesBurnt(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("steth_external_shares_burnt", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_erc20_tx(encoding, tx, tx_index, row);
+
+                row.set("amount_of_shares", &event.amount_of_shares);
+            }
         }
     }
 }

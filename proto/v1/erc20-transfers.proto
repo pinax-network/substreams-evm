@@ -42,6 +42,7 @@ message Log {
     StethTokenRebased steth_token_rebased = 18;
     StethSharesBurnt steth_shares_burnt = 19;
     StethTransferShares steth_transfer_shares = 20;
+    StethExternalSharesBurnt steth_external_shares_burnt = 21;
   }
 }
 
@@ -107,4 +108,7 @@ message StethTransferShares {
   bytes from = 1;
   bytes to = 2;
   string shares_value = 3; // uint256
+}
+message StethExternalSharesBurnt {
+  string amount_of_shares = 1; // uint256
 }
