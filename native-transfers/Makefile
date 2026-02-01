@@ -1,6 +1,6 @@
 ENDPOINT ?= eth.substreams.pinax.network:443
-START_BLOCK ?= 13000000
-STOP_BLOCK ?= +1000
+START_BLOCK ?= -1000
+STOP_BLOCK ?= 0
 PARALLEL_JOBS ?= 500
 
 .PHONY: build
