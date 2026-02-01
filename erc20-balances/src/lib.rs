@@ -70,8 +70,11 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
                         addresses.push((&log.address, &transfer_shares.from));
                         addresses.push((&log.address, &transfer_shares.to));
                     }
-                    Some(transfers_pb::log::Log::StethExternalSharesBurnt(_)) => {
-                        // ExternalSharesBurnt doesn't have individual account addresses
+                    Some(transfers_pb::log::Log::StethExternalSharesBurnt(external_shares_burnt)) => {
+                        // ExternalSharesBurnt uses call.sender for the shares being burned
+                        if !external_shares_burnt.sender.is_empty() {
+                            addresses.push((&log.address, &external_shares_burnt.sender));
+                        }
                     }
                     None => {}
                 }
