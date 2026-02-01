@@ -1,6 +1,9 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
+use substreams_abis::evm::tokens::steth::events as steth_events;
+use substreams_abis::evm::tokens::usdc::events as usdc_events;
+use substreams_abis::evm::tokens::usdt::events as usdt_events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
@@ -12,6 +15,13 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_erc20_approvals = 0;
     let mut total_weth_deposits = 0;
     let mut total_weth_withdrawals = 0;
+    let mut total_usdc_mints = 0;
+    let mut total_usdc_burns = 0;
+    let mut total_usdt_issues = 0;
+    let mut total_usdt_redeems = 0;
+    let mut total_steth_token_rebased = 0;
+    let mut total_steth_shares_burnt = 0;
+    let mut total_steth_transfer_shares = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
@@ -57,6 +67,75 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 });
                 transaction.logs.push(pb::Log::create_log(log, event));
             }
+
+            // USDC Mint/Burn events
+            if let Some(event) = usdc_events::Mint::match_and_decode(log) {
+                total_usdc_mints += 1;
+                let event = pb::log::Log::UsdcMint(pb::UsdcMint {
+                    minter: event.minter.to_vec(),
+                    to: event.to.to_vec(),
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+            if let Some(event) = usdc_events::Burn::match_and_decode(log) {
+                total_usdc_burns += 1;
+                let event = pb::log::Log::UsdcBurn(pb::UsdcBurn {
+                    burner: event.burner.to_vec(),
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+
+            // USDT Issue/Redeem events
+            if let Some(event) = usdt_events::Issue::match_and_decode(log) {
+                total_usdt_issues += 1;
+                let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+            if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
+                total_usdt_redeems += 1;
+                let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+
+            // stETH events
+            if let Some(event) = steth_events::TokenRebased::match_and_decode(log) {
+                total_steth_token_rebased += 1;
+                let event = pb::log::Log::StethTokenRebased(pb::StethTokenRebased {
+                    report_timestamp: event.report_timestamp.to_string(),
+                    time_elapsed: event.time_elapsed.to_string(),
+                    pre_total_shares: event.pre_total_shares.to_string(),
+                    pre_total_ether: event.pre_total_ether.to_string(),
+                    post_total_shares: event.post_total_shares.to_string(),
+                    post_total_ether: event.post_total_ether.to_string(),
+                    shares_minted_as_fees: event.shares_minted_as_fees.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+            if let Some(event) = steth_events::SharesBurnt::match_and_decode(log) {
+                total_steth_shares_burnt += 1;
+                let event = pb::log::Log::StethSharesBurnt(pb::StethSharesBurnt {
+                    account: event.account.to_vec(),
+                    pre_rebase_token_amount: event.pre_rebase_token_amount.to_string(),
+                    post_rebase_token_amount: event.post_rebase_token_amount.to_string(),
+                    shares_amount: event.shares_amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
+            if let Some(event) = steth_events::TransferShares::match_and_decode(log) {
+                total_steth_transfer_shares += 1;
+                let event = pb::log::Log::StethTransferShares(pb::StethTransferShares {
+                    from: event.from.to_vec(),
+                    to: event.to.to_vec(),
+                    shares_value: event.shares_value.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log(log, event));
+            }
         }
         // Only include transactions with logs
         if !transaction.logs.is_empty() {
@@ -69,5 +148,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total ERC20 Approval events: {}", total_erc20_approvals);
     substreams::log::info!("Total WETH Deposit events: {}", total_weth_deposits);
     substreams::log::info!("Total WETH Withdrawal events: {}", total_weth_withdrawals);
+    substreams::log::info!("Total USDC Mint events: {}", total_usdc_mints);
+    substreams::log::info!("Total USDC Burn events: {}", total_usdc_burns);
+    substreams::log::info!("Total USDT Issue events: {}", total_usdt_issues);
+    substreams::log::info!("Total USDT Redeem events: {}", total_usdt_redeems);
+    substreams::log::info!("Total stETH TokenRebased events: {}", total_steth_token_rebased);
+    substreams::log::info!("Total stETH SharesBurnt events: {}", total_steth_shares_burnt);
+    substreams::log::info!("Total stETH TransferShares events: {}", total_steth_transfer_shares);
     Ok(events)
 }

@@ -22,7 +22,16 @@ CREATE TABLE IF NOT EXISTS transfers (
     amount                      UInt256,
 
     -- type --
-    transfer_type               Enum8('transfer' = 1, 'deposit' = 2, 'withdrawal' = 3),
+    transfer_type               Enum8(
+        'transfer' = 1,
+        'deposit' = 2,
+        'withdrawal' = 3,
+        'mint' = 4,
+        'burn' = 5,
+        'issue' = 6,
+        'redeem' = 7,
+        'transfer_shares' = 8
+    ),
 
     -- INDEXES --
     INDEX idx_amount (amount) TYPE minmax,
@@ -130,3 +139,138 @@ SELECT
     'withdrawal' AS transfer_type
 FROM weth_withdrawal
 WHERE amount > 0;
+
+-- USDC Mint (minting tokens to user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_usdc_mint TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- USDC contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    minter AS `from`,       -- minter address
+    `to`,                   -- recipient
+    amount,
+    'mint' AS transfer_type
+FROM usdc_mint
+WHERE amount > 0;
+
+-- USDC Burn (burning tokens from user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_usdc_burn TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- USDC contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    burner AS `from`,           -- burner address
+    log_address AS `to`,        -- contract address (burned)
+    amount,
+    'burn' AS transfer_type
+FROM usdc_burn
+WHERE amount > 0;
+
+-- USDT Issue (minting tokens) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_usdt_issue TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- USDT contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    log_address AS `from`,  -- contract address (issuer)
+    log_address AS `to`,    -- contract address (issued to contract)
+    amount,
+    'issue' AS transfer_type
+FROM usdt_issue
+WHERE amount > 0;
+
+-- USDT Redeem (burning tokens) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_usdt_redeem TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- USDT contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    log_address AS `from`,  -- contract address (redeemer)
+    log_address AS `to`,    -- contract address (redeemed)
+    amount,
+    'redeem' AS transfer_type
+FROM usdt_redeem
+WHERE amount > 0;
+
+-- stETH TransferShares (share transfers) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_transfer_shares TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    `from`,
+    `to`,
+    shares_value AS amount,
+    'transfer_shares' AS transfer_type
+FROM steth_transfer_shares
+WHERE shares_value > 0 AND `from` != `to`;
