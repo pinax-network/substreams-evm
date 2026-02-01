@@ -41,6 +41,9 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+    /// Call metadata (only available on chains with DetailLevel: EXTENDED)
+    #[prost(message, optional, tag="5")]
+    pub call: ::core::option::Option<Call>,
     #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20")]
     pub log: ::core::option::Option<log::Log>,
 }
@@ -77,6 +80,22 @@ pub mod log {
         #[prost(message, tag="20")]
         StethTransferShares(super::StethTransferShares),
     }
+}
+/// Call metadata (only available on chains with DetailLevel: EXTENDED)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Call {
+    /// Address that made the call
+    #[prost(bytes="vec", tag="1")]
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    /// Index of the call within the transaction
+    #[prost(uint32, tag="2")]
+    pub index: u32,
+    /// Depth of the call in the call tree (0 = root)
+    #[prost(uint32, tag="3")]
+    pub depth: u32,
+    #[prost(enumeration="CallType", tag="4")]
+    pub call_type: i32,
 }
 /// ERC-20 events
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -207,5 +226,43 @@ pub struct StethTransferShares {
     /// uint256
     #[prost(string, tag="3")]
     pub shares_value: ::prost::alloc::string::String,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum CallType {
+    Unspecified = 0,
+    Call = 1,
+    Callcode = 2,
+    Delegate = 3,
+    Static = 4,
+    Create = 5,
+}
+impl CallType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
+            CallType::Call => "CALL_TYPE_CALL",
+            CallType::Callcode => "CALL_TYPE_CALLCODE",
+            CallType::Delegate => "CALL_TYPE_DELEGATE",
+            CallType::Static => "CALL_TYPE_STATIC",
+            CallType::Create => "CALL_TYPE_CREATE",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
+            "CALL_TYPE_CALL" => Some(Self::Call),
+            "CALL_TYPE_CALLCODE" => Some(Self::Callcode),
+            "CALL_TYPE_DELEGATE" => Some(Self::Delegate),
+            "CALL_TYPE_STATIC" => Some(Self::Static),
+            "CALL_TYPE_CREATE" => Some(Self::Create),
+            _ => None,
+        }
+    }
 }
 // @@protoc_insertion_point(module)
