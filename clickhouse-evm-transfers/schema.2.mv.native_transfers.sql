@@ -128,7 +128,7 @@ SELECT
     '' AS tx_hash,
 
     -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
+    CAST(NULL AS Nullable(UInt32)) AS call_index,
 
     -- transfer (genesis allocation) --
     '' AS `from`,
@@ -136,7 +136,7 @@ SELECT
     value AS amount,
     'genesis_balance' AS transfer_type
 FROM genesis_balances
-WHERE amount > 0;
+WHERE value > 0;
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_dao_transfers TO native_transfers AS
 SELECT
@@ -151,7 +151,7 @@ SELECT
     '' AS tx_hash,
 
     -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
+    CAST(NULL AS Nullable(UInt32)) AS call_index,
 
     -- transfer (DAO hard fork) --
     address AS `from`,
