@@ -131,5 +131,6 @@ message StethTransferShares {
   string shares_value = 3; // uint256
 }
 message StethExternalSharesBurnt {
-  string amount_of_shares = 1; // uint256
+  bytes sender = 1;            // Address of the caller whose shares are being burned (msg.sender)
+  string amount_of_shares = 2; // uint256
 }
