@@ -58,6 +58,7 @@ pub fn map_events(params: String, block: Block) -> Result<Events, Error> {
 
     // BASE BLOCKS (NOT EXTENDED)
     // collect all unique accounts from transactions/calls/logs
+    // - coinbase (block miner)
     // - trx.from
     // - trx.to
     // - log.address
@@ -65,6 +66,14 @@ pub fn map_events(params: String, block: Block) -> Result<Events, Error> {
     // - call.caller
     // - call.address_delegates_to
     let mut accounts = HashSet::new();
+
+    // include coinbase (miner) address from block header
+    if let Some(header) = &block.header {
+        if !header.coinbase.is_empty() {
+            accounts.insert(header.coinbase.to_vec());
+        }
+    }
+
     for trx in &block.transaction_traces {
         accounts.insert(trx.from.to_vec());
         accounts.insert(trx.to.to_vec());
