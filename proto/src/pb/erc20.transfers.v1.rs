@@ -79,6 +79,8 @@ pub mod log {
         StethSharesBurnt(super::StethSharesBurnt),
         #[prost(message, tag="20")]
         StethTransferShares(super::StethTransferShares),
+        #[prost(message, tag="21")]
+        StethExternalSharesBurnt(super::StethExternalSharesBurnt),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
