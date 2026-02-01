@@ -36,6 +36,26 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         row.set("value", &event.value);
     }
 
+    // Genesis Balances (block 0)
+    for (index, event) in events.genesis_balances.iter().enumerate() {
+        let key = reward_key(clock, index);
+        let row = tables.create_row("genesis_balances", key);
+        set_clock(clock, row);
+        row.set("address", bytes_to_string(&event.address, encoding));
+        row.set("value", &event.value);
+    }
+
+    // DAO hard fork transfers
+    for (index, event) in events.dao_transfers.iter().enumerate() {
+        let key = reward_key(clock, index);
+        let row = tables.create_row("dao_transfers", key);
+        set_clock(clock, row);
+        row.set("address", bytes_to_string(&event.address, encoding));
+        row.set("old_value", &event.old_value);
+        row.set("new_value", &event.new_value);
+        row.set("reason", &event.reason().as_str_name().to_string());
+    }
+
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         // Transactions
         let key = tx_key(clock, tx_index);
