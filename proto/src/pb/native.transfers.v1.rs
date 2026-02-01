@@ -11,6 +11,10 @@ pub struct Events {
     pub withdrawals: ::prost::alloc::vec::Vec<Withdrawal>,
     #[prost(message, repeated, tag="4")]
     pub selfdestructs: ::prost::alloc::vec::Vec<Selfdestruct>,
+    #[prost(message, repeated, tag="5")]
+    pub genesis_balances: ::prost::alloc::vec::Vec<GenesisBalance>,
+    #[prost(message, repeated, tag="6")]
+    pub dao_transfers: ::prost::alloc::vec::Vec<DaoTransfer>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -49,6 +53,33 @@ pub struct Selfdestruct {
     /// transaction hash
     #[prost(bytes="vec", tag="4")]
     pub tx_hash: ::prost::alloc::vec::Vec<u8>,
+}
+/// Genesis block balance allocations
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenesisBalance {
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub value: ::prost::alloc::string::String,
+}
+/// DAO hard fork balance transfers
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DaoTransfer {
+    /// affected DAO account
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub old_value: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub new_value: ::prost::alloc::string::String,
+    /// DaoRefundContract or DaoAdjustBalance
+    #[prost(enumeration="Reason", tag="4")]
+    pub reason: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

@@ -7,6 +7,8 @@ message Events {
   repeated Transaction transactions = 2;
   repeated Withdrawal withdrawals = 3;
   repeated Selfdestruct selfdestructs = 4;
+  repeated GenesisBalance genesis_balances = 5;
+  repeated DaoTransfer dao_transfers = 6;
 }
 
 message BlockReward {
@@ -27,6 +29,20 @@ message Selfdestruct {
   bytes to = 2;      // beneficiary
   string value = 3;  // uint256
   bytes tx_hash = 4; // transaction hash
+}
+
+// Genesis block balance allocations
+message GenesisBalance {
+  bytes address = 1;
+  string value = 2; // uint256
+}
+
+// DAO hard fork balance transfers
+message DaoTransfer {
+  bytes address = 1;       // affected DAO account
+  string old_value = 2;    // uint256
+  string new_value = 3;    // uint256
+  Reason reason = 4;       // DaoRefundContract or DaoAdjustBalance
 }
 
 message Transaction {
