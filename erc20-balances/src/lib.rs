@@ -54,14 +54,14 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
         .collect::<Vec<(&common::Address, &common::Address)>>();
 
     // Fetch RPC calls for Balance Of
-    let balance_ofs = batch_balance_of(&contracts_by_address, chunk_size);
+    let amounts = batch_balance_of(&contracts_by_address, chunk_size);
 
     for (contract, address) in &contracts_by_address {
-        if let Some(balance) = balance_ofs.get(&(contract, address)) {
+        if let Some(amount) = amounts.get(&(contract, address)) {
             events.balances.push(balances_pb::Balance {
                 contract: Some(contract.to_vec()),
                 address: address.to_vec(),
-                balance: balance.to_string(),
+                amount: amount.to_string(),
             });
         };
     }

@@ -83,17 +83,17 @@ pub fn map_events(params: String, block: Block) -> Result<Events, Error> {
     }
 
     // NATIVE ETH BALANCE OF
-    for (address, balance) in &batch_eth_balance_of(block.number, &accounts.iter().collect::<Vec<_>>(), chunk_size) {
-        balances.insert(address.to_vec(), balance.clone());
+    for (address, amount) in &batch_eth_balance_of(block.number, &accounts.iter().collect::<Vec<_>>(), chunk_size) {
+        balances.insert(address.to_vec(), amount.clone());
     }
 
     // prepare final events
-    for (address, balance) in balances {
+    for (address, amount) in balances {
         {
             events.balances.push(Balance {
                 contract: None,
                 address,
-                balance: balance.to_string(),
+                amount: amount.to_string(),
             });
         }
     }
