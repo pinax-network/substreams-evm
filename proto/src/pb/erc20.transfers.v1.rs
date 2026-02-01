@@ -41,7 +41,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -76,6 +76,8 @@ pub mod log {
         StethSharesBurnt(super::StethSharesBurnt),
         #[prost(message, tag="20")]
         StethTransferShares(super::StethTransferShares),
+        #[prost(message, tag="21")]
+        StethExternalSharesBurnt(super::StethExternalSharesBurnt),
     }
 }
 /// ERC-20 events
@@ -207,5 +209,12 @@ pub struct StethTransferShares {
     /// uint256
     #[prost(string, tag="3")]
     pub shares_value: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StethExternalSharesBurnt {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub amount_of_shares: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)
