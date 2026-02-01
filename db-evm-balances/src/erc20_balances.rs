@@ -12,10 +12,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
             let address = bytes_to_string(&balance.address, encoding);
             let key = [("contract", contract.to_string()), ("address", address.to_string())];
             let row = tables
-                .upsert_row("erc20_balances", key)
+                .upsert_row("balances", key)
                 .set("contract", &contract)
                 .set("address", &address)
-                .set("balance", &balance.balance);
+                .set("amount", &balance.amount);
 
             set_clock(clock, row);
         }
