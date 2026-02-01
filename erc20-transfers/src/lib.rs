@@ -27,8 +27,15 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        // Use logs_with_calls() to capture logs from internal calls (e.g., multisig executions)
+        // Fall back to receipt().logs() for chains without call traces (e.g., Avalanche with DetailLevel: BASE)
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+            trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+        } else {
+            trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+        };
+
+        for (log, call) in logs_with_calls {
             // ERC-20 Transfer event
             if let Some(event) = events::Transfer::match_and_decode(log) {
                 total_erc20_transfers += 1;
@@ -37,7 +44,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     to: event.to.to_vec(),
                     amount: event.value.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // ERC-20 Approval event
@@ -48,7 +55,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     spender: event.spender.to_vec(),
                     value: event.value.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // WETH Deposit/Withdraw event
@@ -58,7 +65,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     dst: event.dst.to_vec(),
                     wad: event.wad.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = weth_events::Withdrawal::match_and_decode(log) {
                 total_weth_withdrawals += 1;
@@ -66,7 +73,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     src: event.src.to_vec(),
                     wad: event.wad.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // USDC Mint/Burn events
@@ -77,7 +84,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     to: event.to.to_vec(),
                     amount: event.amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = usdc_events::Burn::match_and_decode(log) {
                 total_usdc_burns += 1;
@@ -85,7 +92,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     burner: event.burner.to_vec(),
                     amount: event.amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // USDT Issue/Redeem events
@@ -94,14 +101,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
                     amount: event.amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
                 total_usdt_redeems += 1;
                 let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
                     amount: event.amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // stETH events
@@ -116,7 +123,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     post_total_ether: event.post_total_ether.to_string(),
                     shares_minted_as_fees: event.shares_minted_as_fees.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = steth_events::SharesBurnt::match_and_decode(log) {
                 total_steth_shares_burnt += 1;
@@ -126,7 +133,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     post_rebase_token_amount: event.post_rebase_token_amount.to_string(),
                     shares_amount: event.shares_amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = steth_events::TransferShares::match_and_decode(log) {
                 total_steth_transfer_shares += 1;
@@ -135,7 +142,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     to: event.to.to_vec(),
                     shares_value: event.shares_value.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = steth_events::ExternalSharesBurnt::match_and_decode(log) {
                 total_steth_external_shares_burnt += 1;

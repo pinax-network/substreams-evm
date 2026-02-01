@@ -21,6 +21,10 @@ message Log {
   uint64 ordinal = 2;
   repeated bytes topics = 3;
   bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
   oneof log {
     // ERC-20 events
     Transfer transfer = 10;
@@ -44,6 +48,23 @@ message Log {
     StethTransferShares steth_transfer_shares = 20;
     StethExternalSharesBurnt steth_external_shares_burnt = 21;
   }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;   // Address that made the call
+  uint32 index = 2;   // Index of the call within the transaction
+  uint32 depth = 3;   // Depth of the call in the call tree (0 = root)
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
 }
 
 // ERC-20 events
