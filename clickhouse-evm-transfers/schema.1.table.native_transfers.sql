@@ -56,3 +56,37 @@ CREATE TABLE IF NOT EXISTS selfdestructs (
 )
 ENGINE = MergeTree
 ORDER BY block_num;
+
+-- Genesis Balances (block 0) --
+CREATE TABLE IF NOT EXISTS genesis_balances (
+    -- block --
+    block_num                   UInt32,
+    block_hash                  String,
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+
+    -- genesis balance --
+    index                       UInt32,
+    address                     String,
+    value                       UInt256
+)
+ENGINE = MergeTree
+ORDER BY block_num;
+
+-- DAO Hard Fork Transfers --
+CREATE TABLE IF NOT EXISTS dao_transfers (
+    -- block --
+    block_num                   UInt32,
+    block_hash                  String,
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+
+    -- dao transfer --
+    index                       UInt32,
+    address                     String,
+    old_value                   UInt256,
+    new_value                   UInt256,
+    reason                      LowCardinality(String)
+)
+ENGINE = MergeTree
+ORDER BY block_num;

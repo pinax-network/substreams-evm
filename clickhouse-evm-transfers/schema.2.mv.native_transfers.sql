@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS native_transfers (
     amount                      UInt256,
 
     -- type --
-    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'block_reward' = 3),
+    transfer_type               Enum8('transaction' = 1, 'call' = 2, 'block_reward' = 3, 'genesis_balance' = 4, 'dao_transfer' = 5),
 
     -- INDEXES --
     INDEX idx_amount (amount) TYPE minmax,
@@ -114,3 +114,49 @@ SELECT
     'block_reward' AS transfer_type
 FROM block_rewards
 WHERE amount > 0;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_genesis_balances TO native_transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    CAST(NULL AS Nullable(UInt32)) AS tx_index,
+    '' AS tx_hash,
+
+    -- call --
+    cast(NULL AS Nullable(UInt32)) AS call_index,
+
+    -- transfer (genesis allocation) --
+    '' AS `from`,
+    address AS `to`,
+    value AS amount,
+    'genesis_balance' AS transfer_type
+FROM genesis_balances
+WHERE amount > 0;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_native_transfers_dao_transfers TO native_transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    CAST(NULL AS Nullable(UInt32)) AS tx_index,
+    '' AS tx_hash,
+
+    -- call --
+    cast(NULL AS Nullable(UInt32)) AS call_index,
+
+    -- transfer (DAO hard fork) --
+    address AS `from`,
+    '' AS `to`,
+    old_value - new_value AS amount,
+    'dao_transfer' AS transfer_type
+FROM dao_transfers
+WHERE old_value > new_value;
