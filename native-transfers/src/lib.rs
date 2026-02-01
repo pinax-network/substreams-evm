@@ -36,6 +36,28 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 });
             }
         }
+
+        // Genesis balances (block 0)
+        if balance_change.reason() == Reason::GenesisBalance {
+            let (_, new_balance) = get_balances(balance_change);
+            if new_balance.gt(&BigInt::zero()) {
+                events.genesis_balances.push(pb::GenesisBalance {
+                    address: balance_change.address.to_vec(),
+                    value: new_balance.to_string(),
+                });
+            }
+        }
+
+        // DAO hard fork transfers
+        if balance_change.reason() == Reason::DaoRefundContract || balance_change.reason() == Reason::DaoAdjustBalance {
+            let (old_balance, new_balance) = get_balances(balance_change);
+            events.dao_transfers.push(pb::DaoTransfer {
+                address: balance_change.address.to_vec(),
+                old_value: old_balance.to_string(),
+                new_value: new_balance.to_string(),
+                reason: balance_change.reason,
+            });
+        }
     }
 
     // iterate over successful transactions
@@ -149,6 +171,8 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
     substreams::log::info!("Total BlockReward events: {}", events.block_rewards.len());
     substreams::log::info!("Total Withdrawal events: {}", events.withdrawals.len());
     substreams::log::info!("Total Selfdestruct events: {}", events.selfdestructs.len());
+    substreams::log::info!("Total GenesisBalance events: {}", events.genesis_balances.len());
+    substreams::log::info!("Total DaoTransfer events: {}", events.dao_transfers.len());
 
     Ok(events)
 }

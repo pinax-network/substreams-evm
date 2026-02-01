@@ -1,39 +1,26 @@
-# EVM `Substreams`
+<a href="https://www.streamingfast.io/">
+	<img width="100%" src="https://github.com/streamingfast/substreams/blob/develop/docs/assets/substreams-banner.png" alt="StreamingFast Substreams Banner" />
+</a>
 
-> **Extended Blocks**: Ethereum, Base, BSC, Polygon, ArbitrumOne, Optimism
-> Avalanche, Tron EVM
+# Substreams
 
-## Substreams Packages
+Substreams is a powerful blockchain indexing technology, developed for The Graph Network.
 
-### `/transfers`
+Substreams enables developers to write Rust modules, composing data streams alongside the community, and provides extremely high performance indexing by virtue of parallelization, in a streaming-first fashion.
 
-- [x] ERC20 Events
-  - [x] `Transfer` event
-  - [x] `Approval` event
-- [x] WETH Events
-  - [x] `Deposit` event
-  - [x] `Withdrawal` event
-- [x] Native
-  - [x] Block Rewards
-  - [x] Transaction Transfers
-  - [x] Call Transfers
+Substreams has all the benefits of StreamingFast Firehose, like low-cost caching and archiving of blockchain data, high throughput processing, and cursor-based reorgs handling.
 
-### `/dex`
+## Documentation
 
-- [x] Uniswap <https://app.uniswap.org/>
-  - [x] V1
-    - [x] JustSwap V1 (now SunSwap)
-  - [x] V2
-    - [x] SunSwap V2 <https://sunswap.com>
-  - [x] V3
-  - [x] V4
-- [x] SunPump V1 <https://sunpump.meme/>
-- [x] Balancer <https://balancer.fi/>
-  - [x] V2 WeightedPool
-  - [x] V3 StablePool
-  - [x] V3 Vault
-- [x] CurveFi <https://www.curve.finance/>
-- [x] Bancor <https://bancor.network>
-  - [x] StandardPoolConverter
-- [x] Cow Protocol <https://cow.fi/>
-  - [x] GPv2Settlement
+Full documentation for installing, running and working with Substreams is available at: https://substreams.streamingfast.io.
+
+## Contributing
+
+**Please first refer to the general
+[StreamingFast contribution guide](https://github.com/streamingfast/streamingfast/blob/master/CONTRIBUTING.md)**,
+if you wish to contribute to this code base.
+
+
+## License
+
+[Apache 2.0](LICENSE)
