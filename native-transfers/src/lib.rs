@@ -5,9 +5,9 @@ use substreams::{
     errors::Error,
     scalar::{BigDecimal, BigInt},
 };
-use substreams_ethereum::pb::eth::v2::{Block, CallType};
+use substreams_ethereum::pb::eth::v2::{balance_change::Reason, Block, CallType};
 
-use crate::utils::{get_block_reward_amount, get_gas_price, is_failed_call};
+use crate::utils::{get_balances, get_block_reward_amount, get_gas_price, is_failed_call};
 
 #[substreams::handlers::map]
 pub fn map_events(block: Block) -> Result<pb::Events, Error> {
@@ -23,6 +23,18 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 value: value.to_string(),
                 reason: balance_change.reason,
             });
+        }
+
+        // Validator Withdrawals (post-Shanghai)
+        if balance_change.reason() == Reason::Withdrawal {
+            let (old_balance, new_balance) = get_balances(balance_change);
+            let value = new_balance - old_balance;
+            if value.gt(&BigInt::zero()) {
+                events.withdrawals.push(pb::Withdrawal {
+                    address: balance_change.address.to_vec(),
+                    value: value.to_string(),
+                });
+            }
         }
     }
 
@@ -52,6 +64,26 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 continue;
             }
 
+            // Handle SELFDESTRUCT transfers
+            // When a contract self-destructs, its balance is sent to a beneficiary
+            if call.suicide {
+                // Find the balance change for this selfdestruct
+                for balance_change in &call.balance_changes {
+                    if balance_change.reason() == Reason::SuicideRefund {
+                        let (old_balance, new_balance) = get_balances(balance_change);
+                        let value = new_balance - old_balance;
+                        if value.gt(&BigInt::zero()) {
+                            events.selfdestructs.push(pb::Selfdestruct {
+                                from: call.address.to_vec(),
+                                to: balance_change.address.to_vec(),
+                                value: value.to_string(),
+                                tx_hash: trx.hash.to_vec(),
+                            });
+                        }
+                    }
+                }
+            }
+
             // ignore calls with no value
             let value = match call.value {
                 Some(ref v) => BigInt::from_unsigned_bytes_be(v.bytes.as_ref()),
@@ -74,15 +106,23 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
             // Test: tornado cash (block 9194719)
             // https://etherscan.io/tx/0x3b4f42376dbb1224d59e541636cc3704cccb9572067d8f9758312d432adb86a6
 
-            // A DELEGATECALL executes another contract's code but uses the calling contract’s storage and balance.
-            // There’s no separate transfer of ETH to the contract being called.
-            // The original contract’s msg.sender, msg.value, and balance remain in play,
+            // A DELEGATECALL executes another contract's code but uses the calling contract's storage and balance.
+            // There's no separate transfer of ETH to the contract being called.
+            // The original contract's msg.sender, msg.value, and balance remain in play,
             // so you do not see an actual value transfer in the blockchain ledger for a DELEGATECALL.
 
-            // only `call` type calls are considered transfers
-            if call.call_type() != CallType::Call {
+            // Only CALL and CREATE type calls transfer value
+            let call_type = call.call_type();
+            if call_type != CallType::Call && call_type != CallType::Create {
                 continue;
             }
+
+            let pb_call_type = match call_type {
+                CallType::Call => pb::CallType::Call,
+                CallType::Create => pb::CallType::Create,
+                _ => pb::CallType::Unspecified,
+            };
+
             transaction.calls.push(pb::Call {
                 index: call.index,
                 begin_ordinal: call.begin_ordinal,
@@ -94,6 +134,7 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 gas_limit: call.gas_limit,
                 depth: call.depth,
                 parent_index: call.parent_index,
+                call_type: pb_call_type.into(),
             });
         }
         // skip transactions with no value and no calls with value
@@ -102,5 +143,12 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
         }
         events.transactions.push(transaction);
     }
+
+    substreams::log::info!("Total Transactions: {}", block.transaction_traces.len());
+    substreams::log::info!("Total Events: {}", events.transactions.len());
+    substreams::log::info!("Total BlockReward events: {}", events.block_rewards.len());
+    substreams::log::info!("Total Withdrawal events: {}", events.withdrawals.len());
+    substreams::log::info!("Total Selfdestruct events: {}", events.selfdestructs.len());
+
     Ok(events)
 }
