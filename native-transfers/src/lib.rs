@@ -38,6 +38,7 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
         }
 
         // Genesis balances (block 0)
+        // Only include non-zero allocations as genesis balance entries
         if balance_change.reason() == Reason::GenesisBalance {
             let (_, new_balance) = get_balances(balance_change);
             if new_balance.gt(&BigInt::zero()) {
@@ -49,6 +50,8 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
         }
 
         // DAO hard fork transfers
+        // Captures both balance adjustments (DaoAdjustBalance) and refund contract deposits (DaoRefundContract)
+        // No zero-value filter needed as we capture all balance changes including decreases to zero
         if balance_change.reason() == Reason::DaoRefundContract || balance_change.reason() == Reason::DaoAdjustBalance {
             let (old_balance, new_balance) = get_balances(balance_change);
             events.dao_transfers.push(pb::DaoTransfer {
