@@ -41,7 +41,7 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -59,6 +59,23 @@ pub mod log {
         Deposit(super::Deposit),
         #[prost(message, tag="13")]
         Withdrawal(super::Withdrawal),
+        /// USDC events
+        #[prost(message, tag="14")]
+        UsdcMint(super::UsdcMint),
+        #[prost(message, tag="15")]
+        UsdcBurn(super::UsdcBurn),
+        /// USDT events
+        #[prost(message, tag="16")]
+        UsdtIssue(super::UsdtIssue),
+        #[prost(message, tag="17")]
+        UsdtRedeem(super::UsdtRedeem),
+        /// stETH events
+        #[prost(message, tag="18")]
+        StethTokenRebased(super::StethTokenRebased),
+        #[prost(message, tag="19")]
+        StethSharesBurnt(super::StethSharesBurnt),
+        #[prost(message, tag="20")]
+        StethTransferShares(super::StethTransferShares),
     }
 }
 /// ERC-20 events
@@ -102,5 +119,93 @@ pub struct Withdrawal {
     /// uint256
     #[prost(string, tag="2")]
     pub wad: ::prost::alloc::string::String,
+}
+/// USDC events
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdcMint {
+    #[prost(bytes="vec", tag="1")]
+    pub minter: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub amount: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdcBurn {
+    #[prost(bytes="vec", tag="1")]
+    pub burner: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// USDT events
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtIssue {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub amount: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtRedeem {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// stETH events
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StethTokenRebased {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub report_timestamp: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub time_elapsed: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub pre_total_shares: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub pre_total_ether: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub post_total_shares: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub post_total_ether: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="7")]
+    pub shares_minted_as_fees: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StethSharesBurnt {
+    #[prost(bytes="vec", tag="1")]
+    pub account: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub pre_rebase_token_amount: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub post_rebase_token_amount: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub shares_amount: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StethTransferShares {
+    #[prost(bytes="vec", tag="1")]
+    pub from: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub shares_value: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)
