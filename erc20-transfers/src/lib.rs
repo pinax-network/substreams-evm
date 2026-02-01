@@ -8,6 +8,26 @@ use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::rpc::RpcBatch;
 use substreams_ethereum::Event;
 
+/// Fetches the owner address of a USDT contract via RPC call.
+/// Returns None if the RPC call fails or the response cannot be decoded.
+fn get_usdt_owner(contract_address: &[u8]) -> Option<Vec<u8>> {
+    RpcBatch::new()
+        .add(usdt_functions::Owner {}, contract_address.to_vec())
+        .execute()
+        .ok()?
+        .responses
+        .into_iter()
+        .next()
+        .and_then(|r| {
+            if r.failed {
+                substreams::log::debug!("RPC call to get USDT owner failed");
+                None
+            } else {
+                usdt_functions::Owner::output(&r.raw).ok()
+            }
+        })
+}
+
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut events = pb::Events::default();
@@ -66,23 +86,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // USDT Issue event (mints to owner - requires RPC call to get owner address)
             if let Some(issue_event) = usdt_events::Issue::match_and_decode(log) {
-                // Get owner address via RPC call
-                let owner = RpcBatch::new()
-                    .add(usdt_functions::Owner {}, log.address.clone())
-                    .execute()
-                    .unwrap()
-                    .responses
-                    .into_iter()
-                    .next()
-                    .and_then(|r| {
-                        if r.failed {
-                            None
-                        } else {
-                            usdt_functions::Owner::output(&r.raw).ok()
-                        }
-                    });
-
-                if let Some(owner_address) = owner {
+                if let Some(owner_address) = get_usdt_owner(&log.address) {
                     total_usdt_issues += 1;
                     let event = pb::log::Log::Issue(pb::Issue {
                         owner: owner_address,
@@ -94,23 +98,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // USDT Redeem event (burns from owner - requires RPC call to get owner address)
             if let Some(redeem_event) = usdt_events::Redeem::match_and_decode(log) {
-                // Get owner address via RPC call
-                let owner = RpcBatch::new()
-                    .add(usdt_functions::Owner {}, log.address.clone())
-                    .execute()
-                    .unwrap()
-                    .responses
-                    .into_iter()
-                    .next()
-                    .and_then(|r| {
-                        if r.failed {
-                            None
-                        } else {
-                            usdt_functions::Owner::output(&r.raw).ok()
-                        }
-                    });
-
-                if let Some(owner_address) = owner {
+                if let Some(owner_address) = get_usdt_owner(&log.address) {
                     total_usdt_redeems += 1;
                     let event = pb::log::Log::Redeem(pb::Redeem {
                         owner: owner_address,
