@@ -2,9 +2,9 @@
 members = [
   # DB (engine-agnostic)
   "db-evm-balances",
+  "db-evm-transfers",
 
   # Clickhouse
-  "clickhouse-evm-transfers",
   "clickhouse-evm-dex",
   "clickhouse-blocks",
 

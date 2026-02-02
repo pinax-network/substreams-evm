@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: clickhouse_evm_transfers
+  name: evm_transfers
   version: v0.2.3
   url: https://github.com/pinax-network/substreams-evm
   description: ERC-20, Native transfers & WETH Events
@@ -18,7 +18,7 @@ imports:
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/clickhouse_evm_transfers.wasm
+    file: ../target/wasm32-unknown-unknown/release/db_evm_transfers.wasm
 
 modules:
   - name: db_out
@@ -30,15 +30,6 @@ modules:
       - map: native_transfers:map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-
-sink:
-  module: db_out
-  type: sf.substreams.sink.sql.v1.Service
-  config:
-    schema: "./schema.sql"
-    engine: clickhouse
-    postgraphile_frontend:
-      enabled: false
 
 network: mainnet
 
