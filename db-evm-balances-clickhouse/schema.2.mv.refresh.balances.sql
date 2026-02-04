@@ -2,7 +2,7 @@
 -- Refreshable materialized view that maintains deduplicated (FINAL) balances
 -- Ordered by (contract, balance, address) to support efficient top/bottom holder queries per contract
 CREATE MATERIALIZED VIEW IF NOT EXISTS erc20_balances_final
-REFRESH EVERY 10 MINUTE
+REFRESH EVERY 1 HOUR
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (contract, balance, address)
 AS
@@ -14,7 +14,7 @@ WHERE balance > 0;
 -- Refreshable materialized view that maintains deduplicated (FINAL) balances
 -- Ordered by (contract, balance, address) to support efficient top/bottom holder queries per contract
 CREATE MATERIALIZED VIEW IF NOT EXISTS native_balances_final
-REFRESH EVERY 10 MINUTE
+REFRESH EVERY 1 HOUR
 ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (address, balance)
 AS
