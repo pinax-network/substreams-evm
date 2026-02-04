@@ -27,6 +27,11 @@ pub fn db_out(
     // -- Native Balances --
     native_balances::process_events(&encoding, &mut tables, &clock, &native_balance_events);
 
+    // ONLY include blocks if events are present
+    if !tables.tables.is_empty() {
+        set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
+    }
+
     substreams::log::info!("Total rows {}", tables.all_row_count());
     Ok(tables.to_database_changes())
 }
