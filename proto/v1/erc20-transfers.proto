@@ -41,12 +41,6 @@ message Log {
     // USDT events
     Issue issue = 16;
     Redeem redeem = 17;
-
-    // stETH events
-    TokenRebased token_rebased = 18;
-    SharesBurnt shares_burnt = 19;
-    TransferShares transfer_shares = 20;
-    ExternalSharesBurnt external_shares_burnt = 21;
   }
 }
 
@@ -115,30 +109,4 @@ message Issue {
 message Redeem {
   bytes owner = 1; // msg.sender (call.caller)
   string amount = 2; // uint256
-}
-
-// stETH events
-message TokenRebased {
-  string report_timestamp = 1;  // uint256
-  string time_elapsed = 2;      // uint256
-  string pre_total_shares = 3;  // uint256
-  string pre_total_ether = 4;   // uint256
-  string post_total_shares = 5; // uint256
-  string post_total_ether = 6;  // uint256
-  string shares_minted_as_fees = 7; // uint256
-}
-message SharesBurnt {
-  bytes account = 1;
-  string pre_rebase_token_amount = 2;  // uint256
-  string post_rebase_token_amount = 3; // uint256
-  string shares_amount = 4;            // uint256
-}
-message TransferShares {
-  bytes from = 1;
-  bytes to = 2;
-  string shares_value = 3; // uint256
-}
-message ExternalSharesBurnt {
-  bytes owner = 1;            // Address of the caller whose shares are being burned (msg.sender)
-  string amount_of_shares = 2; // uint256
 }

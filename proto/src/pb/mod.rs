@@ -68,6 +68,13 @@ pub mod ohlc {
         // @@protoc_insertion_point(ohlc.v1)
     }
 }
+pub mod steth {
+    // @@protoc_insertion_point(attribute:steth.v1)
+    pub mod v1 {
+        include!("steth.v1.rs");
+        // @@protoc_insertion_point(steth.v1)
+    }
+}
 pub mod sunpump {
     // @@protoc_insertion_point(attribute:sunpump.v1)
     pub mod v1 {
