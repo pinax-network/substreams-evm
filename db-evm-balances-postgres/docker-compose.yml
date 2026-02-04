@@ -20,5 +20,16 @@ services:
       timeout: 5s
       retries: 5
 
+  pgweb:
+    image: sosedoff/pgweb
+    container_name: substreams-pgweb
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      DATABASE_URL: postgres://dev-node:insecure-change-me-in-prod@postgres:5432/dev-node?sslmode=disable
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
