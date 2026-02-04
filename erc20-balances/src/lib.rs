@@ -20,9 +20,6 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
     // - USDC Mint events: minter, to
     // - USDC Burn events: burner
     // - USDT Issue/Redeem events: owner (from call.caller)
-    // - stETH SharesBurnt events: account
-    // - stETH TransferShares events: from, to
-    // - stETH ExternalSharesBurnt events: owner (from call.caller)
     // - transaction.from for all transactions
     // - log.address for all logs (token contract itself)
     let contracts_by_address = transfers
@@ -64,23 +61,6 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
                     }
                     Some(transfers_pb::log::Log::Redeem(redeem)) => {
                         addresses.push((&log.address, &redeem.owner));
-                    }
-                    // stETH events
-                    Some(transfers_pb::log::Log::TokenRebased(_)) => {
-                        // TokenRebased doesn't have individual account addresses
-                    }
-                    Some(transfers_pb::log::Log::SharesBurnt(shares_burnt)) => {
-                        addresses.push((&log.address, &shares_burnt.account));
-                    }
-                    Some(transfers_pb::log::Log::TransferShares(transfer_shares)) => {
-                        addresses.push((&log.address, &transfer_shares.from));
-                        addresses.push((&log.address, &transfer_shares.to));
-                    }
-                    Some(transfers_pb::log::Log::ExternalSharesBurnt(external_shares_burnt)) => {
-                        // ExternalSharesBurnt uses call.caller for the owner
-                        if !external_shares_burnt.owner.is_empty() {
-                            addresses.push((&log.address, &external_shares_burnt.owner));
-                        }
                     }
                     None => {}
                 }
