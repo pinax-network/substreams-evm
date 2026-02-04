@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -64,23 +64,14 @@ pub mod log {
         Withdrawal(super::Withdrawal),
         /// USDC events
         #[prost(message, tag="14")]
-        UsdcMint(super::UsdcMint),
+        Mint(super::Mint),
         #[prost(message, tag="15")]
-        UsdcBurn(super::UsdcBurn),
+        Burn(super::Burn),
         /// USDT events
         #[prost(message, tag="16")]
-        UsdtIssue(super::UsdtIssue),
+        Issue(super::Issue),
         #[prost(message, tag="17")]
-        UsdtRedeem(super::UsdtRedeem),
-        /// stETH events
-        #[prost(message, tag="18")]
-        StethTokenRebased(super::StethTokenRebased),
-        #[prost(message, tag="19")]
-        StethSharesBurnt(super::StethSharesBurnt),
-        #[prost(message, tag="20")]
-        StethTransferShares(super::StethTransferShares),
-        #[prost(message, tag="21")]
-        StethExternalSharesBurnt(super::StethExternalSharesBurnt),
+        Redeem(super::Redeem),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
@@ -144,7 +135,7 @@ pub struct Withdrawal {
 /// USDC events
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UsdcMint {
+pub struct Mint {
     #[prost(bytes="vec", tag="1")]
     pub minter: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
@@ -155,86 +146,38 @@ pub struct UsdcMint {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UsdcBurn {
+pub struct Burn {
     #[prost(bytes="vec", tag="1")]
     pub burner: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="2")]
     pub amount: ::prost::alloc::string::String,
 }
-/// USDT events
+/// \[Issue\] a new amount of tokens
+/// Assumes the standard USDT Issue event structure
+/// these tokens are deposited into the owner address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UsdtIssue {
-    /// uint256
-    #[prost(string, tag="1")]
-    pub amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UsdtRedeem {
-    /// uint256
-    #[prost(string, tag="1")]
-    pub amount: ::prost::alloc::string::String,
-}
-/// stETH events
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct StethTokenRebased {
-    /// uint256
-    #[prost(string, tag="1")]
-    pub report_timestamp: ::prost::alloc::string::String,
+pub struct Issue {
+    /// msg.sender (call.caller)
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="2")]
-    pub time_elapsed: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub pre_total_shares: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="4")]
-    pub pre_total_ether: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="5")]
-    pub post_total_shares: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="6")]
-    pub post_total_ether: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="7")]
-    pub shares_minted_as_fees: ::prost::alloc::string::String,
+    pub amount: ::prost::alloc::string::String,
 }
+/// \[Redeem\] tokens.
+/// Assumes the standard USDT Redeem event structure
+/// These tokens are withdrawn from the owner address
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct StethSharesBurnt {
+pub struct Redeem {
+    /// msg.sender (call.caller)
     #[prost(bytes="vec", tag="1")]
-    pub account: ::prost::alloc::vec::Vec<u8>,
+    pub owner: ::prost::alloc::vec::Vec<u8>,
     /// uint256
     #[prost(string, tag="2")]
-    pub pre_rebase_token_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub post_rebase_token_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="4")]
-    pub shares_amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct StethTransferShares {
-    #[prost(bytes="vec", tag="1")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="2")]
-    pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub shares_value: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct StethExternalSharesBurnt {
-    /// uint256
-    #[prost(string, tag="1")]
-    pub amount_of_shares: ::prost::alloc::string::String,
+    pub amount: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

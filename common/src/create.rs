@@ -156,3 +156,8 @@ mod erc20_transfers_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::erc20::transfers::v1);
 }
+
+mod steth_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::steth::v1);
+}
