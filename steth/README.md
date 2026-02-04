@@ -6,9 +6,6 @@
 
 This Substreams module extracts all stETH (Lido) protocol events including:
 
-**ERC-20 Events:**
-- `Transfer`, `Approval`
-
 **Staking Events:**
 - `Submitted` - User deposits
 - `Unbuffered` - Ether sent to deposit contract
@@ -41,45 +38,6 @@ This Substreams module extracts all stETH (Lido) protocol events including:
 
 **Locator Event:**
 - `LidoLocatorSet`
-
-## Quickstart
-
-```bash
-# Build the substreams
-make build
-
-# Run with GUI
-make gui
-
-# Package the substreams
-make pack
-```
-
-## Modules
-
-| Module | Type | Description |
-|--------|------|-------------|
-| `map_events` | Map | Extracts all stETH protocol events |
-
-## Usage
-
-```bash
-substreams gui -e eth.substreams.pinax.network:443 \
-  substreams.yaml map_events \
-  -s 13000000
-```
-
-## Contract Address
-
-- **stETH**: `0xae7ab96520de3a18e5e111b5eaab095312d7fe84`
-
-## Protobuf Schema
-
-The output follows the `steth.v1.Events` protobuf schema containing:
-
-- **Transaction**: hash, from, to, nonce, gas info, value
-- **Log**: address, ordinal, topics, data, and typed event data
-- **Events**: All stETH-specific events listed above
 
 ## Links
 
