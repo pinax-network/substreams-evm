@@ -1,0 +1,278 @@
+syntax = "proto3";
+
+package steth.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  oneof log {
+    // ERC-20 standard events (stETH is an ERC-20 rebasing token)
+    Transfer transfer = 10;
+    Approval approval = 11;
+
+    // Staking events
+    Submitted submitted = 12;
+    Unbuffered unbuffered = 13;
+
+    // Rebase events
+    TokenRebased token_rebased = 14;
+    TransferShares transfer_shares = 15;
+    SharesBurnt shares_burnt = 16;
+
+    // External shares events (Lido V3 stVaults)
+    ExternalSharesMinted external_shares_minted = 17;
+    ExternalSharesBurnt external_shares_burnt = 18;
+    ExternalEtherTransferredToBuffer external_ether_transferred_to_buffer = 19;
+    ExternalBadDebtInternalized external_bad_debt_internalized = 20;
+    MaxExternalRatioBPSet max_external_ratio_bp_set = 21;
+
+    // Validator/CL events
+    CLValidatorsUpdated cl_validators_updated = 22;
+    DepositedValidatorsChanged deposited_validators_changed = 23;
+    ETHDistributed eth_distributed = 24;
+    InternalShareRateUpdated internal_share_rate_updated = 25;
+
+    // Protocol control events
+    StakingPaused staking_paused = 26;
+    StakingResumed staking_resumed = 27;
+    StakingLimitSet staking_limit_set = 28;
+    StakingLimitRemoved staking_limit_removed = 29;
+
+    // EL/Withdrawal events
+    ELRewardsReceived el_rewards_received = 30;
+    WithdrawalsReceived withdrawals_received = 31;
+
+    // Locator event
+    LidoLocatorSet lido_locator_set = 32;
+  }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;   // Address that made the call
+  uint32 index = 2;   // Index of the call within the transaction
+  uint32 depth = 3;   // Depth of the call in the call tree (0 = root)
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+// ============================================
+// ERC-20 Standard Events
+// ============================================
+
+// Transfer event (ERC-20)
+message Transfer {
+  bytes from = 1;
+  bytes to = 2;
+  string amount = 3; // uint256
+}
+
+// Approval event (ERC-20)
+message Approval {
+  bytes owner = 1;
+  bytes spender = 2;
+  string value = 3; // uint256
+}
+
+// ============================================
+// Staking Events
+// ============================================
+
+// Submitted - Records a deposit made by a user
+// event Submitted(address indexed sender, uint256 amount, address referral)
+message Submitted {
+  bytes sender = 1;
+  string amount = 2; // uint256
+  bytes referral = 3;
+}
+
+// Unbuffered - The amount of ether was sent to the deposit_contract.deposit function
+// event Unbuffered(uint256 amount)
+message Unbuffered {
+  string amount = 1; // uint256
+}
+
+// ============================================
+// Rebase Events
+// ============================================
+
+// TokenRebased - Emitted when the token is rebased (an accounting oracle report is delivered)
+// event TokenRebased(uint256 indexed reportTimestamp, uint256 timeElapsed, uint256 preTotalShares, 
+//                    uint256 preTotalEther, uint256 postTotalShares, uint256 postTotalEther, uint256 sharesMintedAsFees)
+message TokenRebased {
+  string report_timestamp = 1;      // uint256
+  string time_elapsed = 2;          // uint256
+  string pre_total_shares = 3;      // uint256
+  string pre_total_ether = 4;       // uint256
+  string post_total_shares = 5;     // uint256
+  string post_total_ether = 6;      // uint256
+  string shares_minted_as_fees = 7; // uint256
+}
+
+// TransferShares - Emitted when shares are transferred
+// event TransferShares(address indexed from, address indexed to, uint256 sharesValue)
+message TransferShares {
+  bytes from = 1;
+  bytes to = 2;
+  string shares_value = 3; // uint256
+}
+
+// SharesBurnt - Emitted when shares are burned
+// event SharesBurnt(address indexed account, uint256 preRebaseTokenAmount, uint256 postRebaseTokenAmount, uint256 sharesAmount)
+message SharesBurnt {
+  bytes account = 1;
+  string pre_rebase_token_amount = 2;  // uint256
+  string post_rebase_token_amount = 3; // uint256
+  string shares_amount = 4;            // uint256
+}
+
+// ============================================
+// External Shares Events (Lido V3 stVaults)
+// ============================================
+
+// ExternalSharesMinted - External shares minted for recipient
+// event ExternalSharesMinted(address indexed recipient, uint256 amountOfShares)
+message ExternalSharesMinted {
+  bytes recipient = 1;
+  string amount_of_shares = 2; // uint256
+}
+
+// ExternalSharesBurnt - External shares burned
+// event ExternalSharesBurnt(uint256 amountOfShares)
+message ExternalSharesBurnt {
+  string amount_of_shares = 1; // uint256
+}
+
+// ExternalEtherTransferredToBuffer - External ether transferred to buffer
+// event ExternalEtherTransferredToBuffer(uint256 amount)
+message ExternalEtherTransferredToBuffer {
+  string amount = 1; // uint256
+}
+
+// ExternalBadDebtInternalized - Bad debt internalized
+// event ExternalBadDebtInternalized(uint256 amountOfShares)
+message ExternalBadDebtInternalized {
+  string amount_of_shares = 1; // uint256
+}
+
+// MaxExternalRatioBPSet - Maximum ratio of external shares to total shares in basis points set
+// event MaxExternalRatioBPSet(uint256 maxExternalRatioBP)
+message MaxExternalRatioBPSet {
+  string max_external_ratio_bp = 1; // uint256
+}
+
+// ============================================
+// Validator/CL Events
+// ============================================
+
+// CLValidatorsUpdated - Emitted when validators number delivered by the oracle
+// event CLValidatorsUpdated(uint256 indexed reportTimestamp, uint256 preCLValidators, uint256 postCLValidators)
+message CLValidatorsUpdated {
+  string report_timestamp = 1;   // uint256
+  string pre_cl_validators = 2;  // uint256
+  string post_cl_validators = 3; // uint256
+}
+
+// DepositedValidatorsChanged - Emitted when depositedValidators value is changed
+// event DepositedValidatorsChanged(uint256 depositedValidators)
+message DepositedValidatorsChanged {
+  string deposited_validators = 1; // uint256
+}
+
+// ETHDistributed - Emitted when oracle accounting report processed
+// event ETHDistributed(uint256 indexed reportTimestamp, uint256 preCLBalance, uint256 postCLBalance,
+//                      uint256 withdrawalsWithdrawn, uint256 executionLayerRewardsWithdrawn, uint256 postBufferedEther)
+message ETHDistributed {
+  string report_timestamp = 1;                  // uint256
+  string pre_cl_balance = 2;                    // uint256 (actually preCLBalance + deposits for compatibility)
+  string post_cl_balance = 3;                   // uint256
+  string withdrawals_withdrawn = 4;             // uint256
+  string execution_layer_rewards_withdrawn = 5; // uint256
+  string post_buffered_ether = 6;               // uint256
+}
+
+// InternalShareRateUpdated - Internal share rate updated
+// event InternalShareRateUpdated(uint256 indexed reportTimestamp, uint256 postInternalShares, uint256 postInternalEther, uint256 sharesMintedAsFees)
+message InternalShareRateUpdated {
+  string report_timestamp = 1;       // uint256
+  string post_internal_shares = 2;   // uint256
+  string post_internal_ether = 3;    // uint256
+  string shares_minted_as_fees = 4;  // uint256
+}
+
+// ============================================
+// Protocol Control Events
+// ============================================
+
+// StakingPaused - Staking was paused (don't accept user's ether submits)
+// event StakingPaused()
+message StakingPaused {}
+
+// StakingResumed - Staking was resumed (accept user's ether submits)
+// event StakingResumed()
+message StakingResumed {}
+
+// StakingLimitSet - Staking limit was set (rate limits user's submits)
+// event StakingLimitSet(uint256 maxStakeLimit, uint256 stakeLimitIncreasePerBlock)
+message StakingLimitSet {
+  string max_stake_limit = 1;                // uint256
+  string stake_limit_increase_per_block = 2; // uint256
+}
+
+// StakingLimitRemoved - Staking limit was removed
+// event StakingLimitRemoved()
+message StakingLimitRemoved {}
+
+// ============================================
+// EL/Withdrawal Events
+// ============================================
+
+// ELRewardsReceived - The amount of ETH withdrawn from LidoExecutionLayerRewardsVault to Lido
+// event ELRewardsReceived(uint256 amount)
+message ELRewardsReceived {
+  string amount = 1; // uint256
+}
+
+// WithdrawalsReceived - The amount of ETH withdrawn from WithdrawalVault to Lido
+// event WithdrawalsReceived(uint256 amount)
+message WithdrawalsReceived {
+  string amount = 1; // uint256
+}
+
+// ============================================
+// Locator Event
+// ============================================
+
+// LidoLocatorSet - Lido locator set
+// event LidoLocatorSet(address lidoLocator)
+message LidoLocatorSet {
+  bytes lido_locator = 1;
+}

@@ -1,7 +1,6 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::transfers::v1 as pb;
 use substreams_abis::evm::token::erc20::events;
-use substreams_abis::evm::tokens::steth::events as steth_events;
 use substreams_abis::evm::tokens::usdc::events as usdc_events;
 use substreams_abis::evm::tokens::usdt::events as usdt_events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
@@ -19,10 +18,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_usdc_burns = 0;
     let mut total_usdt_issues = 0;
     let mut total_usdt_redeems = 0;
-    let mut total_steth_token_rebased = 0;
-    let mut total_steth_shares_burnt = 0;
-    let mut total_steth_transfer_shares = 0;
-    let mut total_steth_external_shares_burnt = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
@@ -118,51 +113,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
                 }
             }
-
-            // stETH events
-            if let Some(event) = steth_events::TokenRebased::match_and_decode(log) {
-                total_steth_token_rebased += 1;
-                let event = pb::log::Log::TokenRebased(pb::TokenRebased {
-                    report_timestamp: event.report_timestamp.to_string(),
-                    time_elapsed: event.time_elapsed.to_string(),
-                    pre_total_shares: event.pre_total_shares.to_string(),
-                    pre_total_ether: event.pre_total_ether.to_string(),
-                    post_total_shares: event.post_total_shares.to_string(),
-                    post_total_ether: event.post_total_ether.to_string(),
-                    shares_minted_as_fees: event.shares_minted_as_fees.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-            if let Some(event) = steth_events::SharesBurnt::match_and_decode(log) {
-                total_steth_shares_burnt += 1;
-                let event = pb::log::Log::SharesBurnt(pb::SharesBurnt {
-                    account: event.account.to_vec(),
-                    pre_rebase_token_amount: event.pre_rebase_token_amount.to_string(),
-                    post_rebase_token_amount: event.post_rebase_token_amount.to_string(),
-                    shares_amount: event.shares_amount.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-            if let Some(event) = steth_events::TransferShares::match_and_decode(log) {
-                total_steth_transfer_shares += 1;
-                let event = pb::log::Log::TransferShares(pb::TransferShares {
-                    from: event.from.to_vec(),
-                    to: event.to.to_vec(),
-                    shares_value: event.shares_value.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-            if let Some(event) = steth_events::ExternalSharesBurnt::match_and_decode(log) {
-                // [call.caller] is required to know `owner` of issued USDT
-                if let Some(call) = call {
-                    total_steth_external_shares_burnt += 1;
-                    let event = pb::log::Log::ExternalSharesBurnt(pb::ExternalSharesBurnt {
-                        owner: call.caller.to_vec(),
-                        amount_of_shares: event.amount_of_shares.to_string(),
-                    });
-                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
-                }
-            }
         }
         // Only include transactions with logs
         if !transaction.logs.is_empty() {
@@ -179,9 +129,5 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total USDC Burn events: {}", total_usdc_burns);
     substreams::log::info!("Total USDT Issue events: {}", total_usdt_issues);
     substreams::log::info!("Total USDT Redeem events: {}", total_usdt_redeems);
-    substreams::log::info!("Total stETH TokenRebased events: {}", total_steth_token_rebased);
-    substreams::log::info!("Total stETH SharesBurnt events: {}", total_steth_shares_burnt);
-    substreams::log::info!("Total stETH TransferShares events: {}", total_steth_transfer_shares);
-    substreams::log::info!("Total stETH ExternalSharesBurnt events: {}", total_steth_external_shares_burnt);
     Ok(events)
 }

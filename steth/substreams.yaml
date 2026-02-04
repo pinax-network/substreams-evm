@@ -1,29 +1,30 @@
 specVersion: v0.1.0
 package:
-  name: erc20_transfers
+  name: steth
   version: v0.3.0
   url: https://github.com/pinax-network/substreams-evm
-  doc: ERC-20 & WETH Events
-  description: ERC-20 Transfers & WETH, USDT, USDC Events
+  doc: stETH Events
+  description: Lido stETH Protocol Events
   image: ../image.png
 
 binaries:
   default:
     type: wasm/rust-v1+wasm-bindgen-shims
-    file: ../target/wasm32-unknown-unknown/release/erc20_transfers.wasm
+    file: ../target/wasm32-unknown-unknown/release/steth.wasm
 
 protobuf:
   files:
-    - v1/erc20-transfers.proto
+    - v1/steth.proto
   importPaths:
     - ../proto
 
 modules:
   - name: map_events
     kind: map
+    doc: stETH Events
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:erc20.transfers.v1.Events
+      type: proto:steth.v1.Events
 
 network: mainnet

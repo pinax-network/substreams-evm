@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -72,15 +72,6 @@ pub mod log {
         Issue(super::Issue),
         #[prost(message, tag="17")]
         Redeem(super::Redeem),
-        /// stETH events
-        #[prost(message, tag="18")]
-        TokenRebased(super::TokenRebased),
-        #[prost(message, tag="19")]
-        SharesBurnt(super::SharesBurnt),
-        #[prost(message, tag="20")]
-        TransferShares(super::TransferShares),
-        #[prost(message, tag="21")]
-        ExternalSharesBurnt(super::ExternalSharesBurnt),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
@@ -187,68 +178,6 @@ pub struct Redeem {
     /// uint256
     #[prost(string, tag="2")]
     pub amount: ::prost::alloc::string::String,
-}
-/// stETH events
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TokenRebased {
-    /// uint256
-    #[prost(string, tag="1")]
-    pub report_timestamp: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub time_elapsed: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub pre_total_shares: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="4")]
-    pub pre_total_ether: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="5")]
-    pub post_total_shares: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="6")]
-    pub post_total_ether: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="7")]
-    pub shares_minted_as_fees: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct SharesBurnt {
-    #[prost(bytes="vec", tag="1")]
-    pub account: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub pre_rebase_token_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub post_rebase_token_amount: ::prost::alloc::string::String,
-    /// uint256
-    #[prost(string, tag="4")]
-    pub shares_amount: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TransferShares {
-    #[prost(bytes="vec", tag="1")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="2")]
-    pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="3")]
-    pub shares_value: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ExternalSharesBurnt {
-    /// Address of the caller whose shares are being burned (msg.sender)
-    #[prost(bytes="vec", tag="1")]
-    pub owner: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub amount_of_shares: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
