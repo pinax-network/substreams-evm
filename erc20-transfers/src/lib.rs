@@ -79,7 +79,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // USDC Mint/Burn events
             if let Some(event) = usdc_events::Mint::match_and_decode(log) {
                 total_usdc_mints += 1;
-                let event = pb::log::Log::UsdcMint(pb::UsdcMint {
+                let event = pb::log::Log::Mint(pb::Mint {
                     minter: event.minter.to_vec(),
                     to: event.to.to_vec(),
                     amount: event.amount.to_string(),
@@ -88,7 +88,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
             if let Some(event) = usdc_events::Burn::match_and_decode(log) {
                 total_usdc_burns += 1;
-                let event = pb::log::Log::UsdcBurn(pb::UsdcBurn {
+                let event = pb::log::Log::Burn(pb::Burn {
                     burner: event.burner.to_vec(),
                     amount: event.amount.to_string(),
                 });
@@ -97,24 +97,32 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // USDT Issue/Redeem events
             if let Some(event) = usdt_events::Issue::match_and_decode(log) {
-                total_usdt_issues += 1;
-                let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
-                    amount: event.amount.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                // [call.caller] is required to know `owner` of issued USDT
+                if let Some(call) = call {
+                    total_usdt_issues += 1;
+                    let event = pb::log::Log::Issue(pb::Issue {
+                        owner: call.caller.to_vec(),
+                        amount: event.amount.to_string(),
+                    });
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
+                }
             }
             if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
-                total_usdt_redeems += 1;
-                let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
-                    amount: event.amount.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                // [call.caller] is required to know `owner` of issued USDT
+                if let Some(call) = call {
+                    total_usdt_redeems += 1;
+                    let event = pb::log::Log::Redeem(pb::Redeem {
+                        owner: call.caller.to_vec(),
+                        amount: event.amount.to_string(),
+                    });
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
+                }
             }
 
             // stETH events
             if let Some(event) = steth_events::TokenRebased::match_and_decode(log) {
                 total_steth_token_rebased += 1;
-                let event = pb::log::Log::StethTokenRebased(pb::StethTokenRebased {
+                let event = pb::log::Log::TokenRebased(pb::TokenRebased {
                     report_timestamp: event.report_timestamp.to_string(),
                     time_elapsed: event.time_elapsed.to_string(),
                     pre_total_shares: event.pre_total_shares.to_string(),
@@ -127,7 +135,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
             if let Some(event) = steth_events::SharesBurnt::match_and_decode(log) {
                 total_steth_shares_burnt += 1;
-                let event = pb::log::Log::StethSharesBurnt(pb::StethSharesBurnt {
+                let event = pb::log::Log::SharesBurnt(pb::SharesBurnt {
                     account: event.account.to_vec(),
                     pre_rebase_token_amount: event.pre_rebase_token_amount.to_string(),
                     post_rebase_token_amount: event.post_rebase_token_amount.to_string(),
@@ -137,7 +145,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             }
             if let Some(event) = steth_events::TransferShares::match_and_decode(log) {
                 total_steth_transfer_shares += 1;
-                let event = pb::log::Log::StethTransferShares(pb::StethTransferShares {
+                let event = pb::log::Log::TransferShares(pb::TransferShares {
                     from: event.from.to_vec(),
                     to: event.to.to_vec(),
                     shares_value: event.shares_value.to_string(),
@@ -145,15 +153,15 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
             if let Some(event) = steth_events::ExternalSharesBurnt::match_and_decode(log) {
-                total_steth_external_shares_burnt += 1;
-                // ExternalSharesBurnt event doesn't include the account address in the event data,
-                // but we can get it from call.caller (msg.sender) since burnExternalShares() burns from msg.sender
-                let sender = call.map(|c| c.caller.to_vec()).unwrap_or_default();
-                let event = pb::log::Log::StethExternalSharesBurnt(pb::StethExternalSharesBurnt {
-                    sender,
-                    amount_of_shares: event.amount_of_shares.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                // [call.caller] is required to know `owner` of issued USDT
+                if let Some(call) = call {
+                    total_steth_external_shares_burnt += 1;
+                    let event = pb::log::Log::ExternalSharesBurnt(pb::ExternalSharesBurnt {
+                        owner: call.caller.to_vec(),
+                        amount_of_shares: event.amount_of_shares.to_string(),
+                    });
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
+                }
             }
         }
         // Only include transactions with logs

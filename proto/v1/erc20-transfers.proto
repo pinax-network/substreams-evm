@@ -35,18 +35,18 @@ message Log {
     Withdrawal withdrawal = 13;
 
     // USDC events
-    UsdcMint usdc_mint = 14;
-    UsdcBurn usdc_burn = 15;
+    Mint mint = 14;
+    Burn burn = 15;
 
     // USDT events
-    UsdtIssue usdt_issue = 16;
-    UsdtRedeem usdt_redeem = 17;
+    Issue issue = 16;
+    Redeem redeem = 17;
 
     // stETH events
-    StethTokenRebased steth_token_rebased = 18;
-    StethSharesBurnt steth_shares_burnt = 19;
-    StethTransferShares steth_transfer_shares = 20;
-    StethExternalSharesBurnt steth_external_shares_burnt = 21;
+    TokenRebased token_rebased = 18;
+    SharesBurnt shares_burnt = 19;
+    TransferShares transfer_shares = 20;
+    ExternalSharesBurnt external_shares_burnt = 21;
   }
 }
 
@@ -91,26 +91,34 @@ message Withdrawal {
 }
 
 // USDC events
-message UsdcMint {
+message Mint {
   bytes minter = 1;
   bytes to = 2;
   string amount = 3; // uint256
 }
-message UsdcBurn {
+message Burn {
   bytes burner = 1;
   string amount = 2; // uint256
 }
 
-// USDT events
-message UsdtIssue {
-  string amount = 1; // uint256
+// [Issue] a new amount of tokens
+// Assumes the standard USDT Issue event structure
+// these tokens are deposited into the owner address
+message Issue {
+  bytes owner = 1; // msg.sender (call.caller)
+  string amount = 2; // uint256
 }
-message UsdtRedeem {
-  string amount = 1; // uint256
+
+// [Redeem] tokens.
+// Assumes the standard USDT Redeem event structure
+// These tokens are withdrawn from the owner address
+message Redeem {
+  bytes owner = 1; // msg.sender (call.caller)
+  string amount = 2; // uint256
 }
 
 // stETH events
-message StethTokenRebased {
+message TokenRebased {
   string report_timestamp = 1;  // uint256
   string time_elapsed = 2;      // uint256
   string pre_total_shares = 3;  // uint256
@@ -119,18 +127,18 @@ message StethTokenRebased {
   string post_total_ether = 6;  // uint256
   string shares_minted_as_fees = 7; // uint256
 }
-message StethSharesBurnt {
+message SharesBurnt {
   bytes account = 1;
   string pre_rebase_token_amount = 2;  // uint256
   string post_rebase_token_amount = 3; // uint256
   string shares_amount = 4;            // uint256
 }
-message StethTransferShares {
+message TransferShares {
   bytes from = 1;
   bytes to = 2;
   string shares_value = 3; // uint256
 }
-message StethExternalSharesBurnt {
-  bytes sender = 1;            // Address of the caller whose shares are being burned (msg.sender)
+message ExternalSharesBurnt {
+  bytes owner = 1;            // Address of the caller whose shares are being burned (msg.sender)
   string amount_of_shares = 2; // uint256
 }
