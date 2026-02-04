@@ -3,7 +3,6 @@ package:
   name: erc20_transfers
   version: v0.3.0
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20 & WETH Events
   image: ../image.png
 
 binaries:
@@ -20,7 +19,6 @@ protobuf:
 modules:
   - name: map_events
     kind: map
-    doc: ERC-20 & WETH Events
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:

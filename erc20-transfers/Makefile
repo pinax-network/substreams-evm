@@ -2,6 +2,7 @@ ENDPOINT ?= eth.substreams.pinax.network:443
 START_BLOCK ?= 23000000
 STOP_BLOCK ?= +1000
 PARALLEL_JOBS ?= 500
+.DEFAULT_GOAL := pack
 
 .PHONY: build
 build:

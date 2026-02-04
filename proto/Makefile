@@ -4,4 +4,4 @@ all:
 
 .PHONY: protogen
 protogen:
-	substreams protogen
+	substreams protogen --exclude-paths sf/substreams,google
