@@ -49,4 +49,3 @@ ENGINE = ReplacingMergeTree(block_num)
 ORDER BY (address)
 SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Native balance changes per block for a given address';
-
