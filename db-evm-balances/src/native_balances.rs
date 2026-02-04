@@ -9,9 +9,9 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     for balance in events.balances.iter() {
         let address = bytes_to_string(&balance.address, encoding);
         let row = tables
-            .upsert_row("balances_native", &address)
+            .create_row("native_balances", &address)
             .set("address", &address)
-            .set("amount", &balance.amount);
+            .set("balance", &balance.amount);
 
         set_clock(clock, row);
     }

@@ -1,6 +1,6 @@
 -- ERC-20 & Native balances --
 -- There can only be a single ERC-20 balance change per block for a given address / contract pair --
-CREATE TABLE IF NOT EXISTS balances (
+CREATE TABLE IF NOT EXISTS erc20_balances (
     -- block --
     block_num            UInt32,
     block_hash           String,
@@ -28,7 +28,7 @@ COMMENT 'ERC-20 & Native balance changes per block for a given address / contrac
 
 -- ERC-20 & Native balances --
 -- There can only be a single ERC-20 balance change per block for a given address / contract pair --
-CREATE TABLE IF NOT EXISTS balances_native (
+CREATE TABLE IF NOT EXISTS native_balances (
     -- block --
     block_num            UInt32,
     block_hash           String,
