@@ -19,8 +19,3 @@ protobuf:
     - v1/dex/uniswap-v4.proto
     - v1/dex/cow.proto
     - v1/erc1155.proto
-
-  excludePaths:
-    - sf/substreams
-    - sf/tron
-    - google
