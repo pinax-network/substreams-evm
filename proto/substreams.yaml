@@ -5,6 +5,7 @@ package:
 
 protobuf:
   files:
+    - v1/steth.proto
     - v1/erc20-transfers.proto
     - v1/native-transfers.proto
     - v1/balances.proto
