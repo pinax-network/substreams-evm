@@ -161,3 +161,8 @@ mod steth_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::steth::v1);
 }
+
+mod erc20_tokens_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::erc20::tokens::v1);
+}
