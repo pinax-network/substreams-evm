@@ -29,10 +29,6 @@ message Log {
     // ERC-20 events
     Transfer transfer = 10;
     Approval approval = 11;
-
-    // WETH events
-    Deposit deposit = 12;
-    Withdrawal withdrawal = 13;
   }
 }
 
@@ -65,16 +61,3 @@ message Approval {
   bytes spender = 2;
   string value = 3; // uint256
 }
-
-// WETH events
-message Deposit {
-  bytes dst = 1;
-  string wad = 2; // uint256
-}
-message Withdrawal {
-  bytes src = 1;
-  string wad = 2; // uint256
-}
-
-
-

@@ -52,12 +52,6 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
                         addresses.push((&log.address, &approval.owner));
                         addresses.push((&log.address, &approval.spender));
                     }
-                    Some(transfers_pb::log::Log::Deposit(deposit)) => {
-                        addresses.push((&log.address, &deposit.dst));
-                    }
-                    Some(transfers_pb::log::Log::Withdrawal(withdrawal)) => {
-                        addresses.push((&log.address, &withdrawal.src));
-                    }
                     None => {}
                 }
                 addresses

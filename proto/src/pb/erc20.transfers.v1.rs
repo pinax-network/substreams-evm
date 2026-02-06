@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13")]
+    #[prost(oneof="log::Log", tags="10, 11")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -57,11 +57,6 @@ pub mod log {
         Transfer(super::Transfer),
         #[prost(message, tag="11")]
         Approval(super::Approval),
-        /// WETH events
-        #[prost(message, tag="12")]
-        Deposit(super::Deposit),
-        #[prost(message, tag="13")]
-        Withdrawal(super::Withdrawal),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
@@ -102,25 +97,6 @@ pub struct Approval {
     /// uint256
     #[prost(string, tag="3")]
     pub value: ::prost::alloc::string::String,
-}
-/// WETH events
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Deposit {
-    #[prost(bytes="vec", tag="1")]
-    pub dst: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub wad: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Withdrawal {
-    #[prost(bytes="vec", tag="1")]
-    pub src: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag="2")]
-    pub wad: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

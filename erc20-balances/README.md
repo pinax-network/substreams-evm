@@ -7,6 +7,7 @@
 This Substreams module fetches ERC-20 token balances by making batched `balanceOf` RPC calls. It processes events from the `erc20-transfers` module and retrieves the resulting balances for all affected addresses.
 
 **Tracked address sources:**
+
 - Transfer events: `from`, `to`
 - WETH Deposit events: `dst`
 - WETH Withdrawal events: `src`
