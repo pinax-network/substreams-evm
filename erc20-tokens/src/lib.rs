@@ -17,6 +17,11 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_weth_deposits = 0;
     let mut total_weth_withdrawals = 0;
 
+    // Shared counters (Pause/Unpause/OwnershipTransferred across USDC, USDT, WBTC)
+    let mut total_pauses = 0;
+    let mut total_unpauses = 0;
+    let mut total_ownership_transferred = 0;
+
     // USDC counters
     let mut total_usdc_mints = 0;
     let mut total_usdc_burns = 0;
@@ -25,12 +30,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_usdc_master_minter_changed = 0;
     let mut total_usdc_minter_configured = 0;
     let mut total_usdc_minter_removed = 0;
-    let mut total_usdc_ownership_transferred = 0;
-    let mut total_usdc_pauses = 0;
     let mut total_usdc_pauser_changed = 0;
     let mut total_usdc_rescuer_changed = 0;
     let mut total_usdc_un_blacklisted = 0;
-    let mut total_usdc_unpauses = 0;
     let mut total_usdc_authorization_canceled = 0;
     let mut total_usdc_authorization_used = 0;
 
@@ -42,17 +44,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_usdt_destroyed_black_funds = 0;
     let mut total_usdt_added_black_list = 0;
     let mut total_usdt_removed_black_list = 0;
-    let mut total_usdt_pauses = 0;
-    let mut total_usdt_unpauses = 0;
 
     // WBTC counters
     let mut total_wbtc_mints = 0;
     let mut total_wbtc_burns = 0;
     let mut total_wbtc_mint_finished = 0;
     let mut total_wbtc_ownership_renounced = 0;
-    let mut total_wbtc_ownership_transferred = 0;
-    let mut total_wbtc_pauses = 0;
-    let mut total_wbtc_unpauses = 0;
 
     // SAI counters
     let mut total_sai_mints = 0;
@@ -190,20 +187,20 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
-            // OwnershipTransferred
+            // OwnershipTransferred (shared: USDC, WBTC)
             if let Some(event) = usdc_events::OwnershipTransferred::match_and_decode(log) {
-                total_usdc_ownership_transferred += 1;
-                let event = pb::log::Log::UsdcOwnershipTransferred(pb::UsdcOwnershipTransferred {
+                total_ownership_transferred += 1;
+                let event = pb::log::Log::OwnershipTransferred(pb::OwnershipTransferred {
                     previous_owner: event.previous_owner.to_vec(),
                     new_owner: event.new_owner.to_vec(),
                 });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
-            // Pause
+            // Pause (shared: USDC, USDT, WBTC)
             if usdc_events::Pause::match_and_decode(log).is_some() {
-                total_usdc_pauses += 1;
-                let event = pb::log::Log::UsdcPause(pb::UsdcPause {});
+                total_pauses += 1;
+                let event = pb::log::Log::Pause(pb::Pause {});
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
@@ -234,10 +231,10 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
-            // Unpause
+            // Unpause (shared: USDC, USDT, WBTC)
             if usdc_events::Unpause::match_and_decode(log).is_some() {
-                total_usdc_unpauses += 1;
-                let event = pb::log::Log::UsdcUnpause(pb::UsdcUnpause {});
+                total_unpauses += 1;
+                let event = pb::log::Log::Unpause(pb::Unpause {});
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
@@ -330,20 +327,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
-            // Pause
-            if usdt_events::Pause::match_and_decode(log).is_some() {
-                total_usdt_pauses += 1;
-                let event = pb::log::Log::UsdtPause(pb::UsdtPause {});
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-
-            // Unpause
-            if usdt_events::Unpause::match_and_decode(log).is_some() {
-                total_usdt_unpauses += 1;
-                let event = pb::log::Log::UsdtUnpause(pb::UsdtUnpause {});
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-
             // ============================================
             // WBTC Events
             // ============================================
@@ -381,30 +364,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 let event = pb::log::Log::WbtcOwnershipRenounced(pb::WbtcOwnershipRenounced {
                     previous_owner: event.previous_owner.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-
-            // OwnershipTransferred
-            if let Some(event) = wbtc_events::OwnershipTransferred::match_and_decode(log) {
-                total_wbtc_ownership_transferred += 1;
-                let event = pb::log::Log::WbtcOwnershipTransferred(pb::WbtcOwnershipTransferred {
-                    previous_owner: event.previous_owner.to_vec(),
-                    new_owner: event.new_owner.to_vec(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-
-            // Pause
-            if wbtc_events::Pause::match_and_decode(log).is_some() {
-                total_wbtc_pauses += 1;
-                let event = pb::log::Log::WbtcPause(pb::WbtcPause {});
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-            }
-
-            // Unpause
-            if wbtc_events::Unpause::match_and_decode(log).is_some() {
-                total_wbtc_unpauses += 1;
-                let event = pb::log::Log::WbtcUnpause(pb::WbtcUnpause {});
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
@@ -673,6 +632,11 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total Transactions: {}", block.transaction_traces.len());
     substreams::log::info!("Total Events: {}\n", events.transactions.len());
 
+    substreams::log::info!("--- Shared Events ---");
+    substreams::log::info!("  Pause: {}", total_pauses);
+    substreams::log::info!("  Unpause: {}", total_unpauses);
+    substreams::log::info!("  OwnershipTransferred: {}\n", total_ownership_transferred);
+
     substreams::log::info!("--- WETH Events ---");
     substreams::log::info!("  Deposit: {}", total_weth_deposits);
     substreams::log::info!("  Withdrawal: {}\n", total_weth_withdrawals);
@@ -685,12 +649,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("  MasterMinterChanged: {}", total_usdc_master_minter_changed);
     substreams::log::info!("  MinterConfigured: {}", total_usdc_minter_configured);
     substreams::log::info!("  MinterRemoved: {}", total_usdc_minter_removed);
-    substreams::log::info!("  OwnershipTransferred: {}", total_usdc_ownership_transferred);
-    substreams::log::info!("  Pause: {}", total_usdc_pauses);
     substreams::log::info!("  PauserChanged: {}", total_usdc_pauser_changed);
     substreams::log::info!("  RescuerChanged: {}", total_usdc_rescuer_changed);
     substreams::log::info!("  UnBlacklisted: {}", total_usdc_un_blacklisted);
-    substreams::log::info!("  Unpause: {}", total_usdc_unpauses);
     substreams::log::info!("  AuthorizationCanceled: {}", total_usdc_authorization_canceled);
     substreams::log::info!("  AuthorizationUsed: {}\n", total_usdc_authorization_used);
 
@@ -701,18 +662,13 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("  Params: {}", total_usdt_params);
     substreams::log::info!("  DestroyedBlackFunds: {}", total_usdt_destroyed_black_funds);
     substreams::log::info!("  AddedBlackList: {}", total_usdt_added_black_list);
-    substreams::log::info!("  RemovedBlackList: {}", total_usdt_removed_black_list);
-    substreams::log::info!("  Pause: {}", total_usdt_pauses);
-    substreams::log::info!("  Unpause: {}\n", total_usdt_unpauses);
+    substreams::log::info!("  RemovedBlackList: {}\n", total_usdt_removed_black_list);
 
     substreams::log::info!("--- WBTC Events ---");
     substreams::log::info!("  Mint: {}", total_wbtc_mints);
     substreams::log::info!("  Burn: {}", total_wbtc_burns);
     substreams::log::info!("  MintFinished: {}", total_wbtc_mint_finished);
-    substreams::log::info!("  OwnershipRenounced: {}", total_wbtc_ownership_renounced);
-    substreams::log::info!("  OwnershipTransferred: {}", total_wbtc_ownership_transferred);
-    substreams::log::info!("  Pause: {}", total_wbtc_pauses);
-    substreams::log::info!("  Unpause: {}\n", total_wbtc_unpauses);
+    substreams::log::info!("  OwnershipRenounced: {}\n", total_wbtc_ownership_renounced);
 
     substreams::log::info!("--- SAI Events ---");
     substreams::log::info!("  Mint: {}", total_sai_mints);

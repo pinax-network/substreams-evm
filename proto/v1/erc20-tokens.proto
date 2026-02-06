@@ -26,6 +26,11 @@ message Log {
   optional Call call = 5;
 
   oneof log {
+    // ========== Shared Events (same signature across multiple tokens) ==========
+    Pause pause = 200;
+    Unpause unpause = 201;
+    OwnershipTransferred ownership_transferred = 202;
+
     // ========== WETH Events ==========
     WethDeposit weth_deposit = 10;
     WethWithdrawal weth_withdrawal = 11;
@@ -38,12 +43,9 @@ message Log {
     UsdcMasterMinterChanged usdc_master_minter_changed = 24;
     UsdcMinterConfigured usdc_minter_configured = 25;
     UsdcMinterRemoved usdc_minter_removed = 26;
-    UsdcOwnershipTransferred usdc_ownership_transferred = 27;
-    UsdcPause usdc_pause = 28;
     UsdcPauserChanged usdc_pauser_changed = 29;
     UsdcRescuerChanged usdc_rescuer_changed = 30;
     UsdcUnBlacklisted usdc_un_blacklisted = 31;
-    UsdcUnpause usdc_unpause = 32;
     UsdcAuthorizationCanceled usdc_authorization_canceled = 33;
     UsdcAuthorizationUsed usdc_authorization_used = 34;
 
@@ -55,17 +57,12 @@ message Log {
     UsdtDestroyedBlackFunds usdt_destroyed_black_funds = 44;
     UsdtAddedBlackList usdt_added_black_list = 45;
     UsdtRemovedBlackList usdt_removed_black_list = 46;
-    UsdtPause usdt_pause = 47;
-    UsdtUnpause usdt_unpause = 48;
 
     // ========== WBTC Events ==========
     WbtcMint wbtc_mint = 50;
     WbtcBurn wbtc_burn = 51;
     WbtcMintFinished wbtc_mint_finished = 52;
     WbtcOwnershipRenounced wbtc_ownership_renounced = 53;
-    WbtcOwnershipTransferred wbtc_ownership_transferred = 54;
-    WbtcPause wbtc_pause = 55;
-    WbtcUnpause wbtc_unpause = 56;
 
     // ========== SAI Events ==========
     SaiMint sai_mint = 60;
@@ -113,6 +110,22 @@ enum CallType {
   CALL_TYPE_DELEGATE = 3;
   CALL_TYPE_STATIC = 4;
   CALL_TYPE_CREATE = 5;
+}
+
+// ============================================
+// Shared Events (same signature across multiple tokens)
+// ============================================
+
+// event Pause()
+message Pause {}
+
+// event Unpause()
+message Unpause {}
+
+// event OwnershipTransferred(address previousOwner, address newOwner)
+message OwnershipTransferred {
+  bytes previous_owner = 1;
+  bytes new_owner = 2;
 }
 
 // ============================================
@@ -175,13 +188,10 @@ message UsdcMinterRemoved {
 }
 
 // event OwnershipTransferred(address previousOwner, address newOwner)
-message UsdcOwnershipTransferred {
-  bytes previous_owner = 1;
-  bytes new_owner = 2;
-}
+// => shared OwnershipTransferred message
 
 // event Pause()
-message UsdcPause {}
+// => shared Pause message
 
 // event PauserChanged(address indexed newAddress)
 message UsdcPauserChanged {
@@ -199,7 +209,7 @@ message UsdcUnBlacklisted {
 }
 
 // event Unpause()
-message UsdcUnpause {}
+// => shared Unpause message
 
 // event AuthorizationCanceled(address indexed authorizer, bytes32 indexed nonce)
 message UsdcAuthorizationCanceled {
@@ -255,10 +265,10 @@ message UsdtRemovedBlackList {
 }
 
 // event Pause()
-message UsdtPause {}
+// => shared Pause message
 
 // event Unpause()
-message UsdtUnpause {}
+// => shared Unpause message
 
 // ============================================
 // WBTC Events
@@ -285,16 +295,13 @@ message WbtcOwnershipRenounced {
 }
 
 // event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-message WbtcOwnershipTransferred {
-  bytes previous_owner = 1;
-  bytes new_owner = 2;
-}
+// => shared OwnershipTransferred message
 
 // event Pause()
-message WbtcPause {}
+// => shared Pause message
 
 // event Unpause()
-message WbtcUnpause {}
+// => shared Unpause message
 
 // ============================================
 // SAI Events

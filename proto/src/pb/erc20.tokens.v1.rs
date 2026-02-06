@@ -42,7 +42,7 @@ pub struct Log {
     pub call: ::core::option::Option<Call>,
     #[prost(
         oneof = "log::Log",
-        tags = "10, 11, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120"
+        tags = "200, 201, 202, 10, 11, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 33, 34, 40, 41, 42, 43, 44, 45, 46, 50, 51, 52, 53, 60, 61, 62, 63, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120"
     )]
     pub log: ::core::option::Option<log::Log>,
 }
@@ -50,6 +50,13 @@ pub struct Log {
 pub mod log {
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
+        /// ========== Shared Events (same signature across multiple tokens) ==========
+        #[prost(message, tag = "200")]
+        Pause(super::Pause),
+        #[prost(message, tag = "201")]
+        Unpause(super::Unpause),
+        #[prost(message, tag = "202")]
+        OwnershipTransferred(super::OwnershipTransferred),
         /// ========== WETH Events ==========
         #[prost(message, tag = "10")]
         WethDeposit(super::WethDeposit),
@@ -70,18 +77,12 @@ pub mod log {
         UsdcMinterConfigured(super::UsdcMinterConfigured),
         #[prost(message, tag = "26")]
         UsdcMinterRemoved(super::UsdcMinterRemoved),
-        #[prost(message, tag = "27")]
-        UsdcOwnershipTransferred(super::UsdcOwnershipTransferred),
-        #[prost(message, tag = "28")]
-        UsdcPause(super::UsdcPause),
         #[prost(message, tag = "29")]
         UsdcPauserChanged(super::UsdcPauserChanged),
         #[prost(message, tag = "30")]
         UsdcRescuerChanged(super::UsdcRescuerChanged),
         #[prost(message, tag = "31")]
         UsdcUnBlacklisted(super::UsdcUnBlacklisted),
-        #[prost(message, tag = "32")]
-        UsdcUnpause(super::UsdcUnpause),
         #[prost(message, tag = "33")]
         UsdcAuthorizationCanceled(super::UsdcAuthorizationCanceled),
         #[prost(message, tag = "34")]
@@ -101,10 +102,6 @@ pub mod log {
         UsdtAddedBlackList(super::UsdtAddedBlackList),
         #[prost(message, tag = "46")]
         UsdtRemovedBlackList(super::UsdtRemovedBlackList),
-        #[prost(message, tag = "47")]
-        UsdtPause(super::UsdtPause),
-        #[prost(message, tag = "48")]
-        UsdtUnpause(super::UsdtUnpause),
         /// ========== WBTC Events ==========
         #[prost(message, tag = "50")]
         WbtcMint(super::WbtcMint),
@@ -114,12 +111,6 @@ pub mod log {
         WbtcMintFinished(super::WbtcMintFinished),
         #[prost(message, tag = "53")]
         WbtcOwnershipRenounced(super::WbtcOwnershipRenounced),
-        #[prost(message, tag = "54")]
-        WbtcOwnershipTransferred(super::WbtcOwnershipTransferred),
-        #[prost(message, tag = "55")]
-        WbtcPause(super::WbtcPause),
-        #[prost(message, tag = "56")]
-        WbtcUnpause(super::WbtcUnpause),
         /// ========== SAI Events ==========
         #[prost(message, tag = "60")]
         SaiMint(super::SaiMint),
@@ -190,6 +181,20 @@ pub struct Call {
     pub depth: u32,
     #[prost(enumeration = "CallType", tag = "4")]
     pub call_type: i32,
+}
+/// event Pause()
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct Pause {}
+/// event Unpause()
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct Unpause {}
+/// event OwnershipTransferred(address previousOwner, address newOwner)
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct OwnershipTransferred {
+    #[prost(bytes = "vec", tag = "1")]
+    pub previous_owner: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes = "vec", tag = "2")]
+    pub new_owner: ::prost::alloc::vec::Vec<u8>,
 }
 /// event Deposit(address indexed dst, uint256 wad)
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -262,17 +267,6 @@ pub struct UsdcMinterRemoved {
     #[prost(bytes = "vec", tag = "1")]
     pub old_minter: ::prost::alloc::vec::Vec<u8>,
 }
-/// event OwnershipTransferred(address previousOwner, address newOwner)
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UsdcOwnershipTransferred {
-    #[prost(bytes = "vec", tag = "1")]
-    pub previous_owner: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes = "vec", tag = "2")]
-    pub new_owner: ::prost::alloc::vec::Vec<u8>,
-}
-/// event Pause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct UsdcPause {}
 /// event PauserChanged(address indexed newAddress)
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UsdcPauserChanged {
@@ -291,9 +285,6 @@ pub struct UsdcUnBlacklisted {
     #[prost(bytes = "vec", tag = "1")]
     pub account: ::prost::alloc::vec::Vec<u8>,
 }
-/// event Unpause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct UsdcUnpause {}
 /// event AuthorizationCanceled(address indexed authorizer, bytes32 indexed nonce)
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UsdcAuthorizationCanceled {
@@ -363,12 +354,6 @@ pub struct UsdtRemovedBlackList {
     #[prost(bytes = "vec", tag = "1")]
     pub user: ::prost::alloc::vec::Vec<u8>,
 }
-/// event Pause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct UsdtPause {}
-/// event Unpause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct UsdtUnpause {}
 /// event Mint(address indexed to, uint256 amount)
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WbtcMint {
@@ -396,20 +381,6 @@ pub struct WbtcOwnershipRenounced {
     #[prost(bytes = "vec", tag = "1")]
     pub previous_owner: ::prost::alloc::vec::Vec<u8>,
 }
-/// event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct WbtcOwnershipTransferred {
-    #[prost(bytes = "vec", tag = "1")]
-    pub previous_owner: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes = "vec", tag = "2")]
-    pub new_owner: ::prost::alloc::vec::Vec<u8>,
-}
-/// event Pause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct WbtcPause {}
-/// event Unpause()
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
-pub struct WbtcUnpause {}
 /// event Mint(address indexed guy, uint256 wad)
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SaiMint {
