@@ -9,6 +9,7 @@ package:
 imports:
   # erc20_transfers: ../erc20-transfers/substreams.yaml
   erc20_transfers: ../spkg/erc20-transfers-v0.3.0.spkg
+  erc20_tokens: ../erc20-tokens/substreams.yaml
 
 protobuf:
   files:
@@ -27,6 +28,7 @@ modules:
     inputs:
       - params: string
       - map: erc20_transfers:map_events
+      - map: erc20_tokens:map_events
     output:
       type: proto:evm.balances.v1.Events
 

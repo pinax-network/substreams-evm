@@ -61,59 +61,6 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 row.set("spender", bytes_to_string(&event.spender, encoding));
                 row.set("value", &event.value.to_string());
             }
-
-            // USDC Mint
-            if let Some(pb::log::Log::Mint(event)) = &log.log {
-                let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("usdc_mint", key);
-
-                set_clock(clock, row);
-                set_template_log(encoding, log, log_index, row);
-                set_template_erc20_tx(encoding, tx, tx_index, row);
-
-                row.set("minter", bytes_to_string(&event.minter, encoding));
-                row.set("to", bytes_to_string(&event.to, encoding));
-                row.set("amount", &event.amount);
-            }
-
-            // USDC Burn
-            if let Some(pb::log::Log::Burn(event)) = &log.log {
-                let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("usdc_burn", key);
-
-                set_clock(clock, row);
-                set_template_log(encoding, log, log_index, row);
-                set_template_erc20_tx(encoding, tx, tx_index, row);
-
-                row.set("burner", bytes_to_string(&event.burner, encoding));
-                row.set("amount", &event.amount);
-            }
-
-            // USDT Issue
-            if let Some(pb::log::Log::Issue(event)) = &log.log {
-                let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("usdt_issue", key);
-
-                set_clock(clock, row);
-                set_template_log(encoding, log, log_index, row);
-                set_template_erc20_tx(encoding, tx, tx_index, row);
-
-                row.set("owner", bytes_to_string(&event.owner, encoding));
-                row.set("amount", &event.amount);
-            }
-
-            // USDT Redeem
-            if let Some(pb::log::Log::Redeem(event)) = &log.log {
-                let key = log_key(clock, tx_index, log_index);
-                let row = tables.create_row("usdt_redeem", key);
-
-                set_clock(clock, row);
-                set_template_log(encoding, log, log_index, row);
-                set_template_erc20_tx(encoding, tx, tx_index, row);
-
-                row.set("owner", bytes_to_string(&event.owner, encoding));
-                row.set("amount", &event.amount);
-            }
         }
     }
 }

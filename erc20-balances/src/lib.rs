@@ -3,11 +3,12 @@ mod calls;
 use std::collections::HashSet;
 
 use calls::batch_balance_of;
+use proto::pb::erc20::tokens::v1 as tokens_pb;
 use proto::pb::erc20::transfers::v1 as transfers_pb;
 use proto::pb::evm::balances::v1 as balances_pb;
 
 #[substreams::handlers::map]
-fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balances_pb::Events, substreams::errors::Error> {
+fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb::Events) -> Result<balances_pb::Events, substreams::errors::Error> {
     let mut events = balances_pb::Events::default();
     let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
 
@@ -17,11 +18,21 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
     // - WETH Deposit events: dst
     // - WETH Withdrawal events: src
     // - Approval events: owner, spender
-    // - USDC Mint events: minter, to
-    // - USDC Burn events: burner
-    // - USDT Issue/Redeem events: owner (from call.caller)
     // - transaction.from for all transactions
     // - log.address for all logs (token contract itself)
+    //
+    // From erc20-tokens:
+    // - USDC Mint events: minter, to
+    // - USDC Burn events: burner
+    // - USDT DestroyedBlackFunds events: black_listed_user
+    // - WBTC Mint events: to
+    // - WBTC Burn events: burner
+    // - SAI Mint events: guy
+    // - SAI Burn events: guy
+    // - stETH Submitted events: sender
+    // - stETH TransferShares events: from, to
+    // - stETH SharesBurnt events: account
+    // - stETH ExternalSharesMinted events: recipient
     let contracts_by_address = transfers
         .transactions
         .iter()
@@ -47,26 +58,86 @@ fn map_events(params: String, transfers: transfers_pb::Events) -> Result<balance
                     Some(transfers_pb::log::Log::Withdrawal(withdrawal)) => {
                         addresses.push((&log.address, &withdrawal.src));
                     }
-                    // USDC events
-                    Some(transfers_pb::log::Log::Mint(mint)) => {
-                        addresses.push((&log.address, &mint.minter));
-                        addresses.push((&log.address, &mint.to));
-                    }
-                    Some(transfers_pb::log::Log::Burn(burn)) => {
-                        addresses.push((&log.address, &burn.burner));
-                    }
-                    // USDT Issue/Redeem events - owner is from call.caller
-                    Some(transfers_pb::log::Log::Issue(issue)) => {
-                        addresses.push((&log.address, &issue.owner));
-                    }
-                    Some(transfers_pb::log::Log::Redeem(redeem)) => {
-                        addresses.push((&log.address, &redeem.owner));
-                    }
                     None => {}
                 }
                 addresses
             })
         })
+        .chain(
+            // Add addresses from erc20-tokens events
+            tokens.transactions.iter().flat_map(|tx| {
+                tx.logs.iter().flat_map(|log| {
+                    let mut addresses: Vec<(&common::Address, &common::Address)> = vec![];
+                    // Always track transaction.from and log.address (token contract)
+                    addresses.push((&log.address, &tx.from));
+                    addresses.push((&log.address, &log.address));
+
+                    match &log.log {
+                        // WETH events
+                        Some(tokens_pb::log::Log::WethDeposit(deposit)) => {
+                            addresses.push((&log.address, &deposit.dst));
+                        }
+                        Some(tokens_pb::log::Log::WethWithdrawal(withdrawal)) => {
+                            addresses.push((&log.address, &withdrawal.src));
+                        }
+                        // USDC events
+                        Some(tokens_pb::log::Log::UsdcMint(mint)) => {
+                            addresses.push((&log.address, &mint.minter));
+                            addresses.push((&log.address, &mint.to));
+                        }
+                        Some(tokens_pb::log::Log::UsdcBurn(burn)) => {
+                            addresses.push((&log.address, &burn.burner));
+                        }
+                        Some(tokens_pb::log::Log::UsdcBlacklisted(blacklisted)) => {
+                            addresses.push((&log.address, &blacklisted.account));
+                        }
+                        Some(tokens_pb::log::Log::UsdcUnBlacklisted(un_blacklisted)) => {
+                            addresses.push((&log.address, &un_blacklisted.account));
+                        }
+                        // USDT events
+                        Some(tokens_pb::log::Log::UsdtDestroyedBlackFunds(destroyed)) => {
+                            addresses.push((&log.address, &destroyed.black_listed_user));
+                        }
+                        Some(tokens_pb::log::Log::UsdtAddedBlackList(added)) => {
+                            addresses.push((&log.address, &added.user));
+                        }
+                        Some(tokens_pb::log::Log::UsdtRemovedBlackList(removed)) => {
+                            addresses.push((&log.address, &removed.user));
+                        }
+                        // WBTC events
+                        Some(tokens_pb::log::Log::WbtcMint(mint)) => {
+                            addresses.push((&log.address, &mint.to));
+                        }
+                        Some(tokens_pb::log::Log::WbtcBurn(burn)) => {
+                            addresses.push((&log.address, &burn.burner));
+                        }
+                        // SAI events
+                        Some(tokens_pb::log::Log::SaiMint(mint)) => {
+                            addresses.push((&log.address, &mint.guy));
+                        }
+                        Some(tokens_pb::log::Log::SaiBurn(burn)) => {
+                            addresses.push((&log.address, &burn.guy));
+                        }
+                        // stETH events
+                        Some(tokens_pb::log::Log::StethSubmitted(submitted)) => {
+                            addresses.push((&log.address, &submitted.sender));
+                        }
+                        Some(tokens_pb::log::Log::StethTransferShares(transfer_shares)) => {
+                            addresses.push((&log.address, &transfer_shares.from));
+                            addresses.push((&log.address, &transfer_shares.to));
+                        }
+                        Some(tokens_pb::log::Log::StethSharesBurnt(shares_burnt)) => {
+                            addresses.push((&log.address, &shares_burnt.account));
+                        }
+                        Some(tokens_pb::log::Log::StethExternalSharesMinted(external_shares_minted)) => {
+                            addresses.push((&log.address, &external_shares_minted.recipient));
+                        }
+                        _ => {}
+                    }
+                    addresses
+                })
+            }),
+        )
         .collect::<HashSet<(&common::Address, &common::Address)>>()
         .into_iter()
         .collect::<Vec<(&common::Address, &common::Address)>>();
