@@ -1,11 +1,11 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::tokens::v1 as pb;
-use substreams_abis::evm::tokens::weth::events as weth_events;
+use substreams_abis::evm::tokens::sai::events as sai_events;
+use substreams_abis::evm::tokens::steth::events as steth_events;
 use substreams_abis::evm::tokens::usdc::events as usdc_events;
 use substreams_abis::evm::tokens::usdt::events as usdt_events;
 use substreams_abis::evm::tokens::wbtc::events as wbtc_events;
-use substreams_abis::evm::tokens::sai::events as sai_events;
-use substreams_abis::evm::tokens::steth::events as steth_events;
+use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
@@ -312,18 +312,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // AddedBlackList
             if let Some(event) = usdt_events::AddedBlackList::match_and_decode(log) {
                 total_usdt_added_black_list += 1;
-                let event = pb::log::Log::UsdtAddedBlackList(pb::UsdtAddedBlackList {
-                    user: event.user.to_vec(),
-                });
+                let event = pb::log::Log::UsdtAddedBlackList(pb::UsdtAddedBlackList { user: event.user.to_vec() });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // RemovedBlackList
             if let Some(event) = usdt_events::RemovedBlackList::match_and_decode(log) {
                 total_usdt_removed_black_list += 1;
-                let event = pb::log::Log::UsdtRemovedBlackList(pb::UsdtRemovedBlackList {
-                    user: event.user.to_vec(),
-                });
+                let event = pb::log::Log::UsdtRemovedBlackList(pb::UsdtRemovedBlackList { user: event.user.to_vec() });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
@@ -403,9 +399,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // LogSetOwner
             if let Some(event) = sai_events::LogSetOwner::match_and_decode(log) {
                 total_sai_log_set_owner += 1;
-                let event = pb::log::Log::SaiLogSetOwner(pb::SaiLogSetOwner {
-                    owner: event.owner.to_vec(),
-                });
+                let event = pb::log::Log::SaiLogSetOwner(pb::SaiLogSetOwner { owner: event.owner.to_vec() });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
