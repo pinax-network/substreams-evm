@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS block_rewards (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- block reward --
-    index                       UInt32,
+    `index`                     UInt32,
     miner                       String,
     value                       UInt256,
-    reason                      LowCardinality(String)
+    `reason`                    LowCardinality(String)
 )
 ENGINE = MergeTree
 ORDER BY block_num;
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS withdrawals (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- withdrawal --
-    index                       UInt32,
+    `index`                     UInt32,
     address                     String,
     value                       UInt256
 )
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS selfdestructs (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- selfdestruct --
-    index                       UInt32,
+    `index`                     UInt32,
     tx_hash                     String,
     from_address                String,
     to_address                  String,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS genesis_balances (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- genesis balance --
-    index                       UInt32,
+    `index`                     UInt32,
     address                     String,
     value                       UInt256
 )
@@ -82,11 +82,11 @@ CREATE TABLE IF NOT EXISTS dao_transfers (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- dao transfer --
-    index                       UInt32,
+    `index`                     UInt32,
     address                     String,
     old_value                   UInt256,
     new_value                   UInt256,
-    reason                      LowCardinality(String)
+    `reason`                    LowCardinality(String)
 )
 ENGINE = MergeTree
 ORDER BY block_num;
