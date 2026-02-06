@@ -12,7 +12,7 @@ WHERE balance > 0;
 
 -- Native Balances FINAL --
 -- Refreshable materialized view that maintains deduplicated (FINAL) balances
--- Ordered by (contract, balance, address) to support efficient top/bottom holder queries per contract
+-- Ordered by (balance, address) to support efficient top/bottom holder queries
 CREATE MATERIALIZED VIEW IF NOT EXISTS native_balances_final
 REFRESH EVERY 1 HOUR
 ENGINE = ReplacingMergeTree(block_num)
