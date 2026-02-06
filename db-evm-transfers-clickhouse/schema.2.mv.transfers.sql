@@ -30,7 +30,13 @@ CREATE TABLE IF NOT EXISTS transfers (
         'burn' = 5,
         'issue' = 6,
         'redeem' = 7,
-        'transfer_shares' = 8
+        'transfer_shares' = 8,
+        'destroyed_black_funds' = 9,
+        'submitted' = 10,
+        'shares_burnt' = 11,
+        'external_shares_minted' = 12,
+        'external_shares_burnt' = 13,
+        'token_rebased' = 14
     ),
 
     -- INDEXES --
@@ -214,8 +220,8 @@ SELECT
     log_topic0,
 
     -- transfer --
-    log_address AS `from`,  -- contract address (issuer)
-    log_address AS `to`,    -- contract address (issued to contract)
+    '' AS `from`,
+    '' AS `to`,
     amount,
     'issue' AS transfer_type
 FROM usdt_issue
@@ -241,11 +247,173 @@ SELECT
     log_topic0,
 
     -- transfer --
-    log_address AS `from`,  -- contract address (redeemer)
-    log_address AS `to`,    -- contract address (redeemed)
+    '' AS `from`,
+    '' AS `to`,
     amount,
     'redeem' AS transfer_type
 FROM usdt_redeem
+WHERE amount > 0;
+
+-- USDT DestroyedBlackFunds (destroying blacklisted funds) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_usdt_destroyed_black_funds TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- USDT contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    black_listed_user AS `from`,
+    '' AS `to`,
+    balance AS amount,
+    'destroyed_black_funds' AS transfer_type
+FROM usdt_destroyed_black_funds
+WHERE balance > 0;
+
+-- WBTC Mint (minting tokens to user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_wbtc_mint TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- WBTC contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    '' AS `from`,
+    `to`,
+    amount,
+    'mint' AS transfer_type
+FROM wbtc_mint
+WHERE amount > 0;
+
+-- WBTC Burn (burning tokens from user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_wbtc_burn TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- WBTC contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    burner AS `from`,
+    '' AS `to`,
+    value AS amount,
+    'burn' AS transfer_type
+FROM wbtc_burn
+WHERE amount > 0;
+
+-- SAI Mint (minting tokens to user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_sai_mint TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- SAI contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    '' AS `from`,
+    guy AS `to`,
+    wad AS amount,
+    'mint' AS transfer_type
+FROM sai_mint
+WHERE amount > 0;
+
+-- SAI Burn (burning tokens from user) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_sai_burn TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- SAI contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    guy AS `from`,
+    '' AS `to`,
+    wad AS amount,
+    'burn' AS transfer_type
+FROM sai_burn
+WHERE amount > 0;
+
+-- stETH Submitted (user submitting ETH) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_submitted TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    sender AS `from`,
+    '' AS `to`,
+    amount,
+    'submitted' AS transfer_type
+FROM steth_submitted
 WHERE amount > 0;
 
 -- stETH TransferShares (share transfers) --
@@ -274,3 +442,111 @@ SELECT
     'transfer_shares' AS transfer_type
 FROM steth_transfer_shares
 WHERE shares_value > 0 AND `from` != `to`;
+
+-- stETH SharesBurnt (burning shares from account) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_shares_burnt TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    account AS `from`,
+    '' AS `to`,
+    shares_amount AS amount,
+    'shares_burnt' AS transfer_type
+FROM steth_shares_burnt
+WHERE shares_amount > 0;
+
+-- stETH ExternalSharesMinted (minting external shares) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_external_shares_minted TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    '' AS `from`,
+    recipient AS `to`,
+    amount_of_shares AS amount,
+    'external_shares_minted' AS transfer_type
+FROM steth_external_shares_minted
+WHERE amount_of_shares > 0;
+
+-- stETH ExternalSharesBurnt (burning external shares) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_external_shares_burnt TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    '' AS `from`,
+    '' AS `to`,
+    amount_of_shares AS amount,
+    'external_shares_burnt' AS transfer_type
+FROM steth_external_shares_burnt
+WHERE amount_of_shares > 0;
+
+-- stETH TokenRebased (rebase event) --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_transfers_steth_token_rebased TO transfers AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+
+    -- log --
+    log_index,
+    log_address,  -- stETH contract
+    log_ordinal,
+    log_topic0,
+
+    -- transfer --
+    '' AS `from`,
+    '' AS `to`,
+    shares_minted_as_fees AS amount,
+    'token_rebased' AS transfer_type
+FROM steth_token_rebased
+WHERE shares_minted_as_fees > 0;

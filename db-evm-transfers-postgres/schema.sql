@@ -368,6 +368,223 @@ CREATE TABLE IF NOT EXISTS usdt_redeem (
 
 CREATE INDEX IF NOT EXISTS idx_usdt_redeem_timestamp ON usdt_redeem (timestamp);
 
+-- USDT DestroyedBlackFunds table for PostgreSQL
+CREATE TABLE IF NOT EXISTS usdt_destroyed_black_funds (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- destroyed black funds --
+    black_listed_user    TEXT NOT NULL,
+    balance              NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_black_funds_timestamp ON usdt_destroyed_black_funds (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_black_funds_black_listed_user ON usdt_destroyed_black_funds (black_listed_user);
+
+-- WBTC Mint table for PostgreSQL
+CREATE TABLE IF NOT EXISTS wbtc_mint (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- mint --
+    "to"                 TEXT NOT NULL,
+    amount               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_wbtc_mint_timestamp ON wbtc_mint (timestamp);
+CREATE INDEX IF NOT EXISTS idx_wbtc_mint_to ON wbtc_mint ("to");
+
+-- WBTC Burn table for PostgreSQL
+CREATE TABLE IF NOT EXISTS wbtc_burn (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- burn --
+    burner               TEXT NOT NULL,
+    value                NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_wbtc_burn_timestamp ON wbtc_burn (timestamp);
+CREATE INDEX IF NOT EXISTS idx_wbtc_burn_burner ON wbtc_burn (burner);
+
+-- SAI Mint table for PostgreSQL
+CREATE TABLE IF NOT EXISTS sai_mint (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- mint --
+    guy                  TEXT NOT NULL,
+    wad                  NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_sai_mint_timestamp ON sai_mint (timestamp);
+CREATE INDEX IF NOT EXISTS idx_sai_mint_guy ON sai_mint (guy);
+
+-- SAI Burn table for PostgreSQL
+CREATE TABLE IF NOT EXISTS sai_burn (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- burn --
+    guy                  TEXT NOT NULL,
+    wad                  NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_sai_burn_timestamp ON sai_burn (timestamp);
+CREATE INDEX IF NOT EXISTS idx_sai_burn_guy ON sai_burn (guy);
+
+-- stETH Submitted table for PostgreSQL
+CREATE TABLE IF NOT EXISTS steth_submitted (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- submitted --
+    sender               TEXT NOT NULL,
+    amount               NUMERIC NOT NULL,
+    referral             TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_steth_submitted_timestamp ON steth_submitted (timestamp);
+CREATE INDEX IF NOT EXISTS idx_steth_submitted_sender ON steth_submitted (sender);
+
 -- stETH TokenRebased table for PostgreSQL
 CREATE TABLE IF NOT EXISTS steth_token_rebased (
     -- block --
@@ -483,6 +700,42 @@ CREATE TABLE IF NOT EXISTS steth_transfer_shares (
 CREATE INDEX IF NOT EXISTS idx_steth_transfer_shares_timestamp ON steth_transfer_shares (timestamp);
 CREATE INDEX IF NOT EXISTS idx_steth_transfer_shares_from ON steth_transfer_shares ("from");
 CREATE INDEX IF NOT EXISTS idx_steth_transfer_shares_to ON steth_transfer_shares ("to");
+
+-- stETH ExternalSharesMinted table for PostgreSQL
+CREATE TABLE IF NOT EXISTS steth_external_shares_minted (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- external shares minted --
+    recipient            TEXT NOT NULL,
+    amount_of_shares     NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_steth_external_shares_minted_timestamp ON steth_external_shares_minted (timestamp);
+CREATE INDEX IF NOT EXISTS idx_steth_external_shares_minted_recipient ON steth_external_shares_minted (recipient);
 
 -- stETH ExternalSharesBurnt table for PostgreSQL
 CREATE TABLE IF NOT EXISTS steth_external_shares_burnt (
