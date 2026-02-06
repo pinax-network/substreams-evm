@@ -126,6 +126,9 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
                         Some(tokens_pb::log::Log::StethExternalSharesMinted(external_shares_minted)) => {
                             addresses.push((&log.address, &external_shares_minted.recipient));
                         }
+                        Some(tokens_pb::log::Log::StethExternalSharesBurnt(external_shares_burnt)) => {
+                            addresses.push((&log.address, &external_shares_burnt.owner));
+                        }
                         _ => {}
                     }
                     addresses
