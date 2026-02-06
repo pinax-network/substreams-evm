@@ -30,9 +30,7 @@ SELECT
     sum(net_flow1) AS net_flow1,
 
     -- universal --
-    sum(transactions) as transactions,
-    uniqMerge(uniq_user) as uniq_user,
-    uniqMerge(uniq_tx_from) as uniq_tx_from
+    sum(transactions) as transactions
 FROM state_ohlc_prices
 GROUP BY
     interval_min,

@@ -13,9 +13,7 @@ SELECT
     arraySort(groupArrayDistinct(token)) as tokens,
 
     -- universal --
-    sum(transactions) as transactions,
-    uniqMerge(uniq_user) as uniq_user,
-    uniqMerge(uniq_tx_from) as uniq_tx_from
+    sum(transactions) as transactions
 FROM state_pools_aggregating_by_token
 GROUP BY pool, factory, protocol;
 
@@ -33,8 +31,6 @@ SELECT
     protocol,
 
     -- universal --
-    sum(transactions) as transactions,
-    uniqMerge(uniq_user) as uniq_user,
-    uniqMerge(uniq_tx_from) as uniq_tx_from
+    sum(transactions) as transactions
 FROM state_pools_aggregating_by_pool
 GROUP BY pool, factory, protocol;
