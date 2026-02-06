@@ -33,14 +33,6 @@ message Log {
     // WETH events
     Deposit deposit = 12;
     Withdrawal withdrawal = 13;
-
-    // USDC events
-    Mint mint = 14;
-    Burn burn = 15;
-
-    // USDT events
-    Issue issue = 16;
-    Redeem redeem = 17;
   }
 }
 
@@ -84,29 +76,5 @@ message Withdrawal {
   string wad = 2; // uint256
 }
 
-// USDC events
-message Mint {
-  bytes minter = 1;
-  bytes to = 2;
-  string amount = 3; // uint256
-}
-message Burn {
-  bytes burner = 1;
-  string amount = 2; // uint256
-}
 
-// [Issue] a new amount of tokens
-// Assumes the standard USDT Issue event structure
-// these tokens are deposited into the owner address
-message Issue {
-  bytes owner = 1; // msg.sender (call.caller)
-  string amount = 2; // uint256
-}
 
-// [Redeem] tokens.
-// Assumes the standard USDT Redeem event structure
-// These tokens are withdrawn from the owner address
-message Redeem {
-  bytes owner = 1; // msg.sender (call.caller)
-  string amount = 2; // uint256
-}
