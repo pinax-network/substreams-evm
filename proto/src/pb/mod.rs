@@ -42,6 +42,13 @@ pub mod erc20 {
             // @@protoc_insertion_point(erc20.transfers.v1)
         }
     }
+    pub mod tokens {
+        // @@protoc_insertion_point(attribute:erc20.tokens.v1)
+        pub mod v1 {
+            include!("erc20.tokens.v1.rs");
+            // @@protoc_insertion_point(erc20.tokens.v1)
+        }
+    }
 }
 pub mod evm {
     pub mod balances {
