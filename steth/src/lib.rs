@@ -128,6 +128,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_external_shares_burnt += 1;
                 let event = pb::log::Log::ExternalSharesBurnt(pb::ExternalSharesBurnt {
                     amount_of_shares: event.amount_of_shares.to_string(),
+                    owner: call.map(|c| c.caller.to_vec()).unwrap_or_default(),
                 });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
