@@ -263,6 +263,9 @@ pub struct ExternalSharesBurnt {
     /// uint256
     #[prost(string, tag="1")]
     pub amount_of_shares: ::prost::alloc::string::String,
+    /// call.caller (not in event log)
+    #[prost(bytes="vec", tag="2")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 /// ExternalEtherTransferredToBuffer - External ether transferred to buffer
 /// event ExternalEtherTransferredToBuffer(uint256 amount)

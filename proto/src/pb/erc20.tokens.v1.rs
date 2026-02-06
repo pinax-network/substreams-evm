@@ -591,6 +591,9 @@ pub struct StethExternalSharesBurnt {
     /// uint256
     #[prost(string, tag="1")]
     pub amount_of_shares: ::prost::alloc::string::String,
+    /// call.caller (not in event log)
+    #[prost(bytes="vec", tag="2")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 /// event ExternalEtherTransferredToBuffer(uint256 amount)
 #[allow(clippy::derive_partial_eq_without_eq)]

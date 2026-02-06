@@ -381,6 +381,7 @@ message StethExternalSharesMinted {
 // event ExternalSharesBurnt(uint256 amountOfShares)
 message StethExternalSharesBurnt {
   string amount_of_shares = 1; // uint256
+  bytes owner = 2;             // call.caller (not in event log)
 }
 
 // event ExternalEtherTransferredToBuffer(uint256 amount)
