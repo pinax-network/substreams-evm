@@ -517,7 +517,7 @@ SELECT
     log_topic0,
 
     -- transfer --
-    '' AS `from`,
+    owner AS `from`,
     '' AS `to`,
     amount_of_shares AS amount,
     'external_shares_burnt' AS transfer_type

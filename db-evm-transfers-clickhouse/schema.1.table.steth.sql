@@ -52,4 +52,5 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_burnt AS TEMPLATE_LOG
 COMMENT 'stETH ExternalSharesBurnt events';
 ALTER TABLE steth_external_shares_burnt
     -- event --
+    ADD COLUMN IF NOT EXISTS owner            String,
     ADD COLUMN IF NOT EXISTS amount_of_shares UInt256;
