@@ -214,11 +214,11 @@ pub struct WethWithdrawal {
 pub struct UsdcMint {
     #[prost(bytes = "vec", tag = "1")]
     pub minter: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
-    #[prost(string, tag = "2")]
-    pub amount: ::prost::alloc::string::String,
-    #[prost(bytes = "vec", tag = "3")]
+    #[prost(bytes = "vec", tag = "2")]
     pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag = "3")]
+    pub amount: ::prost::alloc::string::String,
 }
 /// event Burn(address indexed burner, uint256 amount)
 #[derive(Clone, PartialEq, ::prost::Message)]
