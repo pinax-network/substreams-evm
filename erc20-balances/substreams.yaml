@@ -1,15 +1,15 @@
 specVersion: v0.1.0
 package:
   name: erc20_balances
-  version: v0.3.0
+  version: v0.3.1
   url: https://github.com/pinax-network/substreams-evm-tokens
   description: ERC-20 Balances
   image: ../image.png
 
 imports:
   # erc20_transfers: ../erc20-transfers/substreams.yaml
-  erc20_transfers: ../spkg/erc20-transfers-v0.3.0.spkg
-  erc20_tokens: ../erc20-tokens/substreams.yaml
+  erc20_transfers: ../spkg/erc20-transfers-v0.3.1.spkg
+  erc20_tokens: ../spkg/erc20-tokens-v0.3.1.spkg
 
 protobuf:
   files:

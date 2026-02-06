@@ -47,7 +47,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
-            // WETH Deposit/Withdraw event
+            // WETH9 Deposit/Withdraw event
             if let Some(event) = weth_events::Deposit::match_and_decode(log) {
                 total_weth_deposits += 1;
                 let event = pb::log::Log::Deposit(pb::Deposit {
