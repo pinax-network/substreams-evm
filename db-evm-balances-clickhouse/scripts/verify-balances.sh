@@ -52,7 +52,7 @@ usage() {
     echo "  RPC_ENDPOINT, CONTRACT, DECIMALS, LIMIT"
     echo ""
     echo "Example:"
-    echo "  $0 --ch-host ch-node890h.riv.eosn.io --ch-password '***REMOVED***' \\"
+    echo "  $0 --ch-host ch-node890h.riv.eosn.io --ch-password 'YOUR_PASSWORD' \\"
     echo "     --ch-database 'mainnet:evm-balances@v0.3.0' --contract '0xdac17f958d2ee523a2206206994597c13d831ec7'"
     exit 1
 }
@@ -166,18 +166,18 @@ get_rpc_balance() {
     # Pad address to 32 bytes (remove 0x prefix, left-pad with zeros)
     local padded_address=$(echo "$address" | sed 's/0x//' | awk '{printf "%064s\n", $0}' | tr ' ' '0')
     local data="${BALANCE_OF_SIG}${padded_address}"
-    
+
     local response=$(curl -s -X POST "$RPC_ENDPOINT" \
         -H "Content-Type: application/json" \
         -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"latest\"],\"id\":1}")
-    
+
     local result=$(echo "$response" | jq -r '.result // empty')
-    
+
     if [[ -z "$result" || "$result" == "null" ]]; then
         echo "0"
         return
     fi
-    
+
     # Convert hex to decimal (remove 0x prefix)
     # Use bc for large number handling
     local hex_value=$(echo "$result" | sed 's/0x//')
@@ -185,7 +185,7 @@ get_rpc_balance() {
         echo "0"
         return
     fi
-    
+
     # Convert hex to decimal using Python (handles large numbers)
     local decimal_value=$(python3 -c "print(int('$hex_value', 16))" 2>/dev/null || echo "0")
     echo "$decimal_value"
@@ -237,15 +237,15 @@ ERRORS=""
 while IFS=$'\t' read -r address ch_balance ch_formatted ch_timestamp; do
     [[ -z "$address" ]] && continue
     TOTAL_COUNT=$((TOTAL_COUNT + 1))
-    
+
     # Get RPC balance
     rpc_balance=$(get_rpc_balance "$address")
-    
+
     # Process RPC balance (format + error) in single Python call
     rpc_data=$(process_rpc_balance "$rpc_balance" "$ch_balance" "$DECIMALS")
     rpc_formatted=$(echo "$rpc_data" | cut -f1)
     pct_error=$(echo "$rpc_data" | cut -f2)
-    
+
     # Compare balances
     if [[ "$ch_balance" == "$rpc_balance" ]]; then
         status="${GREEN}✓ MATCH${NC}"
@@ -259,10 +259,10 @@ while IFS=$'\t' read -r address ch_balance ch_formatted ch_timestamp; do
             [[ -z "$ERRORS" ]] && ERRORS="$pct_error" || ERRORS="$ERRORS,$pct_error"
         fi
     fi
-    
+
     # Format error display
     [[ "$pct_error" == "inf" ]] && pct_display="∞" || pct_display="${pct_error}%"
-    
+
     printf "%-4s | %-44s | %14s | %14s | %8s | %-19s | " "$TOTAL_COUNT" "$address" "$ch_formatted" "$rpc_formatted" "$pct_display" "$ch_timestamp"
     echo -e "$status"
 done <<< "$RESULTS"
