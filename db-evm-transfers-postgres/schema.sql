@@ -764,12 +764,14 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_burnt (
     log_data             TEXT NOT NULL,
 
     -- external shares burnt --
+    owner                TEXT NOT NULL DEFAULT '',
     amount_of_shares     NUMERIC NOT NULL,
 
     PRIMARY KEY (block_num, tx_index, log_index)
 );
 
 CREATE INDEX IF NOT EXISTS idx_steth_external_shares_burnt_timestamp ON steth_external_shares_burnt (timestamp);
+CREATE INDEX IF NOT EXISTS idx_steth_external_shares_burnt_owner ON steth_external_shares_burnt (owner);
 
 -- Block Rewards table for PostgreSQL
 CREATE TABLE IF NOT EXISTS block_rewards (
