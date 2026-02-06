@@ -1,6 +1,6 @@
 ENDPOINT ?= eth.substreams.pinax.network:443
-START_BLOCK ?= 23145742
-STOP_BLOCK ?= -1
+START_BLOCK ?= 24399522
+STOP_BLOCK ?= 0
 PARALLEL_JOBS ?= 500
 .DEFAULT_GOAL := pack
 
@@ -19,11 +19,11 @@ pack: schema
 
 .PHONY: dev
 dev: pack
-	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 1 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --infinite-retry --development-mode
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK): --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode
 
 .PHONY: dev-tron
 dev-tron: pack
-	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e tronevm.substreams.pinax.network:443 79000000: --undo-buffer-size 1 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --infinite-retry --development-mode -H "X-substreams-acknowledge-non-deterministic: true" -p "db_out=tron_base58"
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e tronevm.substreams.pinax.network:443 79000000: --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode -H "X-substreams-acknowledge-non-deterministic: true" -p "db_out=tron_base58"
 
 .PHONY: setup
 setup: pack

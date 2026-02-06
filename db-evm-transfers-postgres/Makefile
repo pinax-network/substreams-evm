@@ -14,7 +14,7 @@ pack:
 
 .PHONY: dev
 dev: pack
-	substreams-sink-sql run $(PG_DSN) substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 1 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --infinite-retry --development-mode
+	substreams-sink-sql run $(PG_DSN) substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode
 
 .PHONY: setup
 setup: pack
