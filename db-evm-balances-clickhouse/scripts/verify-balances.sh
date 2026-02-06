@@ -111,9 +111,23 @@ command -v clickhouse-client >/dev/null 2>&1 || { echo "Error: clickhouse-client
 command -v curl >/dev/null 2>&1 || { echo "Error: curl is required but not installed."; exit 1; }
 command -v jq >/dev/null 2>&1 || { echo "Error: jq is required but not installed."; exit 1; }
 
+# Build ClickHouse client command
+CH_CMD="clickhouse-client --host $CH_HOST --port $CH_PORT --user $CH_USER --database $CH_DATABASE"
+if [[ -n "$CH_PASSWORD" ]]; then
+    CH_CMD="$CH_CMD --password '$CH_PASSWORD'"
+fi
+
+# Get latest block timestamp from ClickHouse
+LATEST_BLOCK_QUERY="SELECT max(block_num), max(timestamp) FROM blocks FORMAT TabSeparated"
+LATEST_BLOCK_DATA=$(eval "$CH_CMD --query \"$LATEST_BLOCK_QUERY\"" 2>/dev/null)
+LATEST_BLOCK_NUM=$(echo "$LATEST_BLOCK_DATA" | cut -f1)
+LATEST_BLOCK_TS=$(echo "$LATEST_BLOCK_DATA" | cut -f2)
+
 echo "=============================================="
 echo "ERC20 Balance Verification"
 echo "=============================================="
+echo "Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+echo "Latest Block: #${LATEST_BLOCK_NUM} (${LATEST_BLOCK_TS})"
 echo "ClickHouse Host: $CH_HOST"
 echo "ClickHouse Database: $CH_DATABASE"
 echo "RPC Endpoint: $RPC_ENDPOINT"
@@ -123,14 +137,8 @@ echo "Limit: $LIMIT"
 echo "=============================================="
 echo ""
 
-# Build ClickHouse client command
-CH_CMD="clickhouse-client --host $CH_HOST --port $CH_PORT --user $CH_USER --database $CH_DATABASE"
-if [[ -n "$CH_PASSWORD" ]]; then
-    CH_CMD="$CH_CMD --password '$CH_PASSWORD'"
-fi
-
 # Query ClickHouse for top holders
-QUERY="SELECT address, balance, formatReadableQuantity(floor(balance / pow(10, $DECIMALS))) AS balance_formatted FROM erc20_balances FINAL WHERE contract = lower('$CONTRACT') ORDER BY balance DESC LIMIT $LIMIT FORMAT TabSeparated"
+QUERY="SELECT address, balance, formatReadableQuantity(floor(balance / pow(10, $DECIMALS))) AS balance_formatted, timestamp FROM erc20_balances FINAL WHERE contract = lower('$CONTRACT') ORDER BY balance DESC LIMIT $LIMIT FORMAT TabSeparated"
 
 echo "Querying ClickHouse for top $LIMIT holders..."
 echo ""
@@ -217,8 +225,8 @@ print(f'{formatted}\t{error}')
 # Process results
 echo "Comparing balances..."
 echo ""
-printf "%-4s | %-44s | %-14s | %-14s | %-8s | %s\n" "Rank" "Address" "ClickHouse" "RPC" "Error %" "Status"
-printf "%-4s-+-%-44s-+-%-14s-+-%-14s-+-%-8s-+-%s\n" "$(printf '%0.s-' {1..4})" "$(printf '%0.s-' {1..44})" "$(printf '%0.s-' {1..14})" "$(printf '%0.s-' {1..14})" "$(printf '%0.s-' {1..8})" "$(printf '%0.s-' {1..10})"
+printf "%-4s | %-44s | %-14s | %-14s | %-8s | %-19s | %s\n" "Rank" "Address" "ClickHouse" "RPC" "Error %" "Timestamp" "Status"
+printf "%-4s-+-%-44s-+-%-14s-+-%-14s-+-%-8s-+-%-19s-+-%s\n" "$(printf '%0.s-' {1..4})" "$(printf '%0.s-' {1..44})" "$(printf '%0.s-' {1..14})" "$(printf '%0.s-' {1..14})" "$(printf '%0.s-' {1..8})" "$(printf '%0.s-' {1..19})" "$(printf '%0.s-' {1..10})"
 
 MATCH_COUNT=0
 MISMATCH_COUNT=0
@@ -226,7 +234,7 @@ TOTAL_COUNT=0
 INF_COUNT=0
 ERRORS=""
 
-while IFS=$'	' read -r address ch_balance ch_formatted; do
+while IFS=$'\t' read -r address ch_balance ch_formatted ch_timestamp; do
     [[ -z "$address" ]] && continue
     TOTAL_COUNT=$((TOTAL_COUNT + 1))
     
@@ -255,7 +263,7 @@ while IFS=$'	' read -r address ch_balance ch_formatted; do
     # Format error display
     [[ "$pct_error" == "inf" ]] && pct_display="∞" || pct_display="${pct_error}%"
     
-    printf "%-4s | %-44s | %14s | %14s | %8s | " "$TOTAL_COUNT" "$address" "$ch_formatted" "$rpc_formatted" "$pct_display"
+    printf "%-4s | %-44s | %14s | %14s | %8s | %-19s | " "$TOTAL_COUNT" "$address" "$ch_formatted" "$rpc_formatted" "$pct_display" "$ch_timestamp"
     echo -e "$status"
 done <<< "$RESULTS"
 
