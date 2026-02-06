@@ -1,0 +1,453 @@
+syntax = "proto3";
+
+package erc20.tokens.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  oneof log {
+    // ========== WETH Events ==========
+    WethDeposit weth_deposit = 10;
+    WethWithdrawal weth_withdrawal = 11;
+
+    // ========== USDC Events ==========
+    UsdcMint usdc_mint = 20;
+    UsdcBurn usdc_burn = 21;
+    UsdcBlacklisted usdc_blacklisted = 22;
+    UsdcBlacklisterChanged usdc_blacklister_changed = 23;
+    UsdcMasterMinterChanged usdc_master_minter_changed = 24;
+    UsdcMinterConfigured usdc_minter_configured = 25;
+    UsdcMinterRemoved usdc_minter_removed = 26;
+    UsdcOwnershipTransferred usdc_ownership_transferred = 27;
+    UsdcPause usdc_pause = 28;
+    UsdcPauserChanged usdc_pauser_changed = 29;
+    UsdcRescuerChanged usdc_rescuer_changed = 30;
+    UsdcUnBlacklisted usdc_un_blacklisted = 31;
+    UsdcUnpause usdc_unpause = 32;
+    UsdcAuthorizationCanceled usdc_authorization_canceled = 33;
+    UsdcAuthorizationUsed usdc_authorization_used = 34;
+
+    // ========== USDT Events ==========
+    UsdtIssue usdt_issue = 40;
+    UsdtRedeem usdt_redeem = 41;
+    UsdtDeprecate usdt_deprecate = 42;
+    UsdtParams usdt_params = 43;
+    UsdtDestroyedBlackFunds usdt_destroyed_black_funds = 44;
+    UsdtAddedBlackList usdt_added_black_list = 45;
+    UsdtRemovedBlackList usdt_removed_black_list = 46;
+    UsdtPause usdt_pause = 47;
+    UsdtUnpause usdt_unpause = 48;
+
+    // ========== WBTC Events ==========
+    WbtcMint wbtc_mint = 50;
+    WbtcBurn wbtc_burn = 51;
+    WbtcMintFinished wbtc_mint_finished = 52;
+    WbtcOwnershipRenounced wbtc_ownership_renounced = 53;
+    WbtcOwnershipTransferred wbtc_ownership_transferred = 54;
+    WbtcPause wbtc_pause = 55;
+    WbtcUnpause wbtc_unpause = 56;
+
+    // ========== SAI Events ==========
+    SaiMint sai_mint = 60;
+    SaiBurn sai_burn = 61;
+    SaiLogSetAuthority sai_log_set_authority = 62;
+    SaiLogSetOwner sai_log_set_owner = 63;
+
+    // ========== stETH Events ==========
+    StethSubmitted steth_submitted = 100;
+    StethUnbuffered steth_unbuffered = 101;
+    StethTokenRebased steth_token_rebased = 102;
+    StethTransferShares steth_transfer_shares = 103;
+    StethSharesBurnt steth_shares_burnt = 104;
+    StethExternalSharesMinted steth_external_shares_minted = 105;
+    StethExternalSharesBurnt steth_external_shares_burnt = 106;
+    StethExternalEtherTransferredToBuffer steth_external_ether_transferred_to_buffer = 107;
+    StethExternalBadDebtInternalized steth_external_bad_debt_internalized = 108;
+    StethMaxExternalRatioBPSet steth_max_external_ratio_bp_set = 109;
+    StethCLValidatorsUpdated steth_cl_validators_updated = 110;
+    StethDepositedValidatorsChanged steth_deposited_validators_changed = 111;
+    StethETHDistributed steth_eth_distributed = 112;
+    StethInternalShareRateUpdated steth_internal_share_rate_updated = 113;
+    StethStakingPaused steth_staking_paused = 114;
+    StethStakingResumed steth_staking_resumed = 115;
+    StethStakingLimitSet steth_staking_limit_set = 116;
+    StethStakingLimitRemoved steth_staking_limit_removed = 117;
+    StethELRewardsReceived steth_el_rewards_received = 118;
+    StethWithdrawalsReceived steth_withdrawals_received = 119;
+    StethLidoLocatorSet steth_lido_locator_set = 120;
+  }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;   // Address that made the call
+  uint32 index = 2;   // Index of the call within the transaction
+  uint32 depth = 3;   // Depth of the call in the call tree (0 = root)
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+// ============================================
+// WETH Events
+// ============================================
+
+// event Deposit(address indexed dst, uint256 wad)
+message WethDeposit {
+  bytes dst = 1;
+  string wad = 2; // uint256
+}
+
+// event Withdrawal(address indexed src, uint256 wad)
+message WethWithdrawal {
+  bytes src = 1;
+  string wad = 2; // uint256
+}
+
+// ============================================
+// USDC Events
+// ============================================
+
+// event Mint(address indexed minter, address indexed to, uint256 amount)
+message UsdcMint {
+  bytes minter = 1;
+  string amount = 2; // uint256
+  bytes to = 3;
+}
+
+// event Burn(address indexed burner, uint256 amount)
+message UsdcBurn {
+  bytes burner = 1;
+  string amount = 2; // uint256
+}
+
+// event Blacklisted(address indexed _account)
+message UsdcBlacklisted {
+  bytes account = 1;
+}
+
+// event BlacklisterChanged(address indexed newBlacklister)
+message UsdcBlacklisterChanged {
+  bytes new_blacklister = 1;
+}
+
+// event MasterMinterChanged(address indexed newMasterMinter)
+message UsdcMasterMinterChanged {
+  bytes new_master_minter = 1;
+}
+
+// event MinterConfigured(address indexed minter, uint256 minterAllowedAmount)
+message UsdcMinterConfigured {
+  bytes minter = 1;
+  string minter_allowed_amount = 2; // uint256
+}
+
+// event MinterRemoved(address indexed oldMinter)
+message UsdcMinterRemoved {
+  bytes old_minter = 1;
+}
+
+// event OwnershipTransferred(address previousOwner, address newOwner)
+message UsdcOwnershipTransferred {
+  bytes previous_owner = 1;
+  bytes new_owner = 2;
+}
+
+// event Pause()
+message UsdcPause {}
+
+// event PauserChanged(address indexed newAddress)
+message UsdcPauserChanged {
+  bytes new_address = 1;
+}
+
+// event RescuerChanged(address indexed newRescuer)
+message UsdcRescuerChanged {
+  bytes new_rescuer = 1;
+}
+
+// event UnBlacklisted(address indexed _account)
+message UsdcUnBlacklisted {
+  bytes account = 1;
+}
+
+// event Unpause()
+message UsdcUnpause {}
+
+// event AuthorizationCanceled(address indexed authorizer, bytes32 indexed nonce)
+message UsdcAuthorizationCanceled {
+  bytes authorizer = 1;
+  bytes nonce = 2; // bytes32
+}
+
+// event AuthorizationUsed(address indexed authorizer, bytes32 indexed nonce)
+message UsdcAuthorizationUsed {
+  bytes authorizer = 1;
+  bytes nonce = 2; // bytes32
+}
+
+// ============================================
+// USDT Events
+// ============================================
+
+// event Issue(uint256 amount)
+message UsdtIssue {
+  string amount = 1; // uint256
+}
+
+// event Redeem(uint256 amount)
+message UsdtRedeem {
+  string amount = 1; // uint256
+}
+
+// event Deprecate(address newAddress)
+message UsdtDeprecate {
+  bytes new_address = 1;
+}
+
+// event Params(uint256 feeBasisPoints, uint256 maxFee)
+message UsdtParams {
+  string fee_basis_points = 1; // uint256
+  string max_fee = 2;          // uint256
+}
+
+// event DestroyedBlackFunds(address _blackListedUser, uint256 _balance)
+message UsdtDestroyedBlackFunds {
+  bytes black_listed_user = 1;
+  string balance = 2; // uint256
+}
+
+// event AddedBlackList(address _user)
+message UsdtAddedBlackList {
+  bytes user = 1;
+}
+
+// event RemovedBlackList(address _user)
+message UsdtRemovedBlackList {
+  bytes user = 1;
+}
+
+// event Pause()
+message UsdtPause {}
+
+// event Unpause()
+message UsdtUnpause {}
+
+// ============================================
+// WBTC Events
+// ============================================
+
+// event Mint(address indexed to, uint256 amount)
+message WbtcMint {
+  bytes to = 1;
+  string amount = 2; // uint256
+}
+
+// event Burn(address indexed burner, uint256 value)
+message WbtcBurn {
+  bytes burner = 1;
+  string value = 2; // uint256
+}
+
+// event MintFinished()
+message WbtcMintFinished {}
+
+// event OwnershipRenounced(address indexed previousOwner)
+message WbtcOwnershipRenounced {
+  bytes previous_owner = 1;
+}
+
+// event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+message WbtcOwnershipTransferred {
+  bytes previous_owner = 1;
+  bytes new_owner = 2;
+}
+
+// event Pause()
+message WbtcPause {}
+
+// event Unpause()
+message WbtcUnpause {}
+
+// ============================================
+// SAI Events
+// ============================================
+
+// event Mint(address indexed guy, uint256 wad)
+message SaiMint {
+  bytes guy = 1;
+  string wad = 2; // uint256
+}
+
+// event Burn(address indexed guy, uint256 wad)
+message SaiBurn {
+  bytes guy = 1;
+  string wad = 2; // uint256
+}
+
+// event LogSetAuthority(address indexed authority)
+message SaiLogSetAuthority {
+  bytes authority = 1;
+}
+
+// event LogSetOwner(address indexed owner)
+message SaiLogSetOwner {
+  bytes owner = 1;
+}
+
+// ============================================
+// stETH Events
+// ============================================
+
+// event Submitted(address indexed sender, uint256 amount, address referral)
+message StethSubmitted {
+  bytes sender = 1;
+  string amount = 2; // uint256
+  bytes referral = 3;
+}
+
+// event Unbuffered(uint256 amount)
+message StethUnbuffered {
+  string amount = 1; // uint256
+}
+
+// event TokenRebased(uint256 indexed reportTimestamp, uint256 timeElapsed, uint256 preTotalShares,
+//                    uint256 preTotalEther, uint256 postTotalShares, uint256 postTotalEther, uint256 sharesMintedAsFees)
+message StethTokenRebased {
+  string report_timestamp = 1;      // uint256
+  string time_elapsed = 2;          // uint256
+  string pre_total_shares = 3;      // uint256
+  string pre_total_ether = 4;       // uint256
+  string post_total_shares = 5;     // uint256
+  string post_total_ether = 6;      // uint256
+  string shares_minted_as_fees = 7; // uint256
+}
+
+// event TransferShares(address indexed from, address indexed to, uint256 sharesValue)
+message StethTransferShares {
+  bytes from = 1;
+  bytes to = 2;
+  string shares_value = 3; // uint256
+}
+
+// event SharesBurnt(address indexed account, uint256 preRebaseTokenAmount, uint256 postRebaseTokenAmount, uint256 sharesAmount)
+message StethSharesBurnt {
+  bytes account = 1;
+  string pre_rebase_token_amount = 2;  // uint256
+  string post_rebase_token_amount = 3; // uint256
+  string shares_amount = 4;            // uint256
+}
+
+// event ExternalSharesMinted(address indexed recipient, uint256 amountOfShares)
+message StethExternalSharesMinted {
+  bytes recipient = 1;
+  string amount_of_shares = 2; // uint256
+}
+
+// event ExternalSharesBurnt(uint256 amountOfShares)
+message StethExternalSharesBurnt {
+  string amount_of_shares = 1; // uint256
+}
+
+// event ExternalEtherTransferredToBuffer(uint256 amount)
+message StethExternalEtherTransferredToBuffer {
+  string amount = 1; // uint256
+}
+
+// event ExternalBadDebtInternalized(uint256 amountOfShares)
+message StethExternalBadDebtInternalized {
+  string amount_of_shares = 1; // uint256
+}
+
+// event MaxExternalRatioBPSet(uint256 maxExternalRatioBP)
+message StethMaxExternalRatioBPSet {
+  string max_external_ratio_bp = 1; // uint256
+}
+
+// event CLValidatorsUpdated(uint256 indexed reportTimestamp, uint256 preCLValidators, uint256 postCLValidators)
+message StethCLValidatorsUpdated {
+  string report_timestamp = 1;   // uint256
+  string pre_cl_validators = 2;  // uint256
+  string post_cl_validators = 3; // uint256
+}
+
+// event DepositedValidatorsChanged(uint256 depositedValidators)
+message StethDepositedValidatorsChanged {
+  string deposited_validators = 1; // uint256
+}
+
+// event ETHDistributed(uint256 indexed reportTimestamp, uint256 preCLBalance, uint256 postCLBalance,
+//                      uint256 withdrawalsWithdrawn, uint256 executionLayerRewardsWithdrawn, uint256 postBufferedEther)
+message StethETHDistributed {
+  string report_timestamp = 1;                  // uint256
+  string pre_cl_balance = 2;                    // uint256
+  string post_cl_balance = 3;                   // uint256
+  string withdrawals_withdrawn = 4;             // uint256
+  string execution_layer_rewards_withdrawn = 5; // uint256
+  string post_buffered_ether = 6;               // uint256
+}
+
+// event InternalShareRateUpdated(uint256 indexed reportTimestamp, uint256 postInternalShares, uint256 postInternalEther, uint256 sharesMintedAsFees)
+message StethInternalShareRateUpdated {
+  string report_timestamp = 1;      // uint256
+  string post_internal_shares = 2;  // uint256
+  string post_internal_ether = 3;   // uint256
+  string shares_minted_as_fees = 4; // uint256
+}
+
+// event StakingPaused()
+message StethStakingPaused {}
+
+// event StakingResumed()
+message StethStakingResumed {}
+
+// event StakingLimitSet(uint256 maxStakeLimit, uint256 stakeLimitIncreasePerBlock)
+message StethStakingLimitSet {
+  string max_stake_limit = 1;                // uint256
+  string stake_limit_increase_per_block = 2; // uint256
+}
+
+// event StakingLimitRemoved()
+message StethStakingLimitRemoved {}
+
+// event ELRewardsReceived(uint256 amount)
+message StethELRewardsReceived {
+  string amount = 1; // uint256
+}
+
+// event WithdrawalsReceived(uint256 amount)
+message StethWithdrawalsReceived {
+  string amount = 1; // uint256
+}
+
+// event LidoLocatorSet(address lidoLocator)
+message StethLidoLocatorSet {
+  bytes lido_locator = 1;
+}
