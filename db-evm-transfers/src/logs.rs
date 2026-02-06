@@ -1,4 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
+use proto::pb::erc20::tokens::v1 as tokens_pb;
 use proto::pb::erc20::transfers::v1 as pb;
 
 pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
@@ -20,6 +21,21 @@ pub trait LogAddress {
 }
 
 impl LogAddress for pb::Log {
+    fn get_address(&self) -> &Vec<u8> {
+        &self.address
+    }
+    fn get_ordinal(&self) -> u64 {
+        self.ordinal
+    }
+    fn get_topics(&self) -> &Vec<Vec<u8>> {
+        &self.topics
+    }
+    fn get_data(&self) -> &Vec<u8> {
+        &self.data
+    }
+}
+
+impl LogAddress for tokens_pb::Log {
     fn get_address(&self) -> &Vec<u8> {
         &self.address
     }
