@@ -7,7 +7,7 @@ package:
   image: ../image.png
 
 imports:
-  db: ../db-evm-balances/substreams.yaml
+  db: ../spkg/evm-balances-v0.3.1.spkg
 
 modules:
   - name: db_out
