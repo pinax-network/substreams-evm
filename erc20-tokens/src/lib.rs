@@ -267,6 +267,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_usdt_issues += 1;
                 let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
                     amount: event.amount.to_string(),
+                    owner: call.map(|c| c.caller.to_vec()).unwrap_or_default(),
                 });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
@@ -276,6 +277,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 total_usdt_redeems += 1;
                 let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
                     amount: event.amount.to_string(),
+                    owner: call.map(|c| c.caller.to_vec()).unwrap_or_default(),
                 });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }

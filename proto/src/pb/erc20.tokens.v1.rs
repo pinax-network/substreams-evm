@@ -355,6 +355,9 @@ pub struct UsdtIssue {
     /// uint256
     #[prost(string, tag="1")]
     pub amount: ::prost::alloc::string::String,
+    /// call.caller (owner)
+    #[prost(bytes="vec", tag="2")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 /// event Redeem(uint256 amount)
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -363,6 +366,9 @@ pub struct UsdtRedeem {
     /// uint256
     #[prost(string, tag="1")]
     pub amount: ::prost::alloc::string::String,
+    /// call.caller (owner)
+    #[prost(bytes="vec", tag="2")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
 }
 /// event Deprecate(address newAddress)
 #[allow(clippy::derive_partial_eq_without_eq)]

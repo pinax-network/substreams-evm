@@ -70,6 +70,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 set_template_log(encoding, log, log_index, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
+                row.set("owner", bytes_to_string(&event.owner, encoding));
                 row.set("amount", &event.amount);
             }
 
@@ -82,6 +83,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 set_template_log(encoding, log, log_index, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
+                row.set("owner", bytes_to_string(&event.owner, encoding));
                 row.set("amount", &event.amount);
             }
 
