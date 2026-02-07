@@ -327,6 +327,7 @@ CREATE TABLE IF NOT EXISTS usdt_issue (
     log_data             TEXT NOT NULL,
 
     -- issue --
+    owner                TEXT NOT NULL,
     amount               NUMERIC NOT NULL,
 
     PRIMARY KEY (block_num, tx_index, log_index)
@@ -361,6 +362,7 @@ CREATE TABLE IF NOT EXISTS usdt_redeem (
     log_data             TEXT NOT NULL,
 
     -- redeem --
+    owner                TEXT NOT NULL,
     amount               NUMERIC NOT NULL,
 
     PRIMARY KEY (block_num, tx_index, log_index)

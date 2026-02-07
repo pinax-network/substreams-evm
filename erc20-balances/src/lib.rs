@@ -22,8 +22,11 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
     // - log.address for all logs (token contract itself)
     //
     // From erc20-tokens:
+    // - OwnershipTransferred events: previous_owner, new_owner (shared: USDC, USDT, WBTC)
     // - USDC Mint events: minter, to
     // - USDC Burn events: burner
+    // - USDT Issue events: caller (owner)
+    // - USDT Redeem events: caller (owner)
     // - USDT DestroyedBlackFunds events: black_listed_user
     // - WBTC Mint events: to
     // - WBTC Burn events: burner
@@ -33,6 +36,7 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
     // - stETH TransferShares events: from, to
     // - stETH SharesBurnt events: account
     // - stETH ExternalSharesMinted events: recipient
+    // - stETH ExternalSharesBurnt events: owner
     let contracts_by_address = transfers
         .transactions
         .iter()
@@ -97,6 +101,18 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
                         }
                         Some(tokens_pb::log::Log::UsdtRemovedBlackList(removed)) => {
                             addresses.push((&log.address, &removed.user));
+                        }
+                        // USDT Issue/Redeem: modifies balances[owner], owner from call.caller
+                        Some(tokens_pb::log::Log::UsdtIssue(issue)) => {
+                            addresses.push((&log.address, &issue.owner));
+                        }
+                        Some(tokens_pb::log::Log::UsdtRedeem(redeem)) => {
+                            addresses.push((&log.address, &redeem.owner));
+                        }
+                        // OwnershipTransferred (shared: USDC, USDT, WBTC)
+                        Some(tokens_pb::log::Log::OwnershipTransferred(ownership)) => {
+                            addresses.push((&log.address, &ownership.previous_owner));
+                            addresses.push((&log.address, &ownership.new_owner));
                         }
                         // WBTC events
                         Some(tokens_pb::log::Log::WbtcMint(mint)) => {

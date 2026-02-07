@@ -10,12 +10,15 @@ This Substreams module fetches ERC-20 token balances by making batched `balanceO
 
 - Transfer events: `from`, `to`
 - Approval events: `owner`, `spender`
+- OwnershipTransferred events: `previous_owner`, `new_owner` (shared: USDC, USDT, WBTC)
 - WETH Deposit events: `dst`
 - WETH Withdrawal events: `src`
 - USDC Mint events: `minter`, `to`
 - USDC Burn events: `burner`
 - USDC Blacklisted events: `account`
 - USDC UnBlacklisted events: `account`
+- USDT Issue events: `owner` (call.caller)
+- USDT Redeem events: `owner` (call.caller)
 - USDT DestroyedBlackFunds events: `black_listed_user`
 - USDT AddedBlackList events: `user`
 - USDT RemovedBlackList events: `user`
@@ -27,6 +30,7 @@ This Substreams module fetches ERC-20 token balances by making batched `balanceO
 - stETH TransferShares events: `from`, `to`
 - stETH SharesBurnt events: `account`
 - stETH ExternalSharesMinted events: `recipient`
+- stETH ExternalSharesBurnt events: `owner`
 - Transaction `from` address
 - Token contract address (`log.address`)
 
