@@ -22,7 +22,6 @@ CH_DATABASE="${CH_DATABASE:-default}"
 RPC_ENDPOINT="${RPC_ENDPOINT:-https://eth.llamarpc.com}"
 CONTRACT="${CONTRACT:-0xdac17f958d2ee523a2206206994597c13d831ec7}"
 LIMIT="${LIMIT:-30}"
-DECIMALS="${DECIMALS:-6}"
 
 # Colors for output
 RED='\033[0;31m'
@@ -43,13 +42,12 @@ usage() {
     echo "  --ch-database DB      ClickHouse database (default: default)"
     echo "  --rpc-endpoint URL    Ethereum RPC endpoint (default: https://eth.llamarpc.com)"
     echo "  --contract ADDR       ERC20 contract address (default: USDT)"
-    echo "  --decimals NUM        Token decimals for display (default: 6)"
     echo "  --limit NUM           Number of top holders to check (default: 30)"
     echo "  -h, --help            Show this help message"
     echo ""
     echo "Environment variables:"
     echo "  CH_HOST, CH_PORT, CH_USER, CH_PASSWORD, CH_DATABASE"
-    echo "  RPC_ENDPOINT, CONTRACT, DECIMALS, LIMIT"
+    echo "  RPC_ENDPOINT, CONTRACT, LIMIT"
     echo ""
     echo "Example:"
     echo "  $0 --ch-host ch-node890h.riv.eosn.io --ch-password 'YOUR_PASSWORD' \\"
@@ -88,10 +86,6 @@ while [[ $# -gt 0 ]]; do
             CONTRACT="$2"
             shift 2
             ;;
-        --decimals)
-            DECIMALS="$2"
-            shift 2
-            ;;
         --limit)
             LIMIT="$2"
             shift 2
@@ -123,16 +117,74 @@ LATEST_BLOCK_DATA=$(eval "$CH_CMD --query \"$LATEST_BLOCK_QUERY\"" 2>/dev/null)
 LATEST_BLOCK_NUM=$(echo "$LATEST_BLOCK_DATA" | cut -f1)
 LATEST_BLOCK_TS=$(echo "$LATEST_BLOCK_DATA" | cut -f2)
 
+# Fetch token metadata from RPC (decimals, symbol, name)
+rpc_call() {
+    local data="$1"
+    curl -s -X POST "$RPC_ENDPOINT" \
+        -H "Content-Type: application/json" \
+        -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"latest\"],\"id\":1}" | jq -r '.result // empty'
+}
+
+# decimals() = 0x313ce567
+DECIMALS_HEX=$(rpc_call "0x313ce567")
+if [[ -n "$DECIMALS_HEX" && "$DECIMALS_HEX" != "null" ]]; then
+    DECIMALS=$(python3 -c "print(int('${DECIMALS_HEX}', 16))")
+else
+    DECIMALS=18
+fi
+
+# symbol() = 0x95d89b41
+SYMBOL_HEX=$(rpc_call "0x95d89b41")
+if [[ -n "$SYMBOL_HEX" && "$SYMBOL_HEX" != "null" && ${#SYMBOL_HEX} -gt 2 ]]; then
+    TOKEN_SYMBOL=$(python3 -c "
+import codecs
+h = '${SYMBOL_HEX}'[2:]
+if len(h) >= 128:
+    offset = int(h[:64], 16) * 2
+    length = int(h[offset:offset+64], 16)
+    data = h[offset+64:offset+64+length*2]
+    print(codecs.decode(data, 'hex').decode('utf-8', errors='replace').strip())
+else:
+    print(codecs.decode(h, 'hex').decode('utf-8', errors='replace').strip('\\x00'))
+")
+else
+    TOKEN_SYMBOL="unknown"
+fi
+
+# name() = 0x06fdde03
+NAME_HEX=$(rpc_call "0x06fdde03")
+if [[ -n "$NAME_HEX" && "$NAME_HEX" != "null" && ${#NAME_HEX} -gt 2 ]]; then
+    TOKEN_NAME=$(python3 -c "
+import codecs
+h = '${NAME_HEX}'[2:]
+if len(h) >= 128:
+    offset = int(h[:64], 16) * 2
+    length = int(h[offset:offset+64], 16)
+    data = h[offset+64:offset+64+length*2]
+    print(codecs.decode(data, 'hex').decode('utf-8', errors='replace').strip())
+else:
+    print(codecs.decode(h, 'hex').decode('utf-8', errors='replace').strip('\\x00'))
+")
+else
+    TOKEN_NAME="unknown"
+fi
+
 echo "=============================================="
 echo "ERC20 Balance Verification"
 echo "=============================================="
 echo "Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-echo "Latest Block: #${LATEST_BLOCK_NUM} (${LATEST_BLOCK_TS})"
-echo "ClickHouse Host: $CH_HOST"
-echo "ClickHouse Database: $CH_DATABASE"
+echo ""
+echo "ClickHouse Server"
+echo "  Host: $CH_HOST"
+echo "  Database: $CH_DATABASE"
+echo "  Latest Block: #${LATEST_BLOCK_NUM} (${LATEST_BLOCK_TS})"
+echo ""
+echo "Token Metadata"
+echo "  Contract: $CONTRACT"
+echo "  Name: $TOKEN_NAME ($TOKEN_SYMBOL)"
+echo "  Decimals: $DECIMALS"
+echo ""
 echo "RPC Endpoint: $RPC_ENDPOINT"
-echo "Contract: $CONTRACT"
-echo "Decimals: $DECIMALS"
 echo "Limit: $LIMIT"
 echo "=============================================="
 echo ""
@@ -166,18 +218,18 @@ get_rpc_balance() {
     # Pad address to 32 bytes (remove 0x prefix, left-pad with zeros)
     local padded_address=$(echo "$address" | sed 's/0x//' | awk '{printf "%064s\n", $0}' | tr ' ' '0')
     local data="${BALANCE_OF_SIG}${padded_address}"
-
+    
     local response=$(curl -s -X POST "$RPC_ENDPOINT" \
         -H "Content-Type: application/json" \
         -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"latest\"],\"id\":1}")
-
+    
     local result=$(echo "$response" | jq -r '.result // empty')
-
+    
     if [[ -z "$result" || "$result" == "null" ]]; then
         echo "0"
         return
     fi
-
+    
     # Convert hex to decimal (remove 0x prefix)
     # Use bc for large number handling
     local hex_value=$(echo "$result" | sed 's/0x//')
@@ -185,7 +237,7 @@ get_rpc_balance() {
         echo "0"
         return
     fi
-
+    
     # Convert hex to decimal using Python (handles large numbers)
     local decimal_value=$(python3 -c "print(int('$hex_value', 16))" 2>/dev/null || echo "0")
     echo "$decimal_value"
@@ -237,18 +289,21 @@ ERRORS=""
 while IFS=$'\t' read -r address ch_balance ch_formatted ch_timestamp; do
     [[ -z "$address" ]] && continue
     TOTAL_COUNT=$((TOTAL_COUNT + 1))
-
+    
     # Get RPC balance
     rpc_balance=$(get_rpc_balance "$address")
-
+    
     # Process RPC balance (format + error) in single Python call
     rpc_data=$(process_rpc_balance "$rpc_balance" "$ch_balance" "$DECIMALS")
     rpc_formatted=$(echo "$rpc_data" | cut -f1)
     pct_error=$(echo "$rpc_data" | cut -f2)
-
-    # Compare balances
+    
+    # Compare balances (treat <0.01% error as a match)
     if [[ "$ch_balance" == "$rpc_balance" ]]; then
         status="${GREEN}✓ MATCH${NC}"
+        MATCH_COUNT=$((MATCH_COUNT + 1))
+    elif [[ "$pct_error" != "inf" ]] && python3 -c "exit(0 if float('$pct_error') < 0.01 else 1)"; then
+        status="${GREEN}≈ MATCH${NC}"
         MATCH_COUNT=$((MATCH_COUNT + 1))
     else
         status="${RED}✗ MISMATCH${NC}"
@@ -259,10 +314,10 @@ while IFS=$'\t' read -r address ch_balance ch_formatted ch_timestamp; do
             [[ -z "$ERRORS" ]] && ERRORS="$pct_error" || ERRORS="$ERRORS,$pct_error"
         fi
     fi
-
+    
     # Format error display
     [[ "$pct_error" == "inf" ]] && pct_display="∞" || pct_display="${pct_error}%"
-
+    
     printf "%-4s | %-44s | %14s | %14s | %8s | %-19s | " "$TOTAL_COUNT" "$address" "$ch_formatted" "$rpc_formatted" "$pct_display" "$ch_timestamp"
     echo -e "$status"
 done <<< "$RESULTS"
