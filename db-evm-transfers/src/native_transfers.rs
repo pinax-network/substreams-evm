@@ -11,6 +11,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = reward_key(clock, index);
         let row = tables.create_row("block_rewards", key);
         set_clock(clock, row);
+        row.set("index", index as u64);
         row.set("miner", bytes_to_string(&event.miner, encoding));
         row.set("value", &event.value);
         row.set("reason", &event.reason().as_str_name().to_string());
@@ -21,6 +22,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = reward_key(clock, index);
         let row = tables.create_row("withdrawals", key);
         set_clock(clock, row);
+        row.set("index", index as u64);
         row.set("address", bytes_to_string(&event.address, encoding));
         row.set("value", &event.value);
     }
@@ -30,6 +32,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = reward_key(clock, index);
         let row = tables.create_row("selfdestructs", key);
         set_clock(clock, row);
+        row.set("index", index as u64);
         row.set("tx_hash", bytes_to_string(&event.tx_hash, encoding));
         row.set("from_address", bytes_to_string(&event.from, encoding));
         row.set("to_address", bytes_to_string(&event.to, encoding));
@@ -41,6 +44,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = reward_key(clock, index);
         let row = tables.create_row("genesis_balances", key);
         set_clock(clock, row);
+        row.set("index", index as u64);
         row.set("address", bytes_to_string(&event.address, encoding));
         row.set("value", &event.value);
     }
@@ -50,6 +54,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
         let key = reward_key(clock, index);
         let row = tables.create_row("dao_transfers", key);
         set_clock(clock, row);
+        row.set("index", index as u64);
         row.set("address", bytes_to_string(&event.address, encoding));
         row.set("old_value", &event.old_value);
         row.set("new_value", &event.new_value);
