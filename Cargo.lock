@@ -136,17 +136,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
-name = "clickhouse-blocks"
-version = "0.0.0"
-dependencies = [
- "common",
- "proto",
- "substreams",
- "substreams-database-change",
- "substreams-ethereum",
-]
-
-[[package]]
 name = "clickhouse-evm-dex"
 version = "0.0.0"
 dependencies = [
@@ -237,6 +226,17 @@ dependencies = [
  "proto",
  "substreams",
  "substreams-abis",
+ "substreams-ethereum",
+]
+
+[[package]]
+name = "db-blocks-clickhouse"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-database-change",
  "substreams-ethereum",
 ]
 

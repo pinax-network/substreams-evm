@@ -6,7 +6,7 @@ members = [
 
   # Clickhouse
   "clickhouse-evm-dex",
-  "clickhouse-blocks",
+  "db-blocks-clickhouse",
 
   # Tokens
   "erc20-transfers",
