@@ -1,0 +1,70 @@
+specVersion: v0.1.0
+package:
+  name: evm_dex
+  version: v0.2.7
+  url: https://github.com/pinax-network/substreams-evm
+  description: DEX swaps for JustSwap, SunSwap, and SunPump on EVM blockchain
+  image: ../image.png
+
+imports:
+  # SQL Sink Substreams
+  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
+  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
+
+  # Tron DEX Substreams
+  sunpump: ../spkg/sunpump-v0.2.3.spkg
+
+  # Ethereum DEX Substreams
+  balancer_store: ../spkg/balancer-v0.2.3.spkg
+  balancer: ../spkg/balancer-v0.2.4.spkg
+  bancor: ../spkg/bancor-v0.2.3.spkg
+  cow: ../spkg/cow-v0.2.3.spkg
+  curvefi: ../spkg/curvefi-v0.2.3.spkg
+
+  # Uniswap DEX Substreams
+  uniswap_v1: ../spkg/uniswap-v1-v0.2.3.spkg
+  uniswap_v2: ../spkg/uniswap-v2-v0.2.3.spkg
+  uniswap_v3: ../spkg/uniswap-v3-v0.2.3.spkg
+  uniswap_v4_store: ../spkg/uniswap-v4-v0.2.3.spkg
+  uniswap_v4: ../spkg/uniswap-v4-v0.2.4.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/db_evm_dex.wasm
+
+modules:
+  - name: db_out
+    kind: map
+    inputs:
+      - params: string
+      - source: sf.substreams.v1.Clock
+      # Tron DEX
+      - map: sunpump:map_events
+      - store: sunpump:store_pool
+
+      # Ethereum DEX
+      - map: balancer:map_events
+      - map: bancor:map_events
+      - map: curvefi:map_events
+      - map: cow:map_events
+      - store: balancer_store:store_pool
+      - store: bancor:store_pool
+      - store: curvefi:store_pool
+
+      # Uniswap DEX
+      - map: uniswap_v1:map_events
+      - map: uniswap_v2:map_events
+      - map: uniswap_v3:map_events
+      - map: uniswap_v4:map_events
+      - store: uniswap_v1:store_pool
+      - store: uniswap_v2:store_pool
+      - store: uniswap_v3:store_pool
+      - store: uniswap_v4_store:store_pool
+    output:
+      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+
+network: mainnet
+
+params:
+  db_out: "hex"  # Supported encodings: hex, tron_base58
