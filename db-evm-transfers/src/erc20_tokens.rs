@@ -100,6 +100,122 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 row.set("balance", &event.balance);
             }
 
+            // USDT BlockPlaced (v0.8.4)
+            if let Some(pb::log::Log::UsdtBlockPlaced(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_block_placed", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("user", bytes_to_string(&event.user, encoding));
+            }
+
+            // USDT BlockReleased (v0.8.4)
+            if let Some(pb::log::Log::UsdtBlockReleased(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_block_released", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("user", bytes_to_string(&event.user, encoding));
+            }
+
+            // USDT Mint (v0.8.4)
+            if let Some(pb::log::Log::UsdtMint(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_mint", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("destination", bytes_to_string(&event.destination, encoding));
+                row.set("amount", &event.amount);
+            }
+
+            // USDT DestroyedBlockedFunds (v0.8.4)
+            if let Some(pb::log::Log::UsdtDestroyedBlockedFunds(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_destroyed_blocked_funds", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("blocked_user", bytes_to_string(&event.blocked_user, encoding));
+                row.set("balance", &event.balance);
+            }
+
+            // USDT NewPrivilegedContract (v0.8.4)
+            if let Some(pb::log::Log::UsdtNewPrivilegedContract(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_new_privileged_contract", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("contract", bytes_to_string(&event.contract, encoding));
+            }
+
+            // USDT RemovedPrivilegedContract (v0.8.4)
+            if let Some(pb::log::Log::UsdtRemovedPrivilegedContract(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_removed_privileged_contract", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("contract", bytes_to_string(&event.contract, encoding));
+            }
+
+            // USDT LogSwapin (swap_asset)
+            if let Some(pb::log::Log::UsdtLogSwapin(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_log_swapin", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("txhash", bytes_to_string(&event.txhash, encoding));
+                row.set("account", bytes_to_string(&event.account, encoding));
+                row.set("amount", &event.amount);
+            }
+
+            // USDT LogSwapout (swap_asset)
+            if let Some(pb::log::Log::UsdtLogSwapout(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_log_swapout", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("account", bytes_to_string(&event.account, encoding));
+                row.set("bindaddr", bytes_to_string(&event.bindaddr, encoding));
+                row.set("amount", &event.amount);
+            }
+
+            // USDT LogChangeDCRMOwner (swap_asset)
+            if let Some(pb::log::Log::UsdtLogChangeDcrmOwner(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdt_log_change_dcrm_owner", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("old_owner", bytes_to_string(&event.old_owner, encoding));
+                row.set("new_owner", bytes_to_string(&event.new_owner, encoding));
+                row.set("effective_height", &event.effective_height);
+            }
+
             // WBTC Mint
             if let Some(pb::log::Log::WbtcMint(event)) = &log.log {
                 let key = log_key(clock, tx_index, log_index);

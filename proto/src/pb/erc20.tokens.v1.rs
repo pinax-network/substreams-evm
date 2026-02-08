@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="200, 201, 202, 10, 11, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 33, 34, 40, 41, 42, 43, 44, 45, 46, 50, 51, 52, 53, 60, 61, 62, 63, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120")]
+    #[prost(oneof="log::Log", tags="200, 201, 202, 10, 11, 20, 21, 22, 23, 24, 25, 26, 29, 30, 31, 33, 34, 40, 41, 42, 43, 44, 45, 46, 70, 71, 72, 73, 74, 75, 76, 77, 78, 50, 51, 52, 53, 60, 61, 62, 63, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -89,7 +89,7 @@ pub mod log {
         UsdcAuthorizationCanceled(super::UsdcAuthorizationCanceled),
         #[prost(message, tag="34")]
         UsdcAuthorizationUsed(super::UsdcAuthorizationUsed),
-        /// ========== USDT Events ==========
+        /// ========== USDT Events (tethertoken_v0_4_18) ==========
         #[prost(message, tag="40")]
         UsdtIssue(super::UsdtIssue),
         #[prost(message, tag="41")]
@@ -104,6 +104,26 @@ pub mod log {
         UsdtAddedBlackList(super::UsdtAddedBlackList),
         #[prost(message, tag="46")]
         UsdtRemovedBlackList(super::UsdtRemovedBlackList),
+        /// ========== USDT Events (tethertoken_v0_8_4) ==========
+        #[prost(message, tag="70")]
+        UsdtBlockPlaced(super::UsdtBlockPlaced),
+        #[prost(message, tag="71")]
+        UsdtBlockReleased(super::UsdtBlockReleased),
+        #[prost(message, tag="72")]
+        UsdtMint(super::UsdtMint),
+        #[prost(message, tag="73")]
+        UsdtDestroyedBlockedFunds(super::UsdtDestroyedBlockedFunds),
+        #[prost(message, tag="74")]
+        UsdtNewPrivilegedContract(super::UsdtNewPrivilegedContract),
+        #[prost(message, tag="75")]
+        UsdtRemovedPrivilegedContract(super::UsdtRemovedPrivilegedContract),
+        /// ========== USDT Events (swap_asset) ==========
+        #[prost(message, tag="76")]
+        UsdtLogSwapin(super::UsdtLogSwapin),
+        #[prost(message, tag="77")]
+        UsdtLogSwapout(super::UsdtLogSwapout),
+        #[prost(message, tag="78")]
+        UsdtLogChangeDcrmOwner(super::UsdtLogChangeDcrmOwner),
         /// ========== WBTC Events ==========
         #[prost(message, tag="50")]
         WbtcMint(super::WbtcMint),
@@ -355,7 +375,7 @@ pub struct UsdtIssue {
     /// uint256
     #[prost(string, tag="1")]
     pub amount: ::prost::alloc::string::String,
-    /// call.caller (owner)
+    /// RPC owner()
     #[prost(bytes="vec", tag="2")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
 }
@@ -366,7 +386,7 @@ pub struct UsdtRedeem {
     /// uint256
     #[prost(string, tag="1")]
     pub amount: ::prost::alloc::string::String,
-    /// call.caller (owner)
+    /// RPC owner()
     #[prost(bytes="vec", tag="2")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
 }
@@ -418,6 +438,99 @@ pub struct UsdtRemovedBlackList {
 // event Unpause()
 // => shared Unpause message
 
+// ============================================
+// USDT Events (tethertoken_v0_8_4)
+// ============================================
+
+/// event BlockPlaced(address indexed user)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtBlockPlaced {
+    #[prost(bytes="vec", tag="1")]
+    pub user: ::prost::alloc::vec::Vec<u8>,
+}
+/// event BlockReleased(address indexed user)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtBlockReleased {
+    #[prost(bytes="vec", tag="1")]
+    pub user: ::prost::alloc::vec::Vec<u8>,
+}
+/// event Mint(address indexed destination, uint256 amount)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtMint {
+    #[prost(bytes="vec", tag="1")]
+    pub destination: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// event DestroyedBlockedFunds(address indexed blockedUser, uint256 balance)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtDestroyedBlockedFunds {
+    #[prost(bytes="vec", tag="1")]
+    pub blocked_user: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub balance: ::prost::alloc::string::String,
+}
+/// event NewPrivilegedContract(address indexed contract)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtNewPrivilegedContract {
+    #[prost(bytes="vec", tag="1")]
+    pub contract: ::prost::alloc::vec::Vec<u8>,
+}
+/// event RemovedPrivilegedContract(address indexed contract)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtRemovedPrivilegedContract {
+    #[prost(bytes="vec", tag="1")]
+    pub contract: ::prost::alloc::vec::Vec<u8>,
+}
+// ============================================
+// USDT Events (swap_asset)
+// ============================================
+
+/// event LogSwapin(bytes32 indexed txhash, address indexed account, uint256 amount)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtLogSwapin {
+    /// bytes32
+    #[prost(bytes="vec", tag="1")]
+    pub txhash: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub account: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// event LogSwapout(address indexed account, address indexed bindaddr, uint256 amount)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtLogSwapout {
+    #[prost(bytes="vec", tag="1")]
+    pub account: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub bindaddr: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub amount: ::prost::alloc::string::String,
+}
+/// event LogChangeDCRMOwner(address indexed oldOwner, address indexed newOwner, uint256 indexed effectiveHeight)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UsdtLogChangeDcrmOwner {
+    #[prost(bytes="vec", tag="1")]
+    pub old_owner: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_owner: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub effective_height: ::prost::alloc::string::String,
+}
 // ============================================
 // WBTC Events
 // ============================================

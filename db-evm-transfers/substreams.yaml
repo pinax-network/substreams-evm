@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_transfers
-  version: v0.3.2
+  version: v0.3.3
   url: https://github.com/pinax-network/substreams-evm
   description: ERC-20, Native transfers & ERC-20 Token Events
   image: ../image.png
@@ -12,8 +12,8 @@ imports:
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Transfers Substreams
-  erc20_transfers: ../spkg/erc20-transfers-v0.3.2.spkg
-  erc20_tokens: ../spkg/erc20-tokens-v0.3.2.spkg
+  erc20_transfers: ../spkg/erc20-transfers-v0.3.3.spkg
+  erc20_tokens: ../spkg/erc20-tokens-v0.3.3.spkg
   native_transfers: ../spkg/evm-native-transfers-v0.2.0.spkg
 
 binaries:

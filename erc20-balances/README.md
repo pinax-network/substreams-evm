@@ -17,8 +17,8 @@ This Substreams module fetches ERC-20 token balances by making batched `balanceO
 - USDC Burn events: `burner`
 - USDC Blacklisted events: `account`
 - USDC UnBlacklisted events: `account`
-- USDT Issue events: `owner` (call.caller)
-- USDT Redeem events: `owner` (call.caller)
+- USDT Issue events: `owner` (RPC owner())
+- USDT Redeem events: `owner` (RPC owner())
 - USDT DestroyedBlackFunds events: `black_listed_user`
 - USDT AddedBlackList events: `user`
 - USDT RemovedBlackList events: `user`

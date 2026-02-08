@@ -406,6 +406,328 @@ CREATE TABLE IF NOT EXISTS usdt_destroyed_black_funds (
 CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_black_funds_timestamp ON usdt_destroyed_black_funds (timestamp);
 CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_black_funds_black_listed_user ON usdt_destroyed_black_funds (black_listed_user);
 
+-- USDT BlockPlaced table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_block_placed (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- block placed --
+    "user"               TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_block_placed_timestamp ON usdt_block_placed (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_block_placed_user ON usdt_block_placed ("user");
+
+-- USDT BlockReleased table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_block_released (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- block released --
+    "user"               TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_block_released_timestamp ON usdt_block_released (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_block_released_user ON usdt_block_released ("user");
+
+-- USDT Mint table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_mint (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- mint --
+    destination          TEXT NOT NULL,
+    amount               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_mint_timestamp ON usdt_mint (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_mint_destination ON usdt_mint (destination);
+
+-- USDT DestroyedBlockedFunds table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_destroyed_blocked_funds (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- destroyed blocked funds --
+    blocked_user         TEXT NOT NULL,
+    balance              NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_blocked_funds_timestamp ON usdt_destroyed_blocked_funds (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_destroyed_blocked_funds_blocked_user ON usdt_destroyed_blocked_funds (blocked_user);
+
+-- USDT NewPrivilegedContract table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_new_privileged_contract (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- new privileged contract --
+    contract             TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_new_privileged_contract_timestamp ON usdt_new_privileged_contract (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_new_privileged_contract_contract ON usdt_new_privileged_contract (contract);
+
+-- USDT RemovedPrivilegedContract table for PostgreSQL (v0.8.4)
+CREATE TABLE IF NOT EXISTS usdt_removed_privileged_contract (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- removed privileged contract --
+    contract             TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_removed_privileged_contract_timestamp ON usdt_removed_privileged_contract (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_removed_privileged_contract_contract ON usdt_removed_privileged_contract (contract);
+
+-- USDT LogSwapin table for PostgreSQL (swap_asset)
+CREATE TABLE IF NOT EXISTS usdt_log_swapin (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- log swapin --
+    txhash               TEXT NOT NULL,
+    account              TEXT NOT NULL,
+    amount               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_log_swapin_timestamp ON usdt_log_swapin (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_log_swapin_account ON usdt_log_swapin (account);
+
+-- USDT LogSwapout table for PostgreSQL (swap_asset)
+CREATE TABLE IF NOT EXISTS usdt_log_swapout (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- log swapout --
+    account              TEXT NOT NULL,
+    bindaddr             TEXT NOT NULL,
+    amount               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_log_swapout_timestamp ON usdt_log_swapout (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdt_log_swapout_account ON usdt_log_swapout (account);
+
+-- USDT LogChangeDCRMOwner table for PostgreSQL (swap_asset)
+CREATE TABLE IF NOT EXISTS usdt_log_change_dcrm_owner (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- log change dcrm owner --
+    old_owner            TEXT NOT NULL,
+    new_owner            TEXT NOT NULL,
+    effective_height     NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdt_log_change_dcrm_owner_timestamp ON usdt_log_change_dcrm_owner (timestamp);
+
 -- WBTC Mint table for PostgreSQL
 CREATE TABLE IF NOT EXISTS wbtc_mint (
     -- block --
