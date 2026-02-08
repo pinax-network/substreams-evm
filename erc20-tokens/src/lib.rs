@@ -2,8 +2,11 @@ use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::tokens::v1 as pb;
 use substreams_abis::evm::tokens::sai::events as sai_events;
 use substreams_abis::evm::tokens::steth::events as steth_events;
-use substreams_abis::evm::tokens::usdc::events as usdc_events;
-use substreams_abis::evm::tokens::usdt::events as usdt_events;
+use substreams_abis::evm::tokens::usdc::fiattoken_v2_2::events as usdc_events;
+use substreams_abis::evm::tokens::usdt::swap_asset::events as usdt_swap_events;
+use substreams_abis::evm::tokens::usdt::tethertoken_v0_4_18::events as usdt_events;
+use substreams_abis::evm::tokens::usdt::tethertoken_v0_4_18::functions as usdt_functions;
+use substreams_abis::evm::tokens::usdt::tethertoken_v0_8_4::events as usdt_v084_events;
 use substreams_abis::evm::tokens::wbtc::events as wbtc_events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
 use substreams_ethereum::pb::eth::v2::Block;
@@ -44,6 +47,19 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_usdt_destroyed_black_funds = 0;
     let mut total_usdt_added_black_list = 0;
     let mut total_usdt_removed_black_list = 0;
+
+    // USDT v0.8.4 counters
+    let mut total_usdt_block_placed = 0;
+    let mut total_usdt_block_released = 0;
+    let mut total_usdt_mints = 0;
+    let mut total_usdt_destroyed_blocked_funds = 0;
+    let mut total_usdt_new_privileged_contract = 0;
+    let mut total_usdt_removed_privileged_contract = 0;
+
+    // USDT swap_asset counters
+    let mut total_usdt_log_swapin = 0;
+    let mut total_usdt_log_swapout = 0;
+    let mut total_usdt_log_change_dcrm_owner = 0;
 
     // WBTC counters
     let mut total_wbtc_mints = 0;
@@ -264,22 +280,26 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
             // Issue
             if let Some(event) = usdt_events::Issue::match_and_decode(log) {
-                total_usdt_issues += 1;
-                let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
-                    amount: event.amount.to_string(),
-                    owner: call.map(|c| c.caller.to_vec()).unwrap_or_default(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                if let Some(owner) = (usdt_functions::Owner {}).call(log.address.to_vec()) {
+                    total_usdt_issues += 1;
+                    let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
+                        amount: event.amount.to_string(),
+                        owner,
+                    });
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                }
             }
 
             // Redeem
             if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
-                total_usdt_redeems += 1;
-                let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
-                    amount: event.amount.to_string(),
-                    owner: call.map(|c| c.caller.to_vec()).unwrap_or_default(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                if let Some(owner) = (usdt_functions::Owner {}).call(log.address.to_vec()) {
+                    total_usdt_redeems += 1;
+                    let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
+                        amount: event.amount.to_string(),
+                        owner,
+                    });
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                }
             }
 
             // Deprecate
@@ -322,6 +342,99 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             if let Some(event) = usdt_events::RemovedBlackList::match_and_decode(log) {
                 total_usdt_removed_black_list += 1;
                 let event = pb::log::Log::UsdtRemovedBlackList(pb::UsdtRemovedBlackList { user: event.user.to_vec() });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // ============================================
+            // USDT Events (tethertoken_v0_8_4)
+            // ============================================
+
+            // BlockPlaced
+            if let Some(event) = usdt_v084_events::BlockPlaced::match_and_decode(log) {
+                total_usdt_block_placed += 1;
+                let event = pb::log::Log::UsdtBlockPlaced(pb::UsdtBlockPlaced { user: event.user.to_vec() });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // BlockReleased
+            if let Some(event) = usdt_v084_events::BlockReleased::match_and_decode(log) {
+                total_usdt_block_released += 1;
+                let event = pb::log::Log::UsdtBlockReleased(pb::UsdtBlockReleased { user: event.user.to_vec() });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // Mint (v0.8.4 — different from Issue in v0.4.18)
+            if let Some(event) = usdt_v084_events::Mint::match_and_decode(log) {
+                total_usdt_mints += 1;
+                let event = pb::log::Log::UsdtMint(pb::UsdtMint {
+                    destination: event.destination.to_vec(),
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // DestroyedBlockedFunds (v0.8.4 — different from DestroyedBlackFunds in v0.4.18)
+            if let Some(event) = usdt_v084_events::DestroyedBlockedFunds::match_and_decode(log) {
+                total_usdt_destroyed_blocked_funds += 1;
+                let event = pb::log::Log::UsdtDestroyedBlockedFunds(pb::UsdtDestroyedBlockedFunds {
+                    blocked_user: event.blocked_user.to_vec(),
+                    balance: event.balance.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // NewPrivilegedContract
+            if let Some(event) = usdt_v084_events::NewPrivilegedContract::match_and_decode(log) {
+                total_usdt_new_privileged_contract += 1;
+                let event = pb::log::Log::UsdtNewPrivilegedContract(pb::UsdtNewPrivilegedContract {
+                    contract: event.contract.to_vec(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // RemovedPrivilegedContract
+            if let Some(event) = usdt_v084_events::RemovedPrivilegedContract::match_and_decode(log) {
+                total_usdt_removed_privileged_contract += 1;
+                let event = pb::log::Log::UsdtRemovedPrivilegedContract(pb::UsdtRemovedPrivilegedContract {
+                    contract: event.contract.to_vec(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // ============================================
+            // USDT Events (swap_asset)
+            // ============================================
+
+            // LogSwapin
+            if let Some(event) = usdt_swap_events::LogSwapin::match_and_decode(log) {
+                total_usdt_log_swapin += 1;
+                let event = pb::log::Log::UsdtLogSwapin(pb::UsdtLogSwapin {
+                    txhash: event.txhash.to_vec(),
+                    account: event.account.to_vec(),
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // LogSwapout
+            if let Some(event) = usdt_swap_events::LogSwapout::match_and_decode(log) {
+                total_usdt_log_swapout += 1;
+                let event = pb::log::Log::UsdtLogSwapout(pb::UsdtLogSwapout {
+                    account: event.account.to_vec(),
+                    bindaddr: event.bindaddr.to_vec(),
+                    amount: event.amount.to_string(),
+                });
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+            }
+
+            // LogChangeDCRMOwner
+            if let Some(event) = usdt_swap_events::LogChangeDcrmOwner::match_and_decode(log) {
+                total_usdt_log_change_dcrm_owner += 1;
+                let event = pb::log::Log::UsdtLogChangeDcrmOwner(pb::UsdtLogChangeDcrmOwner {
+                    old_owner: event.old_owner.to_vec(),
+                    new_owner: event.new_owner.to_vec(),
+                    effective_height: event.effective_height.to_string(),
+                });
                 transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
@@ -662,6 +775,19 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("  DestroyedBlackFunds: {}", total_usdt_destroyed_black_funds);
     substreams::log::info!("  AddedBlackList: {}", total_usdt_added_black_list);
     substreams::log::info!("  RemovedBlackList: {}\n", total_usdt_removed_black_list);
+
+    substreams::log::info!("--- USDT v0.8.4 Events ---");
+    substreams::log::info!("  BlockPlaced: {}", total_usdt_block_placed);
+    substreams::log::info!("  BlockReleased: {}", total_usdt_block_released);
+    substreams::log::info!("  Mint: {}", total_usdt_mints);
+    substreams::log::info!("  DestroyedBlockedFunds: {}", total_usdt_destroyed_blocked_funds);
+    substreams::log::info!("  NewPrivilegedContract: {}", total_usdt_new_privileged_contract);
+    substreams::log::info!("  RemovedPrivilegedContract: {}\n", total_usdt_removed_privileged_contract);
+
+    substreams::log::info!("--- USDT swap_asset Events ---");
+    substreams::log::info!("  LogSwapin: {}", total_usdt_log_swapin);
+    substreams::log::info!("  LogSwapout: {}", total_usdt_log_swapout);
+    substreams::log::info!("  LogChangeDCRMOwner: {}\n", total_usdt_log_change_dcrm_owner);
 
     substreams::log::info!("--- WBTC Events ---");
     substreams::log::info!("  Mint: {}", total_wbtc_mints);

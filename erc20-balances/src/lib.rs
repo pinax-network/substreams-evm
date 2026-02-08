@@ -28,6 +28,12 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
     // - USDT Issue events: caller (owner)
     // - USDT Redeem events: caller (owner)
     // - USDT DestroyedBlackFunds events: black_listed_user
+    // - USDT BlockPlaced events: user (v0.8.4)
+    // - USDT BlockReleased events: user (v0.8.4)
+    // - USDT Mint events: destination (v0.8.4)
+    // - USDT DestroyedBlockedFunds events: blocked_user (v0.8.4)
+    // - USDT LogSwapin events: account (swap_asset)
+    // - USDT LogSwapout events: account (swap_asset)
     // - WBTC Mint events: to
     // - WBTC Burn events: burner
     // - SAI Mint events: guy
@@ -108,6 +114,26 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
                         }
                         Some(tokens_pb::log::Log::UsdtRedeem(redeem)) => {
                             addresses.push((&log.address, &redeem.owner));
+                        }
+                        // USDT v0.8.4 events
+                        Some(tokens_pb::log::Log::UsdtBlockPlaced(block_placed)) => {
+                            addresses.push((&log.address, &block_placed.user));
+                        }
+                        Some(tokens_pb::log::Log::UsdtBlockReleased(block_released)) => {
+                            addresses.push((&log.address, &block_released.user));
+                        }
+                        Some(tokens_pb::log::Log::UsdtMint(mint)) => {
+                            addresses.push((&log.address, &mint.destination));
+                        }
+                        Some(tokens_pb::log::Log::UsdtDestroyedBlockedFunds(destroyed)) => {
+                            addresses.push((&log.address, &destroyed.blocked_user));
+                        }
+                        // USDT swap_asset events
+                        Some(tokens_pb::log::Log::UsdtLogSwapin(swapin)) => {
+                            addresses.push((&log.address, &swapin.account));
+                        }
+                        Some(tokens_pb::log::Log::UsdtLogSwapout(swapout)) => {
+                            addresses.push((&log.address, &swapout.account));
                         }
                         // OwnershipTransferred (shared: USDC, USDT, WBTC)
                         Some(tokens_pb::log::Log::OwnershipTransferred(ownership)) => {

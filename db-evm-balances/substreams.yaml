@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_balances
-  version: v0.3.2
+  version: v0.3.3
   url: https://github.com/pinax-network/substreams-evm
   description: ERC-20 & Native Balances
   image: ../image.png
@@ -15,7 +15,7 @@ imports:
   native_balances: ../spkg/evm-native-balances-v0.2.0.spkg
 
   # ERC-20
-  erc20_balances: ../spkg/erc20-balances-v0.3.2.spkg
+  erc20_balances: ../spkg/erc20-balances-v0.3.3.spkg
 
 binaries:
   default:

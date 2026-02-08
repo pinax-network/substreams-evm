@@ -1,6 +1,6 @@
-ENDPOINT ?= eth.substreams.pinax.network:443
-START_BLOCK ?= 24276727
-STOP_BLOCK ?= +1
+ENDPOINT ?= arbone.substreams.pinax.network:443
+START_BLOCK ?= 266257
+STOP_BLOCK ?= +1000
 PARALLEL_JOBS ?= 500
 .DEFAULT_GOAL := pack
 

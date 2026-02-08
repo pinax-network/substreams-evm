@@ -49,7 +49,7 @@ message Log {
     UsdcAuthorizationCanceled usdc_authorization_canceled = 33;
     UsdcAuthorizationUsed usdc_authorization_used = 34;
 
-    // ========== USDT Events ==========
+    // ========== USDT Events (tethertoken_v0_4_18) ==========
     UsdtIssue usdt_issue = 40;
     UsdtRedeem usdt_redeem = 41;
     UsdtDeprecate usdt_deprecate = 42;
@@ -57,6 +57,19 @@ message Log {
     UsdtDestroyedBlackFunds usdt_destroyed_black_funds = 44;
     UsdtAddedBlackList usdt_added_black_list = 45;
     UsdtRemovedBlackList usdt_removed_black_list = 46;
+
+    // ========== USDT Events (tethertoken_v0_8_4) ==========
+    UsdtBlockPlaced usdt_block_placed = 70;
+    UsdtBlockReleased usdt_block_released = 71;
+    UsdtMint usdt_mint = 72;
+    UsdtDestroyedBlockedFunds usdt_destroyed_blocked_funds = 73;
+    UsdtNewPrivilegedContract usdt_new_privileged_contract = 74;
+    UsdtRemovedPrivilegedContract usdt_removed_privileged_contract = 75;
+
+    // ========== USDT Events (swap_asset) ==========
+    UsdtLogSwapin usdt_log_swapin = 76;
+    UsdtLogSwapout usdt_log_swapout = 77;
+    UsdtLogChangeDcrmOwner usdt_log_change_dcrm_owner = 78;
 
     // ========== WBTC Events ==========
     WbtcMint wbtc_mint = 50;
@@ -230,13 +243,13 @@ message UsdcAuthorizationUsed {
 // event Issue(uint256 amount)
 message UsdtIssue {
   string amount = 1; // uint256
-  bytes owner = 2;   // call.caller (owner)
+  bytes owner = 2;   // RPC owner()
 }
 
 // event Redeem(uint256 amount)
 message UsdtRedeem {
   string amount = 1; // uint256
-  bytes owner = 2;   // call.caller (owner)
+  bytes owner = 2;   // RPC owner()
 }
 
 // event Deprecate(address newAddress)
@@ -271,6 +284,67 @@ message UsdtRemovedBlackList {
 
 // event Unpause()
 // => shared Unpause message
+
+// ============================================
+// USDT Events (tethertoken_v0_8_4)
+// ============================================
+
+// event BlockPlaced(address indexed user)
+message UsdtBlockPlaced {
+  bytes user = 1;
+}
+
+// event BlockReleased(address indexed user)
+message UsdtBlockReleased {
+  bytes user = 1;
+}
+
+// event Mint(address indexed destination, uint256 amount)
+message UsdtMint {
+  bytes destination = 1;
+  string amount = 2; // uint256
+}
+
+// event DestroyedBlockedFunds(address indexed blockedUser, uint256 balance)
+message UsdtDestroyedBlockedFunds {
+  bytes blocked_user = 1;
+  string balance = 2; // uint256
+}
+
+// event NewPrivilegedContract(address indexed contract)
+message UsdtNewPrivilegedContract {
+  bytes contract = 1;
+}
+
+// event RemovedPrivilegedContract(address indexed contract)
+message UsdtRemovedPrivilegedContract {
+  bytes contract = 1;
+}
+
+// ============================================
+// USDT Events (swap_asset)
+// ============================================
+
+// event LogSwapin(bytes32 indexed txhash, address indexed account, uint256 amount)
+message UsdtLogSwapin {
+  bytes txhash = 1; // bytes32
+  bytes account = 2;
+  string amount = 3; // uint256
+}
+
+// event LogSwapout(address indexed account, address indexed bindaddr, uint256 amount)
+message UsdtLogSwapout {
+  bytes account = 1;
+  bytes bindaddr = 2;
+  string amount = 3; // uint256
+}
+
+// event LogChangeDCRMOwner(address indexed oldOwner, address indexed newOwner, uint256 indexed effectiveHeight)
+message UsdtLogChangeDcrmOwner {
+  bytes old_owner = 1;
+  bytes new_owner = 2;
+  string effective_height = 3; // uint256
+}
 
 // ============================================
 // WBTC Events
