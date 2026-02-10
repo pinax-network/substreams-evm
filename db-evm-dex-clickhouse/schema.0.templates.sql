@@ -33,4 +33,10 @@ ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
     ADD COLUMN IF NOT EXISTS log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
     ADD COLUMN IF NOT EXISTS log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
-    ADD COLUMN IF NOT EXISTS log_data                    String;
+    ADD COLUMN IF NOT EXISTS log_data                    String,
+
+    -- call metadata (only available on chains with DetailLevel: EXTENDED) --
+    ADD COLUMN IF NOT EXISTS call_caller                 String,
+    ADD COLUMN IF NOT EXISTS call_index                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_depth                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_type                   LowCardinality(String);
