@@ -120,6 +120,11 @@ LATEST_BLOCK_TS=$(echo "$LATEST_BLOCK_DATA" | cut -f2)
 # Build pool filter clause
 POOL_FILTER=""
 if [[ -n "$POOL" ]]; then
+    # Validate pool address format (hex address)
+    if [[ ! "$POOL" =~ ^0x[0-9a-fA-F]{40}$ ]]; then
+        echo "Error: Invalid pool address format: $POOL"
+        exit 1
+    fi
     POOL_FILTER="AND pool = lower('$POOL')"
 fi
 
@@ -177,9 +182,10 @@ verify_swap_in_receipt() {
     local expected_topic0="$4"
     local expected_block_num="$5"
 
-    python3 -c "
+    echo "$receipt" | python3 -c "
 import json, sys
-receipt = json.loads('''$receipt''')
+
+receipt = json.load(sys.stdin)
 result = receipt.get('result')
 if not result:
     print('NO_RECEIPT')
@@ -187,15 +193,15 @@ if not result:
 
 # Verify block number
 rpc_block = int(result.get('blockNumber', '0x0'), 16)
-expected_block = $expected_block_num
+expected_block = int(sys.argv[1])
 if rpc_block != expected_block:
     print(f'BLOCK_MISMATCH:{rpc_block}')
     sys.exit(0)
 
 # Search for matching log
-expected_idx = $expected_log_index
-expected_addr = '${expected_log_address}'.lower()
-expected_t0 = '${expected_topic0}'.lower()
+expected_idx = int(sys.argv[2])
+expected_addr = sys.argv[3].lower()
+expected_t0 = sys.argv[4].lower()
 
 for log in result.get('logs', []):
     log_idx = int(log.get('logIndex', '0x0'), 16)
@@ -208,7 +214,7 @@ for log in result.get('logs', []):
         sys.exit(0)
 
 print('LOG_NOT_FOUND')
-"
+" "$expected_block_num" "$expected_log_index" "$expected_log_address" "$expected_topic0"
 }
 
 # Process results
