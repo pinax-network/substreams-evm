@@ -1,0 +1,36 @@
+-- Template Transactions --
+CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
+    -- block --
+    block_num                   UInt32,
+    block_hash                  String,
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+
+    -- transaction --
+    tx_index                    UInt32, -- derived from Substreams
+    tx_hash                     String,
+    tx_from                     String,
+    tx_to                       String,
+    tx_nonce                    UInt64,
+    tx_gas_price                UInt256,
+    tx_gas_limit                UInt64,
+    tx_gas_used                 UInt64,
+    tx_value                    UInt256
+)
+ENGINE = MergeTree
+ORDER BY (
+    minute, timestamp, block_num
+);
+
+-- Template Logs --
+CREATE TABLE IF NOT EXISTS TEMPLATE_LOG AS TEMPLATE_TRANSACTION;
+ALTER TABLE TEMPLATE_LOG
+    ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
+    ADD COLUMN IF NOT EXISTS log_address                 String,
+    ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32,
+    ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',
+    ADD COLUMN IF NOT EXISTS log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- event signature
+    ADD COLUMN IF NOT EXISTS log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_topic2                  String MATERIALIZED splitByChar(',', log_topics)[3], -- third topic (topic2), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
+    ADD COLUMN IF NOT EXISTS log_data                    String;

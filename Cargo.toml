@@ -3,9 +3,9 @@ members = [
   # DB (engine-agnostic)
   "db-evm-balances",
   "db-evm-transfers",
+  "db-evm-dex",
 
   # Clickhouse
-  "clickhouse-evm-dex",
   "db-blocks-clickhouse",
 
   # Tokens

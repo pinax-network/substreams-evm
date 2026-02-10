@@ -1,0 +1,170 @@
+-- Uniswap V3 Swap --
+CREATE TABLE IF NOT EXISTS uniswap_v3_swap AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Swap events';
+ALTER TABLE uniswap_v3_swap
+    -- swap event information --
+    ADD COLUMN IF NOT EXISTS sender             String COMMENT 'sender wallet address',
+    ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'recipient wallet address',
+    ADD COLUMN IF NOT EXISTS amount0            Int256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            Int256 COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
+    ADD COLUMN IF NOT EXISTS liquidity          UInt128 COMMENT 'Liquidity',
+    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 Initialize --
+CREATE TABLE IF NOT EXISTS uniswap_v3_initialize AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Initialize events';
+ALTER TABLE uniswap_v3_initialize
+    -- event information --
+    ADD COLUMN IF NOT EXISTS sqrt_price_x96     UInt256 COMMENT 'Square root price',
+    ADD COLUMN IF NOT EXISTS tick               Int32 COMMENT 'Tick',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 Mint --
+CREATE TABLE IF NOT EXISTS uniswap_v3_mint AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Mint events';
+ALTER TABLE uniswap_v3_mint
+    -- event information --
+    ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Owner address',
+    ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
+    ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
+    ADD COLUMN IF NOT EXISTS amount             UInt128 COMMENT 'Liquidity amount',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of token1',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 Burn --
+CREATE TABLE IF NOT EXISTS uniswap_v3_burn AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Burn events';
+ALTER TABLE uniswap_v3_burn
+    -- event information --
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Owner address',
+    ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
+    ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
+    ADD COLUMN IF NOT EXISTS amount             UInt128 COMMENT 'Liquidity amount',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of token1',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 Collect --
+CREATE TABLE IF NOT EXISTS uniswap_v3_collect AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Collect events';
+ALTER TABLE uniswap_v3_collect
+    -- event information --
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Owner address',
+    ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
+    ADD COLUMN IF NOT EXISTS tick_lower         Int32 COMMENT 'Lower tick',
+    ADD COLUMN IF NOT EXISTS tick_upper         Int32 COMMENT 'Upper tick',
+    ADD COLUMN IF NOT EXISTS amount0            UInt128 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt128 COMMENT 'Amount of token1',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 Flash --
+CREATE TABLE IF NOT EXISTS uniswap_v3_flash AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 Flash events';
+ALTER TABLE uniswap_v3_flash
+    -- event information --
+    ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
+    ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
+    ADD COLUMN IF NOT EXISTS amount0            UInt256 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt256 COMMENT 'Amount of token1',
+    ADD COLUMN IF NOT EXISTS paid0              UInt256 COMMENT 'Amount of token0 paid',
+    ADD COLUMN IF NOT EXISTS paid1              UInt256 COMMENT 'Amount of token1 paid',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 IncreaseObservationCardinalityNext --
+CREATE TABLE IF NOT EXISTS uniswap_v3_increase_observation_cardinality_next AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 IncreaseObservationCardinalityNext events';
+ALTER TABLE uniswap_v3_increase_observation_cardinality_next
+    -- event information --
+    ADD COLUMN IF NOT EXISTS observation_cardinality_next_old  UInt32 COMMENT 'Old observation cardinality',
+    ADD COLUMN IF NOT EXISTS observation_cardinality_next_new  UInt32 COMMENT 'New observation cardinality',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 SetFeeProtocol --
+CREATE TABLE IF NOT EXISTS uniswap_v3_set_fee_protocol AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 SetFeeProtocol events';
+ALTER TABLE uniswap_v3_set_fee_protocol
+    -- event information --
+    ADD COLUMN IF NOT EXISTS fee_protocol0_old  UInt32 COMMENT 'Old fee protocol for token0',
+    ADD COLUMN IF NOT EXISTS fee_protocol1_old  UInt32 COMMENT 'Old fee protocol for token1',
+    ADD COLUMN IF NOT EXISTS fee_protocol0_new  UInt32 COMMENT 'New fee protocol for token0',
+    ADD COLUMN IF NOT EXISTS fee_protocol1_new  UInt32 COMMENT 'New fee protocol for token1',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 CollectProtocol --
+CREATE TABLE IF NOT EXISTS uniswap_v3_collect_protocol AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 CollectProtocol events';
+ALTER TABLE uniswap_v3_collect_protocol
+    -- event information --
+    ADD COLUMN IF NOT EXISTS sender             String COMMENT 'Sender address',
+    ADD COLUMN IF NOT EXISTS recipient          String COMMENT 'Recipient address',
+    ADD COLUMN IF NOT EXISTS amount0            UInt128 COMMENT 'Amount of token0',
+    ADD COLUMN IF NOT EXISTS amount1            UInt128 COMMENT 'Amount of token1',
+
+    -- PoolCreated --
+    ADD COLUMN IF NOT EXISTS factory           String COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
+
+-- Uniswap V3 PoolCreated --
+CREATE TABLE IF NOT EXISTS uniswap_v3_pool_created AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 PoolCreated events';
+ALTER TABLE uniswap_v3_pool_created
+    -- event information --
+    ADD COLUMN IF NOT EXISTS factory            String MATERIALIZED log_address COMMENT 'Factory contract address',
+    ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
+    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
+    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing',
+    ADD COLUMN IF NOT EXISTS pool               String COMMENT 'Pool contract address';
+
+-- Uniswap V3 OwnerChanged --
+CREATE TABLE IF NOT EXISTS uniswap_v3_owner_changed AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 OwnerChanged events';
+ALTER TABLE uniswap_v3_owner_changed
+    -- event information --
+    ADD COLUMN IF NOT EXISTS old_owner          String COMMENT 'Old owner address',
+    ADD COLUMN IF NOT EXISTS new_owner          String COMMENT 'New owner address';
+
+-- Uniswap V3 FeeAmountEnabled --
+CREATE TABLE IF NOT EXISTS uniswap_v3_fee_amount_enabled AS TEMPLATE_LOG
+COMMENT 'Uniswap V3 FeeAmountEnabled events';
+ALTER TABLE uniswap_v3_fee_amount_enabled
+    -- event information --
+    ADD COLUMN IF NOT EXISTS fee                UInt64 COMMENT 'Fee tier',
+    ADD COLUMN IF NOT EXISTS tick_spacing       Int32 COMMENT 'Tick spacing';
