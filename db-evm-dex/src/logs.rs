@@ -14,7 +14,7 @@ pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static s
     ]
 }
 
-pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
+pub fn set_template_log(encoding: &Encoding, log: &(impl LogAddress + CallInfo), log_index: usize, row: &mut substreams_database_change::tables::Row) {
     row.set("log_index", log_index as u32);
     row.set("log_address", bytes_to_string(log.get_address(), encoding));
     row.set("log_ordinal", log.get_ordinal());
@@ -23,6 +23,12 @@ pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: u
         topics.join(",")
     });
     row.set("log_data", bytes_to_hex(log.get_data()));
+
+    // Call metadata (defaults to empty when not available)
+    row.set("call_caller", bytes_to_string(log.get_call_caller(), encoding));
+    row.set("call_index", log.get_call_index());
+    row.set("call_depth", log.get_call_depth());
+    row.set("call_type", log.get_call_type());
 }
 
 // Trait to abstract over different log types
@@ -33,146 +39,73 @@ pub trait LogAddress {
     fn get_data(&self) -> &Vec<u8>;
 }
 
-// SunPump
-impl LogAddress for sunpump::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
+// Trait to abstract over call metadata from different log types
+pub trait CallInfo {
+    fn get_call_caller(&self) -> &[u8];
+    fn get_call_index(&self) -> u32;
+    fn get_call_depth(&self) -> u32;
+    fn get_call_type(&self) -> &str;
 }
+
+macro_rules! impl_log_traits {
+    ($log_type:ty, $call_type:ty, $call_type_enum:ty) => {
+        impl LogAddress for $log_type {
+            fn get_address(&self) -> &Vec<u8> {
+                &self.address
+            }
+            fn get_ordinal(&self) -> u64 {
+                self.ordinal
+            }
+            fn get_topics(&self) -> &Vec<Vec<u8>> {
+                &self.topics
+            }
+            fn get_data(&self) -> &Vec<u8> {
+                &self.data
+            }
+        }
+
+        impl CallInfo for $log_type {
+            fn get_call_caller(&self) -> &[u8] {
+                self.call.as_ref().map(|c| c.caller.as_slice()).unwrap_or_default()
+            }
+            fn get_call_index(&self) -> u32 {
+                self.call.as_ref().map(|c| c.index).unwrap_or_default()
+            }
+            fn get_call_depth(&self) -> u32 {
+                self.call.as_ref().map(|c| c.depth).unwrap_or_default()
+            }
+            fn get_call_type(&self) -> &str {
+                self.call.as_ref()
+                    .map(|c| <$call_type_enum>::try_from(c.call_type).unwrap_or_default().as_str_name())
+                    .unwrap_or(<$call_type_enum>::default().as_str_name())
+            }
+        }
+    };
+}
+
+// SunPump
+impl_log_traits!(sunpump::v1::Log, sunpump::v1::Call, sunpump::v1::CallType);
 
 // Uniswap V1
-impl LogAddress for uniswap::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(uniswap::v1::Log, uniswap::v1::Call, uniswap::v1::CallType);
 
 // Uniswap V2
-impl LogAddress for uniswap::v2::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(uniswap::v2::Log, uniswap::v2::Call, uniswap::v2::CallType);
 
 // Uniswap V3
-impl LogAddress for uniswap::v3::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(uniswap::v3::Log, uniswap::v3::Call, uniswap::v3::CallType);
 
 // Uniswap V4
-impl LogAddress for uniswap::v4::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(uniswap::v4::Log, uniswap::v4::Call, uniswap::v4::CallType);
 
 // Balancer
-impl LogAddress for balancer::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(balancer::v1::Log, balancer::v1::Call, balancer::v1::CallType);
 
 // Bancor
-impl LogAddress for bancor::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(bancor::v1::Log, bancor::v1::Call, bancor::v1::CallType);
 
 // CoW Protocol
-impl LogAddress for cow::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(cow::v1::Log, cow::v1::Call, cow::v1::CallType);
 
 // Curve.fi
-impl LogAddress for curvefi::v1::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
+impl_log_traits!(curvefi::v1::Log, curvefi::v1::Call, curvefi::v1::CallType);
