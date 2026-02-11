@@ -10,17 +10,31 @@ imports:
   # ERC-20
   erc20_balances: ../erc20-balances/substreams.yaml
 
+protobuf:
+  files:
+    - balance-changes.proto
+  importPaths:
+    - ../proto/v1
+
 binaries:
   default:
     type: wasm/rust-v1
     file: ../target/wasm32-unknown-unknown/release/native_balances.wasm
 
 modules:
+  - name: map_balance_changes
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.balance_changes.v1.BalanceChanges
+
   - name: map_events
     kind: map
     inputs:
       - params: string
       - source: sf.ethereum.type.v2.Block
+      - map: map_balance_changes
     output:
       type: proto:evm.balances.v1.Events
 

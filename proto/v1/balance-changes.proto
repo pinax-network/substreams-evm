@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package evm.balance_changes.v1;
+
+message BalanceChanges { repeated BalanceChange balance_changes = 1; }
+
+message BalanceChange {
+  optional bytes contract = 1; // log.address (`None` for native balances)
+  bytes address = 2;
+}

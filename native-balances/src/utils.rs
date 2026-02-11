@@ -1,4 +1,3 @@
-use substreams::scalar::BigInt;
 use substreams_ethereum::pb::eth::v2::{balance_change::Reason, BalanceChange, Call, TransactionTrace, TransactionTraceStatus};
 
 pub fn is_failed_transaction(trx: &TransactionTrace) -> bool {
@@ -22,22 +21,6 @@ pub fn is_gas_balance_change(balance_change: &BalanceChange) -> bool {
         return true;
     }
     false
-}
-
-pub fn get_balances(balance_change: &BalanceChange) -> (BigInt, BigInt) {
-    let old_balance = balance_change
-        .old_value
-        .as_ref()
-        .map(|v| BigInt::from_unsigned_bytes_be(v.bytes.as_ref()))
-        .unwrap_or_else(BigInt::zero);
-
-    let new_balance = balance_change
-        .new_value
-        .as_ref()
-        .map(|v| BigInt::from_unsigned_bytes_be(v.bytes.as_ref()))
-        .unwrap_or_else(BigInt::zero);
-
-    (old_balance, new_balance)
 }
 
 pub fn is_valid_balance_change(balance_change: &BalanceChange) -> bool {

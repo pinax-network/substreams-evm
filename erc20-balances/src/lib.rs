@@ -5,13 +5,11 @@ use std::collections::HashSet;
 use calls::batch_balance_of;
 use proto::pb::erc20::tokens::v1 as tokens_pb;
 use proto::pb::erc20::transfers::v1 as transfers_pb;
+use proto::pb::evm::balance_changes::v1 as balance_changes_pb;
 use proto::pb::evm::balances::v1 as balances_pb;
 
 #[substreams::handlers::map]
-fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb::Events) -> Result<balances_pb::Events, substreams::errors::Error> {
-    let mut events = balances_pb::Events::default();
-    let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
-
+fn map_balance_changes(transfers: transfers_pb::Events, tokens: tokens_pb::Events) -> Result<balance_changes_pb::BalanceChanges, substreams::errors::Error> {
     // Collect unique tokens by owners
     // Include addresses from:
     // - Transfer events: from, to
@@ -177,8 +175,27 @@ fn map_events(params: String, transfers: transfers_pb::Events, tokens: tokens_pb
                 })
             }),
         )
-        .collect::<HashSet<(&common::Address, &common::Address)>>()
-        .into_iter()
+        .collect::<HashSet<(&common::Address, &common::Address)>>();
+
+    let mut balance_changes = balance_changes_pb::BalanceChanges::default();
+    for (contract, address) in contracts_by_address {
+        balance_changes.balance_changes.push(balance_changes_pb::BalanceChange {
+            contract: Some(contract.to_vec()),
+            address: address.to_vec(),
+        });
+    }
+    Ok(balance_changes)
+}
+
+#[substreams::handlers::map]
+fn map_events(params: String, balance_changes: balance_changes_pb::BalanceChanges) -> Result<balances_pb::Events, substreams::errors::Error> {
+    let mut events = balances_pb::Events::default();
+    let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
+
+    let contracts_by_address = balance_changes
+        .balance_changes
+        .iter()
+        .filter_map(|bc| bc.contract.as_ref().map(|contract| (contract, &bc.address)))
         .collect::<Vec<(&common::Address, &common::Address)>>();
 
     // Fetch RPC calls for Balance Of

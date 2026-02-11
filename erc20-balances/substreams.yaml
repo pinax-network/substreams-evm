@@ -14,6 +14,7 @@ imports:
 protobuf:
   files:
     - balances.proto
+    - balance-changes.proto
   importPaths:
     - ../proto/v1
 
@@ -23,12 +24,19 @@ binaries:
     file: ../target/wasm32-unknown-unknown/release/erc20_balances.wasm
 
 modules:
+  - name: map_balance_changes
+    kind: map
+    inputs:
+      - map: erc20_transfers:map_events
+      - map: erc20_tokens:map_events
+    output:
+      type: proto:evm.balance_changes.v1.BalanceChanges
+
   - name: map_events
     kind: map
     inputs:
       - params: string
-      - map: erc20_transfers:map_events
-      - map: erc20_tokens:map_events
+      - map: map_balance_changes
     output:
       type: proto:evm.balances.v1.Events
 
