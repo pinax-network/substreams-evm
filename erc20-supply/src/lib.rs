@@ -2,9 +2,9 @@ mod calls;
 
 use std::collections::HashSet;
 
-use calls::{batch_max_supply, batch_total_supply};
+use calls::batch_total_supply;
+use proto::pb::erc20::supply::v1 as supply_pb;
 use proto::pb::evm::balances::v1 as balances_pb;
-use proto::pb::evm::supply::v1 as supply_pb;
 
 #[substreams::handlers::map]
 fn map_events(params: String, erc20_balance_events: balances_pb::Events) -> Result<supply_pb::Events, substreams::errors::Error> {
@@ -27,15 +27,11 @@ fn map_events(params: String, erc20_balance_events: balances_pb::Events) -> Resu
     // Fetch totalSupply for all contracts (with fallback to alternative methods)
     let total_supplies = batch_total_supply(&contracts, chunk_size);
 
-    // Fetch maxSupply for all contracts (with fallback to cap())
-    let max_supplies = batch_max_supply(&contracts, chunk_size);
-
     for contract in &contracts {
-        if let Some(total_supply) = total_supplies.get(contract) {
-            events.supplies.push(supply_pb::Supply {
+        if let Some(amount) = total_supplies.get(contract) {
+            events.total_supplies.push(supply_pb::TotalSupply {
                 contract: contract.to_vec(),
-                total_supply: total_supply.to_string(),
-                max_supply: max_supplies.get(contract).map(|v| v.to_string()),
+                amount: amount.to_string(),
             });
         }
     }

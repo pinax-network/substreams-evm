@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: erc20_balances
-  version: v0.3.3
+  version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm-tokens
   description: ERC-20 Balances
   image: ../image.png
@@ -14,7 +14,6 @@ imports:
 protobuf:
   files:
     - balances.proto
-    - balance-changes.proto
   importPaths:
     - ../proto/v1
 
@@ -30,7 +29,7 @@ modules:
       - map: erc20_transfers:map_events
       - map: erc20_tokens:map_events
     output:
-      type: proto:evm.balance_changes.v1.BalanceChanges
+      type: proto:evm.balances.v1.BalanceChanges
 
   - name: map_events
     kind: map

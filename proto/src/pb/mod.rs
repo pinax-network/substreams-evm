@@ -35,6 +35,13 @@ pub mod erc1155 {
     }
 }
 pub mod erc20 {
+    pub mod supply {
+        // @@protoc_insertion_point(attribute:erc20.supply.v1)
+        pub mod v1 {
+            include!("erc20.supply.v1.rs");
+            // @@protoc_insertion_point(erc20.supply.v1)
+        }
+    }
     pub mod tokens {
         // @@protoc_insertion_point(attribute:erc20.tokens.v1)
         pub mod v1 {
@@ -51,25 +58,11 @@ pub mod erc20 {
     }
 }
 pub mod evm {
-    pub mod balance_changes {
-        // @@protoc_insertion_point(attribute:evm.balance_changes.v1)
-        pub mod v1 {
-            include!("evm.balance_changes.v1.rs");
-            // @@protoc_insertion_point(evm.balance_changes.v1)
-        }
-    }
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
         pub mod v1 {
             include!("evm.balances.v1.rs");
             // @@protoc_insertion_point(evm.balances.v1)
-        }
-    }
-    pub mod supply {
-        // @@protoc_insertion_point(attribute:evm.supply.v1)
-        pub mod v1 {
-            include!("evm.supply.v1.rs");
-            // @@protoc_insertion_point(evm.supply.v1)
         }
     }
 }

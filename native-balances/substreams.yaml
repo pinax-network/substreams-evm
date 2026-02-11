@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_native_balances
-  version: v0.2.0
+  version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm-tokens
   description: Extracts Native balances for EVM blockchains.
   image: ../image.png
@@ -9,12 +9,6 @@ package:
 imports:
   # ERC-20
   erc20_balances: ../erc20-balances/substreams.yaml
-
-protobuf:
-  files:
-    - balance-changes.proto
-  importPaths:
-    - ../proto/v1
 
 binaries:
   default:
@@ -27,7 +21,7 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.balance_changes.v1.BalanceChanges
+      type: proto:evm.balances.v1.BalanceChanges
 
   - name: map_events
     kind: map

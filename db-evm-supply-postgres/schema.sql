@@ -16,10 +16,9 @@ DO INSTEAD UPDATE blocks SET
     timestamp = NEW.timestamp
 WHERE block_num = NEW.block_num;
 
-
 -- ERC-20 token supply table for PostgreSQL
 -- There can only be a single supply per contract (latest supply)
-CREATE TABLE IF NOT EXISTS supply (
+CREATE TABLE IF NOT EXISTS total_supply (
     -- block --
     block_num            INTEGER NOT NULL,
     block_hash           TEXT NOT NULL,
@@ -27,29 +26,26 @@ CREATE TABLE IF NOT EXISTS supply (
 
     -- supply --
     contract             TEXT NOT NULL PRIMARY KEY,
-    total_supply         NUMERIC NOT NULL,
-    max_supply           NUMERIC
+    amount               NUMERIC NOT NULL
 );
 
 -- Block indexes
-CREATE INDEX IF NOT EXISTS idx_supply_block_num ON supply (block_num);
-CREATE INDEX IF NOT EXISTS idx_supply_timestamp ON supply (timestamp);
+CREATE INDEX IF NOT EXISTS idx_total_supply_block_num ON total_supply (block_num);
+CREATE INDEX IF NOT EXISTS idx_total_supply_timestamp ON total_supply (timestamp);
 
 -- Single column indexes
-CREATE INDEX IF NOT EXISTS idx_supply_total_supply ON supply (total_supply);
-CREATE INDEX IF NOT EXISTS idx_supply_max_supply ON supply (max_supply);
+CREATE INDEX IF NOT EXISTS idx_total_supply_amount ON total_supply (amount);
 
 -- Sorted indexes for top/bottom supply per contract
-CREATE INDEX IF NOT EXISTS idx_supply_total_supply_desc ON supply (total_supply DESC) WHERE total_supply != 0;
-CREATE INDEX IF NOT EXISTS idx_supply_total_supply_asc ON supply (total_supply ASC) WHERE total_supply != 0;
+CREATE INDEX IF NOT EXISTS idx_total_supply_amount_desc ON total_supply (amount DESC) WHERE amount != 0;
+CREATE INDEX IF NOT EXISTS idx_total_supply_amount_asc ON total_supply (amount ASC) WHERE amount != 0;
 
--- Upsert rule for supply
-CREATE OR REPLACE RULE supply_upsert AS ON INSERT TO supply
-WHERE EXISTS (SELECT 1 FROM supply WHERE contract = NEW.contract)
-DO INSTEAD UPDATE supply SET
+-- Upsert rule for total_supply
+CREATE OR REPLACE RULE total_supply_upsert AS ON INSERT TO total_supply
+WHERE EXISTS (SELECT 1 FROM total_supply WHERE contract = NEW.contract)
+DO INSTEAD UPDATE total_supply SET
     block_num = NEW.block_num,
     block_hash = NEW.block_hash,
     timestamp = NEW.timestamp,
-    total_supply = NEW.total_supply,
-    max_supply = COALESCE(NEW.max_supply, supply.max_supply)
+    amount = NEW.amount
 WHERE contract = NEW.contract;

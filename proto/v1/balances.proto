@@ -3,9 +3,15 @@ syntax = "proto3";
 package evm.balances.v1;
 
 message Events { repeated Balance balances = 1; }
+message BalanceChanges { repeated BalanceChange balance_changes = 1; }
 
 message Balance {
   optional bytes contract = 1; // log.address (`None` for native balances)
   bytes address = 2;
   string amount = 3; // balanceOf(address account) -> uint256
+}
+
+message BalanceChange {
+  optional bytes contract = 1; // log.address (`None` for native balances)
+  bytes address = 2;
 }

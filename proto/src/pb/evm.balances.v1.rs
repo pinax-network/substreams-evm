@@ -8,6 +8,12 @@ pub struct Events {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BalanceChanges {
+    #[prost(message, repeated, tag="1")]
+    pub balance_changes: ::prost::alloc::vec::Vec<BalanceChange>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Balance {
     /// log.address (`None` for native balances)
     #[prost(bytes="vec", optional, tag="1")]
@@ -17,5 +23,14 @@ pub struct Balance {
     /// balanceOf(address account) -> uint256
     #[prost(string, tag="3")]
     pub amount: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct BalanceChange {
+    /// log.address (`None` for native balances)
+    #[prost(bytes="vec", optional, tag="1")]
+    pub contract: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes="vec", tag="2")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
 }
 // @@protoc_insertion_point(module)

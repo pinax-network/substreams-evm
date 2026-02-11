@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package erc20.supply.v1;
+
+message Events { repeated TotalSupply total_supplies = 1; }
+
+message TotalSupply {
+  bytes contract = 1; // token contract address
+  string amount = 2; // totalSupply() -> uint256
+}

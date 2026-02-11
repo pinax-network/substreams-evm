@@ -38,10 +38,10 @@ SELECT
     contract,
 
     -- ohlc --
-    argMinState(total_supply, b.block_num) AS open,
-    max(total_supply) AS high,
-    min(total_supply) AS low,
-    argMaxState(total_supply, b.block_num) AS close,
+    argMinState(amount, b.block_num) AS open,
+    max(amount) AS high,
+    min(amount) AS low,
+    argMaxState(amount, b.block_num) AS close,
     count() AS transactions
-FROM supply AS b
+FROM total_supply AS b
 GROUP BY interval_min, contract, timestamp;

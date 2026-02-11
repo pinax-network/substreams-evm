@@ -1,7 +1,6 @@
 mod calls;
 mod utils;
-use proto::pb::evm::balance_changes::v1::{BalanceChange, BalanceChanges};
-use proto::pb::evm::balances::v1::{Balance, Events};
+use proto::pb::evm::balances::v1::{Balance, BalanceChange, BalanceChanges, Events};
 use std::collections::HashSet;
 use substreams::errors::Error;
 use substreams_ethereum::pb::eth::v2::Block;
@@ -86,10 +85,7 @@ pub fn map_balance_changes(block: Block) -> Result<BalanceChanges, Error> {
 
     let mut balance_changes = BalanceChanges::default();
     for address in accounts {
-        balance_changes.balance_changes.push(BalanceChange {
-            contract: None,
-            address,
-        });
+        balance_changes.balance_changes.push(BalanceChange { contract: None, address });
     }
     Ok(balance_changes)
 }
