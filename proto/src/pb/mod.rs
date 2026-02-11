@@ -65,13 +65,6 @@ pub mod evm {
             // @@protoc_insertion_point(evm.balances.v1)
         }
     }
-    pub mod supply {
-        // @@protoc_insertion_point(attribute:evm.supply.v1)
-        pub mod v1 {
-            include!("evm.supply.v1.rs");
-            // @@protoc_insertion_point(evm.supply.v1)
-        }
-    }
 }
 pub mod native {
     pub mod transfers {
