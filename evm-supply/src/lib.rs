@@ -12,16 +12,16 @@ fn map_events(params: String, balance_changes: balance_changes_pb::BalanceChange
     let chunk_size = params.parse::<usize>().expect("Failed to parse chunk_size");
 
     // Collect unique contracts from balance changes
-    let contracts: Vec<&common::Address> = balance_changes
+    let contracts: HashSet<&common::Address> = balance_changes
         .balance_changes
         .iter()
         .filter_map(|bc| bc.contract.as_ref())
-        .collect::<HashSet<&common::Address>>()
-        .into_iter()
         .collect();
 
+    let contracts_vec: Vec<&common::Address> = contracts.iter().copied().collect();
+
     // Fetch RPC calls for Total Supply
-    let supplies = batch_total_supply(&contracts, chunk_size);
+    let supplies = batch_total_supply(&contracts_vec, chunk_size);
 
     for contract in &contracts {
         if let Some(supply) = supplies.get(contract) {
