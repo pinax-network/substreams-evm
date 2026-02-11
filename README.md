@@ -18,7 +18,7 @@ Token-specific events for popular ERC-20 tokens:
 - [x] **USDT**: `Issue`, `Redeem`, `Deprecate`, `Params`, `DestroyedBlackFunds`, and more
 - [x] **WBTC**: `Mint`, `Burn`, `MintFinished`, `OwnershipRenounced`
 - [x] **SAI**: `Mint`, `Burn`, `LogSetAuthority`, `LogSetOwner`
-- [x] **stETH**: Comprehensive Lido staking events (see `steth` module)
+- [x] **stETH**: Comprehensive Lido staking events (see `/steth` module)
 
 #### Native Transfers (`native-transfers`)
 - [x] Block Rewards
@@ -110,7 +110,7 @@ This metadata is **only available on chains with DetailLevel: EXTENDED**, includ
 - ArbitrumOne
 - Optimism
 - Avalanche
-- Tron EVM
+- TRON
 
 Call metadata enables advanced analysis such as:
 - Identifying direct vs. delegated calls
