@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package evm.supply.v1;
+
+message Events { repeated Supply supplies = 1; }
+
+message Supply {
+  bytes contract = 1;
+  string supply = 2; // totalSupply()
+}

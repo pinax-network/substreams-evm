@@ -51,11 +51,25 @@ pub mod erc20 {
     }
 }
 pub mod evm {
+    pub mod balance_changes {
+        // @@protoc_insertion_point(attribute:evm.balance_changes.v1)
+        pub mod v1 {
+            include!("evm.balance_changes.v1.rs");
+            // @@protoc_insertion_point(evm.balance_changes.v1)
+        }
+    }
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
         pub mod v1 {
             include!("evm.balances.v1.rs");
             // @@protoc_insertion_point(evm.balances.v1)
+        }
+    }
+    pub mod supply {
+        // @@protoc_insertion_point(attribute:evm.supply.v1)
+        pub mod v1 {
+            include!("evm.supply.v1.rs");
+            // @@protoc_insertion_point(evm.supply.v1)
         }
     }
 }

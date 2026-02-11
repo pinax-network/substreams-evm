@@ -24,7 +24,7 @@ pub fn is_gas_balance_change(balance_change: &BalanceChange) -> bool {
     false
 }
 
-pub fn get_balances(balance_change: &BalanceChange) -> (BigInt, BigInt) {
+pub fn _get_balances(balance_change: &BalanceChange) -> (BigInt, BigInt) {
     let old_balance = balance_change
         .old_value
         .as_ref()
