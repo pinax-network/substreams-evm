@@ -2,6 +2,7 @@
 members = [
   # DB (engine-agnostic)
   "db-evm-balances",
+  "db-evm-supply",
   "db-evm-transfers",
   "db-evm-dex",
 
@@ -13,6 +14,7 @@ members = [
   "native-transfers",
   "erc20-balances",
   "native-balances",
+  "evm-supply",
 
   # Tron DEX
   "dex/sunpump",
