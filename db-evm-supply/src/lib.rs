@@ -2,7 +2,7 @@ mod supply;
 
 use proto::pb::erc20::supply::v1 as pb;
 use substreams::{errors::Error, pb::substreams::Clock};
-use substreams_database_change::{pb::database::DatabaseChanges, tables::Row};
+use substreams_database_change::{pb::sf::substreams::sink::database::v1::DatabaseChanges, tables::Row};
 
 #[substreams::handlers::map]
 pub fn db_out(params: String, mut clock: Clock, supply_events: pb::Events) -> Result<DatabaseChanges, Error> {
@@ -15,8 +15,8 @@ pub fn db_out(params: String, mut clock: Clock, supply_events: pb::Events) -> Re
     supply::process_events(&encoding, &mut tables, &clock, &supply_events);
 
     // ONLY include blocks if events are present
-    if !tables.tables.is_empty() {
-        set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
+    if tables.all_row_count() > 0 {
+        set_clock(&clock, tables.upsert_row("blocks", [("block_num", clock.number.to_string())]));
     }
 
     substreams::log::info!("Total rows {}", tables.all_row_count());

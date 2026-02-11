@@ -9,7 +9,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     for supply in events.total_supplies.iter() {
         let contract = bytes_to_string(&supply.contract, encoding);
         let row = tables
-            .create_row("total_supply", &contract)
+            .upsert_row("total_supply", &contract)
             .set("contract", &contract)
             .set("amount", &supply.amount);
 

@@ -39,13 +39,3 @@ CREATE INDEX IF NOT EXISTS idx_total_supply_amount ON total_supply (amount);
 -- Sorted indexes for top/bottom supply per contract
 CREATE INDEX IF NOT EXISTS idx_total_supply_amount_desc ON total_supply (amount DESC) WHERE amount != 0;
 CREATE INDEX IF NOT EXISTS idx_total_supply_amount_asc ON total_supply (amount ASC) WHERE amount != 0;
-
--- Upsert rule for total_supply
-CREATE OR REPLACE RULE total_supply_upsert AS ON INSERT TO total_supply
-WHERE EXISTS (SELECT 1 FROM total_supply WHERE contract = NEW.contract)
-DO INSTEAD UPDATE total_supply SET
-    block_num = NEW.block_num,
-    block_hash = NEW.block_hash,
-    timestamp = NEW.timestamp,
-    amount = NEW.amount
-WHERE contract = NEW.contract;
