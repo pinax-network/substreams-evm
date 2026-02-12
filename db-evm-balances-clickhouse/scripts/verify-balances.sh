@@ -117,12 +117,15 @@ LATEST_BLOCK_DATA=$(eval "$CH_CMD --query \"$LATEST_BLOCK_QUERY\"" 2>/dev/null)
 LATEST_BLOCK_NUM=$(echo "$LATEST_BLOCK_DATA" | cut -f1)
 LATEST_BLOCK_TS=$(echo "$LATEST_BLOCK_DATA" | cut -f2)
 
+# Convert block number to hex for RPC calls (e.g., 12345 -> "0x3039")
+BLOCK_TAG=$(printf "0x%x" "$LATEST_BLOCK_NUM")
+
 # Fetch token metadata from RPC (decimals, symbol, name)
 rpc_call() {
     local data="$1"
     curl -s -X POST "$RPC_ENDPOINT" \
         -H "Content-Type: application/json" \
-        -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"latest\"],\"id\":1}" | jq -r '.result // empty'
+        -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"$BLOCK_TAG\"],\"id\":1}" | jq -r '.result // empty'
 }
 
 # decimals() = 0x313ce567
@@ -178,6 +181,7 @@ echo "ClickHouse Server"
 echo "  Host: $CH_HOST"
 echo "  Database: $CH_DATABASE"
 echo "  Latest Block: #${LATEST_BLOCK_NUM} (${LATEST_BLOCK_TS})"
+echo "  Block Tag: ${BLOCK_TAG}"
 echo ""
 echo "Token Metadata"
 echo "  Contract: $CONTRACT"
@@ -221,7 +225,7 @@ get_rpc_balance() {
     
     local response=$(curl -s -X POST "$RPC_ENDPOINT" \
         -H "Content-Type: application/json" \
-        -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"latest\"],\"id\":1}")
+        -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_call\",\"params\":[{\"to\":\"$CONTRACT\",\"data\":\"$data\"},\"$BLOCK_TAG\"],\"id\":1}")
     
     local result=$(echo "$response" | jq -r '.result // empty')
     
@@ -350,7 +354,6 @@ if [[ $MISMATCH_COUNT -gt 0 ]]; then
     echo -e "${YELLOW}Note: Mismatches may occur due to:${NC}"
     echo "  - ClickHouse data not being fully synced to the latest block"
     echo "  - Recent transactions that haven't been indexed yet"
-    echo "  - Different block heights between ClickHouse snapshot and RPC 'latest'"
     exit 1
 fi
 
