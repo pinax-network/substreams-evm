@@ -24,6 +24,10 @@ gui: build
 prod: build
 	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode  -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"
 
+.PHONY: gui-tron
+gui-tron: build
+	substreams gui -e tronevm.substreams.pinax.network:443 substreams.yaml map_events -s 8069484 --limit-processed-blocks 0 -H "X-substreams-acknowledge-non-deterministic: true"
+
 .PHONY: flash
 flash: build
 	substreams run -e https://base-mainnet-flash.streamingfast.io substreams.yaml map_events -s -1 --partial-blocks-only
