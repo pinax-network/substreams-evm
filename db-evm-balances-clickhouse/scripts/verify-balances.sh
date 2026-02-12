@@ -113,7 +113,22 @@ fi
 
 # Get latest block timestamp from ClickHouse
 LATEST_BLOCK_QUERY="SELECT max(block_num), max(timestamp) FROM blocks FORMAT TabSeparated"
-LATEST_BLOCK_DATA=$(eval "$CH_CMD --query \"$LATEST_BLOCK_QUERY\"" 2>/dev/null)
+if ! LATEST_BLOCK_DATA=$(eval "$CH_CMD --query \"$LATEST_BLOCK_QUERY\"" 2>&1); then
+    echo -e "${RED}Error: Failed to connect to ClickHouse or query failed:${NC}"
+    echo "  $LATEST_BLOCK_DATA"
+    echo ""
+    echo "  Host: $CH_HOST"
+    echo "  Port: $CH_PORT"
+    echo "  Database: $CH_DATABASE"
+    echo "  User: $CH_USER"
+    exit 1
+fi
+
+if [[ -z "$LATEST_BLOCK_DATA" ]]; then
+    echo -e "${RED}Error: ClickHouse returned empty result for latest block query.${NC}"
+    echo "  Make sure the 'blocks' table exists and has data in database '$CH_DATABASE'."
+    exit 1
+fi
 LATEST_BLOCK_NUM=$(echo "$LATEST_BLOCK_DATA" | cut -f1)
 LATEST_BLOCK_TS=$(echo "$LATEST_BLOCK_DATA" | cut -f2)
 
@@ -129,7 +144,7 @@ rpc_call() {
 }
 
 # decimals() = 0x313ce567
-DECIMALS_HEX=$(rpc_call "0x313ce567")
+DECIMALS_HEX=$(rpc_call "0x313ce567") || true
 if [[ -n "$DECIMALS_HEX" && "$DECIMALS_HEX" != "null" ]]; then
     DECIMALS=$(python3 -c "print(int('${DECIMALS_HEX}', 16))")
 else
@@ -137,7 +152,7 @@ else
 fi
 
 # symbol() = 0x95d89b41
-SYMBOL_HEX=$(rpc_call "0x95d89b41")
+SYMBOL_HEX=$(rpc_call "0x95d89b41") || true
 if [[ -n "$SYMBOL_HEX" && "$SYMBOL_HEX" != "null" && ${#SYMBOL_HEX} -gt 2 ]]; then
     TOKEN_SYMBOL=$(python3 -c "
 import codecs
@@ -155,7 +170,7 @@ else
 fi
 
 # name() = 0x06fdde03
-NAME_HEX=$(rpc_call "0x06fdde03")
+NAME_HEX=$(rpc_call "0x06fdde03") || true
 if [[ -n "$NAME_HEX" && "$NAME_HEX" != "null" && ${#NAME_HEX} -gt 2 ]]; then
     TOKEN_NAME=$(python3 -c "
 import codecs
@@ -330,6 +345,12 @@ echo ""
 echo "=============================================="
 echo "Summary"
 echo "=============================================="
+echo "Token: $TOKEN_NAME ($TOKEN_SYMBOL)"
+echo "Contract: $CONTRACT"
+echo "Decimals: $DECIMALS"
+echo "Block: #${LATEST_BLOCK_NUM} (${LATEST_BLOCK_TS})"
+echo "RPC Endpoint: $RPC_ENDPOINT"
+echo ""
 echo "Total checked: $TOTAL_COUNT"
 echo -e "Matches: ${GREEN}$MATCH_COUNT${NC}"
 echo -e "Mismatches: ${RED}$MISMATCH_COUNT${NC}"
