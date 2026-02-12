@@ -243,13 +243,13 @@ message UsdcAuthorizationUsed {
 // event Issue(uint256 amount)
 message UsdtIssue {
   string amount = 1; // uint256
-  bytes owner = 2;   // RPC owner()
+  bytes owner = 2;   // call.caller (not in event log)
 }
 
 // event Redeem(uint256 amount)
 message UsdtRedeem {
   string amount = 1; // uint256
-  bytes owner = 2;   // RPC owner()
+  bytes owner = 2;   // call.caller (not in event log)
 }
 
 // event Deprecate(address newAddress)

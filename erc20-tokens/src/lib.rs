@@ -5,7 +5,6 @@ use substreams_abis::evm::tokens::steth::events as steth_events;
 use substreams_abis::evm::tokens::usdc::fiattoken_v2_2::events as usdc_events;
 use substreams_abis::evm::tokens::usdt::swap_asset::events as usdt_swap_events;
 use substreams_abis::evm::tokens::usdt::tethertoken_v0_4_18::events as usdt_events;
-use substreams_abis::evm::tokens::usdt::tethertoken_v0_4_18::functions as usdt_functions;
 use substreams_abis::evm::tokens::usdt::tethertoken_v0_8_4::events as usdt_v084_events;
 use substreams_abis::evm::tokens::wbtc::events as wbtc_events;
 use substreams_abis::evm::tokens::weth::events as weth_events;
@@ -278,27 +277,27 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // USDT Events
             // ============================================
 
-            // Issue
-            if let Some(event) = usdt_events::Issue::match_and_decode(log) {
-                if let Some(owner) = (usdt_functions::Owner {}).call(log.address.to_vec()) {
+            // Issue (requires call metadata for owner)
+            if let Some(call) = call {
+                if let Some(event) = usdt_events::Issue::match_and_decode(log) {
                     total_usdt_issues += 1;
                     let event = pb::log::Log::UsdtIssue(pb::UsdtIssue {
                         amount: event.amount.to_string(),
-                        owner,
+                        owner: call.caller.to_vec(),
                     });
-                    transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
                 }
             }
 
-            // Redeem
-            if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
-                if let Some(owner) = (usdt_functions::Owner {}).call(log.address.to_vec()) {
+            // Redeem (requires call metadata for owner)
+            if let Some(call) = call {
+                if let Some(event) = usdt_events::Redeem::match_and_decode(log) {
                     total_usdt_redeems += 1;
                     let event = pb::log::Log::UsdtRedeem(pb::UsdtRedeem {
                         amount: event.amount.to_string(),
-                        owner,
+                        owner: call.caller.to_vec(),
                     });
-                    transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
+                    transaction.logs.push(pb::Log::create_log_with_call(log, event, Some(call)));
                 }
             }
 
