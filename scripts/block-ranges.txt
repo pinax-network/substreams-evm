@@ -1,0 +1,67 @@
+# Block Ranges for Pricing Benchmarks
+#
+# For each chain, we use: start = latest_block - 10500, end = start + 10000
+# This gives a 10K block window near the chain tip.
+#
+# To re-run, update "latest" from a block explorer or RPC and recompute start/end.
+#
+# Usage (100 blocks for testing):
+#   substreams run -e <endpoint> <spkg> db_out -s <start> -t <start+100> --production-mode
+#
+# Usage (10K blocks for full benchmark):
+#   substreams run -e <endpoint> <spkg> db_out -s <start> -t <end> --production-mode
+#
+# spkg: https://github.com/pinax-network/substreams-evm/releases/download/clickhouse-evm-dex-v0.2.6/clickhouse-evm-dex-v0.2.6.spkg
+
+# ── Verified Chains ──────────────────────────────────────────────────────────
+
+# ETH Mainnet  (12s blocks)
+# endpoint: eth.substreams.pinax.network:443
+# latest: ~21800000 (Feb 2026)
+# start: 21789500  end: 21799500
+
+# BSC  (0.45s blocks)
+# endpoint: bsc.substreams.pinax.network:443
+# latest: 81082527 (Feb 2026)
+# start: 81072027  end: 81082027
+
+# Base  (2s blocks)
+# endpoint: base.substreams.pinax.network:443
+# latest: ~42110000 (Feb 2026)
+# start: 42099500  end: 42109500
+
+# Unichain  (1s blocks)
+# endpoint: unichain.substreams.pinax.network:443
+# latest: ~10000000 (Feb 2026)
+# start: 9989500   end: 9999500
+
+# HyperCore  (0.2s blocks)
+# endpoint: hypercore.substreams.pinax.network:443
+# latest: TBD
+# start: TBD       end: TBD
+
+# ── Unverified Chains (need benchmarking) ────────────────────────────────────
+
+# Polygon  (2s blocks)
+# endpoint: polygon.substreams.pinax.network:443
+# latest: 82956405 (Feb 13 2026)
+# start: 82945905  end: 82955905
+# test:  82945905  end: 82946005 (100 blocks)
+
+# Arbitrum One  (0.25s blocks)
+# endpoint: arbone.substreams.pinax.network:443
+# latest: 431848080 (Feb 13 2026)
+# start: 431837580  end: 431847580
+# test:  431837580  end: 431837680 (100 blocks)
+
+# Optimism  (2s blocks)
+# endpoint: optimism.substreams.pinax.network:443
+# latest: 147717028 (Feb 13 2026)
+# start: 147706528  end: 147716528
+# test:  147706528  end: 147706628 (100 blocks)
+
+# Avalanche C-Chain  (2s blocks)
+# endpoint: avalanche.substreams.pinax.network:443
+# latest: 78014351 (Feb 13 2026)
+# start: 78003851  end: 78013851
+# test:  78003851  end: 78003951 (100 blocks)

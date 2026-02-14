@@ -7,16 +7,17 @@ Calculate monthly costs based on processed bytes and blocks.
 
 # ─── Chain Profiles ───────────────────────────────────────────────────────────
 # Each profile: (bytes_per_10k_blocks_gb, blocks_per_month)
+# Measured via `substreams run` with clickhouse-evm-dex-v0.2.6.spkg (1000 block samples, Feb 2026)
 CHAINS = {
-    "eth-mainnet":  {"bytes_per_10k": 1.1,  "blocks_per_month": 216_000},
-    "bsc":          {"bytes_per_10k": 0.284, "blocks_per_month": 5_760_000},
-    "polygon":      {"bytes_per_10k": 2.5,   "blocks_per_month": 1_296_000},
-    "arbitrum":     {"bytes_per_10k": 0.8,   "blocks_per_month": 6_480_000},
-    "optimism":     {"bytes_per_10k": 0.4,   "blocks_per_month": 1_296_000},
-    "base":         {"bytes_per_10k": 1.9,   "blocks_per_month": 1_296_000},
-    "avalanche":    {"bytes_per_10k": 1.0,   "blocks_per_month": 1_296_000},
-    "unichain":     {"bytes_per_10k": 0.040, "blocks_per_month": 2_592_000},
-    "hypercore":    {"bytes_per_10k": 0.028, "blocks_per_month": 12_960_000},
+    "eth-mainnet":  {"bytes_per_10k": 0.960, "blocks_per_month": 216_000},     # 12s blocks
+    "bsc":          {"bytes_per_10k": 0.285, "blocks_per_month": 5_760_000},    # 0.45s blocks
+    "base":         {"bytes_per_10k": 1.530, "blocks_per_month": 1_296_000},    # 2s blocks
+    "polygon":      {"bytes_per_10k": 0.237, "blocks_per_month": 1_296_000},    # 2s blocks
+    "arbitrum":     {"bytes_per_10k": 0.051, "blocks_per_month": 10_368_000},   # 0.25s blocks
+    "optimism":     {"bytes_per_10k": 0.067, "blocks_per_month": 1_296_000},    # 2s blocks
+    "avalanche":    {"bytes_per_10k": 0.051, "blocks_per_month": 1_296_000},    # 2s blocks
+    "unichain":     {"bytes_per_10k": 0.033, "blocks_per_month": 2_592_000},    # 1s blocks
+    "hypercore":    {"bytes_per_10k": 0.028, "blocks_per_month": 12_960_000},   # 0.2s blocks (untested - different block type)
 }
 
 # ─── Pricing ──────────────────────────────────────────────────────────────────
