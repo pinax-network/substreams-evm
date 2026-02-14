@@ -85,7 +85,9 @@ pub fn map_balance_changes(block: Block) -> Result<BalanceChanges, Error> {
 
     let mut balance_changes = BalanceChanges::default();
     for address in accounts {
-        balance_changes.balance_changes.push(BalanceChange { contract: None, address });
+        if common::is_valid_evm_address(&address) {
+            balance_changes.balance_changes.push(BalanceChange { contract: None, address });
+        }
     }
     Ok(balance_changes)
 }
