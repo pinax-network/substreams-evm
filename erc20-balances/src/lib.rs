@@ -178,6 +178,10 @@ fn map_balance_changes(transfers: transfers_pb::Events, tokens: tokens_pb::Event
 
     let mut balance_changes = balances_pb::BalanceChanges::default();
     for (contract, address) in contracts_by_address {
+        // skip empty contract or address
+        if contract.is_empty() || address.is_empty() {
+            continue;
+        }
         if common::is_valid_evm_address(contract) && common::is_valid_evm_address(address) {
             balance_changes.balance_changes.push(balances_pb::BalanceChange {
                 contract: Some(contract.to_vec()),

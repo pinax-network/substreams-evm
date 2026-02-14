@@ -21,7 +21,7 @@ gui: build
 
 .PHONY: gui-tron
 gui-tron: build
-	substreams gui -e tronevm.substreams.pinax.network:443 substreams.yaml map_events -s 79000000 --limit-processed-blocks 0 -H "X-substreams-acknowledge-non-deterministic: true"
+	substreams gui -e tronevm-substreams-tier1-nondet.kan-sst2.pinax.io:80 substreams.yaml map_events -s 8069484 --limit-processed-blocks 0 -H "X-substreams-acknowledge-non-deterministic: true" --plaintext
 
 .PHONY: prod
 prod: build
