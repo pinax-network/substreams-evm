@@ -142,3 +142,9 @@ pub fn bigint_to_i32(bigint: &substreams::scalar::BigInt) -> Option<i32> {
     }
     Some(bigint.to_i32())
 }
+
+/// Validates if an address is a valid EVM address.
+/// Returns true if the address is exactly 20 bytes and not the null address.
+pub fn is_valid_evm_address(address: &[u8]) -> bool {
+    address.len() == 20 && address != NULL_ADDRESS
+}
