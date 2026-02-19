@@ -107,6 +107,21 @@ macro_rules! impl_create_log_with_call_metadata {
     };
 }
 
+mod aerodrome_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::aerodrome::v1);
+}
+
+mod dodo_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::dodo::v1);
+}
+
+mod woofi_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::woofi::v1);
+}
+
 mod uniswap_v1_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::uniswap::v1);

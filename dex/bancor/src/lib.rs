@@ -1,11 +1,11 @@
 use common::bigint_to_u64;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::bancor::v1 as pb;
-use substreams_abis::evm::bancor::bancorconverterfactory;
-use substreams_abis::evm::bancor::contractfeatures;
-use substreams_abis::evm::bancor::converterfactory;
-use substreams_abis::evm::bancor::converterregistry;
-use substreams_abis::evm::bancor::standardpoolconverter as bancor;
+use substreams_abis::dex::bancor::bancorconverterfactory;
+use substreams_abis::dex::bancor::contractfeatures;
+use substreams_abis::dex::bancor::converterfactory;
+use substreams_abis::dex::bancor::converterregistry;
+use substreams_abis::dex::bancor::standardpoolconverter as bancor;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 

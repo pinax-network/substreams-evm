@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: dodo
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: DODO V2 for EVM
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/dodo.wasm
+
+protobuf:
+  files:
+    - dodo.proto
+  importPaths:
+    - ../../proto/v1/dex
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:dodo.v1.Events
+
+network: mainnet

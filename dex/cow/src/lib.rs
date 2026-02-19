@@ -1,6 +1,6 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::cow::v1 as pb;
-use substreams_abis::evm::cow::gpv2settlement as cow;
+use substreams_abis::dex::cow::gpv2settlement as cow;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 

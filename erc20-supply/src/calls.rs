@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use common::Address;
 use substreams::{log, scalar::BigInt, Hex};
-use substreams_abis::evm::token::erc20;
+use substreams_abis::standard::erc20;
 use substreams_ethereum::rpc::RpcBatch;
 
 /// Batch fetch totalSupply() for a list of contracts.

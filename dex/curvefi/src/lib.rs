@@ -1,7 +1,7 @@
 mod store;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
-use substreams_abis::evm::curvefi;
+use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 

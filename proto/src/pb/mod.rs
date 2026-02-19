@@ -1,4 +1,11 @@
 // @generated
+pub mod aerodrome {
+    // @@protoc_insertion_point(attribute:aerodrome.v1)
+    pub mod v1 {
+        include!("aerodrome.v1.rs");
+        // @@protoc_insertion_point(aerodrome.v1)
+    }
+}
 pub mod balancer {
     // @@protoc_insertion_point(attribute:balancer.v1)
     pub mod v1 {
@@ -18,6 +25,13 @@ pub mod cow {
     pub mod v1 {
         include!("cow.v1.rs");
         // @@protoc_insertion_point(cow.v1)
+    }
+}
+pub mod dodo {
+    // @@protoc_insertion_point(attribute:dodo.v1)
+    pub mod v1 {
+        include!("dodo.v1.rs");
+        // @@protoc_insertion_point(dodo.v1)
     }
 }
 pub mod curvefi {
@@ -94,6 +108,13 @@ pub mod sunpump {
     pub mod v1 {
         include!("sunpump.v1.rs");
         // @@protoc_insertion_point(sunpump.v1)
+    }
+}
+pub mod woofi {
+    // @@protoc_insertion_point(attribute:woofi.v1)
+    pub mod v1 {
+        include!("woofi.v1.rs");
+        // @@protoc_insertion_point(woofi.v1)
     }
 }
 pub mod uniswap {

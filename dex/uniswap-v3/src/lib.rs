@@ -2,7 +2,7 @@ mod store;
 use common::create::{CreateLog, CreateTransaction};
 use common::{bigint_to_i32, bigint_to_u64};
 use proto::pb::uniswap::v3 as pb;
-use substreams_abis::evm::uniswap::v3 as uniswap;
+use substreams_abis::dex::uniswap::v3 as uniswap;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
