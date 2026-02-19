@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: woofi
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: WOOFi for EVM
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/woofi.wasm
+
+protobuf:
+  files:
+    - woofi.proto
+  importPaths:
+    - ../../proto/v1/dex
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:woofi.v1.Events
+
+network: mainnet

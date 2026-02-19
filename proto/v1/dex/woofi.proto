@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package woofi.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// WOOFi WooPPV2 events
+// https://github.com/nicholaspai/woofi_swap_smart_contract
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  oneof log {
+    WooSwap woo_swap = 10;
+  }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;
+  uint32 index = 2;
+  uint32 depth = 3;
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+message WooSwap {
+  bytes from_token = 1;
+  bytes to_token = 2;
+  string from_amount = 3; // uint256
+  string to_amount = 4; // uint256
+  bytes from = 5; // address
+  bytes to = 6; // address
+  bytes rebate_to = 7; // address
+  string swap_vol = 8; // uint256
+  string swap_fee = 9; // uint256
+}

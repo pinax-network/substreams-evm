@@ -1,6 +1,6 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::balancer::v1 as pb;
-use substreams_abis::evm::balancer;
+use substreams_abis::dex::balancer;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 

@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package aerodrome.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// Aerodrome/Velodrome (Solidly fork) Pool and PoolFactory events
+// https://github.com/aerodrome-finance/contracts
+// https://github.com/velodrome-finance/contracts
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  oneof log {
+    // Pool events
+    Swap swap = 10;
+    Sync sync = 11;
+    Mint mint = 12;
+    Burn burn = 13;
+    Fees fees = 14;
+    Claim claim = 15;
+
+    // PoolFactory events
+    PoolCreated pool_created = 20;
+  }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;   // Address that made the call
+  uint32 index = 2;   // Index of the call within the transaction
+  uint32 depth = 3;   // Depth of the call in the call tree (0 = root)
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+// key = <bytes pool>
+message PoolCreated {
+  bytes token0 = 1;
+  bytes token1 = 2;
+  bool stable = 3;
+  bytes pool = 4; // address (STORE primary key)
+  string extra_data = 5; // param4
+}
+
+// StorePool - minimal pool storage type
+// Primary key: pool address
+message StorePool {
+  bytes currency0 = 1; // token0 address
+  bytes currency1 = 2; // token1 address
+  bytes factory = 3;   // factory address that created the pool
+  bool stable = 4;     // stable or volatile pool
+}
+
+message Swap {
+  bytes sender = 1;
+  bytes to = 2;
+  string amount0_in = 3;  // uint256
+  string amount1_in = 4;  // uint256
+  string amount0_out = 5; // uint256
+  string amount1_out = 6; // uint256
+}
+
+message Sync {
+  string reserve0 = 1; // uint256
+  string reserve1 = 2; // uint256
+}
+
+message Mint {
+  bytes sender = 1;
+  string amount0 = 2; // uint256
+  string amount1 = 3; // uint256
+}
+
+message Burn {
+  bytes sender = 1;
+  bytes to = 2;
+  string amount0 = 3; // uint256
+  string amount1 = 4; // uint256
+}
+
+message Fees {
+  bytes sender = 1;
+  string amount0 = 2; // uint256
+  string amount1 = 3; // uint256
+}
+
+message Claim {
+  bytes sender = 1;
+  bytes recipient = 2;
+  string amount0 = 3; // uint256
+  string amount1 = 4; // uint256
+}

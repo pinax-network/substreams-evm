@@ -1,6 +1,6 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc20::transfers::v1 as pb;
-use substreams_abis::evm::token::erc20::events;
+use substreams_abis::standard::erc20::events;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
