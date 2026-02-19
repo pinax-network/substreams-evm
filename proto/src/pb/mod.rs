@@ -110,6 +110,13 @@ pub mod sunpump {
         // @@protoc_insertion_point(sunpump.v1)
     }
 }
+pub mod traderjoe {
+    // @@protoc_insertion_point(attribute:traderjoe.v1)
+    pub mod v1 {
+        include!("traderjoe.v1.rs");
+        // @@protoc_insertion_point(traderjoe.v1)
+    }
+}
 pub mod woofi {
     // @@protoc_insertion_point(attribute:woofi.v1)
     pub mod v1 {

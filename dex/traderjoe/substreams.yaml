@@ -1,0 +1,35 @@
+specVersion: v0.1.0
+package:
+  name: traderjoe
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Trader Joe V2 (Liquidity Book) for EVM
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/traderjoe.wasm
+
+protobuf:
+  files:
+    - traderjoe.proto
+  importPaths:
+    - ../../proto/v1/dex
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:traderjoe.v1.Events
+
+  - name: store_pool
+    kind: store
+    updatePolicy: set
+    valueType: proto:traderjoe.v1.StorePool
+    inputs:
+      - map: map_events
+
+network: mainnet
