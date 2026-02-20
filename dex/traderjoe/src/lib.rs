@@ -26,8 +26,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+            } else {
+                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+            };
+            for (log, call) in logs_with_calls {
 
             // Swap event (LBPair)
             if let Some(event) = traderjoe::lbpair::events::Swap::match_and_decode(log) {
@@ -50,7 +54,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     protocol_fees_x,
                     protocol_fees_y,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // DepositedToBins event (LBPair)
@@ -62,7 +66,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     ids: event.ids.iter().map(|id| id.to_u64()).collect(),
                     amounts: event.amounts.iter().map(|a| a.to_vec()).collect(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // WithdrawnFromBins event (LBPair)
@@ -74,7 +78,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     ids: event.ids.iter().map(|id| id.to_u64()).collect(),
                     amounts: event.amounts.iter().map(|a| a.to_vec()).collect(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // CompositionFees event (LBPair)
@@ -90,7 +94,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     protocol_fees_x,
                     protocol_fees_y,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // LbPairCreated event (LBFactory)
@@ -103,7 +107,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     lb_pair: event.lb_pair.to_vec(),
                     pid: event.pid.to_u64() as u32,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 
