@@ -5,12 +5,12 @@ package:
   url: https://github.com/pinax-network/substreams-evm
   doc: ERC-20 Events
   description: ERC-20 Transfers Events
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1+wasm-bindgen-shims
-    file: ../target/wasm32-unknown-unknown/release/erc20_transfers.wasm
+    file: ../../target/wasm32-unknown-unknown/release/erc20_transfers.wasm
 
 protobuf:
   files:

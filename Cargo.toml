@@ -10,11 +10,11 @@ members = [
   "blocks/clickhouse",
 
   # Tokens
-  "erc20-transfers",
-  "native-transfers",
-  "erc20-balances",
-  "native-balances",
-  "erc20-supply",
+  "erc20/transfers",
+  "native/transfers",
+  "erc20/balances",
+  "native/balances",
+  "erc20/supply",
 
   # Tron DEX
   "dex/sunpump",
@@ -41,7 +41,7 @@ members = [
   "erc1155",
 
   # Protocol-specific
-  "erc20-tokens",
+  "erc20/tokens",
 
   # Common
   "proto",

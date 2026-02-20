@@ -4,12 +4,12 @@ package:
   version: v0.2.0
   url: https://github.com/pinax-network/substreams-evm-tokens
   description: Native Transfers
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/native_transfers.wasm
+    file: ../../target/wasm32-unknown-unknown/release/native_transfers.wasm
 
 protobuf:
   files:

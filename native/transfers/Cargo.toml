@@ -11,5 +11,5 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
-common = { path = "../common" }
-proto = { path = "../proto" }
+common = { path = "../../common" }
+proto = { path = "../../proto" }

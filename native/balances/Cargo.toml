@@ -1,8 +1,9 @@
 [package]
-name = "erc20-supply"
-description = "ERC-20 Token Supply"
+name = "native-balances"
+description = "EVM Native Balances"
 edition = { workspace = true }
 version = { workspace = true }
+authors = ["Denis <denis@pinax.network>"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -10,6 +11,5 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
-substreams-abis = { workspace = true }
-proto = { path = "../proto" }
-common = { path = "../common" }
+proto = { path = "../../proto" }
+common = { path = "../../common" }

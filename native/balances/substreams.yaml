@@ -1,33 +1,25 @@
 specVersion: v0.1.0
 package:
-  name: erc20_balances
+  name: evm_native_balances
   version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm-tokens
-  description: ERC-20 Balances
-  image: ../image.png
+  description: Extracts Native balances for EVM blockchains.
+  image: ../../image.png
 
 imports:
-  # erc20_transfers: ../erc20-transfers/substreams.yaml
-  erc20_transfers: ../spkg/erc20-transfers-v0.3.3.spkg
-  erc20_tokens: ../spkg/erc20-tokens-v0.3.3.spkg
-
-protobuf:
-  files:
-    - balances.proto
-  importPaths:
-    - ../proto/v1
+  # ERC-20
+  erc20_balances: ../erc20-balances/substreams.yaml
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/erc20_balances.wasm
+    file: ../../target/wasm32-unknown-unknown/release/native_balances.wasm
 
 modules:
   - name: map_balance_changes
     kind: map
     inputs:
-      - map: erc20_transfers:map_events
-      - map: erc20_tokens:map_events
+      - source: sf.ethereum.type.v2.Block
     output:
       type: proto:evm.balances.v1.BalanceChanges
 
@@ -35,6 +27,7 @@ modules:
     kind: map
     inputs:
       - params: string
+      - source: sf.ethereum.type.v2.Block
       - map: map_balance_changes
     output:
       type: proto:evm.balances.v1.Events
