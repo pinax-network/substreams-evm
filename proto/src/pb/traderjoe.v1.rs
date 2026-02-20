@@ -112,6 +112,8 @@ pub struct LbPairCreated {
     #[prost(uint32, tag="5")]
     pub pid: u32,
 }
+/// bytes32 packed amounts decoded into separate x/y uint128 values
+/// Upper 128 bits = tokenX, Lower 128 bits = tokenY
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Swap {
@@ -122,20 +124,32 @@ pub struct Swap {
     /// active bin id
     #[prost(uint32, tag="3")]
     pub id: u32,
-    /// bytes32 (packed uint128 x, y)
-    #[prost(bytes="vec", tag="4")]
-    pub amounts_in: ::prost::alloc::vec::Vec<u8>,
-    /// bytes32 (packed uint128 x, y)
-    #[prost(bytes="vec", tag="5")]
-    pub amounts_out: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint32, tag="6")]
+    /// uint128 (upper 128 bits of amountsIn)
+    #[prost(string, tag="4")]
+    pub amount_in_x: ::prost::alloc::string::String,
+    /// uint128 (lower 128 bits of amountsIn)
+    #[prost(string, tag="5")]
+    pub amount_in_y: ::prost::alloc::string::String,
+    /// uint128 (upper 128 bits of amountsOut)
+    #[prost(string, tag="6")]
+    pub amount_out_x: ::prost::alloc::string::String,
+    /// uint128 (lower 128 bits of amountsOut)
+    #[prost(string, tag="7")]
+    pub amount_out_y: ::prost::alloc::string::String,
+    #[prost(uint32, tag="8")]
     pub volatility_accumulator: u32,
-    /// bytes32
-    #[prost(bytes="vec", tag="7")]
-    pub total_fees: ::prost::alloc::vec::Vec<u8>,
-    /// bytes32
-    #[prost(bytes="vec", tag="8")]
-    pub protocol_fees: ::prost::alloc::vec::Vec<u8>,
+    /// uint128 (upper 128 bits of totalFees)
+    #[prost(string, tag="9")]
+    pub total_fees_x: ::prost::alloc::string::String,
+    /// uint128 (lower 128 bits of totalFees)
+    #[prost(string, tag="10")]
+    pub total_fees_y: ::prost::alloc::string::String,
+    /// uint128 (upper 128 bits of protocolFees)
+    #[prost(string, tag="11")]
+    pub protocol_fees_x: ::prost::alloc::string::String,
+    /// uint128 (lower 128 bits of protocolFees)
+    #[prost(string, tag="12")]
+    pub protocol_fees_y: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -146,7 +160,7 @@ pub struct DepositedToBins {
     pub to: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, repeated, tag="3")]
     pub ids: ::prost::alloc::vec::Vec<u64>,
-    /// bytes32\[\]
+    /// bytes32\[\] (each packed uint128 x | uint128 y)
     #[prost(bytes="vec", repeated, tag="4")]
     pub amounts: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
@@ -159,7 +173,7 @@ pub struct WithdrawnFromBins {
     pub to: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, repeated, tag="3")]
     pub ids: ::prost::alloc::vec::Vec<u64>,
-    /// bytes32\[\]
+    /// bytes32\[\] (each packed uint128 x | uint128 y)
     #[prost(bytes="vec", repeated, tag="4")]
     pub amounts: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
@@ -170,12 +184,18 @@ pub struct CompositionFees {
     pub sender: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint32, tag="2")]
     pub id: u32,
-    /// bytes32
-    #[prost(bytes="vec", tag="3")]
-    pub total_fees: ::prost::alloc::vec::Vec<u8>,
-    /// bytes32
-    #[prost(bytes="vec", tag="4")]
-    pub protocol_fees: ::prost::alloc::vec::Vec<u8>,
+    /// uint128
+    #[prost(string, tag="3")]
+    pub total_fees_x: ::prost::alloc::string::String,
+    /// uint128
+    #[prost(string, tag="4")]
+    pub total_fees_y: ::prost::alloc::string::String,
+    /// uint128
+    #[prost(string, tag="5")]
+    pub protocol_fees_x: ::prost::alloc::string::String,
+    /// uint128
+    #[prost(string, tag="6")]
+    pub protocol_fees_y: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
