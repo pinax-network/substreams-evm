@@ -17,8 +17,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+            } else {
+                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+            };
+            for (log, call) in logs_with_calls {
 
             // Swap event
             if let Some(event) = uniswap::pair::events::Swap::match_and_decode(log) {
@@ -31,7 +35,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1_out: event.amount1_out.to_string(),
                     to: event.to.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Mint event
@@ -42,7 +46,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount0: event.amount0.to_string(),
                     amount1: event.amount1.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Burn event
@@ -54,7 +58,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     amount1: event.amount1.to_string(),
                     to: event.to.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Sync event
@@ -64,7 +68,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     reserve0: event.reserve0.to_string(),
                     reserve1: event.reserve1.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // PairCreated event
@@ -76,7 +80,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     pair: event.pair.to_vec(),
                     extra_data: event.extra_data.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 

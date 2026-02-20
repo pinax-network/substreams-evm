@@ -26,8 +26,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+            } else {
+                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+            };
+            for (log, call) in logs_with_calls {
 
             // TokenCreate event
             if let Some(event) = events::TokenCreate::match_and_decode(log) {
@@ -37,7 +41,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_index: event.token_index.to_string(),
                     creator: event.creator.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Legacy - TokenCreate event
@@ -51,14 +55,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     name: event.name,
                     symbol: event.symbol,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // LaunchPending event
             if let Some(event) = events::LaunchPending::match_and_decode(log) {
                 total_launch_pending += 1;
                 let event = pb::log::Log::LaunchPending(pb::LaunchPending { token: event.token.to_vec() });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // LauncherChanged event
@@ -68,7 +72,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_launcher: event.old_launcher.to_vec(),
                     new_launcher: event.new_launcher.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // MinTxFeeSet event
@@ -78,7 +82,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // MintFeeSet event
@@ -88,7 +92,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // OperatorChanged event
@@ -98,7 +102,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_operator: event.old_operator.to_vec(),
                     new_operator: event.new_operator.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // OwnerChanged event
@@ -108,7 +112,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_owner: event.old_owner.to_vec(),
                     new_owner: event.new_owner.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // PendingOwnerSet event
@@ -118,7 +122,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_pending_owner: event.old_pending_owner.to_vec(),
                     new_pending_owner: event.new_pending_owner.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // PurchaseFeeSet event
@@ -128,7 +132,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // SaleFeeSet event
@@ -138,14 +142,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     old_fee: event.old_fee.to_string(),
                     new_fee: event.new_fee.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // TokenLaunched event
             if let Some(event) = events::TokenLaunched::match_and_decode(log) {
                 total_token_launched += 1;
                 let event = pb::log::Log::TokenLaunched(pb::TokenLaunched { token: event.token.to_vec() });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // TokenPurchased event
@@ -159,7 +163,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token_amount: event.token_amount.to_string(),
                     token_reserve: event.token_reserve.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // TokenSold event
@@ -172,7 +176,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee: event.fee.to_string(),
                     token_amount: event.token_amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 

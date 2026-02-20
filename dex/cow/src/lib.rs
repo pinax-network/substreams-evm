@@ -16,8 +16,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+            } else {
+                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+            };
+            for (log, call) in logs_with_calls {
 
             // Interaction event
             if let Some(event) = cow::events::Interaction::match_and_decode(log) {
@@ -27,7 +31,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     value: event.value.to_string(),
                     selector: event.selector.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // OrderInvalidated event
@@ -37,7 +41,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     owner: event.owner.to_vec(),
                     order_uid: event.order_uid.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // PreSignature event
@@ -48,14 +52,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     order_uid: event.order_uid.to_vec(),
                     signed: event.signed,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Settlement event
             if let Some(event) = cow::events::Settlement::match_and_decode(log) {
                 total_settlements += 1;
                 let event = pb::log::Log::Settlement(pb::Settlement { solver: event.solver.to_vec() });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // Trade event
@@ -70,7 +74,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     fee_amount: event.fee_amount.to_string(),
                     order_uid: event.order_uid.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 

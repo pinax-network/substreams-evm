@@ -18,8 +18,12 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
 
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+            } else {
+                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+            };
+            for (log, call) in logs_with_calls {
 
             // TokenPurchase event
             if let Some(event) = uniswap::exchange::events::TokenPurchase::match_and_decode(log) {
@@ -29,7 +33,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     eth_sold: event.eth_sold.to_string(),
                     tokens_bought: event.tokens_bought.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // EthPurchase event
@@ -40,7 +44,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     tokens_sold: event.tokens_sold.to_string(),
                     eth_bought: event.eth_bought.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // (Justswap TVM) TrxPurchase event
@@ -51,7 +55,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     tokens_sold: event.tokens_sold.to_string(),
                     eth_bought: event.trx_bought.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // AddLiquidity event
@@ -62,7 +66,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     eth_amount: event.eth_amount.to_string(),
                     token_amount: event.token_amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // RemoveLiquidity event
@@ -73,7 +77,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     eth_amount: event.eth_amount.to_string(),
                     token_amount: event.token_amount.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // NewExchange event
@@ -83,7 +87,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     token: event.token.to_vec(),
                     exchange: event.exchange.to_vec(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 
