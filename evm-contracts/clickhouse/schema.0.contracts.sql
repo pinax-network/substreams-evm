@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS contracts (
     -- block --
     block_num               UInt32,
     block_hash              String,
-    block_date              Date,
+    block_date              Date MATERIALIZED toDate(timestamp),
     timestamp               DateTime(0, 'UTC'),
 
     -- transaction --
