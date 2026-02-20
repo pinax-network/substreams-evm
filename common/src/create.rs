@@ -117,6 +117,11 @@ mod dodo_impl {
     impl_create_log_with_call_metadata!(proto::pb::dodo::v1);
 }
 
+mod traderjoe_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::traderjoe::v1);
+}
+
 mod woofi_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::woofi::v1);

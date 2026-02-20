@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package traderjoe.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// Trader Joe V2 LBPair and LBFactory events
+// https://github.com/traderjoe-xyz/joe-v2
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  oneof log {
+    // LBPair events
+    Swap swap = 10;
+    DepositedToBins deposited_to_bins = 11;
+    WithdrawnFromBins withdrawn_from_bins = 12;
+    CompositionFees composition_fees = 13;
+
+    // LBFactory events
+    LbPairCreated lb_pair_created = 20;
+  }
+}
+
+// Call metadata (only available on chains with DetailLevel: EXTENDED)
+message Call {
+  bytes caller = 1;
+  uint32 index = 2;
+  uint32 depth = 3;
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+// StorePool - minimal pool storage type
+message StorePool {
+  bytes currency0 = 1; // tokenX address
+  bytes currency1 = 2; // tokenY address
+  bytes factory = 3;   // factory address
+  uint32 bin_step = 4;
+}
+
+// key = <bytes lb_pair>
+message LbPairCreated {
+  bytes token_x = 1;
+  bytes token_y = 2;
+  uint32 bin_step = 3;
+  bytes lb_pair = 4; // address (STORE primary key)
+  uint32 pid = 5;
+}
+
+message Swap {
+  bytes sender = 1;
+  bytes to = 2;
+  uint32 id = 3; // active bin id
+  bytes amounts_in = 4; // bytes32 (packed uint128 x, y)
+  bytes amounts_out = 5; // bytes32 (packed uint128 x, y)
+  uint32 volatility_accumulator = 6;
+  bytes total_fees = 7; // bytes32
+  bytes protocol_fees = 8; // bytes32
+}
+
+message DepositedToBins {
+  bytes sender = 1;
+  bytes to = 2;
+  repeated uint64 ids = 3;
+  repeated bytes amounts = 4; // bytes32[]
+}
+
+message WithdrawnFromBins {
+  bytes sender = 1;
+  bytes to = 2;
+  repeated uint64 ids = 3;
+  repeated bytes amounts = 4; // bytes32[]
+}
+
+message CompositionFees {
+  bytes sender = 1;
+  uint32 id = 2;
+  bytes total_fees = 3; // bytes32
+  bytes protocol_fees = 4; // bytes32
+}
