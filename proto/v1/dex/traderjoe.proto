@@ -73,34 +73,42 @@ message LbPairCreated {
   uint32 pid = 5;
 }
 
+// bytes32 packed amounts are decoded into separate x/y uint128 values
+// Upper 128 bits = tokenX, Lower 128 bits = tokenY
 message Swap {
   bytes sender = 1;
   bytes to = 2;
   uint32 id = 3; // active bin id
-  bytes amounts_in = 4; // bytes32 (packed uint128 x, y)
-  bytes amounts_out = 5; // bytes32 (packed uint128 x, y)
-  uint32 volatility_accumulator = 6;
-  bytes total_fees = 7; // bytes32
-  bytes protocol_fees = 8; // bytes32
+  string amount_in_x = 4; // uint128 (upper 128 bits of amountsIn)
+  string amount_in_y = 5; // uint128 (lower 128 bits of amountsIn)
+  string amount_out_x = 6; // uint128 (upper 128 bits of amountsOut)
+  string amount_out_y = 7; // uint128 (lower 128 bits of amountsOut)
+  uint32 volatility_accumulator = 8;
+  string total_fees_x = 9; // uint128 (upper 128 bits of totalFees)
+  string total_fees_y = 10; // uint128 (lower 128 bits of totalFees)
+  string protocol_fees_x = 11; // uint128 (upper 128 bits of protocolFees)
+  string protocol_fees_y = 12; // uint128 (lower 128 bits of protocolFees)
 }
 
 message DepositedToBins {
   bytes sender = 1;
   bytes to = 2;
   repeated uint64 ids = 3;
-  repeated bytes amounts = 4; // bytes32[]
+  repeated bytes amounts = 4; // bytes32[] (each packed uint128 x | uint128 y)
 }
 
 message WithdrawnFromBins {
   bytes sender = 1;
   bytes to = 2;
   repeated uint64 ids = 3;
-  repeated bytes amounts = 4; // bytes32[]
+  repeated bytes amounts = 4; // bytes32[] (each packed uint128 x | uint128 y)
 }
 
 message CompositionFees {
   bytes sender = 1;
   uint32 id = 2;
-  bytes total_fees = 3; // bytes32
-  bytes protocol_fees = 4; // bytes32
+  string total_fees_x = 3; // uint128
+  string total_fees_y = 4; // uint128
+  string protocol_fees_x = 5; // uint128
+  string protocol_fees_y = 6; // uint128
 }

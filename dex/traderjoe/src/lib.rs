@@ -1,9 +1,18 @@
 mod store;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::traderjoe::v1 as pb;
+use substreams::scalar::BigInt;
 use substreams_abis::dex::traderjoe;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
+
+/// Decode a packed bytes32 into two uint128 values (upper = x, lower = y).
+/// Trader Joe LB uses this encoding: `uint128(x) << 128 | uint128(y)`
+fn decode_packed_uint128(bytes: &[u8; 32]) -> (String, String) {
+    let x = BigInt::from_unsigned_bytes_be(&bytes[..16]);
+    let y = BigInt::from_unsigned_bytes_be(&bytes[16..]);
+    (x.to_string(), y.to_string())
+}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
@@ -23,15 +32,23 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // Swap event (LBPair)
             if let Some(event) = traderjoe::lbpair::events::Swap::match_and_decode(log) {
                 total_swaps += 1;
+                let (amount_in_x, amount_in_y) = decode_packed_uint128(&event.amounts_in);
+                let (amount_out_x, amount_out_y) = decode_packed_uint128(&event.amounts_out);
+                let (total_fees_x, total_fees_y) = decode_packed_uint128(&event.total_fees);
+                let (protocol_fees_x, protocol_fees_y) = decode_packed_uint128(&event.protocol_fees);
                 let event = pb::log::Log::Swap(pb::Swap {
                     sender: event.sender.to_vec(),
                     to: event.to.to_vec(),
                     id: event.id.to_u64() as u32,
-                    amounts_in: event.amounts_in.to_vec(),
-                    amounts_out: event.amounts_out.to_vec(),
+                    amount_in_x,
+                    amount_in_y,
+                    amount_out_x,
+                    amount_out_y,
                     volatility_accumulator: event.volatility_accumulator.to_u64() as u32,
-                    total_fees: event.total_fees.to_vec(),
-                    protocol_fees: event.protocol_fees.to_vec(),
+                    total_fees_x,
+                    total_fees_y,
+                    protocol_fees_x,
+                    protocol_fees_y,
                 });
                 transaction.logs.push(pb::Log::create_log(log, event));
             }
@@ -63,11 +80,15 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             // CompositionFees event (LBPair)
             if let Some(event) = traderjoe::lbpair::events::CompositionFees::match_and_decode(log) {
                 total_composition_fees += 1;
+                let (total_fees_x, total_fees_y) = decode_packed_uint128(&event.total_fees);
+                let (protocol_fees_x, protocol_fees_y) = decode_packed_uint128(&event.protocol_fees);
                 let event = pb::log::Log::CompositionFees(pb::CompositionFees {
                     sender: event.sender.to_vec(),
                     id: event.id.to_u64() as u32,
-                    total_fees: event.total_fees.to_vec(),
-                    protocol_fees: event.protocol_fees.to_vec(),
+                    total_fees_x,
+                    total_fees_y,
+                    protocol_fees_x,
+                    protocol_fees_y,
                 });
                 transaction.logs.push(pb::Log::create_log(log, event));
             }
