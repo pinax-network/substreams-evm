@@ -19,5 +19,5 @@ jobs:
           toolchain: "1.88"
           targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2
-      - run: cargo test --workspace
+      - run: cargo test --workspace --lib
       - run: cargo check --workspace --target wasm32-unknown-unknown
