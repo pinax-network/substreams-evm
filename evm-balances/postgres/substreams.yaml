@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: evm_postgres_balances
+  version: v0.3.4
+  url: https://github.com/pinax-network/substreams-evm
+  description: ERC-20 & Native balances for EVM blockchains (PostgreSQL).
+  image: ../../image.png
+
+imports:
+  db: ../../spkg/evm-balances-v0.3.4.spkg
+
+modules:
+  - name: db_out
+    use: db:db_out
+
+sink:
+  module: db_out
+  type: sf.substreams.sink.sql.v1.Service
+  config:
+    schema: "./schema.sql"
+    engine: postgres
+    postgraphile_frontend:
+      enabled: false
+
+network: mainnet
+
+params:
+  db_out: "hex"  # Supported encodings: hex, tron_base58

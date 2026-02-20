@@ -1,0 +1,38 @@
+specVersion: v0.1.0
+package:
+  name: evm_native_balances
+  version: v0.3.4
+  url: https://github.com/pinax-network/substreams-evm-tokens
+  description: Extracts Native balances for EVM blockchains.
+  image: ../../image.png
+
+imports:
+  # ERC-20
+  erc20_balances: ../erc20-balances/substreams.yaml
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/native_balances.wasm
+
+modules:
+  - name: map_balance_changes
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.balances.v1.BalanceChanges
+
+  - name: map_events
+    kind: map
+    inputs:
+      - params: string
+      - source: sf.ethereum.type.v2.Block
+      - map: map_balance_changes
+    output:
+      type: proto:evm.balances.v1.Events
+
+network: mainnet
+
+params:
+  map_events: 100 # CHUNK_SIZE (Batch RPC Calls)

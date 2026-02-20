@@ -1,20 +1,20 @@
 [workspace]
 members = [
   # DB (engine-agnostic)
-  "db-evm-balances",
-  "db-evm-supply",
-  "db-evm-transfers",
-  "db-evm-dex",
+  "evm-balances",
+  "evm-supply",
+  "evm-transfers",
+  "evm-dex",
 
   # Clickhouse
-  "db-blocks-clickhouse",
+  "blocks/clickhouse",
 
   # Tokens
-  "erc20-transfers",
-  "native-transfers",
-  "erc20-balances",
-  "native-balances",
-  "erc20-supply",
+  "erc20/transfers",
+  "native/transfers",
+  "erc20/balances",
+  "native/balances",
+  "erc20/supply",
 
   # Tron DEX
   "dex/sunpump",
@@ -41,7 +41,7 @@ members = [
   "erc1155",
 
   # Protocol-specific
-  "erc20-tokens",
+  "erc20/tokens",
 
   # Common
   "proto",
