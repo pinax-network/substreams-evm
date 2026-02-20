@@ -77,3 +77,27 @@ pub fn db_out(clock: Clock, block: Block) -> Result<DatabaseChanges, Error> {
 
     Ok(tables.to_database_changes())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_bytes_to_hex_empty() {
+        assert_eq!(bytes_to_hex(&[]), String::new());
+    }
+
+    #[test]
+    fn test_bytes_to_hex_address() {
+        let bytes: Vec<u8> = Hex::decode("d8dA6BF26964aF9D7eEd9e03E53415D37aA96045").unwrap();
+        assert_eq!(
+            bytes_to_hex(&bytes),
+            "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
+        );
+    }
+
+    #[test]
+    fn test_bytes_to_hex_single_byte() {
+        assert_eq!(bytes_to_hex(&[0xff]), "0xff");
+    }
+}
