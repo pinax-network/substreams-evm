@@ -179,17 +179,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "contracts"
-version = "0.0.0"
-dependencies = [
- "prost 0.13.5",
- "prost-types 0.13.5",
- "proto",
- "substreams",
- "substreams-ethereum",
-]
-
-[[package]]
 name = "cow"
 version = "0.0.0"
 dependencies = [
@@ -456,10 +445,6 @@ dependencies = [
 name = "evm-contracts"
 version = "0.0.0"
 dependencies = [
- "common",
- "prost 0.13.5",
- "prost-types 0.13.5",
- "proto",
  "substreams",
  "substreams-database-change 3.0.0",
  "substreams-ethereum",
