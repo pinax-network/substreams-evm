@@ -16,6 +16,12 @@ CREATE TABLE IF NOT EXISTS transfers (
     log_ordinal                 Nullable(UInt32),
     log_topic0                  LowCardinality(String),
 
+    -- call metadata --
+    call_caller                 String,
+    call_index                  UInt32,
+    call_depth                  UInt32,
+    call_type                   LowCardinality(String),
+
     -- transfer --
     `from`                      String,
     `to`                        String,
@@ -85,6 +91,12 @@ SELECT
     log_address,
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     `from`,
@@ -165,6 +177,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     minter AS `from`,       -- minter address
     `to`,                   -- recipient
@@ -191,6 +209,12 @@ SELECT
     log_address,  -- USDC contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     burner AS `from`,           -- burner address
@@ -219,6 +243,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     '' AS `from`,
     '' AS `to`,
@@ -245,6 +275,12 @@ SELECT
     log_address,  -- USDT contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     '' AS `from`,
@@ -273,6 +309,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     black_listed_user AS `from`,
     '' AS `to`,
@@ -299,6 +341,12 @@ SELECT
     log_address,  -- WBTC contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     '' AS `from`,
@@ -327,6 +375,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     burner AS `from`,
     '' AS `to`,
@@ -353,6 +407,12 @@ SELECT
     log_address,  -- SAI contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     '' AS `from`,
@@ -381,6 +441,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     guy AS `from`,
     '' AS `to`,
@@ -407,6 +473,12 @@ SELECT
     log_address,  -- stETH contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     sender AS `from`,
@@ -435,6 +507,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     `from`,
     `to`,
@@ -461,6 +539,12 @@ SELECT
     log_address,  -- stETH contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     account AS `from`,
@@ -489,6 +573,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     '' AS `from`,
     recipient AS `to`,
@@ -516,6 +606,12 @@ SELECT
     log_ordinal,
     log_topic0,
 
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
     -- transfer --
     owner AS `from`,
     '' AS `to`,
@@ -542,6 +638,12 @@ SELECT
     log_address,  -- stETH contract
     log_ordinal,
     log_topic0,
+
+    -- call metadata --
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     '' AS `from`,
