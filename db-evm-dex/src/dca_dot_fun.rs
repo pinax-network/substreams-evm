@@ -1,6 +1,7 @@
 use common::{bytes_to_string, Encoding};
 use proto::pb::dca_dot_fun::v1 as dca;
 use substreams::pb::substreams::Clock;
+use substreams::store::{StoreGet, StoreGetProto};
 use substreams_database_change::tables::Tables;
 
 use crate::{
@@ -9,7 +10,7 @@ use crate::{
     transactions::set_template_tx,
 };
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &dca::Events) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &dca::Events, store: &StoreGetProto<dca::StoreOrder>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -28,6 +29,12 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                     row.set("token_in_price", &event.token_in_price);
                     row.set("token_out_price", &event.token_out_price);
                     row.set("scaling_factor", &event.scaling_factor);
+
+                    // Enrich with token addresses from store
+                    if let Some(order) = store.get_first(&event.order_id) {
+                        row.set("token_in", bytes_to_string(&order.token_in, encoding));
+                        row.set("token_out", bytes_to_string(&order.token_out, encoding));
+                    }
                 }
                 Some(dca::log::Log::CreateOrder(event)) => {
                     let key = log_key(clock, tx_index, log_index);

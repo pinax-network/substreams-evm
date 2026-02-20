@@ -10,7 +10,9 @@ ALTER TABLE dca_dot_fun_fill_order
     ADD COLUMN IF NOT EXISTS protocol_fee       UInt256 COMMENT 'Protocol fee',
     ADD COLUMN IF NOT EXISTS token_in_price     UInt256 COMMENT 'Input token price',
     ADD COLUMN IF NOT EXISTS token_out_price    UInt256 COMMENT 'Output token price',
-    ADD COLUMN IF NOT EXISTS scaling_factor     UInt256 COMMENT 'Scaling factor';
+    ADD COLUMN IF NOT EXISTS scaling_factor     UInt256 COMMENT 'Scaling factor',
+    ADD COLUMN IF NOT EXISTS token_in          String DEFAULT '' COMMENT 'Input token address (from store_order)',
+    ADD COLUMN IF NOT EXISTS token_out         String DEFAULT '' COMMENT 'Output token address (from store_order)';
 
 -- DCA.fun CreateOrder --
 CREATE TABLE IF NOT EXISTS dca_dot_fun_create_order AS TEMPLATE_LOG

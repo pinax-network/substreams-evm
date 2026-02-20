@@ -25,4 +25,11 @@ modules:
     output:
       type: proto:dca_dot_fun.v1.Events
 
+  - name: store_order
+    kind: store
+    updatePolicy: set
+    valueType: proto:dca_dot_fun.v1.StoreOrder
+    inputs:
+      - map: map_events
+
 network: mainnet

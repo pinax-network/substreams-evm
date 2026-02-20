@@ -1,3 +1,5 @@
+mod store;
+
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::dca_dot_fun::v1 as pb;
 use substreams_abis::dex::dca_dot_fun;
