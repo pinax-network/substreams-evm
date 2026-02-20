@@ -1,15 +1,21 @@
+mod aerodrome;
 mod balancer;
 mod bancor;
 mod cow;
 mod curvefi;
+mod dca_dot_fun;
+mod dodo;
+mod kyber_elastic;
 mod logs;
 mod store;
 mod sunpump;
+mod traderjoe;
 mod transactions;
 mod uniswap_v1;
 mod uniswap_v2;
 mod uniswap_v3;
 mod uniswap_v4;
+mod woofi;
 
 use proto::pb::uniswap;
 use substreams::errors::Error;
