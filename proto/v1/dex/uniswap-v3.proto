@@ -130,7 +130,9 @@ message Initialize {
  * integer part and 96 bits for the fraction). To compute the actual price of
  * token0 in terms of token1, the value is squared and then divided by 2^192:
  *
+ *      ```text
  *      price = (sqrtPriceX96 * sqrtPriceX96) / 2^192
+ *      ```
  *
  * Conversely, to determine the price of token1 in terms of token0, take the
  * reciprocal of the computed price.
