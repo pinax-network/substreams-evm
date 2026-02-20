@@ -21,6 +21,14 @@ imports:
   cow: ../spkg/cow-v0.2.3.spkg
   curvefi: ../spkg/curvefi-v0.2.3.spkg
 
+  # New DEX Substreams
+  aerodrome: ../spkg/aerodrome-v0.1.0.spkg
+  dodo: ../spkg/dodo-v0.1.0.spkg
+  woofi: ../spkg/woofi-v0.1.0.spkg
+  traderjoe: ../spkg/traderjoe-v0.1.0.spkg
+  kyber_elastic: ../spkg/kyber-elastic-v0.1.0.spkg
+  dca_dot_fun: ../spkg/dca-dot-fun-v0.1.0.spkg
+
   # Uniswap DEX Substreams
   uniswap_v1: ../spkg/uniswap-v1-v0.2.3.spkg
   uniswap_v2: ../spkg/uniswap-v2-v0.2.3.spkg
@@ -51,6 +59,17 @@ modules:
       - store: balancer_store:store_pool
       - store: bancor:store_pool
       - store: curvefi:store_pool
+
+      # New DEX
+      - map: aerodrome:map_events
+      - map: dodo:map_events
+      - map: woofi:map_events
+      - map: traderjoe:map_events
+      - map: kyber_elastic:map_events
+      - map: dca_dot_fun:map_events
+      - store: aerodrome:store_pool
+      - store: traderjoe:store_pool
+      - store: kyber_elastic:store_pool
 
       # Uniswap DEX
       - map: uniswap_v1:map_events
