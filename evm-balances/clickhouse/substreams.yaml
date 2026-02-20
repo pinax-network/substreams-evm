@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
-  name: evm_postgres_transfers
-  version: v0.4.0
+  name: evm_clickhouse_balances
+  version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20, Native transfers & WETH Events (PostgreSQL)
-  image: ../image.png
+  description: ERC-20 & Native balances for EVM blockchains.
+  image: ../../image.png
 
 imports:
-  db: ../spkg/evm-transfers-v0.4.0.spkg
+  db: ../../spkg/evm-balances-v0.3.4.spkg
 
 modules:
   - name: db_out
@@ -18,7 +18,7 @@ sink:
   type: sf.substreams.sink.sql.v1.Service
   config:
     schema: "./schema.sql"
-    engine: postgres
+    engine: clickhouse
     postgraphile_frontend:
       enabled: false
 

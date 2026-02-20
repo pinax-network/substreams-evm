@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
-  name: evm_postgres_dex
-  version: v0.4.0
+  name: evm_postgres_supply
+  version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm
-  description: DEX swaps for JustSwap, SunSwap, and SunPump on EVM blockchain (PostgreSQL)
-  image: ../image.png
+  description: ERC-20 Token Supply for EVM blockchains (PostgreSQL).
+  image: ../../image.png
 
 imports:
-  db: ../spkg/evm-dex-v0.4.0.spkg
+  db: ../../spkg/evm-supply-db-v0.3.4.spkg
 
 modules:
   - name: db_out

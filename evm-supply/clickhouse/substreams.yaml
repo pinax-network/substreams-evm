@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
-  name: evm_clickhouse_transfers
-  version: v0.4.0
+  name: evm_clickhouse_supply
+  version: v0.3.4
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20, Native transfers & WETH Events (ClickHouse)
-  image: ../image.png
+  description: ERC-20 Token Supply for EVM blockchains.
+  image: ../../image.png
 
 imports:
-  db: ../spkg/evm-transfers-v0.4.0.spkg
+  db: ../../spkg/evm-supply-db-v0.3.4.spkg
 
 modules:
   - name: db_out

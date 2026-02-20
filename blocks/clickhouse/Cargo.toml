@@ -12,5 +12,5 @@ substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
 substreams-database-change = { workspace = true }
 
-proto = { path = "../proto" }
-common = { path = "../common" }
+proto = { path = "../../proto" }
+common = { path = "../../common" }

@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
-  name: evm_clickhouse_supply
-  version: v0.3.4
+  name: evm_clickhouse_dex
+  version: v0.4.0
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20 Token Supply for EVM blockchains.
-  image: ../image.png
+  description: DEX swaps for JustSwap, SunSwap, and SunPump on EVM blockchain (ClickHouse)
+  image: ../../image.png
 
 imports:
-  db: ../spkg/evm-supply-db-v0.3.4.spkg
+  db: ../../spkg/evm-dex-v0.4.0.spkg
 
 modules:
   - name: db_out

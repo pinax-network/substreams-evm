@@ -4,7 +4,7 @@ package:
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
   description: Block Number, Hash and Timestamp sink to ClickHouse
-  image: ../image.png
+  image: ../../image.png
 
 imports:
   # SQL Sink Substreams
@@ -14,7 +14,7 @@ imports:
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/clickhouse_blocks.wasm
+    file: ../../target/wasm32-unknown-unknown/release/clickhouse_blocks.wasm
 
 modules:
   - name: db_out
