@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package dca_dot_fun.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// DCA.fun events
+// https://dca.fun
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  optional Call call = 5;
+
+  oneof log {
+    FillOrder fill_order = 10;
+    CreateOrder create_order = 11;
+    CancelOrder cancel_order = 12;
+  }
+}
+
+message Call {
+  bytes caller = 1;
+  uint32 index = 2;
+  uint32 depth = 3;
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+message FillOrder {
+  string order_id = 1; // uint256
+  bytes caller = 2;
+  bytes recipient = 3;
+  string fill_amount = 4; // uint256 (token_in amount)
+  string amount_of_token_out = 5; // uint256
+  string protocol_fee = 6; // uint256
+  string token_in_price = 7; // uint256
+  string token_out_price = 8; // uint256
+  string scaling_factor = 9; // uint256
+}
+
+message CreateOrder {
+  string order_id = 1; // uint256
+  bytes creator = 2;
+  bytes recipient = 3;
+  bytes token_in = 4;
+  bytes token_out = 5;
+  string spend_amount = 6; // uint256
+  string repeats = 7; // uint256
+  string slippage = 8; // uint256
+  string freq_interval = 9; // uint256
+  string scaling_interval = 10; // uint256
+  string last_run = 11; // uint256
+  string protocol_fee = 12; // uint256
+  bytes vault = 13;
+  bool stake_asset_in = 14;
+  bool stake_asset_out = 15;
+}
+
+message CancelOrder {
+  string order_id = 1; // uint256
+  bytes vault = 2;
+}

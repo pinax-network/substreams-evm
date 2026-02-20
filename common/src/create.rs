@@ -112,9 +112,19 @@ mod aerodrome_impl {
     impl_create_log_with_call_metadata!(proto::pb::aerodrome::v1);
 }
 
+mod dca_dot_fun_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::dca_dot_fun::v1);
+}
+
 mod dodo_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::dodo::v1);
+}
+
+mod kyber_elastic_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::kyber_elastic::v1);
 }
 
 mod traderjoe_impl {

@@ -34,6 +34,13 @@ pub mod dodo {
         // @@protoc_insertion_point(dodo.v1)
     }
 }
+pub mod dca_dot_fun {
+    // @@protoc_insertion_point(attribute:dca_dot_fun.v1)
+    pub mod v1 {
+        include!("dca_dot_fun.v1.rs");
+        // @@protoc_insertion_point(dca_dot_fun.v1)
+    }
+}
 pub mod curvefi {
     // @@protoc_insertion_point(attribute:curvefi.v1)
     pub mod v1 {
@@ -108,6 +115,13 @@ pub mod sunpump {
     pub mod v1 {
         include!("sunpump.v1.rs");
         // @@protoc_insertion_point(sunpump.v1)
+    }
+}
+pub mod kyber_elastic {
+    // @@protoc_insertion_point(attribute:kyber_elastic.v1)
+    pub mod v1 {
+        include!("kyber_elastic.v1.rs");
+        // @@protoc_insertion_point(kyber_elastic.v1)
     }
 }
 pub mod traderjoe {
