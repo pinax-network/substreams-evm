@@ -442,6 +442,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "evm-contracts"
+version = "0.0.0"
+dependencies = [
+ "substreams",
+ "substreams-database-change 3.0.0",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "fastrand"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

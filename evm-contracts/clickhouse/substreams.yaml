@@ -1,0 +1,25 @@
+specVersion: v0.1.0
+package:
+  name: evm_clickhouse_contracts
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Contract creation events for EVM blockchains (ClickHouse).
+  image: ../../image.png
+
+imports:
+  db: ../../spkg/evm-contracts-v0.1.0.spkg
+
+modules:
+  - name: db_out
+    use: db:db_out
+
+sink:
+  module: db_out
+  type: sf.substreams.sink.sql.v1.Service
+  config:
+    schema: "./schema.sql"
+    engine: clickhouse
+    postgraphile_frontend:
+      enabled: false
+
+network: mainnet
