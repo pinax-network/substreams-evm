@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package evm.contracts.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Events {
+  repeated ContractCreation contract_creations = 1;
+}
+
+message ContractCreation {
+  // block
+  google.protobuf.Timestamp block_time = 1;
+  string block_hash = 2;
+  uint64 block_number = 3;
+  string block_date = 4;
+
+  // transaction
+  string transaction_hash = 5;
+  uint32 transaction_index = 6;
+
+  // contract creation
+  uint64 ordinal = 7;
+  string address = 8;
+  string from = 9;
+  string to = 10;
+  string deployer = 11;
+  optional string factory = 12;
+  optional string code = 13;
+  optional string code_hash = 14;
+  optional string input = 15;
+}

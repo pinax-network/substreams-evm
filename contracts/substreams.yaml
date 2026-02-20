@@ -1,0 +1,36 @@
+specVersion: v0.1.0
+package:
+  name: evm_contracts
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Contract creation events for EVM blockchains.
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/contracts.wasm
+
+protobuf:
+  files:
+    - v1/contracts.proto
+  importPaths:
+    - ../proto
+
+modules:
+  - name: map_block_index
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:sf.ethereum.type.v2.Block
+
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.substreams.v1.Clock
+      - map: map_block_index
+    output:
+      type: proto:evm.contracts.v1.Events
+
+network: mainnet

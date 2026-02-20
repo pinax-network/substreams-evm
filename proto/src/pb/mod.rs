@@ -79,6 +79,13 @@ pub mod erc20 {
     }
 }
 pub mod evm {
+    pub mod contracts {
+        // @@protoc_insertion_point(attribute:evm.contracts.v1)
+        pub mod v1 {
+            include!("evm.contracts.v1.rs");
+            // @@protoc_insertion_point(evm.contracts.v1)
+        }
+    }
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
         pub mod v1 {
