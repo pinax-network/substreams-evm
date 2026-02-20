@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package evm.erc721.v1;
+
+message Events {
+  repeated Transfer transfers = 1;
+  repeated Approval approvals = 2;
+  repeated ApprovalForAll approvals_for_all = 3;
+}
+
+message Transfer {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes from = 10; // The person that sent the transfer.
+  bytes to = 11; // The person that received the transfer.
+  string token_id = 12; // TokenID the identifier of the token for which the transfer is happening.
+}
+
+message Approval {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes owner = 10; // address
+  bytes approved = 11; // address
+  string token_id = 12; // uint256
+}
+
+message ApprovalForAll {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes owner = 10; // address
+  bytes operator = 11; // address
+  bool approved = 12; // true/false
+}

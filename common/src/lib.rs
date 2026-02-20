@@ -1,3 +1,4 @@
+pub mod clickhouse;
 pub mod create;
 pub mod debug;
 use sha2::{Digest, Sha256};
@@ -147,4 +148,22 @@ pub fn bigint_to_i32(bigint: &substreams::scalar::BigInt) -> Option<i32> {
 /// Returns true if the address is exactly 20 bytes and not the null address.
 pub fn is_valid_evm_address(address: &[u8]) -> bool {
     address.len() == 20 && address != NULL_ADDRESS
+}
+
+use substreams_ethereum::pb::eth::v2::{block::DetailLevel, Block, Log, TransactionTrace};
+
+pub fn logs_with_caller<'a>(block: &'a Block, trx: &'a TransactionTrace) -> Vec<(&'a Log, Option<Address>)> {
+    let mut results = vec![];
+
+    if block.detail_level() == DetailLevel::DetaillevelExtended {
+        for (log, call_view) in trx.logs_with_calls() {
+            results.push((log, Some(call_view.call.caller.to_vec())));
+        }
+    } else {
+        for log in trx.receipt().logs() {
+            results.push((log.log, None));
+        }
+    }
+
+    results
 }

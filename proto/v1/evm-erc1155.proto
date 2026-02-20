@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package evm.erc1155.v1;
+
+message Events {
+  repeated TransferSingle transfers_single = 1;
+  repeated TransferBatch transfers_batch = 2;
+  repeated ApprovalForAll approvals_for_all = 3;
+  repeated URI uris = 4;
+}
+
+message TransferSingle {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes operator = 10; // address
+  bytes from = 11; // address
+  bytes to = 12; // address
+  string id = 13; // uint256
+  string value = 14; // uint256
+}
+
+message TransferBatch {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes operator = 10; // address
+  bytes from = 11; // address
+  bytes to = 12; // address
+  repeated string ids = 13; // uint256[]
+  repeated string values = 14; // uint256[]
+}
+
+message ApprovalForAll {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  bytes account = 10; // address
+  bytes operator = 11; // address
+  bool approved = 12; // true/false
+}
+
+// ERC1155 Metadata
+// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol
+message URI {
+  // -- transaction --
+  bytes tx_hash = 1;
+
+  // -- caller --
+  optional bytes caller = 2; // call.caller (only available in Extended blocks)
+
+  // -- log --
+  bytes contract = 3; // log.address
+  uint64 ordinal = 4; // log.ordinal
+
+  // -- event --
+  string value = 10;
+  string id = 11; // uint256
+}

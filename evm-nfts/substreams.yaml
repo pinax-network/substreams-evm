@@ -1,0 +1,50 @@
+specVersion: v0.1.0
+package:
+  name: evm_nft_tokens
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: NFT tokens for EVM blockchains.
+  image: ../image.png
+
+imports:
+  database_changes: https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v2.0.0/substreams-database-change-v2.0.0.spkg
+  sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
+
+  erc721: https://github.com/pinax-network/substreams-evm-tokens/releases/download/nfts-v0.4.0/erc721-v0.4.0.spkg
+  erc721_metadata: https://github.com/pinax-network/substreams-evm-tokens/releases/download/erc721-metadata-v0.4.1/evm-erc721-metadata-v0.4.1.spkg
+  erc1155: https://github.com/pinax-network/substreams-evm-tokens/releases/download/nfts-v0.4.0/erc1155-v0.4.0.spkg
+  erc1155_metadata: https://github.com/pinax-network/substreams-evm-tokens/releases/download/erc1155-metadata-v0.4.1/evm-erc1155-metadata-v0.4.1.spkg
+  seaport: ../seaport/substreams.yaml
+  erc721_cryptopunks: https://github.com/pinax-network/substreams-evm-nfts/releases/download/cryptopunks-v0.1.0/evm-erc721-cryptopunks-v0.1.0.spkg
+  cryptopunks: https://github.com/pinax-network/substreams-evm-nfts/releases/download/cryptopunks-v0.1.0/evm-cryptopunks-v0.1.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/evm_nfts.wasm
+
+modules:
+  - name: db_out
+    kind: map
+    inputs:
+      - source: sf.substreams.v1.Clock
+      - map: erc721:map_events
+      - map: erc721_metadata:map_events
+      - map: erc1155:map_events
+      - map: erc1155_metadata:map_events
+      - map: seaport:map_events
+      - map: erc721_cryptopunks:map_events
+      - map: cryptopunks:map_events
+    output:
+      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+
+sink:
+  module: db_out
+  type: sf.substreams.sink.sql.v1.Service
+  config:
+    schema: "./schema.sql"
+    engine: clickhouse
+    postgraphile_frontend:
+      enabled: false
+
+network: mainnet
