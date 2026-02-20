@@ -67,6 +67,7 @@ modules:
       - map: traderjoe:map_events
       - map: kyber_elastic:map_events
       - map: dca_dot_fun:map_events
+      - store: dca_dot_fun:store_order
       - store: aerodrome:store_pool
       - store: traderjoe:store_pool
       - store: kyber_elastic:store_pool

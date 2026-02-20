@@ -157,6 +157,15 @@ pub enum CallType {
     Static = 4,
     Create = 5,
 }
+/// Store for order_id → token pair mapping (populated from CreateOrder events)
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StoreOrder {
+    #[prost(bytes = "vec", tag = "1")]
+    pub token_in: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes = "vec", tag = "2")]
+    pub token_out: ::prost::alloc::vec::Vec<u8>,
+}
 impl CallType {
     pub fn as_str_name(&self) -> &'static str {
         match self {

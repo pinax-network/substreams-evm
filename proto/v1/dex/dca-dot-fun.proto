@@ -82,3 +82,9 @@ message CancelOrder {
   string order_id = 1; // uint256
   bytes vault = 2;
 }
+
+// Store for order_id → token pair mapping (populated from CreateOrder events)
+message StoreOrder {
+  bytes token_in = 1;
+  bytes token_out = 2;
+}

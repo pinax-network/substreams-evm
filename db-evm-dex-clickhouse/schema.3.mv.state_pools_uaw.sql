@@ -13,7 +13,14 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'cow' = 9,
+        'aerodrome' = 10,
+        'dodo' = 11,
+        'woofi' = 12,
+        'traderjoe' = 13,
+        'kyber_elastic' = 14,
+        'dca_dot_fun' = 15
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
@@ -61,7 +68,14 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_tx_from (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'cow' = 9,
+        'aerodrome' = 10,
+        'dodo' = 11,
+        'woofi' = 12,
+        'traderjoe' = 13,
+        'kyber_elastic' = 14,
+        'dca_dot_fun' = 15
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,

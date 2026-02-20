@@ -48,6 +48,7 @@ pub fn db_out(
     events_traderjoe: proto::pb::traderjoe::v1::Events,
     events_kyber_elastic: proto::pb::kyber_elastic::v1::Events,
     events_dca_dot_fun: proto::pb::dca_dot_fun::v1::Events,
+    store_dca_dot_fun: StoreGetProto<proto::pb::dca_dot_fun::v1::StoreOrder>,
     store_aerodrome: StoreGetProto<proto::pb::aerodrome::v1::StorePool>,
     store_traderjoe: StoreGetProto<proto::pb::traderjoe::v1::StorePool>,
     store_kyber_elastic: StoreGetProto<proto::pb::kyber_elastic::v1::StorePool>,
@@ -82,7 +83,7 @@ pub fn db_out(
     woofi::process_events(&encoding, &mut tables, &clock, &events_woofi);
     traderjoe::process_events(&encoding, &mut tables, &clock, &events_traderjoe, &store_traderjoe);
     kyber_elastic::process_events(&encoding, &mut tables, &clock, &events_kyber_elastic, &store_kyber_elastic);
-    dca_dot_fun::process_events(&encoding, &mut tables, &clock, &events_dca_dot_fun);
+    dca_dot_fun::process_events(&encoding, &mut tables, &clock, &events_dca_dot_fun, &store_dca_dot_fun);
 
     // Uniswap DEX Substreams
     uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);
