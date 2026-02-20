@@ -4,17 +4,8 @@ STOP_BLOCK ?= +100
 PARALLEL_JOBS ?= 500
 .DEFAULT_GOAL := pack
 
-.PHONY: schema
-schema:
-	@echo "-- This file is generated. Do not edit." > schema.sql
-	@echo "" >> schema.sql
-	@for f in $$(ls schema.*.sql 2>/dev/null | sort); do \
-		cat "$$f" >> schema.sql; \
-		echo "" >> schema.sql; \
-	done
-
 .PHONY: pack
-pack: schema
+pack:
 	substreams pack
 
 .PHONY: dev
