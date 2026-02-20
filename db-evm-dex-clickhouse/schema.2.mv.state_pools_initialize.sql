@@ -23,7 +23,14 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'cow' = 9,
+        'aerodrome' = 10,
+        'dodo' = 11,
+        'woofi' = 12,
+        'traderjoe' = 13,
+        'kyber_elastic' = 14,
+        'dca_dot_fun' = 15
     ) COMMENT 'protocol identifier',
 
     -- indexes --
@@ -227,3 +234,60 @@ SELECT
     converter AS pool,
     'bancor' AS protocol
 FROM bancor_new_converter;
+
+-- Aerodrome::PoolCreated --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_aerodrome_pool_created
+TO state_pools_initialize AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    factory,
+    pool,
+    'aerodrome' AS protocol
+FROM aerodrome_pool_created;
+
+-- TraderJoe::LBPairCreated --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_traderjoe_lb_pair_created
+TO state_pools_initialize AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    factory,
+    lb_pair AS pool,
+    'traderjoe' AS protocol
+FROM traderjoe_lb_pair_created;
+
+-- KyberSwap Elastic::PoolCreated --
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_initialize_kyber_elastic_pool_created
+TO state_pools_initialize AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_hash,
+
+    -- event --
+    factory,
+    pool,
+    'kyber_elastic' AS protocol
+FROM kyber_elastic_pool_created;

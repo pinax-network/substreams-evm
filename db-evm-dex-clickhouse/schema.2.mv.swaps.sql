@@ -26,7 +26,14 @@ CREATE TABLE IF NOT EXISTS swaps (
         'uniswap_v4' = 5,
         'curvefi' = 6,
         'balancer' = 7,
-        'bancor' = 8
+        'bancor' = 8,
+        'cow' = 9,
+        'aerodrome' = 10,
+        'dodo' = 11,
+        'woofi' = 12,
+        'traderjoe' = 13,
+        'kyber_elastic' = 14,
+        'dca_dot_fun' = 15
     ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
     pool                        String COMMENT 'Pool/exchange contract address',
@@ -520,4 +527,251 @@ SELECT
     target_amount                      AS output_amount
 
 FROM bancor_conversion
+WHERE input_amount > 0 AND output_amount > 0;
+
+-- CoW Protocol Trade (Swap)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_cow_trade
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'cow' AS protocol,
+    log_address                        AS factory,
+    log_address                        AS pool,
+    owner                              AS user,
+
+    -- Input side
+    sell_token                         AS input_contract,
+    sell_amount                        AS input_amount,
+
+    -- Output side
+    buy_token                          AS output_contract,
+    buy_amount                         AS output_amount
+
+FROM cow_trade
+WHERE input_amount > 0 AND output_amount > 0;
+
+-- Aerodrome Swap (Solidly fork, like Uniswap V2)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_aerodrome_swap
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'aerodrome' AS protocol,
+    factory,
+    log_address  AS pool,
+    sender       AS user,
+
+    -- Input side (only one of amount0_in / amount1_in is > 0 here)
+    if (amount0_in > toUInt256(0), token0, token1)      AS input_contract,
+    if (amount0_in > toUInt256(0), amount0_in, amount1_in) AS input_amount,
+
+    -- Output side (only one of amount0_out / amount1_out is > 0 here)
+    if (amount0_in > toUInt256(0), token1, token0)      AS output_contract,
+    if (amount0_in > toUInt256(0), amount1_out, amount0_out) AS output_amount
+
+FROM aerodrome_swap
+WHERE
+    -- token0 -> token1
+    (
+        amount0_in  >  toUInt256(0) AND
+        amount1_in  =  toUInt256(0) AND
+        amount0_out =  toUInt256(0) AND
+        amount1_out >  toUInt256(0)
+    )
+    OR
+    -- token1 -> token0
+    (
+        amount1_in  >  toUInt256(0) AND
+        amount0_in  =  toUInt256(0) AND
+        amount1_out =  toUInt256(0) AND
+        amount0_out >  toUInt256(0)
+    ) AND
+    input_amount > 0 AND output_amount > 0;
+
+-- DODO OrderHistory (Swap)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_dodo_order_history
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'dodo' AS protocol,
+    log_address                        AS factory,
+    log_address                        AS pool,
+    sender                             AS user,
+
+    -- Input side
+    from_token                         AS input_contract,
+    from_amount                        AS input_amount,
+
+    -- Output side
+    to_token                           AS output_contract,
+    return_amount                      AS output_amount
+
+FROM dodo_order_history
+WHERE input_amount > 0 AND output_amount > 0;
+
+-- WOOFi WooSwap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_woofi_woo_swap
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'woofi' AS protocol,
+    log_address                        AS factory,
+    log_address                        AS pool,
+    `from`                             AS user,
+
+    -- Input side
+    from_token                         AS input_contract,
+    from_amount                        AS input_amount,
+
+    -- Output side
+    to_token                           AS output_contract,
+    to_amount                          AS output_amount
+
+FROM woofi_woo_swap
+WHERE input_amount > 0 AND output_amount > 0;
+
+-- Trader Joe V2 Swap
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_traderjoe_swap
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'traderjoe' AS protocol,
+    factory,
+    log_address  AS pool,
+    sender       AS user,
+
+    -- Input side
+    if (amount_in_x > toUInt256(0), token0, token1)         AS input_contract,
+    if (amount_in_x > toUInt256(0), amount_in_x, amount_in_y) AS input_amount,
+
+    -- Output side
+    if (amount_in_x > toUInt256(0), token1, token0)         AS output_contract,
+    if (amount_in_x > toUInt256(0), amount_out_y, amount_out_x) AS output_amount
+
+FROM traderjoe_swap
+WHERE
+    -- Only one direction: either X->Y or Y->X, not both
+    NOT (amount_in_x > toUInt256(0) AND amount_in_y > toUInt256(0))
+    AND input_amount > 0 AND output_amount > 0;
+
+-- KyberSwap Elastic Swap (signed amounts like Uniswap V3)
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_kyber_elastic_swap
+TO swaps AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'kyber_elastic' AS protocol,
+    factory,
+    log_address  AS pool,
+    sender       AS user,
+
+    -- Input side: negative amount means input
+    if (delta_qty0 < toString(toInt256(0)), token0, token1)      AS input_contract,
+    if (delta_qty0 < toString(toInt256(0)), abs(toInt256(delta_qty0)), abs(toInt256(delta_qty1))) AS input_amount,
+
+    -- Output side: positive amount means output
+    if (delta_qty0 < toString(toInt256(0)), token1, token0)      AS output_contract,
+    if (delta_qty0 < toString(toInt256(0)), abs(toInt256(delta_qty1)), abs(toInt256(delta_qty0))) AS output_amount
+
+FROM kyber_elastic_swap
 WHERE input_amount > 0 AND output_amount > 0;
