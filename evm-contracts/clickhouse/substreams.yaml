@@ -7,7 +7,7 @@ package:
   image: ../../image.png
 
 imports:
-  db: ../../spkg/evm-db-contracts-v0.1.0.spkg
+  db: ../../spkg/evm-contracts-v0.1.0.spkg
 
 modules:
   - name: db_out
