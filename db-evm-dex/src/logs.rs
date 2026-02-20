@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{balancer, bancor, cow, curvefi, sunpump, uniswap};
+use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dca_dot_fun, dodo, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
 use substreams::pb::substreams::Clock;
 
 pub fn log_key(clock: &Clock, tx_index: usize, log_index: usize) -> [(&'static str, String); 6] {
@@ -109,3 +109,11 @@ impl_log_traits!(cow::v1::Log, cow::v1::Call, cow::v1::CallType);
 
 // Curve.fi
 impl_log_traits!(curvefi::v1::Log, curvefi::v1::Call, curvefi::v1::CallType);
+
+// New DEX protocols
+impl_log_traits!(aerodrome::v1::Log, aerodrome::v1::Call, aerodrome::v1::CallType);
+impl_log_traits!(dodo::v1::Log, dodo::v1::Call, dodo::v1::CallType);
+impl_log_traits!(woofi::v1::Log, woofi::v1::Call, woofi::v1::CallType);
+impl_log_traits!(traderjoe::v1::Log, traderjoe::v1::Call, traderjoe::v1::CallType);
+impl_log_traits!(kyber_elastic::v1::Log, kyber_elastic::v1::Call, kyber_elastic::v1::CallType);
+impl_log_traits!(dca_dot_fun::v1::Log, dca_dot_fun::v1::Call, dca_dot_fun::v1::CallType);

@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{balancer, bancor, cow, curvefi, sunpump, uniswap};
+use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dca_dot_fun, dodo, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
 
 pub fn set_template_tx(encoding: &Encoding, tx: &impl TxTemplate, tx_index: usize, row: &mut substreams_database_change::tables::Row) {
     let tx_to = match tx.get_to() {
@@ -280,3 +280,26 @@ impl TxTemplate for curvefi::v1::Transaction {
         &self.value
     }
 }
+
+// New DEX protocols - using macro to reduce boilerplate
+macro_rules! impl_tx_template {
+    ($tx_type:ty) => {
+        impl TxTemplate for $tx_type {
+            fn get_hash(&self) -> &Vec<u8> { &self.hash }
+            fn get_from(&self) -> &Vec<u8> { &self.from }
+            fn get_to(&self) -> &Option<Vec<u8>> { &self.to }
+            fn get_nonce(&self) -> u64 { self.nonce }
+            fn get_gas_price(&self) -> &str { &self.gas_price }
+            fn get_gas_limit(&self) -> u64 { self.gas_limit }
+            fn get_gas_used(&self) -> u64 { self.gas_used }
+            fn get_value(&self) -> &str { &self.value }
+        }
+    };
+}
+
+impl_tx_template!(aerodrome::v1::Transaction);
+impl_tx_template!(dodo::v1::Transaction);
+impl_tx_template!(woofi::v1::Transaction);
+impl_tx_template!(traderjoe::v1::Transaction);
+impl_tx_template!(kyber_elastic::v1::Transaction);
+impl_tx_template!(dca_dot_fun::v1::Transaction);

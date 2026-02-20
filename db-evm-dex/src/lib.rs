@@ -1,15 +1,21 @@
+mod aerodrome;
 mod balancer;
 mod bancor;
 mod cow;
 mod curvefi;
+mod dca_dot_fun;
+mod dodo;
+mod kyber_elastic;
 mod logs;
 mod store;
 mod sunpump;
+mod traderjoe;
 mod transactions;
 mod uniswap_v1;
 mod uniswap_v2;
 mod uniswap_v3;
 mod uniswap_v4;
+mod woofi;
 
 use proto::pb::uniswap;
 use substreams::errors::Error;
@@ -35,6 +41,17 @@ pub fn db_out(
     store_bancor: StoreGetProto<proto::pb::bancor::v1::StorePool>,
     store_curvefi: StoreGetProto<proto::pb::curvefi::v1::StorePool>,
 
+    // New DEX
+    events_aerodrome: proto::pb::aerodrome::v1::Events,
+    events_dodo: proto::pb::dodo::v1::Events,
+    events_woofi: proto::pb::woofi::v1::Events,
+    events_traderjoe: proto::pb::traderjoe::v1::Events,
+    events_kyber_elastic: proto::pb::kyber_elastic::v1::Events,
+    events_dca_dot_fun: proto::pb::dca_dot_fun::v1::Events,
+    store_aerodrome: StoreGetProto<proto::pb::aerodrome::v1::StorePool>,
+    store_traderjoe: StoreGetProto<proto::pb::traderjoe::v1::StorePool>,
+    store_kyber_elastic: StoreGetProto<proto::pb::kyber_elastic::v1::StorePool>,
+
     // Uniswap DEX
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
@@ -58,6 +75,14 @@ pub fn db_out(
     bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &store_bancor);
     cow::process_events(&encoding, &mut tables, &clock, &events_cow);
     curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &store_curvefi);
+
+    // New DEX Substreams
+    aerodrome::process_events(&encoding, &mut tables, &clock, &events_aerodrome, &store_aerodrome);
+    dodo::process_events(&encoding, &mut tables, &clock, &events_dodo);
+    woofi::process_events(&encoding, &mut tables, &clock, &events_woofi);
+    traderjoe::process_events(&encoding, &mut tables, &clock, &events_traderjoe, &store_traderjoe);
+    kyber_elastic::process_events(&encoding, &mut tables, &clock, &events_kyber_elastic, &store_kyber_elastic);
+    dca_dot_fun::process_events(&encoding, &mut tables, &clock, &events_dca_dot_fun);
 
     // Uniswap DEX Substreams
     uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);
