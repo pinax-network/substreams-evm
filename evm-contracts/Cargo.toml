@@ -11,6 +11,3 @@ crate-type = ["cdylib"]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
 substreams-database-change = { workspace = true }
-
-[dev-dependencies]
-hex = "0.4"
