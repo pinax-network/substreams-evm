@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package kyber_elastic.v1;
+
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+// KyberSwap Elastic Pool and Factory events
+// https://docs.kyberswap.com/liquidity-solutions/kyberswap-elastic
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+  optional Call call = 5;
+
+  oneof log {
+    // Pool events
+    Swap swap = 10;
+    Mint mint = 11;
+    Burn burn = 12;
+    BurnRTokens burn_r_tokens = 13;
+    Flash flash = 14;
+    Initialize initialize = 15;
+
+    // Factory events
+    PoolCreated pool_created = 20;
+  }
+}
+
+message Call {
+  bytes caller = 1;
+  uint32 index = 2;
+  uint32 depth = 3;
+  CallType call_type = 4;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
+message StorePool {
+  bytes currency0 = 1;
+  bytes currency1 = 2;
+  bytes factory = 3;
+  uint32 swap_fee_units = 4;
+  int32 tick_distance = 5;
+}
+
+message PoolCreated {
+  bytes token0 = 1;
+  bytes token1 = 2;
+  uint32 swap_fee_units = 3;
+  int32 tick_distance = 4;
+  bytes pool = 5; // STORE primary key
+}
+
+// Uses signed int256 for delta quantities (positive = received, negative = paid)
+message Swap {
+  bytes sender = 1;
+  bytes recipient = 2;
+  string delta_qty0 = 3; // int256
+  string delta_qty1 = 4; // int256
+  string sqrt_p = 5; // uint160
+  string liquidity = 6; // uint128
+  int32 current_tick = 7; // int24
+}
+
+message Mint {
+  bytes sender = 1;
+  bytes owner = 2;
+  int32 tick_lower = 3;
+  int32 tick_upper = 4;
+  string qty = 5; // uint128
+  string qty0 = 6; // uint256
+  string qty1 = 7; // uint256
+}
+
+message Burn {
+  bytes owner = 1;
+  int32 tick_lower = 2;
+  int32 tick_upper = 3;
+  string qty = 4; // uint128
+  string qty0 = 5; // uint256
+  string qty1 = 6; // uint256
+}
+
+message BurnRTokens {
+  bytes owner = 1;
+  string qty = 2; // uint256
+  string qty0 = 3; // uint256
+  string qty1 = 4; // uint256
+}
+
+message Flash {
+  bytes sender = 1;
+  bytes recipient = 2;
+  string qty0 = 3; // uint256
+  string qty1 = 4; // uint256
+  string paid0 = 5; // uint256
+  string paid1 = 6; // uint256
+}
+
+message Initialize {
+  string sqrt_p = 1; // uint160
+  int32 tick = 2; // int24
+}

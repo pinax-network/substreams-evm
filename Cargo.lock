@@ -289,6 +289,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "dca-dot-fun"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -617,6 +628,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ecc2af9a1119c51f12a14607e783cb977bde58bc069ff0c3da1095e635d70654"
 dependencies = [
  "cpufeatures",
+]
+
+[[package]]
+name = "kyber-elastic"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
 ]
 
 [[package]]
@@ -1224,8 +1246,8 @@ dependencies = [
 
 [[package]]
 name = "substreams-abis"
-version = "1.3.0"
-source = "git+https://github.com/pinax-network/substreams-abis.git?tag=v1.3.0#ea2c996df0584601982df7cc76bf95ea3b6df0e6"
+version = "1.4.0"
+source = "git+https://github.com/pinax-network/substreams-abis.git?tag=v1.4.0#b37e246cbf458411e4feeebdf5cf706867c8611f"
 dependencies = [
  "ethabi",
  "num-bigint",
