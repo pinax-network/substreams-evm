@@ -445,6 +445,7 @@ dependencies = [
 name = "evm-contracts"
 version = "0.0.0"
 dependencies = [
+ "hex",
  "substreams",
  "substreams-database-change 3.0.0",
  "substreams-ethereum",
