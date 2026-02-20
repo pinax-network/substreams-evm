@@ -103,6 +103,12 @@ When implementing Trader Joe in the DEX database:
 - `id` is the active bin — can be used to derive the price (bin price = `(1 + binStep/10000) ^ (id - 8388608)`)
 - `tokenX`/`tokenY` addresses come from `LbPairCreated` events (or the `store_pool`)
 
+### ⚠️ Flash Loan Swaps
+
+Trader Joe supports flash loans (`FlashLoan` event). During a flash loan, **both** `amount_in_x` and `amount_in_y` can be non-zero, which breaks the normal swap direction logic.
+
+**Filter these out** — if both `amount_in_x > 0` AND `amount_in_y > 0`, skip the swap. Flash loans are too much of an edge case to support as regular swaps. Same approach as Uniswap V2 flash swaps ([#66](https://github.com/pinax-network/substreams-evm/issues/66)).
+
 ## Links
 
 - [Trader Joe Docs](https://docs.traderjoexyz.com)
