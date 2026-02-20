@@ -102,6 +102,12 @@ CREATE TABLE IF NOT EXISTS erc20_transfers (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- transfer --
     "from"               TEXT NOT NULL,
     "to"                 TEXT NOT NULL,
@@ -114,6 +120,7 @@ CREATE INDEX IF NOT EXISTS idx_erc20_transfers_timestamp ON erc20_transfers (tim
 CREATE INDEX IF NOT EXISTS idx_erc20_transfers_log_address ON erc20_transfers (log_address);
 CREATE INDEX IF NOT EXISTS idx_erc20_transfers_from ON erc20_transfers ("from");
 CREATE INDEX IF NOT EXISTS idx_erc20_transfers_to ON erc20_transfers ("to");
+CREATE INDEX IF NOT EXISTS idx_erc20_transfers_call_caller ON erc20_transfers (call_caller);
 
 -- ERC20 Approvals table for PostgreSQL
 CREATE TABLE IF NOT EXISTS erc20_approvals (
@@ -141,6 +148,12 @@ CREATE TABLE IF NOT EXISTS erc20_approvals (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- approval --
     owner                TEXT NOT NULL,
     spender              TEXT NOT NULL,
@@ -153,6 +166,7 @@ CREATE INDEX IF NOT EXISTS idx_erc20_approvals_timestamp ON erc20_approvals (tim
 CREATE INDEX IF NOT EXISTS idx_erc20_approvals_log_address ON erc20_approvals (log_address);
 CREATE INDEX IF NOT EXISTS idx_erc20_approvals_owner ON erc20_approvals (owner);
 CREATE INDEX IF NOT EXISTS idx_erc20_approvals_spender ON erc20_approvals (spender);
+CREATE INDEX IF NOT EXISTS idx_erc20_approvals_call_caller ON erc20_approvals (call_caller);
 
 -- WETH Deposit table for PostgreSQL
 CREATE TABLE IF NOT EXISTS weth_deposit (
@@ -179,6 +193,12 @@ CREATE TABLE IF NOT EXISTS weth_deposit (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- deposit --
     dst                  TEXT NOT NULL,
@@ -216,6 +236,12 @@ CREATE TABLE IF NOT EXISTS weth_withdrawal (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- withdrawal --
     src                  TEXT NOT NULL,
     wad                  NUMERIC NOT NULL,
@@ -251,6 +277,12 @@ CREATE TABLE IF NOT EXISTS usdc_mint (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- mint --
     minter               TEXT NOT NULL,
@@ -290,6 +322,12 @@ CREATE TABLE IF NOT EXISTS usdc_burn (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- burn --
     burner               TEXT NOT NULL,
     amount               NUMERIC NOT NULL,
@@ -326,6 +364,12 @@ CREATE TABLE IF NOT EXISTS usdt_issue (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- issue --
     owner                TEXT NOT NULL,
     amount               NUMERIC NOT NULL,
@@ -361,6 +405,12 @@ CREATE TABLE IF NOT EXISTS usdt_redeem (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- redeem --
     owner                TEXT NOT NULL,
     amount               NUMERIC NOT NULL,
@@ -395,6 +445,12 @@ CREATE TABLE IF NOT EXISTS usdt_destroyed_black_funds (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- destroyed black funds --
     black_listed_user    TEXT NOT NULL,
@@ -432,6 +488,12 @@ CREATE TABLE IF NOT EXISTS usdt_block_placed (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- block placed --
     "user"               TEXT NOT NULL,
 
@@ -467,6 +529,12 @@ CREATE TABLE IF NOT EXISTS usdt_block_released (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- block released --
     "user"               TEXT NOT NULL,
 
@@ -501,6 +569,12 @@ CREATE TABLE IF NOT EXISTS usdt_mint (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- mint --
     destination          TEXT NOT NULL,
@@ -538,6 +612,12 @@ CREATE TABLE IF NOT EXISTS usdt_destroyed_blocked_funds (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- destroyed blocked funds --
     blocked_user         TEXT NOT NULL,
     balance              NUMERIC NOT NULL,
@@ -574,6 +654,12 @@ CREATE TABLE IF NOT EXISTS usdt_new_privileged_contract (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- new privileged contract --
     contract             TEXT NOT NULL,
 
@@ -609,6 +695,12 @@ CREATE TABLE IF NOT EXISTS usdt_removed_privileged_contract (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- removed privileged contract --
     contract             TEXT NOT NULL,
 
@@ -643,6 +735,12 @@ CREATE TABLE IF NOT EXISTS usdt_log_swapin (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- log swapin --
     txhash               TEXT NOT NULL,
@@ -681,6 +779,12 @@ CREATE TABLE IF NOT EXISTS usdt_log_swapout (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- log swapout --
     account              TEXT NOT NULL,
     bindaddr             TEXT NOT NULL,
@@ -718,6 +822,12 @@ CREATE TABLE IF NOT EXISTS usdt_log_change_dcrm_owner (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- log change dcrm owner --
     old_owner            TEXT NOT NULL,
     new_owner            TEXT NOT NULL,
@@ -753,6 +863,12 @@ CREATE TABLE IF NOT EXISTS wbtc_mint (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- mint --
     "to"                 TEXT NOT NULL,
@@ -790,6 +906,12 @@ CREATE TABLE IF NOT EXISTS wbtc_burn (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- burn --
     burner               TEXT NOT NULL,
     value                NUMERIC NOT NULL,
@@ -825,6 +947,12 @@ CREATE TABLE IF NOT EXISTS sai_mint (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- mint --
     guy                  TEXT NOT NULL,
@@ -862,6 +990,12 @@ CREATE TABLE IF NOT EXISTS sai_burn (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- burn --
     guy                  TEXT NOT NULL,
     wad                  NUMERIC NOT NULL,
@@ -897,6 +1031,12 @@ CREATE TABLE IF NOT EXISTS steth_submitted (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- submitted --
     sender               TEXT NOT NULL,
@@ -934,6 +1074,12 @@ CREATE TABLE IF NOT EXISTS steth_token_rebased (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- token rebased --
     report_timestamp       NUMERIC NOT NULL,
@@ -975,6 +1121,12 @@ CREATE TABLE IF NOT EXISTS steth_shares_burnt (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- shares burnt --
     account                    TEXT NOT NULL,
     pre_rebase_token_amount    NUMERIC NOT NULL,
@@ -1012,6 +1164,12 @@ CREATE TABLE IF NOT EXISTS steth_transfer_shares (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- transfer shares --
     "from"               TEXT NOT NULL,
@@ -1051,6 +1209,12 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_minted (
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
     -- external shares minted --
     recipient            TEXT NOT NULL,
     amount_of_shares     NUMERIC NOT NULL,
@@ -1086,6 +1250,12 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_burnt (
     log_ordinal          INTEGER NOT NULL,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
 
     -- external shares burnt --
     owner                TEXT NOT NULL DEFAULT '',
