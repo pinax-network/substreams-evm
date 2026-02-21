@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
   name: evm_postgres_nfts
-  version: v0.1.0
+  version: v0.7.0
   url: https://github.com/pinax-network/substreams-evm
   description: NFT tokens for EVM blockchains (PostgreSQL)
   image: ../../image.png
 
 imports:
-  db: ../substreams.yaml
+  db: ../../spkg/evm-nfts-v0.7.0.spkg
 
 modules:
   - name: db_out
