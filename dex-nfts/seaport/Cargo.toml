@@ -14,5 +14,5 @@ substreams-abis = { workspace = true }
 prost = { workspace = true }
 prost-types = { workspace = true }
 
-proto = { path = "../proto" }
-common = { path = "../common" }
+proto = { path = "../../proto" }
+common = { path = "../../common" }

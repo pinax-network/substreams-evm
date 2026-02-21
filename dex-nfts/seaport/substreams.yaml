@@ -4,18 +4,18 @@ package:
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
   description: OpenSea Seaport NFT marketplace events
-  image: ../image.png
+  image: ../../image.png
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/seaport.wasm
+    file: ../../target/wasm32-unknown-unknown/release/seaport.wasm
 
 protobuf:
   files:
     - v1/seaport.proto
   importPaths:
-    - ../proto
+    - ../../proto
 
 modules:
   - name: map_events
