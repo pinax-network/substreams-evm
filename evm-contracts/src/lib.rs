@@ -73,7 +73,6 @@ pub fn db_out(clock: Clock, block: Block) -> Result<DatabaseChanges, Error> {
         row.set("block_num", clock.number);
         row.set("block_hash", &block_hash);
         row.set("timestamp", timestamp.seconds);
-        row.set("minute", timestamp.seconds / 60);
     }
 
     Ok(tables.to_database_changes())
