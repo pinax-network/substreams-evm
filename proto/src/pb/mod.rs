@@ -86,6 +86,36 @@ pub mod evm {
             // @@protoc_insertion_point(evm.balances.v1)
         }
     }
+    pub mod erc721 {
+        pub mod v1 {
+            include!("evm.erc721.v1.rs");
+        }
+        pub mod metadata {
+            pub mod v1 {
+                include!("evm.erc721.metadata.v1.rs");
+            }
+        }
+    }
+    pub mod erc1155 {
+        pub mod v1 {
+            include!("evm.erc1155.v1.rs");
+        }
+        pub mod metadata {
+            pub mod v1 {
+                include!("evm.erc1155.metadata.v1.rs");
+            }
+        }
+    }
+    pub mod seaport {
+        pub mod v1 {
+            include!("evm.seaport.v1.rs");
+        }
+    }
+    pub mod cryptopunks {
+        pub mod v1 {
+            include!("evm.cryptopunks.v1.rs");
+        }
+    }
 }
 pub mod native {
     pub mod transfers {
