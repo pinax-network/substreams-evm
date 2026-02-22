@@ -54,121 +54,11 @@ export SUBSTREAMS_API_TOKEN="your-jwt-token"
 
 Get your API key from [thegraph.market](https://thegraph.market) or [pinax.network](https://pinax.network).
 
-## Language Recommendations
+## Quick Start: SQL Sink (Recommended)
 
-| Language | Recommendation | Best For |
-|----------|---------------|----------|
-| **Go** | Official SDK (Recommended) | Production sinks, StreamingFast sinks |
-| **JavaScript** | Official SDK | Web apps, Node.js services |
-| **Python** | Reference implementation | Prototyping, data analysis |
-| **Rust** | Reference implementation | High-performance custom sinks |
+For most use cases, use `substreams-sink-sql` with the pre-built EVM SPKGs:
 
-## Quick Start by Language
-
-### Go (Recommended)
-
-```go
-package main
-
-import (
-    "context"
-    "log"
-
-    "github.com/streamingfast/substreams/sink"
-)
-
-func main() {
-    sinker, err := sink.New(
-        sink.NewFromManifest("substreams.spkg", "map_events"),
-        sink.WithBlockRange(":+1000"),
-    )
-    if err != nil {
-        log.Fatalf("create sinker: %v", err)
-    }
-
-    sinker.Run(ctx, sink.NewSinker(
-        handleBlockScopedData,
-        handleBlockUndoSignal,
-    ))
-}
-
-func handleBlockScopedData(ctx context.Context, data *pbsubstreamsrpc.BlockScopedData, isLive *bool, cursor *sink.Cursor) error {
-    // Process block data
-    // Persist cursor after successful processing
-    return nil
-}
-
-func handleBlockUndoSignal(ctx context.Context, undoSignal *pbsubstreamsrpc.BlockUndoSignal, cursor *sink.Cursor) error {
-    // Handle reorg: rewind data to undoSignal.LastValidBlock
-    // Persist undoSignal.LastValidCursor
-    return nil
-}
-```
-
-See [references/go-sink.md](./references/go-sink.md) for complete guide.
-
-### JavaScript (Node.js)
-
-```javascript
-import { createRegistry, createRequest } from "@substreams/core";
-import { createGrpcTransport } from "@connectrpc/connect-node";
-
-const transport = createGrpcTransport({
-    baseUrl: "https://mainnet.eth.streamingfast.io:443",
-    httpVersion: "2",
-});
-
-const request = createRequest({
-    substreamPackage: pkg,
-    outputModule: "map_events",
-    startBlockNum: 17000000n,
-    stopBlockNum: "+1000",
-});
-
-for await (const response of stream(request, registry, transport)) {
-    if (response.message.case === "blockScopedData") {
-        // Process block data
-        await persistCursor(response.message.value.cursor);
-    } else if (response.message.case === "blockUndoSignal") {
-        // Handle reorg
-        await handleUndo(response.message.value);
-    }
-}
-```
-
-See [references/javascript-sink.md](./references/javascript-sink.md) for complete guide.
-
-### Python
-
-```python
-import grpc
-from sf.substreams.rpc.v2 import service_pb2, service_pb2_grpc
-
-creds = grpc.ssl_channel_credentials()
-with grpc.secure_channel("mainnet.eth.streamingfast.io:443", creds) as channel:
-    stub = service_pb2_grpc.StreamStub(channel)
-    metadata = [("authorization", f"Bearer {token}")]
-
-    request = service_pb2.Request(
-        start_block_num=17000000,
-        stop_block_num=17001000,
-        modules=package.modules,
-        output_module="map_events",
-        production_mode=True,
-    )
-
-    for response in stub.Blocks(request, metadata=metadata):
-        if response.WhichOneof("message") == "block_scoped_data":
-            # Process block data
-            pass
-        elif response.WhichOneof("message") == "block_undo_signal":
-            # Handle reorg
-            pass
-```
-
-See [references/python-sink.md](./references/python-sink.md) for complete guide.
-
-### Rust
+### Rust Custom Sink
 
 ```rust
 use substreams_stream::{BlockResponse, SubstreamsStream};
@@ -382,9 +272,6 @@ buf generate buf.build/streamingfast/substreams --include-imports
 ## Resources
 
 * [Official Documentation](https://substreams.streamingfast.io)
-* [Go Sink Reference](./references/go-sink.md)
-* [JavaScript Sink Reference](./references/javascript-sink.md)
-* [Python Sink Reference](./references/python-sink.md)
 * [Rust Sink Reference](./references/rust-sink.md)
 * [Cursor & Reorg Handling](./references/cursor-reorg.md)
 
