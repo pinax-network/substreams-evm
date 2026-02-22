@@ -883,7 +883,6 @@ echo "✅ All pre-commit checks passed!"
 
 * [Unit Testing Guide](./references/unit-testing.md)
 * [Integration Testing Patterns](./references/integration-testing.md)
-* [Performance Testing Guide](./references/performance-testing.md)
 * [FireCore Tools Documentation](./references/firecore-tools.md)
 
 ## Getting Help

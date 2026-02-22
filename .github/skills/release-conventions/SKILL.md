@@ -87,18 +87,16 @@ All 3 SPKGs for a given crate (base, clickhouse, postgres) **must share the same
 ## Directory Structure
 
 ```
-<chain>-<type>/
-├── substreams.yaml          # Base DB module
+evm-<type>/                          # DB module (contains everything)
+├── substreams.yaml                  # Base DB module
 ├── src/lib.rs
 ├── Cargo.toml
 ├── clickhouse/
-│   ├── substreams.yaml      # ClickHouse sink (imports base spkg)
+│   ├── substreams.yaml              # ClickHouse sink (imports base spkg)
 │   ├── schema.sql
-│   ├── Makefile
-│   └── .gitignore           # !schema.sql to override root .gitignore
+│   └── Makefile
 └── postgres/
-    ├── substreams.yaml      # PostgreSQL sink (imports base spkg)
+    ├── substreams.yaml              # PostgreSQL sink (imports base spkg)
     ├── schema.sql
-    ├── Makefile
-    └── .gitignore           # !schema.sql to override root .gitignore
+    └── Makefile
 ```
