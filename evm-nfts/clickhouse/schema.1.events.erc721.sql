@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS erc721_transfers (
 
 ) ENGINE = ReplacingMergeTree
 PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+ORDER BY (timestamp, block_num, `index`)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild';
 
 -- ERC721 Approval --
 CREATE TABLE IF NOT EXISTS erc721_approvals (
