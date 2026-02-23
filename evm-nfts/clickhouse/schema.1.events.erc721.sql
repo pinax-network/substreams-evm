@@ -10,6 +10,27 @@ ALTER TABLE erc721_transfers
     ADD COLUMN IF NOT EXISTS amount               UInt256 DEFAULT 1,
     ADD COLUMN IF NOT EXISTS transfer_type        LowCardinality(String),
     ADD COLUMN IF NOT EXISTS token_standard       LowCardinality(String);
+ALTER TABLE erc721_transfers REMOVE TTL;
+
+-- PROJECTIONS --
+-- count() --
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_transfer_type_count ( SELECT transfer_type, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY transfer_type );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address ( SELECT log_address, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_from_count ( SELECT `from`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `from` );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_to_count ( SELECT `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `to` );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_from_to_count ( SELECT `from`, `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY `from`, `to` );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address_from_count ( SELECT log_address, `from`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, `from` );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address_to_count ( SELECT log_address, `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY log_address, `to` );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address_to_from_count ( SELECT log_address, `from`, `to`, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute)  GROUP BY log_address, `from`, `to` );
+
+-- minute + timestamp --
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_tx_hash_by_timestamp ( SELECT tx_hash, minute, timestamp GROUP BY tx_hash, minute, timestamp );
+
+-- minute --
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_transfer_type_by_minute ( SELECT transfer_type, minute GROUP BY transfer_type, minute );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_from_by_minute ( SELECT `from`, minute GROUP BY `from`, minute );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute );
+ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute );
 
 -- ERC721 Approval --
 CREATE TABLE IF NOT EXISTS erc721_approvals AS TEMPLATE_LOG
