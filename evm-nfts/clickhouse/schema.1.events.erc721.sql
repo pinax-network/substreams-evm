@@ -40,7 +40,10 @@ CREATE TABLE IF NOT EXISTS erc721_transfers (
     INDEX idx_token_id           (token_id)                 TYPE minmax GRANULARITY 4,
     INDEX idx_amount             (amount)                   TYPE minmax GRANULARITY 4,
     INDEX idx_transfer_type      (transfer_type)            TYPE set(1) GRANULARITY 1,
-    INDEX idx_token_standard     (token_standard)           TYPE set(1) GRANULARITY 1
+    INDEX idx_token_standard     (token_standard)           TYPE set(1) GRANULARITY 1,
+
+    -- projections --
+    PROJECTION proj_transfers_by_contract (SELECT contract, count() AS total_transfers GROUP BY contract)
 
 ) ENGINE = ReplacingMergeTree
 PRIMARY KEY (timestamp, block_num, `index`)
