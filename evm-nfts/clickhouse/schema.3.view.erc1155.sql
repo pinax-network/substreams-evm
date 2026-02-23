@@ -3,13 +3,10 @@ CREATE TABLE IF NOT EXISTS erc1155_balances (
     block_num            SimpleAggregateFunction(max, UInt32),
     timestamp            SimpleAggregateFunction(max, DateTime(0, 'UTC')),
 
-    -- ordering --
-    global_sequence      SimpleAggregateFunction(max, UInt64), -- latest global sequence (block_num << 32 + index)
-
     -- balance --
-    contract             FixedString(42),
+    contract             String,
     token_id             UInt256,
-    owner                FixedString(42),
+    owner                String,
     balance              SimpleAggregateFunction(sum, Int256)
 )
 ENGINE = AggregatingMergeTree
@@ -21,8 +18,7 @@ AS
 SELECT
     block_num,
     timestamp,
-    global_sequence,
-    contract,
+    log_address AS contract,
     token_id,
     `to` AS owner,
     CAST(amount, 'Int256') AS balance
@@ -34,8 +30,7 @@ AS
 SELECT
     block_num,
     timestamp,
-    global_sequence,
-    contract,
+    log_address AS contract,
     token_id,
     `from` AS owner,
     -CAST(amount, 'Int256') as balance

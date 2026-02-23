@@ -5,14 +5,14 @@ SELECT
     block_num,
     block_hash,
     timestamp,
-    contract,
+    log_address AS contract,
     token_id,
     concat(
         'https://wrappedpunks.com:3000/api/punks/metadata/',  -- base URI
         toString(token_id)                                    -- token_id → text
     ) AS uri
 FROM erc721_transfers
-WHERE contract = '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb';
+WHERE log_address = '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb';
 
 INSERT INTO erc721_metadata_by_contract (
     -- block --

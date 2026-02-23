@@ -1,240 +1,61 @@
 -- CryptoPunk Assigns --
-CREATE TABLE IF NOT EXISTS punk_assigns (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_assigns AS TEMPLATE_LOG
+COMMENT 'CryptoPunk Assign events';
+ALTER TABLE punk_assigns
     -- event --
-    `to`                 FixedString(42),
-    punk_index           UInt256,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_to                 (`to`)                     TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS `to`                 String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256;
 
 -- CryptoPunk Transfers --
-CREATE TABLE IF NOT EXISTS punk_transfers (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_transfers AS TEMPLATE_LOG
+COMMENT 'CryptoPunk Transfer events';
+ALTER TABLE punk_transfers
     -- event --
-    `from`               FixedString(42),
-    `to`                 FixedString(42),
-    punk_index           UInt256,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_from               (`from`)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_to                 (`to`)                     TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS `from`               String,
+    ADD COLUMN IF NOT EXISTS `to`                 String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256;
 
 -- CryptoPunk Bought --
-CREATE TABLE IF NOT EXISTS punk_bought (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_bought AS TEMPLATE_LOG
+COMMENT 'CryptoPunk Bought events';
+ALTER TABLE punk_bought
     -- event --
-    `from`               FixedString(42),
-    `to`                 FixedString(42),
-    punk_index           UInt256,
-    value                UInt256,
-    value_is_null        Bool,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_from               (`from`)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_to                 (`to`)                     TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS `from`               String,
+    ADD COLUMN IF NOT EXISTS `to`                 String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256,
+    ADD COLUMN IF NOT EXISTS value                UInt256,
+    ADD COLUMN IF NOT EXISTS value_is_null        Bool;
 
 -- CryptoPunk BidEntered --
-CREATE TABLE IF NOT EXISTS punk_bid_entered (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_bid_entered AS TEMPLATE_LOG
+COMMENT 'CryptoPunk BidEntered events';
+ALTER TABLE punk_bid_entered
     -- event --
-    `from`               FixedString(42),
-    punk_index           UInt256,
-    value                UInt256,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_from               (`from`)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS `from`               String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256,
+    ADD COLUMN IF NOT EXISTS value                UInt256;
 
 -- CryptoPunk BidWithdrawn --
-CREATE TABLE IF NOT EXISTS punk_bid_withdrawn AS punk_bid_entered
-ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+CREATE TABLE IF NOT EXISTS punk_bid_withdrawn AS TEMPLATE_LOG
+COMMENT 'CryptoPunk BidWithdrawn events';
+ALTER TABLE punk_bid_withdrawn
+    -- event --
+    ADD COLUMN IF NOT EXISTS `from`               String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256,
+    ADD COLUMN IF NOT EXISTS value                UInt256;
 
 -- CryptoPunk NoLongerForSale --
-CREATE TABLE IF NOT EXISTS punk_no_longer_for_sale (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_no_longer_for_sale AS TEMPLATE_LOG
+COMMENT 'CryptoPunk NoLongerForSale events';
+ALTER TABLE punk_no_longer_for_sale
     -- event --
-    punk_index           UInt256,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256;
 
 -- CryptoPunk PunkOffered --
-CREATE TABLE IF NOT EXISTS punk_offered (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS punk_offered AS TEMPLATE_LOG
+COMMENT 'CryptoPunk PunkOffered events';
+ALTER TABLE punk_offered
     -- event --
-    `to`                 FixedString(42),
-    punk_index           UInt256,
-    min_value            UInt256,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_contract           (contract)                 TYPE set(16) GRANULARITY 4,
-    INDEX idx_to                 (`to`)                     TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_punk_index         (punk_index)               TYPE set(128) GRANULARITY 4,
-    INDEX idx_min_value          (min_value)                TYPE minmax GRANULARITY 4,
-
-) ENGINE = ReplacingMergeTree
-PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS `to`                 String,
+    ADD COLUMN IF NOT EXISTS punk_index           UInt256,
+    ADD COLUMN IF NOT EXISTS min_value            UInt256;

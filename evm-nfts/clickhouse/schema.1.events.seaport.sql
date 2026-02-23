@@ -1,38 +1,20 @@
 -- Seaport Order Fulfilled --
-CREATE TABLE IF NOT EXISTS seaport_order_fulfilled (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-    global_sequence_reverse  UInt64 MATERIALIZED toUInt64(-1) - global_sequence,
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS seaport_order_fulfilled AS TEMPLATE_LOG
+COMMENT 'Seaport OrderFulfilled events';
+ALTER TABLE seaport_order_fulfilled
     -- event --
-    order_hash           FixedString(66),
-    offerer              FixedString(42),
-    zone                 FixedString(42),
-    recipient            FixedString(42),
+    ADD COLUMN IF NOT EXISTS order_hash           String,
+    ADD COLUMN IF NOT EXISTS offerer              String,
+    ADD COLUMN IF NOT EXISTS zone                 String,
+    ADD COLUMN IF NOT EXISTS recipient            String,
 
     -- event (JSON) --
-    offer_raw            String, -- JSON object as string
-    offer Array(Tuple(
-        UInt8,         -- item_type
-        FixedString(42), -- token
-        UInt256, -- identifier
-        UInt256  -- amount
+    ADD COLUMN IF NOT EXISTS offer_raw            String,
+    ADD COLUMN IF NOT EXISTS offer Array(Tuple(
+        UInt8,             -- item_type
+        FixedString(42),   -- token
+        UInt256,           -- identifier
+        UInt256            -- amount
     )) MATERIALIZED (
         arrayMap(
             x -> tuple(
@@ -44,13 +26,13 @@ CREATE TABLE IF NOT EXISTS seaport_order_fulfilled (
             JSONExtractArrayRaw(offer_raw)
         )
     ),
-    consideration_raw       String, -- JSON object as string
-    consideration Array(Tuple(
-        UInt8,         -- item_type
-        FixedString(42), -- token
-        UInt256, -- identifier
-        UInt256, -- amount
-        FixedString(42)  -- recipient
+    ADD COLUMN IF NOT EXISTS consideration_raw       String,
+    ADD COLUMN IF NOT EXISTS consideration Array(Tuple(
+        UInt8,             -- item_type
+        FixedString(42),   -- token
+        UInt256,           -- identifier
+        UInt256,           -- amount
+        FixedString(42)    -- recipient
     )) MATERIALIZED (
         arrayMap(
             x -> tuple(
@@ -62,96 +44,21 @@ CREATE TABLE IF NOT EXISTS seaport_order_fulfilled (
             ),
             JSONExtractArrayRaw(consideration_raw)
         )
-    ),
-
-    -- indexes (block) --
-    INDEX idx_timestamp            (timestamp)              TYPE minmax GRANULARITY 4,
-    INDEX idx_block_num            (block_num)              TYPE minmax GRANULARITY 4,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_contract           (contract)                 TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_offerer            (offerer)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_zone               (zone)                     TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_recipient          (recipient)                TYPE bloom_filter GRANULARITY 4
-) ENGINE = ReplacingMergeTree(global_sequence_reverse) -- only keep first event --
-ORDER BY (order_hash); -- contains duplicates --
+    );
 
 -- Seaport Orders Matched --
-CREATE TABLE IF NOT EXISTS seaport_orders_matched (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS seaport_orders_matched AS TEMPLATE_LOG
+COMMENT 'Seaport OrdersMatched events';
+ALTER TABLE seaport_orders_matched
     -- event --
-    order_hashes_raw       String, -- as comma separated list
-    order_hashes           Array(FixedString(66)) MATERIALIZED splitByChar(',', order_hashes_raw),
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_contract           (contract)                 TYPE bloom_filter GRANULARITY 4
-
-) ENGINE = MergeTree
-ORDER BY (timestamp, block_num, `index`);
+    ADD COLUMN IF NOT EXISTS order_hashes_raw       String,
+    ADD COLUMN IF NOT EXISTS order_hashes           Array(String) MATERIALIZED splitByChar(',', order_hashes_raw);
 
 -- Seaport Order Cancelled --
-CREATE TABLE IF NOT EXISTS seaport_order_cancelled (
-    -- block --
-    block_num            UInt32,
-    block_hash           FixedString(66),
-    timestamp            DateTime(0, 'UTC'),
-
-    -- ordering --
-    ordinal              UInt64, -- log.ordinal
-    `index`              UInt64, -- relative index
-    global_sequence      UInt64, -- latest global sequence (block_num << 32 + index)
-    global_sequence_reverse  UInt64 MATERIALIZED toUInt64(-1) - global_sequence,
-
-    -- transaction --
-    tx_hash              FixedString(66),
-
-    -- call --
-    caller               FixedString(42) COMMENT 'caller address', -- call.caller
-
-    -- log --
-    contract             FixedString(42) COMMENT 'contract address',
-
+CREATE TABLE IF NOT EXISTS seaport_order_cancelled AS TEMPLATE_LOG
+COMMENT 'Seaport OrderCancelled events';
+ALTER TABLE seaport_order_cancelled
     -- event --
-    order_hash           FixedString(66),
-    offerer              FixedString(42),
-    zone                 FixedString(42),
-
-    -- indexes (block) --
-    INDEX idx_timestamp            (timestamp)              TYPE minmax GRANULARITY 4,
-    INDEX idx_block_num            (block_num)              TYPE minmax GRANULARITY 4,
-
-    -- indexes (transaction) --
-    INDEX idx_tx_hash            (tx_hash)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_caller             (caller)                   TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_contract           (contract)                 TYPE bloom_filter GRANULARITY 4,
-
-    -- indexes (event) --
-    INDEX idx_offerer            (offerer)                  TYPE bloom_filter GRANULARITY 4,
-    INDEX idx_zone               (zone)                     TYPE bloom_filter GRANULARITY 4
-
-) ENGINE = ReplacingMergeTree(global_sequence_reverse) -- only keep first event --
-ORDER BY (order_hash); -- contains duplicates --
+    ADD COLUMN IF NOT EXISTS order_hash           String,
+    ADD COLUMN IF NOT EXISTS offerer              String,
+    ADD COLUMN IF NOT EXISTS zone                 String;
