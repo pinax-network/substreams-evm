@@ -2,7 +2,8 @@
 CREATE TABLE IF NOT EXISTS erc1155_transfers as erc721_transfers
 ENGINE = ReplacingMergeTree
 PRIMARY KEY (timestamp, block_num, `index`)
-ORDER BY (timestamp, block_num, `index`);
+ORDER BY (timestamp, block_num, `index`)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild';
 
 -- ERC1155 Approval For All --
 CREATE TABLE IF NOT EXISTS erc1155_approvals_for_all as erc721_approvals_for_all
