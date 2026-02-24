@@ -1,3 +1,4 @@
+use crate::{bytes_to_string, Encoding};
 use substreams::pb::substreams::Clock;
 use substreams::Hex;
 use substreams_database_change::tables::Row;
@@ -41,10 +42,17 @@ pub fn set_bytes(bytes: Option<Hash>, name: &str, row: &mut Row) {
     };
 }
 
-pub fn set_log(clock: &Clock, index: u64, tx_hash: Hash, contract: Address, ordinal: u64, caller: Option<Address>, row: &mut Row) {
+fn set_address(bytes: Option<Address>, name: &str, encoding: &Encoding, row: &mut Row) {
+    match bytes {
+        Some(data) => row.set(name, bytes_to_string(&data, encoding)),
+        None => row.set(name, "".to_string()),
+    };
+}
+
+pub fn set_log(clock: &Clock, index: u64, tx_hash: Hash, contract: Address, ordinal: u64, caller: Option<Address>, encoding: &Encoding, row: &mut Row) {
     set_bytes(Some(tx_hash), "tx_hash", row);
-    set_bytes(Some(contract), "contract", row);
-    set_bytes(caller, "caller", row);
+    set_address(Some(contract), "contract", encoding, row);
+    set_address(caller, "caller", encoding, row);
     set_ordering(index, Some(ordinal), clock, row);
     set_clock(clock, row);
 }

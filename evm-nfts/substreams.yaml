@@ -27,6 +27,7 @@ modules:
   - name: db_out
     kind: map
     inputs:
+      - params: string
       - source: sf.substreams.v1.Clock
       - map: erc721:map_events
       - map: erc721_metadata:map_events
@@ -48,3 +49,6 @@ sink:
       enabled: false
 
 network: mainnet
+
+params:
+  db_out: "hex"  # Supported encodings: hex, tron_base58
