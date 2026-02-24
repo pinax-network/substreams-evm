@@ -14,6 +14,7 @@ use substreams_database_change::tables::Tables;
 
 #[substreams::handlers::map]
 pub fn db_out(
+    params: String,
     clock: Clock,
     erc721_events: evm::erc721::v1::Events,
     erc721_metadata_events: evm::erc721::metadata::v1::Events,
@@ -25,14 +26,17 @@ pub fn db_out(
 ) -> Result<DatabaseChanges, substreams::errors::Error> {
     let mut tables = Tables::new();
 
+    // Handle support both EVM & TVM address encoding
+    let encoding = common::handle_encoding_param(&params);
+
     // Process packages
-    erc721::process_erc721(&mut tables, &clock, erc721_events);
-    erc721::process_erc721(&mut tables, &clock, erc721_cryptopunks_events);
-    erc721_metadata::process_erc721_metadata(&mut tables, &clock, erc721_metadata_events);
-    erc1155::process_erc1155(&mut tables, &clock, erc1155_events);
-    erc1155_metadata::process_erc1155_metadata(&mut tables, &clock, erc1155_metadata_events);
-    seaport::process_seaport(&mut tables, &clock, seaport_events);
-    cryptopunks::process_cryptopunks(&mut tables, &clock, cryptopunks_events);
+    erc721::process_erc721(&mut tables, &clock, erc721_events, &encoding);
+    erc721::process_erc721(&mut tables, &clock, erc721_cryptopunks_events, &encoding);
+    erc721_metadata::process_erc721_metadata(&mut tables, &clock, erc721_metadata_events, &encoding);
+    erc1155::process_erc1155(&mut tables, &clock, erc1155_events, &encoding);
+    erc1155_metadata::process_erc1155_metadata(&mut tables, &clock, erc1155_metadata_events, &encoding);
+    seaport::process_seaport(&mut tables, &clock, seaport_events, &encoding);
+    cryptopunks::process_cryptopunks(&mut tables, &clock, cryptopunks_events, &encoding);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
