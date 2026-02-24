@@ -34,5 +34,15 @@ pub fn db_out(
     seaport::process_seaport(&mut tables, &clock, seaport_events);
     cryptopunks::process_cryptopunks(&mut tables, &clock, cryptopunks_events);
 
+    // ONLY include blocks if events are present
+    if !tables.tables.is_empty() {
+        let row = tables.create_row("blocks", [("block_num", clock.number.to_string().as_str())]);
+        row.set("block_num", clock.number);
+        row.set("block_hash", format!("0x{}", clock.id));
+        if let Some(timestamp) = &clock.timestamp {
+            row.set("timestamp", timestamp.seconds);
+        }
+    }
+
     Ok(tables.to_database_changes())
 }
