@@ -1,5 +1,5 @@
 use common::clickhouse::{common_key, set_log};
-use common::{bytes_to_string, Encoding};
+use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::evm::seaport;
 use substreams::pb::substreams::Clock;
 
@@ -12,7 +12,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
         let key = common_key(clock, index);
         let row = tables
             .create_row("seaport_order_fulfilled", key)
-            .set("order_hash", common::bytes_to_hex(&event.order_hash))
+            .set("order_hash", bytes_to_hex(&event.order_hash))
             .set("offerer", bytes_to_string(&event.offerer, encoding))
             .set("zone", bytes_to_string(&event.zone, encoding))
             .set("recipient", bytes_to_string(&event.recipient, encoding))
@@ -25,7 +25,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
 
     for event in events.orders_matched {
         let key = common_key(clock, index);
-        let order_hashes_raw = event.order_hashes.iter().map(|h| common::bytes_to_hex(h)).collect::<Vec<String>>().join(",");
+        let order_hashes_raw = event.order_hashes.iter().map(|h| bytes_to_hex(h)).collect::<Vec<String>>().join(",");
         let row = tables.create_row("seaport_orders_matched", key).set("order_hashes_raw", order_hashes_raw);
 
         set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
@@ -36,7 +36,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
         let key = common_key(clock, index);
         let row = tables
             .create_row("seaport_order_cancelled", key)
-            .set("order_hash", common::bytes_to_hex(&event.order_hash))
+            .set("order_hash", bytes_to_hex(&event.order_hash))
             .set("offerer", bytes_to_string(&event.offerer, encoding))
             .set("zone", bytes_to_string(&event.zone, encoding));
 

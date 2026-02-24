@@ -1,5 +1,5 @@
 use common::clickhouse::{common_key, set_clock, set_log};
-use common::{bytes_to_string, Encoding};
+use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::evm::erc1155::v1 as erc1155;
 use substreams::pb::substreams::Clock;
 
@@ -30,7 +30,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                 "Invalid ERC1155 TransferBatch event: mismatch between ids length ({}) and values length ({}) in trx {}",
                 event.ids.len(),
                 event.values.len(),
-                common::bytes_to_hex(&event.tx_hash)
+                bytes_to_hex(&event.tx_hash)
             );
             continue;
         }
