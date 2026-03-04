@@ -32,9 +32,6 @@ ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_from_by_minute ( S
 ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_to_by_minute ( SELECT `to`, minute GROUP BY `to`, minute );
 ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute );
 
--- Remove TTL (full history required) --
-ALTER TABLE erc721_transfers REMOVE TTL;
-
 -- Projections --
 -- count() --
 ALTER TABLE erc721_transfers ADD PROJECTION IF NOT EXISTS prj_transfer_type_count ( SELECT transfer_type, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY transfer_type );
