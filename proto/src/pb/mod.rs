@@ -90,21 +90,6 @@ pub mod evm {
         pub mod v1 {
             include!("evm.erc721.v1.rs");
         }
-        pub mod metadata {
-            pub mod v1 {
-                include!("evm.erc721.metadata.v1.rs");
-            }
-        }
-    }
-    pub mod erc1155 {
-        pub mod v1 {
-            include!("evm.erc1155.v1.rs");
-        }
-        pub mod metadata {
-            pub mod v1 {
-                include!("evm.erc1155.metadata.v1.rs");
-            }
-        }
     }
     pub mod seaport {
         pub mod v1 {

@@ -10,9 +10,7 @@ imports:
   database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
 
   erc721: ../spkg/erc721-v0.4.0.spkg
-  erc721_metadata: ../spkg/evm-erc721-metadata-v0.4.1.spkg
-  erc1155: ../spkg/erc1155-v0.4.0.spkg
-  erc1155_metadata: ../spkg/evm-erc1155-metadata-v0.4.1.spkg
+  erc1155: ../erc1155/substreams.yaml
   seaport: ../spkg/seaport-v0.1.0.spkg
   erc721_cryptopunks: ../spkg/evm-erc721-cryptopunks-v0.1.0.spkg
   cryptopunks: ../spkg/evm-cryptopunks-v0.1.0.spkg
@@ -29,9 +27,7 @@ modules:
       - params: string
       - source: sf.substreams.v1.Clock
       - map: erc721:map_events
-      - map: erc721_metadata:map_events
       - map: erc1155:map_events
-      - map: erc1155_metadata:map_events
       - map: seaport:map_events
       - map: erc721_cryptopunks:map_events
       - map: cryptopunks:map_events
