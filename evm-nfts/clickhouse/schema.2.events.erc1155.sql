@@ -60,14 +60,3 @@ ALTER TABLE erc1155_approvals_for_all
     ADD COLUMN IF NOT EXISTS operator             String,
     ADD COLUMN IF NOT EXISTS approved             Bool,
     ADD COLUMN IF NOT EXISTS token_standard       LowCardinality(String);
-
--- ERC1155 Token Metadata --
-CREATE TABLE IF NOT EXISTS erc1155_metadata_by_token as erc721_metadata_by_token
-ENGINE = ReplacingMergeTree(block_num)
-PRIMARY KEY (contract, token_id)
-ORDER BY (contract, token_id);
-
-CREATE TABLE IF NOT EXISTS erc1155_metadata_by_contract as erc721_metadata_by_contract
-ENGINE = ReplacingMergeTree(block_num)
-PRIMARY KEY (contract)
-ORDER BY (contract);
