@@ -10,16 +10,14 @@ pub fn bytes_to_hex(bytes: &[u8]) -> String {
     format!("0x{}", Hex::encode(bytes))
 }
 
-pub fn to_global_sequence(clock: &Clock, index: u64) -> u64 {
-    (clock.number << 32) + index
-}
-
-pub fn common_key(clock: &Clock, index: u64) -> [(&'static str, String); 3] {
+pub fn common_key(clock: &Clock, index: u64) -> [(&'static str, String); 5] {
     let seconds = clock.timestamp.as_ref().expect("clock.timestamp is required").seconds;
     [
+        ("minute", (seconds / 60).to_string()),
         ("timestamp", seconds.to_string()),
         ("block_num", clock.number.to_string()),
-        ("index", index.to_string()),
+        ("block_hash", format!("0x{}", &clock.id)),
+        ("log_index", index.to_string()),
     ]
 }
 
@@ -29,10 +27,9 @@ pub fn set_clock(clock: &Clock, row: &mut Row) {
         .set("timestamp", clock.timestamp.as_ref().expect("missing timestamp").seconds.to_string());
 }
 
-pub fn set_ordering(index: u64, ordinal: Option<u64>, clock: &Clock, row: &mut Row) {
-    row.set("index", index)
-        .set("ordinal", ordinal.unwrap_or(0))
-        .set("global_sequence", to_global_sequence(clock, index));
+pub fn set_ordering(index: u64, ordinal: Option<u64>, _clock: &Clock, row: &mut Row) {
+    row.set("log_index", index)
+        .set("log_ordinal", ordinal.unwrap_or(0));
 }
 
 pub fn set_bytes(bytes: Option<Hash>, name: &str, row: &mut Row) {
@@ -51,8 +48,8 @@ fn set_address(bytes: Option<Address>, name: &str, encoding: &Encoding, row: &mu
 
 pub fn set_log(clock: &Clock, index: u64, tx_hash: Hash, contract: Address, ordinal: u64, caller: Option<Address>, encoding: &Encoding, row: &mut Row) {
     set_bytes(Some(tx_hash), "tx_hash", row);
-    set_address(Some(contract), "contract", encoding, row);
-    set_address(caller, "caller", encoding, row);
+    set_address(Some(contract), "log_address", encoding, row);
+    set_address(caller, "call_caller", encoding, row);
     set_ordering(index, Some(ordinal), clock, row);
     set_clock(clock, row);
 }
