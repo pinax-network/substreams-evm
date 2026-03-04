@@ -1,22 +1,21 @@
 specVersion: v0.1.0
 package:
   name: evm_nfts
-  version: v0.7.1
+  version: v0.7.2
   url: https://github.com/pinax-network/substreams-evm
   description: NFT tokens for EVM blockchains.
   image: ../image.png
 
 imports:
-  database_changes: https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v2.0.0/substreams-database-change-v2.0.0.spkg
-  sql: https://github.com/streamingfast/substreams-sink-sql/releases/download/protodefs-v1.0.7/substreams-sink-sql-protodefs-v1.0.7.spkg
+  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
 
-  erc721: https://github.com/pinax-network/substreams-evm-tokens/releases/download/nfts-v0.4.0/erc721-v0.4.0.spkg
-  erc721_metadata: https://github.com/pinax-network/substreams-evm-tokens/releases/download/erc721-metadata-v0.4.1/evm-erc721-metadata-v0.4.1.spkg
-  erc1155: https://github.com/pinax-network/substreams-evm-tokens/releases/download/nfts-v0.4.0/erc1155-v0.4.0.spkg
-  erc1155_metadata: https://github.com/pinax-network/substreams-evm-tokens/releases/download/erc1155-metadata-v0.4.1/evm-erc1155-metadata-v0.4.1.spkg
-  seaport: ../dex-nfts/seaport/substreams.yaml
-  erc721_cryptopunks: https://github.com/pinax-network/substreams-evm-nfts/releases/download/cryptopunks-v0.1.0/evm-erc721-cryptopunks-v0.1.0.spkg
-  cryptopunks: https://github.com/pinax-network/substreams-evm-nfts/releases/download/cryptopunks-v0.1.0/evm-cryptopunks-v0.1.0.spkg
+  erc721: ../spkg/erc721-v0.4.0.spkg
+  erc721_metadata: ../spkg/evm-erc721-metadata-v0.4.1.spkg
+  erc1155: ../spkg/erc1155-v0.4.0.spkg
+  erc1155_metadata: ../spkg/evm-erc1155-metadata-v0.4.1.spkg
+  seaport: ../spkg/seaport-v0.1.0.spkg
+  erc721_cryptopunks: ../spkg/evm-erc721-cryptopunks-v0.1.0.spkg
+  cryptopunks: ../spkg/evm-cryptopunks-v0.1.0.spkg
 
 binaries:
   default:
@@ -38,15 +37,6 @@ modules:
       - map: cryptopunks:map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
-
-sink:
-  module: db_out
-  type: sf.substreams.sink.sql.v1.Service
-  config:
-    schema: "./schema.sql"
-    engine: clickhouse
-    postgraphile_frontend:
-      enabled: false
 
 network: mainnet
 

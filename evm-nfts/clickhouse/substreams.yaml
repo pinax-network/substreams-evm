@@ -1,13 +1,14 @@
 specVersion: v0.1.0
 package:
   name: evm_clickhouse_nfts
-  version: v0.7.1
+  version: v0.7.2
   url: https://github.com/pinax-network/substreams-evm
   description: NFT tokens for EVM blockchains (ClickHouse)
   image: ../../image.png
 
 imports:
-  db: ../../spkg/evm-nfts-v0.7.0.spkg
+  sql: ../../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
+  db: ../../spkg/evm-nfts-v0.7.2.spkg
 
 modules:
   - name: db_out

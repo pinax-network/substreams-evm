@@ -10,6 +10,7 @@ ALTER TABLE erc1155_transfers
     ADD COLUMN IF NOT EXISTS amount               UInt256 DEFAULT 1,
     ADD COLUMN IF NOT EXISTS transfer_type        LowCardinality(String),
     ADD COLUMN IF NOT EXISTS token_standard       LowCardinality(String);
+ALTER TABLE erc1155_transfers MODIFY TTL timestamp + INTERVAL 100 YEAR;
 ALTER TABLE erc1155_transfers REMOVE TTL;
 
 -- PROJECTIONS --
