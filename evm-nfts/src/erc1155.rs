@@ -1,4 +1,4 @@
-use common::clickhouse::{common_key, set_clock, set_log};
+use common::clickhouse::{common_key, set_log};
 use common::{bytes_to_string, Encoding};
 use proto::pb::erc1155::v1 as erc1155;
 use substreams::pb::substreams::Clock;
@@ -64,21 +64,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, None, encoding, row);
                     index += 1;
                 }
-                Some(erc1155::log::Log::Uri(event)) => {
-                    if event.value.is_empty() {
-                        continue;
-                    }
-
-                    let key = [("contract", bytes_to_string(&contract, encoding)), ("token_id", event.id.to_string())];
-                    let row = tables
-                        .create_row("erc1155_metadata_by_token", key)
-                        .set("contract", bytes_to_string(&contract, encoding))
-                        .set("token_id", &event.id)
-                        .set("uri", event.value);
-
-                    set_clock(clock, row);
-                    index += 1;
-                }
+                Some(erc1155::log::Log::Uri(_)) => {}
                 None => {}
             }
         }
