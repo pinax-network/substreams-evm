@@ -9,13 +9,17 @@ evm-dex/          # DEX aggregator (db_out) + clickhouse/ + postgres/
 evm-transfers/    # Transfer aggregator (db_out) + clickhouse/ + postgres/
 evm-balances/     # Balance aggregator (db_out) + clickhouse/ + postgres/
 evm-supply/       # Supply aggregator (db_out) + clickhouse/ + postgres/
+evm-nfts/         # NFT aggregator (db_out) + clickhouse/ + postgres/
+evm-contracts/    # Contract metadata aggregator (db_out) + clickhouse/ + postgres/
 blocks/           # Block metadata + clickhouse/
 dex/              # Individual DEX map_events modules
+dex-nfts/         # NFT market protocol modules (for example, Seaport)
 erc20/            # ERC-20 modules (transfers/ balances/ supply/ tokens/)
 native/           # Native transfer/balance modules (transfers/ balances/)
 erc1155/          # ERC-1155 multi-token events
 proto/            # Protobuf definitions
 common/           # Shared Rust helpers
+scripts/          # Utility scripts and analysis notes
 spkg/             # Pre-built Substreams packages
 ```
 
@@ -131,6 +135,8 @@ Each aggregator combines individual modules into a single `db_out` for database 
 | `evm-transfers` | ERC-20 + native transfers | Clickhouse, Postgres |
 | `evm-balances` | ERC-20 + native balances | Clickhouse, Postgres |
 | `evm-supply` | ERC-20 supply | Clickhouse, Postgres |
+| `evm-nfts` | NFT events (ERC-721, ERC-1155, Seaport, CryptoPunks) | Clickhouse, Postgres |
+| `evm-contracts` | Contract metadata and creation events | Clickhouse, Postgres |
 | `blocks` | Block metadata | Clickhouse |
 
 ## Event Signatures
