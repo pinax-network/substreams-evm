@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS swaps (
 
     -- minute --
     PROJECTION prj_log_address_by_minute ( SELECT log_address, minute GROUP BY log_address, minute ),
+    PROJECTION prj_log_topic0_by_minute ( SELECT log_topic0, minute GROUP BY log_topic0, minute ),
 
     -- minute --
-    PROJECTION prj_all_by_minute ( SELECT protocol, factory, pool, input_contract, output_contract, minute, count() GROUP BY protocol, factory, pool, input_contract, output_contract, minute ),
     PROJECTION prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
     PROJECTION prj_tx_from_by_minute ( SELECT tx_from, minute, count() GROUP BY tx_from, minute ),
     PROJECTION prj_caller_by_minute ( SELECT caller, minute, count() GROUP BY caller, minute ),
