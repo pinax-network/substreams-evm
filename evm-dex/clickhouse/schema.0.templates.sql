@@ -18,6 +18,10 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
     tx_value                    UInt256
 )
 ENGINE = MergeTree
+-- TTL is applied to all base data tables
+-- to automatically clean up old data
+-- production tables are derived from MV's on these base tables
+TTL timestamp + INTERVAL 1 DAY
 ORDER BY (
     minute, timestamp, block_num
 );
