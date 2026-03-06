@@ -17,8 +17,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
@@ -110,8 +109,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
@@ -182,8 +180,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_tx_from (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
@@ -254,8 +251,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_caller (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,

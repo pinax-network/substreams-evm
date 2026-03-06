@@ -1,5 +1,5 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
-use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dca_dot_fun, dodo, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
+use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dodo, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
 
 pub fn set_template_tx(encoding: &Encoding, tx: &impl TxTemplate, tx_index: usize, row: &mut substreams_database_change::tables::Row) {
     let tx_to = match tx.get_to() {
@@ -302,4 +302,3 @@ impl_tx_template!(dodo::v1::Transaction);
 impl_tx_template!(woofi::v1::Transaction);
 impl_tx_template!(traderjoe::v1::Transaction);
 impl_tx_template!(kyber_elastic::v1::Transaction);
-impl_tx_template!(dca_dot_fun::v1::Transaction);
