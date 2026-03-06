@@ -47,24 +47,24 @@ GROUP BY pool, factory
 ORDER BY uaw_user DESC
 LIMIT 50;
 
--- unique caller by protocol + factory
+-- unique call_caller by protocol + factory
 EXPLAIN indexes = 1, projections = 1
 SELECT
     protocol,
     factory,
-    uniqExact(caller) AS uaw_caller
+    uniqExact(call_caller) AS uaw_call_caller
 FROM swaps
 GROUP BY protocol, factory
-ORDER BY uaw_caller DESC
+ORDER BY uaw_call_caller DESC
 LIMIT 50;
 
 SELECT
     protocol,
     factory,
-    uniqExact(caller) AS uaw_caller
+    uniqExact(call_caller) AS uaw_call_caller
 FROM swaps
 GROUP BY protocol, factory
-ORDER BY uaw_caller DESC
+ORDER BY uaw_call_caller DESC
 LIMIT 50;
 
 -- -----------------------------------------------------------------------------
@@ -127,24 +127,24 @@ GROUP BY factory
 ORDER BY uaw_user DESC
 LIMIT 50;
 
--- caller distinct counts by pool + factory
+-- call_caller distinct counts by pool + factory
 EXPLAIN indexes = 1, projections = 1
 SELECT
     pool,
     factory,
-    count() AS uaw_caller
-FROM state_pools_uaw_by_caller
+    count() AS uaw_call_caller
+FROM state_pools_uaw_by_call_caller
 GROUP BY pool, factory
-ORDER BY uaw_caller DESC
+ORDER BY uaw_call_caller DESC
 LIMIT 50;
 
 SELECT
     pool,
     factory,
-    count() AS uaw_caller
-FROM state_pools_uaw_by_caller
+    count() AS uaw_call_caller
+FROM state_pools_uaw_by_call_caller
 GROUP BY pool, factory
-ORDER BY uaw_caller DESC
+ORDER BY uaw_call_caller DESC
 LIMIT 50;
 
 -- -----------------------------------------------------------------------------
@@ -193,14 +193,14 @@ GROUP BY dimension, pool, factory
 ORDER BY dimension, unique_addresses DESC
 LIMIT 100;
 
--- focused benchmark for caller only
+-- focused benchmark for call_caller only
 EXPLAIN indexes = 1, projections = 1
 SELECT
     dimension,
     factory,
     count() AS unique_addresses
 FROM state_pools_uaw
-WHERE dimension = 'caller'
+WHERE dimension = 'call_caller'
 GROUP BY dimension, factory
 ORDER BY unique_addresses DESC
 LIMIT 50;
@@ -210,7 +210,7 @@ SELECT
     factory,
     count() AS unique_addresses
 FROM state_pools_uaw
-WHERE dimension = 'caller'
+WHERE dimension = 'call_caller'
 GROUP BY dimension, factory
 ORDER BY unique_addresses DESC
 LIMIT 50;

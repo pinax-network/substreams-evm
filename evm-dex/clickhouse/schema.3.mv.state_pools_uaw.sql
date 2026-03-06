@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
     dimension            Enum8(
         'user' = 1,
         'tx_from' = 2,
-        'caller' = 3
+        'call_caller' = 3
     ) COMMENT 'address dimension type',
     address              String COMMENT 'normalized address for the selected dimension',
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (dimension, pool, factory, protocol, address)
-COMMENT 'Normalized unique addresses per pool for caller, user, and tx_from analytics';
+COMMENT 'Normalized unique addresses per pool for call_caller, user, and tx_from analytics';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw
 TO state_pools_uaw
@@ -87,7 +87,7 @@ FROM (
 
     UNION ALL
 
-    SELECT protocol, factory, pool, 'caller' AS dimension, caller AS address, timestamp, block_num
+    SELECT protocol, factory, pool, 'call_caller' AS dimension, call_caller AS address, timestamp, block_num
     FROM swaps
 )
 GROUP BY protocol, factory, pool, dimension, address;
@@ -234,8 +234,8 @@ SELECT
 FROM swaps
 GROUP BY protocol, factory, pool, tx_from;
 
--- UAW by caller address --
-CREATE TABLE IF NOT EXISTS state_pools_uaw_by_caller (
+-- UAW by call_caller address --
+CREATE TABLE IF NOT EXISTS state_pools_uaw_by_call_caller (
     -- DEX identity
     protocol                    Enum8(
         'sunpump' = 1,
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_caller (
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
-    caller               String COMMENT 'unique caller address',
+    call_caller               String COMMENT 'unique call_caller address',
 
     -- timestamp & block number --
     min_timestamp         SimpleAggregateFunction(min, DateTime('UTC', 0)) COMMENT 'first timestamp seen',
@@ -264,40 +264,40 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_caller (
     max_block_num         SimpleAggregateFunction(max, UInt32) COMMENT 'last block number seen',
 
     -- projections --
-    PROJECTION prj_factory_caller (
+    PROJECTION prj_factory_call_caller (
         SELECT
             factory,
-            caller,
+            call_caller,
             min(min_timestamp),
             max(max_timestamp),
             min(min_block_num),
             max(max_block_num)
-        GROUP BY factory, caller
+        GROUP BY factory, call_caller
     ),
-    PROJECTION prj_pool_factory_caller (
+    PROJECTION prj_pool_factory_call_caller (
         SELECT
             pool,
             factory,
-            caller,
+            call_caller,
             min(min_timestamp),
             max(max_timestamp),
             min(min_block_num),
             max(max_block_num)
-        GROUP BY pool, factory, caller
+        GROUP BY pool, factory, call_caller
     )
 )
 ENGINE = AggregatingMergeTree
-ORDER BY (pool, factory, protocol, caller)
-COMMENT 'Unique caller addresses per pool for UAW calculation';
+ORDER BY (pool, factory, protocol, call_caller)
+COMMENT 'Unique call_caller addresses per pool for UAW calculation';
 
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw_by_caller
-TO state_pools_uaw_by_caller
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw_by_call_caller
+TO state_pools_uaw_by_call_caller
 AS
 SELECT
-    protocol, factory, pool, caller,
+    protocol, factory, pool, call_caller,
     min(timestamp) AS min_timestamp,
     max(timestamp) AS max_timestamp,
     min(block_num) AS min_block_num,
     max(block_num) AS max_block_num
 FROM swaps
-GROUP BY protocol, factory, pool, caller;
+GROUP BY protocol, factory, pool, call_caller;

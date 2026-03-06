@@ -10,7 +10,10 @@ CREATE TABLE IF NOT EXISTS swaps (
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
     tx_from                     String,
-    caller                      String COMMENT 'Call-level caller address, falling back to tx_from when unavailable',
+    call_caller                 String COMMENT 'Call-level caller address from shared log metadata',
+    call_index                  UInt32 COMMENT 'Call index from shared log metadata',
+    call_depth                  UInt32 COMMENT 'Call depth from shared log metadata',
+    call_type                   LowCardinality(String) COMMENT 'Call type from shared log metadata',
 
     -- log --
     log_index                   UInt32, -- derived from Substreams
@@ -48,7 +51,6 @@ CREATE TABLE IF NOT EXISTS swaps (
     CONSTRAINT log_topic0_not_empty CHECK log_topic0 != '',
     CONSTRAINT tx_hash_not_empty CHECK tx_hash != '',
     CONSTRAINT tx_from_not_empty CHECK tx_from != '',
-    CONSTRAINT caller_not_empty CHECK caller != '',
     CONSTRAINT factory_not_empty CHECK factory != '',
     CONSTRAINT pool_not_empty CHECK pool != '',
     CONSTRAINT user_not_empty CHECK user != '',
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     PROJECTION prj_factory_count ( SELECT factory, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY factory ),
     PROJECTION prj_pool_count ( SELECT pool, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY pool ),
     PROJECTION prj_tx_from_count ( SELECT tx_from, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY tx_from ),
-    PROJECTION prj_caller_count ( SELECT caller, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY caller ),
+    PROJECTION prj_call_caller_count ( SELECT call_caller, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY call_caller ),
     PROJECTION prj_user_count ( SELECT user, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY user ),
     PROJECTION prj_input_contract_count ( SELECT input_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY input_contract ),
     PROJECTION prj_output_contract_count ( SELECT output_contract, count(), min(block_num), max(block_num), min(timestamp), max(timestamp), min(minute), max(minute) GROUP BY output_contract ),
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     -- minute --
     PROJECTION prj_protocol_by_minute ( SELECT protocol, minute, count() GROUP BY protocol, minute ),
     PROJECTION prj_tx_from_by_minute ( SELECT tx_from, minute, count() GROUP BY tx_from, minute ),
-    PROJECTION prj_caller_by_minute ( SELECT caller, minute, count() GROUP BY caller, minute ),
+    PROJECTION prj_call_caller_by_minute ( SELECT call_caller, minute, count() GROUP BY call_caller, minute ),
     PROJECTION prj_factory_by_minute ( SELECT factory, minute, count() GROUP BY factory, minute ),
     PROJECTION prj_pool_by_minute ( SELECT pool, minute, count() GROUP BY pool, minute ),
     PROJECTION prj_user_by_minute ( SELECT user, minute, count() GROUP BY user, minute ),
@@ -143,7 +145,10 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -182,7 +187,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -221,7 +232,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -261,7 +278,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -302,7 +325,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -357,7 +386,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -396,7 +431,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -439,7 +480,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -478,7 +525,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -517,7 +570,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -556,7 +615,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -595,7 +660,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -650,7 +721,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -689,7 +766,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -728,7 +811,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
@@ -770,7 +859,13 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
-    if(call_caller != '', call_caller, tx_from) AS caller,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+    call_index,
+    call_depth,
+    call_type,
 
     -- log --
     log_index,
