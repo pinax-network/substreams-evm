@@ -151,69 +151,43 @@ LIMIT 50;
 -- UNIFIED UAW TABLE
 -- -----------------------------------------------------------------------------
 
--- all dimensions by factory
+-- unified unique addresses by factory
 EXPLAIN indexes = 1, projections = 1
 SELECT
-    dimension,
     factory,
     count() AS unique_addresses
 FROM state_pools_uaw
-GROUP BY dimension, factory
-ORDER BY dimension, unique_addresses DESC
-LIMIT 100;
-
-SELECT
-    dimension,
-    factory,
-    count() AS unique_addresses
-FROM state_pools_uaw
-GROUP BY dimension, factory
-ORDER BY dimension, unique_addresses DESC
-LIMIT 100;
-
--- all dimensions by pool + factory
-EXPLAIN indexes = 1, projections = 1
-SELECT
-    dimension,
-    pool,
-    factory,
-    count() AS unique_addresses
-FROM state_pools_uaw
-GROUP BY dimension, pool, factory
-ORDER BY dimension, unique_addresses DESC
-LIMIT 100;
-
-SELECT
-    dimension,
-    pool,
-    factory,
-    count() AS unique_addresses
-FROM state_pools_uaw
-GROUP BY dimension, pool, factory
-ORDER BY dimension, unique_addresses DESC
-LIMIT 100;
-
--- focused benchmark for call_caller only
-EXPLAIN indexes = 1, projections = 1
-SELECT
-    dimension,
-    factory,
-    count() AS unique_addresses
-FROM state_pools_uaw
-WHERE dimension = 'call_caller'
-GROUP BY dimension, factory
+GROUP BY factory
 ORDER BY unique_addresses DESC
 LIMIT 50;
 
 SELECT
-    dimension,
     factory,
     count() AS unique_addresses
 FROM state_pools_uaw
-WHERE dimension = 'call_caller'
-GROUP BY dimension, factory
+GROUP BY factory
 ORDER BY unique_addresses DESC
 LIMIT 50;
+
+-- unified unique addresses by pool + factory
+EXPLAIN indexes = 1, projections = 1
+SELECT
+    pool,
+    factory,
+    count() AS unique_addresses
+FROM state_pools_uaw
+GROUP BY pool, factory
+ORDER BY unique_addresses DESC
+LIMIT 100;
+
+SELECT
+    pool,
+    factory,
+    count() AS unique_addresses
+FROM state_pools_uaw
+GROUP BY pool, factory
+ORDER BY unique_addresses DESC
+LIMIT 100;
 
 -- -----------------------------------------------------------------------------
 -- OHLC UAW SURFACE
