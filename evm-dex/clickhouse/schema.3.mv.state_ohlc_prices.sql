@@ -48,6 +48,9 @@ CREATE TABLE IF NOT EXISTS state_ohlc_prices (
 
     -- universal --
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'number of transactions in the window',
+    uniq_tx_from            AggregateFunction(uniq, String) COMMENT 'unique transaction from addresses in the window',
+    uniq_user               AggregateFunction(uniq, String) COMMENT 'unique user addresses in the window',
+    uniq_caller             AggregateFunction(uniq, String) COMMENT 'unique caller addresses in the window',
 
     -- indexes --
     INDEX idx_timestamp         (timestamp)         TYPE minmax                 GRANULARITY 1,
@@ -122,7 +125,10 @@ SELECT
     sum(nf1)                AS net_flow1,
 
     /* universal */
-    count()                 AS transactions
+    count()                 AS transactions,
+    uniqState(tx_from)      AS uniq_tx_from,
+    uniqState(user)         AS uniq_user,
+    uniqState(caller)       AS uniq_caller
 FROM swaps s
 GROUP BY
     -- bar interval

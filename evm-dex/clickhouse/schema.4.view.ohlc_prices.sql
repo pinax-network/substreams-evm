@@ -36,3 +36,32 @@ GROUP BY
     interval_min,
     pool, factory, protocol, token0, token1,
     timestamp;
+
+CREATE VIEW IF NOT EXISTS ohlc_prices_uaw AS
+SELECT
+    -- bar interval --
+    timestamp,
+    interval_min,
+
+    -- timestamp & block number --
+    min(min_timestamp) as min_timestamp,
+    max(max_timestamp) as max_timestamp,
+    min(min_block_num) as min_block_num,
+    max(max_block_num) as max_block_num,
+
+    -- DEX identity --
+    pool,
+    factory,
+    protocol,
+    token0,
+    token1,
+
+    -- universal UAW-style fields --
+    uniqMerge(uniq_tx_from) AS uaw_tx_from,
+    uniqMerge(uniq_user) AS uaw_user,
+    uniqMerge(uniq_caller) AS uaw_caller
+FROM state_ohlc_prices
+GROUP BY
+    interval_min,
+    pool, factory, protocol, token0, token1,
+    timestamp;
