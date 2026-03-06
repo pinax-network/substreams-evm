@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS state_pools_aggregating_by_pool (
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'total number of transactions',
     uniq_tx_from            AggregateFunction(uniq, String) COMMENT 'unique transaction from addresses',
     uniq_user               AggregateFunction(uniq, String) COMMENT 'unique user addresses',
-    uniq_caller             AggregateFunction(uniq, String) COMMENT 'unique caller addresses',
+    uniq_caller             AggregateFunction(uniq, String) COMMENT 'unique call_caller addresses',
 
     -- indexes --
     INDEX idx_min_timestamp     (min_timestamp)              TYPE minmax             GRANULARITY 1,
@@ -86,6 +86,6 @@ SELECT
     count() as transactions,
     uniqState(tx_from) AS uniq_tx_from,
     uniqState(user) AS uniq_user,
-    uniqState(caller) AS uniq_caller
+    uniqState(call_caller) AS uniq_caller
 FROM swaps
 GROUP BY protocol, factory, pool;

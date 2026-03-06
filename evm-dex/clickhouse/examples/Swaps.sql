@@ -100,14 +100,14 @@ WHERE
 ORDER BY minute DESC, timestamp DESC, block_num DESC
 LIMIT 10;
 
--- grouped swaps by minute and caller --
+-- grouped swaps by minute and call_caller --
 SELECT
     minute,
-    caller,
+    call_caller,
     count() AS swaps_count
 FROM swaps
-WHERE caller = '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'
-GROUP BY minute, caller
+WHERE call_caller = '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45'
+GROUP BY minute, call_caller
 ORDER BY minute DESC
 LIMIT 10;
 
