@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS swaps (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory                     LowCardinality(String) COMMENT 'Factory contract address',
     pool                        String COMMENT 'Pool/exchange contract address',
@@ -795,42 +794,3 @@ SELECT
 
 FROM kyber_elastic_swap
 WHERE input_amount > 0 AND output_amount > 0;
-
--- DCA.fun FillOrder (swap execution, enriched with token addresses from store)
-CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_dca_dot_fun_fill_order
-TO swaps AS
-SELECT
-    -- block --
-    block_num,
-    block_hash,
-    timestamp,
-    minute,
-
-    -- transaction --
-    tx_index,
-    tx_hash,
-    tx_from,
-    if(caller != '', caller, if(call_caller != '', call_caller, tx_from)) AS caller,
-
-    -- log --
-    log_index,
-    log_address,
-    log_ordinal,
-    log_topic0,
-
-    -- swap --
-    'dca_dot_fun' AS protocol,
-    log_address                        AS factory,
-    log_address                        AS pool,
-    caller                             AS user,
-
-    -- Input side (token_in from store_order)
-    token_in                           AS input_contract,
-    fill_amount                        AS input_amount,
-
-    -- Output side (token_out from store_order)
-    token_out                          AS output_contract,
-    amount_of_token_out                AS output_amount
-
-FROM dca_dot_fun_fill_order
-WHERE token_in != '' AND token_out != '' AND input_amount > 0 AND output_amount > 0;

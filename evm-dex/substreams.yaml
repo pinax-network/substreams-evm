@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_dex
-  version: v0.4.0
+  version: v0.4.1
   url: https://github.com/pinax-network/substreams-evm
   description: DEX swaps for JustSwap, SunSwap, and SunPump on EVM blockchain
   image: ../image.png
@@ -27,7 +27,6 @@ imports:
   woofi: ../spkg/woofi-v0.2.0.spkg
   traderjoe: ../spkg/traderjoe-v0.2.0.spkg
   kyber_elastic: ../spkg/kyber-elastic-v0.2.0.spkg
-  dca_dot_fun: ../spkg/dca-dot-fun-v0.2.0.spkg
 
   # Uniswap DEX Substreams
   uniswap_v1: ../spkg/uniswap-v1-v0.3.0.spkg
@@ -66,8 +65,6 @@ modules:
       - map: woofi:map_events
       - map: traderjoe:map_events
       - map: kyber_elastic:map_events
-      - map: dca_dot_fun:map_events
-      - store: dca_dot_fun:store_order
       - store: aerodrome:store_pool
       - store: traderjoe:store_pool
       - store: kyber_elastic:store_pool

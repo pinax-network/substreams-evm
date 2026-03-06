@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
 
     -- indexes --

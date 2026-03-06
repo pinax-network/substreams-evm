@@ -25,8 +25,7 @@ CREATE TABLE IF NOT EXISTS state_ohlc_prices (
         'dodo' = 11,
         'woofi' = 12,
         'traderjoe' = 13,
-        'kyber_elastic' = 14,
-        'dca_dot_fun' = 15
+        'kyber_elastic' = 14
     ) COMMENT 'protocol identifier',
     factory                 LowCardinality(String) COMMENT 'Factory contract address',
     pool                    String COMMENT 'Pool/exchange contract address',
