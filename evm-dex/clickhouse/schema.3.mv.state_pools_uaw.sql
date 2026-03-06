@@ -21,12 +21,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
     ) COMMENT 'protocol identifier',
     factory              LowCardinality(String),
     pool                 String,
-    dimension            Enum8(
-        'user' = 1,
-        'tx_from' = 2,
-        'call_caller' = 3
-    ) COMMENT 'address dimension type',
-    address              String COMMENT 'normalized address for the selected dimension',
+    address              String COMMENT 'normalized unique address across user, tx_from, and call_caller',
 
     -- timestamp & block number --
     min_timestamp         SimpleAggregateFunction(min, DateTime('UTC', 0)) COMMENT 'first timestamp seen',
@@ -37,18 +32,16 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
     -- projections --
     PROJECTION prj_factory_address (
         SELECT
-            dimension,
             factory,
             address,
             min(min_timestamp),
             max(max_timestamp),
             min(min_block_num),
             max(max_block_num)
-        GROUP BY dimension, factory, address
+        GROUP BY factory, address
     ),
     PROJECTION prj_pool_factory_address (
         SELECT
-            dimension,
             pool,
             factory,
             address,
@@ -56,13 +49,26 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
             max(max_timestamp),
             min(min_block_num),
             max(max_block_num)
-        GROUP BY dimension, pool, factory, address
+        GROUP BY pool, factory, address
+    ),
+    PROJECTION prj_factory_count (
+        SELECT
+            factory,
+            count()
+        GROUP BY factory
+    ),
+    PROJECTION prj_pool_factory_count (
+        SELECT
+            pool,
+            factory,
+            count()
+        GROUP BY pool, factory
     )
 )
 ENGINE = AggregatingMergeTree
-ORDER BY (dimension, pool, factory, protocol, address)
+ORDER BY (pool, factory, protocol, address)
 SETTINGS deduplicate_merge_projection_mode = 'rebuild'
-COMMENT 'Normalized unique addresses per pool for call_caller, user, and tx_from analytics';
+COMMENT 'Normalized unique addresses per pool across user, tx_from, and call_caller';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw
 TO state_pools_uaw
@@ -71,27 +77,29 @@ SELECT
     protocol,
     factory,
     pool,
-    dimension,
     address,
     min(timestamp) AS min_timestamp,
     max(timestamp) AS max_timestamp,
     min(block_num) AS min_block_num,
     max(block_num) AS max_block_num
 FROM (
-    SELECT protocol, factory, pool, 'user' AS dimension, user AS address, timestamp, block_num
+    SELECT protocol, factory, pool, user AS address, timestamp, block_num
     FROM swaps
+    WHERE user != ''
 
     UNION ALL
 
-    SELECT protocol, factory, pool, 'tx_from' AS dimension, tx_from AS address, timestamp, block_num
+    SELECT protocol, factory, pool, tx_from AS address, timestamp, block_num
     FROM swaps
+    WHERE tx_from != ''
 
     UNION ALL
 
-    SELECT protocol, factory, pool, 'call_caller' AS dimension, call_caller AS address, timestamp, block_num
+    SELECT protocol, factory, pool, call_caller AS address, timestamp, block_num
     FROM swaps
+    WHERE call_caller != ''
 )
-GROUP BY protocol, factory, pool, dimension, address;
+GROUP BY protocol, factory, pool, address;
 
 -- UAW by user address --
 CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
@@ -143,6 +151,19 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
             min(min_block_num),
             max(max_block_num)
         GROUP BY pool, factory, user
+    ),
+    PROJECTION prj_factory_user_count (
+        SELECT
+            factory,
+            count()
+        GROUP BY factory
+    ),
+    PROJECTION prj_pool_factory_user_count (
+        SELECT
+            pool,
+            factory,
+            count()
+        GROUP BY pool, factory
     )
 )
 ENGINE = AggregatingMergeTree
@@ -215,6 +236,19 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_tx_from (
             min(min_block_num),
             max(max_block_num)
         GROUP BY pool, factory, tx_from
+    ),
+    PROJECTION prj_factory_tx_from_count (
+        SELECT
+            factory,
+            count()
+        GROUP BY factory
+    ),
+    PROJECTION prj_pool_factory_tx_from_count (
+        SELECT
+            pool,
+            factory,
+            count()
+        GROUP BY pool, factory
     )
 )
 ENGINE = AggregatingMergeTree
@@ -287,6 +321,19 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_call_caller (
             min(min_block_num),
             max(max_block_num)
         GROUP BY pool, factory, call_caller
+    ),
+    PROJECTION prj_factory_call_caller_count (
+        SELECT
+            factory,
+            count()
+        GROUP BY factory
+    ),
+    PROJECTION prj_pool_factory_call_caller_count (
+        SELECT
+            pool,
+            factory,
+            count()
+        GROUP BY pool, factory
     )
 )
 ENGINE = AggregatingMergeTree
