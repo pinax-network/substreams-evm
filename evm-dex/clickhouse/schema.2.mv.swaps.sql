@@ -191,9 +191,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -233,9 +230,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -282,9 +276,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -326,9 +317,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -390,9 +378,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -432,9 +417,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -484,9 +466,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -526,9 +505,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -574,9 +550,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -619,9 +592,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -661,9 +631,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -725,9 +692,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -767,9 +731,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,
@@ -815,9 +776,6 @@ SELECT
     call_index,
     call_depth,
     call_type,
-    call_index,
-    call_depth,
-    call_type,
 
     -- log --
     log_index,
@@ -860,9 +818,6 @@ SELECT
     tx_hash,
     tx_from,
     call_caller,
-    call_index,
-    call_depth,
-    call_type,
     call_index,
     call_depth,
     call_type,

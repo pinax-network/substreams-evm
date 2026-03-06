@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (dimension, pool, factory, protocol, address)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Normalized unique addresses per pool for call_caller, user, and tx_from analytics';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw
@@ -146,6 +147,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (pool, factory, protocol, user)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Unique user addresses per pool for UAW calculation';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw_by_user
@@ -217,6 +219,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_tx_from (
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (pool, factory, protocol, tx_from)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Unique tx_from addresses per pool for UAW calculation';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw_by_tx_from
@@ -288,6 +291,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_call_caller (
 )
 ENGINE = AggregatingMergeTree
 ORDER BY (pool, factory, protocol, call_caller)
+SETTINGS deduplicate_merge_projection_mode = 'rebuild'
 COMMENT 'Unique call_caller addresses per pool for UAW calculation';
 
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_state_pools_uaw_by_call_caller
