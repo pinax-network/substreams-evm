@@ -58,8 +58,8 @@ Each crate produces up to 3 SPKGs. All share the same version number.
 | Type | Pattern | Example |
 |------|---------|---------|
 | Base DB module | `<chain>_<type>` | `evm_contracts` |
-| ClickHouse sink | `<chain>_clickhouse_<type>` | `evm_clickhouse_contracts` |
-| PostgreSQL sink | `<chain>_postgres_<type>` | `evm_postgres_contracts` |
+| ClickHouse sink | `<chain>_clickhouse_<type>` | `clickhouse_evm_contracts` |
+| PostgreSQL sink | `<chain>_postgres_<type>` | `postgres_evm_contracts` |
 
 ## SPKG Distribution
 
