@@ -25,9 +25,19 @@ fn seed_known_pools(store: &StoreSetProto<pb::StorePool>) {
     }
 }
 
+fn has_known_pool_activity(events: &pb::Events) -> bool {
+    events
+        .transactions
+        .iter()
+        .flat_map(|trx| trx.logs.iter())
+        .any(|log| known_pool(&log.address).is_some())
+}
+
 #[substreams::handlers::store]
 pub fn store_pool(events: pb::Events, store: StoreSetProto<pb::StorePool>) {
-    seed_known_pools(&store);
+    if has_known_pool_activity(&events) {
+        seed_known_pools(&store);
+    }
 
     for trx in events.transactions.iter() {
         for log in trx.logs.iter() {
@@ -69,5 +79,18 @@ mod tests {
     #[test]
     fn ignores_unknown_pool_addresses() {
         assert!(known_pool(&hex!("1111111111111111111111111111111111111111")).is_none());
+    }
+
+    #[test]
+    fn detects_tripool_activity() {
+        let mut events = pb::Events::default();
+        let mut transaction = pb::Transaction::default();
+        transaction.logs.push(pb::Log {
+            address: TRI_POOL_ADDRESS.to_vec(),
+            ..Default::default()
+        });
+        events.transactions.push(transaction);
+
+        assert!(has_known_pool_activity(&events));
     }
 }
