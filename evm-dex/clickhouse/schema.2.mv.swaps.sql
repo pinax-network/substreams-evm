@@ -145,6 +145,54 @@ ORDER BY (
 )
 COMMENT 'DEX swap events normalized across supported protocols';
 
+-- Flash/complex swaps that cannot be losslessly normalized to a single input/output pair --
+CREATE TABLE IF NOT EXISTS swaps_flash (
+    -- block --
+    block_num                   UInt32,
+    block_hash                  String,
+    timestamp                   DateTime('UTC'),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+
+    -- transaction --
+    tx_index                    UInt32,
+    tx_hash                     String,
+    tx_from                     String,
+    call_caller                 String COMMENT 'Call-level caller address from shared log metadata',
+    call_index                  UInt32 COMMENT 'Call index from shared log metadata',
+    call_depth                  UInt32 COMMENT 'Call depth from shared log metadata',
+    call_type                   LowCardinality(String) COMMENT 'Call type from shared log metadata',
+
+    -- log --
+    log_index                   UInt32,
+    log_address                 String,
+    log_ordinal                 UInt32,
+    log_topic0                  LowCardinality(String),
+
+    -- swap event information --
+    protocol                    LowCardinality(String) COMMENT 'flash/complex swap protocol identifier',
+    factory                     LowCardinality(String) COMMENT 'Factory contract address',
+    pool                        String COMMENT 'Pool/exchange contract address',
+    user                        String COMMENT 'User wallet address',
+
+    -- raw swap legs --
+    token0                      String COMMENT 'Token0 contract address',
+    token1                      String COMMENT 'Token1 contract address',
+    amount0_in                  UInt256 COMMENT 'Amount of token0 in',
+    amount1_in                  UInt256 COMMENT 'Amount of token1 in',
+    amount0_out                 UInt256 COMMENT 'Amount of token0 out',
+    amount1_out                 UInt256 COMMENT 'Amount of token1 out',
+
+    -- indexes --
+    INDEX idx_block_num         (block_num)                 TYPE minmax             GRANULARITY 1,
+    INDEX idx_timestamp         (timestamp)                 TYPE minmax             GRANULARITY 1,
+    INDEX idx_minute            (minute)                    TYPE minmax             GRANULARITY 1
+)
+ENGINE = MergeTree
+ORDER BY (
+    minute, timestamp, block_num
+)
+COMMENT 'Flash/complex DEX swap events kept out of the normalized swaps table';
+
 
 -- SunPump TokenPurchased: User buys tokens with TRX (TRX → Token)
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_sunpump_token_purchased
@@ -433,22 +481,87 @@ SELECT
 
 FROM uniswap_v2_swap
 WHERE
-    -- token0 -> token1
     (
-        amount0_in  >  toUInt256(0) AND
-        amount1_in  =  toUInt256(0) AND
-        amount0_out =  toUInt256(0) AND
-        amount1_out >  toUInt256(0)
-    )
-    OR
-    -- token1 -> token0
-    (
-        amount1_in  >  toUInt256(0) AND
-        amount0_in  =  toUInt256(0) AND
-        amount1_out =  toUInt256(0) AND
-        amount0_out >  toUInt256(0)
+        -- token0 -> token1
+        (
+            amount0_in  >  toUInt256(0) AND
+            amount1_in  =  toUInt256(0) AND
+            amount0_out =  toUInt256(0) AND
+            amount1_out >  toUInt256(0)
+        )
+        OR
+        -- token1 -> token0
+        (
+            amount1_in  >  toUInt256(0) AND
+            amount0_in  =  toUInt256(0) AND
+            amount1_out =  toUInt256(0) AND
+            amount0_out >  toUInt256(0)
+        )
     ) AND
     input_amount > 0 AND output_amount > 0;
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_flash_uniswap_v2_swap
+TO swaps_flash AS
+SELECT
+    -- block --
+    block_num,
+    block_hash,
+    timestamp,
+    minute,
+
+    -- transaction --
+    tx_index,
+    tx_hash,
+    tx_from,
+    call_caller,
+    call_index,
+    call_depth,
+    call_type,
+
+    -- log --
+    log_index,
+    log_address,
+    log_ordinal,
+    log_topic0,
+
+    -- swap --
+    'uniswap-v2-flash' AS protocol,
+    factory,
+    log_address AS pool,
+    sender AS user,
+    token0,
+    token1,
+    amount0_in,
+    amount1_in,
+    amount0_out,
+    amount1_out
+
+FROM uniswap_v2_swap
+WHERE
+    (
+        amount0_in  > toUInt256(0) OR
+        amount1_in  > toUInt256(0) OR
+        amount0_out > toUInt256(0) OR
+        amount1_out > toUInt256(0)
+    )
+    AND NOT
+    (
+        -- simple token0 -> token1
+        (
+            amount0_in  > toUInt256(0) AND
+            amount1_in  = toUInt256(0) AND
+            amount0_out = toUInt256(0) AND
+            amount1_out > toUInt256(0)
+        )
+        OR
+        -- simple token1 -> token0
+        (
+            amount1_in  > toUInt256(0) AND
+            amount0_in  = toUInt256(0) AND
+            amount1_out = toUInt256(0) AND
+            amount0_out > toUInt256(0)
+        )
+    );
 
 -- Uniswap V3 Swap
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_swaps_uniswap_v3_swap
