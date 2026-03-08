@@ -105,7 +105,14 @@ CREATE TABLE IF NOT EXISTS erc20_transfers (
     -- call --
     call_caller          TEXT NOT NULL DEFAULT '',
     call_index           INTEGER NOT NULL DEFAULT 0,
+    call_begin_ordinal   BIGINT NOT NULL DEFAULT 0,
+    call_end_ordinal     BIGINT NOT NULL DEFAULT 0,
+    call_address         TEXT NOT NULL DEFAULT '',
+    call_value           NUMERIC NOT NULL DEFAULT 0,
+    call_gas_consumed    BIGINT NOT NULL DEFAULT 0,
+    call_gas_limit       BIGINT NOT NULL DEFAULT 0,
     call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_parent_index    INTEGER NOT NULL DEFAULT 0,
     call_type            TEXT NOT NULL DEFAULT '',
 
     -- transfer --
@@ -151,7 +158,14 @@ CREATE TABLE IF NOT EXISTS erc20_approvals (
     -- call --
     call_caller          TEXT NOT NULL DEFAULT '',
     call_index           INTEGER NOT NULL DEFAULT 0,
+    call_begin_ordinal   BIGINT NOT NULL DEFAULT 0,
+    call_end_ordinal     BIGINT NOT NULL DEFAULT 0,
+    call_address         TEXT NOT NULL DEFAULT '',
+    call_value           NUMERIC NOT NULL DEFAULT 0,
+    call_gas_consumed    BIGINT NOT NULL DEFAULT 0,
+    call_gas_limit       BIGINT NOT NULL DEFAULT 0,
     call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_parent_index    INTEGER NOT NULL DEFAULT 0,
     call_type            TEXT NOT NULL DEFAULT '',
 
     -- approval --

@@ -41,7 +41,6 @@ spkg/             # Pre-built Substreams packages
 | `bancor` | Bancor V3 | `TokensTraded` (StandardPoolConverter) |
 | `cow` | CoW Protocol | `Trade` (GPv2Settlement) |
 | `curvefi` | Curve Finance | `TokenExchange`, `TokenExchangeUnderlying` |
-| `dca-dot-fun` | DCA.fun | `FillOrder`, `CreateOrder`, `CancelOrder` |
 | `dodo` | DODO | `DODOSwap` |
 | `kyber-elastic` | KyberSwap Elastic | `Swap` (Pool) |
 | `sunpump` | SunPump | `Traded` |
