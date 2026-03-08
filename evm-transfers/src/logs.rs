@@ -49,7 +49,7 @@ pub trait CallInfo {
     fn get_call_type(&self) -> &str;
 }
 
-macro_rules! impl_log_traits_basic {
+macro_rules! impl_log_traits {
     ($log_type:ty, $call_type_enum:ty) => {
         impl LogAddress for $log_type {
             fn get_address(&self) -> &Vec<u8> {
@@ -74,28 +74,28 @@ macro_rules! impl_log_traits_basic {
                 self.call.as_ref().map(|c| c.index).unwrap_or_default()
             }
             fn get_call_begin_ordinal(&self) -> u64 {
-                0
+                self.call.as_ref().map(|c| c.begin_ordinal).unwrap_or_default()
             }
             fn get_call_end_ordinal(&self) -> u64 {
-                0
+                self.call.as_ref().map(|c| c.end_ordinal).unwrap_or_default()
             }
             fn get_call_address(&self) -> &[u8] {
-                &[]
+                self.call.as_ref().map(|c| c.address.as_slice()).unwrap_or_default()
             }
             fn get_call_value(&self) -> &str {
-                ""
+                self.call.as_ref().map(|c| c.value.as_str()).unwrap_or_default()
             }
             fn get_call_gas_consumed(&self) -> u64 {
-                0
+                self.call.as_ref().map(|c| c.gas_consumed).unwrap_or_default()
             }
             fn get_call_gas_limit(&self) -> u64 {
-                0
+                self.call.as_ref().map(|c| c.gas_limit).unwrap_or_default()
             }
             fn get_call_depth(&self) -> u32 {
                 self.call.as_ref().map(|c| c.depth).unwrap_or_default()
             }
             fn get_call_parent_index(&self) -> u32 {
-                0
+                self.call.as_ref().map(|c| c.parent_index).unwrap_or_default()
             }
             fn get_call_type(&self) -> &str {
                 self.call.as_ref()
@@ -106,57 +106,5 @@ macro_rules! impl_log_traits_basic {
     };
 }
 
-impl_log_traits_basic!(tokens_pb::Log, tokens_pb::CallType);
-
-impl LogAddress for pb::Log {
-    fn get_address(&self) -> &Vec<u8> {
-        &self.address
-    }
-    fn get_ordinal(&self) -> u64 {
-        self.ordinal
-    }
-    fn get_topics(&self) -> &Vec<Vec<u8>> {
-        &self.topics
-    }
-    fn get_data(&self) -> &Vec<u8> {
-        &self.data
-    }
-}
-
-impl CallInfo for pb::Log {
-    fn get_call_caller(&self) -> &[u8] {
-        self.call.as_ref().map(|c| c.caller.as_slice()).unwrap_or_default()
-    }
-    fn get_call_index(&self) -> u32 {
-        self.call.as_ref().map(|c| c.index).unwrap_or_default()
-    }
-    fn get_call_begin_ordinal(&self) -> u64 {
-        self.call.as_ref().map(|c| c.begin_ordinal).unwrap_or_default()
-    }
-    fn get_call_end_ordinal(&self) -> u64 {
-        self.call.as_ref().map(|c| c.end_ordinal).unwrap_or_default()
-    }
-    fn get_call_address(&self) -> &[u8] {
-        self.call.as_ref().map(|c| c.address.as_slice()).unwrap_or_default()
-    }
-    fn get_call_value(&self) -> &str {
-        self.call.as_ref().map(|c| c.value.as_str()).unwrap_or_default()
-    }
-    fn get_call_gas_consumed(&self) -> u64 {
-        self.call.as_ref().map(|c| c.gas_consumed).unwrap_or_default()
-    }
-    fn get_call_gas_limit(&self) -> u64 {
-        self.call.as_ref().map(|c| c.gas_limit).unwrap_or_default()
-    }
-    fn get_call_depth(&self) -> u32 {
-        self.call.as_ref().map(|c| c.depth).unwrap_or_default()
-    }
-    fn get_call_parent_index(&self) -> u32 {
-        self.call.as_ref().map(|c| c.parent_index).unwrap_or_default()
-    }
-    fn get_call_type(&self) -> &str {
-        self.call.as_ref()
-            .map(|c| pb::CallType::try_from(c.call_type).unwrap_or_default().as_str_name())
-            .unwrap_or(pb::CallType::default().as_str_name())
-    }
-}
+impl_log_traits!(pb::Log, pb::CallType);
+impl_log_traits!(tokens_pb::Log, tokens_pb::CallType);

@@ -27,7 +27,14 @@ pub fn set_template_log(encoding: &Encoding, log: &(impl LogAddress + CallInfo),
     // Call metadata (defaults to empty when not available)
     row.set("call_caller", bytes_to_string(log.get_call_caller(), encoding));
     row.set("call_index", log.get_call_index());
+    row.set("call_begin_ordinal", log.get_call_begin_ordinal());
+    row.set("call_end_ordinal", log.get_call_end_ordinal());
+    row.set("call_address", bytes_to_string(log.get_call_address(), encoding));
+    row.set("call_value", log.get_call_value());
+    row.set("call_gas_consumed", log.get_call_gas_consumed());
+    row.set("call_gas_limit", log.get_call_gas_limit());
     row.set("call_depth", log.get_call_depth());
+    row.set("call_parent_index", log.get_call_parent_index());
     row.set("call_type", log.get_call_type());
 }
 
@@ -43,7 +50,14 @@ pub trait LogAddress {
 pub trait CallInfo {
     fn get_call_caller(&self) -> &[u8];
     fn get_call_index(&self) -> u32;
+    fn get_call_begin_ordinal(&self) -> u64;
+    fn get_call_end_ordinal(&self) -> u64;
+    fn get_call_address(&self) -> &[u8];
+    fn get_call_value(&self) -> &str;
+    fn get_call_gas_consumed(&self) -> u64;
+    fn get_call_gas_limit(&self) -> u64;
     fn get_call_depth(&self) -> u32;
+    fn get_call_parent_index(&self) -> u32;
     fn get_call_type(&self) -> &str;
 }
 
@@ -71,8 +85,29 @@ macro_rules! impl_log_traits {
             fn get_call_index(&self) -> u32 {
                 self.call.as_ref().map(|c| c.index).unwrap_or_default()
             }
+            fn get_call_begin_ordinal(&self) -> u64 {
+                self.call.as_ref().map(|c| c.begin_ordinal).unwrap_or_default()
+            }
+            fn get_call_end_ordinal(&self) -> u64 {
+                self.call.as_ref().map(|c| c.end_ordinal).unwrap_or_default()
+            }
+            fn get_call_address(&self) -> &[u8] {
+                self.call.as_ref().map(|c| c.address.as_slice()).unwrap_or_default()
+            }
+            fn get_call_value(&self) -> &str {
+                self.call.as_ref().map(|c| c.value.as_str()).unwrap_or_default()
+            }
+            fn get_call_gas_consumed(&self) -> u64 {
+                self.call.as_ref().map(|c| c.gas_consumed).unwrap_or_default()
+            }
+            fn get_call_gas_limit(&self) -> u64 {
+                self.call.as_ref().map(|c| c.gas_limit).unwrap_or_default()
+            }
             fn get_call_depth(&self) -> u32 {
                 self.call.as_ref().map(|c| c.depth).unwrap_or_default()
+            }
+            fn get_call_parent_index(&self) -> u32 {
+                self.call.as_ref().map(|c| c.parent_index).unwrap_or_default()
             }
             fn get_call_type(&self) -> &str {
                 self.call.as_ref()

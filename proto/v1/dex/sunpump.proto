@@ -45,10 +45,17 @@ message Log {
 
 // Call metadata (only available on chains with DetailLevel: EXTENDED)
 message Call {
-  bytes caller = 1;   // Address that made the call
-  uint32 index = 2;   // Index of the call within the transaction
-  uint32 depth = 3;   // Depth of the call in the call tree (0 = root)
-  CallType call_type = 4;
+  uint32 index = 1;
+  uint64 begin_ordinal = 2;
+  uint64 end_ordinal = 3;
+  bytes caller = 4;  // sender
+  bytes address = 5; // recipient
+  string value = 6;  // uint256
+  uint64 gas_consumed = 7;
+  uint64 gas_limit = 8;
+  uint32 depth = 9;
+  uint32 parent_index = 10;
+  CallType call_type = 11;
 }
 
 enum CallType {

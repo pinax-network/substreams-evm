@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS state_ohlc_prices (
 
     -- universal --
     transactions            SimpleAggregateFunction(sum, UInt64) COMMENT 'number of transactions in the window',
+    uniq_tx_from            AggregateFunction(uniq, String) COMMENT 'unique transaction from addresses in the window',
     uniq_user               AggregateFunction(uniq, String) COMMENT 'unique user addresses in the window',
     uniq_caller             AggregateFunction(uniq, String) COMMENT 'unique call_caller addresses in the window',
 
@@ -124,6 +125,7 @@ SELECT
 
     /* universal */
     count()                 AS transactions,
+    uniqState(tx_from)      AS uniq_tx_from,
     uniqState(user)         AS uniq_user,
     uniqState(call_caller)  AS uniq_caller
 FROM swaps s

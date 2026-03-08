@@ -44,5 +44,3 @@ ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS call_index                  UInt32,
     ADD COLUMN IF NOT EXISTS call_depth                  UInt32,
     ADD COLUMN IF NOT EXISTS call_type                   LowCardinality(String);
-ALTER TABLE TEMPLATE_LOG
-    MODIFY TTL timestamp + INTERVAL 1 DAY;
