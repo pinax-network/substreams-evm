@@ -22,6 +22,14 @@ pub fn store_pool(events: pb::Events, store: StoreSetProto<pb::StorePool>) {
                 };
                 store.set(1, Hex::encode(&meta_pool_deployed.address), &payload);
             }
+            // ---- CryptoPoolDeployed (CryptoSwapFactory) ----
+            if let Some(pb::log::Log::CryptoPoolDeployed(crypto_pool_deployed)) = &log.log {
+                let payload = pb::StorePool {
+                    factory: log.address.clone(),
+                    coins: crypto_pool_deployed.coins.clone(),
+                };
+                store.set(1, Hex::encode(&crypto_pool_deployed.address), &payload);
+            }
         }
     }
 }
