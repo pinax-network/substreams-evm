@@ -42,5 +42,12 @@ ALTER TABLE TEMPLATE_LOG
     -- call metadata (only available on chains with DetailLevel: EXTENDED) --
     ADD COLUMN IF NOT EXISTS call_caller                 String,
     ADD COLUMN IF NOT EXISTS call_index                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_begin_ordinal          UInt64,
+    ADD COLUMN IF NOT EXISTS call_end_ordinal            UInt64,
+    ADD COLUMN IF NOT EXISTS call_address                String,
+    ADD COLUMN IF NOT EXISTS call_value                  UInt256,
+    ADD COLUMN IF NOT EXISTS call_gas_consumed           UInt64,
+    ADD COLUMN IF NOT EXISTS call_gas_limit              UInt64,
     ADD COLUMN IF NOT EXISTS call_depth                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_parent_index           UInt32,
     ADD COLUMN IF NOT EXISTS call_type                   LowCardinality(String);

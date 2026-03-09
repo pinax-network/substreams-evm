@@ -157,9 +157,24 @@ CREATE TABLE IF NOT EXISTS swaps_flash (
     tx_index                    UInt32,
     tx_hash                     String,
     tx_from                     String,
+    tx_to                       String,
+    tx_nonce                    UInt64,
+    tx_gas_price                UInt256,
+    tx_gas_limit                UInt64,
+    tx_gas_used                 UInt64,
+    tx_value                    UInt256,
+
+    -- call --
     call_caller                 String COMMENT 'Call-level caller address from shared log metadata',
     call_index                  UInt32 COMMENT 'Call index from shared log metadata',
+    call_begin_ordinal          UInt64 COMMENT 'Call begin ordinal from shared log metadata',
+    call_end_ordinal            UInt64 COMMENT 'Call end ordinal from shared log metadata',
+    call_address                String COMMENT 'Call recipient address from shared log metadata',
+    call_value                  UInt256 COMMENT 'Call value from shared log metadata',
+    call_gas_consumed           UInt64 COMMENT 'Call gas consumed from shared log metadata',
+    call_gas_limit              UInt64 COMMENT 'Call gas limit from shared log metadata',
     call_depth                  UInt32 COMMENT 'Call depth from shared log metadata',
+    call_parent_index           UInt32 COMMENT 'Call parent index from shared log metadata',
     call_type                   LowCardinality(String) COMMENT 'Call type from shared log metadata',
 
     -- log --
@@ -513,9 +528,24 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- log --
