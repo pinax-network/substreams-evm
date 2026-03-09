@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -52,7 +52,7 @@ pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
-        /// Pool
+        /// Pool / StableSwap (shared topic hashes — decoded from any matching contract)
         #[prost(message, tag="10")]
         TokenExchange(super::TokenExchange),
         #[prost(message, tag="11")]
@@ -84,6 +84,40 @@ pub mod log {
         BasePoolAdded(super::BasePoolAdded),
         #[prost(message, tag="24")]
         LiquidityGaugeDeployed(super::LiquidityGaugeDeployed),
+        /// CryptoSwap (contract-specific: different topic hashes from Pool/StableSwap)
+        #[prost(message, tag="25")]
+        CryptoswapTokenExchange(super::CryptoSwapTokenExchange),
+        #[prost(message, tag="26")]
+        CryptoswapAddLiquidity(super::CryptoSwapAddLiquidity),
+        #[prost(message, tag="27")]
+        CryptoswapRemoveLiquidity(super::CryptoSwapRemoveLiquidity),
+        #[prost(message, tag="28")]
+        CryptoswapRemoveLiquidityOne(super::CryptoSwapRemoveLiquidityOne),
+        #[prost(message, tag="29")]
+        CryptoswapClaimAdminFee(super::CryptoSwapClaimAdminFee),
+        #[prost(message, tag="30")]
+        CryptoswapCommitNewParameters(super::CryptoSwapCommitNewParameters),
+        #[prost(message, tag="31")]
+        CryptoswapNewParameters(super::CryptoSwapNewParameters),
+        #[prost(message, tag="32")]
+        CryptoswapRampAgamma(super::CryptoSwapRampAgamma),
+        #[prost(message, tag="33")]
+        CryptoswapStopRampA(super::CryptoSwapStopRampA),
+        /// CryptoSwapFactory
+        #[prost(message, tag="34")]
+        CryptoPoolDeployed(super::CryptoPoolDeployed),
+        #[prost(message, tag="35")]
+        CryptoswapfactoryLiquidityGaugeDeployed(super::CryptoSwapFactoryLiquidityGaugeDeployed),
+        #[prost(message, tag="36")]
+        CryptoswapfactoryTransferOwnership(super::CryptoSwapFactoryTransferOwnership),
+        #[prost(message, tag="37")]
+        CryptoswapfactoryUpdateFeeReceiver(super::CryptoSwapFactoryUpdateFeeReceiver),
+        #[prost(message, tag="38")]
+        CryptoswapfactoryUpdateGaugeImplementation(super::CryptoSwapFactoryUpdateGaugeImplementation),
+        #[prost(message, tag="39")]
+        CryptoswapfactoryUpdatePoolImplementation(super::CryptoSwapFactoryUpdatePoolImplementation),
+        #[prost(message, tag="40")]
+        CryptoswapfactoryUpdateTokenImplementation(super::CryptoSwapFactoryUpdateTokenImplementation),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
@@ -332,6 +366,278 @@ pub struct LiquidityGaugeDeployed {
     pub pool: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub gauge: ::prost::alloc::vec::Vec<u8>,
+}
+// ── CryptoSwap events (contract-specific: unique topic hashes) ────────────────
+/// curvefi_cryptoswap_tokenexchange
+/// CryptoSwap TokenExchange has a different topic signature to the Pool/StableSwap variant.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapTokenExchange {
+    #[prost(bytes="vec", tag="1")]
+    pub buyer: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub sold_id: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub tokens_sold: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub bought_id: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub tokens_bought: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_addliquidity
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapAddLiquidity {
+    #[prost(bytes="vec", tag="1")]
+    pub provider: ::prost::alloc::vec::Vec<u8>,
+    /// uint256\[3\]
+    #[prost(string, repeated, tag="2")]
+    pub token_amounts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// uint256 (single fee, not per-coin array)
+    #[prost(string, tag="3")]
+    pub fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub token_supply: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_removeliquidity
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapRemoveLiquidity {
+    #[prost(bytes="vec", tag="1")]
+    pub provider: ::prost::alloc::vec::Vec<u8>,
+    /// uint256\[3\]
+    #[prost(string, repeated, tag="2")]
+    pub token_amounts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub token_supply: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_removeliquidityone
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapRemoveLiquidityOne {
+    #[prost(bytes="vec", tag="1")]
+    pub provider: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub token_amount: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub coin_index: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub coin_amount: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_claimadminfee
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapClaimAdminFee {
+    #[prost(bytes="vec", tag="1")]
+    pub admin: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub tokens: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_commitnewparameters
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapCommitNewParameters {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub deadline: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub admin_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub mid_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub out_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub fee_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub allowed_extra_profit: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="7")]
+    pub adjustment_step: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="8")]
+    pub ma_half_time: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_newparameters
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapNewParameters {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub admin_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub mid_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub out_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub fee_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub allowed_extra_profit: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub adjustment_step: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="7")]
+    pub ma_half_time: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_rampagamma
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapRampAgamma {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub initial_a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub future_a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub initial_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub future_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub initial_time: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub future_time: ::prost::alloc::string::String,
+}
+/// curvefi_cryptoswap_stoprampa
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapStopRampA {
+    /// uint256
+    #[prost(string, tag="1")]
+    pub current_a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="2")]
+    pub current_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub time: ::prost::alloc::string::String,
+}
+// ── CryptoSwapFactory events ──────────────────────────────────────────────────
+/// curvefi_cryptoswapfactory_cryptopooldeployed
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoPoolDeployed {
+    /// call.address CREATE (pool contract)
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// LP token address
+    #[prost(bytes="vec", tag="2")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+    /// \[coin0, coin1\]
+    #[prost(bytes="vec", repeated, tag="3")]
+    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// uint256
+    #[prost(string, tag="4")]
+    pub a: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="5")]
+    pub gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub mid_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="7")]
+    pub out_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="8")]
+    pub allowed_extra_profit: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="9")]
+    pub fee_gamma: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="10")]
+    pub adjustment_step: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="11")]
+    pub admin_fee: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="12")]
+    pub ma_half_time: ::prost::alloc::string::String,
+    /// uint256
+    #[prost(string, tag="13")]
+    pub initial_price: ::prost::alloc::string::String,
+    #[prost(bytes="vec", tag="14")]
+    pub deployer: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_liquiditygaugedeployed
+/// Differs from Factory's LiquidityGaugeDeployed by including the LP token field.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryLiquidityGaugeDeployed {
+    #[prost(bytes="vec", tag="1")]
+    pub pool: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub token: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="3")]
+    pub gauge: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_transferownership
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryTransferOwnership {
+    #[prost(bytes="vec", tag="1")]
+    pub old_owner: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_owner: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_updatefeereceiver
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryUpdateFeeReceiver {
+    #[prost(bytes="vec", tag="1")]
+    pub old_fee_receiver: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_fee_receiver: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_updategaugeimplementation
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryUpdateGaugeImplementation {
+    #[prost(bytes="vec", tag="1")]
+    pub old_gauge_implementation: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_gauge_implementation: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_updatepoolimplementation
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryUpdatePoolImplementation {
+    #[prost(bytes="vec", tag="1")]
+    pub old_pool_implementation: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_pool_implementation: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_cryptoswapfactory_updatetokenimplementation
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CryptoSwapFactoryUpdateTokenImplementation {
+    #[prost(bytes="vec", tag="1")]
+    pub old_token_implementation: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="2")]
+    pub new_token_implementation: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
