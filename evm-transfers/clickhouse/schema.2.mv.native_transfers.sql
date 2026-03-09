@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS native_transfers (
     tx_gas_used                 UInt64,
     tx_value                    UInt256,
 
-    -- call metadata --
+    -- call --
     call_caller                 String,
     call_index                  UInt32,
     call_depth                  UInt32,
@@ -75,7 +75,7 @@ SELECT
     tx_gas_used,
     tx_value,
 
-    -- call metadata --
+    -- call --
     '' AS call_caller,
     0 AS call_index,
     0 AS call_depth,
@@ -108,7 +108,7 @@ SELECT
     tx_gas_used,
     tx_value,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -141,7 +141,7 @@ SELECT
     0 AS tx_gas_used,
     '0' AS tx_value,
 
-    -- call metadata --
+    -- call --
     '' AS call_caller,
     0 AS call_index,
     0 AS call_depth,
@@ -174,7 +174,7 @@ SELECT
     0 AS tx_gas_used,
     '0' AS tx_value,
 
-    -- call metadata --
+    -- call --
     '' AS call_caller,
     0 AS call_index,
     0 AS call_depth,
@@ -207,7 +207,7 @@ SELECT
     0 AS tx_gas_used,
     '0' AS tx_value,
 
-    -- call metadata --
+    -- call --
     '' AS call_caller,
     0 AS call_index,
     0 AS call_depth,

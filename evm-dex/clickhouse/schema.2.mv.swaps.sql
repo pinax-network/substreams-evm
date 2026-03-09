@@ -10,6 +10,15 @@ CREATE TABLE IF NOT EXISTS swaps (
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
     tx_from                     String,
+
+    tx_to                       String,
+    tx_nonce                    UInt64,
+    tx_gas_price                UInt256,
+    tx_gas_limit                UInt64,
+    tx_gas_used                 UInt64,
+    tx_value                    UInt256,
+
+    -- call --
     call_caller                 String COMMENT 'Call-level caller address from shared log metadata',
     call_index                  UInt32 COMMENT 'Call index from shared log metadata',
     call_begin_ordinal          UInt64 COMMENT 'Call begin ordinal from shared log metadata',
@@ -151,6 +160,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -200,6 +217,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -249,6 +274,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -299,6 +332,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -350,6 +391,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -415,6 +464,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -464,6 +521,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -517,6 +582,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -566,6 +639,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -615,6 +696,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -664,6 +753,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -713,6 +810,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -778,6 +883,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -827,6 +940,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -876,6 +997,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,
@@ -928,6 +1057,14 @@ SELECT
     tx_index,
     tx_hash,
     tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
+
+    -- call --
     call_caller,
     call_index,
     call_begin_ordinal,

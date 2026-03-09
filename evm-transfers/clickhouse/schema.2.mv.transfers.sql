@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     log_ordinal                 Nullable(UInt32),
     log_topic0                  LowCardinality(String),
 
-    -- call metadata --
+    -- call --
     call_caller                 String,
     call_index                  UInt32,
     call_depth                  UInt32,
@@ -106,7 +106,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -212,7 +212,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -252,7 +252,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -292,7 +292,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -332,7 +332,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -372,7 +372,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -412,7 +412,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -452,7 +452,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -492,7 +492,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -532,7 +532,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -572,7 +572,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -612,7 +612,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -652,7 +652,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -692,7 +692,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -732,7 +732,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -772,7 +772,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
