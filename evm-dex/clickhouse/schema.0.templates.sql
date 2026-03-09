@@ -30,6 +30,8 @@ ORDER BY (
 CREATE TABLE IF NOT EXISTS TEMPLATE_LOG AS TEMPLATE_TRANSACTION;
 ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
+    ADD COLUMN IF NOT EXISTS log_index_native            UInt32 COMMENT 'Native EVM log index within the transaction',
+    ADD COLUMN IF NOT EXISTS log_block_index             UInt32 COMMENT 'Native EVM log index within the block',
     ADD COLUMN IF NOT EXISTS log_address                 String,
     ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32,
     ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',

@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS transfers (
 
     -- log --
     log_index                   Nullable(UInt32), -- derived from Substreams
+    log_index_native            Nullable(UInt32) COMMENT 'Native EVM log index within the transaction',
+    log_block_index             Nullable(UInt32) COMMENT 'Native EVM log index within the block',
     log_address                 LowCardinality(String),
     log_ordinal                 Nullable(UInt32),
     log_topic0                  LowCardinality(String),
@@ -26,7 +28,14 @@ CREATE TABLE IF NOT EXISTS transfers (
     -- call --
     call_caller                 String,
     call_index                  UInt32,
+    call_begin_ordinal          UInt64,
+    call_end_ordinal            UInt64,
+    call_address                String,
+    call_value                  UInt256,
+    call_gas_consumed           UInt64,
+    call_gas_limit              UInt64,
     call_depth                  UInt32,
+    call_parent_index           UInt32,
     call_type                   LowCardinality(String),
 
     -- transfer --
@@ -102,6 +111,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -109,7 +120,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -215,7 +233,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -255,7 +280,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -295,7 +327,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -335,7 +374,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -375,7 +421,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -415,7 +468,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -455,7 +515,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -495,7 +562,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -535,7 +609,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -575,7 +656,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -615,7 +703,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -655,7 +750,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -695,7 +797,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -735,7 +844,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --
@@ -775,7 +891,14 @@ SELECT
     -- call --
     call_caller,
     call_index,
+    call_begin_ordinal,
+    call_end_ordinal,
+    call_address,
+    call_value,
+    call_gas_consumed,
+    call_gas_limit,
     call_depth,
+    call_parent_index,
     call_type,
 
     -- transfer --

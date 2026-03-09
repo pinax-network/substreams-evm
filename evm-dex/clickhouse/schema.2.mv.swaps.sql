@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS swaps (
 
     -- log --
     log_index                   UInt32, -- derived from Substreams
+    log_index_native            UInt32 COMMENT 'Native EVM log index within the transaction',
+    log_block_index             UInt32 COMMENT 'Native EVM log index within the block',
     log_address                 String,
     log_ordinal                 UInt32,
     log_topic0                  LowCardinality(String),
@@ -245,6 +247,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -302,6 +306,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -359,6 +365,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -417,6 +425,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -476,6 +486,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -550,6 +562,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -629,6 +643,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -686,6 +702,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -747,6 +765,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -804,6 +824,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -861,6 +883,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -918,6 +942,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -975,6 +1001,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -1048,6 +1076,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -1105,6 +1135,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -1162,6 +1194,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,
@@ -1222,6 +1256,8 @@ SELECT
 
     -- log --
     log_index,
+    log_index_native,
+    log_block_index,
     log_address,
     log_ordinal,
     log_topic0,

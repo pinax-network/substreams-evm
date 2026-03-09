@@ -27,6 +27,10 @@ message Log {
   // Call metadata (only available on chains with DetailLevel: EXTENDED)
   optional Call call = 5;
 
+  // Native block/log position fields
+  uint32 block_index = 6;
+  uint32 index = 7;
+
   oneof log {
     // IPoolManager
     Swap swap = 10;

@@ -30,6 +30,8 @@ ORDER BY (
 CREATE TABLE IF NOT EXISTS TEMPLATE_LOG AS TEMPLATE_TRANSACTION;
 ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
+    ADD COLUMN IF NOT EXISTS log_index_native            UInt32 COMMENT 'Native EVM log index within the transaction',
+    ADD COLUMN IF NOT EXISTS log_block_index             UInt32 COMMENT 'Native EVM log index within the block',
     ADD COLUMN IF NOT EXISTS log_address                 LowCardinality(String),
     ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32,
     ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',
@@ -39,10 +41,17 @@ ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_topic3                  String MATERIALIZED splitByChar(',', log_topics)[4], -- fourth topic (topic3), empty string if no topics
     ADD COLUMN IF NOT EXISTS log_data                    String,
 
-    -- call metadata --
+    -- call metadata (only available on chains with DetailLevel: EXTENDED) --
     ADD COLUMN IF NOT EXISTS call_caller                 String,
     ADD COLUMN IF NOT EXISTS call_index                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_begin_ordinal          UInt64,
+    ADD COLUMN IF NOT EXISTS call_end_ordinal            UInt64,
+    ADD COLUMN IF NOT EXISTS call_address                String,
+    ADD COLUMN IF NOT EXISTS call_value                  UInt256,
+    ADD COLUMN IF NOT EXISTS call_gas_consumed           UInt64,
+    ADD COLUMN IF NOT EXISTS call_gas_limit              UInt64,
     ADD COLUMN IF NOT EXISTS call_depth                  UInt32,
+    ADD COLUMN IF NOT EXISTS call_parent_index           UInt32,
     ADD COLUMN IF NOT EXISTS call_type                   LowCardinality(String);
 
 -- Template Calls --
