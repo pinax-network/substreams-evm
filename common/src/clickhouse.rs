@@ -27,7 +27,7 @@ pub fn set_clock(clock: &Clock, row: &mut Row) {
         .set("timestamp", clock.timestamp.as_ref().expect("missing timestamp").seconds.to_string());
 }
 
-pub fn set_ordering(index: u64, ordinal: Option<u64>, block_index: Option<u32>, _clock: &Clock, row: &mut Row) {
+pub fn set_ordering(index: u64, ordinal: Option<u64>, block_index: Option<u32>, row: &mut Row) {
     row.set("log_index", index)
         .set("log_ordinal", ordinal.unwrap_or(0))
         .set("log_block_index", block_index.unwrap_or_default());
@@ -40,8 +40,8 @@ pub fn set_bytes(bytes: Option<Hash>, name: &str, row: &mut Row) {
     };
 }
 
-fn set_address(bytes: Option<&[u8]>, name: &str, encoding: &Encoding, row: &mut Row) {
-    match bytes {
+fn set_address(address: Option<&[u8]>, name: &str, encoding: &Encoding, row: &mut Row) {
+    match address {
         Some(data) => row.set(name, bytes_to_string(&data, encoding)),
         None => row.set(name, "".to_string()),
     };
@@ -87,6 +87,6 @@ pub fn set_log(
         .set("call_depth", call.depth.unwrap_or_default())
         .set("call_parent_index", call.parent_index.unwrap_or_default())
         .set("call_type", call.call_type.unwrap_or_default());
-    set_ordering(index, Some(ordinal), block_index, clock, row);
+    set_ordering(index, Some(ordinal), block_index, row);
     set_clock(clock, row);
 }
