@@ -17,13 +17,13 @@ Naming conventions and release workflow for Pinax `substreams-*` monorepos.
 ## URL Pattern
 
 ```
-https://github.com/pinax-network/substreams-<chain>/releases/download/<chain>-<type>-v<version>/clickhouse-<chain>-<type>-v<version>.spkg
+https://github.com/pinax-network/substreams-<chain>/releases/download/<chain>-<type>-v<version>/<chain>-clickhouse-<type>-v<version>.spkg
 ```
 
 Examples:
-- `https://github.com/pinax-network/substreams-evm/releases/download/evm-contracts-v0.4.0/clickhouse-evm-contracts-v0.4.0.spkg`
-- `https://github.com/pinax-network/substreams-evm/releases/download/evm-balances-v0.3.3/clickhouse-evm-balances-v0.3.3.spkg`
-- `https://github.com/pinax-network/substreams-svm/releases/download/svm-dex-v0.2.5/clickhouse-svm-dex-v0.2.5.spkg`
+- `https://github.com/pinax-network/substreams-evm/releases/download/evm-contracts-v0.4.0/evm-clickhouse-contracts-v0.4.0.spkg`
+- `https://github.com/pinax-network/substreams-evm/releases/download/evm-balances-v0.3.3/evm-clickhouse-balances-v0.3.3.spkg`
+- `https://github.com/pinax-network/substreams-svm/releases/download/svm-dex-v0.2.5/svm-clickhouse-dex-v0.2.5.spkg`
 
 ## Tag Format
 
@@ -48,18 +48,18 @@ Each crate produces up to 3 SPKGs. All share the same version number.
 | Type | Pattern | Example |
 |------|---------|---------|
 | Base DB module | `<chain>-<type>-v<version>.spkg` | `evm-contracts-v0.4.0.spkg` |
-| ClickHouse sink | `clickhouse-<chain>-<type>-v<version>.spkg` | `clickhouse-evm-contracts-v0.4.0.spkg` |
-| PostgreSQL sink | `postgres-<chain>-<type>-v<version>.spkg` | `postgres-evm-contracts-v0.4.0.spkg` |
+| ClickHouse sink | `<chain>-clickhouse-<type>-v<version>.spkg` | `evm-clickhouse-contracts-v0.4.0.spkg` |
+| PostgreSQL sink | `<chain>-postgres-<type>-v<version>.spkg` | `evm-postgres-contracts-v0.4.0.spkg` |
 
-> **Key**: Engine prefix comes first (`clickhouse-` / `postgres-`), then chain+type.
+> **Key**: Chain prefix comes first, then engine (`clickhouse` / `postgres`), then type.
 
 ## substreams.yaml Package Names
 
 | Type | Pattern | Example |
 |------|---------|---------|
 | Base DB module | `<chain>_<type>` | `evm_contracts` |
-| ClickHouse sink | `<chain>_clickhouse_<type>` | `clickhouse_evm_contracts` |
-| PostgreSQL sink | `<chain>_postgres_<type>` | `postgres_evm_contracts` |
+| ClickHouse sink | `<chain>_clickhouse_<type>` | `evm_clickhouse_contracts` |
+| PostgreSQL sink | `<chain>_postgres_<type>` | `evm_postgres_contracts` |
 
 ## SPKG Distribution
 
