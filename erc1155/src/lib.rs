@@ -10,8 +10,13 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
-        for log_view in trx.receipt().logs() {
-            let log = log_view.log;
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+            trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+        } else {
+            trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+        };
+
+        for (log, call) in logs_with_calls {
 
             // TransferSingle event
             if let Some(event) = erc1155::TransferSingle::match_and_decode(log) {
@@ -22,7 +27,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     id: event.id.to_string(),
                     value: event.value.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // TransferBatch event
@@ -34,7 +39,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     ids: event.ids.iter().map(|id| id.to_string()).collect(),
                     values: event.values.iter().map(|value| value.to_string()).collect(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // ApprovalForAll event
@@ -44,7 +49,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     operator: event.operator.to_vec(),
                     approved: event.approved,
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
 
             // URI event
@@ -53,7 +58,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                     value: event.value,
                     id: event.id.to_string(),
                 });
-                transaction.logs.push(pb::Log::create_log(log, event));
+                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
             }
         }
 

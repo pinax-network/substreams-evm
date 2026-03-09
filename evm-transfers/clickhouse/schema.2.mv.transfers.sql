@@ -19,10 +19,9 @@ CREATE TABLE IF NOT EXISTS transfers (
 
     -- log --
     log_index                   Nullable(UInt32), -- derived from Substreams
-    log_index_native            Nullable(UInt32) COMMENT 'Native EVM log index within the transaction',
-    log_block_index             Nullable(UInt32) COMMENT 'Native EVM log index within the block',
+    log_block_index             Nullable(UInt32) COMMENT 'BlockIndex represents the index of the log relative to the Block.',
     log_address                 LowCardinality(String),
-    log_ordinal                 Nullable(UInt32),
+    log_ordinal                 Nullable(UInt32) COMMENT "The block's global ordinal when the log was recorded.",
     log_topic0                  LowCardinality(String),
 
     -- call --
@@ -111,7 +110,6 @@ SELECT
 
     -- log --
     log_index,
-    log_index_native,
     log_block_index,
     log_address,
     log_ordinal,

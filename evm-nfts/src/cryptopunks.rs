@@ -1,4 +1,4 @@
-use common::clickhouse::{common_key, set_log};
+use common::clickhouse::{common_key, set_log, CallMetadata};
 use common::{bytes_to_string, Encoding};
 use proto::pb::evm::cryptopunks;
 use substreams::pb::substreams::Clock;
@@ -13,7 +13,17 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("to", bytes_to_string(&event.to, encoding))
             .set("punk_index", &event.punk_index);
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(
+            clock,
+            index,
+            event.tx_hash,
+            event.contract,
+            event.ordinal,
+            None,
+            Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }),
+            encoding,
+            row,
+        );
         index += 1;
     }
 
@@ -25,7 +35,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("to", bytes_to_string(&event.to, encoding))
             .set("punk_index", &event.punk_index);
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -39,7 +49,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("value_is_null", &event.value.is_none().to_string())
             .set("value", &event.value.unwrap_or_default().to_string());
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -51,7 +61,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("punk_index", &event.punk_index)
             .set("value", &event.value.to_string());
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -63,7 +73,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("punk_index", &event.punk_index)
             .set("value", &event.value.to_string());
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -71,7 +81,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
         let key = common_key(clock, index);
         let row = tables.create_row("punk_no_longer_for_sale", key).set("punk_index", &event.punk_index);
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -83,7 +93,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
             .set("punk_index", &event.punk_index)
             .set("min_value", &event.min_value.to_string());
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 }

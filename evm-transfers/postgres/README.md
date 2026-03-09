@@ -159,7 +159,7 @@ make dev ENDPOINT=base.substreams.pinax.network:443
 ## How Inserts Work
 
 The substreams uses `create_row` to insert transfer events. Each event is uniquely identified by the combination of block_num, tx_index, and log_index (or similar keys depending on the event type).
-The sink key `log_index` remains the Substreams-derived row position, while `log_index_native` and `log_block_index` preserve the native EVM log indexes from the protobuf payload.
+The sink key `log_index` remains the Substreams-derived row position, while `log_block_index` preserves the native EVM block-relative log position from the protobuf payload.
 
 ## Troubleshooting
 

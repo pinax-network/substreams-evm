@@ -27,7 +27,6 @@ message Log {
 
   // Native block/log position fields
   uint32 block_index = 6;
-  uint32 index = 7;
 
   oneof log {
     // Pool / StableSwap (shared topic hashes — decoded from any matching contract)

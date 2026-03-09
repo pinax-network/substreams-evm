@@ -22,6 +22,13 @@ message Log {
   uint64 ordinal = 2;
   repeated bytes topics = 3;
   bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  // Native block/log position fields
+  uint32 block_index = 6;
+
   oneof log {
     // events
     TransferSingle transfer_single = 10;
@@ -29,6 +36,29 @@ message Log {
     ApprovalForAll approval_for_all = 12;
     URI uri = 13;
   }
+}
+
+message Call {
+  uint32 index = 1;
+  uint64 begin_ordinal = 2;
+  uint64 end_ordinal = 3;
+  bytes caller = 4;  // sender
+  bytes address = 5; // recipient
+  string value = 6;  // uint256
+  uint64 gas_consumed = 7;
+  uint64 gas_limit = 8;
+  uint32 depth = 9;
+  uint32 parent_index = 10;
+  CallType call_type = 11;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
 }
 
 message TransferSingle {

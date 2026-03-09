@@ -46,8 +46,6 @@ pub struct Log {
     /// Native block/log position fields
     #[prost(uint32, tag = "6")]
     pub block_index: u32,
-    #[prost(uint32, tag = "7")]
-    pub index: u32,
     #[prost(
         oneof = "log::Log",
         tags = "12, 13, 14, 15, 20, 21, 30, 31, 32, 33, 34, 35, 36, 37"

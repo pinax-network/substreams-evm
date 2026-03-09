@@ -42,13 +42,19 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+    /// Call metadata (only available on chains with DetailLevel: EXTENDED)
+    #[prost(message, optional, tag="5")]
+    pub call: ::core::option::Option<Call>,
+    /// Native block/log position fields
+    #[prost(uint32, tag="6")]
+    pub block_index: u32,
     #[prost(oneof="log::Log", tags="10, 11, 12, 13")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
 pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
         /// events
         #[prost(message, tag="10")]
@@ -59,6 +65,68 @@ pub mod log {
         ApprovalForAll(super::ApprovalForAll),
         #[prost(message, tag="13")]
         Uri(super::Uri),
+    }
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Call {
+    #[prost(uint32, tag="1")]
+    pub index: u32,
+    #[prost(uint64, tag="2")]
+    pub begin_ordinal: u64,
+    #[prost(uint64, tag="3")]
+    pub end_ordinal: u64,
+    /// sender
+    #[prost(bytes="vec", tag="4")]
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    /// recipient
+    #[prost(bytes="vec", tag="5")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="6")]
+    pub value: ::prost::alloc::string::String,
+    #[prost(uint64, tag="7")]
+    pub gas_consumed: u64,
+    #[prost(uint64, tag="8")]
+    pub gas_limit: u64,
+    #[prost(uint32, tag="9")]
+    pub depth: u32,
+    #[prost(uint32, tag="10")]
+    pub parent_index: u32,
+    #[prost(enumeration="CallType", tag="11")]
+    pub call_type: i32,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum CallType {
+    Unspecified = 0,
+    Call = 1,
+    Callcode = 2,
+    Delegate = 3,
+    Static = 4,
+    Create = 5,
+}
+impl CallType {
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            Self::Unspecified => "CALL_TYPE_UNSPECIFIED",
+            Self::Call => "CALL_TYPE_CALL",
+            Self::Callcode => "CALL_TYPE_CALLCODE",
+            Self::Delegate => "CALL_TYPE_DELEGATE",
+            Self::Static => "CALL_TYPE_STATIC",
+            Self::Create => "CALL_TYPE_CREATE",
+        }
+    }
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
+            "CALL_TYPE_CALL" => Some(Self::Call),
+            "CALL_TYPE_CALLCODE" => Some(Self::Callcode),
+            "CALL_TYPE_DELEGATE" => Some(Self::Delegate),
+            "CALL_TYPE_STATIC" => Some(Self::Static),
+            "CALL_TYPE_CREATE" => Some(Self::Create),
+            _ => None,
+        }
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -92,10 +160,10 @@ pub struct TransferBatch {
     /// address
     #[prost(bytes="vec", tag="12")]
     pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256\[\]
+    /// uint256[]
     #[prost(string, repeated, tag="13")]
     pub ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// uint256\[\]
+    /// uint256[]
     #[prost(string, repeated, tag="14")]
     pub values: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }

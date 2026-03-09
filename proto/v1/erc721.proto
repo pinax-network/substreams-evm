@@ -2,59 +2,76 @@ syntax = "proto3";
 
 package evm.erc721.v1;
 
-message Events {
-  repeated Transfer transfers = 1;
-  repeated Approval approvals = 2;
-  repeated ApprovalForAll approvals_for_all = 3;
+message Events { repeated Transaction transactions = 1; }
+
+message Transaction {
+  bytes hash = 1;
+  bytes from = 2;
+  optional bytes to = 3;
+  uint64 nonce = 5;
+  string gas_price = 6; // uint256
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9; // uint256
+  repeated Log logs = 10;
+}
+
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  // Call metadata (only available on chains with DetailLevel: EXTENDED)
+  optional Call call = 5;
+
+  // Native block/log position fields
+  uint32 block_index = 6;
+
+  oneof log {
+    Transfer transfer = 10;
+    Approval approval = 11;
+    ApprovalForAll approval_for_all = 12;
+  }
+}
+
+message Call {
+  uint32 index = 1;
+  uint64 begin_ordinal = 2;
+  uint64 end_ordinal = 3;
+  bytes caller = 4;  // sender
+  bytes address = 5; // recipient
+  string value = 6;  // uint256
+  uint64 gas_consumed = 7;
+  uint64 gas_limit = 8;
+  uint32 depth = 9;
+  uint32 parent_index = 10;
+  CallType call_type = 11;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
 }
 
 message Transfer {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- caller --
-  optional bytes caller = 2; // call.caller (only available in Extended blocks)
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes from = 10; // The person that sent the transfer.
-  bytes to = 11; // The person that received the transfer.
-  string token_id = 12; // TokenID the identifier of the token for which the transfer is happening.
+  bytes from = 1; // The person that sent the transfer.
+  bytes to = 2; // The person that received the transfer.
+  string token_id = 3; // TokenID the identifier of the token for which the transfer is happening.
 }
 
 message Approval {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- caller --
-  optional bytes caller = 2; // call.caller (only available in Extended blocks)
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes owner = 10; // address
-  bytes approved = 11; // address
-  string token_id = 12; // uint256
+  bytes owner = 1; // address
+  bytes approved = 2; // address
+  string token_id = 3; // uint256
 }
 
 message ApprovalForAll {
-  // -- transaction --
-  bytes tx_hash = 1;
-
-  // -- caller --
-  optional bytes caller = 2; // call.caller (only available in Extended blocks)
-
-  // -- log --
-  bytes contract = 3; // log.address
-  uint64 ordinal = 4; // log.ordinal
-
-  // -- event --
-  bytes owner = 10; // address
-  bytes operator = 11; // address
-  bool approved = 12; // true/false
+  bytes owner = 1; // address
+  bytes operator = 2; // address
+  bool approved = 3; // true/false
 }

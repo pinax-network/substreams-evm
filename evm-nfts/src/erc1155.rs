@@ -1,4 +1,4 @@
-use common::clickhouse::{common_key, set_log};
+use common::clickhouse::{common_key, set_log, CallMetadata};
 use common::{bytes_to_string, Encoding};
 use proto::pb::erc1155::v1 as erc1155;
 use substreams::pb::substreams::Clock;
@@ -14,6 +14,20 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
         for log in trx.logs {
             let contract = log.address.clone();
             let ordinal = log.ordinal;
+            let block_index = Some(log.block_index);
+            let call = log.call.as_ref().map(|call| CallMetadata {
+                caller: Some(call.caller.as_slice()),
+                index: Some(call.index),
+                begin_ordinal: Some(call.begin_ordinal),
+                end_ordinal: Some(call.end_ordinal),
+                address: Some(call.address.as_slice()),
+                value: Some(call.value.as_str()),
+                gas_consumed: Some(call.gas_consumed),
+                gas_limit: Some(call.gas_limit),
+                depth: Some(call.depth),
+                parent_index: Some(call.parent_index),
+                call_type: Some(erc1155::CallType::try_from(call.call_type).unwrap_or_default().as_str_name()),
+            });
 
             match log.log {
                 Some(erc1155::log::Log::TransferSingle(event)) => {
@@ -28,7 +42,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                         .set("transfer_type", TransferType::Single.to_string())
                         .set("token_standard", TokenStandard::ERC1155.to_string());
 
-                    set_log(clock, index, tx_hash.clone(), contract, ordinal, None, encoding, row);
+                    set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
                 Some(erc1155::log::Log::TransferBatch(event)) => {
@@ -48,7 +62,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                             .set("transfer_type", TransferType::Batch.to_string())
                             .set("token_standard", TokenStandard::ERC1155.to_string());
 
-                        set_log(clock, index, tx_hash.clone(), contract.clone(), ordinal, None, encoding, row);
+                        set_log(clock, index, tx_hash.clone(), contract.clone(), ordinal, block_index, call, encoding, row);
                         index += 1;
                     });
                 }
@@ -61,7 +75,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                         .set("approved", &event.approved.to_string())
                         .set("token_standard", TokenStandard::ERC1155.to_string());
 
-                    set_log(clock, index, tx_hash.clone(), contract, ordinal, None, encoding, row);
+                    set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
                 Some(erc1155::log::Log::Uri(_)) => {}

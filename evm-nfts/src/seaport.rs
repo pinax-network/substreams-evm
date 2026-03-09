@@ -1,4 +1,4 @@
-use common::clickhouse::{common_key, set_log};
+use common::clickhouse::{common_key, set_log, CallMetadata};
 use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::evm::seaport;
 use substreams::pb::substreams::Clock;
@@ -19,7 +19,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
             .set("offer_raw", offers_to_json(event.offer, encoding).to_string())
             .set("consideration_raw", considerations_to_json(event.consideration, encoding).to_string());
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -28,7 +28,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
         let order_hashes_raw = event.order_hashes.iter().map(|h| bytes_to_hex(h)).collect::<Vec<String>>().join(",");
         let row = tables.create_row("seaport_orders_matched", key).set("order_hashes_raw", order_hashes_raw);
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 
@@ -40,7 +40,7 @@ pub fn process_seaport(tables: &mut substreams_database_change::tables::Tables, 
             .set("offerer", bytes_to_string(&event.offerer, encoding))
             .set("zone", bytes_to_string(&event.zone, encoding));
 
-        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, event.caller, encoding, row);
+        set_log(clock, index, event.tx_hash, event.contract, event.ordinal, None, Some(CallMetadata { caller: event.caller.as_deref(), ..Default::default() }), encoding, row);
         index += 1;
     }
 }

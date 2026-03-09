@@ -34,7 +34,6 @@ fn create_log_with_call_maps_native_positions_and_rich_call_metadata() {
 
     let created = pb::Log::create_log_with_call(&log, event, Some(&call));
 
-    assert_eq!(created.index, 4);
     assert_eq!(created.block_index, 12);
     assert_eq!(created.ordinal, 42);
 
