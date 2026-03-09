@@ -5,6 +5,16 @@ use substreams::pb::substreams::Clock;
 
 use crate::enums::{TokenStandard, TransferType};
 
+fn call_type_name(value: i32) -> &'static str {
+    match erc1155::CallType::try_from(value) {
+        Ok(call_type) => call_type.as_str_name(),
+        Err(_) => {
+            substreams::log::debug!("unexpected erc1155 call_type value: {}", value);
+            erc1155::CallType::Unspecified.as_str_name()
+        }
+    }
+}
+
 pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: erc1155::Events, encoding: &Encoding) {
     let mut index = 0;
 
@@ -26,7 +36,7 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                 gas_limit: Some(call.gas_limit),
                 depth: Some(call.depth),
                 parent_index: Some(call.parent_index),
-                call_type: Some(erc1155::CallType::try_from(call.call_type).unwrap_or_default().as_str_name()),
+                call_type: Some(call_type_name(call.call_type)),
             });
 
             match log.log {
