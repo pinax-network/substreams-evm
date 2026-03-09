@@ -61,6 +61,10 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 Some(curvefi::log::Log::LiquidityGaugeDeployed(event)) => {
                     process_liquidity_gauge_deployed(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
+                // ── Direct pool deployment (constructor calldata) ──────────────────
+                Some(curvefi::log::Log::Init(event)) => {
+                    process_init(encoding, tables, clock, tx, log, tx_index, log_index, event);
+                }
                 // ── CryptoSwap ───────────────────────────────────────────────────────
                 Some(curvefi::log::Log::CryptoswapTokenExchange(event)) => {
                     process_cryptoswap_token_exchange(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
@@ -527,6 +531,32 @@ fn process_liquidity_gauge_deployed(
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("gauge", bytes_to_string(&event.gauge, encoding));
+}
+
+fn process_init(
+    encoding: &Encoding,
+    tables: &mut Tables,
+    clock: &Clock,
+    tx: &curvefi::Transaction,
+    log: &curvefi::Log,
+    tx_index: usize,
+    log_index: usize,
+    event: &curvefi::Init,
+) {
+    let key = log_key(clock, tx_index, log_index);
+    let row = tables.create_row("curvefi_pool_init", key);
+
+    set_clock(clock, row);
+    set_template_tx(encoding, tx, tx_index, row);
+    set_template_log(encoding, log, log_index, row);
+
+    row.set("address", bytes_to_string(&event.address, encoding));
+    row.set("owner", bytes_to_string(&event.owner, encoding));
+    row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
+    row.set("pool_token", bytes_to_string(&event.pool_token, encoding));
+    row.set("a", &event.a);
+    row.set("fee", &event.fee);
+    row.set("admin_fee", &event.admin_fee);
 }
 
 // ── CryptoSwap handlers ───────────────────────────────────────────────────────

@@ -14,6 +14,113 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     None
 }
 
+/// Decode an ABI-encoded address word (32 bytes).
+/// The first 12 bytes must be zero and the last 20 bytes must be non-zero.
+fn decode_abi_address(word: &[u8]) -> Option<Vec<u8>> {
+    if word.len() != 32 {
+        return None;
+    }
+    if word[..12].iter().any(|&b| b != 0) {
+        return None;
+    }
+    if word[12..].iter().all(|&b| b == 0) {
+        return None;
+    }
+    Some(word[12..].to_vec())
+}
+
+/// Convert a 32-byte big-endian uint256 slice to a decimal string.
+fn decode_uint256_to_string(word: &[u8]) -> String {
+    substreams::scalar::BigInt::from_unsigned_bytes_be(word).to_string()
+}
+
+/// Try to decode the CurveFi pool `__init__` constructor arguments from the END of
+/// the deployment bytecode for a pool with the given number of coins.
+///
+/// Constructor signature: `__init__(_owner, _coins[n_coins], _pool_token, _A, _fee, _admin_fee)`
+/// Each argument is ABI-encoded as 32 bytes (no offset pointers — all fixed-size types).
+///
+/// Returns `(owner, coins, pool_token, a, fee, admin_fee)` on success.
+fn try_decode_pool_init(
+    input: &[u8],
+    n_coins: usize,
+) -> Option<(Vec<u8>, Vec<Vec<u8>>, Vec<u8>, String, String, String)> {
+    // owner(32) + coins(n*32) + pool_token(32) + A(32) + fee(32) + admin_fee(32)
+    let params_size = (n_coins + 5) * 32;
+    if input.len() < params_size {
+        return None;
+    }
+    let args = &input[input.len() - params_size..];
+
+    let mut offset = 0;
+
+    let owner = decode_abi_address(&args[offset..offset + 32])?;
+    offset += 32;
+
+    let mut coins = Vec::with_capacity(n_coins);
+    for _ in 0..n_coins {
+        let coin = decode_abi_address(&args[offset..offset + 32])?;
+        coins.push(coin);
+        offset += 32;
+    }
+
+    let pool_token = decode_abi_address(&args[offset..offset + 32])?;
+    offset += 32;
+
+    let a = decode_uint256_to_string(&args[offset..offset + 32]);
+    offset += 32;
+    let fee = decode_uint256_to_string(&args[offset..offset + 32]);
+    offset += 32;
+    let admin_fee = decode_uint256_to_string(&args[offset..offset + 32]);
+
+    Some((owner, coins, pool_token, a, fee, admin_fee))
+}
+
+/// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
+/// transaction by decoding the constructor calldata.
+///
+/// Returns `None` if the transaction is not a direct deployment or the calldata does not
+/// match the expected CurveFi constructor format for 2, 3, or 4 coins.
+/// On success, returns the decoded `Init` event together with a reference to the root
+/// CREATE call so the caller can populate call metadata without a second iteration.
+fn try_extract_pool_init<'a>(
+    trx: &'a TransactionTrace,
+) -> Option<(pb::Init, &'a substreams_ethereum::pb::eth::v2::Call)> {
+    // Only process direct deployment transactions (to field is empty/null)
+    if !trx.to.is_empty() {
+        return None;
+    }
+
+    // Find the root CREATE call
+    let create_call = trx.calls.iter().find(|c| {
+        c.call_type == CallType::Create as i32 && c.depth == 0
+    })?;
+
+    let address = create_call.address.to_vec();
+    let input = &create_call.input;
+
+    // Try n_coins = 3 (most common: 3Pool), then 4, then 2
+    for &n_coins in &[3usize, 4, 2] {
+        if let Some((owner, coins, pool_token, a, fee, admin_fee)) =
+            try_decode_pool_init(input, n_coins)
+        {
+            return Some((
+                pb::Init {
+                    address,
+                    owner,
+                    coins,
+                    pool_token,
+                    a,
+                    fee,
+                    admin_fee,
+                },
+                create_call,
+            ));
+        }
+    }
+    None
+}
+
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut events = pb::Events::default();
@@ -53,9 +160,37 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_cryptoswapfactory_update_gauge_implementation = 0;
     let mut total_cryptoswapfactory_update_pool_implementation = 0;
     let mut total_cryptoswapfactory_update_token_implementation = 0;
+    // Direct pool deployment (constructor decoding)
+    let mut total_pool_init = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
+
+        // ── Direct pool deployment: decode constructor calldata ───────────────
+        if let Some((init, create_call)) = try_extract_pool_init(trx) {
+            total_pool_init += 1;
+            let log_entry = pb::Log {
+                address: init.address.clone(),
+                ordinal: create_call.begin_ordinal,
+                topics: vec![],
+                data: vec![],
+                call: Some(pb::Call {
+                    index: create_call.index,
+                    begin_ordinal: create_call.begin_ordinal,
+                    end_ordinal: create_call.end_ordinal,
+                    caller: create_call.caller.to_vec(),
+                    address: create_call.address.to_vec(),
+                    value: create_call.value.clone().unwrap_or_default().with_decimal(0).to_string(),
+                    gas_consumed: create_call.gas_consumed,
+                    gas_limit: create_call.gas_limit,
+                    depth: create_call.depth,
+                    parent_index: create_call.parent_index,
+                    call_type: create_call.call_type,
+                }),
+                log: Some(pb::log::Log::Init(init)),
+            };
+            transaction.logs.push(log_entry);
+        }
 
         let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> =
             if trx.calls.is_empty() {
@@ -489,6 +624,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total CryptoSwapFactory UpdateGaugeImplementation events: {}", total_cryptoswapfactory_update_gauge_implementation);
     substreams::log::info!("Total CryptoSwapFactory UpdatePoolImplementation events: {}", total_cryptoswapfactory_update_pool_implementation);
     substreams::log::info!("Total CryptoSwapFactory UpdateTokenImplementation events: {}", total_cryptoswapfactory_update_token_implementation);
+    // Direct pool deployment
+    substreams::log::info!("Total Init (direct pool deployment) events: {}", total_pool_init);
 
     Ok(events)
 }

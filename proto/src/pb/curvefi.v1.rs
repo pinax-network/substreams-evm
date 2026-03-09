@@ -44,7 +44,7 @@ pub struct Log {
     /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40")]
+    #[prost(oneof="log::Log", tags="10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -118,6 +118,9 @@ pub mod log {
         CryptoswapfactoryUpdatePoolImplementation(super::CryptoSwapFactoryUpdatePoolImplementation),
         #[prost(message, tag="40")]
         CryptoswapfactoryUpdateTokenImplementation(super::CryptoSwapFactoryUpdateTokenImplementation),
+        /// Direct pool deployment (non-factory): decoded from constructor calldata
+        #[prost(message, tag="41")]
+        Init(super::Init),
     }
 }
 /// Call metadata (only available on chains with DetailLevel: EXTENDED)
@@ -638,6 +641,34 @@ pub struct CryptoSwapFactoryUpdateTokenImplementation {
     pub old_token_implementation: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub new_token_implementation: ::prost::alloc::vec::Vec<u8>,
+}
+/// curvefi_pool_init
+/// Decoded from direct pool deployment (non-factory) __init__ constructor calldata.
+/// Captures coins, owner, pool token, and parameters for pools deployed without a factory event.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Init {
+    /// deployed pool contract address
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    /// _owner (initial admin/owner)
+    #[prost(bytes="vec", tag="2")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    /// _coins array (2–4 token addresses)
+    #[prost(bytes="vec", repeated, tag="3")]
+    pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// _pool_token LP token address
+    #[prost(bytes="vec", tag="4")]
+    pub pool_token: ::prost::alloc::vec::Vec<u8>,
+    /// _A amplification coefficient (uint256)
+    #[prost(string, tag="5")]
+    pub a: ::prost::alloc::string::String,
+    /// _fee exchange fee (uint256, scaled 1e10)
+    #[prost(string, tag="6")]
+    pub fee: ::prost::alloc::string::String,
+    /// _admin_fee admin fee fraction (uint256, scaled 1e10)
+    #[prost(string, tag="7")]
+    pub admin_fee: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

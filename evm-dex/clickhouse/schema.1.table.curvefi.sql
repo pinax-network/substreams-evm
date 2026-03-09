@@ -84,6 +84,19 @@ ALTER TABLE curvefi_plain_pool_deployed
     ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'Exchange fee',
     ADD COLUMN IF NOT EXISTS deployer           String COMMENT 'Deployer address';
 
+-- Curve.fi PoolInit (direct deployment, decoded from __init__ constructor calldata) --
+CREATE TABLE IF NOT EXISTS curvefi_pool_init AS TEMPLATE_LOG
+COMMENT 'Curve.fi pool initialisation decoded from __init__ constructor calldata (non-factory deployments)';
+ALTER TABLE curvefi_pool_init
+    -- event information (decoded constructor args) --
+    ADD COLUMN IF NOT EXISTS address            String COMMENT 'Deployed pool contract address',
+    ADD COLUMN IF NOT EXISTS owner              String COMMENT 'Initial owner/admin address',
+    ADD COLUMN IF NOT EXISTS coins              String COMMENT 'Comma-separated coin (token) addresses',
+    ADD COLUMN IF NOT EXISTS pool_token         String COMMENT 'LP token address',
+    ADD COLUMN IF NOT EXISTS a                  UInt256 COMMENT 'Amplification coefficient (_A)',
+    ADD COLUMN IF NOT EXISTS fee                UInt256 COMMENT 'Exchange fee scaled to 1e10 (_fee)',
+    ADD COLUMN IF NOT EXISTS admin_fee          UInt256 COMMENT 'Admin fee fraction scaled to 1e10 (_admin_fee)';
+
 -- Curve.fi MetaPoolDeployed --
 CREATE TABLE IF NOT EXISTS curvefi_meta_pool_deployed AS TEMPLATE_LOG
 COMMENT 'Curve.fi MetaPoolDeployed (pool creation) events';
