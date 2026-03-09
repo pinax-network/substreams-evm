@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS erc721_transfers (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS erc721_approvals (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS erc721_approvals_for_all (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS erc1155_transfers (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS erc1155_approvals_for_all (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS punk_assigns (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -303,7 +303,7 @@ CREATE TABLE IF NOT EXISTS punk_transfers (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -347,7 +347,7 @@ CREATE TABLE IF NOT EXISTS punk_bought (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -393,7 +393,7 @@ CREATE TABLE IF NOT EXISTS punk_bid_entered (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -436,7 +436,7 @@ CREATE TABLE IF NOT EXISTS punk_bid_withdrawn (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -479,7 +479,7 @@ CREATE TABLE IF NOT EXISTS punk_no_longer_for_sale (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -519,7 +519,7 @@ CREATE TABLE IF NOT EXISTS punk_offered (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -562,7 +562,7 @@ CREATE TABLE IF NOT EXISTS seaport_order_fulfilled (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -614,7 +614,7 @@ CREATE TABLE IF NOT EXISTS seaport_orders_matched (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
@@ -654,7 +654,7 @@ CREATE TABLE IF NOT EXISTS seaport_order_cancelled (
 
     -- ordering --
     log_ordinal          BIGINT NOT NULL,
-    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_block_index      INTEGER NOT NULL DEFAULT 0, -- BlockIndex represents the index of the log relative to the Block.
     log_index            BIGINT NOT NULL,
 
     -- transaction --
