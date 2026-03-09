@@ -9,6 +9,13 @@ CREATE TABLE IF NOT EXISTS transfers (
     -- transaction --
     tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
+    tx_from                     String,
+    tx_to                       LowCardinality(String),
+    tx_nonce                    UInt64,
+    tx_gas_price                UInt256,
+    tx_gas_limit                UInt64,
+    tx_gas_used                 UInt64,
+    tx_value                    UInt256,
 
     -- log --
     log_index                   Nullable(UInt32), -- derived from Substreams
@@ -16,7 +23,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     log_ordinal                 Nullable(UInt32),
     log_topic0                  LowCardinality(String),
 
-    -- call metadata --
+    -- call --
     call_caller                 String,
     call_index                  UInt32,
     call_depth                  UInt32,
@@ -85,6 +92,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -92,7 +106,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -117,6 +131,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -143,6 +164,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -170,6 +198,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -177,7 +212,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -203,6 +238,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -210,7 +252,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -236,6 +278,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -243,7 +292,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -269,6 +318,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -276,7 +332,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -302,6 +358,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -309,7 +372,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -335,6 +398,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -342,7 +412,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -368,6 +438,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -375,7 +452,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -401,6 +478,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -408,7 +492,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -434,6 +518,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -441,7 +532,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -467,6 +558,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -474,7 +572,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -500,6 +598,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -507,7 +612,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -533,6 +638,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -540,7 +652,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -566,6 +678,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -573,7 +692,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -599,6 +718,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -606,7 +732,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,
@@ -632,6 +758,13 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- log --
     log_index,
@@ -639,7 +772,7 @@ SELECT
     log_ordinal,
     log_topic0,
 
-    -- call metadata --
+    -- call --
     call_caller,
     call_index,
     call_depth,

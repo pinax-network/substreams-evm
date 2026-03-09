@@ -76,9 +76,16 @@ macro_rules! impl_create_log_with_call_metadata {
                     topics: log.topics.iter().map(|t| t.to_vec()).collect(),
                     data: log.data.to_vec(),
                     call: call.map(|c| pb::Call {
-                        caller: c.caller.to_vec(),
                         index: c.index,
+                        begin_ordinal: c.begin_ordinal,
+                        end_ordinal: c.end_ordinal,
+                        caller: c.caller.to_vec(),
+                        address: c.address.to_vec(),
+                        value: c.value.clone().unwrap_or_default().with_decimal(0).to_string(),
+                        gas_consumed: c.gas_consumed,
+                        gas_limit: c.gas_limit,
                         depth: c.depth,
+                        parent_index: c.parent_index,
                         call_type: c.call_type,
                     }),
                     log: Some(event),
@@ -110,11 +117,6 @@ macro_rules! impl_create_log_with_call_metadata {
 mod aerodrome_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::aerodrome::v1);
-}
-
-mod dca_dot_fun_impl {
-    use super::*;
-    impl_create_log_with_call_metadata!(proto::pb::dca_dot_fun::v1);
 }
 
 mod dodo_impl {

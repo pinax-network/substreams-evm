@@ -112,16 +112,28 @@ pub mod log {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Call {
-    /// Address that made the call
-    #[prost(bytes="vec", tag="1")]
-    pub caller: ::prost::alloc::vec::Vec<u8>,
-    /// Index of the call within the transaction
-    #[prost(uint32, tag="2")]
+    #[prost(uint32, tag="1")]
     pub index: u32,
-    /// Depth of the call in the call tree (0 = root)
-    #[prost(uint32, tag="3")]
+    #[prost(uint64, tag="2")]
+    pub begin_ordinal: u64,
+    #[prost(uint64, tag="3")]
+    pub end_ordinal: u64,
+    #[prost(bytes="vec", tag="4")]
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="5")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    // uint256
+    #[prost(string, tag="6")]
+    pub value: ::prost::alloc::string::String,
+    #[prost(uint64, tag="7")]
+    pub gas_consumed: u64,
+    #[prost(uint64, tag="8")]
+    pub gas_limit: u64,
+    #[prost(uint32, tag="9")]
     pub depth: u32,
-    #[prost(enumeration="CallType", tag="4")]
+    #[prost(uint32, tag="10")]
+    pub parent_index: u32,
+    #[prost(enumeration="CallType", tag="11")]
     pub call_type: i32,
 }
 // ============================================

@@ -127,7 +127,7 @@ SELECT
     count()                 AS transactions,
     uniqState(tx_from)      AS uniq_tx_from,
     uniqState(user)         AS uniq_user,
-    uniqState(call_caller)       AS uniq_caller
+    uniqState(call_caller)  AS uniq_caller
 FROM swaps s
 GROUP BY
     -- bar interval

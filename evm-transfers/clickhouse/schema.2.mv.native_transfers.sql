@@ -7,11 +7,21 @@ CREATE TABLE IF NOT EXISTS native_transfers (
     minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- transaction --
-    tx_index                    Nullable(UInt32) COMMENT 'Nullable because of block rewards', -- derived from Substreams
+    tx_index                    UInt32, -- derived from Substreams
     tx_hash                     String,
+    tx_from                     String,
+    tx_to                       LowCardinality(String),
+    tx_nonce                    UInt64,
+    tx_gas_price                UInt256,
+    tx_gas_limit                UInt64,
+    tx_gas_used                 UInt64,
+    tx_value                    UInt256,
 
     -- call --
-    call_index                  Nullable(UInt32),
+    call_caller                 String,
+    call_index                  UInt32,
+    call_depth                  UInt32,
+    call_type                   LowCardinality(String),
 
     -- transfer --
     `from`                      String,
@@ -57,9 +67,19 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
+    '' AS call_caller,
+    0 AS call_index,
+    0 AS call_depth,
+    '' AS call_type,
 
     -- transfer --
     tx_from as `from`,
@@ -80,9 +100,19 @@ SELECT
     -- transaction --
     tx_index,
     tx_hash,
+    tx_from,
+    tx_to,
+    tx_nonce,
+    tx_gas_price,
+    tx_gas_limit,
+    tx_gas_used,
+    tx_value,
 
     -- call --
+    call_caller,
     call_index,
+    call_depth,
+    call_type,
 
     -- transfer --
     call_caller as `from`,
@@ -101,11 +131,21 @@ SELECT
     minute,
 
     -- transaction --,
-    CAST(NULL AS Nullable(UInt32)) AS tx_index,
+    0 AS tx_index,
     '' AS tx_hash,
+    '' AS tx_from,
+    '' AS tx_to,
+    0 AS tx_nonce,
+    '0' AS tx_gas_price,
+    0 AS tx_gas_limit,
+    0 AS tx_gas_used,
+    '0' AS tx_value,
 
     -- call --
-    cast(NULL AS Nullable(UInt32)) AS call_index,
+    '' AS call_caller,
+    0 AS call_index,
+    0 AS call_depth,
+    '' AS call_type,
 
     -- transfer (native ETH leg) --
     '' AS `from`,
@@ -124,11 +164,21 @@ SELECT
     minute,
 
     -- transaction --
-    CAST(NULL AS Nullable(UInt32)) AS tx_index,
+    0 AS tx_index,
     '' AS tx_hash,
+    '' AS tx_from,
+    '' AS tx_to,
+    0 AS tx_nonce,
+    '0' AS tx_gas_price,
+    0 AS tx_gas_limit,
+    0 AS tx_gas_used,
+    '0' AS tx_value,
 
     -- call --
-    CAST(NULL AS Nullable(UInt32)) AS call_index,
+    '' AS call_caller,
+    0 AS call_index,
+    0 AS call_depth,
+    '' AS call_type,
 
     -- transfer (genesis allocation) --
     '' AS `from`,
@@ -147,11 +197,21 @@ SELECT
     minute,
 
     -- transaction --
-    CAST(NULL AS Nullable(UInt32)) AS tx_index,
+    0 AS tx_index,
     '' AS tx_hash,
+    '' AS tx_from,
+    '' AS tx_to,
+    0 AS tx_nonce,
+    '0' AS tx_gas_price,
+    0 AS tx_gas_limit,
+    0 AS tx_gas_used,
+    '0' AS tx_value,
 
     -- call --
-    CAST(NULL AS Nullable(UInt32)) AS call_index,
+    '' AS call_caller,
+    0 AS call_index,
+    0 AS call_depth,
+    '' AS call_type,
 
     -- transfer (DAO hard fork) --
     address AS `from`,
