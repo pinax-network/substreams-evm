@@ -17,40 +17,35 @@ This module tracks the following CurveFi Pool events based on the latest ABI:
 - **NewFee**: Fee changes
 - **RampA**: Amplification parameter changes
 - **StopRampA**: Amplification parameter change stops
-- **Init** ⚠️: Pool initialization events (infrastructure ready, requires ABI addition)
+- **Init**: Pool initialization events decoded from constructor calldata (direct deployments)
 
 ### Init Event
 
-The `Init` event tracks CurveFi pool initialization with the following parameters:
+The `Init` event tracks CurveFi pool initialization for pools deployed **directly** (not via a factory). It is decoded from the contract creation transaction's `__init__` constructor calldata.
 
-- `owner`: Contract owner address
-- `coins`: Array of coin addresses in the pool (e.g., DAI, USDC, USDT for 3Pool)
+**Parameters captured:**
+
+- `address`: Deployed pool contract address
+- `owner`: Contract owner / initial admin address
+- `coins`: Array of coin (token) addresses in the pool (e.g., DAI, USDC, USDT for 3Pool)
 - `pool_token`: LP token address representing pool shares
-- `a`: Amplification coefficient (A parameter)
-- `fee`: Exchange fee
-- `admin_fee`: Admin fee
+- `a`: Amplification coefficient (_A parameter)
+- `fee`: Exchange fee (scaled to 1e10)
+- `admin_fee`: Admin fee fraction (scaled to 1e10)
 
-#### Activation Requirements
+**How it works:**
 
-The Init event infrastructure is fully implemented in:
-- Protocol buffers definition (`proto/v1/dex/curvefi.proto`)
-- Database schema (`clickhouse-evm-dex/schema.1.table.curvefi.sql`)
-- Event processing logic (`clickhouse-evm-dex/src/curvefi.rs`)
+CurveFi Vyper `__init__` constructors do not emit standard EVM events. Instead, the module decodes the ABI-encoded constructor arguments from the end of the deployment bytecode in the contract creation transaction. It attempts to decode for 3-coin, 4-coin, and 2-coin pool layouts (in that order), validating each field as a properly padded ABI address.
 
-However, the event handler is currently commented out in `dex/curvefi/src/lib.rs` because CurveFi's Vyper `__init__` constructor doesn't emit a standard event.
+**Coverage:**
 
-**To activate Init event tracking**, one of the following is required:
-
-1. Add the Init event ABI definition to the `substreams-abis` repository
-2. Modify CurveFi contracts to emit a custom Init event during deployment
-3. Implement constructor call decoding to extract initialization parameters from contract creation transactions
-
-Once the event source is available, uncomment the Init event handler in `src/lib.rs` (lines ~175-189) to enable tracking.
+- ✅ Direct pool deployments (e.g., 3Pool at `0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7`)
+- ✅ Factory-deployed pools are already captured via `PlainPoolDeployed` / `MetaPoolDeployed` events
 
 ## Store
 
 The module includes `store.rs` which provides store handlers for tracking:
-- Pool information (pool address, provider, total liquidity)
+- Pool information (pool address, coins) — populated from `Init`, `PlainPoolDeployed`, `MetaPoolDeployed`, and `CryptoPoolDeployed` events
 
 ## Building
 

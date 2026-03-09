@@ -61,6 +61,8 @@ message Log {
     CryptoSwapFactoryUpdateGaugeImplementation cryptoswapfactory_update_gauge_implementation = 38;
     CryptoSwapFactoryUpdatePoolImplementation cryptoswapfactory_update_pool_implementation = 39;
     CryptoSwapFactoryUpdateTokenImplementation cryptoswapfactory_update_token_implementation = 40;
+    // Direct pool deployment (non-factory): decoded from constructor calldata
+    Init init = 41;
   }
 }
 
@@ -330,4 +332,19 @@ message CryptoSwapFactoryUpdatePoolImplementation {
 message CryptoSwapFactoryUpdateTokenImplementation {
   bytes old_token_implementation = 1;
   bytes new_token_implementation = 2;
+}
+
+// ── Direct pool deployment (decoded from constructor calldata) ─────────────────
+
+// curvefi_pool_init
+// Decoded from direct pool deployment (non-factory) __init__ constructor calldata.
+// Captures coins, owner, pool token, and parameters for pools deployed without a factory event.
+message Init {
+  bytes address = 1;        // deployed pool contract address
+  bytes owner = 2;          // _owner (initial admin/owner)
+  repeated bytes coins = 3; // _coins array (2–4 token addresses)
+  bytes pool_token = 4;     // _pool_token LP token address
+  string a = 5;             // _A amplification coefficient (uint256)
+  string fee = 6;           // _fee exchange fee (uint256, scaled 1e10)
+  string admin_fee = 7;     // _admin_fee admin fee fraction (uint256, scaled 1e10)
 }
