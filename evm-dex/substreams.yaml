@@ -21,20 +21,20 @@ imports:
   bancor_store: ../spkg/bancor-v0.3.0.spkg
   bancor: ../spkg/bancor-v0.5.0.spkg
   cow: ../spkg/cow-v0.5.0.spkg
+
+  # New DEX Substreams
+  aerodrome_store: ../spkg/aerodrome-v0.5.0.spkg
+  aerodrome: ../spkg/aerodrome-v0.5.0.spkg
+  dodo: ../spkg/dodo-v0.5.0.spkg
+  woofi: ../spkg/woofi-v0.5.0.spkg
+  traderjoe_store: ../spkg/traderjoe-v0.5.0.spkg
+  traderjoe: ../spkg/traderjoe-v0.5.0.spkg
+  kyber_elastic_store: ../spkg/kyber-elastic-v0.5.0.spkg
+  kyber_elastic: ../spkg/kyber-elastic-v0.5.0.spkg
   # No v0.3.0 for CurveFi, only v0.5.0 for legacy TriPool support
   # https://github.com/pinax-network/substreams-evm/pull/212
   curvefi_store: ../spkg/curvefi-v0.5.0.spkg
   curvefi: ../spkg/curvefi-v0.5.0.spkg
-
-  # New DEX Substreams
-  aerodrome_store: ../spkg/aerodrome-v0.2.0.spkg
-  aerodrome: ../spkg/aerodrome-v0.5.0.spkg
-  dodo: ../spkg/dodo-v0.5.0.spkg
-  woofi: ../spkg/woofi-v0.5.0.spkg
-  traderjoe_store: ../spkg/traderjoe-v0.2.0.spkg
-  traderjoe: ../spkg/traderjoe-v0.5.0.spkg
-  kyber_elastic_store: ../spkg/kyber-elastic-v0.2.0.spkg
-  kyber_elastic: ../spkg/kyber-elastic-v0.5.0.spkg
 
   # Uniswap DEX Substreams
   uniswap_v1_store: ../spkg/uniswap-v1-v0.3.0.spkg
