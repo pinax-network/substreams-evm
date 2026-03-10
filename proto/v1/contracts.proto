@@ -55,6 +55,8 @@ message Call {
   uint32 depth = 9;
   uint32 parent_index = 10;
   CallType call_type = 11;
+  bytes input = 12;
+  bytes return_data = 13;
 }
 
 enum CallType {

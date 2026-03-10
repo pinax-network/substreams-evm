@@ -221,6 +221,8 @@ mod contracts_impl {
                 depth: call.depth,
                 parent_index: call.parent_index,
                 call_type: call.call_type,
+                input: call.input.to_vec(),
+                return_data: call.return_data.to_vec(),
             }
         }
     }

@@ -95,6 +95,10 @@ pub struct Call {
     pub parent_index: u32,
     #[prost(enumeration="CallType", tag="11")]
     pub call_type: i32,
+    #[prost(bytes="vec", tag="12")]
+    pub input: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="13")]
+    pub return_data: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
