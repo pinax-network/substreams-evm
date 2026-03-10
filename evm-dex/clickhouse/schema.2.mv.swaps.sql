@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS swaps (
     log_index                   UInt32, -- derived from Substreams
     log_block_index             UInt32 COMMENT 'BlockIndex represents the index of the log relative to the Block.',
     log_address                 String,
-    log_ordinal                 UInt32 COMMENT "The block's global ordinal when the log was recorded.",
+    log_ordinal                 UInt32 COMMENT 'The block global ordinal when the log was recorded.',
     log_topic0                  LowCardinality(String),
 
     -- swap event information --
@@ -180,8 +180,9 @@ CREATE TABLE IF NOT EXISTS swaps_flash (
 
     -- log --
     log_index                   UInt32,
+    log_block_index             UInt32 COMMENT 'BlockIndex represents the index of the log relative to the Block.',
     log_address                 String,
-    log_ordinal                 UInt32 COMMENT "The block's global ordinal when the log was recorded.",
+    log_ordinal                 UInt32 COMMENT 'The block global ordinal when the log was recorded.',
     log_topic0                  LowCardinality(String),
 
     -- swap event information --
