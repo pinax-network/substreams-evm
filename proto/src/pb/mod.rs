@@ -27,18 +27,18 @@ pub mod cow {
         // @@protoc_insertion_point(cow.v1)
     }
 }
-pub mod dodo {
-    // @@protoc_insertion_point(attribute:dodo.v1)
-    pub mod v1 {
-        include!("dodo.v1.rs");
-        // @@protoc_insertion_point(dodo.v1)
-    }
-}
 pub mod curvefi {
     // @@protoc_insertion_point(attribute:curvefi.v1)
     pub mod v1 {
         include!("curvefi.v1.rs");
         // @@protoc_insertion_point(curvefi.v1)
+    }
+}
+pub mod dodo {
+    // @@protoc_insertion_point(attribute:dodo.v1)
+    pub mod v1 {
+        include!("dodo.v1.rs");
+        // @@protoc_insertion_point(dodo.v1)
     }
 }
 pub mod erc1155 {
@@ -79,20 +79,12 @@ pub mod evm {
             // @@protoc_insertion_point(evm.balances.v1)
         }
     }
-    pub mod erc721 {
-        pub mod v1 {
-            include!("evm.erc721.v1.rs");
-        }
-    }
-    pub mod seaport {
-        pub mod v1 {
-            include!("evm.seaport.v1.rs");
-        }
-    }
-    pub mod cryptopunks {
-        pub mod v1 {
-            include!("evm.cryptopunks.v1.rs");
-        }
+}
+pub mod kyber_elastic {
+    // @@protoc_insertion_point(attribute:kyber_elastic.v1)
+    pub mod v1 {
+        include!("kyber_elastic.v1.rs");
+        // @@protoc_insertion_point(kyber_elastic.v1)
     }
 }
 pub mod native {
@@ -104,13 +96,6 @@ pub mod native {
         }
     }
 }
-pub mod ohlc {
-    // @@protoc_insertion_point(attribute:ohlc.v1)
-    pub mod v1 {
-        include!("ohlc.v1.rs");
-        // @@protoc_insertion_point(ohlc.v1)
-    }
-}
 pub mod sunpump {
     // @@protoc_insertion_point(attribute:sunpump.v1)
     pub mod v1 {
@@ -118,25 +103,11 @@ pub mod sunpump {
         // @@protoc_insertion_point(sunpump.v1)
     }
 }
-pub mod kyber_elastic {
-    // @@protoc_insertion_point(attribute:kyber_elastic.v1)
-    pub mod v1 {
-        include!("kyber_elastic.v1.rs");
-        // @@protoc_insertion_point(kyber_elastic.v1)
-    }
-}
 pub mod traderjoe {
     // @@protoc_insertion_point(attribute:traderjoe.v1)
     pub mod v1 {
         include!("traderjoe.v1.rs");
         // @@protoc_insertion_point(traderjoe.v1)
-    }
-}
-pub mod woofi {
-    // @@protoc_insertion_point(attribute:woofi.v1)
-    pub mod v1 {
-        include!("woofi.v1.rs");
-        // @@protoc_insertion_point(woofi.v1)
     }
 }
 pub mod uniswap {
@@ -159,5 +130,12 @@ pub mod uniswap {
     pub mod v4 {
         include!("uniswap.v4.rs");
         // @@protoc_insertion_point(uniswap.v4)
+    }
+}
+pub mod woofi {
+    // @@protoc_insertion_point(attribute:woofi.v1)
+    pub mod v1 {
+        include!("woofi.v1.rs");
+        // @@protoc_insertion_point(woofi.v1)
     }
 }

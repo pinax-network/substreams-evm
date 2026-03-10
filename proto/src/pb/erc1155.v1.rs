@@ -54,7 +54,7 @@ pub struct Log {
 /// Nested message and enum types in `Log`.
 pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+#[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
         /// events
         #[prost(message, tag="10")]
@@ -96,39 +96,6 @@ pub struct Call {
     #[prost(enumeration="CallType", tag="11")]
     pub call_type: i32,
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum CallType {
-    Unspecified = 0,
-    Call = 1,
-    Callcode = 2,
-    Delegate = 3,
-    Static = 4,
-    Create = 5,
-}
-impl CallType {
-    pub fn as_str_name(&self) -> &'static str {
-        match self {
-            Self::Unspecified => "CALL_TYPE_UNSPECIFIED",
-            Self::Call => "CALL_TYPE_CALL",
-            Self::Callcode => "CALL_TYPE_CALLCODE",
-            Self::Delegate => "CALL_TYPE_DELEGATE",
-            Self::Static => "CALL_TYPE_STATIC",
-            Self::Create => "CALL_TYPE_CREATE",
-        }
-    }
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
-            "CALL_TYPE_CALL" => Some(Self::Call),
-            "CALL_TYPE_CALLCODE" => Some(Self::Callcode),
-            "CALL_TYPE_DELEGATE" => Some(Self::Delegate),
-            "CALL_TYPE_STATIC" => Some(Self::Static),
-            "CALL_TYPE_CREATE" => Some(Self::Create),
-            _ => None,
-        }
-    }
-}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TransferSingle {
@@ -160,10 +127,10 @@ pub struct TransferBatch {
     /// address
     #[prost(bytes="vec", tag="12")]
     pub to: ::prost::alloc::vec::Vec<u8>,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="13")]
     pub ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// uint256[]
+    /// uint256\[\]
     #[prost(string, repeated, tag="14")]
     pub values: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
@@ -190,5 +157,43 @@ pub struct Uri {
     /// uint256
     #[prost(string, tag="11")]
     pub id: ::prost::alloc::string::String,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum CallType {
+    Unspecified = 0,
+    Call = 1,
+    Callcode = 2,
+    Delegate = 3,
+    Static = 4,
+    Create = 5,
+}
+impl CallType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
+            CallType::Call => "CALL_TYPE_CALL",
+            CallType::Callcode => "CALL_TYPE_CALLCODE",
+            CallType::Delegate => "CALL_TYPE_DELEGATE",
+            CallType::Static => "CALL_TYPE_STATIC",
+            CallType::Create => "CALL_TYPE_CREATE",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
+            "CALL_TYPE_CALL" => Some(Self::Call),
+            "CALL_TYPE_CALLCODE" => Some(Self::Callcode),
+            "CALL_TYPE_DELEGATE" => Some(Self::Delegate),
+            "CALL_TYPE_STATIC" => Some(Self::Static),
+            "CALL_TYPE_CREATE" => Some(Self::Create),
+            _ => None,
+        }
+    }
 }
 // @@protoc_insertion_point(module)
