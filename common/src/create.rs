@@ -198,6 +198,11 @@ mod erc20_tokens_impl {
     impl_create_log_with_call_metadata!(proto::pb::erc20::tokens::v1);
 }
 
+mod erc721_tokens_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::erc721::tokens::v1);
+}
+
 mod native_transfers_impl {
     use super::*;
     use proto::pb::native::transfers::v1 as pb;

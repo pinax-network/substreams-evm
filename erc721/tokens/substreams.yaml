@@ -1,0 +1,29 @@
+specVersion: v0.1.0
+package:
+  name: erc721_tokens
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: ERC-721 token events with CryptoPunks-specific events and extended call metadata
+  image: ../../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1+wasm-bindgen-shims
+    file: ../../target/wasm32-unknown-unknown/release/erc721_tokens.wasm
+
+protobuf:
+  files:
+    - v1/erc721-tokens.proto
+  importPaths:
+    - ../../proto
+
+modules:
+  - name: map_events
+    kind: map
+    doc: ERC-721 token events including CryptoPunks
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:erc721.tokens.v1.Events
+
+network: mainnet
