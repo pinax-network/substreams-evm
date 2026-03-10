@@ -1,5 +1,5 @@
 mod store;
-use common::create::{CreateCall, CreateLog, CreateTransaction};
+use common::create::{CreateLog, CreateSyntheticLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
 use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
@@ -169,15 +169,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
         // ── Direct pool deployment: decode constructor calldata ───────────────
         if let Some((init, create_call)) = try_extract_pool_init(trx) {
             total_pool_init += 1;
-            let log_entry = pb::Log {
-                address: init.address.clone(),
-                ordinal: create_call.begin_ordinal,
-                topics: vec![],
-                data: vec![],
-                call: Some(pb::Call::create_call(create_call)),
-                block_index: 0,
-                log: Some(pb::log::Log::Init(init)),
-            };
+            let init_address = init.address.clone();
+            let log_entry = pb::Log::create_synthetic_log_with_call(
+                &init_address,
+                create_call.begin_ordinal,
+                0,
+                pb::log::Log::Init(init),
+                Some(create_call),
+            );
             transaction.logs.push(log_entry);
         }
 

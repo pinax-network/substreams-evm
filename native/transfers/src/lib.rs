@@ -1,5 +1,6 @@
 mod utils;
 
+use common::create::CreateCall;
 use proto::pb::native::transfers::v1 as pb;
 use substreams::{
     errors::Error,
@@ -142,25 +143,7 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
                 continue;
             }
 
-            let pb_call_type = match call_type {
-                CallType::Call => pb::CallType::Call,
-                CallType::Create => pb::CallType::Create,
-                _ => pb::CallType::Unspecified,
-            };
-
-            transaction.calls.push(pb::Call {
-                index: call.index,
-                begin_ordinal: call.begin_ordinal,
-                end_ordinal: call.end_ordinal,
-                caller: call.caller.to_vec(),
-                address: call.address.to_vec(),
-                value: value.to_string(),
-                gas_consumed: call.gas_consumed,
-                gas_limit: call.gas_limit,
-                depth: call.depth,
-                parent_index: call.parent_index,
-                call_type: pb_call_type.into(),
-            });
+            transaction.calls.push(pb::Call::create_call(call));
         }
         // skip transactions with no value and no calls with value
         if value.eq(&BigDecimal::zero()) && transaction.calls.is_empty() {

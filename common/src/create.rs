@@ -11,6 +11,18 @@ pub trait CreateLog<E> {
     fn create_log_with_call(log: &Log, event: E, call: Option<&Call>) -> Self;
 }
 
+/// Trait for creating a synthetic log entry when there is no raw EVM log
+pub trait CreateSyntheticLog<E> {
+    fn create_synthetic_log(address: &[u8], ordinal: u64, block_index: u32, event: E) -> Self;
+    fn create_synthetic_log_with_call(
+        address: &[u8],
+        ordinal: u64,
+        block_index: u32,
+        event: E,
+        call: Option<&Call>,
+    ) -> Self;
+}
+
 /// Trait for creating a transaction from a transaction trace
 pub trait CreateTransaction {
     fn create_transaction(trx: &TransactionTrace) -> Self;
@@ -51,6 +63,30 @@ macro_rules! impl_create_log_with_call_metadata {
                     data: log.data.to_vec(),
                     call: call.map(pb::Call::create_call),
                     block_index: log.block_index,
+                    log: Some(event),
+                }
+            }
+        }
+
+        impl CreateSyntheticLog<pb::log::Log> for pb::Log {
+            fn create_synthetic_log(address: &[u8], ordinal: u64, block_index: u32, event: pb::log::Log) -> Self {
+                Self::create_synthetic_log_with_call(address, ordinal, block_index, event, None)
+            }
+
+            fn create_synthetic_log_with_call(
+                address: &[u8],
+                ordinal: u64,
+                block_index: u32,
+                event: pb::log::Log,
+                call: Option<&Call>,
+            ) -> Self {
+                Self {
+                    address: address.to_vec(),
+                    ordinal,
+                    topics: vec![],
+                    data: vec![],
+                    call: call.map(pb::Call::create_call),
+                    block_index,
                     log: Some(event),
                 }
             }
@@ -160,4 +196,27 @@ mod erc1155_impl {
 mod erc20_tokens_impl {
     use super::*;
     impl_create_log_with_call_metadata!(proto::pb::erc20::tokens::v1);
+}
+
+mod native_transfers_impl {
+    use super::*;
+    use proto::pb::native::transfers::v1 as pb;
+
+    impl CreateCall for pb::Call {
+        fn create_call(call: &Call) -> Self {
+            Self {
+                index: call.index,
+                begin_ordinal: call.begin_ordinal,
+                end_ordinal: call.end_ordinal,
+                caller: call.caller.to_vec(),
+                address: call.address.to_vec(),
+                value: call.value.clone().unwrap_or_default().with_decimal(0).to_string(),
+                gas_consumed: call.gas_consumed,
+                gas_limit: call.gas_limit,
+                depth: call.depth,
+                parent_index: call.parent_index,
+                call_type: call.call_type,
+            }
+        }
+    }
 }
