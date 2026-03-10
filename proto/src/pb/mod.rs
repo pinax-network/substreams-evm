@@ -71,6 +71,15 @@ pub mod erc20 {
         }
     }
 }
+pub mod erc721 {
+    pub mod tokens {
+        // @@protoc_insertion_point(attribute:erc721.tokens.v1)
+        pub mod v1 {
+            include!("erc721.tokens.v1.rs");
+            // @@protoc_insertion_point(erc721.tokens.v1)
+        }
+    }
+}
 pub mod evm {
     pub mod balances {
         // @@protoc_insertion_point(attribute:evm.balances.v1)
