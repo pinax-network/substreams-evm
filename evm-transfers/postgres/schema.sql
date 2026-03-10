@@ -99,6 +99,7 @@ CREATE TABLE IF NOT EXISTS erc20_transfers (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -152,6 +153,7 @@ CREATE TABLE IF NOT EXISTS erc20_approvals (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -205,6 +207,7 @@ CREATE TABLE IF NOT EXISTS weth_deposit (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -247,6 +250,7 @@ CREATE TABLE IF NOT EXISTS weth_withdrawal (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -289,6 +293,7 @@ CREATE TABLE IF NOT EXISTS usdc_mint (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -333,6 +338,7 @@ CREATE TABLE IF NOT EXISTS usdc_burn (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -375,6 +381,7 @@ CREATE TABLE IF NOT EXISTS usdt_issue (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -416,6 +423,7 @@ CREATE TABLE IF NOT EXISTS usdt_redeem (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -457,6 +465,7 @@ CREATE TABLE IF NOT EXISTS usdt_destroyed_black_funds (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -499,6 +508,7 @@ CREATE TABLE IF NOT EXISTS usdt_block_placed (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -540,6 +550,7 @@ CREATE TABLE IF NOT EXISTS usdt_block_released (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -581,6 +592,7 @@ CREATE TABLE IF NOT EXISTS usdt_mint (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -623,6 +635,7 @@ CREATE TABLE IF NOT EXISTS usdt_destroyed_blocked_funds (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -665,6 +678,7 @@ CREATE TABLE IF NOT EXISTS usdt_new_privileged_contract (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -706,6 +720,7 @@ CREATE TABLE IF NOT EXISTS usdt_removed_privileged_contract (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -747,6 +762,7 @@ CREATE TABLE IF NOT EXISTS usdt_log_swapin (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -790,6 +806,7 @@ CREATE TABLE IF NOT EXISTS usdt_log_swapout (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -833,6 +850,7 @@ CREATE TABLE IF NOT EXISTS usdt_log_change_dcrm_owner (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -875,6 +893,7 @@ CREATE TABLE IF NOT EXISTS wbtc_mint (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -917,6 +936,7 @@ CREATE TABLE IF NOT EXISTS wbtc_burn (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -959,6 +979,7 @@ CREATE TABLE IF NOT EXISTS sai_mint (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1001,6 +1022,7 @@ CREATE TABLE IF NOT EXISTS sai_burn (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1043,6 +1065,7 @@ CREATE TABLE IF NOT EXISTS steth_submitted (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1086,6 +1109,7 @@ CREATE TABLE IF NOT EXISTS steth_token_rebased (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1132,6 +1156,7 @@ CREATE TABLE IF NOT EXISTS steth_shares_burnt (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1176,6 +1201,7 @@ CREATE TABLE IF NOT EXISTS steth_transfer_shares (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1220,6 +1246,7 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_minted (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 
@@ -1262,6 +1289,7 @@ CREATE TABLE IF NOT EXISTS steth_external_shares_burnt (
     log_index            INTEGER NOT NULL,
     log_address          TEXT NOT NULL,
     log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
     log_topics           TEXT NOT NULL,
     log_data             TEXT NOT NULL,
 

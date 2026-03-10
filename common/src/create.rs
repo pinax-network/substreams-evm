@@ -11,55 +11,6 @@ pub trait CreateTransaction {
     fn create_transaction(trx: &TransactionTrace) -> Self;
 }
 
-// Macro for modules WITHOUT call metadata fields in Log
-macro_rules! impl_create_log_and_transaction {
-    ($module:path) => {
-        use $module as pb;
-
-        impl CreateLog<pb::log::Log> for pb::Log {
-            fn create_log(log: &Log, event: pb::log::Log) -> Self {
-                Self {
-                    address: log.address.to_vec(),
-                    ordinal: log.ordinal,
-                    topics: log.topics.iter().map(|t| t.to_vec()).collect(),
-                    data: log.data.to_vec(),
-                    log: Some(event),
-                }
-            }
-
-            fn create_log_with_call(log: &Log, event: pb::log::Log, _call: Option<&Call>) -> Self {
-                // Ignore call metadata for modules that don't support it
-                Self::create_log(log, event)
-            }
-        }
-
-        impl CreateTransaction for pb::Transaction {
-            fn create_transaction(trx: &TransactionTrace) -> Self {
-                let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
-                let value = trx.clone().value.unwrap_or_default().with_decimal(0);
-                let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
-                Self {
-                    from: trx.from.to_vec(),
-                    to,
-                    hash: trx.hash.to_vec(),
-                    nonce: trx.nonce,
-                    gas_price,
-                    gas_limit: trx.gas_limit,
-                    gas_used: trx.receipt().receipt.cumulative_gas_used,
-                    value: value.to_string(),
-                    logs: vec![],
-                }
-            }
-        }
-    };
-}
-
-mod erc1155_impl {
-    use super::*;
-    impl_create_log_and_transaction!(proto::pb::erc1155::v1);
-}
-
-// Macro for modules WITH call metadata fields in Log (e.g., erc20-transfers, dex)
 macro_rules! impl_create_log_with_call_metadata {
     ($module:path) => {
         use $module as pb;
@@ -88,6 +39,7 @@ macro_rules! impl_create_log_with_call_metadata {
                         parent_index: c.parent_index,
                         call_type: c.call_type,
                     }),
+                    block_index: log.block_index,
                     log: Some(event),
                 }
             }
@@ -189,9 +141,9 @@ mod erc20_transfers_impl {
     impl_create_log_with_call_metadata!(proto::pb::erc20::transfers::v1);
 }
 
-mod steth_impl {
+mod erc1155_impl {
     use super::*;
-    impl_create_log_with_call_metadata!(proto::pb::steth::v1);
+    impl_create_log_with_call_metadata!(proto::pb::erc1155::v1);
 }
 
 mod erc20_tokens_impl {

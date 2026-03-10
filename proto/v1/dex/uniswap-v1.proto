@@ -27,6 +27,9 @@ message Log {
   // Call metadata (only available on chains with DetailLevel: EXTENDED)
   optional Call call = 5;
 
+  // Native block/log position fields
+  uint32 block_index = 6;
+
   oneof log {
     // Exchange
     TokenPurchase token_purchase = 10;

@@ -27,9 +27,10 @@ pub fn set_clock(clock: &Clock, row: &mut Row) {
         .set("timestamp", clock.timestamp.as_ref().expect("missing timestamp").seconds.to_string());
 }
 
-pub fn set_ordering(index: u64, ordinal: Option<u64>, _clock: &Clock, row: &mut Row) {
+pub fn set_ordering(index: u64, ordinal: Option<u64>, block_index: Option<u32>, row: &mut Row) {
     row.set("log_index", index)
-        .set("log_ordinal", ordinal.unwrap_or(0));
+        .set("log_ordinal", ordinal.unwrap_or(0))
+        .set("log_block_index", block_index.unwrap_or_default());
 }
 
 pub fn set_bytes(bytes: Option<Hash>, name: &str, row: &mut Row) {
@@ -39,17 +40,53 @@ pub fn set_bytes(bytes: Option<Hash>, name: &str, row: &mut Row) {
     };
 }
 
-fn set_address(bytes: Option<Address>, name: &str, encoding: &Encoding, row: &mut Row) {
-    match bytes {
+fn set_address(address: Option<&[u8]>, name: &str, encoding: &Encoding, row: &mut Row) {
+    match address {
         Some(data) => row.set(name, bytes_to_string(&data, encoding)),
         None => row.set(name, "".to_string()),
     };
 }
 
-pub fn set_log(clock: &Clock, index: u64, tx_hash: Hash, contract: Address, ordinal: u64, caller: Option<Address>, encoding: &Encoding, row: &mut Row) {
+#[derive(Clone, Copy, Default)]
+pub struct CallMetadata<'a> {
+    pub caller: Option<&'a [u8]>,
+    pub index: Option<u32>,
+    pub begin_ordinal: Option<u64>,
+    pub end_ordinal: Option<u64>,
+    pub address: Option<&'a [u8]>,
+    pub value: Option<&'a str>,
+    pub gas_consumed: Option<u64>,
+    pub gas_limit: Option<u64>,
+    pub depth: Option<u32>,
+    pub parent_index: Option<u32>,
+    pub call_type: Option<&'a str>,
+}
+
+pub fn set_log(
+    clock: &Clock,
+    index: u64,
+    tx_hash: Hash,
+    contract: Address,
+    ordinal: u64,
+    block_index: Option<u32>,
+    call: Option<CallMetadata<'_>>,
+    encoding: &Encoding,
+    row: &mut Row,
+) {
+    let call = call.unwrap_or_default();
     set_bytes(Some(tx_hash), "tx_hash", row);
-    set_address(Some(contract), "log_address", encoding, row);
-    set_address(caller, "call_caller", encoding, row);
-    set_ordering(index, Some(ordinal), clock, row);
+    set_address(Some(contract.as_slice()), "log_address", encoding, row);
+    set_address(call.caller, "call_caller", encoding, row);
+    set_address(call.address, "call_address", encoding, row);
+    row.set("call_index", call.index.unwrap_or_default())
+        .set("call_begin_ordinal", call.begin_ordinal.unwrap_or_default())
+        .set("call_end_ordinal", call.end_ordinal.unwrap_or_default())
+        .set("call_value", call.value.unwrap_or_default())
+        .set("call_gas_consumed", call.gas_consumed.unwrap_or_default())
+        .set("call_gas_limit", call.gas_limit.unwrap_or_default())
+        .set("call_depth", call.depth.unwrap_or_default())
+        .set("call_parent_index", call.parent_index.unwrap_or_default())
+        .set("call_type", call.call_type.unwrap_or_default());
+    set_ordering(index, Some(ordinal), block_index, row);
     set_clock(clock, row);
 }
