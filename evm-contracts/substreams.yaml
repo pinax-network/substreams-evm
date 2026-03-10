@@ -9,6 +9,7 @@ package:
 imports:
   database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
+  contracts: ../spkg/contracts-v0.1.0.spkg
 
 binaries:
   default:
@@ -20,7 +21,7 @@ modules:
     kind: map
     inputs:
       - source: sf.substreams.v1.Clock
-      - source: sf.ethereum.type.v2.Block
+      - map: contracts:map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
 

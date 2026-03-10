@@ -203,6 +203,48 @@ mod erc721_tokens_impl {
     impl_create_log_with_call_metadata!(proto::pb::erc721::tokens::v1);
 }
 
+mod contracts_impl {
+    use super::*;
+    use proto::pb::contracts::v1 as pb;
+
+    impl CreateCall for pb::Call {
+        fn create_call(call: &Call) -> Self {
+            Self {
+                index: call.index,
+                begin_ordinal: call.begin_ordinal,
+                end_ordinal: call.end_ordinal,
+                caller: call.caller.to_vec(),
+                address: call.address.to_vec(),
+                value: call.value.clone().unwrap_or_default().with_decimal(0).to_string(),
+                gas_consumed: call.gas_consumed,
+                gas_limit: call.gas_limit,
+                depth: call.depth,
+                parent_index: call.parent_index,
+                call_type: call.call_type,
+            }
+        }
+    }
+
+    impl CreateTransaction for pb::Transaction {
+        fn create_transaction(trx: &TransactionTrace) -> Self {
+            let gas_price = trx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string();
+            let value = trx.clone().value.unwrap_or_default().with_decimal(0);
+            let to = if trx.to.is_empty() { None } else { Some(trx.to.to_vec()) };
+            Self {
+                from: trx.from.to_vec(),
+                to,
+                hash: trx.hash.to_vec(),
+                nonce: trx.nonce,
+                gas_price,
+                gas_limit: trx.gas_limit,
+                gas_used: trx.receipt().receipt.cumulative_gas_used,
+                value: value.to_string(),
+                contracts: vec![],
+            }
+        }
+    }
+}
+
 mod native_transfers_impl {
     use super::*;
     use proto::pb::native::transfers::v1 as pb;
