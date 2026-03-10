@@ -1,5 +1,10 @@
 use substreams_ethereum::pb::eth::v2::{Call, Log, TransactionTrace};
 
+/// Trait for creating call metadata from a raw EVM call
+pub trait CreateCall {
+    fn create_call(call: &Call) -> Self;
+}
+
 /// Trait for creating a log entry from raw log data and an event
 pub trait CreateLog<E> {
     fn create_log(log: &Log, event: E) -> Self;
@@ -15,6 +20,24 @@ macro_rules! impl_create_log_with_call_metadata {
     ($module:path) => {
         use $module as pb;
 
+        impl CreateCall for pb::Call {
+            fn create_call(call: &Call) -> Self {
+                Self {
+                    index: call.index,
+                    begin_ordinal: call.begin_ordinal,
+                    end_ordinal: call.end_ordinal,
+                    caller: call.caller.to_vec(),
+                    address: call.address.to_vec(),
+                    value: call.value.clone().unwrap_or_default().with_decimal(0).to_string(),
+                    gas_consumed: call.gas_consumed,
+                    gas_limit: call.gas_limit,
+                    depth: call.depth,
+                    parent_index: call.parent_index,
+                    call_type: call.call_type,
+                }
+            }
+        }
+
         impl CreateLog<pb::log::Log> for pb::Log {
             fn create_log(log: &Log, event: pb::log::Log) -> Self {
                 Self::create_log_with_call(log, event, None)
@@ -26,19 +49,7 @@ macro_rules! impl_create_log_with_call_metadata {
                     ordinal: log.ordinal,
                     topics: log.topics.iter().map(|t| t.to_vec()).collect(),
                     data: log.data.to_vec(),
-                    call: call.map(|c| pb::Call {
-                        index: c.index,
-                        begin_ordinal: c.begin_ordinal,
-                        end_ordinal: c.end_ordinal,
-                        caller: c.caller.to_vec(),
-                        address: c.address.to_vec(),
-                        value: c.value.clone().unwrap_or_default().with_decimal(0).to_string(),
-                        gas_consumed: c.gas_consumed,
-                        gas_limit: c.gas_limit,
-                        depth: c.depth,
-                        parent_index: c.parent_index,
-                        call_type: c.call_type,
-                    }),
+                    call: call.map(pb::Call::create_call),
                     block_index: log.block_index,
                     log: Some(event),
                 }

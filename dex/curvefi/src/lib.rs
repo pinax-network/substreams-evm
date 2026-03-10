@@ -1,5 +1,5 @@
 mod store;
-use common::create::{CreateLog, CreateTransaction};
+use common::create::{CreateCall, CreateLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
 use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
@@ -174,19 +174,8 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
                 ordinal: create_call.begin_ordinal,
                 topics: vec![],
                 data: vec![],
-                call: Some(pb::Call {
-                    index: create_call.index,
-                    begin_ordinal: create_call.begin_ordinal,
-                    end_ordinal: create_call.end_ordinal,
-                    caller: create_call.caller.to_vec(),
-                    address: create_call.address.to_vec(),
-                    value: create_call.value.clone().unwrap_or_default().with_decimal(0).to_string(),
-                    gas_consumed: create_call.gas_consumed,
-                    gas_limit: create_call.gas_limit,
-                    depth: create_call.depth,
-                    parent_index: create_call.parent_index,
-                    call_type: create_call.call_type,
-                }),
+                call: Some(pb::Call::create_call(create_call)),
+                block_index: 0,
                 log: Some(pb::log::Log::Init(init)),
             };
             transaction.logs.push(log_entry);
