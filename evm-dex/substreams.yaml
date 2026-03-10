@@ -12,28 +12,37 @@ imports:
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Tron DEX Substreams
-  sunpump: ../spkg/sunpump-v0.3.0.spkg
+  sunpump_store: ../spkg/sunpump-v0.3.0.spkg
+  sunpump: ../spkg/sunpump-v0.5.0.spkg
 
   # Ethereum DEX Substreams
   balancer_store: ../spkg/balancer-v0.3.0.spkg
-  balancer: ../spkg/balancer-v0.3.0.spkg
-  bancor: ../spkg/bancor-v0.3.0.spkg
-  cow: ../spkg/cow-v0.3.0.spkg
-  curvefi: ../spkg/curvefi-v0.3.0.spkg
+  balancer: ../spkg/balancer-v0.5.0.spkg
+  bancor_store: ../spkg/bancor-v0.3.0.spkg
+  bancor: ../spkg/bancor-v0.5.0.spkg
+  cow: ../spkg/cow-v0.5.0.spkg
+  curvefi_store: ../spkg/curvefi-v0.3.0.spkg
+  curvefi: ../spkg/curvefi-v0.5.0.spkg
 
   # New DEX Substreams
-  aerodrome: ../spkg/aerodrome-v0.2.0.spkg
-  dodo: ../spkg/dodo-v0.2.0.spkg
-  woofi: ../spkg/woofi-v0.2.0.spkg
-  traderjoe: ../spkg/traderjoe-v0.2.0.spkg
-  kyber_elastic: ../spkg/kyber-elastic-v0.2.0.spkg
+  aerodrome_store: ../spkg/aerodrome-v0.2.0.spkg
+  aerodrome: ../spkg/aerodrome-v0.5.0.spkg
+  dodo: ../spkg/dodo-v0.5.0.spkg
+  woofi: ../spkg/woofi-v0.5.0.spkg
+  traderjoe_store: ../spkg/traderjoe-v0.2.0.spkg
+  traderjoe: ../spkg/traderjoe-v0.5.0.spkg
+  kyber_elastic_store: ../spkg/kyber-elastic-v0.2.0.spkg
+  kyber_elastic: ../spkg/kyber-elastic-v0.5.0.spkg
 
   # Uniswap DEX Substreams
-  uniswap_v1: ../spkg/uniswap-v1-v0.3.0.spkg
-  uniswap_v2: ../spkg/uniswap-v2-v0.3.0.spkg
-  uniswap_v3: ../spkg/uniswap-v3-v0.3.0.spkg
+  uniswap_v1_store: ../spkg/uniswap-v1-v0.3.0.spkg
+  uniswap_v1: ../spkg/uniswap-v1-v0.5.0.spkg
+  uniswap_v2_store: ../spkg/uniswap-v2-v0.3.0.spkg
+  uniswap_v2: ../spkg/uniswap-v2-v0.5.0.spkg
+  uniswap_v3_store: ../spkg/uniswap-v3-v0.3.0.spkg
+  uniswap_v3: ../spkg/uniswap-v3-v0.5.0.spkg
   uniswap_v4_store: ../spkg/uniswap-v4-v0.3.0.spkg
-  uniswap_v4: ../spkg/uniswap-v4-v0.3.0.spkg
+  uniswap_v4: ../spkg/uniswap-v4-v0.5.0.spkg
 
 binaries:
   default:
@@ -48,7 +57,7 @@ modules:
       - source: sf.substreams.v1.Clock
       # Tron DEX
       - map: sunpump:map_events
-      - store: sunpump:store_pool
+      - store: sunpump_store:store_pool
 
       # Ethereum DEX
       - map: balancer:map_events
@@ -56,8 +65,8 @@ modules:
       - map: curvefi:map_events
       - map: cow:map_events
       - store: balancer_store:store_pool
-      - store: bancor:store_pool
-      - store: curvefi:store_pool
+      - store: bancor_store:store_pool
+      - store: curvefi_store:store_pool
 
       # New DEX
       - map: aerodrome:map_events
@@ -65,18 +74,18 @@ modules:
       - map: woofi:map_events
       - map: traderjoe:map_events
       - map: kyber_elastic:map_events
-      - store: aerodrome:store_pool
-      - store: traderjoe:store_pool
-      - store: kyber_elastic:store_pool
+      - store: aerodrome_store:store_pool
+      - store: traderjoe_store:store_pool
+      - store: kyber_elastic_store:store_pool
 
       # Uniswap DEX
       - map: uniswap_v1:map_events
       - map: uniswap_v2:map_events
       - map: uniswap_v3:map_events
       - map: uniswap_v4:map_events
-      - store: uniswap_v1:store_pool
-      - store: uniswap_v2:store_pool
-      - store: uniswap_v3:store_pool
+      - store: uniswap_v1_store:store_pool
+      - store: uniswap_v2_store:store_pool
+      - store: uniswap_v3_store:store_pool
       - store: uniswap_v4_store:store_pool
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
