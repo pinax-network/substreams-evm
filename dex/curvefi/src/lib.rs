@@ -1,15 +1,10 @@
 use common::create::{CreateLog, CreateSyntheticLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
-use substreams::Hex;
 use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
 const STABLESWAP_CONSTRUCTOR_INPUT_LEN: usize = 32 * 8;
-const DEBUG_INIT_TX_HASH: [u8; 32] = [
-    0x20, 0x79, 0x3b, 0xbf, 0x26, 0x09, 0x12, 0xaa, 0xe1, 0x89, 0xd5, 0xd2, 0x61, 0xff, 0x00, 0x3c, 0x9b, 0x91, 0x66, 0xda, 0x81, 0x91, 0xd8, 0xf9, 0xd6, 0x3f,
-    0xf1, 0xc7, 0x72, 0x2f, 0x3a, 0xc6,
-];
 
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
@@ -24,28 +19,6 @@ fn is_contract_creation_transaction(trx: &TransactionTrace) -> bool {
     trx.calls.iter().any(|call| call.call_type == CallType::Create as i32 && call.depth == 0) || trx.to.is_empty() || trx.to.iter().all(|byte| *byte == 0)
 }
 
-fn decode_address_word(word: &[u8]) -> Option<Vec<u8>> {
-    (word.len() == 32).then(|| word[12..].to_vec())
-}
-
-fn decode_uint_word(word: &[u8]) -> Option<substreams::scalar::BigInt> {
-    (word.len() == 32).then(|| substreams::scalar::BigInt::from_unsigned_bytes_be(word))
-}
-
-fn manually_decode_pool_init_constructor(suffix: &[u8]) -> Option<curvefi::stableswap::constructor::Constructor> {
-    let words: Vec<&[u8]> = suffix.chunks_exact(32).collect();
-    (words.len() == 8).then_some(())?;
-
-    Some(curvefi::stableswap::constructor::Constructor {
-        owner: decode_address_word(words[0])?,
-        coins: [decode_address_word(words[1])?, decode_address_word(words[2])?, decode_address_word(words[3])?],
-        pool_token: decode_address_word(words[4])?,
-        a: decode_uint_word(words[5])?,
-        fee: decode_uint_word(words[6])?,
-        admin_fee: decode_uint_word(words[7])?,
-    })
-}
-
 fn try_decode_pool_init_constructor(input: &[u8]) -> Option<curvefi::stableswap::constructor::Constructor> {
     // Direct deployments prepend init bytecode and append the ABI-encoded StableSwap
     // constructor args as a fixed-size tail (8 static slots). Decode only that tail.
@@ -54,7 +27,6 @@ fn try_decode_pool_init_constructor(input: &[u8]) -> Option<curvefi::stableswap:
     let suffix = input.get(input.len().checked_sub(STABLESWAP_CONSTRUCTOR_INPUT_LEN)?..)?;
     curvefi::stableswap::constructor::Constructor::decode(suffix)
         .ok()
-        .or_else(|| manually_decode_pool_init_constructor(suffix))
 }
 
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
@@ -141,55 +113,16 @@ fn process_block(block: Block) -> Result<pb::Events, substreams::errors::Error> 
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
-        let root_create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0);
-        let is_debug_init_tx = trx.hash.as_slice() == DEBUG_INIT_TX_HASH;
         if is_contract_creation_transaction(trx) {
             total_direct_deploy_candidates += 1;
         }
 
-        if is_debug_init_tx {
-            substreams::log::info!(
-                "curvefi debug tx={} input_len={} to_is_empty={} root_create_call={} root_create_input_len={} tx_input=0x{}",
-                Hex::encode(&trx.hash),
-                trx.input.len(),
-                is_contract_creation_transaction(trx),
-                root_create_call.is_some(),
-                root_create_call.map(|call| call.input.len()).unwrap_or_default(),
-                Hex::encode(&trx.input)
-            );
-        }
-
         // ── Direct pool deployment: decode constructor calldata ───────────────
         if let Some((init, create_call)) = try_extract_pool_init(trx) {
-            if is_debug_init_tx {
-                substreams::log::info!(
-                    "curvefi debug init matched tx={} address=0x{} owner=0x{} pool_token=0x{} coins=[0x{},0x{},0x{}] a={} fee={} admin_fee={} begin_ordinal={}",
-                    Hex::encode(&trx.hash),
-                    Hex::encode(&init.address),
-                    Hex::encode(&init.owner),
-                    Hex::encode(&init.pool_token),
-                    init.coins.get(0).map(Hex::encode).unwrap_or_default(),
-                    init.coins.get(1).map(Hex::encode).unwrap_or_default(),
-                    init.coins.get(2).map(Hex::encode).unwrap_or_default(),
-                    init.a,
-                    init.fee,
-                    init.admin_fee,
-                    create_call.begin_ordinal,
-                );
-            }
             total_pool_init += 1;
             let init_address = init.address.clone();
             let log_entry = pb::Log::create_synthetic_log_with_call(&init_address, create_call.begin_ordinal, 0, pb::log::Log::Init(init), Some(create_call));
             transaction.logs.push(log_entry);
-        } else if is_debug_init_tx {
-            substreams::log::info!(
-                "curvefi debug init did not match tx={} input_len={} root_create_call={} root_create_input_len={} tx_input=0x{}",
-                Hex::encode(&trx.hash),
-                trx.input.len(),
-                root_create_call.is_some(),
-                root_create_call.map(|call| call.input.len()).unwrap_or_default(),
-                Hex::encode(&trx.input)
-            );
         }
 
         let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
@@ -655,7 +588,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
 #[cfg(test)]
 mod tests {
-    use super::{is_contract_creation_transaction, manually_decode_pool_init_constructor, process_block, try_extract_pool_init};
+    use super::{is_contract_creation_transaction, process_block, try_extract_pool_init};
     use proto::pb::curvefi::v1 as pb;
     use std::str::FromStr;
     use substreams::scalar::BigInt;
@@ -810,37 +743,6 @@ mod tests {
         assert_eq!(init.fee, BigInt::from_str("4000000").unwrap().to_string());
         assert_eq!(init.admin_fee, BigInt::from_str("0").unwrap().to_string());
         assert_eq!(create_call.begin_ordinal, 42);
-    }
-
-    #[test]
-    fn manually_decodes_exact_curvefi_3pool_constructor_tail() {
-        let suffix = Hex::decode(concat!(
-            "0000000000000000000000006e8f6d1da6232d5e40b0b8758a0145d6c5123eb7",
-            "0000000000000000000000006b175474e89094c44da98b954eedeac495271d0f",
-            "000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-            "000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
-            "0000000000000000000000006c3f90f043a72fa612cbac8115ee7e52bde6e490",
-            "0000000000000000000000000000000000000000000000000000000000000064",
-            "00000000000000000000000000000000000000000000000000000000003d0900",
-            "0000000000000000000000000000000000000000000000000000000000000000"
-        ))
-        .unwrap();
-
-        let constructor = manually_decode_pool_init_constructor(&suffix).expect("manual decode should succeed");
-
-        assert_eq!(constructor.owner, Hex::decode("6e8f6d1da6232d5e40b0b8758a0145d6c5123eb7").unwrap());
-        assert_eq!(
-            constructor.coins,
-            [
-                Hex::decode("6b175474e89094c44da98b954eedeac495271d0f").unwrap(),
-                Hex::decode("a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48").unwrap(),
-                Hex::decode("dac17f958d2ee523a2206206994597c13d831ec7").unwrap(),
-            ]
-        );
-        assert_eq!(constructor.pool_token, Hex::decode("6c3f90f043a72fa612cbac8115ee7e52bde6e490").unwrap());
-        assert_eq!(constructor.a, BigInt::from_str("100").unwrap());
-        assert_eq!(constructor.fee, BigInt::from_str("4000000").unwrap());
-        assert_eq!(constructor.admin_fee, BigInt::from_str("0").unwrap());
     }
 
     /// Integration test: verifies that `map_events` emits exactly one synthetic `Init` log for a
