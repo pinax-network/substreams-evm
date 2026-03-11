@@ -15,13 +15,13 @@ fn call_type_name(value: i32) -> &'static str {
     }
 }
 
-pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: erc1155::Events, encoding: &Encoding) {
+pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: &erc1155::Events, encoding: &Encoding) {
     let mut index = 0;
 
-    for trx in events.transactions {
+    for trx in &events.transactions {
         let tx_hash = trx.hash.clone();
 
-        for log in trx.logs {
+        for log in &trx.logs {
             let contract = log.address.clone();
             let ordinal = log.ordinal;
             let block_index = Some(log.block_index);
@@ -40,7 +40,8 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
             });
 
             match log.log {
-                Some(erc1155::log::Log::TransferSingle(event)) => {
+                Some(ref event) if matches!(event, erc1155::log::Log::TransferSingle(_)) => {
+                    let erc1155::log::Log::TransferSingle(event) = event else { unreachable!() };
                     let key = common_key(clock, index);
                     let row = tables
                         .create_row("erc1155_transfers", key)
@@ -55,7 +56,8 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
-                Some(erc1155::log::Log::TransferBatch(event)) => {
+                Some(ref event) if matches!(event, erc1155::log::Log::TransferBatch(_)) => {
+                    let erc1155::log::Log::TransferBatch(event) = event else { unreachable!() };
                     if event.ids.len() != event.values.len() {
                         continue;
                     }
@@ -76,7 +78,8 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                         index += 1;
                     });
                 }
-                Some(erc1155::log::Log::ApprovalForAll(event)) => {
+                Some(ref event) if matches!(event, erc1155::log::Log::ApprovalForAll(_)) => {
+                    let erc1155::log::Log::ApprovalForAll(event) = event else { unreachable!() };
                     let key = common_key(clock, index);
                     let row = tables
                         .create_row("erc1155_approvals_for_all", key)
@@ -88,7 +91,8 @@ pub fn process_erc1155(tables: &mut substreams_database_change::tables::Tables, 
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
-                Some(erc1155::log::Log::Uri(_)) => {}
+                Some(ref event) if matches!(event, erc1155::log::Log::Uri(_)) => {}
+                Some(_) => {}
                 None => {}
             }
         }

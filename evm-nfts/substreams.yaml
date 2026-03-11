@@ -9,11 +9,10 @@ package:
 imports:
   database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
 
-  erc721: ../spkg/erc721-v0.4.0.spkg
+  erc721: ../erc721/transfers/substreams.yaml
+  erc721_tokens: ../erc721/tokens/substreams.yaml
   erc1155: ../erc1155/substreams.yaml
-  seaport: ../spkg/seaport-v0.1.0.spkg
-  erc721_cryptopunks: ../spkg/evm-erc721-cryptopunks-v0.1.0.spkg
-  cryptopunks: ../spkg/evm-cryptopunks-v0.1.0.spkg
+  seaport: ../dex-nfts/seaport/substreams.yaml
 
 binaries:
   default:
@@ -27,10 +26,9 @@ modules:
       - params: string
       - source: sf.substreams.v1.Clock
       - map: erc721:map_events
+      - map: erc721_tokens:map_events
       - map: erc1155:map_events
       - map: seaport:map_events
-      - map: erc721_cryptopunks:map_events
-      - map: cryptopunks:map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges
 

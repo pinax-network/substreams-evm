@@ -1,27 +1,27 @@
 use common::clickhouse::{common_key, set_log, CallMetadata};
 use common::{bytes_to_string, Encoding};
-use proto::pb::evm::erc721;
+use proto::pb::erc721::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 
 use crate::enums::{TokenStandard, TransferType};
 
 fn call_type_name(value: i32) -> &'static str {
-    match erc721::v1::CallType::try_from(value) {
+    match pb::CallType::try_from(value) {
         Ok(call_type) => call_type.as_str_name(),
         Err(_) => {
             substreams::log::debug!("unexpected erc721 call_type value: {}", value);
-            erc721::v1::CallType::Unspecified.as_str_name()
+            pb::CallType::Unspecified.as_str_name()
         }
     }
 }
 
-pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: erc721::v1::Events, encoding: &Encoding) {
+pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: &pb::Events, encoding: &Encoding) {
     let mut index = 0;
 
-    for tx in events.transactions {
+    for tx in &events.transactions {
         let tx_hash = tx.hash.clone();
 
-        for log in tx.logs {
+        for log in &tx.logs {
             let contract = log.address.clone();
             let ordinal = log.ordinal;
             let block_index = Some(log.block_index);
@@ -40,7 +40,8 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
             });
 
             match log.log {
-                Some(erc721::v1::log::Log::Transfer(event)) => {
+                Some(ref event) if matches!(event, pb::log::Log::Transfer(_)) => {
+                    let pb::log::Log::Transfer(event) = event else { unreachable!() };
                     let key = common_key(clock, index);
                     let row = tables
                         .create_row("erc721_transfers", key)
@@ -55,7 +56,8 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
-                Some(erc721::v1::log::Log::Approval(event)) => {
+                Some(ref event) if matches!(event, pb::log::Log::Approval(_)) => {
+                    let pb::log::Log::Approval(event) = event else { unreachable!() };
                     let key = common_key(clock, index);
                     let row = tables
                         .create_row("erc721_approvals", key)
@@ -66,7 +68,8 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
-                Some(erc721::v1::log::Log::ApprovalForAll(event)) => {
+                Some(ref event) if matches!(event, pb::log::Log::ApprovalForAll(_)) => {
+                    let pb::log::Log::ApprovalForAll(event) = event else { unreachable!() };
                     let key = common_key(clock, index);
                     let row = tables
                         .create_row("erc721_approvals_for_all", key)
@@ -78,6 +81,7 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
                     set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
                     index += 1;
                 }
+                Some(_) => {}
                 None => {}
             }
         }

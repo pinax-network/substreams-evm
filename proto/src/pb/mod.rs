@@ -102,6 +102,13 @@ pub mod evm {
             // @@protoc_insertion_point(evm.balances.v1)
         }
     }
+    pub mod seaport {
+        // @@protoc_insertion_point(attribute:evm.seaport.v1)
+        pub mod v1 {
+            include!("evm.seaport.v1.rs");
+            // @@protoc_insertion_point(evm.seaport.v1)
+        }
+    }
 }
 pub mod kyber_elastic {
     // @@protoc_insertion_point(attribute:kyber_elastic.v1)
