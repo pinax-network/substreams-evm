@@ -21,6 +21,10 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     None
 }
 
+fn is_contract_creation_transaction(trx: &TransactionTrace) -> bool {
+    trx.to.is_empty() || trx.to.iter().all(|byte| *byte == 0)
+}
+
 fn decode_address_word(word: &[u8]) -> Option<Vec<u8>> {
     (word.len() == 32).then(|| word[12..].to_vec())
 }
@@ -63,7 +67,7 @@ fn try_decode_pool_init_constructor(input: &[u8]) -> Option<curvefi::stableswap:
 /// CREATE call so the caller can populate call metadata without a second iteration.
 fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a substreams_ethereum::pb::eth::v2::Call)> {
     // Only process direct deployment transactions (to field is empty/null)
-    if !trx.to.is_empty() {
+    if !is_contract_creation_transaction(trx) {
         return None;
     }
 
@@ -140,7 +144,7 @@ fn process_block(block: Block) -> Result<pb::Events, substreams::errors::Error> 
         let mut transaction = pb::Transaction::create_transaction(trx);
         let root_create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0);
         let is_debug_init_tx = trx.hash.as_slice() == DEBUG_INIT_TX_HASH;
-        if trx.to.is_empty() {
+        if is_contract_creation_transaction(trx) {
             total_direct_deploy_candidates += 1;
         }
 
@@ -149,7 +153,7 @@ fn process_block(block: Block) -> Result<pb::Events, substreams::errors::Error> 
                 "curvefi debug tx={} input_len={} to_is_empty={} root_create_call={} root_create_input_len={} tx_input=0x{}",
                 Hex::encode(&trx.hash),
                 trx.input.len(),
-                trx.to.is_empty(),
+                is_contract_creation_transaction(trx),
                 root_create_call.is_some(),
                 root_create_call.map(|call| call.input.len()).unwrap_or_default(),
                 Hex::encode(&trx.input)
@@ -652,7 +656,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 
 #[cfg(test)]
 mod tests {
-    use super::{manually_decode_pool_init_constructor, process_block, try_extract_pool_init};
+    use super::{is_contract_creation_transaction, manually_decode_pool_init_constructor, process_block, try_extract_pool_init};
     use proto::pb::curvefi::v1 as pb;
     use std::str::FromStr;
     use substreams::scalar::BigInt;
@@ -719,6 +723,16 @@ mod tests {
         };
 
         assert!(try_extract_pool_init(&trx).is_none());
+    }
+
+    #[test]
+    fn treats_zero_address_to_as_contract_creation() {
+        let trx = TransactionTrace {
+            to: vec![0x00; 20],
+            ..Default::default()
+        };
+
+        assert!(is_contract_creation_transaction(&trx));
     }
 
     #[test]
