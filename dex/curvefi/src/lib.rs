@@ -22,7 +22,7 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
 }
 
 fn is_contract_creation_transaction(trx: &TransactionTrace) -> bool {
-    trx.to.is_empty() || trx.to.iter().all(|byte| *byte == 0)
+    trx.calls.iter().any(|call| call.call_type == CallType::Create as i32 && call.depth == 0) || trx.to.is_empty() || trx.to.iter().all(|byte| *byte == 0)
 }
 
 fn decode_address_word(word: &[u8]) -> Option<Vec<u8>> {
@@ -729,6 +729,21 @@ mod tests {
     fn treats_zero_address_to_as_contract_creation() {
         let trx = TransactionTrace {
             to: vec![0x00; 20],
+            ..Default::default()
+        };
+
+        assert!(is_contract_creation_transaction(&trx));
+    }
+
+    #[test]
+    fn treats_root_create_call_as_contract_creation() {
+        let trx = TransactionTrace {
+            to: vec![0x12; 20],
+            calls: vec![Call {
+                call_type: CallType::Create as i32,
+                depth: 0,
+                ..Default::default()
+            }],
             ..Default::default()
         };
 
