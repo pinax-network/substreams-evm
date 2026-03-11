@@ -14,6 +14,21 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     None
 }
 
+fn try_decode_pool_init_constructor(
+    input: &[u8],
+) -> Option<curvefi::stableswap::constructor::Constructor> {
+    for start in 0..input.len() {
+        let suffix = &input[start..];
+        if let Ok(constructor) = curvefi::stableswap::constructor::Constructor::decode(suffix) {
+            if constructor.encode() == suffix {
+                return Some(constructor);
+            }
+        }
+    }
+
+    None
+}
+
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
 /// transaction by decoding the StableSwap constructor calldata from the transaction input tail.
 ///
@@ -30,7 +45,7 @@ fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a
     // Find the root CREATE call
     let create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0)?;
     let address = create_call.address.to_vec();
-    let constructor = curvefi::stableswap::constructor::Constructor::decode(&trx.input).ok()?;
+    let constructor = try_decode_pool_init_constructor(&trx.input)?;
     let curvefi::stableswap::constructor::Constructor {
         owner,
         coins,
@@ -602,7 +617,6 @@ mod tests {
 
         let (init, create_call) = try_extract_pool_init(&trx).expect("expected init event");
 
-        assert!(create_call.input.is_empty());
         assert_eq!(trx.input[..5], [0x60, 0x60, 0x60, 0x40, 0x52]);
         assert_eq!(trx.input[5..], constructor_input);
         assert_eq!(init.address, vec![0xaa; 20]);
@@ -644,7 +658,6 @@ mod tests {
             ..Default::default()
         };
 
-        assert!(trx.calls[0].input.is_empty());
         assert!(try_extract_pool_init(&trx).is_none());
     }
 }
