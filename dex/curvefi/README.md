@@ -35,7 +35,7 @@ The `Init` event tracks CurveFi pool initialization for pools deployed **directl
 
 **How it works:**
 
-CurveFi Vyper `__init__` constructors do not emit standard EVM events. Instead, the module decodes the ABI-encoded constructor arguments from the end of the deployment bytecode in the contract creation transaction. It attempts to decode for 3-coin, 4-coin, and 2-coin pool layouts (in that order), validating each field as a properly padded ABI address.
+CurveFi Vyper `__init__` constructors do not emit standard EVM events. Instead, the module extracts the ABI-encoded constructor arguments from the end of the deployment bytecode in the contract creation transaction and decodes them with the generated `substreams-abis` StableSwap constructor binding.
 
 **Coverage:**
 
