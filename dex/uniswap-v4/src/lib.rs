@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateTransaction};
 use common::{bigint_to_i32, bigint_to_u64};
 use proto::pb::uniswap::v4 as pb;

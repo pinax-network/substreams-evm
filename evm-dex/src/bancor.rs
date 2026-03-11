@@ -1,12 +1,12 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
-use proto::pb::bancor::v1::{self as bancor, StorePool};
-use substreams::{pb::substreams::Clock, store::StoreGetProto};
+use proto::pb::bancor::v1::{self as bancor};
+use substreams::{pb::substreams::Clock, store::FoundationalStore};
 use substreams_database_change::tables::Tables;
 
-use crate::store::get_store_by_address;
+use crate::store::{get_pool_by_address, PoolMetadata};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &StoreGetProto<StorePool>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &FoundationalStore) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -43,13 +43,13 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
 }
 
 fn process_conversion(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -58,7 +58,7 @@ fn process_conversion(
     log_index: usize,
     event: &bancor::Conversion,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_conversion", key);
 
@@ -79,7 +79,7 @@ fn process_conversion(
 
 fn process_liquidity_added(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -88,7 +88,7 @@ fn process_liquidity_added(
     log_index: usize,
     event: &bancor::LiquidityAdded,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_liquidity_added", key);
 
@@ -108,7 +108,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -117,7 +117,7 @@ fn process_liquidity_removed(
     log_index: usize,
     event: &bancor::LiquidityRemoved,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_liquidity_removed", key);
 
@@ -137,7 +137,7 @@ fn process_liquidity_removed(
 
 fn process_token_rate_update(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -146,7 +146,7 @@ fn process_token_rate_update(
     log_index: usize,
     event: &bancor::TokenRateUpdate,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_token_rate_update", key);
 
@@ -255,7 +255,7 @@ fn process_features_removal(
 
 fn process_conversion_fee_update(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -264,7 +264,7 @@ fn process_conversion_fee_update(
     log_index: usize,
     event: &bancor::ConversionFeeUpdate,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_conversion_fee_update", key);
 

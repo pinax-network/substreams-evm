@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateTransaction};
 use common::bigint_to_i32;
 use proto::pb::kyber_elastic::v1 as pb;

@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::uniswap::v2 as pb;
 use substreams_abis::dex::uniswap::v2 as uniswap;

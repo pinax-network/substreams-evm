@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: sunpump
-  version: v0.5.0
+  version: v0.6.0
   url: https://github.com/pinax-network/substreams-evm
   description: SunPump LaunchPad Events
   image: ../../image.png
@@ -26,11 +26,5 @@ modules:
     output:
       type: proto:sunpump.v1.Events
 
-  - name: store_pool
-    kind: store
-    updatePolicy: set
-    valueType: proto:sunpump.v1.StorePool
-    inputs:
-      - map: map_events
 
 network: tron

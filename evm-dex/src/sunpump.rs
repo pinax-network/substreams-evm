@@ -1,14 +1,14 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
-use proto::pb::sunpump::v1::{self as sunpump, StorePool};
-use substreams::{pb::substreams::Clock, store::StoreGetProto};
+use proto::pb::sunpump::v1::{self as sunpump};
+use substreams::{pb::substreams::Clock, store::FoundationalStore};
 use substreams_database_change::tables::Tables;
 use substreams_ethereum::NULL_ADDRESS;
 
-use crate::store::get_store_by_address;
+use crate::store::{get_pool_by_address, PoolMetadata};
 
 // SunPump Processing
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &sunpump::Events, store: &StoreGetProto<StorePool>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &sunpump::Events, store: &FoundationalStore) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -60,14 +60,14 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
 
 fn process_sunpump_token_purchased(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -76,7 +76,7 @@ fn process_sunpump_token_purchased(
     log_index: usize,
     purchase: &sunpump::TokenPurchased,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("sunpump_token_purchased", key);
 
@@ -99,7 +99,7 @@ fn process_sunpump_token_purchased(
 
 fn process_sunpump_token_sold(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -108,7 +108,7 @@ fn process_sunpump_token_sold(
     log_index: usize,
     sold: &sunpump::TokenSold,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("sunpump_token_sold", key);
 
@@ -298,7 +298,7 @@ fn process_sunpump_pending_owner_set(
 
 fn process_sunpump_purchase_fee_set(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -307,7 +307,7 @@ fn process_sunpump_purchase_fee_set(
     log_index: usize,
     event: &sunpump::PurchaseFeeSet,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("sunpump_purchase_fee_set", key);
 
@@ -326,7 +326,7 @@ fn process_sunpump_purchase_fee_set(
 
 fn process_sunpump_sale_fee_set(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &sunpump::Transaction,
@@ -335,7 +335,7 @@ fn process_sunpump_sale_fee_set(
     log_index: usize,
     event: &sunpump::SaleFeeSet,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("sunpump_sale_fee_set", key);
 

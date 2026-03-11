@@ -48,6 +48,15 @@ pub mod dodo {
         // @@protoc_insertion_point(dodo.v1)
     }
 }
+pub mod dex {
+    pub mod foundational_store {
+        // @@protoc_insertion_point(attribute:dex.foundational_store.v1)
+        pub mod v1 {
+            include!("dex.foundational_store.v1.rs");
+            // @@protoc_insertion_point(dex.foundational_store.v1)
+        }
+    }
+}
 pub mod erc1155 {
     // @@protoc_insertion_point(attribute:erc1155.v1)
     pub mod v1 {

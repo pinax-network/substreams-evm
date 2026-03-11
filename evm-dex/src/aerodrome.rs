@@ -1,12 +1,12 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
-use proto::pb::aerodrome::v1::{self as aerodrome, StorePool};
-use substreams::{pb::substreams::Clock, store::StoreGetProto};
+use proto::pb::aerodrome::v1::{self as aerodrome};
+use substreams::{pb::substreams::Clock, store::FoundationalStore};
 use substreams_database_change::tables::Tables;
 
-use crate::store::get_store_by_address;
+use crate::store::{get_pool_by_address, token, PoolMetadata};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &aerodrome::Events, store: &StoreGetProto<StorePool>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &aerodrome::Events, store: &FoundationalStore) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -37,15 +37,16 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+    // Foundational metadata intentionally omits the Aerodrome stable/volatile flag.
+    // Consumers that need it should read the original `PoolCreated` event row.
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("token0", bytes_to_string(&value.currency0, encoding));
-    row.set("token1", bytes_to_string(&value.currency1, encoding));
-    row.set("stable", value.stable);
+    row.set("token0", bytes_to_string(token(&value, 0), encoding));
+    row.set("token1", bytes_to_string(token(&value, 1), encoding));
 }
 
-fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Swap) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Swap) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_swap", key);
         set_clock(clock, row);
@@ -62,8 +63,8 @@ fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_sync(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Sync) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_sync(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Sync) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_sync", key);
         set_clock(clock, row);
@@ -76,8 +77,8 @@ fn process_sync(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Mint) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_mint(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Mint) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_mint", key);
         set_clock(clock, row);
@@ -91,8 +92,8 @@ fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_burn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Burn) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_burn(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Burn) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_burn", key);
         set_clock(clock, row);
@@ -107,8 +108,8 @@ fn process_burn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_fees(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Fees) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_fees(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Fees) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_fees", key);
         set_clock(clock, row);
@@ -122,8 +123,8 @@ fn process_fees(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_claim(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Claim) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_claim(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &aerodrome::Transaction, log: &aerodrome::Log, tx_index: usize, log_index: usize, event: &aerodrome::Claim) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("aerodrome_claim", key);
         set_clock(clock, row);

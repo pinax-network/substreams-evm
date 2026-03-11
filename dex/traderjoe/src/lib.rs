@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::traderjoe::v1 as pb;
 use substreams::scalar::BigInt;

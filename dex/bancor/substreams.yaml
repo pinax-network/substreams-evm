@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: bancor
-  version: v0.5.0
+  version: v0.6.0
   url: https://github.com/pinax-network/substreams-evm
   description: Bancor for EVM
   image: ../../image.png
@@ -25,11 +25,5 @@ modules:
     output:
       type: proto:bancor.v1.Events
 
-  - name: store_pool
-    kind: store
-    updatePolicy: set
-    valueType: proto:bancor.v1.StorePool
-    inputs:
-      - map: map_events
 
 network: mainnet

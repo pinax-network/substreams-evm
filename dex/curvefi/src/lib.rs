@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateSyntheticLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
 use substreams::Hex;

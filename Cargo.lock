@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "aerodrome"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -42,7 +42,7 @@ checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
 name = "balancer"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -53,7 +53,7 @@ dependencies = [
 
 [[package]]
 name = "bancor"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -191,7 +191,7 @@ dependencies = [
 
 [[package]]
 name = "cow"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -227,7 +227,7 @@ dependencies = [
 
 [[package]]
 name = "curvefi"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "prost 0.13.5",
@@ -264,7 +264,7 @@ dependencies = [
 
 [[package]]
 name = "db-evm-dex"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "prost 0.13.5",
@@ -300,6 +300,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "dex-foundational-store"
+version = "0.6.0"
+dependencies = [
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -311,7 +321,7 @@ dependencies = [
 
 [[package]]
 name = "dodo"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -678,7 +688,7 @@ dependencies = [
 
 [[package]]
 name = "kyber-elastic"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1413,7 +1423,7 @@ dependencies = [
 
 [[package]]
 name = "sunpump"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "prost 0.13.5",
@@ -1540,7 +1550,7 @@ dependencies = [
 
 [[package]]
 name = "traderjoe"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1593,7 +1603,7 @@ checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
 
 [[package]]
 name = "uniswap-v1"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1604,7 +1614,7 @@ dependencies = [
 
 [[package]]
 name = "uniswap-v2"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1615,7 +1625,7 @@ dependencies = [
 
 [[package]]
 name = "uniswap-v3"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1626,7 +1636,7 @@ dependencies = [
 
 [[package]]
 name = "uniswap-v4"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
@@ -1773,7 +1783,7 @@ checksum = "d7249219f66ced02969388cf2bb044a09756a083d0fab1e566056b04d9fbcaa5"
 
 [[package]]
 name = "woofi"
-version = "0.0.0"
+version = "0.6.0"
 dependencies = [
  "common",
  "proto",
