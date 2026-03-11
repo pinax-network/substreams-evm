@@ -16,9 +16,7 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     None
 }
 
-fn try_decode_pool_init_constructor(
-    input: &[u8],
-) -> Option<curvefi::stableswap::constructor::Constructor> {
+fn try_decode_pool_init_constructor(input: &[u8]) -> Option<curvefi::stableswap::constructor::Constructor> {
     // Direct deployments prepend init bytecode and append the ABI-encoded StableSwap
     // constructor args as a fixed-size tail (8 static slots). Decode only that tail
     // and round-trip it to ensure we matched the constructor payload exactly.
@@ -578,7 +576,9 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
 #[cfg(test)]
 mod tests {
     use super::try_extract_pool_init;
+    use std::str::FromStr;
     use substreams::scalar::BigInt;
+    use substreams::Hex;
     use substreams_abis::dex::curvefi;
     use substreams_ethereum::pb::eth::v2::{Call, CallType, TransactionTrace};
 
@@ -657,5 +657,52 @@ mod tests {
         };
 
         assert!(try_extract_pool_init(&trx).is_none());
+    }
+
+    #[test]
+    fn extracts_stableswap_init_from_real_deployment_input() {
+        let constructor = curvefi::stableswap::constructor::Constructor {
+            owner: Hex::decode("6e8f6d1da6232d5e40b0b8758a0145d6c5123eb7").unwrap(),
+            coins: [
+                Hex::decode("6b175474e89094c44da98b954eedeac495271d0f").unwrap(),
+                Hex::decode("a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48").unwrap(),
+                Hex::decode("dac17f958d2ee523a2206206994597c13d831ec7").unwrap(),
+            ],
+            pool_token: Hex::decode("6c3f90f043a72fa612cbac8115ee7e52bde6e490").unwrap(),
+            a: BigInt::from_str("100").unwrap(),
+            fee: BigInt::from_str("4000000").unwrap(),
+            admin_fee: BigInt::from_str("0").unwrap(),
+        };
+        let mut input = vec![0x74; 2048];
+        input.extend(constructor.encode());
+
+        let trx = TransactionTrace {
+            input,
+            calls: vec![Call {
+                call_type: CallType::Create as i32,
+                depth: 0,
+                address: Hex::decode("6c3f90f043a72fa612cbac8115ee7e52bde6e490").unwrap(),
+                begin_ordinal: 42,
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let (init, create_call) = try_extract_pool_init(&trx).expect("expected init event");
+
+        assert_eq!(init.owner, Hex::decode("6e8f6d1da6232d5e40b0b8758a0145d6c5123eb7").unwrap());
+        assert_eq!(
+            init.coins,
+            vec![
+                Hex::decode("6b175474e89094c44da98b954eedeac495271d0f").unwrap(),
+                Hex::decode("a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48").unwrap(),
+                Hex::decode("dac17f958d2ee523a2206206994597c13d831ec7").unwrap(),
+            ]
+        );
+        assert_eq!(init.pool_token, Hex::decode("6c3f90f043a72fa612cbac8115ee7e52bde6e490").unwrap());
+        assert_eq!(init.a, BigInt::from_str("100").unwrap().to_string());
+        assert_eq!(init.fee, BigInt::from_str("4000000").unwrap().to_string());
+        assert_eq!(init.admin_fee, BigInt::from_str("0").unwrap().to_string());
+        assert_eq!(create_call.begin_ordinal, 42);
     }
 }
