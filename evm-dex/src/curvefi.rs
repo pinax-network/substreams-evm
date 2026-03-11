@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::curvefi::v1::{self as curvefi, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -155,6 +155,7 @@ fn process_token_exchange(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
@@ -185,6 +186,7 @@ fn process_add_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -213,6 +215,7 @@ fn process_remove_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -240,6 +243,7 @@ fn process_remove_liquidity_one(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -266,6 +270,7 @@ fn process_remove_liquidity_imbalance(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -293,6 +298,7 @@ fn process_commit_new_admin(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // pool lookup is best-effort; many contracts emit this without being a tracked pool
     if let Some(pool) = get_store_by_address(store, &log.address) {
@@ -323,6 +329,7 @@ fn process_new_admin(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     if let Some(pool) = get_store_by_address(store, &log.address) {
         set_pool(encoding, pool, row);
@@ -352,6 +359,7 @@ fn process_commit_new_fee(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("deadline", &event.deadline);
@@ -378,6 +386,7 @@ fn process_new_fee(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("fee", &event.fee);
@@ -403,6 +412,7 @@ fn process_ramp_a(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("old_a", &event.old_a);
@@ -430,6 +440,7 @@ fn process_stop_ramp_a(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("a", &event.a);
@@ -455,6 +466,7 @@ fn process_plain_pool_deployed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coins", event.coins.iter().map(|c| bytes_to_string(c, encoding)).collect::<Vec<_>>().join(","));
@@ -479,6 +491,7 @@ fn process_meta_pool_deployed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("coin", bytes_to_string(&event.coin, encoding));
@@ -504,6 +517,7 @@ fn process_base_pool_added(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("base_pool", bytes_to_string(&event.base_pool, encoding));
 }
@@ -524,6 +538,7 @@ fn process_liquidity_gauge_deployed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("gauge", bytes_to_string(&event.gauge, encoding));
@@ -545,6 +560,7 @@ fn process_init(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -581,6 +597,7 @@ fn process_cryptoswap_token_exchange(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
@@ -611,6 +628,7 @@ fn process_cryptoswap_add_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -638,6 +656,7 @@ fn process_cryptoswap_remove_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -664,6 +683,7 @@ fn process_cryptoswap_remove_liquidity_one(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -691,6 +711,7 @@ fn process_cryptoswap_claim_admin_fee(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("admin", bytes_to_string(&event.admin, encoding));
@@ -716,6 +737,7 @@ fn process_cryptoswap_commit_new_parameters(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("deadline", &event.deadline);
@@ -747,6 +769,7 @@ fn process_cryptoswap_new_parameters(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("admin_fee", &event.admin_fee);
@@ -777,6 +800,7 @@ fn process_cryptoswap_ramp_agamma(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("initial_a", &event.initial_a);
@@ -806,6 +830,7 @@ fn process_cryptoswap_stop_ramp_a(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("current_a", &event.current_a);
@@ -832,6 +857,7 @@ fn process_crypto_pool_deployed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("token", bytes_to_string(&event.token, encoding));
@@ -865,6 +891,7 @@ fn process_cryptoswapfactory_liquidity_gauge_deployed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
     row.set("token", bytes_to_string(&event.token, encoding));
@@ -887,6 +914,7 @@ fn process_cryptoswapfactory_transfer_ownership(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_owner", bytes_to_string(&event.old_owner, encoding));
     row.set("new_owner", bytes_to_string(&event.new_owner, encoding));
@@ -908,6 +936,7 @@ fn process_cryptoswapfactory_update_fee_receiver(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_fee_receiver", bytes_to_string(&event.old_fee_receiver, encoding));
     row.set("new_fee_receiver", bytes_to_string(&event.new_fee_receiver, encoding));
@@ -929,6 +958,7 @@ fn process_cryptoswapfactory_update_gauge_implementation(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_gauge_implementation", bytes_to_string(&event.old_gauge_implementation, encoding));
     row.set("new_gauge_implementation", bytes_to_string(&event.new_gauge_implementation, encoding));
@@ -950,6 +980,7 @@ fn process_cryptoswapfactory_update_pool_implementation(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_pool_implementation", bytes_to_string(&event.old_pool_implementation, encoding));
     row.set("new_pool_implementation", bytes_to_string(&event.new_pool_implementation, encoding));
@@ -971,6 +1002,7 @@ fn process_cryptoswapfactory_update_token_implementation(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_token_implementation", bytes_to_string(&event.old_token_implementation, encoding));
     row.set("new_token_implementation", bytes_to_string(&event.new_token_implementation, encoding));

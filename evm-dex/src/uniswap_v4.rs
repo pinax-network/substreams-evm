@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v4::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -58,6 +58,7 @@ fn process_swap(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("id", bytes_to_string(&event.id, encoding));
@@ -89,6 +90,7 @@ fn process_modify_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("id", bytes_to_string(&event.id, encoding));
@@ -118,6 +120,7 @@ fn process_donate(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("id", bytes_to_string(&event.id, encoding));
@@ -145,6 +148,7 @@ fn process_protocol_fee_updated(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("id", bytes_to_string(&event.id, encoding));
@@ -168,6 +172,7 @@ fn process_protocol_fee_controller_updated(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("protocol_fee_controller", bytes_to_string(&event.protocol_fee_controller, encoding));
 }
@@ -188,6 +193,7 @@ fn process_initialize(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("id", bytes_to_string(&event.id, encoding));
     row.set("currency0", bytes_to_string(&event.currency0, encoding));

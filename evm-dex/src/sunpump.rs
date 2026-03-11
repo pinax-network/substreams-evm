@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::sunpump::v1::{self as sunpump, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -84,6 +84,7 @@ fn process_sunpump_token_purchased(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         // Swap info - TRX -> Token purchase
@@ -115,6 +116,7 @@ fn process_sunpump_token_sold(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         // Swap info - Token -> TRX sale
@@ -143,6 +145,7 @@ fn process_sunpump_launch_pending(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("token", bytes_to_string(&event.token, encoding));
@@ -166,6 +169,7 @@ fn process_sunpump_launcher_changed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_launcher", bytes_to_string(&event.old_launcher, encoding));
@@ -189,6 +193,7 @@ fn process_sunpump_min_tx_fee_set(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_fee", &event.old_fee);
@@ -212,6 +217,7 @@ fn process_sunpump_mint_fee_set(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_fee", &event.old_fee);
@@ -235,6 +241,7 @@ fn process_sunpump_operator_changed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_operator", bytes_to_string(&event.old_operator, encoding));
@@ -258,6 +265,7 @@ fn process_sunpump_owner_changed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_owner", bytes_to_string(&event.old_owner, encoding));
@@ -281,6 +289,7 @@ fn process_sunpump_pending_owner_set(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("old_pending_owner", bytes_to_string(&event.old_pending_owner, encoding));
@@ -306,6 +315,7 @@ fn process_sunpump_purchase_fee_set(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         // Event info
@@ -333,6 +343,7 @@ fn process_sunpump_sale_fee_set(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         // Event info
@@ -358,6 +369,7 @@ fn process_sunpump_token_create(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("token_address", bytes_to_string(&event.token_address, encoding));
@@ -382,6 +394,7 @@ fn process_sunpump_token_create_legacy(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("token_address", bytes_to_string(&event.token_address, encoding));
@@ -409,6 +422,7 @@ fn process_sunpump_token_launched(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     // Event info
     row.set("token", bytes_to_string(&event.token, encoding));

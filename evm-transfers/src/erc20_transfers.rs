@@ -3,7 +3,7 @@ use proto::pb::erc20::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{log_key, logs::set_template_log, set_clock, transactions::set_template_erc20_tx};
+use crate::{log_key, logs::{set_template_call, set_template_log}, set_clock, transactions::set_template_erc20_tx};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
@@ -15,6 +15,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("from", bytes_to_string(&transfer.from, encoding));
@@ -29,6 +30,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_erc20_tx(encoding, tx, tx_index, row);
 
                 row.set("owner", bytes_to_string(&event.owner, encoding));

@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v1::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -56,6 +56,7 @@ fn process_token_purchase(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
@@ -82,6 +83,7 @@ fn process_eth_purchase(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("buyer", bytes_to_string(&event.buyer, encoding));
@@ -108,6 +110,7 @@ fn process_add_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -134,6 +137,7 @@ fn process_remove_liquidity(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -158,6 +162,7 @@ fn process_new_exchange(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("exchange", bytes_to_string(&event.exchange, encoding));
     row.set("token", bytes_to_string(&event.token, encoding));
