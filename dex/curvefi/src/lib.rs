@@ -5,6 +5,8 @@ use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
+const STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE: usize = 8 * 32;
+
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
         if call.call_type == CallType::Create as i32 {
@@ -14,111 +16,40 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     None
 }
 
-/// Decode an ABI-encoded address word (32 bytes).
-/// The first 12 bytes must be zero and the last 20 bytes must be non-zero.
-fn decode_abi_address(word: &[u8]) -> Option<Vec<u8>> {
-    if word.len() != 32 {
-        return None;
-    }
-    if word[..12].iter().any(|&b| b != 0) {
-        return None;
-    }
-    if word[12..].iter().all(|&b| b == 0) {
-        return None;
-    }
-    Some(word[12..].to_vec())
-}
-
-/// Convert a 32-byte big-endian uint256 slice to a decimal string.
-fn decode_uint256_to_string(word: &[u8]) -> String {
-    substreams::scalar::BigInt::from_unsigned_bytes_be(word).to_string()
-}
-
-/// Try to decode the CurveFi pool `__init__` constructor arguments from the END of
-/// the deployment bytecode for a pool with the given number of coins.
-///
-/// Constructor signature: `__init__(_owner, _coins[n_coins], _pool_token, _A, _fee, _admin_fee)`
-/// Each argument is ABI-encoded as 32 bytes (no offset pointers — all fixed-size types).
-///
-/// Returns `(owner, coins, pool_token, a, fee, admin_fee)` on success.
-fn try_decode_pool_init(
-    input: &[u8],
-    n_coins: usize,
-) -> Option<(Vec<u8>, Vec<Vec<u8>>, Vec<u8>, String, String, String)> {
-    // owner(32) + coins(n*32) + pool_token(32) + A(32) + fee(32) + admin_fee(32)
-    let params_size = (n_coins + 5) * 32;
-    if input.len() < params_size {
-        return None;
-    }
-    let args = &input[input.len() - params_size..];
-
-    let mut offset = 0;
-
-    let owner = decode_abi_address(&args[offset..offset + 32])?;
-    offset += 32;
-
-    let mut coins = Vec::with_capacity(n_coins);
-    for _ in 0..n_coins {
-        let coin = decode_abi_address(&args[offset..offset + 32])?;
-        coins.push(coin);
-        offset += 32;
-    }
-
-    let pool_token = decode_abi_address(&args[offset..offset + 32])?;
-    offset += 32;
-
-    let a = decode_uint256_to_string(&args[offset..offset + 32]);
-    offset += 32;
-    let fee = decode_uint256_to_string(&args[offset..offset + 32]);
-    offset += 32;
-    let admin_fee = decode_uint256_to_string(&args[offset..offset + 32]);
-
-    Some((owner, coins, pool_token, a, fee, admin_fee))
-}
-
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
-/// transaction by decoding the constructor calldata.
+/// transaction by decoding the StableSwap constructor calldata from the deployment bytecode tail.
 ///
 /// Returns `None` if the transaction is not a direct deployment or the calldata does not
-/// match the expected CurveFi constructor format for 2, 3, or 4 coins.
+/// match the expected CurveFi StableSwap constructor format.
 /// On success, returns the decoded `Init` event together with a reference to the root
 /// CREATE call so the caller can populate call metadata without a second iteration.
-fn try_extract_pool_init<'a>(
-    trx: &'a TransactionTrace,
-) -> Option<(pb::Init, &'a substreams_ethereum::pb::eth::v2::Call)> {
+fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a substreams_ethereum::pb::eth::v2::Call)> {
     // Only process direct deployment transactions (to field is empty/null)
     if !trx.to.is_empty() {
         return None;
     }
 
     // Find the root CREATE call
-    let create_call = trx.calls.iter().find(|c| {
-        c.call_type == CallType::Create as i32 && c.depth == 0
-    })?;
+    let create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0)?;
 
     let address = create_call.address.to_vec();
-    let input = &create_call.input;
+    let constructor_input = create_call
+        .input
+        .get(create_call.input.len().checked_sub(STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE)?..)?;
+    let constructor = curvefi::stableswap::constructor::Constructor::decode(constructor_input).ok()?;
 
-    // Try n_coins = 3 (most common: 3Pool), then 4, then 2
-    for &n_coins in &[3usize, 4, 2] {
-        if let Some((owner, coins, pool_token, a, fee, admin_fee)) =
-            try_decode_pool_init(input, n_coins)
-        {
-            return Some((
-                pb::Init {
-                    address,
-                    owner,
-                    coins,
-                    pool_token,
-                    a,
-                    fee,
-                    admin_fee,
-                },
-                create_call,
-            ));
-        }
-    }
-    None
+    Some((
+        pb::Init {
+            address,
+            owner: constructor.owner,
+            coins: constructor.coins.to_vec(),
+            pool_token: constructor.pool_token,
+            a: constructor.a.to_string(),
+            fee: constructor.fee.to_string(),
+            admin_fee: constructor.admin_fee.to_string(),
+        },
+        create_call,
+    ))
 }
 
 #[substreams::handlers::map]
@@ -170,22 +101,15 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
         if let Some((init, create_call)) = try_extract_pool_init(trx) {
             total_pool_init += 1;
             let init_address = init.address.clone();
-            let log_entry = pb::Log::create_synthetic_log_with_call(
-                &init_address,
-                create_call.begin_ordinal,
-                0,
-                pb::log::Log::Init(init),
-                Some(create_call),
-            );
+            let log_entry = pb::Log::create_synthetic_log_with_call(&init_address, create_call.begin_ordinal, 0, pb::log::Log::Init(init), Some(create_call));
             transaction.logs.push(log_entry);
         }
 
-        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> =
-            if trx.calls.is_empty() {
-                trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
-            } else {
-                trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
-            };
+        let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
+            trx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+        } else {
+            trx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+        };
 
         for (log, call) in logs_with_calls {
             // ── Pool / StableSwap events (shared topic hashes across both contracts) ──
@@ -606,14 +530,112 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     substreams::log::info!("Total CryptoSwap StopRampA events: {}", total_cryptoswap_stop_ramp_a);
     // CryptoSwapFactory
     substreams::log::info!("Total CryptoPoolDeployed events: {}", total_crypto_pool_deployed);
-    substreams::log::info!("Total CryptoSwapFactory LiquidityGaugeDeployed events: {}", total_cryptoswapfactory_liquidity_gauge_deployed);
-    substreams::log::info!("Total CryptoSwapFactory TransferOwnership events: {}", total_cryptoswapfactory_transfer_ownership);
-    substreams::log::info!("Total CryptoSwapFactory UpdateFeeReceiver events: {}", total_cryptoswapfactory_update_fee_receiver);
-    substreams::log::info!("Total CryptoSwapFactory UpdateGaugeImplementation events: {}", total_cryptoswapfactory_update_gauge_implementation);
-    substreams::log::info!("Total CryptoSwapFactory UpdatePoolImplementation events: {}", total_cryptoswapfactory_update_pool_implementation);
-    substreams::log::info!("Total CryptoSwapFactory UpdateTokenImplementation events: {}", total_cryptoswapfactory_update_token_implementation);
+    substreams::log::info!(
+        "Total CryptoSwapFactory LiquidityGaugeDeployed events: {}",
+        total_cryptoswapfactory_liquidity_gauge_deployed
+    );
+    substreams::log::info!(
+        "Total CryptoSwapFactory TransferOwnership events: {}",
+        total_cryptoswapfactory_transfer_ownership
+    );
+    substreams::log::info!(
+        "Total CryptoSwapFactory UpdateFeeReceiver events: {}",
+        total_cryptoswapfactory_update_fee_receiver
+    );
+    substreams::log::info!(
+        "Total CryptoSwapFactory UpdateGaugeImplementation events: {}",
+        total_cryptoswapfactory_update_gauge_implementation
+    );
+    substreams::log::info!(
+        "Total CryptoSwapFactory UpdatePoolImplementation events: {}",
+        total_cryptoswapfactory_update_pool_implementation
+    );
+    substreams::log::info!(
+        "Total CryptoSwapFactory UpdateTokenImplementation events: {}",
+        total_cryptoswapfactory_update_token_implementation
+    );
     // Direct pool deployment
     substreams::log::info!("Total Init (direct pool deployment) events: {}", total_pool_init);
 
     Ok(events)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::try_extract_pool_init;
+    use substreams::scalar::BigInt;
+    use substreams_abis::dex::curvefi;
+    use substreams_ethereum::pb::eth::v2::{Call, CallType, TransactionTrace};
+
+    fn sample_stableswap_constructor() -> curvefi::stableswap::constructor::Constructor {
+        curvefi::stableswap::constructor::Constructor {
+            owner: vec![0x11; 20],
+            coins: [vec![0x21; 20], vec![0x22; 20], vec![0x23; 20]],
+            pool_token: vec![0x31; 20],
+            a: BigInt::from(2000u64),
+            fee: BigInt::from(4_000_000u64),
+            admin_fee: BigInt::from(5_000_000_000u64),
+        }
+    }
+
+    #[test]
+    fn extracts_stableswap_init_from_create_input_tail() {
+        let constructor = sample_stableswap_constructor();
+        let mut create_input = vec![0x60, 0x60, 0x60, 0x40, 0x52];
+        create_input.extend(constructor.encode());
+
+        let trx = TransactionTrace {
+            calls: vec![Call {
+                call_type: CallType::Create as i32,
+                depth: 0,
+                address: vec![0xaa; 20],
+                begin_ordinal: 42,
+                input: create_input,
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        let (init, create_call) = try_extract_pool_init(&trx).expect("expected init event");
+
+        assert_eq!(init.address, vec![0xaa; 20]);
+        assert_eq!(init.owner, constructor.owner);
+        assert_eq!(init.coins, constructor.coins.to_vec());
+        assert_eq!(init.pool_token, constructor.pool_token);
+        assert_eq!(init.a, "2000");
+        assert_eq!(init.fee, "4000000");
+        assert_eq!(init.admin_fee, "5000000000");
+        assert_eq!(create_call.begin_ordinal, 42);
+    }
+
+    #[test]
+    fn ignores_non_contract_creation_transactions() {
+        let trx = TransactionTrace {
+            to: vec![0xbb; 20],
+            calls: vec![Call {
+                call_type: CallType::Create as i32,
+                depth: 0,
+                input: sample_stableswap_constructor().encode(),
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        assert!(try_extract_pool_init(&trx).is_none());
+    }
+
+    #[test]
+    fn ignores_create_calls_without_stableswap_constructor_tail() {
+        let trx = TransactionTrace {
+            calls: vec![Call {
+                call_type: CallType::Create as i32,
+                depth: 0,
+                input: vec![0x01, 0x02, 0x03],
+                ..Default::default()
+            }],
+            ..Default::default()
+        };
+
+        assert!(try_extract_pool_init(&trx).is_none());
+    }
 }
