@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v3::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -76,6 +76,7 @@ fn process_swap(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -106,6 +107,7 @@ fn process_initialize(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("sqrt_price_x96", &event.sqrt_price_x96);
@@ -131,6 +133,7 @@ fn process_mint(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -161,6 +164,7 @@ fn process_collect(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -190,6 +194,7 @@ fn process_burn(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -219,6 +224,7 @@ fn process_flash(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -248,6 +254,7 @@ fn process_increase_observation(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("observation_cardinality_next_old", event.observation_cardinality_next_old);
@@ -273,6 +280,7 @@ fn process_set_fee_protocol(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("fee_protocol0_old", event.fee_protocol0_old);
@@ -300,6 +308,7 @@ fn process_collect_protocol(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool_created(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -325,6 +334,7 @@ fn process_pool_created(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("token0", bytes_to_string(&event.token0, encoding));
     row.set("token1", bytes_to_string(&event.token1, encoding));
@@ -349,6 +359,7 @@ fn process_owner_changed(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("old_owner", bytes_to_string(&event.old_owner, encoding));
     row.set("new_owner", bytes_to_string(&event.new_owner, encoding));
@@ -370,6 +381,7 @@ fn process_fee_amount_enabled(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("fee", event.fee);
     row.set("tick_spacing", event.tick_spacing);

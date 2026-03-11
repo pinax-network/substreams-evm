@@ -3,7 +3,7 @@ use proto::pb::erc20::tokens::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{log_key, logs::set_template_log, set_clock, transactions::set_template_tokens_tx};
+use crate::{log_key, logs::{set_template_call, set_template_log}, set_clock, transactions::set_template_tokens_tx};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &pb::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
@@ -15,6 +15,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("dst", bytes_to_string(&event.dst, encoding));
@@ -28,6 +29,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("src", bytes_to_string(&event.src, encoding));
@@ -41,6 +43,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("minter", bytes_to_string(&event.minter, encoding));
@@ -55,6 +58,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("burner", bytes_to_string(&event.burner, encoding));
@@ -68,6 +72,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -81,6 +86,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -94,6 +100,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("black_listed_user", bytes_to_string(&event.black_listed_user, encoding));
@@ -107,6 +114,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("user", bytes_to_string(&event.user, encoding));
@@ -119,6 +127,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("user", bytes_to_string(&event.user, encoding));
@@ -131,6 +140,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("destination", bytes_to_string(&event.destination, encoding));
@@ -144,6 +154,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("blocked_user", bytes_to_string(&event.blocked_user, encoding));
@@ -157,6 +168,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("contract", bytes_to_string(&event.contract, encoding));
@@ -169,6 +181,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("contract", bytes_to_string(&event.contract, encoding));
@@ -181,6 +194,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("txhash", bytes_to_string(&event.txhash, encoding));
@@ -195,6 +209,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("account", bytes_to_string(&event.account, encoding));
@@ -209,6 +224,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("old_owner", bytes_to_string(&event.old_owner, encoding));
@@ -223,6 +239,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("to", bytes_to_string(&event.to, encoding));
@@ -236,6 +253,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("burner", bytes_to_string(&event.burner, encoding));
@@ -249,6 +267,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("guy", bytes_to_string(&event.guy, encoding));
@@ -262,6 +281,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("guy", bytes_to_string(&event.guy, encoding));
@@ -275,6 +295,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -289,6 +310,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("report_timestamp", &event.report_timestamp);
@@ -307,6 +329,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("from", bytes_to_string(&event.from, encoding));
@@ -321,6 +344,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("account", bytes_to_string(&event.account, encoding));
@@ -336,6 +360,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("recipient", bytes_to_string(&event.recipient, encoding));
@@ -349,6 +374,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 set_clock(clock, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 set_template_tokens_tx(encoding, tx, tx_index, row);
 
                 row.set("owner", bytes_to_string(&event.owner, encoding));

@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::bancor::v1::{self as bancor, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -65,6 +65,7 @@ fn process_conversion(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("source_token", bytes_to_string(&event.source_token, encoding));
@@ -94,6 +95,7 @@ fn process_liquidity_added(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -122,6 +124,7 @@ fn process_liquidity_removed(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("provider", bytes_to_string(&event.provider, encoding));
@@ -150,6 +153,7 @@ fn process_token_rate_update(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("token1", bytes_to_string(&event.token1, encoding));
@@ -175,6 +179,7 @@ fn process_activation(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("activated", event.activated);
     row.set("anchor", bytes_to_string(&event.anchor, encoding));
@@ -197,6 +202,7 @@ fn process_new_converter(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("converter_type", event.converter_type);
     row.set("converter", bytes_to_string(&event.converter, encoding));
@@ -219,6 +225,7 @@ fn process_features_addition(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("features", &event.features);
@@ -240,6 +247,7 @@ fn process_features_removal(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("address", bytes_to_string(&event.address, encoding));
     row.set("features", &event.features);
@@ -263,6 +271,7 @@ fn process_conversion_fee_update(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("prev_fee", event.prev_fee);

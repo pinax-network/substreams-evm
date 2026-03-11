@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::aerodrome::v1::{self as aerodrome, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -51,6 +51,7 @@ fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("to", bytes_to_string(&event.to, encoding));
@@ -68,6 +69,7 @@ fn process_sync(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("reserve0", &event.reserve0);
         row.set("reserve1", &event.reserve1);
@@ -81,6 +83,7 @@ fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("amount0", &event.amount0);
@@ -95,6 +98,7 @@ fn process_burn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("to", bytes_to_string(&event.to, encoding));
@@ -110,6 +114,7 @@ fn process_fees(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("amount0", &event.amount0);
@@ -124,6 +129,7 @@ fn process_claim(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: 
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("recipient", bytes_to_string(&event.recipient, encoding));
@@ -138,6 +144,7 @@ fn process_pool_created(encoding: &Encoding, tables: &mut Tables, clock: &Clock,
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
     row.set("token0", bytes_to_string(&event.token0, encoding));
     row.set("token1", bytes_to_string(&event.token1, encoding));
     row.set("stable", event.stable);

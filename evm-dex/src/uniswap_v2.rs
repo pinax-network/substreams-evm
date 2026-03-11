@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v2::{self as uniswap, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -55,6 +55,7 @@ fn process_swap(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -84,6 +85,7 @@ fn process_sync(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("reserve0", &event.reserve0);
@@ -109,6 +111,7 @@ fn process_mint(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -135,6 +138,7 @@ fn process_burn(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("sender", bytes_to_string(&event.sender, encoding));
@@ -160,6 +164,7 @@ fn process_pair_created(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("token0", bytes_to_string(&event.token0, encoding));
     row.set("token1", bytes_to_string(&event.token1, encoding));

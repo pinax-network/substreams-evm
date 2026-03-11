@@ -1,4 +1,4 @@
-use common::clickhouse::{common_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{common_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::erc721::tokens::v1 as pb;
 use substreams::pb::substreams::Clock;
@@ -20,6 +20,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkTransfer(_)) => {
@@ -34,6 +35,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkBought(_)) => {
@@ -50,6 +52,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkBidEntered(_)) => {
@@ -64,6 +67,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkBidWithdrawn(_)) => {
@@ -78,6 +82,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkNoLongerForSale(_)) => {
@@ -88,6 +93,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::PunkOffered(_)) => {
@@ -102,6 +108,7 @@ pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tabl
                     set_clock(clock, row);
                     set_template_tx(encoding, tx, tx_index, row);
                     set_template_log(encoding, log, log_index, row);
+                    set_template_call(encoding, log, row);
                     row_index += 1;
                 }
                 Some(_) => {}
