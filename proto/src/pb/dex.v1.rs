@@ -51,6 +51,7 @@ pub struct DexSwap {
     #[prost(bytes="vec", tag="16")]
     pub log_data: ::prost::alloc::vec::Vec<u8>,
     /// normalized swap fields --
+    ///
     /// e.g. "uniswap_v2", "aerodrome"
     #[prost(string, tag="20")]
     pub protocol: ::prost::alloc::string::String,
@@ -77,6 +78,7 @@ pub struct DexSwap {
     pub output_amount: ::prost::alloc::string::String,
 }
 /// Flash/complex swap that cannot be losslessly normalized to a single input/output pair
+/// (e.g. UniswapV2 flash swaps where both amount0_in > 0 and amount1_in > 0)
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DexSwapFlash {
@@ -157,13 +159,17 @@ pub struct DexPool {
     /// pool address (primary identifier / store key)
     #[prost(bytes="vec", tag="1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
+    /// pool metadata
+    ///
     /// e.g. "uniswap_v2", "curvefi"
     #[prost(string, tag="2")]
     pub protocol: ::prost::alloc::string::String,
     /// factory contract that created the pool
     #[prost(bytes="vec", tag="3")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    /// generalized token array (order matches on-chain indexing)
+    /// generalized token array (order matches the on-chain indexing)
+    /// e.g. for Uniswap V2: \[token0, token1\]
+    /// for Curve: \[coin0, coin1, ..., coinN\]
     #[prost(bytes="vec", repeated, tag="4")]
     pub coins: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     /// creation context
@@ -217,9 +223,8 @@ pub enum CallType {
 impl CallType {
     /// String value of the enum field names used in the ProtoBuf definition.
     ///
-    /// The values are not transformed in any way and thus are not normally
-    /// used directly (e.g. map_merge), but may be useful for debugging or
-    /// matching purposes.
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
             CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
@@ -243,3 +248,4 @@ impl CallType {
         }
     }
 }
+// @@protoc_insertion_point(module)

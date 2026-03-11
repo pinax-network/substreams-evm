@@ -19,12 +19,14 @@ pub struct Transaction {
     pub input: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, tag="5")]
     pub nonce: u64,
+    /// uint256
     #[prost(string, tag="6")]
     pub gas_price: ::prost::alloc::string::String,
     #[prost(uint64, tag="7")]
     pub gas_limit: u64,
     #[prost(uint64, tag="8")]
     pub gas_used: u64,
+    /// uint256
     #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="10")]
@@ -67,8 +69,10 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+    /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
+    /// Native block/log position fields
     #[prost(uint32, tag="6")]
     pub block_index: u32,
 }
@@ -81,10 +85,13 @@ pub struct Call {
     pub begin_ordinal: u64,
     #[prost(uint64, tag="3")]
     pub end_ordinal: u64,
+    /// sender
     #[prost(bytes="vec", tag="4")]
     pub caller: ::prost::alloc::vec::Vec<u8>,
+    /// recipient
     #[prost(bytes="vec", tag="5")]
     pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="6")]
     pub value: ::prost::alloc::string::String,
     #[prost(uint64, tag="7")]
@@ -113,6 +120,10 @@ pub enum CallType {
     Create = 5,
 }
 impl CallType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
             CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
@@ -123,6 +134,7 @@ impl CallType {
             CallType::Create => "CALL_TYPE_CREATE",
         }
     }
+    /// Creates an enum from field names used in the ProtoBuf definition.
     pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
         match value {
             "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
@@ -135,3 +147,4 @@ impl CallType {
         }
     }
 }
+// @@protoc_insertion_point(module)

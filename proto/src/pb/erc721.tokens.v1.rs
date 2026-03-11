@@ -19,12 +19,14 @@ pub struct Transaction {
     pub input: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, tag="5")]
     pub nonce: u64,
+    /// uint256
     #[prost(string, tag="6")]
     pub gas_price: ::prost::alloc::string::String,
     #[prost(uint64, tag="7")]
     pub gas_limit: u64,
     #[prost(uint64, tag="8")]
     pub gas_used: u64,
+    /// uint256
     #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="10")]
@@ -41,16 +43,19 @@ pub struct Log {
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
     #[prost(bytes="vec", tag="4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+    /// Call metadata (only available on chains with DetailLevel: EXTENDED)
     #[prost(message, optional, tag="5")]
     pub call: ::core::option::Option<Call>,
+    /// Native block/log position fields
     #[prost(uint32, tag="6")]
     pub block_index: u32,
     #[prost(oneof="log::Log", tags="10, 11, 12, 20, 21, 22, 23, 24, 25, 26")]
     pub log: ::core::option::Option<log::Log>,
 }
+/// Nested message and enum types in `Log`.
 pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+#[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
         #[prost(message, tag="10")]
         Transfer(super::Transfer),
@@ -83,10 +88,13 @@ pub struct Call {
     pub begin_ordinal: u64,
     #[prost(uint64, tag="3")]
     pub end_ordinal: u64,
+    /// sender
     #[prost(bytes="vec", tag="4")]
     pub caller: ::prost::alloc::vec::Vec<u8>,
+    /// recipient
     #[prost(bytes="vec", tag="5")]
     pub address: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="6")]
     pub value: ::prost::alloc::string::String,
     #[prost(uint64, tag="7")]
@@ -109,6 +117,7 @@ pub struct Transfer {
     pub from: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="3")]
     pub token_id: ::prost::alloc::string::String,
 }
@@ -119,6 +128,7 @@ pub struct Approval {
     pub owner: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub approved: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="3")]
     pub token_id: ::prost::alloc::string::String,
 }
@@ -137,6 +147,7 @@ pub struct ApprovalForAll {
 pub struct Assign {
     #[prost(bytes="vec", tag="1")]
     pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="2")]
     pub punk_index: ::prost::alloc::string::String,
 }
@@ -147,14 +158,17 @@ pub struct PunkTransfer {
     pub from: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", tag="2")]
     pub to: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
     #[prost(string, tag="3")]
     pub punk_index: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PunkBought {
+    /// uint256
     #[prost(string, tag="1")]
     pub punk_index: ::prost::alloc::string::String,
+    /// uint256
     #[prost(string, optional, tag="2")]
     pub value: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(bytes="vec", tag="3")]
@@ -165,8 +179,10 @@ pub struct PunkBought {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PunkBidEntered {
+    /// uint256
     #[prost(string, tag="1")]
     pub punk_index: ::prost::alloc::string::String,
+    /// uint256
     #[prost(string, tag="2")]
     pub value: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="3")]
@@ -175,8 +191,10 @@ pub struct PunkBidEntered {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PunkBidWithdrawn {
+    /// uint256
     #[prost(string, tag="1")]
     pub punk_index: ::prost::alloc::string::String,
+    /// uint256
     #[prost(string, tag="2")]
     pub value: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="3")]
@@ -185,14 +203,17 @@ pub struct PunkBidWithdrawn {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PunkNoLongerForSale {
+    /// uint256
     #[prost(string, tag="1")]
     pub punk_index: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PunkOffered {
+    /// uint256
     #[prost(string, tag="1")]
     pub punk_index: ::prost::alloc::string::String,
+    /// uint256
     #[prost(string, tag="2")]
     pub min_value: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="3")]
@@ -209,6 +230,10 @@ pub enum CallType {
     Create = 5,
 }
 impl CallType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
             CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
@@ -219,6 +244,7 @@ impl CallType {
             CallType::Create => "CALL_TYPE_CREATE",
         }
     }
+    /// Creates an enum from field names used in the ProtoBuf definition.
     pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
         match value {
             "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
@@ -231,3 +257,4 @@ impl CallType {
         }
     }
 }
+// @@protoc_insertion_point(module)
