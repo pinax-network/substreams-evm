@@ -11,10 +11,12 @@ members = [
 
   # Tokens
   "erc20/transfers",
-  "native/transfers",
   "erc20/balances",
-  "native/balances",
   "erc20/supply",
+  "erc20/tokens",
+
+  "native/transfers",
+  "native/balances",
 
   # Tron DEX
   "dex/sunpump",
@@ -40,11 +42,11 @@ members = [
   "erc1155",
   "dex-nfts/seaport",
   "evm-nfts",
+  "erc721/tokens",
+  "erc721/transfers",
 
   # Protocol-specific
   "contracts",
-  "erc20/tokens",
-  "erc721/tokens",
 
   # Contracts
   "evm-contracts",
@@ -63,7 +65,7 @@ license = "Apache-2.0"
 
 [workspace.dependencies]
 substreams = "0.7.0"
-substreams-abis = { git = "https://github.com/pinax-network/substreams-abis.git", tag = "v1.4.0" }
+substreams-abis = { git = "https://github.com/pinax-network/substreams-abis.git", tag = "v1.5.0" }
 substreams-ethereum = "0.11.1"
 substreams-database-change = "3.0.0"
 prost = "0.13"

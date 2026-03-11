@@ -1,6 +1,5 @@
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::erc721::tokens::v1 as pb;
-use substreams_abis::standard::erc721::events as erc721_events;
 use substreams_abis::tokens::erc20::cryptopunks::events as cryptopunks_events;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
@@ -19,36 +18,6 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             };
 
         for (log, call) in logs_with_calls {
-            if let Some(event) = erc721_events::Transfer::match_and_decode(log) {
-                let event = pb::log::Log::Transfer(pb::Transfer {
-                    from: event.from.to_vec(),
-                    to: event.to.to_vec(),
-                    token_id: event.token_id.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-                continue;
-            }
-
-            if let Some(event) = erc721_events::Approval::match_and_decode(log) {
-                let event = pb::log::Log::Approval(pb::Approval {
-                    owner: event.owner.to_vec(),
-                    approved: event.approved.to_vec(),
-                    token_id: event.token_id.to_string(),
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-                continue;
-            }
-
-            if let Some(event) = erc721_events::ApprovalForAll::match_and_decode(log) {
-                let event = pb::log::Log::ApprovalForAll(pb::ApprovalForAll {
-                    owner: event.owner.to_vec(),
-                    operator: event.operator.to_vec(),
-                    approved: event.approved,
-                });
-                transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
-                continue;
-            }
-
             if let Some(event) = cryptopunks_events::Assign::match_and_decode(log) {
                 let event = pb::log::Log::Assign(pb::Assign {
                     to: event.to.to_vec(),

@@ -20,18 +20,18 @@ pub mod bancor {
         // @@protoc_insertion_point(bancor.v1)
     }
 }
-pub mod cow {
-    // @@protoc_insertion_point(attribute:cow.v1)
-    pub mod v1 {
-        include!("cow.v1.rs");
-        // @@protoc_insertion_point(cow.v1)
-    }
-}
 pub mod contracts {
     // @@protoc_insertion_point(attribute:contracts.v1)
     pub mod v1 {
         include!("contracts.v1.rs");
         // @@protoc_insertion_point(contracts.v1)
+    }
+}
+pub mod cow {
+    // @@protoc_insertion_point(attribute:cow.v1)
+    pub mod v1 {
+        include!("cow.v1.rs");
+        // @@protoc_insertion_point(cow.v1)
     }
 }
 pub mod curvefi {
@@ -84,6 +84,13 @@ pub mod erc721 {
         pub mod v1 {
             include!("erc721.tokens.v1.rs");
             // @@protoc_insertion_point(erc721.tokens.v1)
+        }
+    }
+    pub mod transfers {
+        // @@protoc_insertion_point(attribute:erc721.transfers.v1)
+        pub mod v1 {
+            include!("erc721.transfers.v1.rs");
+            // @@protoc_insertion_point(erc721.transfers.v1)
         }
     }
 }

@@ -30,10 +30,7 @@ message Log {
   uint32 block_index = 6;
 
   oneof log {
-    Transfer transfer = 10;
-    Approval approval = 11;
-    ApprovalForAll approval_for_all = 12;
-
+    // cryptopunks
     Assign assign = 20;
     PunkTransfer punk_transfer = 21;
     PunkBought punk_bought = 22;
@@ -66,24 +63,6 @@ enum CallType {
   CALL_TYPE_DELEGATE = 3;
   CALL_TYPE_STATIC = 4;
   CALL_TYPE_CREATE = 5;
-}
-
-message Transfer {
-  bytes from = 1;
-  bytes to = 2;
-  string token_id = 3; // uint256
-}
-
-message Approval {
-  bytes owner = 1;
-  bytes approved = 2;
-  string token_id = 3; // uint256
-}
-
-message ApprovalForAll {
-  bytes owner = 1;
-  bytes operator = 2;
-  bool approved = 3;
 }
 
 message Assign {

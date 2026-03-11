@@ -30,33 +30,7 @@ pub struct Transaction {
     #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="10")]
-    pub contracts: ::prost::alloc::vec::Vec<Contract>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Contract {
-    #[prost(bytes="vec", tag="1")]
-    pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint64, tag="2")]
-    pub ordinal: u64,
-    #[prost(bytes="vec", tag="3")]
-    pub from: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", optional, tag="4")]
-    pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
-    #[prost(bytes="vec", tag="5")]
-    pub deployer: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", optional, tag="6")]
-    pub factory: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
-    #[prost(bytes="vec", tag="7")]
-    pub code: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="8")]
-    pub code_hash: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="9")]
-    pub input: ::prost::alloc::vec::Vec<u8>,
-    #[prost(message, optional, tag="10")]
-    pub call: ::core::option::Option<Call>,
-    #[prost(message, optional, tag="11")]
-    pub log: ::core::option::Option<Log>,
+    pub logs: ::prost::alloc::vec::Vec<Log>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -75,6 +49,21 @@ pub struct Log {
     /// Native block/log position fields
     #[prost(uint32, tag="6")]
     pub block_index: u32,
+    #[prost(oneof="log::Log", tags="10, 11, 12")]
+    pub log: ::core::option::Option<log::Log>,
+}
+/// Nested message and enum types in `Log`.
+pub mod log {
+    #[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Log {
+        #[prost(message, tag="10")]
+        Transfer(super::Transfer),
+        #[prost(message, tag="11")]
+        Approval(super::Approval),
+        #[prost(message, tag="12")]
+        ApprovalForAll(super::ApprovalForAll),
+    }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -106,8 +95,45 @@ pub struct Call {
     pub call_type: i32,
     #[prost(bytes="vec", tag="12")]
     pub input: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="13")]
-    pub return_data: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Transfer {
+    /// The person that sent the transfer.
+    #[prost(bytes="vec", tag="1")]
+    pub from: ::prost::alloc::vec::Vec<u8>,
+    /// The person that received the transfer.
+    #[prost(bytes="vec", tag="2")]
+    pub to: ::prost::alloc::vec::Vec<u8>,
+    /// TokenID the identifier of the token for which the transfer is happening.
+    #[prost(string, tag="3")]
+    pub token_id: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Approval {
+    /// address
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    /// address
+    #[prost(bytes="vec", tag="2")]
+    pub approved: ::prost::alloc::vec::Vec<u8>,
+    /// uint256
+    #[prost(string, tag="3")]
+    pub token_id: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ApprovalForAll {
+    /// address
+    #[prost(bytes="vec", tag="1")]
+    pub owner: ::prost::alloc::vec::Vec<u8>,
+    /// address
+    #[prost(bytes="vec", tag="2")]
+    pub operator: ::prost::alloc::vec::Vec<u8>,
+    /// true/false
+    #[prost(bool, tag="3")]
+    pub approved: bool,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

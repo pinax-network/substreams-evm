@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package evm.erc721.v1;
+package erc721.transfers.v1;
 
 message Events { repeated Transaction transactions = 1; }
 

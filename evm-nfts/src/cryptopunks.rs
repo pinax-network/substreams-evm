@@ -1,9 +1,9 @@
 use common::clickhouse::{common_key, set_log, CallMetadata};
 use common::{bytes_to_string, Encoding};
-use proto::pb::evm::cryptopunks;
+use proto::pb::erc721::tokens::v1 as pb;
 use substreams::pb::substreams::Clock;
 
-pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: cryptopunks::v1::Events, encoding: &Encoding) {
+pub fn process_cryptopunks(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: pb::Events, encoding: &Encoding) {
     let mut index = 0;
 
     for event in events.assigns {
