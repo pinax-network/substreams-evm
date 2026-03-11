@@ -46,7 +46,6 @@ macro_rules! impl_create_log_with_call_metadata {
                     depth: call.depth,
                     parent_index: call.parent_index,
                     call_type: call.call_type,
-                    input: call.input.to_vec(),
                 }
             }
         }
@@ -101,7 +100,6 @@ macro_rules! impl_create_log_with_call_metadata {
                 Self {
                     from: trx.from.to_vec(),
                     to,
-                    input: trx.input.to_vec(),
                     hash: trx.hash.to_vec(),
                     nonce: trx.nonce,
                     gas_price,
@@ -228,7 +226,6 @@ mod contracts_impl {
                 depth: call.depth,
                 parent_index: call.parent_index,
                 call_type: call.call_type,
-                input: call.input.to_vec(),
                 return_data: call.return_data.to_vec(),
             }
         }
@@ -242,7 +239,6 @@ mod contracts_impl {
             Self {
                 from: trx.from.to_vec(),
                 to,
-                input: trx.input.to_vec(),
                 hash: trx.hash.to_vec(),
                 nonce: trx.nonce,
                 gas_price,
@@ -273,7 +269,6 @@ mod native_transfers_impl {
                 depth: call.depth,
                 parent_index: call.parent_index,
                 call_type: call.call_type,
-                input: call.input.to_vec(),
             }
         }
     }

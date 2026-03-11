@@ -5,6 +5,8 @@ use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
+const STABLESWAP_CONSTRUCTOR_INPUT_LEN: usize = 32 * 8;
+
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
         if call.call_type == CallType::Create as i32 {
@@ -12,6 +14,17 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
         }
     }
     None
+}
+
+fn try_decode_pool_init_constructor(
+    input: &[u8],
+) -> Option<curvefi::stableswap::constructor::Constructor> {
+    // Direct deployments prepend init bytecode and append the ABI-encoded StableSwap
+    // constructor args as a fixed-size tail (8 static slots). Decode only that tail
+    // and round-trip it to ensure we matched the constructor payload exactly.
+    let suffix = input.get(input.len().checked_sub(STABLESWAP_CONSTRUCTOR_INPUT_LEN)?..)?;
+    let constructor = curvefi::stableswap::constructor::Constructor::decode(suffix).ok()?;
+    (constructor.encode() == suffix).then_some(constructor)
 }
 
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
@@ -30,7 +43,7 @@ fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a
     // Find the root CREATE call
     let create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0)?;
     let address = create_call.address.to_vec();
-    let constructor = curvefi::stableswap::constructor::Constructor::decode(&trx.input).ok()?;
+    let constructor = try_decode_pool_init_constructor(&trx.input)?;
     let curvefi::stableswap::constructor::Constructor {
         owner,
         coins,
@@ -602,7 +615,6 @@ mod tests {
 
         let (init, create_call) = try_extract_pool_init(&trx).expect("expected init event");
 
-        assert!(create_call.input.is_empty());
         assert_eq!(trx.input[..5], [0x60, 0x60, 0x60, 0x40, 0x52]);
         assert_eq!(trx.input[5..], constructor_input);
         assert_eq!(init.address, vec![0xaa; 20]);
@@ -644,7 +656,6 @@ mod tests {
             ..Default::default()
         };
 
-        assert!(trx.calls[0].input.is_empty());
         assert!(try_extract_pool_init(&trx).is_none());
     }
 }

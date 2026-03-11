@@ -73,7 +73,6 @@ pub fn map_events(block: Block) -> Result<pb::Events, Error> {
         let mut transaction = pb::Transaction {
             from: trx.from.to_vec(),
             to,
-            input: trx.input.to_vec(),
             hash: trx.hash.to_vec(),
             nonce: trx.nonce as u64,
             gas_price: gas_price.to_string(),
