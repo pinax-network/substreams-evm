@@ -5,11 +5,9 @@ mod cow;
 mod curvefi;
 mod dodo;
 mod kyber_elastic;
-mod logs;
 mod store;
 mod sunpump;
 mod traderjoe;
-mod transactions;
 mod uniswap_v1;
 mod uniswap_v2;
 mod uniswap_v3;
@@ -89,18 +87,9 @@ pub fn db_out(
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {
-        set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
+        common::clickhouse::set_clock(&clock, tables.create_row("blocks", [("block_num", clock.number.to_string())]));
     }
 
     substreams::log::info!("Total rows {}", tables.all_row_count());
     Ok(tables.to_database_changes())
-}
-
-pub fn set_clock(clock: &Clock, row: &mut substreams_database_change::tables::Row) {
-    row.set("block_num", clock.number);
-    row.set("block_hash", format!("0x{}", clock.id));
-    if let Some(timestamp) = &clock.timestamp {
-        row.set("timestamp", timestamp.seconds);
-        row.set("minute", timestamp.seconds / 60);
-    }
 }
