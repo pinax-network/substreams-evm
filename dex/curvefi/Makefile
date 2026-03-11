@@ -1,6 +1,6 @@
 ENDPOINT ?= eth.substreams.pinax.network:443
-START_BLOCK ?= 18830232
-STOP_BLOCK ?= +1000
+START_BLOCK ?= 10809473
+STOP_BLOCK ?= 10809474
 PARALLEL_JOBS ?= 500
 
 .PHONY: build
@@ -17,7 +17,7 @@ noop: build
 
 .PHONY: gui
 gui: build
-	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) --limit-processed-blocks 0
+	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0
 
 .PHONY: prod
 prod: build
