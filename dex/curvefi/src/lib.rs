@@ -19,7 +19,7 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
 }
 
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
-/// transaction by decoding the StableSwap constructor calldata from the deployment bytecode tail.
+/// transaction by decoding the StableSwap constructor calldata from the transaction input tail.
 ///
 /// Returns `None` if the transaction is not a direct deployment or the calldata does not
 /// match the expected CurveFi StableSwap constructor format.
@@ -35,10 +35,10 @@ fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a
     let create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0)?;
 
     let address = create_call.address.to_vec();
-    let constructor_offset = create_call.input.len().checked_sub(STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE)?;
-    // Vyper appends the ABI-encoded constructor args to the end of the creation input.
+    let constructor_offset = trx.input.len().checked_sub(STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE)?;
+    // Vyper appends the ABI-encoded constructor args to the end of the transaction input.
     // The generated decoder below validates that the extracted tail matches StableSwap.
-    let constructor_input = create_call.input.get(constructor_offset..)?;
+    let constructor_input = trx.input.get(constructor_offset..)?;
     let constructor = curvefi::stableswap::constructor::Constructor::decode(constructor_input).ok()?;
     let curvefi::stableswap::constructor::Constructor {
         owner,
@@ -592,16 +592,16 @@ mod tests {
     #[test]
     fn extracts_stableswap_init_from_create_input_tail() {
         let constructor = sample_stableswap_constructor();
-        let mut create_input = vec![0x60, 0x60, 0x60, 0x40, 0x52];
-        create_input.extend(constructor.encode());
+        let mut transaction_input = vec![0x60, 0x60, 0x60, 0x40, 0x52];
+        transaction_input.extend(constructor.encode());
 
         let trx = TransactionTrace {
+            input: transaction_input,
             calls: vec![Call {
                 call_type: CallType::Create as i32,
                 depth: 0,
                 address: vec![0xaa; 20],
                 begin_ordinal: 42,
-                input: create_input,
                 ..Default::default()
             }],
             ..Default::default()
@@ -638,10 +638,10 @@ mod tests {
     #[test]
     fn ignores_create_calls_without_stableswap_constructor_tail() {
         let trx = TransactionTrace {
+            input: vec![0x01, 0x02, 0x03],
             calls: vec![Call {
                 call_type: CallType::Create as i32,
                 depth: 0,
-                input: vec![0x01, 0x02, 0x03],
                 ..Default::default()
             }],
             ..Default::default()
