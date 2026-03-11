@@ -1,6 +1,7 @@
 mod store;
 use common::create::{CreateLog, CreateSyntheticLog, CreateTransaction};
 use proto::pb::curvefi::v1 as pb;
+use substreams::Hex;
 use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
@@ -106,9 +107,14 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut total_cryptoswapfactory_update_token_implementation = 0;
     // Direct pool deployment (constructor decoding)
     let mut total_pool_init = 0;
+    let mut total_direct_deploy_candidates = 0;
 
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
+        let root_create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0);
+        if trx.to.is_empty() {
+            total_direct_deploy_candidates += 1;
+        }
 
         // ── Direct pool deployment: decode constructor calldata ───────────────
         if let Some((init, create_call)) = try_extract_pool_init(trx) {
@@ -116,6 +122,15 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
             let init_address = init.address.clone();
             let log_entry = pb::Log::create_synthetic_log_with_call(&init_address, create_call.begin_ordinal, 0, pb::log::Log::Init(init), Some(create_call));
             transaction.logs.push(log_entry);
+        } else if trx.to.is_empty() {
+            substreams::log::info!(
+                "curvefi direct deploy candidate tx={} input_len={} root_create_call={} root_create_input_len={} tx_input=0x{}",
+                Hex::encode(&trx.hash),
+                trx.input.len(),
+                root_create_call.is_some(),
+                root_create_call.map(|call| call.input.len()).unwrap_or_default(),
+                Hex::encode(&trx.input)
+            );
         }
 
         let logs_with_calls: Vec<(&substreams_ethereum::pb::eth::v2::Log, Option<&substreams_ethereum::pb::eth::v2::Call>)> = if trx.calls.is_empty() {
@@ -569,6 +584,7 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     );
     // Direct pool deployment
     substreams::log::info!("Total Init (direct pool deployment) events: {}", total_pool_init);
+    substreams::log::info!("Total direct deployment candidates: {}", total_direct_deploy_candidates);
 
     Ok(events)
 }
