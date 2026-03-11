@@ -7,6 +7,10 @@ use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
 const STABLESWAP_CONSTRUCTOR_INPUT_LEN: usize = 32 * 8;
+const DEBUG_INIT_TX_HASH: [u8; 32] = [
+    0x20, 0x79, 0x3b, 0xbf, 0x26, 0x09, 0x12, 0xaa, 0xe1, 0x89, 0xd5, 0xd2, 0x61, 0xff, 0x00, 0x3c, 0x9b, 0x91, 0x66, 0xda, 0x81, 0x91, 0xd8, 0xf9, 0xd6, 0x3f,
+    0xf1, 0xc7, 0x72, 0x2f, 0x3a, 0xc6,
+];
 
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
@@ -112,19 +116,48 @@ fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     for trx in block.transactions() {
         let mut transaction = pb::Transaction::create_transaction(trx);
         let root_create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0);
+        let is_debug_init_tx = trx.hash.as_slice() == DEBUG_INIT_TX_HASH;
         if trx.to.is_empty() {
             total_direct_deploy_candidates += 1;
         }
 
+        if is_debug_init_tx {
+            substreams::log::info!(
+                "curvefi debug tx={} input_len={} to_is_empty={} root_create_call={} root_create_input_len={} tx_input=0x{}",
+                Hex::encode(&trx.hash),
+                trx.input.len(),
+                trx.to.is_empty(),
+                root_create_call.is_some(),
+                root_create_call.map(|call| call.input.len()).unwrap_or_default(),
+                Hex::encode(&trx.input)
+            );
+        }
+
         // ── Direct pool deployment: decode constructor calldata ───────────────
         if let Some((init, create_call)) = try_extract_pool_init(trx) {
+            if is_debug_init_tx {
+                substreams::log::info!(
+                    "curvefi debug init matched tx={} address=0x{} owner=0x{} pool_token=0x{} coins=[0x{},0x{},0x{}] a={} fee={} admin_fee={} begin_ordinal={}",
+                    Hex::encode(&trx.hash),
+                    Hex::encode(&init.address),
+                    Hex::encode(&init.owner),
+                    Hex::encode(&init.pool_token),
+                    init.coins.get(0).map(Hex::encode).unwrap_or_default(),
+                    init.coins.get(1).map(Hex::encode).unwrap_or_default(),
+                    init.coins.get(2).map(Hex::encode).unwrap_or_default(),
+                    init.a,
+                    init.fee,
+                    init.admin_fee,
+                    create_call.begin_ordinal,
+                );
+            }
             total_pool_init += 1;
             let init_address = init.address.clone();
             let log_entry = pb::Log::create_synthetic_log_with_call(&init_address, create_call.begin_ordinal, 0, pb::log::Log::Init(init), Some(create_call));
             transaction.logs.push(log_entry);
-        } else if trx.to.is_empty() {
+        } else if is_debug_init_tx {
             substreams::log::info!(
-                "curvefi direct deploy candidate tx={} input_len={} root_create_call={} root_create_input_len={} tx_input=0x{}",
+                "curvefi debug init did not match tx={} input_len={} root_create_call={} root_create_input_len={} tx_input=0x{}",
                 Hex::encode(&trx.hash),
                 trx.input.len(),
                 root_create_call.is_some(),
