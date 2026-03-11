@@ -1,7 +1,7 @@
-use common::create::{CreateCall, CreateLog, CreateSyntheticLog};
+use common::create::{CreateCall, CreateLog, CreateSyntheticLog, CreateTransaction};
 use proto::pb::erc20::transfers::v1 as pb;
 use proto::pb::native::transfers::v1 as native_pb;
-use substreams_ethereum::pb::eth::v2::{BigInt, Call, CallType, Log};
+use substreams_ethereum::pb::eth::v2::{BigInt, Call, CallType, Log, TransactionReceipt, TransactionTrace};
 
 fn sample_call() -> Call {
     Call {
@@ -16,6 +16,23 @@ fn sample_call() -> Call {
         gas_consumed: 77,
         begin_ordinal: 100,
         end_ordinal: 200,
+        input: vec![0xde, 0xad, 0xbe, 0xef],
+        ..Default::default()
+    }
+}
+
+fn sample_transaction() -> TransactionTrace {
+    TransactionTrace {
+        to: vec![0x77; 20],
+        nonce: 9,
+        gas_price: Some(BigInt { bytes: vec![0x64] }),
+        gas_limit: 500,
+        value: Some(BigInt { bytes: vec![0x2a] }),
+        input: vec![0xca, 0xfe],
+        gas_used: 321,
+        hash: vec![0x88; 32],
+        from: vec![0x99; 20],
+        receipt: Some(TransactionReceipt::default()),
         ..Default::default()
     }
 }
@@ -36,6 +53,7 @@ fn create_call_maps_rich_call_metadata() {
     assert_eq!(created.gas_limit, 99);
     assert_eq!(created.gas_consumed, 77);
     assert_eq!(created.call_type, CallType::Delegate as i32);
+    assert_eq!(created.input, vec![0xde, 0xad, 0xbe, 0xef]);
 }
 
 #[test]
@@ -49,6 +67,23 @@ fn create_call_maps_native_transfers_call_metadata() {
     assert_eq!(created.parent_index, 3);
     assert_eq!(created.value, "42");
     assert_eq!(created.call_type, native_pb::CallType::Create as i32);
+    assert_eq!(created.input, vec![0xde, 0xad, 0xbe, 0xef]);
+}
+
+#[test]
+fn create_transaction_maps_transaction_input() {
+    let trx = sample_transaction();
+
+    let created = pb::Transaction::create_transaction(&trx);
+
+    assert_eq!(created.hash, vec![0x88; 32]);
+    assert_eq!(created.from, vec![0x99; 20]);
+    assert_eq!(created.to, Some(vec![0x77; 20]));
+    assert_eq!(created.input, vec![0xca, 0xfe]);
+    assert_eq!(created.nonce, 9);
+    assert_eq!(created.gas_price, "100");
+    assert_eq!(created.gas_limit, 500);
+    assert_eq!(created.value, "42");
 }
 
 #[test]
@@ -84,6 +119,7 @@ fn create_log_with_call_maps_native_positions_and_rich_call_metadata() {
     assert_eq!(created_call.gas_limit, 99);
     assert_eq!(created_call.gas_consumed, 77);
     assert_eq!(created_call.call_type, CallType::Delegate as i32);
+    assert_eq!(created_call.input, vec![0xde, 0xad, 0xbe, 0xef]);
 }
 
 #[test]
@@ -106,4 +142,5 @@ fn create_synthetic_log_with_call_uses_empty_log_fields_and_call_metadata() {
     let created_call = created.call.expect("call metadata should be populated");
     assert_eq!(created_call.index, 7);
     assert_eq!(created_call.value, "42");
+    assert_eq!(created_call.input, vec![0xde, 0xad, 0xbe, 0xef]);
 }

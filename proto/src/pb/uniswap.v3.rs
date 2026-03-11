@@ -15,6 +15,8 @@ pub struct Transaction {
     pub from: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", optional, tag="3")]
     pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes="vec", tag="4")]
+    pub input: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, tag="5")]
     pub nonce: u64,
     /// uint256
@@ -115,6 +117,8 @@ pub struct Call {
     pub parent_index: u32,
     #[prost(enumeration="CallType", tag="11")]
     pub call_type: i32,
+    #[prost(bytes="vec", tag="12")]
+    pub input: ::prost::alloc::vec::Vec<u8>,
 }
 // *
 // In Uniswap v3, the `PoolCreated` event is emitted when a new liquidity pool

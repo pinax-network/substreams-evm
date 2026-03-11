@@ -158,6 +158,7 @@ message Call {
   uint32 index = 2;
   uint32 depth = 3;
   CallType call_type = 4;
+  bytes input = 5;
 }
 ```
 
@@ -172,6 +173,7 @@ message Transaction {
   bytes hash = 1;
   bytes from = 2;
   optional bytes to = 3;
+  bytes input = 4;
   uint64 nonce = 5;
   string gas_price = 6;
   uint64 gas_limit = 7;
