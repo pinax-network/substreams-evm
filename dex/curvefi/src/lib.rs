@@ -5,6 +5,8 @@ use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
+/// StableSwap constructor args are 8 ABI words:
+/// owner + 3 coins + pool_token + A + fee + admin_fee.
 const STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE: usize = 8 * 32;
 
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
@@ -33,20 +35,29 @@ fn try_extract_pool_init<'a>(trx: &'a TransactionTrace) -> Option<(pb::Init, &'a
     let create_call = trx.calls.iter().find(|c| c.call_type == CallType::Create as i32 && c.depth == 0)?;
 
     let address = create_call.address.to_vec();
-    let constructor_input = create_call
-        .input
-        .get(create_call.input.len().checked_sub(STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE)?..)?;
+    let constructor_offset = create_call.input.len().checked_sub(STABLE_SWAP_CONSTRUCTOR_INPUT_SIZE)?;
+    // Vyper appends the ABI-encoded constructor args to the end of the creation input.
+    // The generated decoder below validates that the extracted tail matches StableSwap.
+    let constructor_input = create_call.input.get(constructor_offset..)?;
     let constructor = curvefi::stableswap::constructor::Constructor::decode(constructor_input).ok()?;
+    let curvefi::stableswap::constructor::Constructor {
+        owner,
+        coins,
+        pool_token,
+        a,
+        fee,
+        admin_fee,
+    } = constructor;
 
     Some((
         pb::Init {
             address,
-            owner: constructor.owner,
-            coins: constructor.coins.to_vec(),
-            pool_token: constructor.pool_token,
-            a: constructor.a.to_string(),
-            fee: constructor.fee.to_string(),
-            admin_fee: constructor.admin_fee.to_string(),
+            owner,
+            coins: coins.into_iter().collect(),
+            pool_token,
+            a: a.to_string(),
+            fee: fee.to_string(),
+            admin_fee: admin_fee.to_string(),
         },
         create_call,
     ))
