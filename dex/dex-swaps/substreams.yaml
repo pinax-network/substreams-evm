@@ -1,0 +1,87 @@
+specVersion: v0.1.0
+package:
+  name: dex_swaps
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Unified normalized DEX swap events across all supported protocols
+  image: ../../image.png
+
+imports:
+  # Tron DEX
+  sunpump: ../../spkg/sunpump-v0.5.0.spkg
+
+  # Ethereum DEX
+  balancer: ../../spkg/balancer-v0.5.0.spkg
+  bancor: ../../spkg/bancor-v0.5.0.spkg
+  cow: ../../spkg/cow-v0.5.0.spkg
+  curvefi: ../../spkg/curvefi-v0.5.0.spkg
+
+  # New DEX
+  aerodrome: ../../spkg/aerodrome-v0.5.0.spkg
+  dodo: ../../spkg/dodo-v0.5.0.spkg
+  woofi: ../../spkg/woofi-v0.5.0.spkg
+  traderjoe: ../../spkg/traderjoe-v0.5.0.spkg
+  kyber_elastic: ../../spkg/kyber-elastic-v0.5.0.spkg
+
+  # Uniswap DEX
+  uniswap_v1: ../../spkg/uniswap-v1-v0.5.0.spkg
+  uniswap_v2: ../../spkg/uniswap-v2-v0.5.0.spkg
+  uniswap_v3: ../../spkg/uniswap-v3-v0.5.0.spkg
+  uniswap_v4: ../../spkg/uniswap-v4-v0.5.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/dex_swaps.wasm
+
+protobuf:
+  files:
+    - dex/dex.proto
+  importPaths:
+    - ../../proto/v1
+  excludePaths:
+    - sf/substreams
+    - google
+
+modules:
+  # Aggregates and normalizes swap events from all supported DEX protocols
+  # into a unified DexSwaps output with directional input/output pairs.
+  # Flash/complex swaps that cannot be normalized are emitted as DexSwapFlash.
+  - name: map_dex_swaps
+    kind: map
+    inputs:
+      # Tron DEX
+      - map: sunpump:map_events
+      - store: sunpump:store_pool
+
+      # Ethereum DEX
+      - map: balancer:map_events
+      - map: bancor:map_events
+      - store: bancor:store_pool
+      - map: cow:map_events
+      - map: curvefi:map_events
+      - store: curvefi:store_pool
+
+      # New DEX
+      - map: aerodrome:map_events
+      - store: aerodrome:store_pool
+      - map: dodo:map_events
+      - map: woofi:map_events
+      - map: traderjoe:map_events
+      - store: traderjoe:store_pool
+      - map: kyber_elastic:map_events
+      - store: kyber_elastic:store_pool
+
+      # Uniswap DEX
+      - map: uniswap_v1:map_events
+      - store: uniswap_v1:store_pool
+      - map: uniswap_v2:map_events
+      - store: uniswap_v2:store_pool
+      - map: uniswap_v3:map_events
+      - store: uniswap_v3:store_pool
+      - map: uniswap_v4:map_events
+      - store: uniswap_v4:store_pool
+    output:
+      type: proto:dex.v1.DexSwaps
+
+network: mainnet

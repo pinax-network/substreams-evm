@@ -300,6 +300,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "dex-pools"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-ethereum",
+]
+
+[[package]]
+name = "dex-swaps"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "prost 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"

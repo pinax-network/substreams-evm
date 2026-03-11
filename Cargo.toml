@@ -19,6 +19,10 @@ members = [
   # Tron DEX
   "dex/sunpump",
 
+  # DEX aggregators
+  "dex/dex-pools",
+  "dex/dex-swaps",
+
   # Ethereum DEX
   "dex/aerodrome",
   "dex/balancer",

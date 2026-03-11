@@ -1,0 +1,83 @@
+specVersion: v0.1.0
+package:
+  name: dex_pools
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Unified DEX pool initialization events across all supported protocols
+  image: ../../image.png
+
+imports:
+  # Tron DEX
+  sunpump: ../../spkg/sunpump-v0.5.0.spkg
+
+  # Ethereum DEX
+  balancer: ../../spkg/balancer-v0.5.0.spkg
+  bancor: ../../spkg/bancor-v0.5.0.spkg
+  cow: ../../spkg/cow-v0.5.0.spkg
+  curvefi: ../../spkg/curvefi-v0.5.0.spkg
+
+  # New DEX
+  aerodrome: ../../spkg/aerodrome-v0.5.0.spkg
+  dodo: ../../spkg/dodo-v0.5.0.spkg
+  woofi: ../../spkg/woofi-v0.5.0.spkg
+  traderjoe: ../../spkg/traderjoe-v0.5.0.spkg
+  kyber_elastic: ../../spkg/kyber-elastic-v0.5.0.spkg
+
+  # Uniswap DEX
+  uniswap_v1: ../../spkg/uniswap-v1-v0.5.0.spkg
+  uniswap_v2: ../../spkg/uniswap-v2-v0.5.0.spkg
+  uniswap_v3: ../../spkg/uniswap-v3-v0.5.0.spkg
+  uniswap_v4: ../../spkg/uniswap-v4-v0.5.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/dex_pools.wasm
+
+protobuf:
+  files:
+    - dex/dex.proto
+  importPaths:
+    - ../../proto/v1
+  excludePaths:
+    - sf/substreams
+    - google
+
+modules:
+  # Aggregates pool creation events from all supported DEX protocols
+  - name: map_dex_pools
+    kind: map
+    inputs:
+      # Tron DEX
+      - map: sunpump:map_events
+
+      # Ethereum DEX
+      - map: balancer:map_events
+      - map: bancor:map_events
+      - map: cow:map_events
+      - map: curvefi:map_events
+
+      # New DEX
+      - map: aerodrome:map_events
+      - map: dodo:map_events
+      - map: woofi:map_events
+      - map: traderjoe:map_events
+      - map: kyber_elastic:map_events
+
+      # Uniswap DEX
+      - map: uniswap_v1:map_events
+      - map: uniswap_v2:map_events
+      - map: uniswap_v3:map_events
+      - map: uniswap_v4:map_events
+    output:
+      type: proto:dex.v1.DexPools
+
+  # Stores pool state keyed by pool address for downstream swap lookups
+  - name: store_dex_pools
+    kind: store
+    updatePolicy: set
+    valueType: proto:dex.v1.DexPool
+    inputs:
+      - map: map_dex_pools
+
+network: mainnet

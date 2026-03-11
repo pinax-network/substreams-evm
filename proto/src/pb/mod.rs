@@ -1,4 +1,11 @@
 // @generated
+pub mod dex {
+    // @@protoc_insertion_point(attribute:dex.v1)
+    pub mod v1 {
+        include!("dex.v1.rs");
+        // @@protoc_insertion_point(dex.v1)
+    }
+}
 pub mod aerodrome {
     // @@protoc_insertion_point(attribute:aerodrome.v1)
     pub mod v1 {
