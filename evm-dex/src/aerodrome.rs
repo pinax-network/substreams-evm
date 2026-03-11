@@ -1,14 +1,10 @@
+use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::aerodrome::v1::{self as aerodrome, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
 use substreams_database_change::tables::Tables;
 
-use crate::{
-    logs::{log_key, set_template_log},
-    set_clock,
-    store::get_store_by_address,
-    transactions::set_template_tx,
-};
+use crate::store::get_store_by_address;
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &aerodrome::Events, store: &StoreGetProto<StorePool>) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {

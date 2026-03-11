@@ -1,48 +1,19 @@
-use common::clickhouse::{common_key, set_log, CallMetadata};
+use common::clickhouse::{common_key, set_clock, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::erc721::transfers::v1 as pb;
 use substreams::pb::substreams::Clock;
 
 use crate::enums::{TokenStandard, TransferType};
 
-fn call_type_name(value: i32) -> &'static str {
-    match pb::CallType::try_from(value) {
-        Ok(call_type) => call_type.as_str_name(),
-        Err(_) => {
-            substreams::log::debug!("unexpected erc721 call_type value: {}", value);
-            pb::CallType::Unspecified.as_str_name()
-        }
-    }
-}
-
 pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, clock: &Clock, events: &pb::Events, encoding: &Encoding) {
-    let mut index = 0;
+    let mut row_index = 0;
 
-    for tx in &events.transactions {
-        let tx_hash = tx.hash.clone();
-
-        for log in &tx.logs {
-            let contract = log.address.clone();
-            let ordinal = log.ordinal;
-            let block_index = Some(log.block_index);
-            let call = log.call.as_ref().map(|call| CallMetadata {
-                caller: Some(call.caller.as_slice()),
-                index: Some(call.index),
-                begin_ordinal: Some(call.begin_ordinal),
-                end_ordinal: Some(call.end_ordinal),
-                address: Some(call.address.as_slice()),
-                value: Some(call.value.as_str()),
-                gas_consumed: Some(call.gas_consumed),
-                gas_limit: Some(call.gas_limit),
-                depth: Some(call.depth),
-                parent_index: Some(call.parent_index),
-                call_type: Some(call_type_name(call.call_type)),
-            });
-
+    for (tx_index, tx) in events.transactions.iter().enumerate() {
+        for (log_index, log) in tx.logs.iter().enumerate() {
             match log.log {
                 Some(ref event) if matches!(event, pb::log::Log::Transfer(_)) => {
                     let pb::log::Log::Transfer(event) = event else { unreachable!() };
-                    let key = common_key(clock, index);
+                    let key = common_key(clock, row_index);
                     let row = tables
                         .create_row("erc721_transfers", key)
                         .set("token_id", &event.token_id)
@@ -53,24 +24,28 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
                         .set("transfer_type", TransferType::Single.to_string())
                         .set("token_standard", TokenStandard::ERC721.to_string());
 
-                    set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
-                    index += 1;
+                    set_clock(clock, row);
+                    set_template_tx(encoding, tx, tx_index, row);
+                    set_template_log(encoding, log, log_index, row);
+                    row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::Approval(_)) => {
                     let pb::log::Log::Approval(event) = event else { unreachable!() };
-                    let key = common_key(clock, index);
+                    let key = common_key(clock, row_index);
                     let row = tables
                         .create_row("erc721_approvals", key)
                         .set("owner", bytes_to_string(&event.owner, encoding))
                         .set("approved", bytes_to_string(&event.approved, encoding))
                         .set("token_id", &event.token_id);
 
-                    set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
-                    index += 1;
+                    set_clock(clock, row);
+                    set_template_tx(encoding, tx, tx_index, row);
+                    set_template_log(encoding, log, log_index, row);
+                    row_index += 1;
                 }
                 Some(ref event) if matches!(event, pb::log::Log::ApprovalForAll(_)) => {
                     let pb::log::Log::ApprovalForAll(event) = event else { unreachable!() };
-                    let key = common_key(clock, index);
+                    let key = common_key(clock, row_index);
                     let row = tables
                         .create_row("erc721_approvals_for_all", key)
                         .set("owner", bytes_to_string(&event.owner, encoding))
@@ -78,8 +53,10 @@ pub fn process_erc721(tables: &mut substreams_database_change::tables::Tables, c
                         .set("approved", &event.approved.to_string())
                         .set("token_standard", TokenStandard::ERC721.to_string());
 
-                    set_log(clock, index, tx_hash.clone(), contract, ordinal, block_index, call, encoding, row);
-                    index += 1;
+                    set_clock(clock, row);
+                    set_template_tx(encoding, tx, tx_index, row);
+                    set_template_log(encoding, log, log_index, row);
+                    row_index += 1;
                 }
                 Some(_) => {}
                 None => {}

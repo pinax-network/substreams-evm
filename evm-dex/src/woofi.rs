@@ -1,13 +1,9 @@
+use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::woofi::v1 as woofi;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::{
-    logs::{log_key, set_template_log},
-    set_clock,
-    transactions::set_template_tx,
-};
 
 pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &woofi::Events) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
