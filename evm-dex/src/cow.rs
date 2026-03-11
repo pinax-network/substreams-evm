@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::cow::v1::{self as cow};
 use substreams::pb::substreams::Clock;
@@ -43,6 +43,7 @@ fn process_trade(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
     row.set("sell_token", bytes_to_string(&event.sell_token, encoding));
@@ -69,6 +70,7 @@ fn process_settlement(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("solver", bytes_to_string(&event.solver, encoding));
 }
@@ -89,6 +91,7 @@ fn process_order_invalidated(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
     row.set("order_uid", bytes_to_string(&event.order_uid, encoding));
@@ -110,6 +113,7 @@ fn process_pre_signature(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("owner", bytes_to_string(&event.owner, encoding));
     row.set("order_uid", bytes_to_string(&event.order_uid, encoding));

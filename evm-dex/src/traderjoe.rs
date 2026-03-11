@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::traderjoe::v1::{self as traderjoe, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -45,6 +45,7 @@ fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("to", bytes_to_string(&event.to, encoding));
@@ -68,6 +69,7 @@ fn process_deposited(encoding: &Encoding, store: &StoreGetProto<StorePool>, tabl
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("to", bytes_to_string(&event.to, encoding));
@@ -81,6 +83,7 @@ fn process_withdrawn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tabl
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("to", bytes_to_string(&event.to, encoding));
@@ -94,6 +97,7 @@ fn process_composition_fees(encoding: &Encoding, store: &StoreGetProto<StorePool
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("id", event.id);
@@ -110,6 +114,7 @@ fn process_lb_pair_created(encoding: &Encoding, tables: &mut Tables, clock: &Clo
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
     row.set("token_x", bytes_to_string(&event.token_x, encoding));
     row.set("token_y", bytes_to_string(&event.token_y, encoding));
     row.set("bin_step", event.bin_step);

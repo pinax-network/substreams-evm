@@ -57,7 +57,7 @@ pub fn set_template_tx(encoding: &Encoding, tx: &impl TxTemplate, tx_index: usiz
         .set("tx_value", tx.get_value());
 }
 
-pub fn set_template_log(encoding: &Encoding, log: &(impl LogAddress + CallInfo), log_index: usize, row: &mut Row) {
+pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut Row) {
     row.set("log_index", log_index as u32)
         .set("log_block_index", log.get_block_index())
         .set("log_address", bytes_to_string(log.get_address(), encoding))
@@ -66,18 +66,21 @@ pub fn set_template_log(encoding: &Encoding, log: &(impl LogAddress + CallInfo),
             let topics: Vec<String> = log.get_topics().iter().map(|topic| bytes_to_hex(topic)).collect();
             topics.join(",")
         })
-        .set("log_data", bytes_to_hex(log.get_data()))
-        .set("call_caller", bytes_to_string(log.get_call_caller(), encoding))
-        .set("call_index", log.get_call_index())
-        .set("call_begin_ordinal", log.get_call_begin_ordinal())
-        .set("call_end_ordinal", log.get_call_end_ordinal())
-        .set("call_address", bytes_to_string(log.get_call_address(), encoding))
-        .set("call_value", log.get_call_value())
-        .set("call_gas_consumed", log.get_call_gas_consumed())
-        .set("call_gas_limit", log.get_call_gas_limit())
-        .set("call_depth", log.get_call_depth())
-        .set("call_parent_index", log.get_call_parent_index())
-        .set("call_type", log.get_call_type());
+        .set("log_data", bytes_to_hex(log.get_data()));
+}
+
+pub fn set_template_call(encoding: &Encoding, call: &impl CallInfo, row: &mut Row) {
+    row.set("call_caller", bytes_to_string(call.get_call_caller(), encoding))
+        .set("call_index", call.get_call_index())
+        .set("call_begin_ordinal", call.get_call_begin_ordinal())
+        .set("call_end_ordinal", call.get_call_end_ordinal())
+        .set("call_address", bytes_to_string(call.get_call_address(), encoding))
+        .set("call_value", call.get_call_value())
+        .set("call_gas_consumed", call.get_call_gas_consumed())
+        .set("call_gas_limit", call.get_call_gas_limit())
+        .set("call_depth", call.get_call_depth())
+        .set("call_parent_index", call.get_call_parent_index())
+        .set("call_type", call.get_call_type());
 }
 
 pub fn set_ordering(index: u64, ordinal: Option<u64>, block_index: Option<u32>, row: &mut Row) {
@@ -278,3 +281,68 @@ impl_log_traits!(dodo::v1::Log, dodo::v1::CallType);
 impl_log_traits!(woofi::v1::Log, woofi::v1::CallType);
 impl_log_traits!(traderjoe::v1::Log, traderjoe::v1::CallType);
 impl_log_traits!(kyber_elastic::v1::Log, kyber_elastic::v1::CallType);
+
+#[cfg(test)]
+mod tests {
+    use super::{CallInfo, LogAddress, set_template_call, set_template_log};
+    use crate::Encoding;
+    use substreams_database_change::tables::Row;
+
+    struct TestLog;
+
+    impl LogAddress for TestLog {
+        fn get_address(&self) -> &Vec<u8> { static ADDRESS: Vec<u8> = Vec::new(); &ADDRESS }
+        fn get_block_index(&self) -> u32 { 7 }
+        fn get_ordinal(&self) -> u64 { 11 }
+        fn get_topics(&self) -> &Vec<Vec<u8>> { static TOPICS: Vec<Vec<u8>> = Vec::new(); &TOPICS }
+        fn get_data(&self) -> &Vec<u8> { static DATA: Vec<u8> = Vec::new(); &DATA }
+    }
+
+    impl CallInfo for TestLog {
+        fn get_call_caller(&self) -> &[u8] { &[0x11] }
+        fn get_call_index(&self) -> u32 { 2 }
+        fn get_call_begin_ordinal(&self) -> u64 { 3 }
+        fn get_call_end_ordinal(&self) -> u64 { 4 }
+        fn get_call_address(&self) -> &[u8] { &[0x22] }
+        fn get_call_value(&self) -> &str { "5" }
+        fn get_call_gas_consumed(&self) -> u64 { 6 }
+        fn get_call_gas_limit(&self) -> u64 { 7 }
+        fn get_call_depth(&self) -> u32 { 8 }
+        fn get_call_parent_index(&self) -> u32 { 9 }
+        fn get_call_type(&self) -> &str { "CALL" }
+    }
+
+    #[test]
+    #[allow(deprecated)]
+    fn set_template_log_only_sets_log_fields() {
+        let mut row = Row::new();
+
+        set_template_log(&Encoding::Hex, &TestLog, 1, &mut row);
+
+        assert_eq!(row.columns.get("log_index"), Some(&"1".to_string()));
+        assert_eq!(row.columns.get("log_block_index"), Some(&"7".to_string()));
+        assert_eq!(row.columns.get("log_ordinal"), Some(&"11".to_string()));
+        assert!(!row.columns.contains_key("call_index"));
+        assert!(!row.columns.contains_key("call_type"));
+    }
+
+    #[test]
+    #[allow(deprecated)]
+    fn set_template_call_only_sets_call_fields() {
+        let mut row = Row::new();
+
+        set_template_call(&Encoding::Hex, &TestLog, &mut row);
+
+        assert_eq!(row.columns.get("call_index"), Some(&"2".to_string()));
+        assert_eq!(row.columns.get("call_begin_ordinal"), Some(&"3".to_string()));
+        assert_eq!(row.columns.get("call_end_ordinal"), Some(&"4".to_string()));
+        assert_eq!(row.columns.get("call_value"), Some(&"5".to_string()));
+        assert_eq!(row.columns.get("call_gas_consumed"), Some(&"6".to_string()));
+        assert_eq!(row.columns.get("call_gas_limit"), Some(&"7".to_string()));
+        assert_eq!(row.columns.get("call_depth"), Some(&"8".to_string()));
+        assert_eq!(row.columns.get("call_parent_index"), Some(&"9".to_string()));
+        assert_eq!(row.columns.get("call_type"), Some(&"CALL".to_string()));
+        assert!(!row.columns.contains_key("log_index"));
+        assert!(!row.columns.contains_key("log_data"));
+    }
+}

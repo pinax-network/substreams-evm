@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::kyber_elastic::v1::{self as kyber, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -43,6 +43,7 @@ fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("recipient", bytes_to_string(&event.recipient, encoding));
@@ -61,6 +62,7 @@ fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("sender", bytes_to_string(&event.sender, encoding));
         row.set("owner", bytes_to_string(&event.owner, encoding));
@@ -79,6 +81,7 @@ fn process_burn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
         row.set("owner", bytes_to_string(&event.owner, encoding));
         row.set("tick_lower", event.tick_lower);
@@ -95,6 +98,7 @@ fn process_pool_created(encoding: &Encoding, tables: &mut Tables, clock: &Clock,
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
     row.set("token0", bytes_to_string(&event.token0, encoding));
     row.set("token1", bytes_to_string(&event.token1, encoding));
     row.set("swap_fee_units", event.swap_fee_units);

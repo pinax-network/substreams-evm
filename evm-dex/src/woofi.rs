@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::woofi::v1 as woofi;
 use substreams::pb::substreams::Clock;
@@ -14,6 +14,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 set_clock(clock, row);
                 set_template_tx(encoding, tx, tx_index, row);
                 set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
                 row.set("from_token", bytes_to_string(&event.from_token, encoding));
                 row.set("to_token", bytes_to_string(&event.to_token, encoding));
                 row.set("from_amount", &event.from_amount);

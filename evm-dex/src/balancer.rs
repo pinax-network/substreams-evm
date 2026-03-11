@@ -1,4 +1,4 @@
-use common::clickhouse::{log_key, set_clock, set_template_log, set_template_tx};
+use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::balancer::v1::{self as balancer, StorePool};
 use substreams::{pb::substreams::Clock, store::StoreGetProto};
@@ -59,6 +59,7 @@ fn process_vault_swap(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
@@ -89,6 +90,7 @@ fn process_liquidity_added(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
@@ -118,6 +120,7 @@ fn process_liquidity_removed(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
@@ -145,6 +148,7 @@ fn process_pool_registered(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("pool", bytes_to_string(&event.pool, encoding));
 
@@ -222,6 +226,7 @@ fn process_swap_fee_percentage(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool, row);
 
         row.set("swap_fee_percentage", &event.swap_fee_percentage);
@@ -244,6 +249,7 @@ fn process_protocol_fee_percentage(
     set_clock(clock, row);
     set_template_tx(encoding, tx, tx_index, row);
     set_template_log(encoding, log, log_index, row);
+    set_template_call(encoding, log, row);
 
     row.set("fee_type", &event.fee_type);
     row.set("protocol_fee_percentage", &event.protocol_fee_percentage);
@@ -267,6 +273,7 @@ fn process_aggregate_swap_fee_percentage(
         set_clock(clock, row);
         set_template_tx(encoding, tx, tx_index, row);
         set_template_log(encoding, log, log_index, row);
+        set_template_call(encoding, log, row);
         set_pool(encoding, pool_data, row);
 
         row.set("pool", bytes_to_string(&event.pool, encoding));
