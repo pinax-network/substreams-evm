@@ -42,10 +42,9 @@ CurveFi Vyper `__init__` constructors do not emit standard EVM events. Instead, 
 - ✅ Direct pool deployments (e.g., 3Pool at `0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7`)
 - ✅ Factory-deployed pools are already captured via `PlainPoolDeployed` / `MetaPoolDeployed` events
 
-## Store
+## Foundational Pool Metadata
 
-The module includes `store.rs` which provides store handlers for tracking:
-- Pool information (pool address, coins) — populated from `Init`, `PlainPoolDeployed`, `MetaPoolDeployed`, and `CryptoPoolDeployed` events
+Pool metadata for foundational consumers is derived from `Init`, `PlainPoolDeployed`, `MetaPoolDeployed`, and `CryptoPoolDeployed` events, exposing pool tokens plus factory when available.
 
 ## Building
 

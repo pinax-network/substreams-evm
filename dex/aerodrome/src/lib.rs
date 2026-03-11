@@ -1,4 +1,3 @@
-mod store;
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::aerodrome::v1 as pb;
 use substreams_abis::dex::aerodrome;

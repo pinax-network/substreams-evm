@@ -7,17 +7,17 @@ package:
   image: ../image.png
 
 imports:
-  sunpump: ../spkg/sunpump-v0.5.0.spkg
-  balancer: ../spkg/balancer-v0.5.0.spkg
-  bancor: ../spkg/bancor-v0.5.0.spkg
-  curvefi: ../spkg/curvefi-v0.5.0.spkg
-  aerodrome: ../spkg/aerodrome-v0.5.0.spkg
-  traderjoe: ../spkg/traderjoe-v0.5.0.spkg
-  kyber_elastic: ../spkg/kyber-elastic-v0.5.0.spkg
-  uniswap_v1: ../spkg/uniswap-v1-v0.5.0.spkg
-  uniswap_v2: ../spkg/uniswap-v2-v0.5.0.spkg
-  uniswap_v3: ../spkg/uniswap-v3-v0.5.0.spkg
-  uniswap_v4: ../spkg/uniswap-v4-v0.5.0.spkg
+  sunpump: ../spkg/sunpump-v0.6.0.spkg
+  balancer: ../spkg/balancer-v0.6.0.spkg
+  bancor: ../spkg/bancor-v0.6.0.spkg
+  curvefi: ../spkg/curvefi-v0.6.0.spkg
+  aerodrome: ../spkg/aerodrome-v0.6.0.spkg
+  traderjoe: ../spkg/traderjoe-v0.6.0.spkg
+  kyber_elastic: ../spkg/kyber-elastic-v0.6.0.spkg
+  uniswap_v1: ../spkg/uniswap-v1-v0.6.0.spkg
+  uniswap_v2: ../spkg/uniswap-v2-v0.6.0.spkg
+  uniswap_v3: ../spkg/uniswap-v3-v0.6.0.spkg
+  uniswap_v4: ../spkg/uniswap-v4-v0.6.0.spkg
 
 binaries:
   default:

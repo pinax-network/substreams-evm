@@ -2,7 +2,7 @@
 name = "db-evm-dex"
 description = { workspace = true }
 edition = { workspace = true }
-version = { workspace = true }
+version = "0.6.0"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

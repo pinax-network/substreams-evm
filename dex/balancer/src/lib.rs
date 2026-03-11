@@ -4,8 +4,6 @@ use substreams_abis::dex::balancer;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
-pub mod store;
-
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {
     let mut events = pb::Events::default();

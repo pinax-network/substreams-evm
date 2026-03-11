@@ -10,7 +10,7 @@ Substreams module for [Trader Joe V2](https://traderjoexyz.com) Liquidity Book D
 | `DepositedToBins` | LBPair | Liquidity added across bin IDs |
 | `WithdrawnFromBins` | LBPair | Liquidity removed from bin IDs |
 | `CompositionFees` | LBPair | Fee composition per bin |
-| `LbPairCreated` | LBFactory | New pool created (tracked via `store_pool`) |
+| `LbPairCreated` | LBFactory | New pool created |
 
 ## Packed `bytes32` → Decoded `uint128` Fields
 
@@ -101,7 +101,7 @@ When implementing Trader Joe in the DEX database:
 - Determine swap direction by checking which `amount_in_x`/`amount_in_y` is non-zero
 - The non-zero input side tells you which token was sold; the non-zero output side tells you which was bought
 - `id` is the active bin — can be used to derive the price (bin price = `(1 + binStep/10000) ^ (id - 8388608)`)
-- `tokenX`/`tokenY` addresses come from `LbPairCreated` events (or the `store_pool`)
+- `tokenX`/`tokenY` addresses come from `LbPairCreated` events
 
 ### ⚠️ Flash Loan Swaps
 

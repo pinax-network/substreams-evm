@@ -37,24 +37,6 @@ pub fn map_pool_foundational_entries(
     Ok(SinkEntries { entries, if_not_exist: true })
 }
 
-fn push_pool(entries: &mut Vec<Entry>, pool: &[u8], tokens: Vec<Vec<u8>>, factory: Vec<u8>) {
-    if pool.is_empty() {
-        return;
-    }
-
-    let pool = foundational::Pool { tokens, factory };
-    let value = Any::from_msg(&pool).expect("foundational pool should encode");
-
-    entries.push(Entry {
-        key: Some(Key { bytes: pool_key(pool.as_ref()) }),
-        value: Some(value),
-    });
-}
-
-fn pool_key(pool: &foundational::Pool) -> Vec<u8> {
-    pool.tokens.first().cloned().unwrap_or_default()
-}
-
 fn push_pool_entry(entries: &mut Vec<Entry>, pool: &[u8], tokens: Vec<Vec<u8>>, factory: Vec<u8>) {
     if pool.is_empty() {
         return;
@@ -84,7 +66,7 @@ fn collect_aerodrome(entries: &mut Vec<Entry>, events: &aerodrome::Events) {
                 push_pool_entry(
                     entries,
                     &pool_created.pool,
-                    vec![pool_created.currency0.clone(), pool_created.currency1.clone()],
+                    vec![pool_created.token0.clone(), pool_created.token1.clone()],
                     log.address.clone(),
                 );
             }
@@ -147,7 +129,7 @@ fn collect_kyber_elastic(entries: &mut Vec<Entry>, events: &kyber_elastic::Event
                 push_pool_entry(
                     entries,
                     &pool_created.pool,
-                    vec![pool_created.currency0.clone(), pool_created.currency1.clone()],
+                    vec![pool_created.token0.clone(), pool_created.token1.clone()],
                     log.address.clone(),
                 );
             }
@@ -190,7 +172,7 @@ fn collect_uniswap_v1(entries: &mut Vec<Entry>, events: &uniswap::v1::Events) {
     for trx in &events.transactions {
         for log in &trx.logs {
             if let Some(uniswap::v1::log::Log::NewExchange(new_exchange)) = &log.log {
-                push_pool_entry(entries, &new_exchange.exchange, vec![new_exchange.currency0.clone()], log.address.clone());
+                push_pool_entry(entries, &new_exchange.exchange, vec![new_exchange.token.clone()], log.address.clone());
             }
         }
     }
@@ -218,7 +200,7 @@ fn collect_uniswap_v3(entries: &mut Vec<Entry>, events: &uniswap::v3::Events) {
                 push_pool_entry(
                     entries,
                     &pool_created.pool,
-                    vec![pool_created.currency0.clone(), pool_created.currency1.clone()],
+                    vec![pool_created.token0.clone(), pool_created.token1.clone()],
                     log.address.clone(),
                 );
             }
