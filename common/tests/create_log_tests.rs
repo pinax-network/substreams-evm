@@ -69,7 +69,7 @@ fn create_call_maps_native_transfers_call_metadata() {
 }
 
 #[test]
-fn create_transaction_maps_transaction_metadata() {
+fn create_transaction_populates_metadata_fields() {
     let trx = sample_transaction();
 
     let created = pb::Transaction::create_transaction(&trx);

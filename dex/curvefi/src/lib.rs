@@ -5,6 +5,8 @@ use substreams_abis::dex::curvefi;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, TransactionTrace};
 use substreams_ethereum::Event;
 
+const STABLESWAP_CONSTRUCTOR_INPUT_LEN: usize = 32 * 8;
+
 fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
     for call in trx.calls.iter() {
         if call.call_type == CallType::Create as i32 {
@@ -17,16 +19,12 @@ fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
 fn try_decode_pool_init_constructor(
     input: &[u8],
 ) -> Option<curvefi::stableswap::constructor::Constructor> {
-    for start in 0..input.len() {
-        let suffix = &input[start..];
-        if let Ok(constructor) = curvefi::stableswap::constructor::Constructor::decode(suffix) {
-            if constructor.encode() == suffix {
-                return Some(constructor);
-            }
-        }
-    }
-
-    None
+    // Direct deployments prepend init bytecode and append the ABI-encoded StableSwap
+    // constructor args as a fixed-size tail (8 static slots). Decode only that tail
+    // and round-trip it to ensure we matched the constructor payload exactly.
+    let suffix = input.get(input.len().checked_sub(STABLESWAP_CONSTRUCTOR_INPUT_LEN)?..)?;
+    let constructor = curvefi::stableswap::constructor::Constructor::decode(suffix).ok()?;
+    (constructor.encode() == suffix).then_some(constructor)
 }
 
 /// Attempt to extract a CurveFi pool `Init` event from a direct (non-factory) deployment
