@@ -3,7 +3,7 @@ package:
   name: dex_foundational_store
   version: v0.6.0
   url: https://github.com/pinax-network/substreams-evm
-  description: Foundational pool metadata store for DEX modules
+  description: Foundational pool metadata store for DEX modules (tokens[] plus optional factory only)
   image: ../image.png
 
 imports:

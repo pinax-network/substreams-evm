@@ -6,6 +6,11 @@ use proto::pb::{
 };
 use substreams::pb::sf::substreams::foundational_store::model::v2::{Entry, Key, SinkEntries};
 
+// The foundational payload is intentionally restricted to shared pool metadata only:
+// tokens[] plus factory when available. Protocol-specific initialization fields like
+// Aerodrome `stable`, TraderJoe `bin_step`, and Kyber `swap_fee_units` /
+// `tick_distance` remain available on the original pool-creation events.
+
 #[substreams::handlers::map]
 pub fn map_pool_foundational_entries(
     events_sunpump: sunpump::Events,
@@ -105,6 +110,8 @@ fn collect_curvefi(entries: &mut Vec<Entry>, events: &curvefi::Events) {
         for log in &trx.logs {
             match &log.log {
                 Some(curvefi::log::Log::Init(init)) => {
+                    // CurveFi exposes pool constituents as `coins`; foundational consumers read them
+                    // through the shared `tokens[]` field in the normalized payload.
                     push_pool_entry(entries, &init.address, init.coins.clone(), vec![]);
                 }
                 Some(curvefi::log::Log::PlainPoolDeployed(event)) => {

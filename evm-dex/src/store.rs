@@ -24,6 +24,9 @@ pub fn get_pool_by_address(store: &FoundationalStore, address: &Vec<u8>) -> Opti
 }
 
 pub fn token(pool: &PoolMetadata, index: usize) -> &[u8] {
+    // Some protocols expose partial or single-token metadata at initialization time, so
+    // downstream normalization intentionally falls back to an empty byte slice when a token slot
+    // is unavailable in the foundational payload.
     pool.tokens.get(index).map(Vec::as_slice).unwrap_or_default()
 }
 

@@ -122,9 +122,9 @@ pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_d
     row.set("coins", tokens_csv(encoding, &value));
 }
 
-fn parse_coin(encoding: &Encoding, id: String, coins: &[Vec<u8>]) -> Option<String> {
+fn parse_coin(encoding: &Encoding, id: String, tokens: &[Vec<u8>]) -> Option<String> {
     if let Ok(index) = id.parse::<usize>() {
-        return coins.get(index).map(|c| bytes_to_string(c, encoding));
+        return tokens.get(index).map(|token| bytes_to_string(token, encoding));
     }
     None
 }

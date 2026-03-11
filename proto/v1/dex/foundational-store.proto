@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package dex.foundational_store.v1;
 
+// Shared foundational DEX pool metadata. Protocol-specific initialization fields remain
+// available on the original pool-creation events and are intentionally excluded here.
 message Pool {
   repeated bytes tokens = 1;
   bytes factory = 2;

@@ -38,6 +38,8 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 }
 
 pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+    // Foundational metadata intentionally omits the Aerodrome stable/volatile flag.
+    // Consumers that need it should read the original `PoolCreated` event row.
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("token0", bytes_to_string(token(&value, 0), encoding));
     row.set("token1", bytes_to_string(token(&value, 1), encoding));
