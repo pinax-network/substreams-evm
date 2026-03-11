@@ -592,8 +592,9 @@ mod tests {
     #[test]
     fn extracts_stableswap_init_from_create_input_tail() {
         let constructor = sample_stableswap_constructor();
+        let constructor_input = constructor.encode();
         let mut transaction_input = vec![0x60, 0x60, 0x60, 0x40, 0x52];
-        transaction_input.extend(constructor.encode());
+        transaction_input.extend(constructor_input.clone());
 
         let trx = TransactionTrace {
             input: transaction_input,
@@ -602,6 +603,7 @@ mod tests {
                 depth: 0,
                 address: vec![0xaa; 20],
                 begin_ordinal: 42,
+                input: vec![],
                 ..Default::default()
             }],
             ..Default::default()
@@ -609,6 +611,9 @@ mod tests {
 
         let (init, create_call) = try_extract_pool_init(&trx).expect("expected init event");
 
+        assert!(create_call.input.is_empty());
+        assert_eq!(trx.input[..5], [0x60, 0x60, 0x60, 0x40, 0x52]);
+        assert_eq!(trx.input[5..], constructor_input);
         assert_eq!(init.address, vec![0xaa; 20]);
         assert_eq!(init.owner, constructor.owner);
         assert_eq!(init.coins, constructor.coins.to_vec());
@@ -642,11 +647,13 @@ mod tests {
             calls: vec![Call {
                 call_type: CallType::Create as i32,
                 depth: 0,
+                input: vec![],
                 ..Default::default()
             }],
             ..Default::default()
         };
 
+        assert!(trx.calls[0].input.is_empty());
         assert!(try_extract_pool_init(&trx).is_none());
     }
 }
