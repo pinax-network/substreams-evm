@@ -27,6 +27,13 @@ pub mod cow {
         // @@protoc_insertion_point(cow.v1)
     }
 }
+pub mod contracts {
+    // @@protoc_insertion_point(attribute:contracts.v1)
+    pub mod v1 {
+        include!("contracts.v1.rs");
+        // @@protoc_insertion_point(contracts.v1)
+    }
+}
 pub mod curvefi {
     // @@protoc_insertion_point(attribute:curvefi.v1)
     pub mod v1 {

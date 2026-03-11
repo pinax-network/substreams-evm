@@ -5,6 +5,7 @@ package:
 
 protobuf:
   files:
+    - v1/contracts.proto
     - v1/erc20-transfers.proto
     - v1/erc20-tokens.proto
     - v1/erc721-tokens.proto

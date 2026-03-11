@@ -1,0 +1,29 @@
+specVersion: v0.1.0
+package:
+  name: contracts
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Generic contract deployment calls with transaction, log, and call metadata
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/contracts.wasm
+
+protobuf:
+  files:
+    - v1/contracts.proto
+  importPaths:
+    - ../proto
+
+modules:
+  - name: map_events
+    kind: map
+    doc: Contract deployment events
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:contracts.v1.Events
+
+network: mainnet
