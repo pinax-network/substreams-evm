@@ -1,76 +1,56 @@
 specVersion: v0.1.0
 package:
-  name: evm_dex
+  name: dex_foundational_store
   version: v0.6.0
   url: https://github.com/pinax-network/substreams-evm
-  description: DEX swaps for JustSwap, SunSwap, and SunPump on EVM blockchain
+  description: Foundational pool metadata store for DEX modules
   image: ../image.png
 
 imports:
-  # SQL Sink Substreams
-  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
-  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
-
-  # Tron DEX Substreams
   sunpump: ../spkg/sunpump-v0.5.0.spkg
-
-  # Ethereum DEX Substreams
   balancer: ../spkg/balancer-v0.5.0.spkg
   bancor: ../spkg/bancor-v0.5.0.spkg
-  cow: ../spkg/cow-v0.5.0.spkg
-
-  # New DEX Substreams
+  curvefi: ../spkg/curvefi-v0.5.0.spkg
   aerodrome: ../spkg/aerodrome-v0.5.0.spkg
-  dodo: ../spkg/dodo-v0.5.0.spkg
-  woofi: ../spkg/woofi-v0.5.0.spkg
   traderjoe: ../spkg/traderjoe-v0.5.0.spkg
   kyber_elastic: ../spkg/kyber-elastic-v0.5.0.spkg
-  curvefi: ../spkg/curvefi-v0.5.0.spkg
-
-  # Uniswap DEX Substreams
   uniswap_v1: ../spkg/uniswap-v1-v0.5.0.spkg
   uniswap_v2: ../spkg/uniswap-v2-v0.5.0.spkg
   uniswap_v3: ../spkg/uniswap-v3-v0.5.0.spkg
   uniswap_v4: ../spkg/uniswap-v4-v0.5.0.spkg
-  dex_foundational_store: ../spkg/dex-foundational-store-v0.6.0.spkg
 
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/db_evm_dex.wasm
+    file: ../target/wasm32-unknown-unknown/release/dex_foundational_store.wasm
+
+protobuf:
+  files:
+    - foundational-store.proto
+  importPaths:
+    - ../proto/v1/dex
+  descriptorSets:
+    - ../proto/descriptors/dex-foundational-store.desc
+  excludePaths:
+    - sf/substreams
+    - google
 
 modules:
-  - name: db_out
+  - name: map_pool_foundational_entries
     kind: map
     inputs:
-      - params: string
-      - source: sf.substreams.v1.Clock
-      - foundational-store: dex_foundational_store
-      # Tron DEX
       - map: sunpump:map_events
-
-      # Ethereum DEX
       - map: balancer:map_events
       - map: bancor:map_events
       - map: curvefi:map_events
-      - map: cow:map_events
-
-      # New DEX
       - map: aerodrome:map_events
-      - map: dodo:map_events
-      - map: woofi:map_events
       - map: traderjoe:map_events
       - map: kyber_elastic:map_events
-
-      # Uniswap DEX
       - map: uniswap_v1:map_events
       - map: uniswap_v2:map_events
       - map: uniswap_v3:map_events
       - map: uniswap_v4:map_events
     output:
-      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+      type: proto:sf.substreams.foundational_store.model.v2.SinkEntries
 
 network: mainnet
-
-params:
-  db_out: "hex"  # Supported encodings: hex, tron_base58

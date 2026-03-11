@@ -27,16 +27,12 @@ pub fn db_out(
 
     // Tron DEX
     events_sunpump: proto::pb::sunpump::v1::Events,
-    store_sunpump: StoreGetProto<proto::pb::sunpump::v1::StorePool>,
 
     // Ethereum DEX
     events_balancer: proto::pb::balancer::v1::Events,
     events_bancor: proto::pb::bancor::v1::Events,
     events_curvefi: proto::pb::curvefi::v1::Events,
     events_cow: proto::pb::cow::v1::Events,
-    store_balancer: StoreGetProto<proto::pb::balancer::v1::StorePool>,
-    store_bancor: StoreGetProto<proto::pb::bancor::v1::StorePool>,
-    store_curvefi: StoreGetProto<proto::pb::curvefi::v1::StorePool>,
 
     // New DEX
     events_aerodrome: proto::pb::aerodrome::v1::Events,
@@ -44,19 +40,13 @@ pub fn db_out(
     events_woofi: proto::pb::woofi::v1::Events,
     events_traderjoe: proto::pb::traderjoe::v1::Events,
     events_kyber_elastic: proto::pb::kyber_elastic::v1::Events,
-    store_aerodrome: StoreGetProto<proto::pb::aerodrome::v1::StorePool>,
-    store_traderjoe: StoreGetProto<proto::pb::traderjoe::v1::StorePool>,
-    store_kyber_elastic: StoreGetProto<proto::pb::kyber_elastic::v1::StorePool>,
 
     // Uniswap DEX
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
     events_uniswap_v3: uniswap::v3::Events,
     events_uniswap_v4: uniswap::v4::Events,
-    store_uniswap_v1: StoreGetProto<uniswap::v1::StorePool>,
-    store_uniswap_v2: StoreGetProto<uniswap::v2::StorePool>,
-    store_uniswap_v3: StoreGetProto<uniswap::v3::StorePool>,
-    store_uniswap_v4: StoreGetProto<uniswap::v4::StorePool>,
+    pools: FoundationalStore,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
@@ -64,26 +54,26 @@ pub fn db_out(
     let encoding = common::handle_encoding_param(&params);
 
     // Tron DEX Substreams
-    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &store_sunpump);
+    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &pools);
 
     // Ethereum DEX Substreams
-    balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &store_balancer);
-    bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &store_bancor);
+    balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &pools);
+    bancor::process_events(&encoding, &mut tables, &clock, &events_bancor, &pools);
     cow::process_events(&encoding, &mut tables, &clock, &events_cow);
-    curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &store_curvefi);
+    curvefi::process_events(&encoding, &mut tables, &clock, &events_curvefi, &pools);
 
     // New DEX Substreams
-    aerodrome::process_events(&encoding, &mut tables, &clock, &events_aerodrome, &store_aerodrome);
+    aerodrome::process_events(&encoding, &mut tables, &clock, &events_aerodrome, &pools);
     dodo::process_events(&encoding, &mut tables, &clock, &events_dodo);
     woofi::process_events(&encoding, &mut tables, &clock, &events_woofi);
-    traderjoe::process_events(&encoding, &mut tables, &clock, &events_traderjoe, &store_traderjoe);
-    kyber_elastic::process_events(&encoding, &mut tables, &clock, &events_kyber_elastic, &store_kyber_elastic);
+    traderjoe::process_events(&encoding, &mut tables, &clock, &events_traderjoe, &pools);
+    kyber_elastic::process_events(&encoding, &mut tables, &clock, &events_kyber_elastic, &pools);
 
     // Uniswap DEX Substreams
-    uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &store_uniswap_v1);
-    uniswap_v2::process_events(&encoding, &mut tables, &clock, &events_uniswap_v2, &store_uniswap_v2);
-    uniswap_v3::process_events(&encoding, &mut tables, &clock, &events_uniswap_v3, &store_uniswap_v3);
-    uniswap_v4::process_events(&encoding, &mut tables, &clock, &events_uniswap_v4, &store_uniswap_v4);
+    uniswap_v1::process_events(&encoding, &mut tables, &clock, &events_uniswap_v1, &pools);
+    uniswap_v2::process_events(&encoding, &mut tables, &clock, &events_uniswap_v2, &pools);
+    uniswap_v3::process_events(&encoding, &mut tables, &clock, &events_uniswap_v3, &pools);
+    uniswap_v4::process_events(&encoding, &mut tables, &clock, &events_uniswap_v4, &pools);
 
     // ONLY include blocks if events are present
     if !tables.tables.is_empty() {

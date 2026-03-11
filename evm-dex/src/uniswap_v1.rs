@@ -1,13 +1,13 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
-use proto::pb::uniswap::v1::{self as uniswap, StorePool};
-use substreams::{pb::substreams::Clock, store::StoreGetProto};
+use proto::pb::uniswap::v1::{self as uniswap};
+use substreams::{pb::substreams::Clock, store::FoundationalStore};
 use substreams_database_change::tables::Tables;
 use substreams_ethereum::NULL_ADDRESS;
 
-use crate::store::get_store_by_address;
+use crate::store::{get_pool_by_address, token, PoolMetadata};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &StoreGetProto<StorePool>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &FoundationalStore) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -32,15 +32,15 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("token", bytes_to_string(&value.currency0, encoding));
+    row.set("token", bytes_to_string(token(&value, 0), encoding));
     row.set("eth", bytes_to_string(&NULL_ADDRESS, encoding));
 }
 
 fn process_token_purchase(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -49,7 +49,7 @@ fn process_token_purchase(
     log_index: usize,
     event: &uniswap::TokenPurchase,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v1_token_purchase", key);
 
@@ -67,7 +67,7 @@ fn process_token_purchase(
 
 fn process_eth_purchase(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -76,7 +76,7 @@ fn process_eth_purchase(
     log_index: usize,
     event: &uniswap::EthPurchase,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v1_eth_purchase", key);
 
@@ -94,7 +94,7 @@ fn process_eth_purchase(
 
 fn process_add_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -103,7 +103,7 @@ fn process_add_liquidity(
     log_index: usize,
     event: &uniswap::AddLiquidity,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v1_add_liquidity", key);
 
@@ -121,7 +121,7 @@ fn process_add_liquidity(
 
 fn process_remove_liquidity(
     encoding: &Encoding,
-    store: &StoreGetProto<StorePool>,
+    store: &FoundationalStore,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -130,7 +130,7 @@ fn process_remove_liquidity(
     log_index: usize,
     event: &uniswap::RemoveLiquidity,
 ) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v1_remove_liquidity", key);
 

@@ -1,12 +1,12 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
-use proto::pb::kyber_elastic::v1::{self as kyber, StorePool};
-use substreams::{pb::substreams::Clock, store::StoreGetProto};
+use proto::pb::kyber_elastic::v1::{self as kyber};
+use substreams::{pb::substreams::Clock, store::FoundationalStore};
 use substreams_database_change::tables::Tables;
 
-use crate::store::get_store_by_address;
+use crate::store::{get_pool_by_address, token, PoolMetadata};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &kyber::Events, store: &StoreGetProto<StorePool>) {
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &kyber::Events, store: &FoundationalStore) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
@@ -28,16 +28,14 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: StorePool, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
-    row.set("token0", bytes_to_string(&value.currency0, encoding));
-    row.set("token1", bytes_to_string(&value.currency1, encoding));
-    row.set("swap_fee_units", value.swap_fee_units);
-    row.set("tick_distance", value.tick_distance);
+    row.set("token0", bytes_to_string(token(&value, 0), encoding));
+    row.set("token1", bytes_to_string(token(&value, 1), encoding));
 }
 
-fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Swap) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Swap) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_swap", key);
         set_clock(clock, row);
@@ -55,8 +53,8 @@ fn process_swap(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Mint) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_mint(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Mint) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_mint", key);
         set_clock(clock, row);
@@ -74,8 +72,8 @@ fn process_mint(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &
     }
 }
 
-fn process_burn(encoding: &Encoding, store: &StoreGetProto<StorePool>, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Burn) {
-    if let Some(pool) = get_store_by_address(store, &log.address) {
+fn process_burn(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Burn) {
+    if let Some(pool) = get_pool_by_address(store, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_burn", key);
         set_clock(clock, row);

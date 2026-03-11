@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package dex.foundational_store.v1;
+
+message Pool {
+  repeated bytes tokens = 1;
+  bytes factory = 2;
+}
