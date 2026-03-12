@@ -12,7 +12,7 @@ imports:
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Foundational Store Substreams
-  dex_foundational_store: ../spkg/dex-foundational-store-v0.6.0.spkg
+  evm_dex_foundational_store: ../spkg/evm-dex-foundational-store-v0.6.0.spkg
 
   # Tron DEX Substreams
   sunpump: ../spkg/sunpump-v0.6.0.spkg
@@ -39,7 +39,7 @@ imports:
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/db_evm_dex.wasm
+    file: ../target/wasm32-unknown-unknown/release/evm_dex.wasm
 
 modules:
   - name: db_out
@@ -47,7 +47,7 @@ modules:
     inputs:
       - params: string
       - source: sf.substreams.v1.Clock
-      - foundational-store: dex_foundational_store@v0.6.0
+      - foundational-store: evm_dex_foundational_store@v0.6.0
 
       # Tron DEX
       - map: sunpump:map_events

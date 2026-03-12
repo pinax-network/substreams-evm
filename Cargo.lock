@@ -263,19 +263,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "db-evm-dex"
-version = "0.6.0"
-dependencies = [
- "common",
- "prost 0.13.5",
- "prost-types 0.13.5",
- "proto",
- "substreams",
- "substreams-database-change 3.0.0",
- "substreams-ethereum",
-]
-
-[[package]]
 name = "db-evm-supply"
 version = "0.0.0"
 dependencies = [
@@ -297,16 +284,6 @@ dependencies = [
  "substreams",
  "substreams-database-change 3.0.0",
  "substreams-ethereum",
-]
-
-[[package]]
-name = "dex-foundational-store"
-version = "0.6.0"
-dependencies = [
- "prost 0.13.5",
- "prost-types 0.13.5",
- "proto",
- "substreams",
 ]
 
 [[package]]
@@ -481,6 +458,29 @@ dependencies = [
  "substreams",
  "substreams-database-change 3.0.0",
  "substreams-ethereum",
+]
+
+[[package]]
+name = "evm-dex"
+version = "0.6.0"
+dependencies = [
+ "common",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-database-change 3.0.0",
+ "substreams-ethereum",
+]
+
+[[package]]
+name = "evm-dex-foundational-store"
+version = "0.6.0"
+dependencies = [
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
 ]
 
 [[package]]

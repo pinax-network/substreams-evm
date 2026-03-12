@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: dex_foundational_store
+  name: evm_dex_foundational_store
   version: v0.6.0
   url: https://github.com/pinax-network/substreams-evm
   description: Foundational pool metadata store for DEX modules (tokens[] plus optional factory only)
@@ -22,7 +22,7 @@ imports:
 binaries:
   default:
     type: wasm/rust-v1
-    file: ../target/wasm32-unknown-unknown/release/dex_foundational_store.wasm
+    file: ../target/wasm32-unknown-unknown/release/evm_dex_foundational_store.wasm
 
 protobuf:
   files:
