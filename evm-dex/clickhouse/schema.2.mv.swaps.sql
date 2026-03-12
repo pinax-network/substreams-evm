@@ -649,8 +649,8 @@ SELECT
     sender       AS user,
 
     -- Input side: positive amount0 means token0 entered the pool (trader pays token0)
-    if (amount0 > toString(toInt256(0)), token0, token1)      AS input_contract,
-    if (amount0 > toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
+    if (toInt256(amount0) > toInt256(0), token0, token1)      AS input_contract,
+    if (toInt256(amount0) > toInt256(0), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
 
     -- Output side: the token with a negative amount left the pool (trader receives it); amount0>0 → token1 out, amount0<0 → token0 out
     if (amount0 > toString(toInt256(0)), token1, token0)      AS output_contract,
@@ -707,12 +707,12 @@ SELECT
     sender       AS user,
 
     -- Input side: negative amount means input
-    if (amount0 < toString(toInt256(0)), currency0, currency1)      AS input_contract,
-    if (amount0 < toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
+    if (toInt256(amount0) < toInt256(0), currency0, currency1)      AS input_contract,
+    if (toInt256(amount0) < toInt256(0), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
 
     -- Output side: positive amount means output
-    if (amount0 < toString(toInt256(0)), currency1, currency0)      AS output_contract,
-    if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
+    if (toInt256(amount0) < toInt256(0), currency1, currency0)      AS output_contract,
+    if (toInt256(amount0) < toInt256(0), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
 FROM uniswap_v4_swap
 WHERE input_amount > 0 AND output_amount > 0;
@@ -1252,12 +1252,12 @@ SELECT
     sender       AS user,
 
     -- Input side: negative amount means input
-    if (delta_qty0 < toString(toInt256(0)), token0, token1)      AS input_contract,
-    if (delta_qty0 < toString(toInt256(0)), abs(toInt256(delta_qty0)), abs(toInt256(delta_qty1))) AS input_amount,
+    if (toInt256(delta_qty0) < toInt256(0), token0, token1)      AS input_contract,
+    if (toInt256(delta_qty0) < toInt256(0), abs(toInt256(delta_qty0)), abs(toInt256(delta_qty1))) AS input_amount,
 
     -- Output side: positive amount means output
-    if (delta_qty0 < toString(toInt256(0)), token1, token0)      AS output_contract,
-    if (delta_qty0 < toString(toInt256(0)), abs(toInt256(delta_qty1)), abs(toInt256(delta_qty0))) AS output_amount
+    if (toInt256(delta_qty0) < toInt256(0), token1, token0)      AS output_contract,
+    if (toInt256(delta_qty0) < toInt256(0), abs(toInt256(delta_qty1)), abs(toInt256(delta_qty0))) AS output_amount
 
 FROM kyber_elastic_swap
 WHERE input_amount > 0 AND output_amount > 0;
