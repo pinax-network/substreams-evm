@@ -1,7 +1,7 @@
 # Graph
 
 ```mermaid
-graph TD;
+graph LR;
   map_entries[map: map_entries];
   sunpump:map_events --> map_entries;
   balancer:map_events --> map_entries;
