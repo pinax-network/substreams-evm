@@ -51,17 +51,27 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
             max(max_block_num)
         GROUP BY pool, factory, address
     ),
-    PROJECTION prj_factory_count (
+    PROJECTION prj_factory_uniq_address (
         SELECT
             factory,
-            count()
+            count(),
+            uniqExact(address),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY factory
     ),
-    PROJECTION prj_pool_factory_count (
+    PROJECTION prj_pool_factory_uniq_address (
         SELECT
             pool,
             factory,
-            count()
+            count(),
+            uniqExact(address),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY pool, factory
     )
 )
@@ -152,17 +162,27 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_user (
             max(max_block_num)
         GROUP BY pool, factory, user
     ),
-    PROJECTION prj_factory_user_count (
+    PROJECTION prj_factory_uniq_user (
         SELECT
             factory,
-            count()
+            count(),
+            uniqExact(user),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY factory
     ),
-    PROJECTION prj_pool_factory_user_count (
+    PROJECTION prj_pool_factory_uniq_user (
         SELECT
             pool,
             factory,
-            count()
+            count(),
+            uniqExact(user),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY pool, factory
     )
 )
@@ -237,17 +257,27 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_tx_from (
             max(max_block_num)
         GROUP BY pool, factory, tx_from
     ),
-    PROJECTION prj_factory_tx_from_count (
+    PROJECTION prj_factory_uniq_tx_from (
         SELECT
             factory,
-            count()
+            count(),
+            uniqExact(tx_from),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY factory
     ),
-    PROJECTION prj_pool_factory_tx_from_count (
+    PROJECTION prj_pool_factory_uniq_tx_from (
         SELECT
             pool,
             factory,
-            count()
+            count(),
+            uniqExact(tx_from),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY pool, factory
     )
 )
@@ -322,17 +352,27 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw_by_call_caller (
             max(max_block_num)
         GROUP BY pool, factory, call_caller
     ),
-    PROJECTION prj_factory_call_caller_count (
+    PROJECTION prj_factory_uniq_call_caller (
         SELECT
             factory,
-            count()
+            count(),
+            uniqExact(call_caller),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY factory
     ),
-    PROJECTION prj_pool_factory_call_caller_count (
+    PROJECTION prj_pool_factory_uniq_call_caller (
         SELECT
             pool,
             factory,
-            count()
+            count(),
+            uniqExact(call_caller),
+            min(min_timestamp),
+            max(max_timestamp),
+            min(min_block_num),
+            max(max_block_num)
         GROUP BY pool, factory
     )
 )
