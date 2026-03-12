@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
     PROJECTION prj_factory_uniq_address (
         SELECT
             factory,
-            count(),
             uniqCombined64(address),
             min(min_timestamp),
             max(max_timestamp),
@@ -45,7 +44,6 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
         SELECT
             pool,
             factory,
-            count(),
             uniqCombined64(address),
             min(min_timestamp),
             max(max_timestamp),
