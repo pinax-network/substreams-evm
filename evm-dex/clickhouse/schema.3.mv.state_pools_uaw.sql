@@ -30,27 +30,6 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
     max_block_num         SimpleAggregateFunction(max, UInt32) COMMENT 'last block number seen',
 
     -- projections --
-    PROJECTION prj_factory_address (
-        SELECT
-            factory,
-            address,
-            min(min_timestamp),
-            max(max_timestamp),
-            min(min_block_num),
-            max(max_block_num)
-        GROUP BY factory, address
-    ),
-    PROJECTION prj_pool_factory_address (
-        SELECT
-            pool,
-            factory,
-            address,
-            min(min_timestamp),
-            max(max_timestamp),
-            min(min_block_num),
-            max(max_block_num)
-        GROUP BY pool, factory, address
-    ),
     PROJECTION prj_factory_uniq_address (
         SELECT
             factory,
@@ -62,7 +41,7 @@ CREATE TABLE IF NOT EXISTS state_pools_uaw (
             max(max_block_num)
         GROUP BY factory
     ),
-    PROJECTION prj_pool_factory_uniq_address (
+    PROJECTION prj_pool_uniq_address (
         SELECT
             pool,
             factory,
