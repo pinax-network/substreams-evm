@@ -648,13 +648,13 @@ SELECT
     log_address  AS pool,
     sender       AS user,
 
-    -- Input side: negative amount means input
-    if (amount0 < toString(toInt256(0)), token0, token1)      AS input_contract,
-    if (amount0 < toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
+    -- Input side: positive amount0 means token0 entered the pool (trader pays token0)
+    if (amount0 > toString(toInt256(0)), token0, token1)      AS input_contract,
+    if (amount0 > toString(toInt256(0)), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
 
-    -- Output side: positive amount means output
-    if (amount0 < toString(toInt256(0)), token1, token0)      AS output_contract,
-    if (amount0 < toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
+    -- Output side: negative amount0 means token0 left the pool (trader receives token0)
+    if (amount0 > toString(toInt256(0)), token1, token0)      AS output_contract,
+    if (amount0 > toString(toInt256(0)), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
 FROM uniswap_v3_swap
 WHERE input_amount > 0 AND output_amount > 0;
