@@ -11,6 +11,9 @@ imports:
   database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
+  # Foundational Store Substreams
+  dex_foundational_store: ../spkg/dex-foundational-store-v0.6.0.spkg
+
   # Tron DEX Substreams
   sunpump: ../spkg/sunpump-v0.6.0.spkg
 
@@ -32,7 +35,6 @@ imports:
   uniswap_v2: ../spkg/uniswap-v2-v0.6.0.spkg
   uniswap_v3: ../spkg/uniswap-v3-v0.6.0.spkg
   uniswap_v4: ../spkg/uniswap-v4-v0.6.0.spkg
-  dex_foundational_store: ../spkg/dex-foundational-store-v0.6.0.spkg
 
 binaries:
   default:
@@ -45,7 +47,8 @@ modules:
     inputs:
       - params: string
       - source: sf.substreams.v1.Clock
-      - foundational-store: dex_foundational_store
+      - foundational-store: dex_foundational_store@v0.6.0
+
       # Tron DEX
       - map: sunpump:map_events
 

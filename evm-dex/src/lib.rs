@@ -25,6 +25,9 @@ pub fn db_out(
     params: String,
     clock: Clock,
 
+    // Foundational Store
+    pools: FoundationalStore,
+
     // Tron DEX
     events_sunpump: proto::pb::sunpump::v1::Events,
 
@@ -45,8 +48,7 @@ pub fn db_out(
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
     events_uniswap_v3: uniswap::v3::Events,
-    events_uniswap_v4: uniswap::v4::Events,
-    pools: FoundationalStore,
+    events_uniswap_v4: uniswap::v4::Events
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
