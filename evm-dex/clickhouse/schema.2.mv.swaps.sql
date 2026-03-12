@@ -652,7 +652,7 @@ SELECT
     if (toInt256(amount0) > toInt256(0), token0, token1)      AS input_contract,
     if (toInt256(amount0) > toInt256(0), abs(toInt256(amount0)), abs(toInt256(amount1))) AS input_amount,
 
-    -- Output side: negative amount0 means token0 left the pool (trader receives token0)
+    -- Output side: the token with a negative amount left the pool (trader receives it); amount0>0 → token1 out, amount0<0 → token0 out
     if (toInt256(amount0) > toInt256(0), token1, token0)      AS output_contract,
     if (toInt256(amount0) > toInt256(0), abs(toInt256(amount1)), abs(toInt256(amount0))) AS output_amount
 
