@@ -1,4 +1,5 @@
 use common::{bytes_to_string, Encoding};
+use prost::Message;
 use prost_types::Any;
 use proto::pb::dex::foundational_store::v1::Pool;
 use substreams::{
@@ -35,7 +36,8 @@ pub fn tokens_csv(encoding: &Encoding, pool: &PoolMetadata) -> String {
 }
 
 fn decode_pool(value: Any) -> Option<PoolMetadata> {
-    value.to_msg::<PoolMetadata>().ok()
+    (value.type_url == "type.googleapis.com/dex.foundational_store.v1.Pool").then_some(())?;
+    PoolMetadata::decode(value.value.as_slice()).ok()
 }
 
 #[cfg(test)]
@@ -45,7 +47,10 @@ mod tests {
     #[test]
     fn decode_pool_accepts_foundational_any_payload() {
         let pool = PoolMetadata { tokens: vec![vec![0xaa], vec![0xbb]], factory: vec![0xcc] };
-        let any = Any::from_msg(&pool).unwrap();
+        let any = Any {
+            type_url: "type.googleapis.com/dex.foundational_store.v1.Pool".into(),
+            value: pool.encode_to_vec(),
+        };
 
         let decoded = decode_pool(any).unwrap();
         assert_eq!(decoded.tokens, pool.tokens);

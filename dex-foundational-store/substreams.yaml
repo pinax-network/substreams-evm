@@ -30,13 +30,13 @@ protobuf:
   importPaths:
     - ../proto/v1/dex
   descriptorSets:
-    - ../proto/descriptors/dex-foundational-store.desc
+    - module: buf.build/streamingfast/substreams-foundational-store@f3ab5976b9ba4f9bac28b26271fca7d7
   excludePaths:
     - sf/substreams
     - google
 
 modules:
-  - name: map_pool_foundational_entries
+  - name: map_entries
     kind: map
     inputs:
       - map: sunpump:map_events

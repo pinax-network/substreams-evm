@@ -1,7 +1,9 @@
+use prost::Message;
 use prost_types::Any;
+use proto::pb::dex::foundational_store::v1 as foundational;
 use proto::pb::{
     aerodrome::v1 as aerodrome, balancer::v1 as balancer, bancor::v1 as bancor, curvefi::v1 as curvefi,
-    dex::foundational_store::v1 as foundational, kyber_elastic::v1 as kyber_elastic, sunpump::v1 as sunpump,
+    kyber_elastic::v1 as kyber_elastic, sunpump::v1 as sunpump,
     traderjoe::v1 as traderjoe, uniswap,
 };
 use substreams::pb::sf::substreams::foundational_store::model::v2::{Entry, Key, SinkEntries};
@@ -12,7 +14,7 @@ use substreams::pb::sf::substreams::foundational_store::model::v2::{Entry, Key, 
 // `tick_distance` remain available on the original pool-creation events.
 
 #[substreams::handlers::map]
-pub fn map_pool_foundational_entries(
+pub fn map_entries(
     events_sunpump: sunpump::Events,
     events_balancer: balancer::Events,
     events_bancor: bancor::Events,
@@ -39,6 +41,10 @@ pub fn map_pool_foundational_entries(
     collect_uniswap_v3(&mut entries, &events_uniswap_v3);
     collect_uniswap_v4(&mut entries, &events_uniswap_v4);
 
+    if entries.is_empty() {
+        return Ok(SinkEntries::default());
+    }
+
     Ok(SinkEntries { entries, if_not_exist: true })
 }
 
@@ -47,7 +53,10 @@ fn push_pool_entry(entries: &mut Vec<Entry>, pool: &[u8], tokens: Vec<Vec<u8>>, 
         return;
     }
 
-    let value = Any::from_msg(&foundational::Pool { tokens, factory }).expect("foundational pool should encode");
+    let value = Any {
+        type_url: "type.googleapis.com/dex.foundational_store.v1.Pool".to_string(),
+        value: foundational::Pool { tokens, factory }.encode_to_vec(),
+    };
 
     entries.push(Entry {
         key: Some(Key { bytes: pool.to_vec() }),
@@ -235,7 +244,9 @@ mod tests {
     use super::*;
 
     fn decode_pool(entry: &Entry) -> foundational::Pool {
-        entry.value.as_ref().unwrap().to_msg::<foundational::Pool>().unwrap()
+        let value = entry.value.as_ref().unwrap();
+        assert_eq!(value.type_url, "type.googleapis.com/dex.foundational_store.v1.Pool");
+        foundational::Pool::decode(value.value.as_slice()).unwrap()
     }
 
     #[test]

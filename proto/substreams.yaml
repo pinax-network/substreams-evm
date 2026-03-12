@@ -4,6 +4,8 @@ package:
   version: v0.0.0
 
 protobuf:
+  descriptorSets:
+    - module: buf.build/streamingfast/substreams-foundational-store@f3ab5976b9ba4f9bac28b26271fca7d7
   files:
     - v1/contracts.proto
 

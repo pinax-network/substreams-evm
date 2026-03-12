@@ -41,13 +41,6 @@ pub mod curvefi {
         // @@protoc_insertion_point(curvefi.v1)
     }
 }
-pub mod dodo {
-    // @@protoc_insertion_point(attribute:dodo.v1)
-    pub mod v1 {
-        include!("dodo.v1.rs");
-        // @@protoc_insertion_point(dodo.v1)
-    }
-}
 pub mod dex {
     pub mod foundational_store {
         // @@protoc_insertion_point(attribute:dex.foundational_store.v1)
@@ -55,6 +48,13 @@ pub mod dex {
             include!("dex.foundational_store.v1.rs");
             // @@protoc_insertion_point(dex.foundational_store.v1)
         }
+    }
+}
+pub mod dodo {
+    // @@protoc_insertion_point(attribute:dodo.v1)
+    pub mod v1 {
+        include!("dodo.v1.rs");
+        // @@protoc_insertion_point(dodo.v1)
     }
 }
 pub mod erc1155 {
