@@ -48,7 +48,7 @@ pub fn db_out(
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
     events_uniswap_v3: uniswap::v3::Events,
-    events_uniswap_v4: uniswap::v4::Events
+    events_uniswap_v4: uniswap::v4::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
 
@@ -56,7 +56,7 @@ pub fn db_out(
     let encoding = common::handle_encoding_param(&params);
 
     // Tron DEX Substreams
-    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &pools);
+    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump);
 
     // Ethereum DEX Substreams
     balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &pools);
