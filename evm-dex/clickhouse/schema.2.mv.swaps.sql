@@ -255,7 +255,7 @@ SELECT
     -- swap --
     'sunpump' AS protocol,
     factory,
-    log_address                        AS pool,
+    token                              AS pool,
     buyer                              AS user,
 
     -- Input side: TRX being paid
@@ -313,7 +313,7 @@ SELECT
     -- swap --
     'sunpump' AS protocol,
     factory,
-    log_address                        AS pool,
+    token                              AS pool,
     seller                             AS user,
 
     -- Input side: Tokens being sold
