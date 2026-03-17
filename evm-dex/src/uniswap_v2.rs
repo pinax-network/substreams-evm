@@ -1,26 +1,34 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v2::{self as uniswap};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, token, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, token, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &uniswap::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(uniswap::log::Log::Swap(event)) => {
-                    process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_swap(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Sync(event)) => {
-                    process_sync(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_sync(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Mint(event)) => {
-                    process_mint(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_mint(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Burn(event)) => {
-                    process_burn(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_burn(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::PairCreated(event)) => {
                     process_pair_created(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -31,7 +39,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("token0", bytes_to_string(token(&value, 0), encoding));
     row.set("token1", bytes_to_string(token(&value, 1), encoding));
@@ -39,7 +47,7 @@ pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_d
 
 fn process_swap(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -48,7 +56,7 @@ fn process_swap(
     log_index: usize,
     event: &uniswap::Swap,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v2_swap", key);
 
@@ -69,7 +77,7 @@ fn process_swap(
 
 fn process_sync(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -78,7 +86,7 @@ fn process_sync(
     log_index: usize,
     event: &uniswap::Sync,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v2_sync", key);
 
@@ -95,7 +103,7 @@ fn process_sync(
 
 fn process_mint(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -104,7 +112,7 @@ fn process_mint(
     log_index: usize,
     event: &uniswap::Mint,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v2_mint", key);
 
@@ -122,7 +130,7 @@ fn process_mint(
 
 fn process_burn(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -131,7 +139,7 @@ fn process_burn(
     log_index: usize,
     event: &uniswap::Burn,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v2_burn", key);
 

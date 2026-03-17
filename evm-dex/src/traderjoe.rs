@@ -1,26 +1,34 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::traderjoe::v1::{self as traderjoe};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, token, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, token, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &traderjoe::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &traderjoe::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &traderjoe::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(traderjoe::log::Log::Swap(event)) => {
-                    process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_swap(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(traderjoe::log::Log::DepositedToBins(event)) => {
-                    process_deposited(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_deposited(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(traderjoe::log::Log::WithdrawnFromBins(event)) => {
-                    process_withdrawn(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_withdrawn(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(traderjoe::log::Log::CompositionFees(event)) => {
-                    process_composition_fees(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_composition_fees(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(traderjoe::log::Log::LbPairCreated(event)) => {
                     process_lb_pair_created(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -31,7 +39,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     // Foundational metadata intentionally omits TraderJoe `bin_step`.
     // Consumers that need it should read the original `LbPairCreated` event row.
     row.set("factory", bytes_to_string(&value.factory, encoding));
@@ -39,8 +47,8 @@ pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_d
     row.set("token1", bytes_to_string(token(&value, 1), encoding));
 }
 
-fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::Swap) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_swap(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::Swap) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("traderjoe_swap", key);
         set_clock(clock, row);
@@ -63,8 +71,8 @@ fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tab
     }
 }
 
-fn process_deposited(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::DepositedToBins) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_deposited(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::DepositedToBins) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("traderjoe_deposited_to_bins", key);
         set_clock(clock, row);
@@ -77,8 +85,8 @@ fn process_deposited(encoding: &Encoding, store: &FoundationalStore, tables: &mu
     }
 }
 
-fn process_withdrawn(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::WithdrawnFromBins) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_withdrawn(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::WithdrawnFromBins) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("traderjoe_withdrawn_from_bins", key);
         set_clock(clock, row);
@@ -91,8 +99,8 @@ fn process_withdrawn(encoding: &Encoding, store: &FoundationalStore, tables: &mu
     }
 }
 
-fn process_composition_fees(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::CompositionFees) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_composition_fees(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &traderjoe::Transaction, log: &traderjoe::Log, tx_index: usize, log_index: usize, event: &traderjoe::CompositionFees) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("traderjoe_composition_fees", key);
         set_clock(clock, row);

@@ -1,23 +1,31 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::kyber_elastic::v1::{self as kyber};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, token, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, token, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &kyber::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &kyber::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &kyber::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(kyber::log::Log::Swap(event)) => {
-                    process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_swap(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(kyber::log::Log::Mint(event)) => {
-                    process_mint(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_mint(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(kyber::log::Log::Burn(event)) => {
-                    process_burn(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_burn(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(kyber::log::Log::PoolCreated(event)) => {
                     process_pool_created(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -28,7 +36,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     // Foundational metadata intentionally omits `swap_fee_units` and `tick_distance`.
     // Consumers that need them should read the original `PoolCreated` event row.
     row.set("factory", bytes_to_string(&value.factory, encoding));
@@ -36,8 +44,8 @@ pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_d
     row.set("token1", bytes_to_string(token(&value, 1), encoding));
 }
 
-fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Swap) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_swap(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Swap) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_swap", key);
         set_clock(clock, row);
@@ -55,8 +63,8 @@ fn process_swap(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tab
     }
 }
 
-fn process_mint(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Mint) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_mint(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Mint) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_mint", key);
         set_clock(clock, row);
@@ -74,8 +82,8 @@ fn process_mint(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tab
     }
 }
 
-fn process_burn(encoding: &Encoding, store: &FoundationalStore, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Burn) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+fn process_burn(encoding: &Encoding, pools: &PoolMetadataMap, tables: &mut Tables, clock: &Clock, tx: &kyber::Transaction, log: &kyber::Log, tx_index: usize, log_index: usize, event: &kyber::Burn) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("kyber_elastic_burn", key);
         set_clock(clock, row);
