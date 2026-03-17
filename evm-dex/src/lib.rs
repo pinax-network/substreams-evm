@@ -69,7 +69,7 @@ pub fn db_out(
     uniswap_v3::collect_pool_addresses(&events_uniswap_v3, &mut pool_addresses);
     uniswap_v4::collect_pool_addresses(&events_uniswap_v4, &mut pool_addresses);
     let pools = store::get_pools_by_address(&pools, &pool_addresses);
-
+    substreams::log::info!("Unique pools {}", pools.len());
     // Tron DEX Substreams
     sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump);
 
