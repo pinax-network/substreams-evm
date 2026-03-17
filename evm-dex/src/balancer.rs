@@ -1,35 +1,52 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::balancer::v1::{self as balancer};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &balancer::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+
+            match &log.log {
+                Some(balancer::log::Log::VaultSwap(event)) => collect_address(addresses, &event.pool),
+                Some(balancer::log::Log::LiquidityAdded(event)) => collect_address(addresses, &event.pool),
+                Some(balancer::log::Log::LiquidityRemoved(event)) => collect_address(addresses, &event.pool),
+                Some(balancer::log::Log::PoolRegistered(event)) => collect_address(addresses, &event.pool),
+                Some(balancer::log::Log::AggregateSwapFeePercentage(event)) => collect_address(addresses, &event.pool),
+                _ => {}
+            }
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &balancer::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(balancer::log::Log::VaultSwap(event)) => {
-                    process_vault_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_vault_swap(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::LiquidityAdded(event)) => {
-                    process_liquidity_added(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_added(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::LiquidityRemoved(event)) => {
-                    process_liquidity_removed(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_removed(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::PoolRegistered(event)) => {
                     process_pool_registered(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::SwapFeePercentage(event)) => {
-                    process_swap_fee_percentage(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_swap_fee_percentage(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::ProtocolFeePercentage(event)) => {
                     process_protocol_fee_percentage(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(balancer::log::Log::AggregateSwapFeePercentage(event)) => {
-                    process_aggregate_swap_fee_percentage(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_aggregate_swap_fee_percentage(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 _ => {}
             }
@@ -37,13 +54,13 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
 }
 
 fn process_vault_swap(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -52,7 +69,7 @@ fn process_vault_swap(
     log_index: usize,
     event: &balancer::VaultSwap,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.pool) {
+    if let Some(pool) = get_pool_by_address(pools, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_vault_swap", key);
 
@@ -74,7 +91,7 @@ fn process_vault_swap(
 
 fn process_liquidity_added(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -83,7 +100,7 @@ fn process_liquidity_added(
     log_index: usize,
     event: &balancer::LiquidityAdded,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.pool) {
+    if let Some(pool) = get_pool_by_address(pools, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_liquidity_added", key);
 
@@ -104,7 +121,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -113,7 +130,7 @@ fn process_liquidity_removed(
     log_index: usize,
     event: &balancer::LiquidityRemoved,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.pool) {
+    if let Some(pool) = get_pool_by_address(pools, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_liquidity_removed", key);
 
@@ -210,7 +227,7 @@ fn serialize_token_config(encoding: &Encoding, token_configs: &[balancer::TokenC
 
 fn process_swap_fee_percentage(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -219,7 +236,7 @@ fn process_swap_fee_percentage(
     log_index: usize,
     event: &balancer::SwapFeePercentage,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_swap_fee_percentage", key);
 
@@ -257,7 +274,7 @@ fn process_protocol_fee_percentage(
 
 fn process_aggregate_swap_fee_percentage(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &balancer::Transaction,
@@ -266,7 +283,7 @@ fn process_aggregate_swap_fee_percentage(
     log_index: usize,
     event: &balancer::AggregateSwapFeePercentage,
 ) {
-    if let Some(pool_data) = get_pool_by_address(store, &event.pool) {
+    if let Some(pool_data) = get_pool_by_address(pools, &event.pool) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("balancer_aggregate_swap_fee_percentage", key);
 
