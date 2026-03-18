@@ -16,7 +16,7 @@ protobuf:
   files:
     - v1/erc20-tokens.proto
   importPaths:
-    - ../proto
+    - ../../proto
 
 modules:
   - name: map_events
