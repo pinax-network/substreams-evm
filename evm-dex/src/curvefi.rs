@@ -1,48 +1,56 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::curvefi::v1::{self as curvefi};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, tokens_csv, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, tokens_csv, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &curvefi::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &curvefi::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &curvefi::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 // ── Pool / StableSwap (shared topic hashes) ──────────────────────────
                 Some(curvefi::log::Log::TokenExchange(event)) => {
-                    process_token_exchange(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_token_exchange(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::AddLiquidity(event)) => {
-                    process_add_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_add_liquidity(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::RemoveLiquidity(event)) => {
-                    process_remove_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_remove_liquidity(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::RemoveLiquidityOne(event)) => {
-                    process_remove_liquidity_one(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_remove_liquidity_one(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::RemoveLiquidityImbalance(event)) => {
-                    process_remove_liquidity_imbalance(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_remove_liquidity_imbalance(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CommitNewAdmin(event)) => {
-                    process_commit_new_admin(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_commit_new_admin(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::NewAdmin(event)) => {
-                    process_new_admin(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_new_admin(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CommitNewFee(event)) => {
-                    process_commit_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_commit_new_fee(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::NewFee(event)) => {
-                    process_new_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_new_fee(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::RampA(event)) => {
-                    process_ramp_a(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_ramp_a(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::StopRampA(event)) => {
-                    process_stop_ramp_a(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_stop_ramp_a(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 // ── Factory ──────────────────────────────────────────────────────────
                 Some(curvefi::log::Log::PlainPoolDeployed(event)) => {
@@ -63,31 +71,31 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                 }
                 // ── CryptoSwap ───────────────────────────────────────────────────────
                 Some(curvefi::log::Log::CryptoswapTokenExchange(event)) => {
-                    process_cryptoswap_token_exchange(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_token_exchange(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapAddLiquidity(event)) => {
-                    process_cryptoswap_add_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_add_liquidity(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapRemoveLiquidity(event)) => {
-                    process_cryptoswap_remove_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_remove_liquidity(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapRemoveLiquidityOne(event)) => {
-                    process_cryptoswap_remove_liquidity_one(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_remove_liquidity_one(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapClaimAdminFee(event)) => {
-                    process_cryptoswap_claim_admin_fee(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_claim_admin_fee(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapCommitNewParameters(event)) => {
-                    process_cryptoswap_commit_new_parameters(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_commit_new_parameters(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapNewParameters(event)) => {
-                    process_cryptoswap_new_parameters(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_new_parameters(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapRampAgamma(event)) => {
-                    process_cryptoswap_ramp_agamma(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_ramp_agamma(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(curvefi::log::Log::CryptoswapStopRampA(event)) => {
-                    process_cryptoswap_stop_ramp_a(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_cryptoswap_stop_ramp_a(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 // ── CryptoSwapFactory ────────────────────────────────────────────────
                 Some(curvefi::log::Log::CryptoPoolDeployed(event)) => {
@@ -117,7 +125,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("coins", tokens_csv(encoding, &value));
 }
@@ -133,7 +141,7 @@ fn parse_coin(encoding: &Encoding, id: String, tokens: &[Vec<u8>]) -> Option<Str
 
 fn process_token_exchange(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -142,7 +150,7 @@ fn process_token_exchange(
     log_index: usize,
     event: &curvefi::TokenExchange,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let sold_token = parse_coin(encoding, event.sold_id.clone(), &pool.tokens);
         let bought_token = parse_coin(encoding, event.bought_id.clone(), &pool.tokens);
         if sold_token.is_none() || bought_token.is_none() {
@@ -170,7 +178,7 @@ fn process_token_exchange(
 
 fn process_add_liquidity(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -179,7 +187,7 @@ fn process_add_liquidity(
     log_index: usize,
     event: &curvefi::AddLiquidity,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_add_liquidity", key);
 
@@ -199,7 +207,7 @@ fn process_add_liquidity(
 
 fn process_remove_liquidity(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -208,7 +216,7 @@ fn process_remove_liquidity(
     log_index: usize,
     event: &curvefi::RemoveLiquidity,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_remove_liquidity", key);
 
@@ -227,7 +235,7 @@ fn process_remove_liquidity(
 
 fn process_remove_liquidity_one(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -236,7 +244,7 @@ fn process_remove_liquidity_one(
     log_index: usize,
     event: &curvefi::RemoveLiquidityOne,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_remove_liquidity_one", key);
 
@@ -254,7 +262,7 @@ fn process_remove_liquidity_one(
 
 fn process_remove_liquidity_imbalance(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -263,7 +271,7 @@ fn process_remove_liquidity_imbalance(
     log_index: usize,
     event: &curvefi::RemoveLiquidityImbalance,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_remove_liquidity_imbalance", key);
 
@@ -283,7 +291,7 @@ fn process_remove_liquidity_imbalance(
 
 fn process_commit_new_admin(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -301,7 +309,7 @@ fn process_commit_new_admin(
     set_template_call(encoding, log, row);
 
     // pool lookup is best-effort; many contracts emit this without being a tracked pool
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         set_pool(encoding, pool, row);
     } else {
         row.set("factory", "");
@@ -314,7 +322,7 @@ fn process_commit_new_admin(
 
 fn process_new_admin(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -331,7 +339,7 @@ fn process_new_admin(
     set_template_log(encoding, log, log_index, row);
     set_template_call(encoding, log, row);
 
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         set_pool(encoding, pool, row);
     } else {
         row.set("factory", "");
@@ -343,7 +351,7 @@ fn process_new_admin(
 
 fn process_commit_new_fee(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -352,7 +360,7 @@ fn process_commit_new_fee(
     log_index: usize,
     event: &curvefi::CommitNewFee,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_commit_new_fee", key);
 
@@ -370,7 +378,7 @@ fn process_commit_new_fee(
 
 fn process_new_fee(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -379,7 +387,7 @@ fn process_new_fee(
     log_index: usize,
     event: &curvefi::NewFee,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_new_fee", key);
 
@@ -396,7 +404,7 @@ fn process_new_fee(
 
 fn process_ramp_a(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -405,7 +413,7 @@ fn process_ramp_a(
     log_index: usize,
     event: &curvefi::RampA,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_ramp_a", key);
 
@@ -424,7 +432,7 @@ fn process_ramp_a(
 
 fn process_stop_ramp_a(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -433,7 +441,7 @@ fn process_stop_ramp_a(
     log_index: usize,
     event: &curvefi::StopRampA,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_stop_ramp_a", key);
 
@@ -575,7 +583,7 @@ fn process_init(
 
 fn process_cryptoswap_token_exchange(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -584,7 +592,7 @@ fn process_cryptoswap_token_exchange(
     log_index: usize,
     event: &curvefi::CryptoSwapTokenExchange,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let sold_token = parse_coin(encoding, event.sold_id.clone(), &pool.tokens);
         let bought_token = parse_coin(encoding, event.bought_id.clone(), &pool.tokens);
         if sold_token.is_none() || bought_token.is_none() {
@@ -612,7 +620,7 @@ fn process_cryptoswap_token_exchange(
 
 fn process_cryptoswap_add_liquidity(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -621,7 +629,7 @@ fn process_cryptoswap_add_liquidity(
     log_index: usize,
     event: &curvefi::CryptoSwapAddLiquidity,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_add_liquidity", key);
 
@@ -640,7 +648,7 @@ fn process_cryptoswap_add_liquidity(
 
 fn process_cryptoswap_remove_liquidity(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -649,7 +657,7 @@ fn process_cryptoswap_remove_liquidity(
     log_index: usize,
     event: &curvefi::CryptoSwapRemoveLiquidity,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_remove_liquidity", key);
 
@@ -667,7 +675,7 @@ fn process_cryptoswap_remove_liquidity(
 
 fn process_cryptoswap_remove_liquidity_one(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -676,7 +684,7 @@ fn process_cryptoswap_remove_liquidity_one(
     log_index: usize,
     event: &curvefi::CryptoSwapRemoveLiquidityOne,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_remove_liquidity_one", key);
 
@@ -695,7 +703,7 @@ fn process_cryptoswap_remove_liquidity_one(
 
 fn process_cryptoswap_claim_admin_fee(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -704,7 +712,7 @@ fn process_cryptoswap_claim_admin_fee(
     log_index: usize,
     event: &curvefi::CryptoSwapClaimAdminFee,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_claim_admin_fee", key);
 
@@ -721,7 +729,7 @@ fn process_cryptoswap_claim_admin_fee(
 
 fn process_cryptoswap_commit_new_parameters(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -730,7 +738,7 @@ fn process_cryptoswap_commit_new_parameters(
     log_index: usize,
     event: &curvefi::CryptoSwapCommitNewParameters,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_commit_new_parameters", key);
 
@@ -753,7 +761,7 @@ fn process_cryptoswap_commit_new_parameters(
 
 fn process_cryptoswap_new_parameters(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -762,7 +770,7 @@ fn process_cryptoswap_new_parameters(
     log_index: usize,
     event: &curvefi::CryptoSwapNewParameters,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_new_parameters", key);
 
@@ -784,7 +792,7 @@ fn process_cryptoswap_new_parameters(
 
 fn process_cryptoswap_ramp_agamma(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -793,7 +801,7 @@ fn process_cryptoswap_ramp_agamma(
     log_index: usize,
     event: &curvefi::CryptoSwapRampAgamma,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_ramp_agamma", key);
 
@@ -814,7 +822,7 @@ fn process_cryptoswap_ramp_agamma(
 
 fn process_cryptoswap_stop_ramp_a(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &curvefi::Transaction,
@@ -823,7 +831,7 @@ fn process_cryptoswap_stop_ramp_a(
     log_index: usize,
     event: &curvefi::CryptoSwapStopRampA,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("curvefi_cryptoswap_stop_ramp_a", key);
 

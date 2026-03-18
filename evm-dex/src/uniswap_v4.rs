@@ -1,32 +1,47 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::uniswap::v4::{self as uniswap};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, token, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, token, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &uniswap::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            match &log.log {
+                Some(uniswap::log::Log::Swap(event)) => collect_address(addresses, &event.id),
+                Some(uniswap::log::Log::Initialize(event)) => collect_address(addresses, &event.id),
+                Some(uniswap::log::Log::ModifyLiquidity(event)) => collect_address(addresses, &event.id),
+                Some(uniswap::log::Log::Donate(event)) => collect_address(addresses, &event.id),
+                Some(uniswap::log::Log::ProtocolFeeUpdated(event)) => collect_address(addresses, &event.id),
+                _ => {}
+            }
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &uniswap::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(uniswap::log::Log::Swap(event)) => {
-                    process_swap(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_swap(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Initialize(event)) => {
                     process_initialize(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::ModifyLiquidity(event)) => {
-                    process_modify_liquidity(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_modify_liquidity(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::Donate(event)) => {
-                    process_donate(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_donate(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::ProtocolFeeControllerUpdated(event)) => {
                     process_protocol_fee_controller_updated(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(uniswap::log::Log::ProtocolFeeUpdated(event)) => {
-                    process_protocol_fee_updated(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_protocol_fee_updated(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 _ => {}
             }
@@ -34,7 +49,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+pub fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
     row.set("currency0", bytes_to_string(token(&value, 0), encoding));
     row.set("currency1", bytes_to_string(token(&value, 1), encoding));
@@ -42,7 +57,7 @@ pub fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_d
 
 fn process_swap(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -51,7 +66,7 @@ fn process_swap(
     log_index: usize,
     event: &uniswap::Swap,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.id) {
+    if let Some(pool) = get_pool_by_address(pools, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_swap", key);
 
@@ -74,7 +89,7 @@ fn process_swap(
 
 fn process_modify_liquidity(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -83,7 +98,7 @@ fn process_modify_liquidity(
     log_index: usize,
     event: &uniswap::ModifyLiquidity,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.id) {
+    if let Some(pool) = get_pool_by_address(pools, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_modify_liquidity", key);
 
@@ -104,7 +119,7 @@ fn process_modify_liquidity(
 
 fn process_donate(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -113,7 +128,7 @@ fn process_donate(
     log_index: usize,
     event: &uniswap::Donate,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.id) {
+    if let Some(pool) = get_pool_by_address(pools, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_donate", key);
 
@@ -132,7 +147,7 @@ fn process_donate(
 
 fn process_protocol_fee_updated(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &uniswap::Transaction,
@@ -141,7 +156,7 @@ fn process_protocol_fee_updated(
     log_index: usize,
     event: &uniswap::ProtocolFeeUpdated,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &event.id) {
+    if let Some(pool) = get_pool_by_address(pools, &event.id) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("uniswap_v4_protocol_fee_updated", key);
 

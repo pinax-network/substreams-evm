@@ -14,6 +14,8 @@ mod uniswap_v3;
 mod uniswap_v4;
 mod woofi;
 
+use std::collections::HashSet;
+
 use proto::pb::uniswap;
 use substreams::errors::Error;
 use substreams::pb::substreams::Clock;
@@ -48,15 +50,28 @@ pub fn db_out(
     events_uniswap_v1: uniswap::v1::Events,
     events_uniswap_v2: uniswap::v2::Events,
     events_uniswap_v3: uniswap::v3::Events,
-    events_uniswap_v4: uniswap::v4::Events
+    events_uniswap_v4: uniswap::v4::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
+    let mut pool_addresses = HashSet::new();
 
     // Handle support both EVM & TVM address encoding
     let encoding = common::handle_encoding_param(&params);
 
+    balancer::collect_pool_addresses(&events_balancer, &mut pool_addresses);
+    bancor::collect_pool_addresses(&events_bancor, &mut pool_addresses);
+    curvefi::collect_pool_addresses(&events_curvefi, &mut pool_addresses);
+    aerodrome::collect_pool_addresses(&events_aerodrome, &mut pool_addresses);
+    traderjoe::collect_pool_addresses(&events_traderjoe, &mut pool_addresses);
+    kyber_elastic::collect_pool_addresses(&events_kyber_elastic, &mut pool_addresses);
+    uniswap_v1::collect_pool_addresses(&events_uniswap_v1, &mut pool_addresses);
+    uniswap_v2::collect_pool_addresses(&events_uniswap_v2, &mut pool_addresses);
+    uniswap_v3::collect_pool_addresses(&events_uniswap_v3, &mut pool_addresses);
+    uniswap_v4::collect_pool_addresses(&events_uniswap_v4, &mut pool_addresses);
+    let pools = store::get_pools_by_address(&pools, &pool_addresses);
+    substreams::log::info!("Unique pools {}", pools.len());
     // Tron DEX Substreams
-    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump, &pools);
+    sunpump::process_events(&encoding, &mut tables, &clock, &events_sunpump);
 
     // Ethereum DEX Substreams
     balancer::process_events(&encoding, &mut tables, &clock, &events_balancer, &pools);

@@ -1,26 +1,34 @@
 use common::clickhouse::{log_key, set_clock, set_template_call, set_template_log, set_template_tx};
 use common::{bytes_to_string, Encoding};
 use proto::pb::bancor::v1::{self as bancor};
-use substreams::{pb::substreams::Clock, store::FoundationalStore};
+use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
 
-use crate::store::{get_pool_by_address, PoolMetadata};
+use crate::store::{collect_address, get_pool_by_address, PoolMetadata, PoolMetadataMap};
 
-pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, store: &FoundationalStore) {
+pub fn collect_pool_addresses(events: &bancor::Events, addresses: &mut std::collections::HashSet<Vec<u8>>) {
+    for trx in &events.transactions {
+        for log in &trx.logs {
+            collect_address(addresses, &log.address);
+        }
+    }
+}
+
+pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, events: &bancor::Events, pools: &PoolMetadataMap) {
     for (tx_index, tx) in events.transactions.iter().enumerate() {
         for (log_index, log) in tx.logs.iter().enumerate() {
             match &log.log {
                 Some(bancor::log::Log::Conversion(event)) => {
-                    process_conversion(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_conversion(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::LiquidityAdded(event)) => {
-                    process_liquidity_added(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_added(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::LiquidityRemoved(event)) => {
-                    process_liquidity_removed(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_liquidity_removed(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::TokenRateUpdate(event)) => {
-                    process_token_rate_update(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_token_rate_update(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::Activation(event)) => {
                     process_activation(encoding, tables, clock, tx, log, tx_index, log_index, event);
@@ -35,7 +43,7 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
                     process_features_removal(encoding, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 Some(bancor::log::Log::ConversionFeeUpdate(event)) => {
-                    process_conversion_fee_update(encoding, store, tables, clock, tx, log, tx_index, log_index, event);
+                    process_conversion_fee_update(encoding, pools, tables, clock, tx, log, tx_index, log_index, event);
                 }
                 _ => {}
             }
@@ -43,13 +51,13 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
     }
 }
 
-fn set_pool(encoding: &Encoding, value: PoolMetadata, row: &mut substreams_database_change::tables::Row) {
+fn set_pool(encoding: &Encoding, value: &PoolMetadata, row: &mut substreams_database_change::tables::Row) {
     row.set("factory", bytes_to_string(&value.factory, encoding));
 }
 
 fn process_conversion(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -58,7 +66,7 @@ fn process_conversion(
     log_index: usize,
     event: &bancor::Conversion,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_conversion", key);
 
@@ -79,7 +87,7 @@ fn process_conversion(
 
 fn process_liquidity_added(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -88,7 +96,7 @@ fn process_liquidity_added(
     log_index: usize,
     event: &bancor::LiquidityAdded,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_liquidity_added", key);
 
@@ -108,7 +116,7 @@ fn process_liquidity_added(
 
 fn process_liquidity_removed(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -117,7 +125,7 @@ fn process_liquidity_removed(
     log_index: usize,
     event: &bancor::LiquidityRemoved,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_liquidity_removed", key);
 
@@ -137,7 +145,7 @@ fn process_liquidity_removed(
 
 fn process_token_rate_update(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -146,7 +154,7 @@ fn process_token_rate_update(
     log_index: usize,
     event: &bancor::TokenRateUpdate,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_token_rate_update", key);
 
@@ -255,7 +263,7 @@ fn process_features_removal(
 
 fn process_conversion_fee_update(
     encoding: &Encoding,
-    store: &FoundationalStore,
+    pools: &PoolMetadataMap,
     tables: &mut Tables,
     clock: &Clock,
     tx: &bancor::Transaction,
@@ -264,7 +272,7 @@ fn process_conversion_fee_update(
     log_index: usize,
     event: &bancor::ConversionFeeUpdate,
 ) {
-    if let Some(pool) = get_pool_by_address(store, &log.address) {
+    if let Some(pool) = get_pool_by_address(pools, &log.address) {
         let key = log_key(clock, tx_index, log_index);
         let row = tables.create_row("bancor_conversion_fee_update", key);
 
