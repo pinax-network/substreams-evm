@@ -13,9 +13,7 @@ ALTER TABLE kyber_elastic_swap
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS swap_fee_units     UInt32 COMMENT 'Swap fee units',
-    ADD COLUMN IF NOT EXISTS tick_distance      Int32 COMMENT 'Tick distance';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- KyberSwap Elastic Mint --
 CREATE TABLE IF NOT EXISTS kyber_elastic_mint AS TEMPLATE_LOG
@@ -32,9 +30,7 @@ ALTER TABLE kyber_elastic_mint
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS swap_fee_units     UInt32 COMMENT 'Swap fee units',
-    ADD COLUMN IF NOT EXISTS tick_distance      Int32 COMMENT 'Tick distance';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- KyberSwap Elastic Burn --
 CREATE TABLE IF NOT EXISTS kyber_elastic_burn AS TEMPLATE_LOG
@@ -50,9 +46,7 @@ ALTER TABLE kyber_elastic_burn
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS swap_fee_units     UInt32 COMMENT 'Swap fee units',
-    ADD COLUMN IF NOT EXISTS tick_distance      Int32 COMMENT 'Tick distance';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- KyberSwap Elastic PoolCreated --
 CREATE TABLE IF NOT EXISTS kyber_elastic_pool_created AS TEMPLATE_LOG

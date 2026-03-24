@@ -13,8 +13,7 @@ ALTER TABLE aerodrome_swap
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome Mint --
 CREATE TABLE IF NOT EXISTS aerodrome_mint AS TEMPLATE_LOG
@@ -27,8 +26,7 @@ ALTER TABLE aerodrome_mint
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome Burn --
 CREATE TABLE IF NOT EXISTS aerodrome_burn AS TEMPLATE_LOG
@@ -42,8 +40,7 @@ ALTER TABLE aerodrome_burn
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome Sync --
 CREATE TABLE IF NOT EXISTS aerodrome_sync AS TEMPLATE_LOG
@@ -55,8 +52,7 @@ ALTER TABLE aerodrome_sync
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome Fees --
 CREATE TABLE IF NOT EXISTS aerodrome_fees AS TEMPLATE_LOG
@@ -69,8 +65,7 @@ ALTER TABLE aerodrome_fees
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome Claim --
 CREATE TABLE IF NOT EXISTS aerodrome_claim AS TEMPLATE_LOG
@@ -84,8 +79,7 @@ ALTER TABLE aerodrome_claim
     -- PoolCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'Token0 contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address',
-    ADD COLUMN IF NOT EXISTS stable             Bool COMMENT 'Stable or volatile pool';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'Token1 contract address';
 
 -- Aerodrome/Velodrome PoolCreated --
 CREATE TABLE IF NOT EXISTS aerodrome_pool_created AS TEMPLATE_LOG

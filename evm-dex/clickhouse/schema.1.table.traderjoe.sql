@@ -19,8 +19,7 @@ ALTER TABLE traderjoe_swap
     -- LbPairCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'tokenX contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address',
-    ADD COLUMN IF NOT EXISTS bin_step           UInt32 COMMENT 'Bin step';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address';
 
 -- Trader Joe V2 DepositedToBins --
 CREATE TABLE IF NOT EXISTS traderjoe_deposited_to_bins AS TEMPLATE_LOG
@@ -32,8 +31,7 @@ ALTER TABLE traderjoe_deposited_to_bins
     -- LbPairCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'tokenX contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address',
-    ADD COLUMN IF NOT EXISTS bin_step           UInt32 COMMENT 'Bin step';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address';
 
 -- Trader Joe V2 WithdrawnFromBins --
 CREATE TABLE IF NOT EXISTS traderjoe_withdrawn_from_bins AS TEMPLATE_LOG
@@ -45,8 +43,7 @@ ALTER TABLE traderjoe_withdrawn_from_bins
     -- LbPairCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'tokenX contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address',
-    ADD COLUMN IF NOT EXISTS bin_step           UInt32 COMMENT 'Bin step';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address';
 
 -- Trader Joe V2 CompositionFees --
 CREATE TABLE IF NOT EXISTS traderjoe_composition_fees AS TEMPLATE_LOG
@@ -62,8 +59,7 @@ ALTER TABLE traderjoe_composition_fees
     -- LbPairCreated --
     ADD COLUMN IF NOT EXISTS factory            String COMMENT 'Factory contract address',
     ADD COLUMN IF NOT EXISTS token0             String COMMENT 'tokenX contract address',
-    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address',
-    ADD COLUMN IF NOT EXISTS bin_step           UInt32 COMMENT 'Bin step';
+    ADD COLUMN IF NOT EXISTS token1             String COMMENT 'tokenY contract address';
 
 -- Trader Joe V2 LbPairCreated --
 CREATE TABLE IF NOT EXISTS traderjoe_lb_pair_created AS TEMPLATE_LOG
