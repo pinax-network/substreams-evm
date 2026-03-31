@@ -25,6 +25,7 @@ protobuf:
     - v1/balances.proto
 
     # DEX
+    - v1/dex-swaps.proto
     - v1/dex/sunpump.proto
     - v1/dex/aerodrome.proto
     - v1/dex/balancer.proto

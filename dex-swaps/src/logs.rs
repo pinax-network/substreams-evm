@@ -7,13 +7,30 @@ use substreams::{
     pb::sf::substreams::foundational_store::model::v2::{QueriedEntry, ResponseCode},
     store::FoundationalStore,
 };
-use substreams_ethereum::pb::eth::v2::Block;
+use substreams_abis::dex::uniswap::v4 as uniswap_v4;
+use substreams_ethereum::{pb::eth::v2::{Block, Log}, Event};
 
 pub(crate) type PoolMetadata = Pool;
 pub(crate) type PoolMetadataMap = HashMap<Vec<u8>, PoolMetadata>;
 
 pub(crate) fn collect_log_addresses(block: &Block) -> HashSet<Vec<u8>> {
-    block.logs().map(|log| log.address().to_vec()).collect()
+    let mut addresses = HashSet::new();
+
+    for log in block.logs() {
+        collect_log_address(log.log, &mut addresses);
+    }
+
+    addresses
+}
+
+fn collect_log_address(log: &Log, addresses: &mut HashSet<Vec<u8>>) {
+    if !log.address.is_empty() {
+        addresses.insert(log.address.clone());
+    }
+
+    if let Some(event) = uniswap_v4::poolmanager::events::Swap::match_and_decode(log) {
+        addresses.insert(event.id.to_vec());
+    }
 }
 
 pub(crate) fn get_pools_by_address(store: &FoundationalStore, addresses: &HashSet<Vec<u8>>) -> PoolMetadataMap {

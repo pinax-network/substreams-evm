@@ -16,9 +16,9 @@ binaries:
 
 protobuf:
   files:
-    - swaps.proto
+    - dex-swaps.proto
   importPaths:
-    - ../proto/v1/dex
+    - ../proto/v1/
 
 modules:
   - name: map_events

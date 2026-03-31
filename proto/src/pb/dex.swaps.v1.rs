@@ -70,23 +70,49 @@ pub enum Protocol {
     Woofi = 14,
 }
 impl Protocol {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
-            Self::Unspecified => "PROTOCOL_UNSPECIFIED",
-            Self::Aerodrome => "PROTOCOL_AERODROME",
-            Self::Balancer => "PROTOCOL_BALANCER",
-            Self::Bancor => "PROTOCOL_BANCOR",
-            Self::Cow => "PROTOCOL_COW",
-            Self::Curvefi => "PROTOCOL_CURVEFI",
-            Self::Dodo => "PROTOCOL_DODO",
-            Self::KyberElastic => "PROTOCOL_KYBER_ELASTIC",
-            Self::Sunpump => "PROTOCOL_SUNPUMP",
-            Self::Traderjoe => "PROTOCOL_TRADERJOE",
-            Self::UniswapV1 => "PROTOCOL_UNISWAP_V1",
-            Self::UniswapV2 => "PROTOCOL_UNISWAP_V2",
-            Self::UniswapV3 => "PROTOCOL_UNISWAP_V3",
-            Self::UniswapV4 => "PROTOCOL_UNISWAP_V4",
-            Self::Woofi => "PROTOCOL_WOOFI",
+            Protocol::Unspecified => "PROTOCOL_UNSPECIFIED",
+            Protocol::Aerodrome => "PROTOCOL_AERODROME",
+            Protocol::Balancer => "PROTOCOL_BALANCER",
+            Protocol::Bancor => "PROTOCOL_BANCOR",
+            Protocol::Cow => "PROTOCOL_COW",
+            Protocol::Curvefi => "PROTOCOL_CURVEFI",
+            Protocol::Dodo => "PROTOCOL_DODO",
+            Protocol::KyberElastic => "PROTOCOL_KYBER_ELASTIC",
+            Protocol::Sunpump => "PROTOCOL_SUNPUMP",
+            Protocol::Traderjoe => "PROTOCOL_TRADERJOE",
+            Protocol::UniswapV1 => "PROTOCOL_UNISWAP_V1",
+            Protocol::UniswapV2 => "PROTOCOL_UNISWAP_V2",
+            Protocol::UniswapV3 => "PROTOCOL_UNISWAP_V3",
+            Protocol::UniswapV4 => "PROTOCOL_UNISWAP_V4",
+            Protocol::Woofi => "PROTOCOL_WOOFI",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "PROTOCOL_UNSPECIFIED" => Some(Self::Unspecified),
+            "PROTOCOL_AERODROME" => Some(Self::Aerodrome),
+            "PROTOCOL_BALANCER" => Some(Self::Balancer),
+            "PROTOCOL_BANCOR" => Some(Self::Bancor),
+            "PROTOCOL_COW" => Some(Self::Cow),
+            "PROTOCOL_CURVEFI" => Some(Self::Curvefi),
+            "PROTOCOL_DODO" => Some(Self::Dodo),
+            "PROTOCOL_KYBER_ELASTIC" => Some(Self::KyberElastic),
+            "PROTOCOL_SUNPUMP" => Some(Self::Sunpump),
+            "PROTOCOL_TRADERJOE" => Some(Self::Traderjoe),
+            "PROTOCOL_UNISWAP_V1" => Some(Self::UniswapV1),
+            "PROTOCOL_UNISWAP_V2" => Some(Self::UniswapV2),
+            "PROTOCOL_UNISWAP_V3" => Some(Self::UniswapV3),
+            "PROTOCOL_UNISWAP_V4" => Some(Self::UniswapV4),
+            "PROTOCOL_WOOFI" => Some(Self::Woofi),
+            _ => None,
         }
     }
 }
+// @@protoc_insertion_point(module)
