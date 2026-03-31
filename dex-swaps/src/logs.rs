@@ -7,6 +7,7 @@ use substreams::{
     pb::sf::substreams::foundational_store::model::v2::{QueriedEntry, ResponseCode},
     store::FoundationalStore,
 };
+use substreams_abis::dex::balancer;
 use substreams_abis::dex::uniswap::v4 as uniswap_v4;
 use substreams_ethereum::{pb::eth::v2::{Block, Log}, Event};
 
@@ -30,6 +31,10 @@ fn collect_log_address(log: &Log, addresses: &mut HashSet<Vec<u8>>) {
 
     if let Some(event) = uniswap_v4::poolmanager::events::Swap::match_and_decode(log) {
         addresses.insert(event.id.to_vec());
+    }
+
+    if let Some(event) = balancer::v3::vault::events::Swap::match_and_decode(log) {
+        addresses.insert(event.pool.to_vec());
     }
 }
 

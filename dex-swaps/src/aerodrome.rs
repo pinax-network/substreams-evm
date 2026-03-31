@@ -4,7 +4,7 @@ use substreams_ethereum::{pb::eth::v2::{Log, TransactionTrace}, Event};
 
 use crate::logs::PoolMetadataMap;
 
-pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
+pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
     let event = abi::pool::events::Swap::match_and_decode(log)?;
     let pool = pools.get(log.address.as_slice())?;
     let token0 = pool.tokens.first()?;
