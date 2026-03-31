@@ -6,6 +6,9 @@ package:
   description: Normalized EVM DEX swaps package
   image: ../image.png
 
+imports:
+  evm_dex_foundational_store: ../spkg/evm-dex-foundational-store-v0.6.0.spkg
+
 binaries:
   default:
     type: wasm/rust-v1
@@ -22,6 +25,7 @@ modules:
     kind: map
     inputs:
       - source: sf.ethereum.type.v2.Block
+      - foundational-store: evm_dex_foundational_store@v0.6.0
     output:
       type: proto:dex.swaps.v1.Events
 
