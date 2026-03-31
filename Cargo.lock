@@ -287,6 +287,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "dex-swaps"
+version = "0.1.0"
+dependencies = [
+ "proto",
+ "substreams",
+ "substreams-ethereum",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -462,7 +471,7 @@ dependencies = [
 
 [[package]]
 name = "evm-dex"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "common",
  "prost 0.13.5",
