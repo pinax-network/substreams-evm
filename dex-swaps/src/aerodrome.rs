@@ -3,6 +3,7 @@ use substreams_abis::dex::aerodrome as abi;
 use substreams_ethereum::{pb::eth::v2::{Log, TransactionTrace}, Event};
 
 use crate::logs::PoolMetadataMap;
+use crate::utils::is_non_zero;
 
 pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
     let event = abi::pool::events::Swap::match_and_decode(log)?;
@@ -35,10 +36,5 @@ pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadat
         input_amount,
         output_token,
         output_amount,
-        log_ordinal: log.ordinal,
     })
-}
-
-fn is_non_zero(value: &str) -> bool {
-    !value.is_empty() && value.bytes().any(|byte| byte != b'0')
 }

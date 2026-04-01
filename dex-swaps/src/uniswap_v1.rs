@@ -18,7 +18,6 @@ pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadata
             input_amount: event.eth_sold.to_string(),
             output_token: token.clone(),
             output_amount: event.tokens_bought.to_string(),
-            log_ordinal: log.ordinal,
         });
     }
 
@@ -35,7 +34,6 @@ pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadata
             input_amount: event.tokens_sold.to_string(),
             output_token: NULL_ADDRESS.to_vec(),
             output_amount: event.eth_bought.to_string(),
-            log_ordinal: log.ordinal,
         });
     }
 

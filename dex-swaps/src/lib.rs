@@ -1,4 +1,6 @@
 mod logs;
+mod sunpump;
+mod utils;
 mod aerodrome;
 mod balancer;
 mod bancor;
@@ -13,10 +15,11 @@ mod uniswap_v3;
 mod uniswap_v4;
 mod woofi;
 
+use common::create::{CreateLog, CreateTransaction};
 use logs::PoolMetadataMap;
 use proto::pb::dex::swaps::v1 as pb;
 use substreams::{errors::Error, store::FoundationalStore};
-use substreams_ethereum::pb::eth::v2::{Block, TransactionTrace};
+use substreams_ethereum::pb::eth::v2::{Block, Call, Log, TransactionTrace};
 
 #[substreams::handlers::map]
 pub fn map_events(block: Block, store: FoundationalStore) -> Result<pb::Events, Error> {
@@ -32,34 +35,29 @@ pub fn map_events(block: Block, store: FoundationalStore) -> Result<pb::Events, 
 }
 
 fn process_transaction(tx: &TransactionTrace, pools: &PoolMetadataMap) -> Option<pb::Transaction> {
-    let mut swaps = Vec::new();
+    let mut transaction = pb::Transaction::create_transaction(tx);
+    let logs_with_calls: Vec<(&Log, Option<&Call>)> = if tx.calls.is_empty() {
+        tx.receipt().logs().map(|log_view| (log_view.log, None)).collect()
+    } else {
+        tx.logs_with_calls().map(|(log, call_view)| (log, Some(call_view.call))).collect()
+    };
 
-    for log_view in tx.receipt().logs() {
-        if let Some(swap) = decode_log(tx, log_view.log, pools) {
-            swaps.push(swap);
+    for (log, call) in logs_with_calls {
+        if let Some(swap) = decode_log(tx, log, pools) {
+            transaction.logs.push(pb::Log::create_log_with_call(log, pb::log::Log::Swap(swap), call));
         }
     }
 
-    if swaps.is_empty() {
+    if transaction.logs.is_empty() {
         return None;
     }
 
-    Some(pb::Transaction {
-        hash: tx.hash.to_vec(),
-        from: tx.from.to_vec(),
-        to: (!tx.to.is_empty()).then(|| tx.to.to_vec()),
-        nonce: tx.nonce,
-        gas_price: tx.clone().gas_price.unwrap_or_default().with_decimal(0).to_string(),
-        gas_limit: tx.gas_limit,
-        gas_used: tx.receipt().receipt.cumulative_gas_used,
-        value: tx.clone().value.unwrap_or_default().with_decimal(0).to_string(),
-        swaps,
-    })
+    Some(transaction)
 }
 
 fn decode_log(
     tx: &TransactionTrace,
-    log: &substreams_ethereum::pb::eth::v2::Log,
+    log: &Log,
     pools: &PoolMetadataMap,
 ) -> Option<pb::Swap> {
     if let Some(swap) = uniswap_v1::decode_swap(tx, log, pools) {
@@ -111,6 +109,10 @@ fn decode_log(
     }
 
     if let Some(swap) = kyber_elastic::decode_swap(tx, log, pools) {
+        return Some(swap);
+    }
+
+    if let Some(swap) = sunpump::decode_swap(tx, log, pools) {
         return Some(swap);
     }
 

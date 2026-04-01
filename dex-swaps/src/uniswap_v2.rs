@@ -3,6 +3,7 @@ use substreams_abis::dex::uniswap::v2 as abi;
 use substreams_ethereum::{pb::eth::v2::{Log, TransactionTrace}, Event};
 
 use crate::logs::{PoolMetadataMap};
+use crate::utils::is_non_zero;
 
 pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
     let event = abi::pair::events::Swap::match_and_decode(log)?;
@@ -16,10 +17,10 @@ pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadata
     let amount1_out = event.amount1_out.to_string();
 
     let (input_token, input_amount, output_token, output_amount) = match (
-        is_non_zero_amount(&amount0_in),
-        is_non_zero_amount(&amount0_out),
-        is_non_zero_amount(&amount1_in),
-        is_non_zero_amount(&amount1_out),
+        is_non_zero(&amount0_in),
+        is_non_zero(&amount0_out),
+        is_non_zero(&amount1_in),
+        is_non_zero(&amount1_out),
     ) {
         (true, false, false, true) => (token0.clone(), amount0_in, token1.clone(), amount1_out),
         (false, true, true, false) => (token1.clone(), amount1_in, token0.clone(), amount0_out),
@@ -35,10 +36,5 @@ pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadata
         input_amount,
         output_token,
         output_amount,
-        log_ordinal: log.ordinal,
     })
-}
-
-fn is_non_zero_amount(value: &str) -> bool {
-    !value.is_empty() && value.bytes().any(|byte| byte != b'0')
 }

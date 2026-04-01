@@ -8,6 +8,7 @@ use substreams::{
     store::FoundationalStore,
 };
 use substreams_abis::dex::balancer;
+use substreams_abis::dex::sunpump;
 use substreams_abis::dex::uniswap::v4 as uniswap_v4;
 use substreams_ethereum::{pb::eth::v2::{Block, Log}, Event};
 
@@ -35,6 +36,14 @@ fn collect_log_address(log: &Log, addresses: &mut HashSet<Vec<u8>>) {
 
     if let Some(event) = balancer::v3::vault::events::Swap::match_and_decode(log) {
         addresses.insert(event.pool.to_vec());
+    }
+
+    if let Some(event) = sunpump::v1::launchpadproxy::events::TokenPurchased::match_and_decode(log) {
+        addresses.insert(event.token.to_vec());
+    }
+
+    if let Some(event) = sunpump::v1::launchpadproxy::events::TokenSold::match_and_decode(log) {
+        addresses.insert(event.token.to_vec());
     }
 }
 

@@ -15,18 +15,71 @@ pub struct Transaction {
     pub from: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes="vec", optional, tag="3")]
     pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
-    #[prost(uint64, tag="4")]
+    #[prost(uint64, tag="5")]
     pub nonce: u64,
-    #[prost(string, tag="5")]
+    #[prost(string, tag="6")]
     pub gas_price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="6")]
-    pub gas_limit: u64,
     #[prost(uint64, tag="7")]
+    pub gas_limit: u64,
+    #[prost(uint64, tag="8")]
     pub gas_used: u64,
-    #[prost(string, tag="8")]
+    #[prost(string, tag="9")]
     pub value: ::prost::alloc::string::String,
-    #[prost(message, repeated, tag="9")]
-    pub swaps: ::prost::alloc::vec::Vec<Swap>,
+    #[prost(message, repeated, tag="10")]
+    pub logs: ::prost::alloc::vec::Vec<Log>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Log {
+    #[prost(bytes="vec", tag="1")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    #[prost(uint64, tag="2")]
+    pub ordinal: u64,
+    #[prost(bytes="vec", repeated, tag="3")]
+    pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    #[prost(bytes="vec", tag="4")]
+    pub data: ::prost::alloc::vec::Vec<u8>,
+    #[prost(message, optional, tag="5")]
+    pub call: ::core::option::Option<Call>,
+    #[prost(uint32, tag="6")]
+    pub block_index: u32,
+    #[prost(oneof="log::Log", tags="10")]
+    pub log: ::core::option::Option<log::Log>,
+}
+/// Nested message and enum types in `Log`.
+pub mod log {
+    #[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Log {
+        #[prost(message, tag="10")]
+        Swap(super::Swap),
+    }
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Call {
+    #[prost(uint32, tag="1")]
+    pub index: u32,
+    #[prost(uint64, tag="2")]
+    pub begin_ordinal: u64,
+    #[prost(uint64, tag="3")]
+    pub end_ordinal: u64,
+    #[prost(bytes="vec", tag="4")]
+    pub caller: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="5")]
+    pub address: ::prost::alloc::vec::Vec<u8>,
+    #[prost(string, tag="6")]
+    pub value: ::prost::alloc::string::String,
+    #[prost(uint64, tag="7")]
+    pub gas_consumed: u64,
+    #[prost(uint64, tag="8")]
+    pub gas_limit: u64,
+    #[prost(uint32, tag="9")]
+    pub depth: u32,
+    #[prost(uint32, tag="10")]
+    pub parent_index: u32,
+    #[prost(enumeration="CallType", tag="11")]
+    pub call_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -47,8 +100,6 @@ pub struct Swap {
     pub output_token: ::prost::alloc::vec::Vec<u8>,
     #[prost(string, tag="8")]
     pub output_amount: ::prost::alloc::string::String,
-    #[prost(uint64, tag="9")]
-    pub log_ordinal: u64,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -111,6 +162,44 @@ impl Protocol {
             "PROTOCOL_UNISWAP_V3" => Some(Self::UniswapV3),
             "PROTOCOL_UNISWAP_V4" => Some(Self::UniswapV4),
             "PROTOCOL_WOOFI" => Some(Self::Woofi),
+            _ => None,
+        }
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum CallType {
+    Unspecified = 0,
+    Call = 1,
+    Callcode = 2,
+    Delegate = 3,
+    Static = 4,
+    Create = 5,
+}
+impl CallType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            CallType::Unspecified => "CALL_TYPE_UNSPECIFIED",
+            CallType::Call => "CALL_TYPE_CALL",
+            CallType::Callcode => "CALL_TYPE_CALLCODE",
+            CallType::Delegate => "CALL_TYPE_DELEGATE",
+            CallType::Static => "CALL_TYPE_STATIC",
+            CallType::Create => "CALL_TYPE_CREATE",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "CALL_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
+            "CALL_TYPE_CALL" => Some(Self::Call),
+            "CALL_TYPE_CALLCODE" => Some(Self::Callcode),
+            "CALL_TYPE_DELEGATE" => Some(Self::Delegate),
+            "CALL_TYPE_STATIC" => Some(Self::Static),
+            "CALL_TYPE_CREATE" => Some(Self::Create),
             _ => None,
         }
     }

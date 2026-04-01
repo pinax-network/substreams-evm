@@ -19,7 +19,6 @@ pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadat
             input_amount: event.tokens_sold.to_string(),
             output_token,
             output_amount: event.tokens_bought.to_string(),
-            log_ordinal: log.ordinal,
         });
     }
 
@@ -37,7 +36,6 @@ pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadat
             input_amount: event.tokens_sold.to_string(),
             output_token,
             output_amount: event.tokens_bought.to_string(),
-            log_ordinal: log.ordinal,
         });
     }
 

@@ -4,6 +4,7 @@ use substreams_abis::dex::traderjoe as abi;
 use substreams_ethereum::{pb::eth::v2::{Log, TransactionTrace}, Event};
 
 use crate::logs::PoolMetadataMap;
+use crate::utils::is_non_zero;
 
 pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
     let event = abi::lbpair::events::Swap::match_and_decode(log)?;
@@ -28,7 +29,6 @@ pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log, pools: &PoolMetadat
         input_amount,
         output_token,
         output_amount,
-        log_ordinal: log.ordinal,
     })
 }
 
@@ -36,8 +36,4 @@ fn decode_packed_uint128(bytes: &[u8; 32]) -> (String, String) {
     let x = BigInt::from_unsigned_bytes_be(&bytes[..16]);
     let y = BigInt::from_unsigned_bytes_be(&bytes[16..]);
     (x.to_string(), y.to_string())
-}
-
-fn is_non_zero(value: &str) -> bool {
-    !value.is_empty() && value.bytes().any(|byte| byte != b'0')
 }

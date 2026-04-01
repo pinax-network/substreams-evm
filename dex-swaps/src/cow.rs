@@ -14,6 +14,5 @@ pub(crate) fn decode_swap(_tx: &TransactionTrace, log: &Log) -> Option<pb::Swap>
         input_amount: event.sell_amount.to_string(),
         output_token: event.buy_token.to_vec(),
         output_amount: event.buy_amount.to_string(),
-        log_ordinal: log.ordinal,
     })
 }

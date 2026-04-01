@@ -208,6 +208,11 @@ mod erc721_transfers_impl {
     impl_create_log_with_call_metadata!(proto::pb::erc721::transfers::v1);
 }
 
+mod dex_swaps_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::dex::swaps::v1);
+}
+
 mod contracts_impl {
     use super::*;
     use proto::pb::contracts::v1 as pb;

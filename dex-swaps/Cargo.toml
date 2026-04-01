@@ -13,4 +13,5 @@ prost-types = { workspace = true }
 substreams = { workspace = true }
 substreams-abis = { workspace = true }
 substreams-ethereum = { workspace = true }
+common = { path = "../common" }
 proto = { path = "../proto" }

@@ -10,12 +10,12 @@ message Transaction {
   bytes hash = 1;
   bytes from = 2;
   optional bytes to = 3;
-  uint64 nonce = 4;
-  string gas_price = 5;
-  uint64 gas_limit = 6;
-  uint64 gas_used = 7;
-  string value = 8;
-  repeated Swap swaps = 9;
+  uint64 nonce = 5;
+  string gas_price = 6;
+  uint64 gas_limit = 7;
+  uint64 gas_used = 8;
+  string value = 9;
+  repeated Log logs = 10;
 }
 
 enum Protocol {
@@ -36,6 +36,44 @@ enum Protocol {
   PROTOCOL_WOOFI = 14;
 }
 
+message Log {
+  bytes address = 1;
+  uint64 ordinal = 2;
+  repeated bytes topics = 3;
+  bytes data = 4;
+
+  optional Call call = 5;
+
+  uint32 block_index = 6;
+
+  oneof log {
+    Swap swap = 10;
+  }
+}
+
+message Call {
+  uint32 index = 1;
+  uint64 begin_ordinal = 2;
+  uint64 end_ordinal = 3;
+  bytes caller = 4;
+  bytes address = 5;
+  string value = 6;
+  uint64 gas_consumed = 7;
+  uint64 gas_limit = 8;
+  uint32 depth = 9;
+  uint32 parent_index = 10;
+  CallType call_type = 11;
+}
+
+enum CallType {
+  CALL_TYPE_UNSPECIFIED = 0;
+  CALL_TYPE_CALL = 1;
+  CALL_TYPE_CALLCODE = 2;
+  CALL_TYPE_DELEGATE = 3;
+  CALL_TYPE_STATIC = 4;
+  CALL_TYPE_CREATE = 5;
+}
+
 message Swap {
   Protocol protocol = 1;
   bytes factory = 2;
@@ -45,5 +83,4 @@ message Swap {
   string input_amount = 6;
   bytes output_token = 7;
   string output_amount = 8;
-  uint64 log_ordinal = 9;
 }

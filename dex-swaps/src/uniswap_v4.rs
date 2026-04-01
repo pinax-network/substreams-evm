@@ -42,7 +42,6 @@ pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadata
         input_amount,
         output_token,
         output_amount,
-        log_ordinal: log.ordinal,
     })
 }
 

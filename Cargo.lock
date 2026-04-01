@@ -290,6 +290,7 @@ dependencies = [
 name = "dex-swaps"
 version = "0.1.0"
 dependencies = [
+ "common",
  "prost 0.13.5",
  "prost-types 0.13.5",
  "proto",
