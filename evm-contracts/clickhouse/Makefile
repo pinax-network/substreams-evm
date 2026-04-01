@@ -6,7 +6,7 @@ PARALLEL_JOBS ?= 500
 
 .PHONY: pack
 pack:
-	substreams pack
+	substreams pack -o ../../spkg/{spkgDefaultName}
 
 .PHONY: dev
 dev: pack

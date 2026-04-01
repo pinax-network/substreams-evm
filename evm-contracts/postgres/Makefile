@@ -9,7 +9,7 @@ PG_DSN ?= psql://dev-node:insecure-change-me-in-prod@localhost:5432/dev-node?ssl
 
 .PHONY: pack
 pack:
-	substreams pack
+	substreams pack -o ../../spkg/{spkgDefaultName}
 
 .PHONY: dev
 dev: pack

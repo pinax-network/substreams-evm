@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
     block_num                   UInt32,
     block_hash                  String,
     timestamp                   DateTime('UTC'),
-    minute                      UInt32 MATERIALIZED toRelativeMinuteNum(timestamp),
+    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
 
     -- transaction --
     tx_index                    UInt32, -- derived from Substreams
@@ -63,5 +63,5 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_LOG (
 )
 ENGINE = MergeTree
 ORDER BY (
-    timestamp, block_num
+    minute, timestamp, block_num
 );
