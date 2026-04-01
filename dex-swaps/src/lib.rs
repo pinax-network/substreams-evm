@@ -43,8 +43,8 @@ fn process_transaction(tx: &TransactionTrace, pools: &PoolMetadataMap) -> Option
     };
 
     for (log, call) in logs_with_calls {
-        if let Some(swap) = decode_log(tx, log, pools) {
-            transaction.logs.push(pb::Log::create_log_with_call(log, pb::log::Log::Swap(swap), call));
+        for event in decode_log(tx, log, pools) {
+            transaction.logs.push(pb::Log::create_log_with_call(log, event, call));
         }
     }
 
@@ -59,62 +59,23 @@ fn decode_log(
     tx: &TransactionTrace,
     log: &Log,
     pools: &PoolMetadataMap,
-) -> Option<pb::Swap> {
-    if let Some(swap) = uniswap_v1::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
+) -> Vec<pb::log::Log> {
+    let mut events = Vec::new();
 
-    if let Some(swap) = uniswap_v2::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
+    events.extend(uniswap_v1::decode_log(tx, log, pools));
+    events.extend(uniswap_v2::decode_log(tx, log, pools));
+    events.extend(uniswap_v3::decode_log(tx, log, pools));
+    events.extend(uniswap_v4::decode_log(tx, log, pools));
+    events.extend(curvefi::decode_log(tx, log, pools));
+    events.extend(balancer::decode_log(tx, log, pools));
+    events.extend(bancor::decode_log(tx, log, pools));
+    events.extend(cow::decode_log(tx, log));
+    events.extend(aerodrome::decode_log(tx, log, pools));
+    events.extend(dodo::decode_log(tx, log));
+    events.extend(woofi::decode_log(tx, log));
+    events.extend(traderjoe::decode_log(tx, log, pools));
+    events.extend(kyber_elastic::decode_log(tx, log, pools));
+    events.extend(sunpump::decode_log(tx, log, pools));
 
-    if let Some(swap) = uniswap_v3::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = uniswap_v4::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = curvefi::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = balancer::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = bancor::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = cow::decode_swap(tx, log) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = aerodrome::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = dodo::decode_swap(tx, log) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = woofi::decode_swap(tx, log) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = traderjoe::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = kyber_elastic::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    if let Some(swap) = sunpump::decode_swap(tx, log, pools) {
-        return Some(swap);
-    }
-
-    None
+    events
 }

@@ -43,16 +43,20 @@ pub struct Log {
     pub call: ::core::option::Option<Call>,
     #[prost(uint32, tag="6")]
     pub block_index: u32,
-    #[prost(oneof="log::Log", tags="10")]
+    #[prost(oneof="log::Log", tags="10, 11, 12")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
 pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
         #[prost(message, tag="10")]
         Swap(super::Swap),
+        #[prost(message, tag="11")]
+        SwapFee(super::SwapFee),
+        #[prost(message, tag="12")]
+        Initialize(super::Initialize),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -100,6 +104,28 @@ pub struct Swap {
     pub output_token: ::prost::alloc::vec::Vec<u8>,
     #[prost(string, tag="8")]
     pub output_amount: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SwapFee {
+    #[prost(enumeration="Protocol", tag="1")]
+    pub protocol: i32,
+    #[prost(bytes="vec", tag="2")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="3")]
+    pub pool: ::prost::alloc::vec::Vec<u8>,
+    #[prost(uint32, tag="4")]
+    pub fee: u32,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Initialize {
+    #[prost(enumeration="Protocol", tag="1")]
+    pub protocol: i32,
+    #[prost(bytes="vec", tag="2")]
+    pub factory: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes="vec", tag="3")]
+    pub pool: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

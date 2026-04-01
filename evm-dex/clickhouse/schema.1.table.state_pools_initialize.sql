@@ -4,10 +4,10 @@ CREATE TABLE IF NOT EXISTS state_pools_initialize (
     block_num                   UInt32,
     block_hash                  String,
     timestamp                   DateTime('UTC'),
-    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+    minute                      UInt32 MATERIALIZED toRelativeMinuteNum(timestamp),
 
     -- version: larger = "wins" => smallest block_num wins
-    inv_block_num Int64 MATERIALIZED (-toInt64(block_num)),
+    inv_block_num               Int64 MATERIALIZED (-toInt64(block_num)),
 
     -- transaction --
     tx_hash                     String,

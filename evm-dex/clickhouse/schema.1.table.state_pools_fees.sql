@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS state_pools_fees (
     block_num                   UInt32,
     block_hash                  String,
     timestamp                   DateTime('UTC'),
-    minute                      UInt32 COMMENT 'toRelativeMinuteNum(timestamp)',
+    minute                      UInt32 MATERIALIZED toRelativeMinuteNum(timestamp),
 
     -- transaction --
     tx_hash                     String,

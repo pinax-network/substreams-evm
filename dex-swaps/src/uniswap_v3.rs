@@ -1,29 +1,59 @@
+use common::bigint_to_u64;
 use proto::pb::dex::swaps::v1 as pb;
 use substreams_abis::dex::uniswap::v3 as abi;
 use substreams_ethereum::{pb::eth::v2::{Log, TransactionTrace}, Event};
 
 use crate::logs::PoolMetadataMap;
 
-pub(crate) fn decode_swap(tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Option<pb::Swap> {
-    let event = abi::pool::events::Swap::match_and_decode(log)?;
-    let pool = pools.get(log.address.as_slice())?;
-    let token0 = pool.tokens.first()?;
-    let token1 = pool.tokens.get(1)?;
+pub(crate) fn decode_log(tx: &TransactionTrace, log: &Log, pools: &PoolMetadataMap) -> Vec<pb::log::Log> {
+    if let Some(event) = abi::pool::events::Swap::match_and_decode(log) {
+        let Some(pool) = pools.get(log.address.as_slice()) else {
+            return Vec::new();
+        };
+        let Some(token0) = pool.tokens.first() else {
+            return Vec::new();
+        };
+        let Some(token1) = pool.tokens.get(1) else {
+            return Vec::new();
+        };
 
-    let amount0 = event.amount0.to_string();
-    let amount1 = event.amount1.to_string();
-    let (input_token, input_amount, output_token, output_amount) = signed_swap_direction(token0, token1, &amount0, &amount1)?;
+        let amount0 = event.amount0.to_string();
+        let amount1 = event.amount1.to_string();
+        let Some((input_token, input_amount, output_token, output_amount)) =
+            signed_swap_direction(token0, token1, &amount0, &amount1) else {
+                return Vec::new();
+            };
 
-    Some(pb::Swap {
-        protocol: pb::Protocol::UniswapV3 as i32,
-        factory: pool.factory.clone(),
-        pool: log.address.clone(),
-        user: tx.from.to_vec(),
-        input_token,
-        input_amount,
-        output_token,
-        output_amount,
-    })
+        return vec![pb::log::Log::Swap(pb::Swap {
+            protocol: pb::Protocol::UniswapV3 as i32,
+            factory: pool.factory.clone(),
+            pool: log.address.clone(),
+            user: tx.from.to_vec(),
+            input_token,
+            input_amount,
+            output_token,
+            output_amount,
+        })];
+    }
+
+    if let Some(event) = abi::factory::events::PoolCreated::match_and_decode(log) {
+        let fee = bigint_to_u64(&event.fee).unwrap_or_default() as u32;
+        return vec![
+            pb::log::Log::Initialize(pb::Initialize {
+                protocol: pb::Protocol::UniswapV3 as i32,
+                factory: log.address.clone(),
+                pool: event.pool.to_vec(),
+            }),
+            pb::log::Log::SwapFee(pb::SwapFee {
+                protocol: pb::Protocol::UniswapV3 as i32,
+                factory: log.address.clone(),
+                pool: event.pool.to_vec(),
+                fee,
+            }),
+        ];
+    }
+
+    Vec::new()
 }
 
 fn signed_swap_direction(

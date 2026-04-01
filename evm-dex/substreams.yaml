@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: evm_dex
-  version: v0.6.1
+  version: v0.7.0
   url: https://github.com/pinax-network/substreams-evm
   description: Normalized DEX swaps database output
   image: ../image.png
@@ -12,7 +12,7 @@ imports:
   sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
 
   # Normalized swaps package
-  dex_swaps: ../spkg/dex-swaps-v0.1.0.spkg
+  dex_swaps: ../spkg/dex-swaps-v0.7.0.spkg
 
 binaries:
   default:

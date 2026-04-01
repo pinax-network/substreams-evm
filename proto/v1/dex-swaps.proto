@@ -48,6 +48,8 @@ message Log {
 
   oneof log {
     Swap swap = 10;
+    SwapFee swap_fee = 11;
+    Initialize initialize = 12;
   }
 }
 
@@ -83,4 +85,17 @@ message Swap {
   string input_amount = 6;
   bytes output_token = 7;
   string output_amount = 8;
+}
+
+message SwapFee {
+  Protocol protocol = 1;
+  bytes factory = 2;
+  bytes pool = 3;
+  uint32 fee = 4;
+}
+
+message Initialize {
+  Protocol protocol = 1;
+  bytes factory = 2;
+  bytes pool = 3;
 }
