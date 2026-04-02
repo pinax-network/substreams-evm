@@ -1,5 +1,5 @@
 use crate::{bytes_to_string, Encoding};
-use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dodo, erc1155, erc721, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
+use proto::pb::{aerodrome, balancer, bancor, cow, curvefi, dex, dodo, erc1155, erc721, kyber_elastic, sunpump, traderjoe, uniswap, woofi};
 use substreams::pb::substreams::Clock;
 use substreams::Hex;
 use substreams_database_change::tables::Row;
@@ -263,6 +263,7 @@ impl_tx_template!(dodo::v1::Transaction);
 impl_tx_template!(woofi::v1::Transaction);
 impl_tx_template!(traderjoe::v1::Transaction);
 impl_tx_template!(kyber_elastic::v1::Transaction);
+impl_tx_template!(dex::swaps::v1::Transaction);
 
 impl_log_traits!(erc721::transfers::v1::Log, erc721::transfers::v1::CallType);
 impl_log_traits!(erc721::tokens::v1::Log, erc721::tokens::v1::CallType);
@@ -281,6 +282,7 @@ impl_log_traits!(dodo::v1::Log, dodo::v1::CallType);
 impl_log_traits!(woofi::v1::Log, woofi::v1::CallType);
 impl_log_traits!(traderjoe::v1::Log, traderjoe::v1::CallType);
 impl_log_traits!(kyber_elastic::v1::Log, kyber_elastic::v1::CallType);
+impl_log_traits!(dex::swaps::v1::Log, dex::swaps::v1::CallType);
 
 #[cfg(test)]
 mod tests {

@@ -15,7 +15,7 @@ schema:
 
 .PHONY: pack
 pack: schema
-	substreams pack
+	substreams pack -o ../../spkg/{spkgDefaultName}
 
 .PHONY: dev
 dev: pack

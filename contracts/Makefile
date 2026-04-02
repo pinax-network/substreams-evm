@@ -9,7 +9,7 @@ build:
 
 .PHONY: pack
 pack: build
-	substreams pack
+	substreams pack -o ../spkg/{spkgDefaultName}
 
 .PHONY: gui
 gui: build

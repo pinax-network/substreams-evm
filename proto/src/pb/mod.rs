@@ -49,6 +49,13 @@ pub mod dex {
             // @@protoc_insertion_point(dex.foundational_store.v1)
         }
     }
+    pub mod swaps {
+        // @@protoc_insertion_point(attribute:dex.swaps.v1)
+        pub mod v1 {
+            include!("dex.swaps.v1.rs");
+            // @@protoc_insertion_point(dex.swaps.v1)
+        }
+    }
 }
 pub mod dodo {
     // @@protoc_insertion_point(attribute:dodo.v1)

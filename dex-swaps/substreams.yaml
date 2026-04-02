@@ -1,0 +1,32 @@
+specVersion: v0.1.0
+package:
+  name: dex_swaps
+  version: v0.7.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Normalized EVM DEX swaps package
+  image: ../image.png
+
+imports:
+  evm_dex_foundational_store: ../spkg/evm-dex-foundational-store-v0.6.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/dex_swaps.wasm
+
+protobuf:
+  files:
+    - dex-swaps.proto
+  importPaths:
+    - ../proto/v1/
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+      - foundational-store: evm_dex_foundational_store@v0.6.0
+    output:
+      type: proto:dex.swaps.v1.Events
+
+network: mainnet

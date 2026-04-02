@@ -1,4 +1,4 @@
-ENDPOINT ?= eth.substreams.pinax.network:443
+ENDPOINT ?= eth-substreams-tier1-fs.kan-sst2.pinax.io:80
 START_BLOCK ?= 12000000
 STOP_BLOCK ?= 12010000
 PARALLEL_JOBS ?= 100
@@ -15,15 +15,11 @@ schema:
 
 .PHONY: pack
 pack: schema
-	substreams pack
+	substreams pack -o ../../spkg/{spkgDefaultName}
 
 .PHONY: dev
 dev: pack
-	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode
-
-.PHONY: dev-tron
-dev-tron: pack
-	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e tronevm.substreams.pinax.network:443 79000000: --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode -H "X-substreams-acknowledge-non-deterministic: true" -p "db_out=tron_base58"
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --plaintext
 
 .PHONY: setup
 setup: pack
