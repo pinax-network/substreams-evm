@@ -1,6 +1,6 @@
 ENDPOINT ?= base.substreams.pinax.network:443
 START_BLOCK ?= 45690000
-STOP_BLOCK ?= 45790000
+STOP_BLOCK ?= 45691000
 PARALLEL_JOBS ?= 1000
 .DEFAULT_GOAL := pack
 
@@ -19,7 +19,7 @@ pack: schema
 
 .PHONY: dev
 dev: pack
-	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry --development-mode
 
 .PHONY: setup
 setup: pack
