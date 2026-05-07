@@ -1,7 +1,7 @@
-ENDPOINT ?= mainnet.eth.streamingfast.io:443
-START_BLOCK ?= 0
-STOP_BLOCK ?= +1000
-PARALLEL_JOBS ?= 500
+ENDPOINT ?= base.substreams.pinax.network:443
+START_BLOCK ?= 45690000
+STOP_BLOCK ?= 45790000
+PARALLEL_JOBS ?= 100
 .DEFAULT_GOAL := pack
 
 .PHONY: schema
@@ -15,16 +15,12 @@ schema:
 
 .PHONY: pack
 pack: schema
-	substreams pack substreams.yaml -o ../../spkg/{spkgDefaultName}
+	substreams pack -o ../../spkg/{spkgDefaultName}
 
-.PHONY: noop
-noop:
-	substreams-sink-noop $(ENDPOINT) substreams.yaml db_out -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)" 0:
+.PHONY: dev
+dev: pack
+	substreams-sink-sql run clickhouse://default:@localhost:9000/default substreams.yaml -e $(ENDPOINT) $(START_BLOCK):$(STOP_BLOCK) --undo-buffer-size 0 --on-module-hash-mistmatch=warn --batch-block-flush-interval 1 --live-block-flush-interval 1 --infinite-retry
 
-.PHONY: gui
-gui:
-	substreams gui -e $(ENDPOINT) substreams.yaml db_out -s $(START_BLOCK) --limit-processed-blocks 0
-
-.PHONY: prod
-prod:
-	substreams gui -e $(ENDPOINT) substreams.yaml db_out -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"
+.PHONY: setup
+setup: pack
+	substreams-sink-sql setup clickhouse://default:@localhost:9000/default substreams.yaml
