@@ -1,0 +1,32 @@
+specVersion: v0.1.0
+package:
+  name: evm_x402
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: x402 EVM payment settlement database changes
+  image: ../image.png
+
+imports:
+  database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
+  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
+  x402: ../spkg/x402-v0.1.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/db_evm_x402.wasm
+
+modules:
+  - name: db_out
+    kind: map
+    inputs:
+      - params: string
+      - source: sf.substreams.v1.Clock
+      - map: x402:map_events
+    output:
+      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+
+network: mainnet
+
+params:
+  db_out: "hex"

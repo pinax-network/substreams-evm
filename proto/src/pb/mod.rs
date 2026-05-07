@@ -125,6 +125,13 @@ pub mod evm {
             // @@protoc_insertion_point(evm.seaport.v1)
         }
     }
+    pub mod x402 {
+        // @@protoc_insertion_point(attribute:evm.x402.v1)
+        pub mod v1 {
+            include!("evm.x402.v1.rs");
+            // @@protoc_insertion_point(evm.x402.v1)
+        }
+    }
 }
 pub mod kyber_elastic {
     // @@protoc_insertion_point(attribute:kyber_elastic.v1)

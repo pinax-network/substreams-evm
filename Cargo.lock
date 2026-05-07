@@ -287,6 +287,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "db-evm-x402"
+version = "0.0.0"
+dependencies = [
+ "common",
+ "proto",
+ "substreams",
+ "substreams-database-change 3.0.0",
+]
+
+[[package]]
 name = "dex-swaps"
 version = "0.1.0"
 dependencies = [
@@ -1812,6 +1822,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed"
 dependencies = [
  "tap",
+]
+
+[[package]]
+name = "x402"
+version = "0.0.0"
+dependencies = [
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
 ]
 
 [[package]]

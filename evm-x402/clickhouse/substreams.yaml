@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: evm_clickhouse_x402
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: x402 EVM payment settlements (ClickHouse)
+  image: ../../image.png
+
+imports:
+  db: ../../spkg/evm-x402-v0.1.0.spkg
+
+modules:
+  - name: db_out
+    use: db:db_out
+
+sink:
+  module: db_out
+  type: sf.substreams.sink.sql.v1.Service
+  config:
+    schema: "./schema.sql"
+    engine: clickhouse
+    postgraphile_frontend:
+      enabled: false
+
+network: mainnet
+
+params:
+  db_out: "hex"
