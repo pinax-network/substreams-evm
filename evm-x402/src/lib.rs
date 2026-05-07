@@ -18,20 +18,12 @@ pub fn db_out(params: String, clock: Clock, events: pb::Events) -> Result<Databa
                 continue;
             };
 
-            let key = [
-                ("minute", (seconds / 60).to_string()),
-                ("timestamp", seconds.to_string()),
-                ("block_num", clock.number.to_string()),
-                ("tx_index", transaction.index.to_string()),
-                ("log_index", log_index.to_string()),
-                ("block_hash", format!("0x{}", clock.id)),
-            ];
+            let key = [("timestamp", seconds.to_string()), ("block_num", clock.number.to_string())];
             let row = tables.create_row("x402_payments", key);
 
             row.set("block_num", clock.number);
             row.set("block_hash", format!("0x{}", clock.id));
             row.set("timestamp", seconds);
-            row.set("minute", seconds / 60);
             row.set("tx_index", transaction.index);
             row.set("tx_hash", bytes_to_hex(&transaction.hash));
             row.set("tx_from", bytes_to_string(&transaction.from, &encoding));
@@ -96,7 +88,6 @@ pub fn db_out(params: String, clock: Clock, events: pb::Events) -> Result<Databa
         row.set("block_num", clock.number);
         row.set("block_hash", format!("0x{}", clock.id));
         row.set("timestamp", seconds);
-        row.set("minute", seconds / 60);
     }
 
     Ok(tables.to_database_changes())
