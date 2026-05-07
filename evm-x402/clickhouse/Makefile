@@ -1,7 +1,7 @@
 ENDPOINT ?= base.substreams.pinax.network:443
 START_BLOCK ?= 45690000
 STOP_BLOCK ?= 45790000
-PARALLEL_JOBS ?= 100
+PARALLEL_JOBS ?= 1000
 .DEFAULT_GOAL := pack
 
 .PHONY: schema
