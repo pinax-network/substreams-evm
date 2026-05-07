@@ -8,7 +8,6 @@ package:
 
 imports:
   database_changes: ../spkg/substreams-database-change-v2.0.0.spkg
-  sql: ../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
   x402: ../spkg/x402-v0.1.0.spkg
 
 binaries:

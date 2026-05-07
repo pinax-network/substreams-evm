@@ -7,6 +7,7 @@ package:
   image: ../../image.png
 
 imports:
+  sql: ../../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
   db: ../../spkg/evm-x402-v0.1.0.spkg
 
 modules:
