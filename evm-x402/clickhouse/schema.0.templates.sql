@@ -18,10 +18,6 @@ CREATE TABLE IF NOT EXISTS TEMPLATE_TRANSACTION (
     tx_value                    UInt256
 )
 ENGINE = MergeTree
--- TTL is applied to all base data tables
--- to automatically clean up old data
--- production tables are derived from MV's on these base tables
-TTL timestamp + INTERVAL 1 DAY
 ORDER BY (
     minute, timestamp, block_num
 );
@@ -32,7 +28,7 @@ ALTER TABLE TEMPLATE_LOG
     ADD COLUMN IF NOT EXISTS log_index                   UInt32, -- derived from Substreams
     ADD COLUMN IF NOT EXISTS log_block_index             UInt32 COMMENT 'BlockIndex represents the index of the log relative to the Block.',
     ADD COLUMN IF NOT EXISTS log_address                 LowCardinality(String),
-    ADD COLUMN IF NOT EXISTS log_ordinal                 UInt32 COMMENT 'The block global ordinal when the log was recorded.',
+    ADD COLUMN IF NOT EXISTS log_ordinal                 UInt64 COMMENT 'The block global ordinal when the log was recorded.',
     ADD COLUMN IF NOT EXISTS log_topics                  String COMMENT 'Comma-separated list of log topics',
     ADD COLUMN IF NOT EXISTS log_topic0                  String MATERIALIZED splitByChar(',', log_topics)[1], -- event signature
     ADD COLUMN IF NOT EXISTS log_topic1                  String MATERIALIZED splitByChar(',', log_topics)[2], -- second topic (topic1), empty string if no topics
