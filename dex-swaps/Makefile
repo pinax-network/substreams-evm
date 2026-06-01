@@ -1,6 +1,6 @@
-ENDPOINT ?= eth-substreams-tier1-fs.kan-sst2.pinax.io:80
-START_BLOCK ?= 23861157
-STOP_BLOCK ?= +1000
+ENDPOINT ?= eth.substreams.pinax.network:443
+START_BLOCK ?= 25000000
+STOP_BLOCK ?= 25005000
 PARALLEL_JOBS ?= 500
 
 .PHONY: build
@@ -17,8 +17,8 @@ noop: build
 
 .PHONY: gui
 gui: build
-	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) --limit-processed-blocks 0 --plaintext
+	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) --limit-processed-blocks 0
 
 .PHONY: prod
 prod: build
-	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode  -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)" --plaintext
+	substreams gui -e $(ENDPOINT) substreams.yaml map_events -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode  -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"

@@ -1,7 +1,7 @@
-ENDPOINT ?= eth-substreams-tier1-fs.kan-sst2.pinax.io:80
-START_BLOCK ?= 20000000
-STOP_BLOCK ?= 20500000
-PARALLEL_JOBS ?= 1000
+ENDPOINT ?= eth.substreams.pinax.network:443
+START_BLOCK ?= 25000000
+STOP_BLOCK ?= 25005000
+PARALLEL_JOBS ?= 2500
 
 .PHONY: build
 build:
