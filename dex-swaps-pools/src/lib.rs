@@ -22,12 +22,13 @@ mod balancer;
 mod bancor;
 mod curvefi;
 mod kyber;
-mod map;
 mod sunpump;
 mod traderjoe;
 mod uniswap;
 
-use proto::pb::dex::foundational_store::v1::Pool;
+use proto::pb::dex::foundational_store::v1::{Pool, PoolCreated, Pools};
+use substreams::pb::substreams::store_delta::Operation;
+use substreams::store::{DeltaProto, Deltas};
 use substreams::store::{StoreNew, StoreSetIfNotExists, StoreSetIfNotExistsProto};
 use substreams::Hex;
 use substreams_ethereum::pb::eth::v2::{Block, CallType, Log, TransactionTrace};
@@ -60,6 +61,22 @@ pub fn store_pools(block: Block, store: StoreSetIfNotExistsProto<Pool>) {
     }
 }
 
+/// Surface every pool first seen in this block. Since `store_pools` uses `set_if_not_exists`,
+/// only the first write per pool produces a `Create` delta — later blocks never re-emit it.
+#[substreams::handlers::map]
+pub fn map_pools(deltas: Deltas<DeltaProto<Pool>>) -> Pools {
+    let pools = deltas
+        .deltas
+        .into_iter()
+        .filter(|delta| delta.operation == Operation::Create)
+        .map(|delta| PoolCreated {
+            address: delta.key,
+            pool: Some(delta.new_value),
+        })
+        .collect();
+    Pools { pools }
+}
+
 /// Decode the (at most one) supported pool-creation event from a single log.
 fn collect_log(log: &Log, create_address: Option<&[u8]>) -> Option<PoolEntry> {
     uniswap::collect_uniswap_v1(log)
@@ -83,7 +100,14 @@ fn set_pool(store: &StoreSetIfNotExistsProto<Pool>, entry: PoolEntry) {
     if entry.address.is_empty() {
         return;
     }
-    store.set_if_not_exists(0, Hex::encode(&entry.address), &Pool { tokens: entry.tokens, factory: entry.factory });
+    store.set_if_not_exists(
+        0,
+        Hex::encode(&entry.address),
+        &Pool {
+            tokens: entry.tokens,
+            factory: entry.factory,
+        },
+    );
 }
 
 // ── Block / transaction helpers ───────────────────────────────────────────────────────────
