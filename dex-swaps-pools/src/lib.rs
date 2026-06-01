@@ -22,6 +22,7 @@ mod balancer;
 mod bancor;
 mod curvefi;
 mod kyber;
+mod map;
 mod sunpump;
 mod traderjoe;
 mod uniswap;

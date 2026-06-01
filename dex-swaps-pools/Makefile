@@ -20,6 +20,10 @@ noop: build
 gui: build
 	substreams gui -e $(ENDPOINT) substreams.yaml store_pools -s $(START_BLOCK) --limit-processed-blocks 0
 
+.PHONY: map
+map: build
+	substreams gui -e $(ENDPOINT) substreams.yaml map_pools -s $(START_BLOCK) --limit-processed-blocks 0
+
 .PHONY: prod
 prod: build
 	substreams gui -e $(ENDPOINT) substreams.yaml store_pools -s $(START_BLOCK) -t $(STOP_BLOCK) --limit-processed-blocks 0 --production-mode -H "X-Substreams-Parallel-Workers: $(PARALLEL_JOBS)"

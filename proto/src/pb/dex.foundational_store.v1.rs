@@ -10,4 +10,21 @@ pub struct Pool {
     #[prost(bytes="vec", tag="2")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
 }
+/// A pool surfaced from the legacy `store_pools` store, keyed by its hex-encoded address.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct PoolCreated {
+    /// hex-encoded pool address (lowercase, no `0x`)
+    #[prost(string, tag="1")]
+    pub address: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="2")]
+    pub pool: ::core::option::Option<Pool>,
+}
+/// All pools first seen in a single block (one entry per `set_if_not_exists` store delta).
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Pools {
+    #[prost(message, repeated, tag="1")]
+    pub pools: ::prost::alloc::vec::Vec<PoolCreated>,
+}
 // @@protoc_insertion_point(module)

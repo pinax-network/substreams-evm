@@ -35,4 +35,13 @@ modules:
     inputs:
       - source: sf.ethereum.type.v2.Block
 
+  # Basic consumer: emit the pools first seen in each block (store `Create` deltas).
+  - name: map_pools
+    kind: map
+    inputs:
+      - store: store_pools
+        mode: deltas
+    output:
+      type: proto:dex.foundational_store.v1.Pools
+
 network: mainnet
