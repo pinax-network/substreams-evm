@@ -17,12 +17,13 @@ mod woofi;
 
 use common::create::{CreateLog, CreateTransaction};
 use logs::PoolMetadataMap;
+use proto::pb::dex::foundational_store::v1::Pool;
 use proto::pb::dex::swaps::v1 as pb;
-use substreams::{errors::Error, store::FoundationalStore};
+use substreams::{errors::Error, store::{StoreGet, StoreGetProto}};
 use substreams_ethereum::pb::eth::v2::{Block, Call, Log, TransactionTrace};
 
 #[substreams::handlers::map]
-pub fn map_events(block: Block, store: FoundationalStore) -> Result<pb::Events, Error> {
+pub fn map_events(block: Block, store: StoreGetProto<Pool>) -> Result<pb::Events, Error> {
     let pools = logs::get_pools_by_address(&store, &logs::collect_log_addresses(&block));
     let transactions: Vec<pb::Transaction> = block.transactions().filter_map(|tx| process_transaction(tx, &pools)).collect();
 

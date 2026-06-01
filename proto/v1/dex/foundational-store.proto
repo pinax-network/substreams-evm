@@ -8,3 +8,14 @@ message Pool {
   repeated bytes tokens = 1;
   bytes factory = 2;
 }
+
+// A pool surfaced from the legacy `store_pools` store, keyed by its hex-encoded address.
+message PoolCreated {
+  string address = 1; // hex-encoded pool address (lowercase, no `0x`)
+  Pool pool = 2;
+}
+
+// All pools first seen in a single block (one entry per `set_if_not_exists` store delta).
+message Pools {
+  repeated PoolCreated pools = 1;
+}

@@ -1,5 +1,5 @@
 [package]
-name = "evm-dex"
+name = "dex-swaps-pools"
 description = { workspace = true }
 edition = { workspace = true }
 version = "0.8.0"
@@ -8,10 +8,9 @@ version = "0.8.0"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-substreams = { workspace = true }
-substreams-ethereum = { workspace = true }
-substreams-database-change = { workspace = true }
 prost = { workspace = true }
 prost-types = { workspace = true }
+substreams = { workspace = true }
+substreams-abis = { workspace = true }
+substreams-ethereum = { workspace = true }
 proto = { path = "../proto" }
-common = { path = "../common" }

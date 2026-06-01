@@ -3,47 +3,47 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Events {
-    #[prost(message, repeated, tag="1")]
+    #[prost(message, repeated, tag = "1")]
     pub transactions: ::prost::alloc::vec::Vec<Transaction>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Transaction {
-    #[prost(bytes="vec", tag="1")]
+    #[prost(bytes = "vec", tag = "1")]
     pub hash: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes = "vec", tag = "2")]
     pub from: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", optional, tag="3")]
+    #[prost(bytes = "vec", optional, tag = "3")]
     pub to: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
-    #[prost(uint64, tag="5")]
+    #[prost(uint64, tag = "5")]
     pub nonce: u64,
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub gas_price: ::prost::alloc::string::String,
-    #[prost(uint64, tag="7")]
+    #[prost(uint64, tag = "7")]
     pub gas_limit: u64,
-    #[prost(uint64, tag="8")]
+    #[prost(uint64, tag = "8")]
     pub gas_used: u64,
-    #[prost(string, tag="9")]
+    #[prost(string, tag = "9")]
     pub value: ::prost::alloc::string::String,
-    #[prost(message, repeated, tag="10")]
+    #[prost(message, repeated, tag = "10")]
     pub logs: ::prost::alloc::vec::Vec<Log>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
-    #[prost(bytes="vec", tag="1")]
+    #[prost(bytes = "vec", tag = "1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub ordinal: u64,
-    #[prost(bytes="vec", repeated, tag="3")]
+    #[prost(bytes = "vec", repeated, tag = "3")]
     pub topics: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes = "vec", tag = "4")]
     pub data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(message, optional, tag="5")]
+    #[prost(message, optional, tag = "5")]
     pub call: ::core::option::Option<Call>,
-    #[prost(uint32, tag="6")]
+    #[prost(uint32, tag = "6")]
     pub block_index: u32,
-    #[prost(oneof="log::Log", tags="10, 11, 12")]
+    #[prost(oneof = "log::Log", tags = "10, 11, 12")]
     pub log: ::core::option::Option<log::Log>,
 }
 /// Nested message and enum types in `Log`.
@@ -51,80 +51,80 @@ pub mod log {
     #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Log {
-        #[prost(message, tag="10")]
+        #[prost(message, tag = "10")]
         Swap(super::Swap),
-        #[prost(message, tag="11")]
+        #[prost(message, tag = "11")]
         SwapFee(super::SwapFee),
-        #[prost(message, tag="12")]
+        #[prost(message, tag = "12")]
         Initialize(super::Initialize),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Call {
-    #[prost(uint32, tag="1")]
+    #[prost(uint32, tag = "1")]
     pub index: u32,
-    #[prost(uint64, tag="2")]
+    #[prost(uint64, tag = "2")]
     pub begin_ordinal: u64,
-    #[prost(uint64, tag="3")]
+    #[prost(uint64, tag = "3")]
     pub end_ordinal: u64,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes = "vec", tag = "4")]
     pub caller: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="5")]
+    #[prost(bytes = "vec", tag = "5")]
     pub address: ::prost::alloc::vec::Vec<u8>,
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub value: ::prost::alloc::string::String,
-    #[prost(uint64, tag="7")]
+    #[prost(uint64, tag = "7")]
     pub gas_consumed: u64,
-    #[prost(uint64, tag="8")]
+    #[prost(uint64, tag = "8")]
     pub gas_limit: u64,
-    #[prost(uint32, tag="9")]
+    #[prost(uint32, tag = "9")]
     pub depth: u32,
-    #[prost(uint32, tag="10")]
+    #[prost(uint32, tag = "10")]
     pub parent_index: u32,
-    #[prost(enumeration="CallType", tag="11")]
+    #[prost(enumeration = "CallType", tag = "11")]
     pub call_type: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Swap {
-    #[prost(enumeration="Protocol", tag="1")]
+    #[prost(enumeration = "Protocol", tag = "1")]
     pub protocol: i32,
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes = "vec", tag = "2")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes = "vec", tag = "3")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="4")]
+    #[prost(bytes = "vec", tag = "4")]
     pub user: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="5")]
+    #[prost(bytes = "vec", tag = "5")]
     pub input_token: ::prost::alloc::vec::Vec<u8>,
-    #[prost(string, tag="6")]
+    #[prost(string, tag = "6")]
     pub input_amount: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="7")]
+    #[prost(bytes = "vec", tag = "7")]
     pub output_token: ::prost::alloc::vec::Vec<u8>,
-    #[prost(string, tag="8")]
+    #[prost(string, tag = "8")]
     pub output_amount: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SwapFee {
-    #[prost(enumeration="Protocol", tag="1")]
+    #[prost(enumeration = "Protocol", tag = "1")]
     pub protocol: i32,
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes = "vec", tag = "2")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes = "vec", tag = "3")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint32, tag="4")]
+    #[prost(uint32, tag = "4")]
     pub fee: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Initialize {
-    #[prost(enumeration="Protocol", tag="1")]
+    #[prost(enumeration = "Protocol", tag = "1")]
     pub protocol: i32,
-    #[prost(bytes="vec", tag="2")]
+    #[prost(bytes = "vec", tag = "2")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", tag="3")]
+    #[prost(bytes = "vec", tag = "3")]
     pub pool: ::prost::alloc::vec::Vec<u8>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]

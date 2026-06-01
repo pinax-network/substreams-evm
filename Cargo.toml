@@ -5,7 +5,6 @@ members = [
   "evm-supply",
   "evm-transfers",
   "evm-dex",
-  "evm-dex-foundational-store",
 
   # Clickhouse
   "blocks/clickhouse",
@@ -21,6 +20,8 @@ members = [
 
   # Normalized DEX
   "dex-swaps",
+  "dex-swaps-pools",
+  "dex-swaps-pools-foundational-store",
 
   # Tron DEX
   "dex/sunpump",

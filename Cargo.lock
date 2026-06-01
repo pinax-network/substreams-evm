@@ -288,9 +288,21 @@ dependencies = [
 
 [[package]]
 name = "dex-swaps"
-version = "0.1.0"
+version = "0.8.0"
 dependencies = [
  "common",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+ "substreams-abis",
+ "substreams-ethereum",
+]
+
+[[package]]
+name = "dex-swaps-pools"
+version = "0.8.0"
+dependencies = [
  "prost 0.13.5",
  "prost-types 0.13.5",
  "proto",
@@ -475,7 +487,7 @@ dependencies = [
 
 [[package]]
 name = "evm-dex"
-version = "0.6.1"
+version = "0.8.0"
 dependencies = [
  "common",
  "prost 0.13.5",
