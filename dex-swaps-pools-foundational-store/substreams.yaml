@@ -1,0 +1,56 @@
+specVersion: v0.1.0
+package:
+  name: evm_dex_foundational_store
+  version: v0.6.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: Foundational pool metadata store for DEX modules (tokens[] plus optional factory only)
+  image: ../image.png
+
+imports:
+  sunpump: ../spkg/sunpump-v0.6.0.spkg
+  balancer: ../spkg/balancer-v0.6.0.spkg
+  bancor: ../spkg/bancor-v0.6.0.spkg
+  curvefi: ../spkg/curvefi-v0.6.0.spkg
+  aerodrome: ../spkg/aerodrome-v0.6.0.spkg
+  traderjoe: ../spkg/traderjoe-v0.6.0.spkg
+  kyber_elastic: ../spkg/kyber-elastic-v0.6.0.spkg
+  uniswap_v1: ../spkg/uniswap-v1-v0.6.0.spkg
+  uniswap_v2: ../spkg/uniswap-v2-v0.6.0.spkg
+  uniswap_v3: ../spkg/uniswap-v3-v0.6.0.spkg
+  uniswap_v4: ../spkg/uniswap-v4-v0.6.0.spkg
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/evm_dex_foundational_store.wasm
+
+protobuf:
+  files:
+    - foundational-store.proto
+  importPaths:
+    - ../proto/v1/dex
+  descriptorSets:
+    - module: buf.build/streamingfast/substreams-foundational-store@f3ab5976b9ba4f9bac28b26271fca7d7
+  excludePaths:
+    - sf/substreams
+    - google
+
+modules:
+  - name: map_entries
+    kind: map
+    inputs:
+      - map: sunpump:map_events
+      - map: balancer:map_events
+      - map: bancor:map_events
+      - map: curvefi:map_events
+      - map: aerodrome:map_events
+      - map: traderjoe:map_events
+      - map: kyber_elastic:map_events
+      - map: uniswap_v1:map_events
+      - map: uniswap_v2:map_events
+      - map: uniswap_v3:map_events
+      - map: uniswap_v4:map_events
+    output:
+      type: proto:sf.substreams.foundational_store.model.v2.SinkEntries
+
+network: mainnet

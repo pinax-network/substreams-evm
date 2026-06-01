@@ -499,6 +499,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "evm-dex-foundational-store"
+version = "0.6.0"
+dependencies = [
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "proto",
+ "substreams",
+]
+
+[[package]]
 name = "evm-nfts"
 version = "0.0.0"
 dependencies = [
