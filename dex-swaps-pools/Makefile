@@ -10,7 +10,7 @@ build:
 
 .PHONY: pack
 pack: build
-	substreams pack -o ../spkg/dex-swaps-pools-v0.1.0.spkg
+	substreams pack -o ../spkg/dex-swaps-pools-v0.8.0.spkg
 
 .PHONY: noop
 noop: build

@@ -1,11 +1,9 @@
 use std::collections::{HashMap, HashSet};
 
-use prost::Message;
-use prost_types::Any;
 use proto::pb::dex::foundational_store::v1::Pool;
 use substreams::{
-    pb::sf::substreams::foundational_store::model::v2::{QueriedEntry, ResponseCode},
-    store::FoundationalStore,
+    store::{StoreGet, StoreGetProto},
+    Hex,
 };
 use substreams_abis::dex::balancer;
 use substreams_abis::dex::sunpump;
@@ -47,58 +45,22 @@ fn collect_log_address(log: &Log, addresses: &mut HashSet<Vec<u8>>) {
     }
 }
 
-pub(crate) fn get_pools_by_address(store: &FoundationalStore, addresses: &HashSet<Vec<u8>>) -> PoolMetadataMap {
-    if addresses.is_empty() {
-        return PoolMetadataMap::default();
-    }
-
-    let keys = addresses.iter().cloned().collect::<Vec<_>>();
-    let queried = store.get_first(&keys);
-
-    keys.into_iter()
-        .zip(queried.entries)
-        .filter_map(|(key, queried)| decode_queried_pool(queried).map(|pool| (key, pool)))
+/// Look up pool metadata from the legacy `store_pools` key-value store. Keys are the
+/// hex-encoded pool address (lowercase, no `0x`), matching how `store_pools` writes them.
+pub(crate) fn get_pools_by_address(store: &StoreGetProto<Pool>, addresses: &HashSet<Vec<u8>>) -> PoolMetadataMap {
+    addresses
+        .iter()
+        .filter_map(|address| store.get_last(Hex::encode(address)).map(|pool| (address.clone(), pool)))
         .collect()
-}
-
-fn decode_queried_pool(queried: QueriedEntry) -> Option<PoolMetadata> {
-    if queried.code != ResponseCode::Found as i32 {
-        return None;
-    }
-
-    let value = queried.entry?.value?;
-    decode_pool(value)
-}
-
-fn decode_pool(value: Any) -> Option<PoolMetadata> {
-    (value.type_url == "type.googleapis.com/dex.foundational_store.v1.Pool").then_some(())?;
-    PoolMetadata::decode(value.value.as_slice()).ok()
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use substreams::pb::sf::substreams::foundational_store::model::v2::{Entry, Key};
 
     #[test]
-    fn decodes_foundational_pool_payload() {
-        let queried = QueriedEntry {
-            code: ResponseCode::Found as i32,
-            entry: Some(Entry {
-                key: Some(Key { bytes: vec![0x01] }),
-                value: Some(Any {
-                    type_url: "type.googleapis.com/dex.foundational_store.v1.Pool".into(),
-                    value: PoolMetadata {
-                        tokens: vec![vec![0xaa], vec![0xbb]],
-                        factory: vec![0xcc],
-                    }
-                    .encode_to_vec(),
-                }),
-            }),
-        };
-
-        let pool = decode_queried_pool(queried).unwrap();
-        assert_eq!(pool.tokens, vec![vec![0xaa], vec![0xbb]]);
-        assert_eq!(pool.factory, vec![0xcc]);
+    fn key_matches_store_pools_encoding() {
+        // `store_pools` keys entries via `Hex::encode(address)` — lowercase, no `0x`.
+        assert_eq!(Hex::encode([0xde, 0xad, 0xbe, 0xef]), "deadbeef");
     }
 }

@@ -1,13 +1,13 @@
 specVersion: v0.1.0
 package:
   name: dex_swaps
-  version: v0.7.0
+  version: v0.8.0
   url: https://github.com/pinax-network/substreams-evm
   description: Normalized EVM DEX swaps package
   image: ../image.png
 
 imports:
-  evm_dex_foundational_store: ../spkg/evm-dex-foundational-store-v0.6.0.spkg
+  dex_swaps_pools: ../spkg/dex-swaps-pools-v0.8.0.spkg
 
 binaries:
   default:
@@ -25,7 +25,8 @@ modules:
     kind: map
     inputs:
       - source: sf.ethereum.type.v2.Block
-      - foundational-store: evm_dex_foundational_store@v0.6.0
+      - store: dex_swaps_pools:store_pools
+        mode: get
     output:
       type: proto:dex.swaps.v1.Events
 
