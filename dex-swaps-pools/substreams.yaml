@@ -1,0 +1,38 @@
+specVersion: v0.1.0
+package:
+  name: dex_swaps_pools
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: |
+    Legacy key-value store of DEX pool metadata (tokens[] plus optional factory).
+    Pool data is extracted directly from a single `sf.ethereum.type.v2.Block` via
+    `substreams-abis` decoders — no foundational modules or per-protocol spkg imports.
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/dex_swaps_pools.wasm
+
+protobuf:
+  files:
+    - foundational-store.proto
+  importPaths:
+    - ../proto/v1/dex
+  excludePaths:
+    - sf/substreams
+    - google
+
+modules:
+  # Legacy key-value store.
+  #   key   = hex-encoded pool address (lowercase, no `0x`)
+  #   value = dex.foundational_store.v1.Pool { tokens[], factory }
+  #   policy = set_if_not_exists (first writer wins, mirrors foundational `if_not_exist: true`)
+  - name: store_pools
+    kind: store
+    updatePolicy: set_if_not_exists
+    valueType: proto:dex.foundational_store.v1.Pool
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+
+network: mainnet
