@@ -1407,3 +1407,98 @@ CREATE TABLE IF NOT EXISTS dao_transfers (
 );
 
 CREATE INDEX IF NOT EXISTS idx_dao_transfers_address ON dao_transfers (address);
+
+-- ERC-4626 Deposit table for PostgreSQL
+CREATE TABLE IF NOT EXISTS erc4626_deposit (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
+    -- deposit --
+    sender               TEXT NOT NULL,
+    owner                TEXT NOT NULL,
+    assets               NUMERIC NOT NULL,
+    shares               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_erc4626_deposit_timestamp ON erc4626_deposit (timestamp);
+CREATE INDEX IF NOT EXISTS idx_erc4626_deposit_log_address ON erc4626_deposit (log_address);
+CREATE INDEX IF NOT EXISTS idx_erc4626_deposit_sender ON erc4626_deposit (sender);
+CREATE INDEX IF NOT EXISTS idx_erc4626_deposit_owner ON erc4626_deposit (owner);
+
+-- ERC-4626 Withdraw table for PostgreSQL
+CREATE TABLE IF NOT EXISTS erc4626_withdraw (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
+    -- withdraw --
+    sender               TEXT NOT NULL,
+    receiver             TEXT NOT NULL,
+    owner                TEXT NOT NULL,
+    assets               NUMERIC NOT NULL,
+    shares               NUMERIC NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_erc4626_withdraw_timestamp ON erc4626_withdraw (timestamp);
+CREATE INDEX IF NOT EXISTS idx_erc4626_withdraw_log_address ON erc4626_withdraw (log_address);
+CREATE INDEX IF NOT EXISTS idx_erc4626_withdraw_sender ON erc4626_withdraw (sender);
+CREATE INDEX IF NOT EXISTS idx_erc4626_withdraw_owner ON erc4626_withdraw (owner);
