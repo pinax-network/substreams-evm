@@ -1,0 +1,31 @@
+specVersion: v0.1.0
+package:
+  name: erc4626_flows
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: ERC-4626 Tokenized Vault flows (Deposit / Withdraw)
+  image: ../../image.png
+
+imports:
+  ethereum_common: https://github.com/streamingfast/substreams-foundational-modules/releases/download/ethereum-common-v0.3.3/ethereum-common-v0.3.3.spkg
+
+protobuf:
+  files:
+    - erc4626-flows.proto
+  importPaths:
+    - ../../proto/v1
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/erc4626_flows.wasm
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:erc4626.flows.v1.Events
+
+network: mainnet

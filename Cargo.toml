@@ -15,6 +15,9 @@ members = [
   "erc20/supply",
   "erc20/tokens",
 
+  # Vaults (ERC-4626)
+  "erc4626/flows",
+
   "native/transfers",
   "native/balances",
 
