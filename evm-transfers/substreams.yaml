@@ -3,7 +3,7 @@ package:
   name: evm_transfers
   version: v0.5.0
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20, Native transfers & ERC-20 Token Events
+  description: ERC-20, Native transfers, ERC-20 Token & ERC-4626 Vault Events
   image: ../image.png
 
 imports:
@@ -14,6 +14,7 @@ imports:
   # Transfers Substreams
   erc20_transfers: ../spkg/erc20-transfers-v0.4.0.spkg
   erc20_tokens: ../spkg/erc20-tokens-v0.4.0.spkg
+  erc4626: ../spkg/erc4626-v0.1.0.spkg
   native_transfers: ../spkg/evm-native-transfers-v0.2.0.spkg
 
 binaries:
@@ -29,6 +30,7 @@ modules:
       - source: sf.substreams.v1.Clock
       - map: erc20_transfers:map_events
       - map: erc20_tokens:map_events
+      - map: erc4626:map_events
       - map: native_transfers:map_events
     output:
       type: proto:sf.substreams.sink.database.v1.DatabaseChanges

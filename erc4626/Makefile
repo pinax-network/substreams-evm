@@ -3,13 +3,15 @@ START_BLOCK ?= 20000000
 STOP_BLOCK ?= +1000
 PARALLEL_JOBS ?= 500
 
+.DEFAULT_GOAL := pack
+
 .PHONY: build
 build:
 	cargo build --target wasm32-unknown-unknown --release
 
 .PHONY: pack
 pack: build
-	substreams pack -o ../../spkg/{spkgDefaultName}
+	substreams pack -o ../spkg/{spkgDefaultName}
 
 .PHONY: noop
 noop: build

@@ -1,6 +1,6 @@
-# ERC-4626 Flows
+# ERC-4626
 
-Substreams module that extracts **ERC-4626 Tokenized Vault** deposit/withdraw flows.
+Substreams module that extracts **ERC-4626 Tokenized Vault** deposit/withdraw events.
 
 Matched by event signature (`topic0`), so **every** ERC-4626 vault on a chain is captured with
 no address list to maintain — Morpho / MetaMorpho, Yearn v3, Euler v2, Aave stata-aTokens,
@@ -17,7 +17,7 @@ Decoded via [`substreams-abis`](https://github.com/pinax-network/substreams-abis
 
 ## Output
 
-`map_events` → `proto:erc4626.flows.v1.Events` — per transaction, a list of `Deposit` / `Withdraw`
+`map_events` → `proto:erc4626.v1.Events` — per transaction, a list of `Deposit` / `Withdraw`
 logs carrying `sender`, `owner`(/`receiver`), `assets` (underlying) and `shares`, plus the shared
 block/log/tx/call metadata. The **share price** (`assets / shares`) is a downstream derivation
 (e.g. a ClickHouse view in an aggregator) — the module emits both amounts so the price series and

@@ -95,12 +95,10 @@ pub mod erc20 {
     }
 }
 pub mod erc4626 {
-    pub mod flows {
-        // @@protoc_insertion_point(attribute:erc4626.flows.v1)
-        pub mod v1 {
-            include!("erc4626.flows.v1.rs");
-            // @@protoc_insertion_point(erc4626.flows.v1)
-        }
+    // @@protoc_insertion_point(attribute:erc4626.v1)
+    pub mod v1 {
+        include!("erc4626.v1.rs");
+        // @@protoc_insertion_point(erc4626.v1)
     }
 }
 pub mod erc721 {

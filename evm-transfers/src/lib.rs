@@ -1,5 +1,6 @@
 mod erc20_tokens;
 mod erc20_transfers;
+mod erc4626;
 mod logs;
 mod native_transfers;
 mod transactions;
@@ -7,6 +8,7 @@ use substreams::pb::substreams::Clock;
 
 use proto::pb::erc20::tokens::v1 as tokens_pb;
 use proto::pb::erc20::transfers::v1 as erc20_pb;
+use proto::pb::erc4626::v1 as erc4626_pb;
 use proto::pb::native::transfers::v1 as native_pb;
 use substreams::errors::Error;
 use substreams_database_change::pb::database::DatabaseChanges;
@@ -17,6 +19,7 @@ pub fn db_out(
     clock: Clock,
     events_erc20_transfers: erc20_pb::Events,
     events_erc20_tokens: tokens_pb::Events,
+    events_erc4626: erc4626_pb::Events,
     events_native_transfers: native_pb::Events,
 ) -> Result<DatabaseChanges, Error> {
     let mut tables = substreams_database_change::tables::Tables::new();
@@ -29,6 +32,9 @@ pub fn db_out(
 
     // Process logs (ERC20 token-specific events)
     erc20_tokens::process_events(&encoding, &mut tables, &clock, &events_erc20_tokens);
+
+    // Process logs (ERC-4626 tokenized-vault events)
+    erc4626::process_events(&encoding, &mut tables, &clock, &events_erc4626);
 
     // Process transactions (Native transfers)
     native_transfers::process_events(&encoding, &mut tables, &clock, &events_native_transfers);

@@ -1,5 +1,5 @@
 use common::create::{CreateLog, CreateTransaction};
-use proto::pb::erc4626::flows::v1 as pb;
+use proto::pb::erc4626::v1 as pb;
 use substreams_abis::standard::erc4626::events;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;

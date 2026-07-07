@@ -35,6 +35,7 @@ pub struct Transaction {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Log {
+    /// vault contract
     #[prost(bytes="vec", tag="1")]
     pub address: ::prost::alloc::vec::Vec<u8>,
     #[prost(uint64, tag="2")]
@@ -103,10 +104,10 @@ pub struct Deposit {
     /// address
     #[prost(bytes="vec", tag="11")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
+    /// uint256 (underlying deposited)
     #[prost(string, tag="12")]
     pub assets: ::prost::alloc::string::String,
-    /// uint256
+    /// uint256 (vault shares minted)
     #[prost(string, tag="13")]
     pub shares: ::prost::alloc::string::String,
 }
@@ -123,10 +124,10 @@ pub struct Withdraw {
     /// address
     #[prost(bytes="vec", tag="12")]
     pub owner: ::prost::alloc::vec::Vec<u8>,
-    /// uint256
+    /// uint256 (underlying withdrawn)
     #[prost(string, tag="13")]
     pub assets: ::prost::alloc::string::String,
-    /// uint256
+    /// uint256 (vault shares burned)
     #[prost(string, tag="14")]
     pub shares: ::prost::alloc::string::String,
 }

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package erc4626.flows.v1;
+package erc4626.v1;
 
 message Events { repeated Transaction transactions = 1; }
 
