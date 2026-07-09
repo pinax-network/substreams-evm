@@ -131,7 +131,7 @@ Each aggregator combines individual modules into a single `db_out` for database 
 | Package | Description | Sinks |
 |---------|-------------|-------|
 | `evm-dex` | All DEX swap events | Clickhouse, Postgres |
-| `evm-transfers` | ERC-20 + native transfers | Clickhouse, Postgres |
+| `evm-transfers` | ERC-20 + native transfers + ERC-3009 (x402) authorizations | Clickhouse, Postgres |
 | `evm-balances` | ERC-20 + native balances | Clickhouse, Postgres |
 | `evm-supply` | ERC-20 supply | Clickhouse, Postgres |
 | `evm-nfts` | NFT events (ERC-721, ERC-1155, Seaport, CryptoPunks) | Clickhouse, Postgres |
