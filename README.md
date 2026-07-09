@@ -16,6 +16,7 @@ dex/              # Individual DEX map_events modules
 dex-nfts/         # NFT market protocol modules (for example, Seaport)
 erc20/            # ERC-20 modules (transfers/ balances/ supply/ tokens/)
 native/           # Native transfer/balance modules (transfers/ balances/)
+erc4626/          # ERC-4626 tokenized-vault events (map_events)
 erc1155/          # ERC-1155 multi-token events
 proto/            # Protobuf definitions
 common/           # Shared Rust helpers
@@ -123,6 +124,11 @@ spkg/             # Pre-built Substreams packages
 
 ### ERC-1155 (`/erc1155`)
 - `TransferSingle`, `TransferBatch`, `ApprovalForAll`, `URI`
+
+### ERC-4626 (`/erc4626`)
+| Module | Description |
+|--------|-------------|
+| `map_events` | Tokenized-vault `Deposit` / `Withdraw` events (assets ↔ shares) — signature-matched, every vault, no address list. Consumed by the `evm-transfers` `db_out` (`erc4626_deposit` / `erc4626_withdraw` tables). |
 
 ## Aggregator Packages
 

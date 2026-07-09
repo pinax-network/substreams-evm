@@ -94,6 +94,13 @@ pub mod erc20 {
         }
     }
 }
+pub mod erc4626 {
+    // @@protoc_insertion_point(attribute:erc4626.v1)
+    pub mod v1 {
+        include!("erc4626.v1.rs");
+        // @@protoc_insertion_point(erc4626.v1)
+    }
+}
 pub mod erc721 {
     pub mod tokens {
         // @@protoc_insertion_point(attribute:erc721.tokens.v1)

@@ -1,0 +1,30 @@
+specVersion: v0.1.0
+package:
+  name: erc4626
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  doc: ERC-4626 Tokenized Vault Events
+  description: ERC-4626 Tokenized Vault Events (Deposit / Withdraw)
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/erc4626.wasm
+
+protobuf:
+  files:
+    - v1/erc4626.proto
+  importPaths:
+    - ../proto
+
+modules:
+  - name: map_events
+    kind: map
+    doc: ERC-4626 Tokenized Vault Events
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:erc4626.v1.Events
+
+network: mainnet
