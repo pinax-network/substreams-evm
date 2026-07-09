@@ -27,6 +27,9 @@ protobuf:
     - v1/native-transfers.proto
     - v1/balances.proto
 
+    # x402
+    - v1/x402.proto
+
     # DEX
     - v1/dex-swaps.proto
     - v1/dex/sunpump.proto
