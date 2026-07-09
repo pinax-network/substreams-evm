@@ -1,13 +1,14 @@
 specVersion: v0.1.0
 package:
-  name: evm_clickhouse_transfers
-  version: v0.7.0
+  name: evm_clickhouse_x402
+  version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20, Native transfers, ERC-20 Token, ERC-4626 Vault Events & ERC-3009 (x402) authorizations (ClickHouse)
+  description: x402 EVM payment settlements (ClickHouse)
   image: ../../image.png
 
 imports:
-  db: ../../spkg/evm-transfers-v0.7.0.spkg
+  sql: ../../spkg/substreams-sink-sql-protodefs-v1.0.7.spkg
+  db: ../../spkg/evm-x402-v0.1.0.spkg
 
 modules:
   - name: db_out
@@ -25,4 +26,4 @@ sink:
 network: mainnet
 
 params:
-  db_out: "hex"  # Supported encodings: hex, tron_base58
+  db_out: "hex"

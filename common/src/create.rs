@@ -213,6 +213,11 @@ mod dex_swaps_impl {
     impl_create_log_with_call_metadata!(proto::pb::dex::swaps::v1);
 }
 
+mod erc4626_impl {
+    use super::*;
+    impl_create_log_with_call_metadata!(proto::pb::erc4626::v1);
+}
+
 mod contracts_impl {
     use super::*;
     use proto::pb::contracts::v1 as pb;

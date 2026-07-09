@@ -1,0 +1,19 @@
+[package]
+name = "erc4626"
+description = "ERC-4626 Tokenized Vault events (Deposit / Withdraw)"
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+authors = [
+    "Paul Barba <barba334@gmail.com>",
+]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+substreams = { workspace = true }
+substreams-ethereum = { workspace = true }
+substreams-abis = { workspace = true }
+proto = { path = "../proto" }
+common = { path = "../common" }

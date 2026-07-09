@@ -94,6 +94,13 @@ pub mod erc20 {
         }
     }
 }
+pub mod erc4626 {
+    // @@protoc_insertion_point(attribute:erc4626.v1)
+    pub mod v1 {
+        include!("erc4626.v1.rs");
+        // @@protoc_insertion_point(erc4626.v1)
+    }
+}
 pub mod erc721 {
     pub mod tokens {
         // @@protoc_insertion_point(attribute:erc721.tokens.v1)
@@ -123,6 +130,13 @@ pub mod evm {
         pub mod v1 {
             include!("evm.seaport.v1.rs");
             // @@protoc_insertion_point(evm.seaport.v1)
+        }
+    }
+    pub mod x402 {
+        // @@protoc_insertion_point(attribute:evm.x402.v1)
+        pub mod v1 {
+            include!("evm.x402.v1.rs");
+            // @@protoc_insertion_point(evm.x402.v1)
         }
     }
 }

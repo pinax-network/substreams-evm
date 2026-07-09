@@ -1,0 +1,28 @@
+specVersion: v0.1.0
+package:
+  name: x402
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: x402 EVM payment settlement events
+  image: ../image.png
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../target/wasm32-unknown-unknown/release/x402.wasm
+
+protobuf:
+  files:
+    - v1/x402.proto
+  importPaths:
+    - ../proto
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.x402.v1.Events
+
+network: mainnet

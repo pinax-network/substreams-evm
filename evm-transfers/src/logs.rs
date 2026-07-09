@@ -1,6 +1,7 @@
 use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::erc20::tokens::v1 as tokens_pb;
 use proto::pb::erc20::transfers::v1 as pb;
+use proto::pb::erc4626::v1 as erc4626_pb;
 
 pub fn set_template_log(encoding: &Encoding, log: &impl LogAddress, log_index: usize, row: &mut substreams_database_change::tables::Row) {
     row.set("log_index", log_index as u32);
@@ -114,6 +115,7 @@ macro_rules! impl_log_traits {
 
 impl_log_traits!(pb::Log, pb::CallType);
 impl_log_traits!(tokens_pb::Log, tokens_pb::CallType);
+impl_log_traits!(erc4626_pb::Log, erc4626_pb::CallType);
 
 #[cfg(test)]
 mod tests {

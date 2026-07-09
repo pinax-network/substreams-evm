@@ -3,7 +3,7 @@ package:
   name: evm_postgres_transfers
   version: v0.7.0
   url: https://github.com/pinax-network/substreams-evm
-  description: ERC-20, Native transfers & WETH Events (PostgreSQL)
+  description: ERC-20, Native transfers, ERC-20 Token, ERC-4626 Vault Events & ERC-3009 (x402) authorizations (PostgreSQL)
   image: ../../image.png
 
 imports:

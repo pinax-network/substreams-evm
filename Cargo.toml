@@ -4,6 +4,8 @@ members = [
   "evm-balances",
   "evm-supply",
   "evm-transfers",
+  "x402",
+  "evm-x402",
   "evm-dex",
 
   # Clickhouse
@@ -14,6 +16,9 @@ members = [
   "erc20/balances",
   "erc20/supply",
   "erc20/tokens",
+
+  # Vaults (ERC-4626)
+  "erc4626",
 
   "native/transfers",
   "native/balances",
