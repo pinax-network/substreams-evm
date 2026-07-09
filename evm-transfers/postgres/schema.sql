@@ -358,6 +358,93 @@ CREATE TABLE IF NOT EXISTS usdc_burn (
 CREATE INDEX IF NOT EXISTS idx_usdc_burn_timestamp ON usdc_burn (timestamp);
 CREATE INDEX IF NOT EXISTS idx_usdc_burn_burner ON usdc_burn (burner);
 
+-- USDC AuthorizationUsed table for PostgreSQL (ERC-3009 / x402 settlement rail)
+CREATE TABLE IF NOT EXISTS usdc_authorization_used (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
+    -- event --
+    authorizer           TEXT NOT NULL,
+    nonce                TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdc_authorization_used_timestamp ON usdc_authorization_used (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdc_authorization_used_authorizer ON usdc_authorization_used (authorizer);
+CREATE INDEX IF NOT EXISTS idx_usdc_authorization_used_tx_from ON usdc_authorization_used (tx_from);
+
+-- USDC AuthorizationCanceled table for PostgreSQL (ERC-3009)
+CREATE TABLE IF NOT EXISTS usdc_authorization_canceled (
+    -- block --
+    block_num            INTEGER NOT NULL,
+    block_hash           TEXT NOT NULL,
+    timestamp            TIMESTAMP NOT NULL,
+    minute               INTEGER NOT NULL,
+
+    -- transaction --
+    tx_index             INTEGER NOT NULL,
+    tx_hash              TEXT NOT NULL,
+    tx_from              TEXT NOT NULL,
+    tx_to                TEXT,
+    tx_nonce             BIGINT NOT NULL,
+    tx_gas_price         NUMERIC NOT NULL,
+    tx_gas_limit         BIGINT NOT NULL,
+    tx_gas_used          BIGINT NOT NULL,
+    tx_value             NUMERIC NOT NULL,
+
+    -- log --
+    log_index            INTEGER NOT NULL,
+    log_address          TEXT NOT NULL,
+    log_ordinal          INTEGER NOT NULL,
+    log_block_index      INTEGER NOT NULL DEFAULT 0,
+    log_topics           TEXT NOT NULL,
+    log_data             TEXT NOT NULL,
+
+    -- call --
+    call_caller          TEXT NOT NULL DEFAULT '',
+    call_index           INTEGER NOT NULL DEFAULT 0,
+    call_depth           INTEGER NOT NULL DEFAULT 0,
+    call_type            TEXT NOT NULL DEFAULT '',
+
+    -- event --
+    authorizer           TEXT NOT NULL,
+    nonce                TEXT NOT NULL,
+
+    PRIMARY KEY (block_num, tx_index, log_index)
+);
+
+CREATE INDEX IF NOT EXISTS idx_usdc_authorization_canceled_timestamp ON usdc_authorization_canceled (timestamp);
+CREATE INDEX IF NOT EXISTS idx_usdc_authorization_canceled_authorizer ON usdc_authorization_canceled (authorizer);
+
 -- USDT Issue table for PostgreSQL
 CREATE TABLE IF NOT EXISTS usdt_issue (
     -- block --
