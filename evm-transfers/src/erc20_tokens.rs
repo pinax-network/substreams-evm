@@ -1,4 +1,4 @@
-use common::{bytes_to_string, Encoding};
+use common::{bytes_to_hex, bytes_to_string, Encoding};
 use proto::pb::erc20::tokens::v1 as pb;
 use substreams::pb::substreams::Clock;
 use substreams_database_change::tables::Tables;
@@ -63,6 +63,38 @@ pub fn process_events(encoding: &Encoding, tables: &mut Tables, clock: &Clock, e
 
                 row.set("burner", bytes_to_string(&event.burner, encoding));
                 row.set("amount", &event.amount);
+            }
+
+            // USDC AuthorizationUsed (ERC-3009 / x402 gasless settlement rail)
+            if let Some(pb::log::Log::UsdcAuthorizationUsed(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdc_authorization_used", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("authorizer", bytes_to_string(&event.authorizer, encoding));
+                // nonce is a bytes32, not an address — always hex (bytes_to_string would
+                // empty it under tron_base58, which never sees ERC-3009 anyway)
+                row.set("nonce", bytes_to_hex(&event.nonce));
+            }
+
+            // USDC AuthorizationCanceled (ERC-3009)
+            if let Some(pb::log::Log::UsdcAuthorizationCanceled(event)) = &log.log {
+                let key = log_key(clock, tx_index, log_index);
+                let row = tables.create_row("usdc_authorization_canceled", key);
+
+                set_clock(clock, row);
+                set_template_log(encoding, log, log_index, row);
+                set_template_call(encoding, log, row);
+                set_template_tokens_tx(encoding, tx, tx_index, row);
+
+                row.set("authorizer", bytes_to_string(&event.authorizer, encoding));
+                // nonce is a bytes32, not an address — always hex (bytes_to_string would
+                // empty it under tron_base58, which never sees ERC-3009 anyway)
+                row.set("nonce", bytes_to_hex(&event.nonce));
             }
 
             // USDT Issue
