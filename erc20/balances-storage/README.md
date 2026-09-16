@@ -18,13 +18,14 @@ with a reviewed zero-word fallback or proxy with its implementation pinned:
 | `contract` | 20-byte `0x` hex | Token contract |
 | `balance_slot` | 32-byte `0x` hex | Mapping base for `mapping(address => uint256)` balances |
 | `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
-| `deployment` | Optional object | `block` and 32-byte `block_hash` pin first CREATE for a direct mapping without a proxy or zero-word fallback |
+| `deployment` | Optional object | `block` and 32-byte `block_hash` pin first CREATE for a direct mapping or minimal proxy, without a zero-word fallback |
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
+| `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
 
 The caller must establish that the configured projection equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
@@ -47,13 +48,22 @@ restore. The caller must review that the beacon getter reads this scalar directl
 arbitrary computed or nested beacon resolvers are unsupported. Diamond proxies,
 rebasing balances and other computed balances also remain unsupported.
 
+For `minimal_proxy`, the implementation address is embedded in the exact
+[ERC-1167 runtime](https://eips.ethereum.org/EIPS/eip-1167), rather than a storage
+pointer. Configuration binds the runtime hash to that forwarder and target. The
+audit checks the implementation code, and ingestion rejects implementation code
+changes even without token writes. Other clone bytecode variants require separate
+qualification; an immutable forwarding address does not make its target code or
+balance semantics automatically safe.
+
 With `deployment`, the tools verify empty code and nonce zero immediately before
 the pinned block, and the expected runtime at deployment and audit boundaries.
 The mapper requires exactly one persisted code creation in a successful CREATE,
 checks its runtime bytes and execution ordinals, and rejects earlier storage/code
 activity, nonzero initial storage, and later code changes. Constructor writes
 before the code-change ordinal are included. Deployment support currently applies
-only to direct mappings; proxy and fallback initialization remain unsupported.
+only to direct mappings and standard minimal proxies; storage-pointer proxy and
+fallback initialization remain unsupported.
 The native holder replay initializes the observed holder set to zero **at the
 validated CREATE**, then applies that block's writes. It does not call `balanceOf`
 before deployment or treat an unavailable response as zero. This is a bounded
@@ -219,6 +229,13 @@ BNC4, WCOL and three further fallback profiles to the explicit
 1, 123 and uint256 max on candidate mappings. This catches fallback paths absent
 from ordinary transfer samples; passing these controls never automatically
 qualifies a layout.
+
+The [deployment follow-up](docs/deployment-holder-coverage.md) qualifies a direct
+token's first mint. The [clone follow-up](docs/clone-holder-coverage.md) adds a
+source-verified minimal-proxy implementation and replays both deployments with
+`tests/fixtures/bsc-clone-layouts.json` (22 explicit test layouts). Three more
+individually checked tokens with that same implementation are included in
+`tests/fixtures/bsc-clone-family-layouts.json` (25 layouts).
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

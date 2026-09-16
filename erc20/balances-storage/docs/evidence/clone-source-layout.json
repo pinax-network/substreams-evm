@@ -1,0 +1,347 @@
+{
+  "compilation": {
+    "compiler": "solc",
+    "compilerSettings": {
+      "evmVersion": "london",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 99999
+      },
+      "remappings": [
+        ":@ensdomains/=lib/v4-core/node_modules/@ensdomains/",
+        ":@openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+        ":@openzeppelin/=lib/openzeppelin-contracts/contracts/",
+        ":@uniswap/v4-core/=lib/v4-periphery/lib/v4-core/",
+        ":ds-test/=lib/openzeppelin-contracts/lib/forge-std/lib/ds-test/src/",
+        ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+        ":forge-gas-snapshot/=lib/v4-periphery/lib/forge-gas-snapshot/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=lib/v4-core/node_modules/hardhat/",
+        ":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/",
+        ":pancake-v3-contracts/=lib/pancake-v3-contracts/",
+        ":pancake-v3-core/=lib/pancake-v3-contracts/projects/v3-core/contracts/",
+        ":solady/=lib/solady/src/",
+        ":solmate/=lib/v4-periphery/lib/solmate/src/",
+        ":uni-v2-core/=lib/v2-core/contracts/",
+        ":uni-v3-core/=lib/v3-core/contracts/",
+        ":uni-v4-core/=lib/v4-core/src/",
+        ":uni-v4-periphery/=lib/v4-periphery/contracts/",
+        ":v2-core/=lib/v2-core/contracts/",
+        ":v3-core/=lib/v3-core/",
+        ":v4-core/=lib/v4-core/src/",
+        ":v4-periphery/=lib/v4-periphery/contracts/"
+      ]
+    },
+    "compilerVersion": "0.8.24+commit.e11b9ed9",
+    "fullyQualifiedName": "src/TokenV2.sol:TokenV2",
+    "language": "Solidity",
+    "name": "TokenV2"
+  },
+  "identity": {
+    "block": 122288172,
+    "contract": "0xcccbd077b612a42f896b53e24a11c36d32117777",
+    "hash": "0x6fe169bf551adb2ff4bcc52872d7fdd3df8d7fe2bb8faf5c5a8525099098a6b2",
+    "implementation": "0x8b4329947e34b6d56d71a3385cac122bade7d78d",
+    "implementation_runtime_hash": "0x852cb4241a5b2210d523900e6a0af0a52c5c5bccbf4fbb236cd2cf068b8b3ab8",
+    "implementation_runtime_length": 9439,
+    "runtime": "0x363d3d373d3d3d363d738b4329947e34b6d56d71a3385cac122bade7d78d5af43d82803e903d91602b57fd5bf3",
+    "runtime_hash": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+  },
+  "runtime_match": "exact_match",
+  "source_sha256": "bb6decab20202a7aff566c91b9b46da6723d88c9dabbd7d2365dc86c95e09b20",
+  "source_url": "https://sourcify.dev/server/v2/contract/56/0x8B4329947e34B6d56D71A3385caC122BaDe7d78D?fields=all",
+  "storage_layout": {
+    "storage": [
+      {
+        "astId": 164,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 167,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_initializing",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 1650,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_array(t_uint256)50_storage"
+      },
+      {
+        "astId": 346,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "51",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 352,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "52",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 354,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "53",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 356,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_name",
+        "offset": 0,
+        "slot": "54",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 358,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "55",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 938,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "56",
+        "type": "t_array(t_uint256)45_storage"
+      },
+      {
+        "astId": 2339,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_hashedName",
+        "offset": 0,
+        "slot": "101",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 2342,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_hashedVersion",
+        "offset": 0,
+        "slot": "102",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 2344,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_name",
+        "offset": 0,
+        "slot": "103",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2346,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_version",
+        "offset": 0,
+        "slot": "104",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2604,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "105",
+        "type": "t_array(t_uint256)48_storage"
+      },
+      {
+        "astId": 1044,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "153",
+        "type": "t_mapping(t_address,t_struct(Counter)1657_storage)"
+      },
+      {
+        "astId": 1052,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+        "offset": 0,
+        "slot": "154",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 1208,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "155",
+        "type": "t_array(t_uint256)49_storage"
+      },
+      {
+        "astId": 11,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "204",
+        "type": "t_address"
+      },
+      {
+        "astId": 131,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "__gap",
+        "offset": 0,
+        "slot": "205",
+        "type": "t_array(t_uint256)49_storage"
+      },
+      {
+        "astId": 3596,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "maxSupply",
+        "offset": 0,
+        "slot": "254",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 3599,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "metaURI",
+        "offset": 0,
+        "slot": "255",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 3602,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "transferConstraints",
+        "offset": 0,
+        "slot": "256",
+        "type": "t_bool"
+      },
+      {
+        "astId": 3605,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "uniswapV2Pool",
+        "offset": 1,
+        "slot": "256",
+        "type": "t_address"
+      },
+      {
+        "astId": 3608,
+        "contract": "src/TokenV2.sol:TokenV2",
+        "label": "uniswapV3Pool",
+        "offset": 0,
+        "slot": "257",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_uint256)45_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[45]",
+        "numberOfBytes": "1440"
+      },
+      "t_array(t_uint256)48_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[48]",
+        "numberOfBytes": "1536"
+      },
+      "t_array(t_uint256)49_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[49]",
+        "numberOfBytes": "1568"
+      },
+      "t_array(t_uint256)50_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[50]",
+        "numberOfBytes": "1600"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_struct(Counter)1657_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct CountersUpgradeable.Counter)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Counter)1657_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Counter)1657_storage": {
+        "encoding": "inplace",
+        "label": "struct CountersUpgradeable.Counter",
+        "members": [
+          {
+            "astId": 1656,
+            "contract": "src/TokenV2.sol:TokenV2",
+            "label": "_value",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-use crate::{hex_bytes, require};
+use crate::{hash, hex_bytes, require};
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 use substreams::errors::Error;
@@ -10,7 +10,7 @@ pub struct Layout {
     pub contract: String,
     pub balance_slot: String,
     pub code_hash: String,
-    /// Explicitly qualified first deployment; currently direct mappings only.
+    /// Explicitly qualified first deployment of a direct mapping or minimal proxy.
     #[serde(default)]
     pub deployment: Option<Deployment>,
     #[serde(default)]
@@ -27,6 +27,28 @@ pub struct Layout {
     pub proxy: Option<ProxyLayout>,
     #[serde(default)]
     pub beacon_proxy: Option<BeaconProxyLayout>,
+    #[serde(default)]
+    pub minimal_proxy: Option<MinimalProxyLayout>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct MinimalProxyLayout {
+    pub implementation: String,
+    pub code_hash: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedMinimalProxy {
+    pub implementation: Vec<u8>,
+    pub code_hash: [u8; 32],
+}
+impl VerifiedMinimalProxy {
+    /// Canonical 45-byte ERC-1167 runtime; other forwarding patterns need review.
+    pub fn runtime(&self) -> Vec<u8> {
+        let mut bytes = hex::decode("363d3d373d3d3d363d73").unwrap();
+        bytes.extend_from_slice(&self.implementation);
+        bytes.extend(hex::decode("5af43d82803e903d91602b57fd5bf3").unwrap());
+        bytes
+    }
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -97,6 +119,7 @@ pub struct VerifiedLayout {
     pub zero_balance: Option<VerifiedZeroBalance>,
     pub proxy: Option<VerifiedProxy>,
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
+    pub minimal_proxy: Option<VerifiedMinimalProxy>,
 }
 impl VerifiedLayout {
     /// Input is the canonical decimal uint256 decoded from the raw storage word.
@@ -229,17 +252,38 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     require(d.block > 0, "deployment block must be positive")?;
                     require(
                         proxy.is_none() && beacon_proxy.is_none() && zero_balance.is_none(),
-                        "deployment qualification currently requires a direct mapping without a zero-balance rule",
+                        "deployment qualification requires a direct mapping or minimal proxy without a zero-balance rule",
                     )?;
                     let block_hash = word(&d.block_hash)?;
                     require(block_hash != [0; 32], "deployment block hash cannot be zero")?;
                     Ok(VerifiedDeployment { block: d.block, block_hash })
                 })
                 .transpose()?;
+            let code_hash = word(&layout.code_hash)?;
+            let minimal_proxy = layout
+                .minimal_proxy
+                .map(|p| -> Result<VerifiedMinimalProxy, Error> {
+                    require(proxy.is_none() && beacon_proxy.is_none(), "configure only one proxy kind")?;
+                    let implementation = fixed(&p.implementation, 20)?;
+                    require(
+                        implementation.iter().any(|b| *b != 0) && implementation != contract,
+                        "invalid minimal proxy implementation",
+                    )?;
+                    let parsed = VerifiedMinimalProxy {
+                        implementation,
+                        code_hash: word(&p.code_hash)?,
+                    };
+                    require(
+                        hash(&parsed.runtime()) == code_hash,
+                        "minimal proxy runtime hash does not bind the canonical forwarding code and target",
+                    )?;
+                    Ok(parsed)
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
-                code_hash: word(&layout.code_hash)?,
+                code_hash,
                 deployment,
                 other_slots,
                 other_mapping_slots,
@@ -247,6 +291,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 zero_balance,
                 proxy,
                 beacon_proxy,
+                minimal_proxy,
             })
         })
         .collect()

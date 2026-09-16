@@ -9,6 +9,74 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn clone_runtime_qualification_checks_the_forwarder_and_implementation() {
+    use erc20_balances_storage::layout::{parse, VerifiedMinimalProxy};
+    let proxy = VerifiedMinimalProxy {
+        implementation: vec![0xbb; 20],
+        code_hash: erc20_balances_storage::hash(&[0xaa]),
+    };
+    let p = json!([{"contract":TOKEN,"balance_slot":hash(51),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&proxy.runtime()))),"minimal_proxy":{"implementation":format!("0x{}",hex::encode(&proxy.implementation)),"code_hash":format!("0x{}",hex::encode(proxy.code_hash))}}]);
+    let l = parse(&p.to_string()).unwrap();
+    struct CloneRpc {
+        runtime: Vec<u8>,
+        bad: &'static str,
+    }
+    impl Rpc for CloneRpc {
+        fn request(&self, p: Value) -> Result<Value> {
+            if p["method"] != "eth_getCode" {
+                return FakeRpc::default().request(p);
+            }
+            let code = if p["params"][0] == TOKEN {
+                if self.bad == "forwarder" {
+                    "0xaa".to_string()
+                } else {
+                    format!("0x{}", hex::encode(&self.runtime))
+                }
+            } else if self.bad == "implementation" {
+                "0xbb".to_string()
+            } else if self.bad == "empty" {
+                "0x".to_string()
+            } else {
+                "0xaa".to_string()
+            };
+            Ok(json!({"id":1,"result":code}))
+        }
+    }
+    qualify_runtime(
+        &CloneRpc {
+            runtime: proxy.runtime(),
+            bad: "",
+        },
+        1,
+        2,
+        &l,
+    )
+    .unwrap();
+    for bad in ["forwarder", "implementation", "empty"] {
+        assert!(qualify_runtime(&CloneRpc { runtime: proxy.runtime(), bad }, 1, 2, &l).is_err(), "{bad}");
+    }
+}
+#[test]
+fn predeployment_calls_are_unavailable_only_for_qualified_empty_successes() {
+    use crate::survey::unavailable_before_deployment;
+    let mut l = erc20_balances_storage::layout::parse(include_str!("../../tests/fixtures/bsc-clone-layouts.json")).unwrap();
+    let layout = l.last_mut().unwrap();
+    let height = layout.deployment.as_ref().unwrap().block;
+    let empty = json!({"id":1,"result":"0x"});
+    assert!(unavailable_before_deployment(layout, height, "before", &empty));
+    for (block, boundary, response) in [
+        (height, "after", empty.clone()),
+        (height - 1, "before", empty.clone()),
+        (height, "before", json!({"result":"0x","error":{"code":-1}})),
+        (height, "before", json!({"result":format!("0x{}","00".repeat(32))})),
+    ] {
+        assert!(!unavailable_before_deployment(layout, block, boundary, &response));
+    }
+    layout.deployment = None;
+    assert!(!unavailable_before_deployment(layout, height, "before", &empty));
+}
+
+#[test]
 fn zero_path_probe_uses_postdeployment_nonzero_holders() {
     use crate::inspect_ranked::observe_probe;
     let mut probes = std::collections::BTreeMap::new();

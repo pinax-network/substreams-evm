@@ -2,6 +2,70 @@ use super::*;
 use prost::Message;
 use serde_json::json;
 
+#[test]
+fn captured_clone_initialization_and_distribution_retain_all_initial_holders() {
+    let b = eth::Block::decode(include_bytes!("../tests/fixtures/bsc-122288172-clone-creation-tx.pb").as_slice()).unwrap();
+    let all = layout::parse(include_str!("../tests/fixtures/bsc-clone-layouts.json")).unwrap();
+    let l = all.iter().find(|l| l.minimal_proxy.is_some()).unwrap();
+    let rows = changes(&b, std::slice::from_ref(l)).unwrap();
+    assert_eq!(rows.len(), 143);
+    assert!(rows.iter().all(|r| r.old_amount == "0"));
+    let total = rows.iter().fold(BigInt::from(0), |sum, r| sum + r.amount.parse::<BigInt>().unwrap());
+    assert_eq!(total.to_string(), "1000000000000000000000000000");
+    assert_eq!(project(&b, std::slice::from_ref(l)).unwrap().balances.len(), 143);
+}
+#[test]
+fn minimal_proxy_configuration_binds_exact_forwarding_code_target_and_kind() {
+    let mut params: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-clone-layouts.json")).unwrap();
+    let good = params.as_array_mut().unwrap().pop().unwrap();
+    assert!(layout::parse(&json!([good]).to_string()).is_ok());
+    for case in 0..5 {
+        let mut bad = good.clone();
+        match case {
+            0 => bad["minimal_proxy"]["implementation"] = json!(format!("0x{}", "ab".repeat(20))),
+            1 => bad["minimal_proxy"]["implementation"] = bad["contract"].clone(),
+            2 => bad["code_hash"] = json!(format!("0x{}", "00".repeat(32))),
+            3 => bad["minimal_proxy"]["implementation"] = json!(format!("0x{}", "00".repeat(20))),
+            4 => {
+                bad["proxy"] = json!({"implementation_slot":format!("0x{}","ff".repeat(32)),"implementation":format!("0x{}","ab".repeat(20)),"code_hash":format!("0x{}","bb".repeat(32))})
+            }
+            _ => unreachable!(),
+        }
+        assert!(layout::parse(&json!([bad]).to_string()).is_err(), "case {case}");
+    }
+    let mut plain = good.clone();
+    plain.as_object_mut().unwrap().remove("deployment");
+    assert!(layout::parse(&json!([plain]).to_string()).is_ok());
+}
+#[test]
+fn minimal_proxy_rejects_implementation_changes_even_without_token_writes() {
+    let mut l = layout::parse(include_str!("../tests/fixtures/bsc-clone-layouts.json")).unwrap();
+    l.retain(|l| l.minimal_proxy.is_some());
+    l[0].deployment = None;
+    let implementation = l[0].minimal_proxy.as_ref().unwrap().implementation.clone();
+    let c = eth::Call {
+        code_changes: vec![eth::CodeChange {
+            address: implementation,
+            old_hash: vec![1; 32],
+            new_hash: vec![2; 32],
+            ordinal: 10,
+            ..Default::default()
+        }],
+        ..Default::default()
+    };
+    let mut b = block();
+    b.transaction_traces = vec![tx(c.clone())];
+    assert!(project(&b, &l).is_err());
+    let mut restore = c.code_changes[0].clone();
+    restore.old_hash = vec![2; 32];
+    restore.new_hash = vec![1; 32];
+    restore.ordinal = 20;
+    b.transaction_traces[0].calls[0].code_changes.push(restore);
+    assert!(project(&b, &l).is_err());
+    b.transaction_traces[0].calls[0].state_reverted = true;
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+}
+
 fn deployed_case() -> (eth::Block, Vec<VerifiedLayout>) {
     let mut b = block();
     let mut l = layouts();

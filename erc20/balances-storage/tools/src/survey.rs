@@ -30,6 +30,11 @@ pub struct Survey {
     #[arg(long)]
     pub output: PathBuf,
 }
+/// Only an empty, successful call immediately before a qualified first CREATE
+/// is an unavailable comparison. Transport/JSON-RPC errors remain errors.
+pub fn unavailable_before_deployment(layout: &VerifiedLayout, height: u64, boundary: &str, response: &Value) -> bool {
+    layout.deployment.as_ref().is_some_and(|d| d.block == height) && boundary == "before" && response["error"].is_null() && response["result"] == "0x"
+}
 
 pub fn select_tokens<'a>(ranked: &'a [Value], requested: &[String]) -> Result<Vec<&'a Value>> {
     let requested = requested.iter().map(|c| binary(&json!(c), 20)).collect::<Result<BTreeSet<_>>>()?;
@@ -303,21 +308,27 @@ pub fn run(args: Survey) -> Result<bool> {
                     zero_balance: None,
                     proxy: None,
                     beacon_proxy: None,
+                    minimal_proxy: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
                 if let Some(known) = known {
-                    ensure!(
-                        known.balance_slot == layout.balance_slot && known.code_hash == layout.code_hash,
-                        "reviewed layout differs from observed candidate"
-                    );
+                    ensure!(known.balance_slot == layout.balance_slot, "reviewed layout differs from observed candidate");
+                    qualify_runtime(
+                        &rpc,
+                        *blocks.first_key_value().unwrap().0,
+                        blocks.last_key_value().unwrap().0 + 1,
+                        std::slice::from_ref(known),
+                    )?;
                     layout = known.clone();
                     result["mapper_configuration"] = json!("caller-supplied reviewed layout");
+                    result["reviewed_runtime_qualified"] = json!(true);
                 }
                 let (mut discovery_metrics, mut holdout_metrics, mut mapper_metrics) = (Metrics::default(), Metrics::default(), Metrics::default());
                 let mut errors = Vec::new();
                 let mut value_checks = 0_u64;
                 let mut rpc_mismatches = 0_u64;
                 let mut rpc_errors = 0_u64;
+                let mut predeployment_unavailable = 0_u64;
                 // Reference-silent blocks still matter: the strict mapper can emit
                 // a write without a Transfer log. Such extra rows must fail parity.
                 result["evaluated_blocks"] = json!(blocks.len());
@@ -384,6 +395,16 @@ pub fn run(args: Survey) -> Result<bool> {
                     }
                     for (calls, rows) in requests.chunks(25).zip(evidence.chunks_mut(25)) {
                         for (row, response) in rows.iter_mut().zip(rpc.batch_rows(calls)?) {
+                            if unavailable_before_deployment(&layout, *height, text(&row["boundary"])?, &response) {
+                                ensure!(uint(&row["storage"])?.is_zero(), "pre-deployment storage baseline is nonzero");
+                                predeployment_unavailable += 1;
+                                row["classification"] = json!("unavailable_before_qualified_deployment");
+                                row["rpc"] = Value::Null;
+                                row["match"] = Value::Null;
+                                row["rpc_response"] = response;
+                                writeln!(checks, "{row}")?;
+                                continue;
+                            }
                             let actual = if response["error"].is_null() {
                                 balance_result(&response["result"], true).ok()
                             } else {
@@ -425,6 +446,7 @@ pub fn run(args: Survey) -> Result<bool> {
                 result["rpc_value_checks"] = json!(value_checks);
                 result["rpc_mismatches"] = json!(rpc_mismatches);
                 result["rpc_errors"] = json!(rpc_errors);
+                result["rpc_unavailable_before_deployment"] = json!(predeployment_unavailable);
                 result["status"] = json!(if rpc_errors > 0 {
                     "rpc_unresolved"
                 } else if rpc_mismatches > 0 || holdout_metrics.mismatches > 0 {
@@ -433,7 +455,11 @@ pub fn run(args: Survey) -> Result<bool> {
                     "candidate_matches_values_not_qualified"
                 });
                 result["exact_mapper_parity"] = json!(
-                    errors.is_empty() && mapper_metrics.json()["exact_row_parity"] == true && rpc_errors == 0 && rpc_mismatches == 0 && codes[0] == codes[1]
+                    errors.is_empty()
+                        && mapper_metrics.json()["exact_row_parity"] == true
+                        && rpc_errors == 0
+                        && rpc_mismatches == 0
+                        && (known.is_some() || codes[0] == codes[1])
                 );
                 eprintln!(
                     "Tested rank {} {}: {} shared holdout rows, {} missing, {} mapper errors",
@@ -457,7 +483,8 @@ pub fn run(args: Survey) -> Result<bool> {
             "tokens_with_exact_mapper_parity":tokens.iter().filter(|t|t["exact_mapper_parity"]==true).count(),
             "rpc_value_checks":tokens.iter().filter_map(|t|t["rpc_value_checks"].as_u64()).sum::<u64>(),
             "rpc_mismatches":tokens.iter().filter_map(|t|t["rpc_mismatches"].as_u64()).sum::<u64>(),
-            "rpc_errors":tokens.iter().filter_map(|t|t["rpc_errors"].as_u64()).sum::<u64>()});
+            "rpc_errors":tokens.iter().filter_map(|t|t["rpc_errors"].as_u64()).sum::<u64>(),
+            "rpc_unavailable_before_deployment":tokens.iter().filter_map(|t|t["rpc_unavailable_before_deployment"].as_u64()).sum::<u64>()});
             let status = parity_status(tokens);
             report["summary"] = summary;
             report["status"] = json!(status);

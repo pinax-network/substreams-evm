@@ -1,0 +1,167 @@
+{
+  "elapsed_seconds": 69.993565542,
+  "investigation_complete": true,
+  "observations_sha256": "392e0fc71ba94fcee929802743e87b9e41cd15433e6179fb3752ac8f96537726",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "raw_report_sha256": "d779a8495187e2ad97be41c4ca1a29240a980e722256a8fdadd59297289848c2",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "d4c9d5ed7269f92c7cc7ab142d3fdb6698b3ecd6aafc40b6105c847fc16a8ba8",
+  "rpc_checks_sha256": "632cd1f1fdc7cf7a7eb347e0a017d3d7bf7c3102e647dbad5306111faf22d3b1",
+  "sampled_blocks": 298,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "selected_contracts": [
+    "0x29a864a830528667e571c7a8f5f722cf704753c2",
+    "0xcccbd077b612a42f896b53e24a11c36d32117777"
+  ],
+  "status": "coverage_gap",
+  "summary": {
+    "rpc_errors": 0,
+    "rpc_mismatches": 0,
+    "rpc_unavailable_before_deployment": 144,
+    "rpc_value_checks": 496,
+    "tested_tokens": 2,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 2
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x29a864a830528667e571c7a8f5f722cf704753c2",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 6,
+        "reference_rows": 11,
+        "shared_rows": 5,
+        "storage_only_rows": 0,
+        "storage_rows": 5,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 298,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 7,
+        "reference_rows": 22,
+        "shared_rows": 15,
+        "storage_only_rows": 0,
+        "storage_rows": 15,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288432,
+      "hypotheses": [
+        {
+          "matched": 5,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 15,
+      "ranked_reference_rows": 1081,
+      "reviewed_runtime_qualified": true,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_unavailable_before_deployment": 1,
+      "rpc_value_checks": 39,
+      "runtime_hashes": [
+        "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500"
+      ],
+      "runtime_stable_at_boundaries": false,
+      "sampled_active_blocks": 8,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 7,
+        "reference_rows": 22,
+        "shared_rows": 15,
+        "storage_only_rows": 0,
+        "storage_rows": 15,
+        "value_mismatches": 0
+      },
+      "symbol": "巨蟹座链"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0xcccbd077b612a42f896b53e24a11c36d32117777",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 66,
+        "reference_rows": 282,
+        "shared_rows": 216,
+        "storage_only_rows": 0,
+        "storage_rows": 216,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 298,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 66,
+        "reference_rows": 150,
+        "shared_rows": 84,
+        "storage_only_rows": 0,
+        "storage_rows": 84,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288323,
+      "hypotheses": [
+        {
+          "matched": 216,
+          "mismatched": 0,
+          "nonzero_holders": 163,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0x1d9a9494a9a31de8eeddb4e65edf3389c30f9cb8e1450ca0b307a9cf86d2763e"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0x875d5f80d17a2876c016330ee3fcd14951082158a01edb31dea44415d2f2c592"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0xa7b8cf7c42474bde453559cf2a2c0bf76d1ec38c86bb2b1beb0816b8a2bd2547"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 26,
+      "ranked_reference_rows": 802,
+      "reviewed_runtime_qualified": true,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_unavailable_before_deployment": 143,
+      "rpc_value_checks": 457,
+      "runtime_hashes": [
+        "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+      ],
+      "runtime_stable_at_boundaries": false,
+      "sampled_active_blocks": 88,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 66,
+        "reference_rows": 150,
+        "shared_rows": 84,
+        "storage_only_rows": 0,
+        "storage_rows": 84,
+        "value_mismatches": 0
+      },
+      "symbol": "脑鼠"
+    }
+  ],
+  "tool_language": "Rust"
+}

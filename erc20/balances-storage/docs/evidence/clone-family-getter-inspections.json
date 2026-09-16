@@ -1,0 +1,125 @@
+[
+  {
+    "address": "0xfe133cd6375f023fdfd87ba15b0dbbc099823fe6",
+    "balance_of": "182185984675617729809213613",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+    "block": 122288006,
+    "contract": "0x8e31486873aa8a20cf5706d8445496e6d5f17777",
+    "elapsed_seconds": 0.292531417,
+    "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+    "status": "inspected",
+    "storage_key": "0xbc5457a9b7e265bed1bad53775cfbb2a10bf0f3cca1d48f8b4408302f3cfd43d",
+    "storage_reads": [
+      {
+        "depth": 2,
+        "key": "0xbc5457a9b7e265bed1bad53775cfbb2a10bf0f3cca1d48f8b4408302f3cfd43d",
+        "pc": 616,
+        "value": "0x00000000000000000000000000000000000000000096b36204e2ce38a53be8ad"
+      }
+    ],
+    "storage_word": "182185984675617729809213613",
+    "tool_language": "Rust",
+    "trace_sha256": "703d933aba7391ee3985005373d455fb0cb79b3f8369d19ee8e457d59293d6b0"
+  },
+  {
+    "address": "0xbcb47a649d572fec98254f0fbbca6850aa1b6bd7",
+    "balance_of": "3340470284593699073461112",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+    "block": 122288009,
+    "contract": "0x1dc6cbcf7da108e58f144f30d47d5e579d467777",
+    "elapsed_seconds": 0.275871292,
+    "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+    "status": "inspected",
+    "storage_key": "0x8237c138b3cd7730ed4d4165253377e7f566537479b2e50c86cb8d371ddc7846",
+    "storage_reads": [
+      {
+        "depth": 2,
+        "key": "0x8237c138b3cd7730ed4d4165253377e7f566537479b2e50c86cb8d371ddc7846",
+        "pc": 616,
+        "value": "0x00000000000000000000000000000000000000000002c35f41c9b3e003ae8b78"
+      }
+    ],
+    "storage_word": "3340470284593699073461112",
+    "tool_language": "Rust",
+    "trace_sha256": "08b856555a23ab21b0fae1223b08d33fa40325ab8cb6f826b9d82101986ab12f"
+  },
+  {
+    "address": "0x5e3b0acfabaa4b31938e112a7958594c4b8370f4",
+    "balance_of": "143980349959257906849402058",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+    "block": 122288009,
+    "contract": "0x3e26ff1d7c6f72c5dbb6f6ac3833ccffec0f7777",
+    "elapsed_seconds": 0.265951209,
+    "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+    "status": "inspected",
+    "storage_key": "0xe7e671ae9096a09855a416754e1098e36e4ebbab1297f4fd7b30890eecaea7a4",
+    "storage_reads": [
+      {
+        "depth": 2,
+        "key": "0xe7e671ae9096a09855a416754e1098e36e4ebbab1297f4fd7b30890eecaea7a4",
+        "pc": 616,
+        "value": "0x000000000000000000000000000000000000000000771906693abd1c40924cca"
+      }
+    ],
+    "storage_word": "143980349959257906849402058",
+    "tool_language": "Rust",
+    "trace_sha256": "6a83a38f3bc9d7337f209687c4e28ca26348082238848f6b46160a6f05714062"
+  }
+]

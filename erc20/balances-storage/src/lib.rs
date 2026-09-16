@@ -175,6 +175,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
                 .is_some_and(|l| l.deployment.as_ref().is_none_or(|d| d.block != block.number))
                 || layouts.iter().any(|l| {
                     l.proxy.as_ref().is_some_and(|p| p.implementation == c.address)
+                        || l.minimal_proxy.as_ref().is_some_and(|p| p.implementation == c.address)
                         || l.beacon_proxy.as_ref().is_some_and(|p| p.beacon == c.address || p.implementation == c.address)
                 })
         }),

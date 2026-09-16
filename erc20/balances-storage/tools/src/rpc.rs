@@ -169,6 +169,16 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                 !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
                 "unqualified runtime for configured token"
             );
+            if let Some(proxy) = &layout.minimal_proxy {
+                ensure!(bytes == proxy.runtime(), "minimal proxy forwarding runtime differs");
+                let implementation = format!("0x{}", hex::encode(&proxy.implementation));
+                let code = rpc.call("eth_getCode", json!([implementation, block_ref(text(&h["hash"])?)]))?;
+                let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid minimal proxy implementation code")?)?;
+                ensure!(
+                    !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == proxy.code_hash,
+                    "unqualified minimal proxy implementation runtime"
+                );
+            }
             if let Some(rule) = &layout.zero_balance {
                 if let Some(slot) = rule.storage_slot {
                     let actual = rpc.call(
