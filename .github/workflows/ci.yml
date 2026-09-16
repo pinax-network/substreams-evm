@@ -21,3 +21,5 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - run: cargo test --workspace --lib
       - run: cargo check --workspace --target wasm32-unknown-unknown
+      - name: Test storage balances comparison
+        run: python3 -m unittest discover -s evm-balances-storage/scripts -p 'test_*.py'

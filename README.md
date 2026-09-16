@@ -8,6 +8,7 @@
 evm-dex/          # DEX aggregator (db_out) + clickhouse/ + postgres/
 evm-transfers/    # Transfer aggregator (db_out) + clickhouse/ + postgres/
 evm-balances/     # Balance aggregator (db_out) + clickhouse/ + postgres/
+evm-balances-storage/ # Experimental RPC-free BSC native BNB + WBNB state projection
 evm-supply/       # Supply aggregator (db_out) + clickhouse/ + postgres/
 evm-nfts/         # NFT aggregator (db_out) + clickhouse/ + postgres/
 evm-contracts/    # Contract metadata aggregator (db_out) + clickhouse/ + postgres/
@@ -139,6 +140,7 @@ Each aggregator combines individual modules into a single `db_out` for database 
 | `evm-dex` | All DEX swap events | Clickhouse, Postgres |
 | `evm-transfers` | ERC-20 + native transfers + ERC-3009 (x402) authorizations | Clickhouse, Postgres |
 | `evm-balances` | ERC-20 + native balances | Clickhouse, Postgres |
+| [`evm-balances-storage`](evm-balances-storage/README.md) | Experimental BSC native BNB + WBNB from Extended state, without RPC | Clickhouse comparison schema |
 | `evm-supply` | ERC-20 supply | Clickhouse, Postgres |
 | `evm-nfts` | NFT events (ERC-721, ERC-1155, Seaport, CryptoPunks) | Clickhouse, Postgres |
 | `evm-contracts` | Contract metadata and creation events | Clickhouse, Postgres |

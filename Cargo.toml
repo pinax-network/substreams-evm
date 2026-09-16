@@ -2,6 +2,7 @@
 members = [
   # DB (engine-agnostic)
   "evm-balances",
+  "evm-balances-storage",
   "evm-supply",
   "evm-transfers",
   "x402",

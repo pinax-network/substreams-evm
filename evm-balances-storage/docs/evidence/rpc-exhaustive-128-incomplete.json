@@ -1,0 +1,24 @@
+{
+  "status": "incomplete",
+  "start": 122261100,
+  "blocks": 128,
+  "checks": 2704,
+  "native_checks": 2184,
+  "token_checks": 520,
+  "zero_checks": 302,
+  "mismatches": 0,
+  "before_checks": 1352,
+  "after_checks": 1352,
+  "checked_blocks": 12,
+  "rpc_block_binding": "EIP-1898 blockHash, requireCanonical=true",
+  "scope": "Every emitted native BNB/WBNB balance before and after each block; not full holder discovery",
+  "capture": {
+    "seconds_including_startup": 2.2313455836847425,
+    "blocks_per_second_including_startup": 57.36448936279365,
+    "package_sha256": "da26a4090fed945e0e0e9f6e04e970f249eeee88fa6d2c306ea4bde87d271d63"
+  },
+  "first_hash": "0xf5e200d417165638dedf6250369aa22693a0037aeae77b927e74e3c6c774fded",
+  "last_hash": "0x4a581e8eb498c16d04344759831fd86f464742849531a1cf16423c6ee94a6ce3",
+  "failure": "RuntimeError: RPC transport failed",
+  "elapsed_seconds": 6.728435291908681
+}

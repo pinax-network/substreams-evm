@@ -1,0 +1,51 @@
+syntax = "proto3";
+package evm.balances.storage.v1;
+
+// Changed-key projection, not a complete bootstrap of every holder.
+message BlockBalances {
+  uint64 number = 1;
+  bytes hash = 2;
+  bytes parent_hash = 3;
+  uint64 timestamp = 4;
+  repeated Balance balances = 5;
+  repeated UnresolvedSlot unresolved_wbnb_slots = 6;
+  uint64 preimage_count = 7;
+  uint64 wbnb_storage_changes = 8;
+}
+message Balance {
+  bytes contract = 1; // empty = native BNB
+  bytes address = 2;
+  string old_amount = 3; // before the first persisted change in this block
+  string amount = 4; // after the last persisted change in this block
+  uint64 ordinal = 5;
+}
+message UnresolvedSlot {
+  bytes key = 1;
+  bytes new_value = 2;
+  uint64 ordinal = 3;
+}
+
+// Discovery output only. A mapping-shaped storage write is NOT yet a balance.
+message StorageCandidates {
+  uint64 number = 1;
+  bytes hash = 2;
+  bytes parent_hash = 3;
+  repeated MappingCandidate candidates = 4;
+  repeated TokenActivity tokens = 5;
+}
+message MappingCandidate {
+  bytes contract = 1;
+  bytes address = 2;
+  bytes mapping_slot = 3;
+  bytes storage_key = 4;
+  string old_amount = 5;
+  string amount = 6;
+  uint64 ordinal = 7;
+}
+message TokenActivity {
+  bytes contract = 1;
+  repeated bytes transfer_holders = 2;
+  uint64 storage_changes = 3;
+  uint64 unclassified_storage_changes = 4;
+  bool code_changed = 5;
+}

@@ -497,6 +497,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "evm-balances-storage"
+version = "0.1.0"
+dependencies = [
+ "hex",
+ "prost 0.13.5",
+ "prost-types 0.13.5",
+ "serde_json",
+ "substreams",
+ "substreams-database-change 3.0.0",
+ "substreams-ethereum",
+ "tiny-keccak",
+]
+
+[[package]]
 name = "evm-contracts"
 version = "0.0.0"
 dependencies = [
