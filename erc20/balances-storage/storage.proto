@@ -13,7 +13,7 @@ message BlockBalances {
   uint64 wbnb_storage_changes = 8;
 }
 message Balance {
-  bytes contract = 1; // empty = native BNB
+  bytes contract = 1; // ERC-20 contract; diagnostic format, not the public Events API
   bytes address = 2;
   string old_amount = 3; // before the first persisted change in this block
   string amount = 4; // after the last persisted change in this block

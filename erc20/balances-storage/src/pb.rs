@@ -24,7 +24,7 @@ pub struct BlockBalances {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Balance {
-    /// empty = native BNB
+    /// ERC-20 contract; diagnostic format, not the public Events API
     #[prost(bytes = "vec", tag = "1")]
     pub contract: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", tag = "2")]

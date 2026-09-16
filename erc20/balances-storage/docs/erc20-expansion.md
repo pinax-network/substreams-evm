@@ -1,9 +1,8 @@
 # Expanding toward all ERC-20 balances
 
-The BNB/WBNB mapper passed 44,368 direct historical RPC checks across 192 blocks.
-The next implemented step is `map_erc20_candidates`, a separate RPC-free discovery
-module, plus `scripts/probe_erc20.py` for validation. It is not connected to
-`db_out`, so an unverified layout cannot become a served balance.
+Following the earlier BNB/WBNB prototype, the current ERC-20 experiment includes `map_erc20_candidates`, a separate RPC-free discovery
+module, plus the Rust `probe-erc20` command for validation. It is not connected to
+`map_events`, so an unverified layout cannot become a served balance.
 
 ## First experiment
 
@@ -34,10 +33,10 @@ errors remain unresolved. Full before/after check records are retained locally,
 with their digest in the summary. The module itself has no RPC imports.
 
 ```sh
-make -C evm-balances-storage pack
-python3 evm-balances-storage/scripts/probe_erc20.py \
+make -C erc20/balances-storage pack
+cargo run --locked -p erc20-balances-storage-tools -- probe-erc20 \
   --start 122260950 --blocks 16 \
-  --output evm-balances-storage/out/my-erc20-probe \
+  --output erc20/balances-storage/out/my-erc20-probe \
   --endpoint bsc.substreams.pinax.network:443
 ```
 
@@ -65,4 +64,4 @@ does not prove which value a contract returns.
 
 The next adapter qualification candidates should come from the probe's strongest
 and most frequently observed matches. Universal ERC-20 support remains unfinished;
-the current sink continues to support only native BNB and the pinned WBNB adapter.
+the current public event output supports only changed holders of pinned WBNB.

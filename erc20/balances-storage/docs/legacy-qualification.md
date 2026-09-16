@@ -1,4 +1,10 @@
-# BSC qualification — 2026-09-16
+# Historical aggregator prototype qualification — 2026-09-16
+
+This document records the superseded `evm-balances-storage` prototype before its
+move to `erc20/balances-storage`. References to native balances, `db_out`, the old
+comparator and Python describe that historical run only. Current behavior and
+Rust validation are documented in [qualification](qualification.md).
+
 
 The first prototype reads native BNB and WBNB balances without RPC. It decoded
 all WBNB writes in two disjoint finalized BSC windows. Comparison against the

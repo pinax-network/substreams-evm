@@ -1,6 +1,6 @@
 [package]
-name = "evm-balances-storage"
-description = "Experimental RPC-free BSC native and WBNB balance projection"
+name = "erc20-balances-storage"
+description = "Experimental RPC-free ERC-20 balances with the shared balances protobuf"
 edition = { workspace = true }
 version = "0.1.0"
 license = { workspace = true }
@@ -11,7 +11,7 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
-substreams-database-change = { workspace = true }
+proto = { path = "../../proto" }
 prost = { workspace = true }
 hex = "0.4"
 tiny-keccak = { version = "2.0", features = ["keccak"] }

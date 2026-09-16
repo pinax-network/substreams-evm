@@ -1,13 +1,13 @@
-//! BSC changed balances from persisted Extended state. No RPC imports.
+//! ERC-20 changed balances from persisted Extended state. No RPC imports.
 mod discovery;
 pub mod pb;
 #[allow(dead_code)]
 mod persist;
 
 use pb::{Balance, BlockBalances, UnresolvedSlot};
+use proto::pb::evm::balances::v1 as balances_pb;
 use std::collections::{BTreeMap, BTreeSet};
 use substreams::{errors::Error, scalar::BigInt};
-use substreams_database_change::{pb::database::DatabaseChanges, tables::Tables};
 use substreams_ethereum::pb::eth::v2 as eth;
 use tiny_keccak::{Hasher, Keccak};
 
@@ -54,14 +54,11 @@ fn hex_bytes(s: &str) -> Result<Vec<u8>, Error> {
 
 #[derive(Default)]
 struct Changes {
-    balances: Vec<eth::BalanceChange>,
     storage: Vec<eth::StorageChange>,
     codes: Vec<eth::CodeChange>,
 }
 impl persist::Sink for Changes {
-    fn balance(&mut self, c: &eth::BalanceChange, _: persist::Ctx) {
-        self.balances.push(c.clone());
-    }
+    fn balance(&mut self, _: &eth::BalanceChange, _: persist::Ctx) {}
     fn storage(&mut self, c: &eth::StorageChange, _: persist::Ctx) {
         if hex::encode(&c.address) == WBNB {
             self.storage.push(c.clone());
@@ -181,17 +178,6 @@ pub fn project(block: &eth::Block) -> Result<BlockBalances, Error> {
         ..Default::default()
     };
     let mut rows = BTreeMap::new();
-    changes.balances.sort_by_key(|c| c.ordinal);
-    for c in changes.balances {
-        insert(
-            &mut rows,
-            &[],
-            &c.address,
-            c.old_value.as_ref().map(|x| x.bytes.as_slice()).unwrap_or(&[]),
-            c.new_value.as_ref().map(|x| x.bytes.as_slice()).unwrap_or(&[]),
-            c.ordinal,
-        )?;
-    }
     changes.storage.sort_by_key(|c| c.ordinal);
     for c in changes.storage {
         let key = word(&c.key)?;
@@ -222,7 +208,7 @@ pub fn project(block: &eth::Block) -> Result<BlockBalances, Error> {
 }
 
 #[substreams::handlers::map]
-pub fn map_balances(block: eth::Block) -> Result<BlockBalances, Error> {
+pub fn map_storage_changes(block: eth::Block) -> Result<BlockBalances, Error> {
     project(&block)
 }
 
@@ -231,40 +217,44 @@ pub fn map_erc20_candidates(block: eth::Block) -> Result<pb::StorageCandidates, 
     discovery::project(&block)
 }
 
-pub fn database_changes(block: &BlockBalances) -> Result<DatabaseChanges, Error> {
+pub fn events(block: &BlockBalances) -> Result<balances_pb::Events, Error> {
     require(
         block.unresolved_wbnb_slots.is_empty(),
-        "unresolved WBNB storage: refusing incomplete database output",
+        "unresolved WBNB storage: refusing incomplete balance events",
     )?;
-    let mut tables = Tables::new();
+    let mut out = balances_pb::Events::default();
     for balance in &block.balances {
-        let address = format!("0x{}", hex::encode(&balance.address));
-        let row = if balance.contract.is_empty() {
-            tables.create_row("native_balances", &address)
-        } else {
-            let contract = format!("0x{}", hex::encode(&balance.contract));
-            tables
-                .create_row("erc20_balances", [("contract", contract.clone()), ("address", address.clone())])
-                .set("contract", contract)
-        };
-        row.set("address", address)
-            .set("balance", &balance.amount)
-            .set("block_num", block.number.to_string())
-            .set("block_hash", format!("0x{}", hex::encode(&block.hash)))
-            .set("timestamp", block.timestamp.to_string());
+        require(balance.contract == hex_bytes(WBNB)?, "unsupported ERC-20 contract")?;
+        out.balances.push(balances_pb::Balance {
+            contract: Some(balance.contract.clone()),
+            address: balance.address.clone(),
+            amount: balance.amount.clone(),
+        });
     }
-    // Always emit a marker, including blocks without changes.
-    tables
-        .create_row("blocks", [("block_num", block.number.to_string())])
-        .set("block_num", block.number.to_string())
-        .set("block_hash", format!("0x{}", hex::encode(&block.hash)))
-        .set("timestamp", block.timestamp.to_string());
-    Ok(tables.to_database_changes())
+    Ok(out)
 }
 
 #[substreams::handlers::map]
-pub fn db_out(block: BlockBalances) -> Result<DatabaseChanges, Error> {
-    database_changes(&block)
+pub fn map_events(block: BlockBalances) -> Result<balances_pb::Events, Error> {
+    events(&block)
+}
+
+pub fn balance_changes(block: &BlockBalances) -> Result<balances_pb::BalanceChanges, Error> {
+    Ok(balances_pb::BalanceChanges {
+        balance_changes: events(block)?
+            .balances
+            .into_iter()
+            .map(|balance| balances_pb::BalanceChange {
+                contract: balance.contract,
+                address: balance.address,
+            })
+            .collect(),
+    })
+}
+
+#[substreams::handlers::map]
+pub fn map_balance_changes(block: BlockBalances) -> Result<balances_pb::BalanceChanges, Error> {
+    balance_changes(&block)
 }
 
 #[cfg(test)]
