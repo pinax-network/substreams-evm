@@ -9,6 +9,7 @@ pub mod data;
 pub mod inspect;
 pub mod probe;
 pub mod ranking;
+pub mod recheck;
 pub mod rpc;
 pub mod survey;
 

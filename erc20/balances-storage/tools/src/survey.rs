@@ -24,8 +24,26 @@ pub struct Survey {
     /// Unconfigured tokens still use explicitly unqualified diagnostic inputs.
     #[arg(long)]
     pub layouts: Option<PathBuf>,
+    /// Retest only these contracts from the ranking; repeat to select several.
+    #[arg(long = "contract")]
+    pub contracts: Vec<String>,
     #[arg(long)]
     pub output: PathBuf,
+}
+
+pub fn select_tokens<'a>(ranked: &'a [Value], requested: &[String]) -> Result<Vec<&'a Value>> {
+    let requested = requested.iter().map(|c| binary(&json!(c), 20)).collect::<Result<BTreeSet<_>>>()?;
+    let mut missing = requested.clone();
+    let mut selected = Vec::new();
+    for token in ranked {
+        let contract = binary(&token["contract"], 20)?;
+        if requested.is_empty() || requested.contains(&contract) {
+            missing.remove(&contract);
+            selected.push(token);
+        }
+    }
+    ensure!(missing.is_empty(), "requested contract is not in the selected ranking");
+    Ok(selected)
 }
 
 #[derive(Default)]
@@ -128,6 +146,8 @@ pub fn run(args: Survey) -> Result<bool> {
         |report| {
             let ranking: Value = serde_json::from_slice(&fs::read(&args.ranking)?)?;
             ensure!(ranking["status"] == "ranked" && ranking["chain_id"] == 56, "completed BSC ranking required");
+            let selected = select_tokens(items(&ranking, "selected_tokens")?, &args.contracts)?;
+            report["selected_contracts"] = json!(selected.iter().map(|t| &t["contract"]).collect::<Vec<_>>());
             let start = number(&ranking["start"])?;
             let stop = number(&ranking["stop_exclusive"])?;
             let reference_path = args.ranking.parent().context("ranking parent")?.join("reference.jsonl");
@@ -187,7 +207,7 @@ pub fn run(args: Survey) -> Result<bool> {
             write_report(&args.output, report)?;
             let mut checks = File::create(args.output.join("rpc-checks.jsonl"))?;
             let mut observations = File::create(args.output.join("observations.jsonl"))?;
-            for token in items(&ranking, "selected_tokens")? {
+            for token in selected {
                 let contract = text(&token["contract"])?;
                 let active = blocks
                     .keys()
@@ -269,6 +289,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     code_hash: hex::decode(&codes[0][2..])?.try_into().unwrap(),
                     other_slots: BTreeSet::new(),
                     other_mapping_slots: BTreeSet::new(),
+                    other_mapping_words: BTreeMap::new(),
                     proxy: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
@@ -362,6 +383,11 @@ pub fn run(args: Survey) -> Result<bool> {
                             rpc_mismatches += u64::from(actual.is_some_and(|v| v != expected));
                             row["rpc"] = json!(actual.map(|v| v.to_string()));
                             row["match"] = json!(actual == Some(expected));
+                            if actual.is_none() {
+                                // Retain empty/malformed ABI data separately from
+                                // provider errors instead of collapsing both to null.
+                                row["rpc_response"] = response.clone();
+                            }
                             if actual.is_some_and(|v| v != expected) {
                                 let key = mapping_key(text(&row["address"])?, slot)?;
                                 let stored = rpc.call("eth_getStorageAt", json!([contract, key, block_ref(text(&row["hash"])?)]))?;

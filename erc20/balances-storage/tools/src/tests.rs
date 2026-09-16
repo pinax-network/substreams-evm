@@ -9,6 +9,15 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn targeted_survey_preserves_rank_order_and_rejects_unranked_contracts() {
+    let ranked = vec![json!({"contract":TOKEN,"rank":1}), json!({"contract":address(),"rank":2})];
+    assert_eq!(crate::survey::select_tokens(&ranked, &[]).unwrap().len(), 2);
+    assert_eq!(crate::survey::select_tokens(&ranked, &[address()]).unwrap()[0]["rank"], 2);
+    assert!(crate::survey::select_tokens(&ranked, &[format!("0x{}", "bb".repeat(20))]).is_err());
+    assert!(crate::survey::select_tokens(&ranked, &["malformed".into()]).is_err());
+}
+
+#[test]
 fn holder_state_distinguishes_unknowns_repeats_and_explicit_zero() {
     use crate::coverage::HolderState;
     let key = (TOKEN.to_string(), address());
@@ -372,11 +381,34 @@ fn missing_duplicate_error_null_and_invalid_batch_ids_fail() {
     }
 }
 #[test]
-fn token_result_requires_one_complete_abi_word() {
+fn token_result_requires_a_complete_leading_abi_word() {
     assert_eq!(balance_result(&json!(format!("0x{}", "ff".repeat(32))), true).unwrap(), U256::MAX);
-    for value in ["0x".to_string(), "0x0".into(), format!("0x{}", "00".repeat(64)), "bad".into()] {
+    for value in [
+        "0x".to_string(),
+        "0x0".into(),
+        format!("0x{}", "00".repeat(31)),
+        format!("0x{}zz", "00".repeat(32)),
+        "bad".into(),
+    ] {
         assert!(balance_result(&json!(value), true).is_err());
     }
+}
+#[test]
+fn token_return_decoding_matches_the_actual_rpc_reference_abi_decoder() {
+    use substreams_abis::standard::erc20::functions::BalanceOf;
+    for length in 0..=100 {
+        let bytes: Vec<u8> = (0..length).map(|i| (i * 17) as u8).collect();
+        let expected = BalanceOf::output(&bytes).map(|v| v.to_string()).ok();
+        let actual = balance_result(&json!(format!("0x{}", hex::encode(bytes))), true).map(|v| v.to_string()).ok();
+        assert_eq!(actual, expected, "return length {length}");
+    }
+    let captured: Value = serde_json::from_str(include_str!("../../tests/fixtures/vusdt-return-data.json")).unwrap();
+    let value = &captured["response"]["result"];
+    assert_eq!(
+        balance_result(value, true).unwrap().to_string(),
+        captured["original"]["storage"].as_str().unwrap()
+    );
+    assert!(balance_result(value, false).is_err());
 }
 #[test]
 fn every_emitted_balance_uses_its_current_canonical_hash() {

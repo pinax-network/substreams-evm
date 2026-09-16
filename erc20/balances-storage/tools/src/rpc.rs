@@ -85,7 +85,13 @@ pub fn quantity(value: &Value) -> Result<U256> {
 }
 pub fn balance_result(value: &Value, token: bool) -> Result<U256> {
     if token {
-        ensure!(text(value)?.len() == 66, "balanceOf must return exactly one uint256 word");
+        // Match the reference's ethabi Uint(256) decoder: one complete leading
+        // word is required, but trailing return data is permitted. Venus's
+        // delegator returns 96 bytes for balanceOf, with its value first.
+        let encoded = text(value)?.strip_prefix("0x").context("invalid ABI hex prefix")?;
+        let bytes = hex::decode(encoded).context("invalid ABI return data")?;
+        ensure!(bytes.len() >= 32, "balanceOf must return a complete uint256 word");
+        return Ok(U256::from_big_endian(&bytes[..32]));
     }
     quantity(value)
 }

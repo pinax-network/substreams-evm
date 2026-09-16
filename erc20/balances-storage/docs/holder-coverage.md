@@ -1,5 +1,10 @@
 # BSC reviewed layouts and holder coverage
 
+This page records the first four-token qualification. The subsequent
+[eight-token qualification](next-bnb-candidates.md) adds ETH/BUSD/CAKE/USD1,
+fixes the vUSDT RPC return decoder, and diagnoses all 280 earlier unresolved calls.
+The hashes and measurements below remain evidence for the earlier build.
+
 The expanded tests qualify explicit USDT, BTCB and USDC configurations alongside
 the existing WBNB configuration. Across two independent windows, **8,772 emitted
 WASM balances matched RPC**, including 1,358 zeros. A separate native consumer

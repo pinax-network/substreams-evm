@@ -1,6 +1,6 @@
 use crate::{hex_bytes, require};
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use substreams::errors::Error;
 
 /// A caller-qualified direct balance mapping, optionally behind a pinned proxy.
@@ -14,6 +14,9 @@ pub struct Layout {
     pub other_slots: Vec<String>,
     #[serde(default)]
     pub other_mapping_slots: Vec<String>,
+    /// Reviewed non-balance mapping bases whose values span multiple words.
+    #[serde(default)]
+    pub other_mapping_words: BTreeMap<String, u8>,
     #[serde(default)]
     pub proxy: Option<ProxyLayout>,
 }
@@ -37,6 +40,7 @@ pub struct VerifiedLayout {
     pub code_hash: [u8; 32],
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
+    pub other_mapping_words: BTreeMap<[u8; 32], u8>,
     pub proxy: Option<VerifiedProxy>,
 }
 fn fixed(value: &str, size: usize) -> Result<Vec<u8>, Error> {
@@ -60,8 +64,16 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
             let balance_slot = word(&layout.balance_slot)?;
             let other_slots = layout.other_slots.iter().map(|s| word(s)).collect::<Result<BTreeSet<_>, _>>()?;
             let other_mapping_slots = layout.other_mapping_slots.iter().map(|s| word(s)).collect::<Result<BTreeSet<_>, _>>()?;
+            let other_mapping_words = layout
+                .other_mapping_words
+                .iter()
+                .map(|(base, width)| {
+                    require((1..=32).contains(width), "non-balance mapping width must be 1..=32 words")?;
+                    Ok((word(base)?, *width))
+                })
+                .collect::<Result<BTreeMap<_, _>, Error>>()?;
             require(
-                !other_mapping_slots.contains(&balance_slot) && !other_slots.contains(&balance_slot),
+                !other_mapping_slots.contains(&balance_slot) && !other_slots.contains(&balance_slot) && !other_mapping_words.contains_key(&balance_slot),
                 "balance slot cannot be ignored",
             )?;
             let proxy = layout
@@ -79,6 +91,10 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                             && !other_mapping_slots.contains(&implementation_slot),
                         "proxy implementation slot cannot be ignored or used for balances",
                     )?;
+                    require(
+                        !other_mapping_words.contains_key(&implementation_slot),
+                        "proxy implementation slot cannot be ignored",
+                    )?;
                     Ok(VerifiedProxy {
                         implementation_slot,
                         implementation,
@@ -92,6 +108,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 code_hash: word(&layout.code_hash)?,
                 other_slots,
                 other_mapping_slots,
+                other_mapping_words,
                 proxy,
             })
         })

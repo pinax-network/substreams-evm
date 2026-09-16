@@ -24,3 +24,4 @@ substreams-ethereum = { workspace = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 tempfile = "3"
+substreams-abis = { workspace = true }

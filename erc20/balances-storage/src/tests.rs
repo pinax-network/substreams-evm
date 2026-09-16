@@ -166,6 +166,55 @@ fn only_explicitly_configured_other_storage_is_ignored() {
     assert!(project(&b, &l).unwrap().balances.is_empty());
 }
 #[test]
+fn reviewed_nested_struct_fields_do_not_mask_adjacent_unknown_writes() {
+    let mut l = layouts();
+    l[0].other_mapping_slots.clear();
+    l[0].other_mapping_words.insert(slot(8), 2);
+    let mut outer = vec![0; 64];
+    outer[12..32].copy_from_slice(&[6; 20]);
+    outer[32..].copy_from_slice(&slot(8));
+    let mut inner = vec![0; 64];
+    inner[31] = 5; // checkpoint index
+    inner[32..].copy_from_slice(&hash(&outer));
+    let key = hash(&inner);
+    let mut call = token_call(&l[0], &[6; 20], 1, 2);
+    call.keccak_preimages.insert(hex::encode(hash(&outer)), hex::encode(outer));
+    call.keccak_preimages.insert(hex::encode(key), hex::encode(inner));
+    call.storage_changes.push(eth::StorageChange {
+        address: l[0].contract.clone(),
+        key: (BigInt::from_unsigned_bytes_be(&key) + 1_u32).to_bytes_be().1,
+        old_value: vec![2],
+        new_value: vec![3],
+        ordinal: 20,
+    });
+    let mut b = block();
+    b.transaction_traces = vec![tx(call)];
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "2");
+    l[0].other_mapping_words.insert(slot(8), 1);
+    assert!(project(&b, &l).is_err());
+    l[0].other_mapping_words.insert(slot(8), 2);
+    b.transaction_traces[0].calls[0].storage_changes[1].key = (BigInt::from_unsigned_bytes_be(&key) + 2_u32).to_bytes_be().1;
+    assert!(project(&b, &l).is_err());
+    assert_eq!(subtract_offset([0; 32], 1), [255; 32]);
+    let mut carry = slot(0);
+    carry[30] = 1;
+    assert_eq!(subtract_offset(carry, 1), slot(255));
+}
+#[test]
+fn mapping_width_cannot_hide_balance_or_upgrade_storage() {
+    let original: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-reviewed-layouts.json")).unwrap();
+    for (base, width) in [
+        (original[2]["balance_slot"].clone(), 2),
+        (original[2]["proxy"]["implementation_slot"].clone(), 2),
+        (json!(format!("0x{}", hex::encode(slot(9)))), 0),
+        (json!(format!("0x{}", hex::encode(slot(9)))), 33),
+    ] {
+        let mut invalid = original.clone();
+        invalid[2]["other_mapping_words"] = json!({base.as_str().unwrap():width});
+        assert!(layout::parse(&invalid.to_string()).is_err());
+    }
+}
+#[test]
 fn preserves_uint256_max() {
     let l = layouts();
     let mut b = block();

@@ -112,7 +112,7 @@ fn validate_block(block: &eth::Block) -> Result<(), Error> {
     }
     Ok(())
 }
-fn ignored_mapping(mut key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, layout: &VerifiedLayout) -> bool {
+fn mapping_has_base(mut key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, expected: &[u8; 32]) -> bool {
     // Follow verified nested mapping preimages; never guess an unknown slot's role.
     let mut visited = BTreeSet::new();
     while visited.insert(key) {
@@ -120,12 +120,29 @@ fn ignored_mapping(mut key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, l
             return false;
         };
         let base: [u8; 32] = preimage[32..].try_into().unwrap();
-        if layout.other_mapping_slots.contains(&base) {
+        if &base == expected {
             return true;
         }
         key = base;
     }
     false
+}
+fn subtract_offset(mut key: [u8; 32], offset: u8) -> [u8; 32] {
+    // Solidity addresses struct fields as (mapping hash + offset) modulo 2^256.
+    let mut borrow = offset as u16;
+    for byte in key.iter_mut().rev() {
+        let (value, underflow) = byte.overflowing_sub(borrow as u8);
+        *byte = value;
+        borrow = (borrow >> 8) + u16::from(underflow);
+    }
+    key
+}
+fn ignored_mapping(key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, layout: &VerifiedLayout) -> bool {
+    layout.other_mapping_slots.iter().any(|base| mapping_has_base(key, preimages, base))
+        || layout
+            .other_mapping_words
+            .iter()
+            .any(|(base, width)| (0..*width).any(|offset| mapping_has_base(subtract_offset(key, offset), preimages, base)))
 }
 
 /// Layout semantics and the starting runtime must be qualified by the caller.

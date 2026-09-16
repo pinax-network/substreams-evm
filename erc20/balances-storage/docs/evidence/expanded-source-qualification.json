@@ -1,0 +1,1357 @@
+[
+  {
+    "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+    "balance_of": "22959646400326974533",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.5.16+commit.9c3226ce",
+      "fullyQualifiedName": "BEP20Ethereum.sol:BEP20Ethereum",
+      "language": "Solidity",
+      "name": "BEP20Ethereum"
+    },
+    "contract": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    "elapsed_seconds": 0.297510167,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x24d639ec3ab0dfc14d482da65b0dfc3c325351d938d8cfffa4aa47e4ac8f0e65",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "cf8b6e1b7787cd55e5bd97797ad8c141e7fa8e4e3324bcc7ae72ad04ec83e723",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 302,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 417,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 423,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 425,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 427,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 429,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 431,
+          "contract": "BEP20Ethereum.sol:BEP20Ethereum",
+          "label": "_name",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_string_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x2170ed0880ac9a755fd29b2688956bd959f933f8?fields=all",
+    "status": "inspected",
+    "storage_key": "0x2f55e639ac68e8ab8e804d5386b2b29720ec10beb5a86919e36cea5c5c0c35a3",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x2f55e639ac68e8ab8e804d5386b2b29720ec10beb5a86919e36cea5c5c0c35a3",
+        "pc": 1481,
+        "value": "0x0000000000000000000000000000000000000000000000013ea10cc17410bc45"
+      }
+    ],
+    "storage_word": "22959646400326974533",
+    "tool_language": "Rust",
+    "trace_sha256": "c07401088de4f116255093193f88b09d516c26ce1eb1327d4ae4d37d75a47060"
+  },
+  {
+    "address": "0x8f45b99bf65cdbf9bc0c0b4846d6a324d2de5314",
+    "balance_of": "5511734938833184443257",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.5.16+commit.9c3226ce",
+      "fullyQualifiedName": "BEP20Token.sol:BEP20Token",
+      "language": "Solidity",
+      "name": "BEP20Token"
+    },
+    "contract": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    "elapsed_seconds": 0.307423416,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xd2417b9d5d4dab7c4b4aeeb9913a3e3e8d25c1a426849a8abdb5575d96e5dfcd",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "d5dad2c294845177ef28196422b28c47c8c6783e107830d593e47d6a216960a3",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 302,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 417,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 423,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 425,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 427,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 429,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 431,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_name",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_string_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xe9e7cea3dedca5984780bafc599bd69add087d56?fields=all",
+    "status": "inspected",
+    "storage_key": "0x3d7bd24f4b4ad8da87a1e13a0b9b1107e90a173a3f76825b290ce17ad247a2d1",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x3d7bd24f4b4ad8da87a1e13a0b9b1107e90a173a3f76825b290ce17ad247a2d1",
+        "pc": 1481,
+        "value": "0x00000000000000000000000000000000000000000000012acab01c720d554b79"
+      }
+    ],
+    "storage_word": "5511734938833184443257",
+    "tool_language": "Rust",
+    "trace_sha256": "1fb5017e4c388be3b86660c89a8ee630927c58d3bf4acec70df0a1433ee757fe"
+  },
+  {
+    "address": "0xfc14a0aed7a127297d79bf7245bc63624710a0e6",
+    "balance_of": "530435042506152059",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "metadata": {
+          "bytecodeHash": "ipfs"
+        },
+        "optimizer": {
+          "enabled": true,
+          "runs": 5000
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.6.12+commit.27d51765",
+      "fullyQualifiedName": "CakeToken.sol:CakeToken",
+      "language": "Solidity",
+      "name": "CakeToken"
+    },
+    "contract": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+    "elapsed_seconds": 0.308133625,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x21b2b23f1103cfdca4d9dd3ba0480364852b6cc3c71497a1f3f0bd7d4b56264c",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "8e8ff5fb79e1a86d9db4b60f6a67a9ef2db4f99e6036ceecca5d8e5d0c476b63",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 31,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 728,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 734,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 736,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 738,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_name",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 740,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 742,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1267,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "_delegates",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_mapping(t_address,t_address)"
+        },
+        {
+          "astId": 1279,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "checkpoints",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1272_storage))"
+        },
+        {
+          "astId": 1284,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "numCheckpoints",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_mapping(t_address,t_uint32)"
+        },
+        {
+          "astId": 1301,
+          "contract": "CakeToken.sol:CakeToken",
+          "label": "nonces",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_mapping(t_address,t_uint256)"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_address)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => address)",
+          "numberOfBytes": "32",
+          "value": "t_address"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1272_storage))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(uint32 => struct CakeToken.Checkpoint))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_uint32,t_struct(Checkpoint)1272_storage)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_mapping(t_address,t_uint32)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint32)",
+          "numberOfBytes": "32",
+          "value": "t_uint32"
+        },
+        "t_mapping(t_uint32,t_struct(Checkpoint)1272_storage)": {
+          "encoding": "mapping",
+          "key": "t_uint32",
+          "label": "mapping(uint32 => struct CakeToken.Checkpoint)",
+          "numberOfBytes": "32",
+          "value": "t_struct(Checkpoint)1272_storage"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_struct(Checkpoint)1272_storage": {
+          "encoding": "inplace",
+          "label": "struct CakeToken.Checkpoint",
+          "members": [
+            {
+              "astId": 1269,
+              "contract": "CakeToken.sol:CakeToken",
+              "label": "fromBlock",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint32"
+            },
+            {
+              "astId": 1271,
+              "contract": "CakeToken.sol:CakeToken",
+              "label": "votes",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256"
+            }
+          ],
+          "numberOfBytes": "64"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint32": {
+          "encoding": "inplace",
+          "label": "uint32",
+          "numberOfBytes": "4"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82?fields=all",
+    "status": "inspected",
+    "storage_key": "0x549a672319fd9e6afefe6168fe719d3fcb313d7db7a45e2b82d652fd5b0a0887",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x549a672319fd9e6afefe6168fe719d3fcb313d7db7a45e2b82d652fd5b0a0887",
+        "pc": 2254,
+        "value": "0x000000000000000000000000000000000000000000000000075c7bdc5cff987b"
+      }
+    ],
+    "storage_word": "530435042506152059",
+    "tool_language": "Rust",
+    "trace_sha256": "6eeeb1e0d65a420150e984e83ab62b6cae2a8bd8d894c7bc0ebcfbcdd857a839"
+  },
+  {
+    "address": "0x04d59885f3a88458cc9cc4472af60132bd358c7b",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "london",
+        "libraries": {},
+        "metadata": {
+          "bytecodeHash": "ipfs"
+        },
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        },
+        "remappings": [
+          ":ds-test/=lib/forge-std/lib/ds-test/src/",
+          ":forge-std/=lib/forge-std/src/",
+          ":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+          ":openzeppelin-contracts/=lib/openzeppelin-contracts/"
+        ]
+      },
+      "compilerVersion": "0.8.14+commit.80d49f37",
+      "fullyQualifiedName": "lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:TransparentUpgradeableProxy",
+      "language": "Solidity",
+      "name": "TransparentUpgradeableProxy"
+    },
+    "contract": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+    "elapsed_seconds": 0.799836833,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xffc1e02a7c786f856f8cb5f8767858426242c4a197b5aaafb9e11aa04dcf46e2",
+    "source_proxy_resolution": {
+      "implementations": [
+        {
+          "address": "0x694Aa534bdef8eD63244eB902E7914e527891F08",
+          "name": "StablecoinV2"
+        }
+      ],
+      "isProxy": true,
+      "proxyType": "EIP1967Proxy"
+    },
+    "source_runtime_match": true,
+    "source_sha256": "4e5513b4d3147a2e0eb75678c9e5ddd5479adb4d7ac215c99a9afbf0ead8fb39",
+    "source_storage_layout": {
+      "storage": [],
+      "types": null
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d?fields=all",
+    "status": "inspected",
+    "storage_key": "0x882374883003667ecab1fe7bf27ffef111c0878683424c2e6cd2d438cdf4923b",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+        "pc": 849,
+        "value": "0x000000000000000000000000a032fe6c496732bdfc0d235066f55f171fa4aece"
+      },
+      {
+        "depth": 1,
+        "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "pc": 849,
+        "value": "0x000000000000000000000000694aa534bdef8ed63244eb902e7914e527891f08"
+      },
+      {
+        "depth": 2,
+        "key": "0x882374883003667ecab1fe7bf27ffef111c0878683424c2e6cd2d438cdf4923b",
+        "pc": 922,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "aa41d120e566b3550de28d97c0fc0b28969c2e64fbbdd4bb86e43c6739f2276c"
+  },
+  {
+    "address": "0x04d59885f3a88458cc9cc4472af60132bd358c7b",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "paris",
+        "optimizer": {
+          "details": {
+            "yul": false
+          },
+          "enabled": true,
+          "runs": 200
+        }
+      },
+      "compilerVersion": "0.8.24+commit.e11b9ed9",
+      "fullyQualifiedName": "contracts/StablecoinV2.sol:StablecoinV2",
+      "language": "Solidity",
+      "name": "StablecoinV2"
+    },
+    "contract": "0x694aa534bdef8ed63244eb902e7914e527891f08",
+    "elapsed_seconds": 0.787536458,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x374843e6b7802f13abcfa4ac2935993802ad0ef202bf6e315887b778638cd6fa",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "201a1a87c34b7b413d662fe2ef04557103f303ca09111bcc38349e664cf6cd72",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 271,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_initialized",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 274,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_initializing",
+          "offset": 1,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1888,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 581,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "51",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 587,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "52",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 589,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "53",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 591,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_name",
+          "offset": 0,
+          "slot": "54",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 593,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "55",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 1173,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "56",
+          "type": "t_array(t_uint256)45_storage"
+        },
+        {
+          "astId": 2577,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_hashedName",
+          "offset": 0,
+          "slot": "101",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2580,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_hashedVersion",
+          "offset": 0,
+          "slot": "102",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2582,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_name",
+          "offset": 0,
+          "slot": "103",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 2584,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_version",
+          "offset": 0,
+          "slot": "104",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 2842,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "105",
+          "type": "t_array(t_uint256)48_storage"
+        },
+        {
+          "astId": 1279,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_nonces",
+          "offset": 0,
+          "slot": "153",
+          "type": "t_mapping(t_address,t_struct(Counter)1895_storage)"
+        },
+        {
+          "astId": 1287,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+          "offset": 0,
+          "slot": "154",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1443,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "155",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 118,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "204",
+          "type": "t_address"
+        },
+        {
+          "astId": 238,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "205",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 11,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_pendingOwner",
+          "offset": 0,
+          "slot": "254",
+          "type": "t_address"
+        },
+        {
+          "astId": 105,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "255",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 455,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "_paused",
+          "offset": 0,
+          "slot": "304",
+          "type": "t_bool"
+        },
+        {
+          "astId": 560,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "305",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 4652,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "frozen",
+          "offset": 0,
+          "slot": "354",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 4656,
+          "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "355",
+          "type": "t_array(t_uint256)49_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_uint256)45_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[45]",
+          "numberOfBytes": "1440"
+        },
+        "t_array(t_uint256)48_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[48]",
+          "numberOfBytes": "1536"
+        },
+        "t_array(t_uint256)49_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[49]",
+          "numberOfBytes": "1568"
+        },
+        "t_array(t_uint256)50_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[50]",
+          "numberOfBytes": "1600"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_bytes32": {
+          "encoding": "inplace",
+          "label": "bytes32",
+          "numberOfBytes": "32"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_struct(Counter)1895_storage)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => struct CountersUpgradeable.Counter)",
+          "numberOfBytes": "32",
+          "value": "t_struct(Counter)1895_storage"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_struct(Counter)1895_storage": {
+          "encoding": "inplace",
+          "label": "struct CountersUpgradeable.Counter",
+          "members": [
+            {
+              "astId": 1894,
+              "contract": "contracts/StablecoinV2.sol:StablecoinV2",
+              "label": "_value",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256"
+            }
+          ],
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x694aa534bdef8ed63244eb902e7914e527891f08?fields=all",
+    "status": "inspected",
+    "storage_key": "0x882374883003667ecab1fe7bf27ffef111c0878683424c2e6cd2d438cdf4923b",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x882374883003667ecab1fe7bf27ffef111c0878683424c2e6cd2d438cdf4923b",
+        "pc": 922,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "dce1dc2742ec4bc805965acf0c4f2883f7aa5a91d5f5cbe4f231bd71661fc5db"
+  },
+  {
+    "address": "0x9400f8ad57e9e0f352345935d6d3175975eb1d9f",
+    "balance_of": "21323187432458722",
+    "balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        }
+      },
+      "compilerVersion": "0.5.17+commit.d19bba13",
+      "fullyQualifiedName": "VBep20Delegator.sol:VBep20Delegator",
+      "language": "Solidity",
+      "name": "VBep20Delegator"
+    },
+    "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "elapsed_seconds": 0.443036292,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "e2274cdf86cc044a7b291cd78664bae529e68dfdaab03d88a0a373dd19401f45",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 910,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "_notEntered",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 912,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "name",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 914,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "symbol",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 916,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "decimals",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 924,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "admin",
+          "offset": 1,
+          "slot": "3",
+          "type": "t_address_payable"
+        },
+        {
+          "astId": 926,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "pendingAdmin",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_address_payable"
+        },
+        {
+          "astId": 928,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "comptroller",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_contract(ComptrollerInterface)227"
+        },
+        {
+          "astId": 930,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "interestRateModel",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_contract(InterestRateModel)257"
+        },
+        {
+          "astId": 932,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "initialExchangeRateMantissa",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 934,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "reserveFactorMantissa",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 936,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "accrualBlockNumber",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 938,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "borrowIndex",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 940,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "totalBorrows",
+          "offset": 0,
+          "slot": "11",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 942,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "totalReserves",
+          "offset": 0,
+          "slot": "12",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 944,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "totalSupply",
+          "offset": 0,
+          "slot": "13",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 948,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "accountTokens",
+          "offset": 0,
+          "slot": "14",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 954,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "transferAllowances",
+          "offset": 0,
+          "slot": "15",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 963,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "accountBorrows",
+          "offset": 0,
+          "slot": "16",
+          "type": "t_mapping(t_address,t_struct(BorrowSnapshot)959_storage)"
+        },
+        {
+          "astId": 1267,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "underlying",
+          "offset": 0,
+          "slot": "17",
+          "type": "t_address"
+        },
+        {
+          "astId": 1335,
+          "contract": "VBep20Delegator.sol:VBep20Delegator",
+          "label": "implementation",
+          "offset": 0,
+          "slot": "18",
+          "type": "t_address"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_address_payable": {
+          "encoding": "inplace",
+          "label": "address payable",
+          "numberOfBytes": "20"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_contract(ComptrollerInterface)227": {
+          "encoding": "inplace",
+          "label": "contract ComptrollerInterface",
+          "numberOfBytes": "20"
+        },
+        "t_contract(InterestRateModel)257": {
+          "encoding": "inplace",
+          "label": "contract InterestRateModel",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_struct(BorrowSnapshot)959_storage)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => struct VTokenStorage.BorrowSnapshot)",
+          "numberOfBytes": "32",
+          "value": "t_struct(BorrowSnapshot)959_storage"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_struct(BorrowSnapshot)959_storage": {
+          "encoding": "inplace",
+          "label": "struct VTokenStorage.BorrowSnapshot",
+          "members": [
+            {
+              "astId": 956,
+              "contract": "VBep20Delegator.sol:VBep20Delegator",
+              "label": "principal",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 958,
+              "contract": "VBep20Delegator.sol:VBep20Delegator",
+              "label": "interestIndex",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256"
+            }
+          ],
+          "numberOfBytes": "64"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xfd5840cd36d94d7229439859c0112a4185bc0255?fields=all",
+    "status": "inspected",
+    "storage_key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+    "storage_reads": [
+      {
+        "depth": 2,
+        "key": "0x0000000000000000000000000000000000000000000000000000000000000012",
+        "pc": 2757,
+        "value": "0x000000000000000000000000cdfea50f7ceccb24fe804657db8e6c93b689941e"
+      },
+      {
+        "depth": 3,
+        "key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+        "pc": 1778,
+        "value": "0x000000000000000000000000000000000000000000000000004bc153746409e2"
+      }
+    ],
+    "storage_word": "21323187432458722",
+    "tool_language": "Rust",
+    "trace_sha256": "63161fe16b4a5942155036202853f9f905181d7519c04cbbca8eec14485d3ac1"
+  }
+]

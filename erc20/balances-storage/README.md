@@ -20,6 +20,7 @@ behind a reviewed proxy with its implementation pinned:
 | `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
+| `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 
 The caller must establish that the configured mapping equals `balanceOf` for the
@@ -168,6 +169,17 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 USDC (pinned implementation), and the existing WBNB control. The file is not a
 default. See [expanded qualification and holder coverage](docs/holder-coverage.md)
 for source/runtime evidence, the zero-word mismatch explanation and live checks.
+
+The [next BNB qualification](docs/next-bnb-candidates.md) adds ETH, BUSD, CAKE and
+USD1 in `tests/fixtures/bsc-expanded-layouts.json`. It includes multiword governance
+storage, an ABI decoding compatibility fix, and explicit diagnosis of calls before
+contract deployment. The new fixture is also caller-supplied, never a default.
+
+`recheck-rpc --checks <rpc-checks.jsonl> --output <new-directory>` diagnoses prior
+unresolved checks without overwriting them. `test-ranked` accepts repeated
+`--contract` filters for focused retests of selected ranked tokens and records the
+selection in its report. Token RPC output follows the reference ABI decoder: a
+complete leading uint256 word is required and trailing return bytes are accepted.
 
 The `holder-coverage` Rust command compares a cold consumer with one initialized
 from a **test-only historical RPC checkpoint**. It requires consecutive captured

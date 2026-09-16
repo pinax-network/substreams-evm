@@ -1,0 +1,36 @@
+{
+  "before_deployment": 144,
+  "checks": 280,
+  "checks_sha256": "dabd2df9b0b2570259f6d69e09423f67a731ad5562763ef7e5340a45f3415564",
+  "elapsed_seconds": 17.085215083,
+  "original_checks_sha256": "8e631595dc91c9011252bf4e999b1820a74e271cb7f0e58e60948dd272614846",
+  "resolved_matches": 136,
+  "scope": "Diagnosis of prior unresolved calls; absent predeployment balanceOf is never converted to zero or a passing value check",
+  "status": "inspected",
+  "tokens": {
+    "0x29a864a830528667e571c7a8f5f722cf704753c2": {
+      "before_deployment": 1,
+      "checks": 1,
+      "resolved_matches": 0,
+      "unresolved": 0,
+      "value_mismatches": 0
+    },
+    "0xcccbd077b612a42f896b53e24a11c36d32117777": {
+      "before_deployment": 143,
+      "checks": 143,
+      "resolved_matches": 0,
+      "unresolved": 0,
+      "value_mismatches": 0
+    },
+    "0xfd5840cd36d94d7229439859c0112a4185bc0255": {
+      "before_deployment": 0,
+      "checks": 136,
+      "resolved_matches": 136,
+      "unresolved": 0,
+      "value_mismatches": 0
+    }
+  },
+  "tool_language": "Rust",
+  "unresolved": 0,
+  "value_mismatches": 0
+}

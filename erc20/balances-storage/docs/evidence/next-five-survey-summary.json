@@ -1,0 +1,340 @@
+{
+  "elapsed_seconds": 93.273602625,
+  "investigation_complete": true,
+  "observations_sha256": "f5143cb1fcad6b92c34214f4ef7d9ef4748619835506c632b398b65ec9dab04f",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "82644ec980b6b95b36ef3ea93e0d7497da31b8842c11ec047cf14808ba572662",
+  "rpc_checks_sha256": "8aeeb409cdc1bc2ae16e4b532620bc6e85f5f87f15df9c5026a778f287835748",
+  "sampled_blocks": 339,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "selected_contracts": [
+    "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+    "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+  ],
+  "status": "coverage_gap",
+  "summary": {
+    "rpc_errors": 0,
+    "rpc_mismatches": 0,
+    "rpc_value_checks": 1636,
+    "tested_tokens": 5,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 5
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 84,
+        "reference_rows": 198,
+        "shared_rows": 114,
+        "storage_only_rows": 0,
+        "storage_rows": 114,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 121,
+        "reference_rows": 269,
+        "shared_rows": 148,
+        "storage_only_rows": 0,
+        "storage_rows": 148,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288333,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 13,
+      "ranked_reference_rows": 1365,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 524,
+      "runtime_hashes": [
+        "0x24d639ec3ab0dfc14d482da65b0dfc3c325351d938d8cfffa4aa47e4ac8f0e65",
+        "0x24d639ec3ab0dfc14d482da65b0dfc3c325351d938d8cfffa4aa47e4ac8f0e65"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 75,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 121,
+        "reference_rows": 269,
+        "shared_rows": 148,
+        "storage_only_rows": 0,
+        "storage_rows": 148,
+        "value_mismatches": 0
+      },
+      "symbol": "ETH",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 114,
+          "mismatched": 0,
+          "nonzero_holders": 42,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 86,
+        "reference_rows": 215,
+        "shared_rows": 129,
+        "storage_only_rows": 0,
+        "storage_rows": 129,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 91,
+        "reference_rows": 212,
+        "shared_rows": 121,
+        "storage_only_rows": 0,
+        "storage_rows": 121,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288462,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 14,
+      "ranked_reference_rows": 1112,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 500,
+      "runtime_hashes": [
+        "0xffc1e02a7c786f856f8cb5f8767858426242c4a197b5aaafb9e11aa04dcf46e2",
+        "0xffc1e02a7c786f856f8cb5f8767858426242c4a197b5aaafb9e11aa04dcf46e2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 81,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 91,
+        "reference_rows": 212,
+        "shared_rows": 121,
+        "storage_only_rows": 0,
+        "storage_rows": 121,
+        "value_mismatches": 0
+      },
+      "symbol": "USD1",
+      "hypotheses_count": 7,
+      "candidate_hypothesis": [
+        {
+          "matched": 129,
+          "mismatched": 0,
+          "nonzero_holders": 38,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 51,
+        "reference_rows": 130,
+        "shared_rows": 79,
+        "storage_only_rows": 0,
+        "storage_rows": 79,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 57,
+        "reference_rows": 121,
+        "shared_rows": 64,
+        "storage_only_rows": 0,
+        "storage_rows": 64,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288473,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 32,
+      "ranked_reference_rows": 661,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 286,
+      "runtime_hashes": [
+        "0xd2417b9d5d4dab7c4b4aeeb9913a3e3e8d25c1a426849a8abdb5575d96e5dfcd",
+        "0xd2417b9d5d4dab7c4b4aeeb9913a3e3e8d25c1a426849a8abdb5575d96e5dfcd"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 51,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 57,
+        "reference_rows": 121,
+        "shared_rows": 64,
+        "storage_only_rows": 0,
+        "storage_rows": 64,
+        "value_mismatches": 0
+      },
+      "symbol": "BUSD",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 79,
+          "mismatched": 0,
+          "nonzero_holders": 29,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 69,
+        "reference_rows": 103,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 71,
+        "reference_rows": 105,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288535,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 39,
+      "ranked_reference_rows": 573,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 136,
+      "runtime_hashes": [
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2",
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 64,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 0,
+        "reference_rows": 0,
+        "shared_rows": 0,
+        "storage_only_rows": 0,
+        "storage_rows": 0,
+        "value_mismatches": 0
+      },
+      "symbol": "vUSDT",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 34,
+          "mismatched": 0,
+          "nonzero_holders": 2,
+          "slot": "0x000000000000000000000000000000000000000000000000000000000000000e"
+        }
+      ],
+      "strict_mapper_error_count": 64,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288010,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288011,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 37,
+        "reference_rows": 78,
+        "shared_rows": 41,
+        "storage_only_rows": 0,
+        "storage_rows": 41,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 45,
+        "reference_rows": 99,
+        "shared_rows": 54,
+        "storage_only_rows": 0,
+        "storage_rows": 54,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288311,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 44,
+      "ranked_reference_rows": 515,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 190,
+      "runtime_hashes": [
+        "0x21b2b23f1103cfdca4d9dd3ba0480364852b6cc3c71497a1f3f0bd7d4b56264c",
+        "0x21b2b23f1103cfdca4d9dd3ba0480364852b6cc3c71497a1f3f0bd7d4b56264c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 34,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 45,
+        "reference_rows": 99,
+        "shared_rows": 54,
+        "storage_only_rows": 0,
+        "storage_rows": 54,
+        "value_mismatches": 0
+      },
+      "symbol": "Cake",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 41,
+          "mismatched": 0,
+          "nonzero_holders": 23,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    }
+  ],
+  "tool_language": "Rust",
+  "source_report_sha256": "d96aae33212d553409c1039f95ae2f055ec614258fbc2ceffd698dbcf134b992",
+  "reduction": "Retains five selected token results and full report/check digests; omits captured block list and rejected hypotheses; summarizes repeated mapper errors"
+}
