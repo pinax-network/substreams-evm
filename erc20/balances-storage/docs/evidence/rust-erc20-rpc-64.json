@@ -1,0 +1,30 @@
+{
+  "after_checks": 1414,
+  "before_checks": 1414,
+  "blocks": 64,
+  "capture": {
+    "blocks_per_second_including_startup": 32.06235258688394,
+    "package_sha256": "78e7ce9aa2815d38a481869863d2c432fabcba7ed56319ff9a0ac303b3de4b71",
+    "seconds_including_startup": 1.996110542
+  },
+  "checked_blocks": 64,
+  "checks": 2828,
+  "checks_sha256": "b061870dac844f3d46a128e3883a6437c6fc45cd065de070b4f1b88636bf71b6",
+  "elapsed_seconds": 18.736241375,
+  "events_capture": {
+    "blocks_per_second_including_startup": 43.06945218348663,
+    "package_sha256": "78e7ce9aa2815d38a481869863d2c432fabcba7ed56319ff9a0ac303b3de4b71",
+    "seconds_including_startup": 1.485972
+  },
+  "first_hash": "0x00de5f67359c37d39e58dca906906eb8b72b3bc2fce3a087746a3acb95fcbab4",
+  "last_hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+  "mismatches": 0,
+  "native_checks": 0,
+  "rpc_block_binding": "EIP-1898 blockHash, requireCanonical=true",
+  "scope": "Every emitted WBNB balance before and after each block; not full holder discovery",
+  "start": 122260950,
+  "status": "rpc_parity",
+  "token_checks": 2828,
+  "tool_language": "Rust",
+  "zero_checks": 594
+}

@@ -1,0 +1,79 @@
+{
+  "source": "bsc.firehose.pinax.network:443 sf.firehose.v2.Fetch/Block",
+  "protobuf_type": "sf.ethereum.type.v2.TransactionTrace",
+  "proto_revision": "0692f383687ba5a24885a3f6c8ad14673ac1ad06",
+  "extraction": "Decoded the Extended block, selected the exact transaction hash, serialized its complete TransactionTrace without editing fields. RPC confirmed matching block hash and failed receipt status.",
+  "limits": "Two failed/reverted transactions with accepted authorization nonce changes and unchanged code. Not a full producer, self-authorization, code-clearing or lifecycle matrix.",
+  "records": [
+    {
+      "block_number": 121114122,
+      "block_hash": "0xe2d7f1ea300bad6e352a4fa45a78be6730447fea0c33530cc25373b70fbfd488",
+      "producer_version": 5,
+      "transaction_hash": "0x506ed58269d602c120995e4048f46c20f925344139279e1b352a0200b6f12ce9",
+      "transaction_status": 3,
+      "bytes": 11426,
+      "sha256": "a6ffd4fe7b0adfc9578850c77abf6a67cd4bb904a058bd3761700788ee81db5f",
+      "root_begin_ordinal": 3405,
+      "root_end_ordinal": 3409,
+      "authorities": [
+        {
+          "address": "0x417204ea716dfc4427bf9883521c820b036cdb7a",
+          "nonce": 4307,
+          "discarded": false
+        }
+      ],
+      "root_nonces": [
+        {
+          "address": "0xd52573f6d4f68d8e7f8fe2ed50a1023c5f6fe82a",
+          "old": 27163,
+          "new": 27164,
+          "ordinal": 3403
+        },
+        {
+          "address": "0x417204ea716dfc4427bf9883521c820b036cdb7a",
+          "old": 4307,
+          "new": 4308,
+          "ordinal": 3404
+        }
+      ],
+      "root_codes": [],
+      "rpc_receipt_status": "0x0",
+      "filename": "bsc-121114122-failed-setcode.pb"
+    },
+    {
+      "block_number": 121114153,
+      "block_hash": "0xb653a346174f2318a14ca1d4db99c02a04aaf11aaef962ac2bab8d64a1dfb9b5",
+      "producer_version": 5,
+      "transaction_hash": "0x9929e0a0e67ce8836982fb70756c94caf72c0dc38a5780177cfdbae1aa211169",
+      "transaction_status": 2,
+      "bytes": 2462,
+      "sha256": "56db596cf1cdcd3324e664c260d349fe014228054a749948d928af3c7d56f870",
+      "root_begin_ordinal": 4101,
+      "root_end_ordinal": 4108,
+      "authorities": [
+        {
+          "address": "0x417204ea716dfc4427bf9883521c820b036cdb7a",
+          "nonce": 4310,
+          "discarded": false
+        }
+      ],
+      "root_nonces": [
+        {
+          "address": "0xd52573f6d4f68d8e7f8fe2ed50a1023c5f6fe82a",
+          "old": 27166,
+          "new": 27167,
+          "ordinal": 4099
+        },
+        {
+          "address": "0x417204ea716dfc4427bf9883521c820b036cdb7a",
+          "old": 4310,
+          "new": 4311,
+          "ordinal": 4100
+        }
+      ],
+      "root_codes": [],
+      "rpc_receipt_status": "0x0",
+      "filename": "bsc-121114153-failed-setcode.pb"
+    }
+  ]
+}

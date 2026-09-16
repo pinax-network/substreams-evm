@@ -1,0 +1,215 @@
+{
+  "start": 122260950,
+  "stop_exclusive": 122261014,
+  "blocks": 64,
+  "native_updates": 6269,
+  "wbnb_updates": 1414,
+  "wbnb_storage_changes": 2632,
+  "preimages": 1630,
+  "unresolved_slots": 0,
+  "reference_bootstrap_seeds": 4064,
+  "snapshot_comparisons": 293264,
+  "differences": 64,
+  "candidate_only_keys": 0,
+  "distinct_storage_keys": 3840,
+  "final_hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+  "status": "mismatch",
+  "timing": {
+    "storage": {
+      "seconds_including_startup": 1.789741875603795,
+      "blocks_per_second_including_startup": 35.75934656968826,
+      "package_sha256": "2e2a2bccf975a2615ecd056e0ada02db31725083755c4a1de3774e84946ddf34"
+    },
+    "reference": {
+      "seconds_including_startup": 30.12928737513721,
+      "blocks_per_second_including_startup": 2.124179015691324,
+      "package_sha256": "253f2610cde742164ed1fa90c0aaa7d92b4917203381ac03fc3af998347fa4ec"
+    }
+  },
+  "independent_rpc_checks": [
+    {
+      "contract": "",
+      "address": "0x0000000000000000000000000000000000001000",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "955076681193079074012",
+      "rpc": "955076681193079074012",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x17968d0ac3fbd420b238e9845b80e9f27f626679",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "75681474819000000",
+      "rpc": "75681474819000000",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x2f5a052a16d8cae677bdb247c1909424a4398841",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "1086985480000012",
+      "rpc": "1086985480000012",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x46f113d1bdbddeb7b5a1b8cc92a32b619c02611a",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "2059870766734698",
+      "rpc": "2059870766734698",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x607d3368318881e6c1fcac9291deae21f4f197e8",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "7000000000000",
+      "rpc": "7000000000000",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x782f001b8b0844f6aa9a1b1a5e2a1c8fb29fcd92",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "68539610550874531",
+      "rpc": "68539610550874531",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0x95c93d3e0d387d0bf0bd3c1861092ca85b219826",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "1660799000906682260",
+      "rpc": "1660799000906682260",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0xb272da85e30c52df15ed9864ec699dadf1888888",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "185713686486737360",
+      "rpc": "185713686486737360",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0xca1ef33a9522ef11265858592f0209b45473c846",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "5128812389491616031",
+      "rpc": "5128812389491616031",
+      "match": true
+    },
+    {
+      "contract": "",
+      "address": "0xe5c6fa95fa13e656b0e18bc4fe440575e3908cb7",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "56639431700000000",
+      "rpc": "56639431700000000",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x000000000a01ea06f8b3a01319bbaa2cb2453a3c",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "0",
+      "rpc": "0",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x16d7c51e9c59be9f18b19b608d53b37fa9890b8a",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "22472366476614897817",
+      "rpc": "22472366476614897817",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x2f68417a18da681589f4ea64b9cc9839209acff7",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "0",
+      "rpc": "0",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x48aa6c9980f5d3e54a01c27a47b4ac48674d41a6",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "1",
+      "rpc": "1",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x5ecdac4d1eca08eb32ac20b16523938f242e37cd",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "52675817432167566377",
+      "rpc": "52675817432167566377",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x780c137b46bd04ed5ae16b18d2403644d670ef6f",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "19640696337472510",
+      "rpc": "19640696337472510",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0x8e83f6872eb648a9b582b1dc7109284bc0dfdaf0",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "500643989066545174",
+      "rpc": "500643989066545174",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0xa912db2099fb358639614e72350073ebf5996c9a",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "8691390600900846",
+      "rpc": "8691390600900846",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0xc277e1af1c9cd52ccfb09d5d61c82ebb82338277",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "116562171195941460626",
+      "rpc": "116562171195941460626",
+      "match": true
+    },
+    {
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "address": "0xe179dff7dc07729905c526f9d39c170a09dade09",
+      "block": 122261013,
+      "hash": "0xddba4a5d514ffd05ac85cb0869fbfa3d8af2b51aff88104cb6e0fcda0e34a7f2",
+      "storage": "42003937123553816814",
+      "rpc": "42003937123553816814",
+      "match": true
+    }
+  ],
+  "scope": "Native BNB and pinned WBNB changed keys; reference-seeded unknown accounts; not complete holder bootstrap",
+  "rpc_in_ingestion": false,
+  "chain_id": 56,
+  "finality_trust": "RPC provider finalized header"
+}

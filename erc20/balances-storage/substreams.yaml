@@ -1,0 +1,24 @@
+specVersion: v0.1.0
+package:
+  name: erc20_balances_storage
+  version: v0.1.0
+  url: https://github.com/pinax-network/substreams-evm
+  description: RPC-free ERC-20 Events from caller-qualified storage layouts.
+protobuf:
+  files: [balances.proto]
+  importPaths: [../../proto/v1]
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ../../target/wasm32-unknown-unknown/release/erc20_balances_storage.wasm
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - params: string
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:evm.balances.v1.Events
+params:
+  map_events: '[]'
+network: bsc
