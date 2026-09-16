@@ -118,6 +118,13 @@ restore, changed dependency runtimes/getters, malformed controls, and the three
 newly captured zero-holder cases. Package metadata confirms one `map_events`
 with module hash `7d13906c42c07fc8099e0ea91a00a6b73181c992`.
 
+A local rerun exposed an existing HTTP mock race: a single socket read could
+leave the request body unread, causing connection reset instead of delivering
+the intended 403. The mock now consumes the full headers/body before replying
+and checks 16 consecutive redacted errors. The failed attempt remains in
+`out/beacon-final-tool-tests.log`; the corrected full run is separately preserved
+in `out/beacon-workspace-final-tests.log`. The production RPC client is unchanged.
+
 ## Remaining cases and reproduction
 
 Rank 7, `0xec22e64c0a16821dc1b457045936c0219b47155e`, emitted 3,002 reference

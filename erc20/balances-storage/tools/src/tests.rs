@@ -648,26 +648,47 @@ fn cli_uses_erc20_reference_and_rejects_invalid_bounds() {
 #[test]
 fn http_errors_do_not_expose_endpoint_or_credentials() {
     use std::{
-        io::{Read, Write},
+        io::{BufRead, BufReader, Read, Write},
         net::TcpListener,
         thread,
     };
     let listener = TcpListener::bind("127.0.0.1:0").unwrap();
     let endpoint = format!("http://{}/private-endpoint", listener.local_addr().unwrap());
     let handle = thread::spawn(move || {
-        let (mut socket, _) = listener.accept().unwrap();
-        let mut buffer = [0; 4096];
-        let _ = socket.read(&mut buffer).unwrap();
-        socket
-            .write_all(b"HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\nConnection: close\r\n\r\n")
-            .unwrap();
+        for _ in 0..16 {
+            let (mut socket, _) = listener.accept().unwrap();
+            socket.set_read_timeout(Some(std::time::Duration::from_secs(5))).unwrap();
+            {
+                // TCP can split headers and body across reads. Closing with unread
+                // request bytes can reset the socket before the 403 reaches ureq.
+                let mut request = BufReader::new(&mut socket);
+                let mut content_length = None;
+                loop {
+                    let mut line = String::new();
+                    assert!(request.read_line(&mut line).unwrap() > 0);
+                    if line == "\r\n" {
+                        break;
+                    }
+                    if let Some((name, value)) = line.split_once(':') {
+                        if name.eq_ignore_ascii_case("content-length") {
+                            content_length = Some(value.trim().parse::<usize>().unwrap());
+                        }
+                    }
+                }
+                assert_eq!(content_length, Some(2));
+                let mut body = [0; 2];
+                request.read_exact(&mut body).unwrap();
+                assert_eq!(&body, b"{}");
+            }
+            socket
+                .write_all(b"HTTP/1.1 403 Forbidden\r\nContent-Length: 0\r\nConnection: close\r\n\r\n")
+                .unwrap();
+        }
     });
-    let error = HttpRpc::new(endpoint, Some("private-api-key".into()))
-        .request(json!({}))
-        .unwrap_err()
-        .to_string();
+    let rpc = HttpRpc::new(endpoint, Some("private-api-key".into()));
+    let errors = (0..16).map(|_| rpc.request(json!({})).unwrap_err().to_string()).collect::<Vec<_>>();
     handle.join().unwrap();
-    assert_eq!(error, "RPC HTTP 403");
+    assert!(errors.iter().all(|error| error == "RPC HTTP 403"));
 }
 
 #[test]
