@@ -1,0 +1,1174 @@
+[
+  {
+    "local_capture": "out/kii-proxy-inspect",
+    "report": {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "balance_of": "6818604923573827061200964",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "libraries": {},
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000000
+          }
+        },
+        "compilerVersion": "0.8.28+commit.7893614a",
+        "fullyQualifiedName": "TransparentUpgradeableProxy.sol:TransparentUpgradeableProxy",
+        "language": "Solidity",
+        "name": "TransparentUpgradeableProxy"
+      },
+      "contract": "0xeec6574eabba52bac3f0277f2cd5ac7e67197886",
+      "elapsed_seconds": 0.652225958,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x33931281671f898cf8a47a09448a435833c9cd31a21654081f4bb2bba6806f46",
+      "source_proxy_resolution": {
+        "implementations": [
+          {
+            "address": "0x0d1b644365f97Ddf06da5D46Ee0ED5721A73d145",
+            "name": "HypERC20"
+          }
+        ],
+        "isProxy": true,
+        "proxyType": "EIP1967Proxy"
+      },
+      "source_runtime_match": true,
+      "source_sha256": "71b389eb7d3b369f1a28cd9e547335d67b42491592f05ec7e8d19ce0d276c35c",
+      "source_storage_layout": {
+        "storage": [],
+        "types": null
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xeec6574eabba52bac3f0277f2cd5ac7e67197886?fields=all",
+      "status": "inspected",
+      "storage_key": "0xe654797ff3df81dbfe3977347705db9c0ad072d925af9f9e1535b2d3fc653afc",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 708,
+          "value": "0x00000000000000000000000013569f0daaabfe400f7d1eea7501d202ecfed9b0"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 708,
+          "value": "0x0000000000000000000000000d1b644365f97ddf06da5d46ee0ed5721a73d145"
+        },
+        {
+          "depth": 2,
+          "key": "0xe654797ff3df81dbfe3977347705db9c0ad072d925af9f9e1535b2d3fc653afc",
+          "pc": 1304,
+          "value": "0x00000000000000000000000000000000000000000005a3e550465132af04b844"
+        }
+      ],
+      "storage_word": "6818604923573827061200964",
+      "tool_language": "Rust",
+      "trace_sha256": "f8f6f1f59e7276ed2698e3a78c3289a9e96d59341a39f58cbebbeb7d02800e66"
+    }
+  },
+  {
+    "local_capture": "out/kii-implementation-inspect",
+    "report": {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "balance_of": "0",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "cancun",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 10000
+          },
+          "remappings": [
+            "@openzeppelin/contracts/=dependencies/@openzeppelin-contracts-4.9.3/contracts/",
+            "@openzeppelin/contracts-upgradeable/=dependencies/@openzeppelin-contracts-upgradeable-4.9.3/contracts/",
+            "@arbitrum/nitro-contracts/src/=dependencies/@arbitrum-nitro-contracts-1.2.1/src/",
+            "@chainlink/contracts-ccip/src/v0.8/=dependencies/@chainlink-contracts-ccip-1.5.0/contracts/src/v0.8/",
+            "@eth-optimism/contracts/=dependencies/@eth-optimism-contracts-0.6.0/packages/contracts/contracts/",
+            "@predicate/=dependencies/@predicate-contracts-2.2.2/src/",
+            "forge-std/=dependencies/forge-std-1.9.2/src/",
+            "ds-test/=dependencies/forge-std-1.9.2/lib/ds-test/src/",
+            "permit2/=dependencies/permit2-1.0.0/src/",
+            "@arbitrum-nitro-contracts-1.2.1/=dependencies/@arbitrum-nitro-contracts-1.2.1/src/",
+            "@chainlink-contracts-ccip-1.5.0/=dependencies/@chainlink-contracts-ccip-1.5.0/",
+            "@eth-optimism-contracts-0.6.0/=dependencies/@eth-optimism-contracts-0.6.0/",
+            "@openzeppelin-contracts-4.9.3/=dependencies/@openzeppelin-contracts-4.9.3/",
+            "@openzeppelin-contracts-upgradeable-4.9.3/=dependencies/@openzeppelin-contracts-upgradeable-4.9.3/",
+            "@predicate-contracts-2.2.2/=dependencies/@predicate-contracts-2.2.2/src/",
+            "forge-std-1.9.2/=dependencies/forge-std-1.9.2/src/",
+            "openzeppelin-upgradeable/=dependencies/@predicate-contracts-2.2.2/lib/openzeppelin-contracts-upgradeable/contracts/",
+            "openzeppelin/=dependencies/@openzeppelin-contracts-upgradeable-4.9.3/contracts/",
+            "permit2-1.0.0/=dependencies/permit2-1.0.0/src/",
+            "solmate/=dependencies/permit2-1.0.0/lib/solmate/",
+            "utils/=dependencies/@predicate-contracts-2.2.2/lib/utils/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.33+commit.64118f21",
+        "fullyQualifiedName": "contracts/token/HypERC20.sol:HypERC20",
+        "language": "Solidity",
+        "name": "HypERC20"
+      },
+      "contract": "0x0d1b644365f97ddf06da5d46ee0ed5721a73d145",
+      "elapsed_seconds": 0.718891833,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x6ea14eaec63be65583186713c8d800feecca185c7669ce2104d6a542d635cda0",
+      "source_proxy_resolution": {
+        "implementations": [],
+        "isProxy": false,
+        "proxyType": null
+      },
+      "source_runtime_match": true,
+      "source_sha256": "1cb1739cc4f1f0e02073ef0e3d92d39ce9db7afe1bff49f3a6620e4a6344ba4b",
+      "source_storage_layout": {
+        "storage": [
+          {
+            "astId": 7431,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 7434,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 8679,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 7612,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 7618,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 7620,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7622,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_name",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7624,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 8204,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "56",
+            "type": "t_array(t_uint256)45_storage"
+          },
+          {
+            "astId": 7303,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_address"
+          },
+          {
+            "astId": 7423,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 204,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "hook",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_contract(IPostDispatchHook)1530"
+          },
+          {
+            "astId": 207,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_interchainSecurityModule",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_contract(IInterchainSecurityModule)1248"
+          },
+          {
+            "astId": 211,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "__GAP",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_array(t_uint256)48_storage"
+          },
+          {
+            "astId": 423,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "_routers",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_struct(UintToBytes32Map)1546_storage"
+          },
+          {
+            "astId": 427,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "__GAP",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_array(t_uint256)48_storage"
+          },
+          {
+            "astId": 30,
+            "contract": "contracts/token/HypERC20.sol:HypERC20",
+            "label": "destinationGas",
+            "offset": 0,
+            "slot": "252",
+            "type": "t_mapping(t_uint32,t_uint256)"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "base": "t_bytes32",
+            "encoding": "dynamic_array",
+            "label": "bytes32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)45_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[45]",
+            "numberOfBytes": "1440"
+          },
+          "t_array(t_uint256)48_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[48]",
+            "numberOfBytes": "1536"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "encoding": "inplace",
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(IInterchainSecurityModule)1248": {
+            "encoding": "inplace",
+            "label": "contract IInterchainSecurityModule",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IPostDispatchHook)1530": {
+            "encoding": "inplace",
+            "label": "contract IPostDispatchHook",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_bytes32,t_bytes32)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => bytes32)",
+            "numberOfBytes": "32",
+            "value": "t_bytes32"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_uint32,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_uint32",
+            "label": "mapping(uint32 => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Bytes32Set)6884_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableSet.Bytes32Set",
+            "members": [
+              {
+                "astId": 6883,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_inner",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(Set)6690_storage"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(Bytes32ToBytes32Map)5437_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableMap.Bytes32ToBytes32Map",
+            "members": [
+              {
+                "astId": 5432,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_keys",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(Bytes32Set)6884_storage"
+              },
+              {
+                "astId": 5436,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_values",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_bytes32,t_bytes32)"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(Set)6690_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableSet.Set",
+            "members": [
+              {
+                "astId": 6685,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_values",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_array(t_bytes32)dyn_storage"
+              },
+              {
+                "astId": 6689,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_indexes",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_bytes32,t_uint256)"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(UintToBytes32Map)1546_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableMapExtended.UintToBytes32Map",
+            "members": [
+              {
+                "astId": 1545,
+                "contract": "contracts/token/HypERC20.sol:HypERC20",
+                "label": "_inner",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(Bytes32ToBytes32Map)5437_storage"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "encoding": "inplace",
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x0d1b644365f97ddf06da5d46ee0ed5721a73d145?fields=all",
+      "status": "inspected",
+      "storage_key": "0xe654797ff3df81dbfe3977347705db9c0ad072d925af9f9e1535b2d3fc653afc",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xe654797ff3df81dbfe3977347705db9c0ad072d925af9f9e1535b2d3fc653afc",
+          "pc": 1304,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "d30dfd96199ce1a2f271accc3c5aab7c35339d6532d6c9ab478df0ea9ef7a5c3"
+    }
+  },
+  {
+    "local_capture": "out/wcol-qualified-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "0",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "cancun",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "@chainlink/=node_modules/@chainlink/",
+            "@ensdomains/=node_modules/@ensdomains/",
+            "@eth-optimism/=node_modules/@eth-optimism/",
+            "@openzeppelin/=node_modules/@openzeppelin/",
+            "ds-test/=lib/ds-test/src/",
+            "eth-gas-reporter/=node_modules/eth-gas-reporter/",
+            "forge-std/=lib/forge-std/src/",
+            "hardhat/=node_modules/hardhat/",
+            "solmate/=node_modules/solmate/"
+          ],
+          "viaIR": true
+        },
+        "compilerVersion": "0.8.24+commit.e11b9ed9",
+        "fullyQualifiedName": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+        "language": "Solidity",
+        "name": "YieldBearingWrappedCollateral"
+      },
+      "contract": "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9",
+      "elapsed_seconds": 0.652927333,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x127e23a084fb3dda73acc6564b85ddf58b67a2056b5fdca450eccf3380c0b77b",
+      "source_proxy_resolution": {
+        "implementations": [],
+        "isProxy": false,
+        "proxyType": null
+      },
+      "source_runtime_match": true,
+      "source_sha256": "e3700bd8083605a4c0028008ef30874cb3a3b9070b8db01220e5d24ed0beaed4",
+      "source_storage_layout": {
+        "storage": [
+          {
+            "astId": 2043,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "name",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2045,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "symbol",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2049,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2053,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "balanceOf",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 2059,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "allowance",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 2067,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "nonces",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 19,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "underlyingIsEnabled",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 24,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "underlyingToVToken",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_address)"
+          },
+          {
+            "astId": 29,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "depositedAmount",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 1014,
+            "contract": "contracts/YieldBearing/YieldBearingWrappedCollateral.sol:YieldBearingWrappedCollateral",
+            "label": "yieldManager",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_address"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_address)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => address)",
+            "numberOfBytes": "32",
+            "value": "t_address"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xcfb9bef5f7b748ac72311f057f3a888bc73334d9?fields=all",
+      "status": "inspected",
+      "storage_key": "0x1fb4de8f865d751e0e8d9986066405ce08df416aff5fdd6299ad70c234250abc",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x1fb4de8f865d751e0e8d9986066405ce08df416aff5fdd6299ad70c234250abc",
+          "pc": 3346,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "ba1c84718cac45f0e13eeca7835659dace059a78fe4ed2cd6794e8e89e3d371e"
+    }
+  },
+  {
+    "local_capture": "out/bnc4-beacon-inspect",
+    "report": {
+      "block": 122288005,
+      "contract": "0x453f0bfbb8c46bfe5ae029099d587bc46883ed27",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "implementation": "0x2781ba79f733ceda7467d2dd21688823d89ad53d",
+      "read_only_state_overrides": [
+        {
+          "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "storage_word": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "returned": "0x0000000000000000000000001111111111111111111111111111111111111111",
+          "storage_word": "0x0000000000000000000000001111111111111111111111111111111111111111"
+        },
+        {
+          "returned": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff",
+          "storage_word": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "runtime_keccak256": "0x4b6d89c616a0fd426b6190814a10517820a7d183dfc995b8d3caa9322077dc23",
+      "status": "inspected",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 434,
+          "value": "0x0000000000000000000000002781ba79f733ceda7467d2dd21688823d89ad53d"
+        }
+      ],
+      "trace_sha256": "f789ce65ef42ab91c47ba305fb35e78c95c7e26ac2d06b1cec08736e80189f98"
+    }
+  },
+  {
+    "local_capture": "out/bnc4-implementation-inspect",
+    "report": {
+      "address": "0x0ad89c1bc4831f79f728ed4a674cf1bc19975e39",
+      "balance_of": "0",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288005,
+      "contract": "0x2781ba79f733ceda7467d2dd21688823d89ad53d",
+      "elapsed_seconds": 0.832997125,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x86920ae72d3b7f64a882e524ea65496d0fa6887268dab2b80d8c88c299fae885",
+      "status": "inspected",
+      "storage_key": "0x5726135268cb84e91b294b3f33e41b8e7e3d77cc130575eb2bc256ad17805241",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x5726135268cb84e91b294b3f33e41b8e7e3d77cc130575eb2bc256ad17805241",
+          "pc": 3760,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "5ea9adf56ee4c8205b79c22bd38394c56b6558a3d89e09cb65235dd2af54066b"
+    }
+  },
+  {
+    "local_capture": "out/next-bnc4-inspect",
+    "report": {
+      "address": "0x0ad89c1bc4831f79f728ed4a674cf1bc19975e39",
+      "balance_of": "42591553973616080204",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288005,
+      "contract": "0x7c8d5502b544ddaf8852fc46d1174e34876d545c",
+      "elapsed_seconds": 0.888281125,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x5e8ff1005307d5f9da9595343cb925437ba8c146898e89e217033e3eecdcdbf9",
+      "status": "inspected",
+      "storage_key": "0x5726135268cb84e91b294b3f33e41b8e7e3d77cc130575eb2bc256ad17805241",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "pc": 233,
+          "value": "0x000000000000000000000000453f0bfbb8c46bfe5ae029099d587bc46883ed27"
+        },
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 434,
+          "value": "0x0000000000000000000000002781ba79f733ceda7467d2dd21688823d89ad53d"
+        },
+        {
+          "depth": 2,
+          "key": "0x5726135268cb84e91b294b3f33e41b8e7e3d77cc130575eb2bc256ad17805241",
+          "pc": 3760,
+          "value": "0x0000000000000000000000000000000000000000000000024f1398ade543754c"
+        }
+      ],
+      "storage_word": "42591553973616080204",
+      "tool_language": "Rust",
+      "trace_sha256": "e20d6cc9e4f6a3db82d21401b9f9cf16110e98813823114149f79dad6773a7e7"
+    }
+  },
+  {
+    "local_capture": "out/rank9-zero-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "29514590000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288005,
+      "contract": "0xe485050ef170385eb3e1efe4de4e47aaf7017c79",
+      "elapsed_seconds": 0.730409375,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "29514590000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xf9214c8ab1e35e00300c1027453408bb62585bc5da52694f23edfb0586ddabda",
+      "status": "inspected",
+      "storage_key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 301,
+          "value": "0x0000000000000000000000006ea87b475ab0870ec305a2381d0469c2b2b1ce3b"
+        },
+        {
+          "depth": 2,
+          "key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+          "pc": 3603,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "75f323fabd04830e8f31d127af54f09eab61ec8b55bb39531eb018e27d735663"
+    }
+  },
+  {
+    "local_capture": "out/rank9-implementation-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "29514590000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288005,
+      "contract": "0x6ea87b475ab0870ec305a2381d0469c2b2b1ce3b",
+      "elapsed_seconds": 0.8470135,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "29514590000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xac35cd4cc308d95c6c61e2909885ab279a81ac44962e548b4c4bd8e626fe1fe2",
+      "status": "inspected",
+      "storage_key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+          "pc": 3603,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "b58e8c257b5a02f5055092ff73ea2cfdaff374ab88a23f0efdfbdaba8a48f50c"
+    }
+  },
+  {
+    "local_capture": "out/axis-dependency-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "6000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288005,
+      "contract": "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701",
+      "elapsed_seconds": 0.922494,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_dependency_overrides": [
+        {
+          "balance_of": "0",
+          "dependency_word": "0",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "17",
+          "dependency_word": "17",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "dependency_word": "17",
+          "mapping_word": "1"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "dependency_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "mapping_word": "0"
+        }
+      ],
+      "read_only_state_overrides": [
+        {
+          "balance_of": "6000000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x6062780cf2a0f7631e87e0faedbf645424391c3c43ff162b334525748e6efd10",
+      "status": "inspected",
+      "storage_key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+          "pc": 2692,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "pc": 2705,
+          "value": "0x00000000000000000000000000000000000000000000000053444835ec580000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "43f9227c2229ff5a82e9f3d0248f599e15446222f9fe8cc76996fdafb471482a",
+      "zero_dependency_slot": "0x0000000000000000000000000000000000000000000000000000000000000003"
+    }
+  },
+  {
+    "local_capture": "out/rank49-zero-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "17865090000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288005,
+      "contract": "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6",
+      "elapsed_seconds": 0.671835042,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "17865090000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xab0d52d20b21f0d4befbc9b0d087d1acf14b2cfed6ea968ee211c9152671b94c",
+      "status": "inspected",
+      "storage_key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 981,
+          "value": "0x0000000000000000000000009327a8c767f8e29e0408aa7961fdce884d273f54"
+        },
+        {
+          "depth": 2,
+          "key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+          "pc": 6508,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "4a27a13cdc676004e304b9af974c3cd80631d9898d2f796bb3a0d45541c15806"
+    }
+  },
+  {
+    "local_capture": "out/rank49-implementation-inspect",
+    "report": {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "balance_of": "17865090000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288005,
+      "contract": "0x9327a8c767f8e29e0408aa7961fdce884d273f54",
+      "elapsed_seconds": 0.333095791,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "17865090000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x2e310fc2cb06d341bd9239a56576ecee09288120dda241dd8bdfe2c6345dab6e",
+      "status": "inspected",
+      "storage_key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xe2efa60b7ae54e2f7a8a78a0e608f8a74197d9a2dbd78a71adf7466917cfb4b6",
+          "pc": 6508,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "cb25c8af29adc906a0a54bdb5c7de5375bb8ebd747ec043d79ed364d5857f55b"
+    }
+  },
+  {
+    "local_capture": "out/rank7-computed-inspect",
+    "report": {
+      "address": "0x0017b8451b980b7c4fd91826bde27af249c7fc1a",
+      "balance_of": "9699000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288080,
+      "contract": "0xec22e64c0a16821dc1b457045936c0219b47155e",
+      "elapsed_seconds": 0.906061042,
+      "hash": "0x27c2647da96d0df9987ad544657b3d55798865f5f0ad2d8d937c951087e6710b",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "9699000000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "9699000000000000000000",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "9699000000000000000000",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "9699000000000000000000",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x503d264fcd04b84cc655974ad83814d8850ead0e48e4ec9fdb5c28d896392400",
+      "status": "inspected",
+      "storage_key": "0x2050518408231fa93bce489661d0d3c220a488f6dffaa18b22c57d78dbe07ef4",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "pc": 3006,
+          "value": "0x000000000000000000000000c54cb14840cabf9a29b43d528af7dea7771f7494"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 3092,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "e2f1f327df7cef41cdccec60ccbc2933b9fd6dc645f1dcbd347427d8672558ef"
+    }
+  }
+]

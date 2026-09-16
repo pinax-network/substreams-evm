@@ -1,0 +1,85 @@
+{
+  "elapsed_seconds": 40.379579292,
+  "investigation_complete": true,
+  "observations_sha256": "17341e0e8de1fde98443bcf9b98256beb9aef5cf91a82dc03375db04fde4d378",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "9943820b9609b7b84dd81bd2cff37122aaf82aa55ea2cefa456a1470f550eff8",
+  "rpc_checks_sha256": "8cd22eae903030bc4179a7518bc5febbcbcbb09edde7d80beaf9fda2b992e0e7",
+  "sampled_blocks": 128,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "selected_contracts": [
+    "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9"
+  ],
+  "status": "coverage_gap",
+  "summary": {
+    "rpc_errors": 0,
+    "rpc_mismatches": 0,
+    "rpc_value_checks": 88,
+    "tested_tokens": 1,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 1
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "contract": "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 23,
+        "reference_rows": 45,
+        "shared_rows": 22,
+        "storage_only_rows": 0,
+        "storage_rows": 22,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 128,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 22,
+        "reference_rows": 44,
+        "shared_rows": 22,
+        "storage_only_rows": 0,
+        "storage_rows": 22,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288222,
+      "hypotheses": [
+        {
+          "matched": 22,
+          "mismatched": 0,
+          "nonzero_holders": 1,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 48,
+      "ranked_reference_rows": 482,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 88,
+      "runtime_hashes": [
+        "0x127e23a084fb3dda73acc6564b85ddf58b67a2056b5fdca450eccf3380c0b77b",
+        "0x127e23a084fb3dda73acc6564b85ddf58b67a2056b5fdca450eccf3380c0b77b"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 22,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 22,
+        "reference_rows": 44,
+        "shared_rows": 22,
+        "storage_only_rows": 0,
+        "storage_rows": 22,
+        "value_mismatches": 0
+      },
+      "symbol": "WCOL"
+    }
+  ],
+  "tool_language": "Rust"
+}

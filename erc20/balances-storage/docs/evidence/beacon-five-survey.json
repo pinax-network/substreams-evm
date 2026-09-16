@@ -1,0 +1,365 @@
+{
+  "elapsed_seconds": 147.852460125,
+  "investigation_complete": true,
+  "observations_sha256": "2a11c4f8d49b443a79af62a731c1f9453ada533fc43e48fba5fe4e6b9cf6dc55",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "cdfce33acaa765e788aab5fad7ed9d8e0e1f7a0afc7e25818a51a79a0bbceb04",
+  "rpc_checks_sha256": "b931fa20a932294bba1ec334e7be99a8ef99e02543d04041ebf2145acf130070",
+  "sampled_blocks": 430,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "selected_contracts": [
+    "0xe485050ef170385eb3e1efe4de4e47aaf7017c79",
+    "0x7c8d5502b544ddaf8852fc46d1174e34876d545c",
+    "0xeec6574eabba52bac3f0277f2cd5ac7e67197886",
+    "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701",
+    "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6"
+  ],
+  "status": "coverage_gap",
+  "summary": {
+    "rpc_errors": 0,
+    "rpc_mismatches": 0,
+    "rpc_value_checks": 3362,
+    "tested_tokens": 5,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 5
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0xe485050ef170385eb3e1efe4de4e47aaf7017c79",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1030,
+        "reference_rows": 1038,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 430,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 714,
+        "reference_rows": 724,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288465,
+      "hypotheses": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "matched": 0,
+          "mismatched": 2,
+          "nonzero_holders": 0,
+          "slot": "0x688fb138378c90ee5f9681e7da7daffed4240f341e3f1625bc2f727d50e3632e"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 9,
+      "ranked_reference_rows": 2698,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 36,
+      "runtime_hashes": [
+        "0xf9214c8ab1e35e00300c1027453408bb62585bc5da52694f23edfb0586ddabda",
+        "0xf9214c8ab1e35e00300c1027453408bb62585bc5da52694f23edfb0586ddabda"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 12,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 714,
+        "reference_rows": 724,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "symbol": "万福金安"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x7c8d5502b544ddaf8852fc46d1174e34876d545c",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 36,
+        "reference_rows": 684,
+        "shared_rows": 648,
+        "storage_only_rows": 0,
+        "storage_rows": 648,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 430,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 47,
+        "reference_rows": 496,
+        "shared_rows": 449,
+        "storage_only_rows": 0,
+        "storage_rows": 449,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288268,
+      "hypotheses": [
+        {
+          "matched": 648,
+          "mismatched": 0,
+          "nonzero_holders": 620,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        },
+        {
+          "matched": 1,
+          "mismatched": 0,
+          "nonzero_holders": 0,
+          "slot": "0x2234de597d9b7aa23fdf5436548bdb448fa76c85b10414a08376299e129bbfd2"
+        },
+        {
+          "matched": 1,
+          "mismatched": 0,
+          "nonzero_holders": 0,
+          "slot": "0x36be013e3010594e119cf3974b1daafc81e8853f8b94d58352011830e4c7b01c"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0x83e7fcad0c2d2ec798c90a0238e2d312a4b0ea630f2fb6e8bdffc9f9a12ac643"
+        },
+        {
+          "matched": 1,
+          "mismatched": 0,
+          "nonzero_holders": 0,
+          "slot": "0x972ef9070ccaf39de032527a8742fe1c3bc152b13401c37eee8cf4662ff44080"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0xb7494239f4ccc15211e5120404a6a0036699261ac19c8a8deed2c381efccfbcd"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0xce587caa2d2a292e0aa362e054523becb19df25a2dd2cba502c73ae233c0b9f1"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 10,
+      "ranked_reference_rows": 2401,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 2194,
+      "runtime_hashes": [
+        "0x5e8ff1005307d5f9da9595343cb925437ba8c146898e89e217033e3eecdcdbf9",
+        "0x5e8ff1005307d5f9da9595343cb925437ba8c146898e89e217033e3eecdcdbf9"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 37,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 47,
+        "reference_rows": 496,
+        "shared_rows": 449,
+        "storage_only_rows": 0,
+        "storage_rows": 449,
+        "value_mismatches": 0
+      },
+      "symbol": "BNC4"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0xeec6574eabba52bac3f0277f2cd5ac7e67197886",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 74,
+        "reference_rows": 446,
+        "shared_rows": 372,
+        "storage_only_rows": 0,
+        "storage_rows": 372,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 430,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 75,
+        "reference_rows": 230,
+        "shared_rows": 155,
+        "storage_only_rows": 0,
+        "storage_rows": 155,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288267,
+      "hypotheses": [
+        {
+          "matched": 372,
+          "mismatched": 0,
+          "nonzero_holders": 80,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        },
+        {
+          "matched": 0,
+          "mismatched": 3,
+          "nonzero_holders": 0,
+          "slot": "0x67d6bd5950d7e0b5a8b8236e139fbcd3fb9c9ba2ab716d7a3164fb5373b8dbee"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 12,
+      "ranked_reference_rows": 1870,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 1054,
+      "runtime_hashes": [
+        "0x33931281671f898cf8a47a09448a435833c9cd31a21654081f4bb2bba6806f46",
+        "0x33931281671f898cf8a47a09448a435833c9cd31a21654081f4bb2bba6806f46"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 71,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 75,
+        "reference_rows": 230,
+        "shared_rows": 155,
+        "storage_only_rows": 0,
+        "storage_rows": 155,
+        "value_mismatches": 0
+      },
+      "symbol": "KII"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3,
+        "reference_rows": 9,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 430,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1006,
+        "reference_rows": 1012,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288560,
+      "hypotheses": [
+        {
+          "matched": 6,
+          "mismatched": 0,
+          "nonzero_holders": 4,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 17,
+      "ranked_reference_rows": 1021,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 24,
+      "runtime_hashes": [
+        "0x6062780cf2a0f7631e87e0faedbf645424391c3c43ff162b334525748e6efd10",
+        "0x6062780cf2a0f7631e87e0faedbf645424391c3c43ff162b334525748e6efd10"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1006,
+        "reference_rows": 1012,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "symbol": "AXIS"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 153,
+        "reference_rows": 166,
+        "shared_rows": 13,
+        "storage_only_rows": 0,
+        "storage_rows": 13,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 430,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 151,
+        "reference_rows": 165,
+        "shared_rows": 14,
+        "storage_only_rows": 0,
+        "storage_rows": 14,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288352,
+      "hypotheses": [
+        {
+          "matched": 13,
+          "mismatched": 0,
+          "nonzero_holders": 4,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 49,
+      "ranked_reference_rows": 475,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 54,
+      "runtime_hashes": [
+        "0xab0d52d20b21f0d4befbc9b0d087d1acf14b2cfed6ea968ee211c9152671b94c",
+        "0xab0d52d20b21f0d4befbc9b0d087d1acf14b2cfed6ea968ee211c9152671b94c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 15,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 151,
+        "reference_rows": 165,
+        "shared_rows": 14,
+        "storage_only_rows": 0,
+        "storage_rows": 14,
+        "value_mismatches": 0
+      },
+      "symbol": "中国制造"
+    }
+  ],
+  "tool_language": "Rust"
+}

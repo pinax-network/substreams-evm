@@ -9,6 +9,49 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn zero_path_probe_uses_postdeployment_nonzero_holders() {
+    use crate::inspect_ranked::observe_probe;
+    let mut probes = std::collections::BTreeMap::new();
+    let contracts = std::collections::BTreeSet::from([TOKEN.to_string()]);
+    for (boundary, holder, storage, rpc) in [
+        ("before", address(), "7", Some("7")),
+        ("after", format!("0x{}", "00".repeat(20)), "7", Some("7")),
+    ] {
+        observe_probe(
+            &mut probes,
+            &contracts,
+            json!({"contract":TOKEN,"address":holder,"boundary":boundary,"storage":storage,"rpc":rpc}),
+        )
+        .unwrap();
+    }
+    assert!(probes.is_empty());
+    for storage in ["0", "7", "0"] {
+        observe_probe(
+            &mut probes,
+            &contracts,
+            json!({"contract":TOKEN,"address":address(),"boundary":"after","storage":storage,"rpc":null}),
+        )
+        .unwrap();
+    }
+    assert_eq!(probes[TOKEN]["storage"], "7");
+}
+
+#[test]
+fn zero_path_controls_distinguish_fallback_and_other_computed_balances() {
+    let mut report = json!({"status":"inspected","read_only_state_overrides":[{"overridden_mapping_word":"0","balance_of":"0"},{"overridden_mapping_word":"1","balance_of":"1"},{"overridden_mapping_word":"123","balance_of":"123"},{"overridden_mapping_word":"115792089237316195423570985008687907853269984665640564039457584007913129639935","balance_of":"115792089237316195423570985008687907853269984665640564039457584007913129639935"}]});
+    assert_eq!(crate::inspect_ranked::control_result(&report), "direct_word_controls_match_not_qualified");
+    report["read_only_state_overrides"][0]["balance_of"] = json!("8");
+    assert_eq!(crate::inspect_ranked::control_result(&report), "zero_word_fallback");
+    report["read_only_state_overrides"][1]["balance_of"] = json!("2");
+    assert_eq!(crate::inspect_ranked::control_result(&report), "nonzero_word_transform");
+    report["status"] = json!("incomplete");
+    assert_eq!(crate::inspect_ranked::control_result(&report), "incomplete");
+    report["status"] = json!("inspected");
+    report["read_only_state_overrides"][0] = json!({});
+    assert_eq!(crate::inspect_ranked::control_result(&report), "incomplete");
+}
+
+#[test]
 fn published_deployment_must_match_address_runtime_and_source_hashes() {
     let content = "contract Example {}";
     let metadata =
@@ -46,6 +89,49 @@ fn runtime_qualification_rejects_a_changed_zero_balance_dependency() {
             .to_string()
             .contains("dependency value")
     );
+}
+#[test]
+fn beacon_runtime_qualification_checks_both_pointers_code_and_getter() {
+    struct BeaconRpc {
+        bad: &'static str,
+    }
+    impl Rpc for BeaconRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            let token = TOKEN;
+            let beacon = format!("0x{}", "bb".repeat(20));
+            let implementation = format!("0x{}", "cc".repeat(20));
+            let word = |a: &str| format!("0x{}{}", "00".repeat(12), &a[2..]);
+            let address = payload["params"][0].as_str().unwrap_or("");
+            let result = match payload["method"].as_str().unwrap() {
+                "eth_getCode" => {
+                    if address == token {
+                        json!("0xaa")
+                    } else if address == beacon {
+                        json!(if self.bad == "code" { "0xdd" } else { "0xbb" })
+                    } else {
+                        json!("0xcc")
+                    }
+                }
+                "eth_getStorageAt" => {
+                    if self.bad == "pointer" && address == token || self.bad == "implementation" && address == beacon {
+                        json!(hash(0))
+                    } else {
+                        json!(word(if address == token { &beacon } else { &implementation }))
+                    }
+                }
+                "eth_call" => json!(if self.bad == "getter" { hash(0) } else { word(&implementation) }),
+                _ => return FakeRpc::default().request(payload),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let hash_code = |b| format!("0x{}", hex::encode(erc20_balances_storage::hash(&[b])));
+    let params = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":hash_code(0xaa),"beacon_proxy":{"beacon_slot":hash(99),"beacon":format!("0x{}","bb".repeat(20)),"beacon_code_hash":hash_code(0xbb),"implementation_slot":hash(1),"implementation":format!("0x{}","cc".repeat(20)),"implementation_code_hash":hash_code(0xcc)}}]);
+    let layouts = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    qualify_runtime(&BeaconRpc { bad: "" }, 1, 2, &layouts).unwrap();
+    for bad in ["pointer", "implementation", "code", "getter"] {
+        assert!(qualify_runtime(&BeaconRpc { bad }, 1, 2, &layouts).is_err(), "{bad}");
+    }
 }
 
 #[test]

@@ -23,6 +23,7 @@ with a reviewed zero-word fallback or proxy with its implementation pinned:
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
+| `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
 
 The caller must establish that the configured projection equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
@@ -35,7 +36,14 @@ at both boundaries. The map rejects **every persisted implementation-slot write*
 (including an upgrade and upgrade back) and all implementation code changes.
 The implementation slot cannot appear in an ignore list. A proxy runtime hash
 alone is insufficient; the implementation's balance semantics must also be reviewed.
-Beacon/diamond proxies, rebasing balances and other computed balances remain unsupported.
+For a reviewed beacon proxy, `beacon_slot` belongs to the token and
+`implementation_slot` belongs to the separate beacon contract. The tools bind
+both pointers, both dependency runtimes, and the beacon's `implementation()`
+return value. The mapper rejects changes to either pointer or dependency code,
+including a beacon upgrade with no token writes and an upgrade followed by a
+restore. The caller must review that the beacon getter reads this scalar directly;
+arbitrary computed or nested beacon resolvers are unsupported. Diamond proxies,
+rebasing balances and other computed balances also remain unsupported.
 
 With `zero_balance`, nonzero mapping words pass through unchanged. Zero words
 emit the explicitly pinned fallback. Raw words still drive continuity checks;
@@ -190,6 +198,24 @@ The [fallback and vUSDT follow-up](docs/fallback-balances.md) expands the explic
 test configuration to 14 tokens in `tests/fixtures/bsc-fallback-layouts.json`.
 It fixes all seven recorded fallback-value mismatches and qualifies vUSDT's
 custom proxy implementation using Venus's published deployment artifact.
+
+The [beacon and zero-path follow-up](docs/beacon-and-zero-paths.md) adds KII,
+BNC4, WCOL and three further fallback profiles to the explicit
+`tests/fixtures/bsc-beacon-layouts.json` test input. `inspect-ranked` probes zero,
+1, 123 and uint256 max on candidate mappings. This catches fallback paths absent
+from ordinary transfer samples; passing these controls never automatically
+qualifies a layout.
+
+```sh
+cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
+  --survey erc20/balances-storage/out/ranked-parity/report.json \
+  --output erc20/balances-storage/out/zero-path-review
+```
+
+The original survey and checks must remain together, with their recorded digest.
+The probe selects post-block holders and can revisit earlier unresolved RPC
+responses using the current decoder. Contracts without a mapping candidate stay
+explicitly untested. Use repeated `--contract` filters to narrow a sweep.
 
 `recheck-rpc --checks <rpc-checks.jsonl> --output <new-directory>` diagnoses prior
 unresolved checks without overwriting them. `test-ranked` accepts repeated

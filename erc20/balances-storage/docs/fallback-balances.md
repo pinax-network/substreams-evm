@@ -1,5 +1,9 @@
 # Fallback balances, vUSDT and holder coverage
 
+This page preserves the 14-token qualification. The subsequent
+[beacon and zero-path follow-up](beacon-and-zero-paths.md) expands the fixture to
+20 tokens and finds three additional fallback paths missed by transfer sampling.
+
 The explicit [14-token test fixture](../tests/fixtures/bsc-fallback-layouts.json)
 adds vUSDT and five zero-word fallback profiles to the previous eight layouts.
 The package still has one RPC-free `map_events`, an empty default configuration,

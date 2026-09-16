@@ -283,6 +283,22 @@ fn constant_fallback_preserves_uint256_max_without_rewriting_nonzero_words() {
     assert_eq!(project(&b, &l).unwrap().balances[0].amount, "1");
 }
 #[test]
+fn newly_discovered_zero_holders_match_captured_rpc_with_twenty_token_fixture() {
+    let layouts = layout::parse(include_str!("../tests/fixtures/bsc-beacon-layouts.json")).unwrap();
+    assert_eq!(layouts.len(), 20);
+    let cases: Vec<serde_json::Value> = serde_json::from_str(include_str!("../tests/fixtures/bsc-extra-zero-cases.json")).unwrap();
+    assert_eq!(cases.len(), 3);
+    for row in cases {
+        let contract = hex_bytes(row["contract"].as_str().unwrap()).unwrap();
+        let l = layouts.iter().find(|l| l.contract == contract).unwrap();
+        assert_eq!(row["storage"], "0");
+        assert_ne!(row["storage"], row["rpc"]);
+        let mut b = block();
+        b.transaction_traces = vec![tx(token_call(l, &hex_bytes(row["address"].as_str().unwrap()).unwrap(), 1, 0))];
+        assert_eq!(project(&b, std::slice::from_ref(l)).unwrap().balances[0].amount, row["rpc"].as_str().unwrap());
+    }
+}
+#[test]
 fn fallback_dependency_changes_fail_even_if_restored_or_holder_silent() {
     let mut l = layouts();
     l[0].zero_balance = Some(layout::VerifiedZeroBalance {
@@ -385,6 +401,82 @@ fn proxy_layouts() -> Vec<VerifiedLayout> {
         code_hash: [0xdd; 32],
     });
     l
+}
+fn beacon_layouts() -> Vec<VerifiedLayout> {
+    let mut l = layouts();
+    l[0].beacon_proxy = Some(layout::VerifiedBeaconProxy {
+        beacon_slot: slot(99),
+        beacon: vec![0xcc; 20],
+        beacon_code_hash: [0xdd; 32],
+        implementation_slot: slot(1),
+        implementation: vec![0xee; 20],
+        implementation_code_hash: [0xff; 32],
+    });
+    l
+}
+#[test]
+fn beacon_proxy_projects_holder_writes_and_guards_external_upgrade_back() {
+    let l = beacon_layouts();
+    let mut b = block();
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 1, 2))];
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "2");
+    // The beacon is not a configured token. Its write still invalidates the token.
+    let mut c = eth::Call {
+        address: vec![0xcc; 20],
+        ..Default::default()
+    };
+    for (ordinal, old, new) in [(20, 0xee, 0xab), (30, 0xab, 0xee)] {
+        c.storage_changes.push(eth::StorageChange {
+            address: vec![0xcc; 20],
+            key: slot(1).to_vec(),
+            old_value: vec![old; 20],
+            new_value: vec![new; 20],
+            ordinal,
+        });
+    }
+    b.transaction_traces.push(tx(c));
+    assert!(project(&b, &l).unwrap_err().to_string().contains("beacon implementation changed"));
+    b.transaction_traces.remove(0);
+    assert!(project(&b, &l).is_err(), "holder-silent beacon upgrade must fail");
+    b.transaction_traces[0].calls[0].state_reverted = true;
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+}
+#[test]
+fn beacon_pointer_and_dependency_code_changes_require_requalification() {
+    let l = beacon_layouts();
+    let mut b = block();
+    for address in [vec![0xcc; 20], vec![0xee; 20]] {
+        b.code_changes = vec![eth::CodeChange {
+            address,
+            new_hash: vec![1; 32],
+            ordinal: 10,
+            ..Default::default()
+        }];
+        assert!(project(&b, &l).is_err());
+    }
+    b.code_changes.clear();
+    let mut call = token_call(&l[0], &[6; 20], 1, 2);
+    call.storage_changes[0].key = slot(99).to_vec();
+    b.transaction_traces = vec![tx(call)];
+    assert!(project(&b, &l).unwrap_err().to_string().contains("proxy beacon changed"));
+}
+#[test]
+fn beacon_configuration_rejects_ambiguous_dependency_roles() {
+    let base = json!([{"contract":format!("0x{}","aa".repeat(20)),"balance_slot":format!("0x{}",hex::encode(slot(7))),"code_hash":format!("0x{}","11".repeat(32)),
+        "beacon_proxy":{"beacon_slot":format!("0x{}",hex::encode(slot(99))),"beacon":format!("0x{}","cc".repeat(20)),"beacon_code_hash":format!("0x{}","dd".repeat(32)),
+        "implementation_slot":format!("0x{}",hex::encode(slot(1))),"implementation":format!("0x{}","ee".repeat(20)),"implementation_code_hash":format!("0x{}","ff".repeat(32))}}]);
+    assert!(layout::parse(&base.to_string()).is_ok());
+    for field in ["other_slots", "other_mapping_slots"] {
+        let mut bad = base.clone();
+        bad[0][field] = json!([bad[0]["beacon_proxy"]["beacon_slot"]]);
+        assert!(layout::parse(&bad.to_string()).is_err());
+    }
+    let mut bad = base.clone();
+    bad[0]["proxy"] = json!({"implementation_slot":format!("0x{}",hex::encode(slot(98))),"implementation":format!("0x{}","bb".repeat(20)),"code_hash":format!("0x{}","ff".repeat(32))});
+    assert!(layout::parse(&bad.to_string()).is_err());
+    let mut bad = base;
+    bad[0]["zero_balance"] = json!({"value":format!("0x{}",hex::encode(slot(8))),"storage_slot":bad[0]["beacon_proxy"]["beacon_slot"]});
+    assert!(layout::parse(&bad.to_string()).is_err());
 }
 #[test]
 fn pinned_proxy_emits_balances_for_proxy_address() {

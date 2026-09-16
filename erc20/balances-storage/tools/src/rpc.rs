@@ -181,6 +181,40 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                     "unqualified implementation runtime"
                 );
             }
+            if let Some(proxy) = &layout.beacon_proxy {
+                let beacon = format!("0x{}", hex::encode(&proxy.beacon));
+                let implementation = format!("0x{}", hex::encode(&proxy.implementation));
+                let address_word = |address: &[u8]| format!("0x{}{}", "00".repeat(12), hex::encode(address));
+                let pointer = rpc.call(
+                    "eth_getStorageAt",
+                    json!([contract, format!("0x{}", hex::encode(proxy.beacon_slot)), block_ref(text(&h["hash"])?)]),
+                )?;
+                ensure!(binary(&pointer, 32)? == address_word(&proxy.beacon), "unqualified proxy beacon");
+                for (address, expected_hash) in [(&beacon, &proxy.beacon_code_hash), (&implementation, &proxy.implementation_code_hash)] {
+                    let code = rpc.call("eth_getCode", json!([address, block_ref(text(&h["hash"])?)]))?;
+                    let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid beacon dependency code")?)?;
+                    ensure!(
+                        !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == *expected_hash,
+                        "unqualified beacon dependency runtime"
+                    );
+                }
+                let pointer = rpc.call(
+                    "eth_getStorageAt",
+                    json!([beacon, format!("0x{}", hex::encode(proxy.implementation_slot)), block_ref(text(&h["hash"])?)]),
+                )?;
+                ensure!(
+                    binary(&pointer, 32)? == address_word(&proxy.implementation),
+                    "unqualified beacon implementation slot"
+                );
+                let getter = rpc.call(
+                    "eth_call",
+                    json!([{"to":beacon,"from":contract,"data":"0x5c60da1b"},block_ref(text(&h["hash"])?)]),
+                )?;
+                ensure!(
+                    binary(&getter, 32)? == address_word(&proxy.implementation),
+                    "beacon implementation getter differs"
+                );
+            }
         }
     }
     Ok(())

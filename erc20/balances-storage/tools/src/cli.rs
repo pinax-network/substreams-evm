@@ -26,6 +26,8 @@ pub enum Commands {
     TestRanked(crate::survey::Survey),
     /// Inspect balanceOf execution and its storage reads at a canonical block.
     InspectBalance(crate::inspect::Inspect),
+    /// Check zero-word behavior for ranked candidates, without promoting layouts.
+    InspectRanked(crate::inspect_ranked::InspectRanked),
     /// Diagnose earlier unresolved RPC checks, preserving the original run.
     RecheckRpc(crate::recheck::Recheck),
     /// Compare holder state with and without a bounded historical RPC checkpoint.
@@ -304,6 +306,7 @@ pub fn run() -> Result<bool> {
         Commands::CaptureBlocks(args) => capture::blocks(args),
         Commands::TestRanked(args) => crate::survey::run(args),
         Commands::InspectBalance(args) => crate::inspect::run(args),
+        Commands::InspectRanked(args) => crate::inspect_ranked::run(args),
         Commands::RecheckRpc(args) => crate::recheck::run(args),
         Commands::HolderCoverage(args) => crate::coverage::run(args),
         Commands::Compare(args) => run_compare(args),

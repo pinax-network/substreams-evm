@@ -301,6 +301,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     other_mapping_words: BTreeMap::new(),
                     zero_balance: None,
                     proxy: None,
+                    beacon_proxy: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
                 if let Some(known) = known {

@@ -155,10 +155,14 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     let mut raw = Changes::default();
     persist::collect_block(block, &mut raw)?;
     require(
-        !raw.codes
-            .iter()
-            .any(|c| configured.contains_key(&c.address) || layouts.iter().any(|l| l.proxy.as_ref().is_some_and(|p| p.implementation == c.address))),
-        "configured token or implementation code changed; requalify layout",
+        !raw.codes.iter().any(|c| {
+            configured.contains_key(&c.address)
+                || layouts.iter().any(|l| {
+                    l.proxy.as_ref().is_some_and(|p| p.implementation == c.address)
+                        || l.beacon_proxy.as_ref().is_some_and(|p| p.beacon == c.address || p.implementation == c.address)
+                })
+        }),
+        "configured token, beacon or implementation code changed; requalify layout",
     )?;
     let mut preimages = BTreeMap::new();
     let mut candidates = BTreeSet::new();
@@ -200,12 +204,27 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         .map(|l| (l.balance_slot, candidates.iter().map(|a| (mapping(a, &l.balance_slot), a.clone())).collect()))
         .collect();
     let mut rows = BTreeMap::new();
+    let mut beacon_slots = BTreeMap::<Vec<u8>, BTreeSet<[u8; 32]>>::new();
+    for beacon in layouts.iter().filter_map(|l| l.beacon_proxy.as_ref()) {
+        beacon_slots.entry(beacon.beacon.clone()).or_default().insert(beacon.implementation_slot);
+    }
     raw.storage.sort_by_key(|c| c.ordinal);
     for c in raw.storage {
+        if !configured.contains_key(&c.address) && !beacon_slots.contains_key(&c.address) {
+            continue;
+        }
+        let key = word(&c.key)?;
+        require(
+            !beacon_slots.get(&c.address).is_some_and(|slots| slots.contains(&key)),
+            "beacon implementation changed; requalify layout",
+        )?;
         let Some(layout) = configured.get(&c.address) else {
             continue;
         };
-        let key = word(&c.key)?;
+        require(
+            layout.beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != key),
+            "proxy beacon changed; requalify layout",
+        )?;
         require(
             layout.proxy.as_ref().is_none_or(|p| p.implementation_slot != key),
             "proxy implementation slot changed; requalify layout",

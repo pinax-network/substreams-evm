@@ -22,6 +22,27 @@ pub struct Layout {
     pub zero_balance: Option<ZeroBalance>,
     #[serde(default)]
     pub proxy: Option<ProxyLayout>,
+    #[serde(default)]
+    pub beacon_proxy: Option<BeaconProxyLayout>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct BeaconProxyLayout {
+    pub beacon_slot: String,
+    pub beacon: String,
+    pub beacon_code_hash: String,
+    pub implementation_slot: String,
+    pub implementation: String,
+    pub implementation_code_hash: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedBeaconProxy {
+    pub beacon_slot: [u8; 32],
+    pub beacon: Vec<u8>,
+    pub beacon_code_hash: [u8; 32],
+    pub implementation_slot: [u8; 32],
+    pub implementation: Vec<u8>,
+    pub implementation_code_hash: [u8; 32],
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -60,6 +81,7 @@ pub struct VerifiedLayout {
     pub other_mapping_words: BTreeMap<[u8; 32], u8>,
     pub zero_balance: Option<VerifiedZeroBalance>,
     pub proxy: Option<VerifiedProxy>,
+    pub beacon_proxy: Option<VerifiedBeaconProxy>,
 }
 impl VerifiedLayout {
     /// Input is the canonical decimal uint256 decoded from the raw storage word.
@@ -133,6 +155,38 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let beacon_proxy = layout
+                .beacon_proxy
+                .map(|p| -> Result<VerifiedBeaconProxy, Error> {
+                    require(proxy.is_none(), "configure either a direct proxy or a beacon proxy")?;
+                    let beacon = fixed(&p.beacon, 20)?;
+                    let implementation = fixed(&p.implementation, 20)?;
+                    require(
+                        beacon.iter().any(|b| *b != 0)
+                            && implementation.iter().any(|b| *b != 0)
+                            && beacon != contract
+                            && implementation != contract
+                            && beacon != implementation,
+                        "invalid beacon dependency addresses",
+                    )?;
+                    let beacon_slot = word(&p.beacon_slot)?;
+                    require(
+                        beacon_slot != balance_slot
+                            && !other_slots.contains(&beacon_slot)
+                            && !other_mapping_slots.contains(&beacon_slot)
+                            && !other_mapping_words.contains_key(&beacon_slot),
+                        "beacon slot cannot be ignored or used for balances",
+                    )?;
+                    Ok(VerifiedBeaconProxy {
+                        beacon_slot,
+                        beacon,
+                        beacon_code_hash: word(&p.beacon_code_hash)?,
+                        implementation_slot: word(&p.implementation_slot)?,
+                        implementation,
+                        implementation_code_hash: word(&p.implementation_code_hash)?,
+                    })
+                })
+                .transpose()?;
             let zero_balance = layout
                 .zero_balance
                 .map(|rule| -> Result<VerifiedZeroBalance, Error> {
@@ -143,7 +197,8 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                                 && !other_slots.contains(&slot)
                                 && !other_mapping_slots.contains(&slot)
                                 && !other_mapping_words.contains_key(&slot)
-                                && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot),
+                                && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
+                                && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot),
                             "zero-balance dependency must be distinct and cannot be ignored",
                         )?;
                     }
@@ -162,6 +217,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 other_mapping_words,
                 zero_balance,
                 proxy,
+                beacon_proxy,
             })
         })
         .collect()
