@@ -1,0 +1,393 @@
+{
+  "elapsed_seconds": 91.796445375,
+  "investigation_complete": true,
+  "observations_sha256": "a0f24ae5eb89b18463d751f8c9539705a750d986adeebc3761c09a7a4d92981c",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "59697be91b6c169dd4fff2396ac91fc87e1fa0dc98ac6db2cb268c24d32c1961",
+  "rpc_checks_sha256": "b3954dd0682bf609929b9a1efd1ebe727d0919109e4a4d89707e570e448fc5d2",
+  "sampled_blocks": 339,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "selected_contracts": [
+    "0x45056c2627c9e60753aeef604ee9575709f8e88f",
+    "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+    "0x5c8fb0f805f62cd082c00d9d250a388b543cc453",
+    "0x70a163085db5617b700fafeac1c7a2794e41a724",
+    "0x1922cf6ef99e41591a33687816baee1d5efc6db7",
+    "0xfd5840cd36d94d7229439859c0112a4185bc0255"
+  ],
+  "status": "coverage_gap",
+  "summary": {
+    "rpc_errors": 0,
+    "rpc_mismatches": 0,
+    "rpc_value_checks": 252,
+    "tested_tokens": 6,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 6
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x45056c2627c9e60753aeef604ee9575709f8e88f",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 8,
+        "reference_rows": 12,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288529,
+      "hypotheses": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 4,
+      "ranked_reference_rows": 3026,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0x437e9d0011092604850c1214eb7093f58c91b684c615a7947718411fadd94792",
+        "0x437e9d0011092604850c1214eb7093f58c91b684c615a7947718411fadd94792"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 8,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 8,
+        "reference_rows": 12,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "symbol": "果蝇人生"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 5,
+        "reference_rows": 9,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288579,
+      "hypotheses": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 5,
+      "ranked_reference_rows": 3020,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0xe91321c3bb268a6f9a5b1f34afb1ae93e2f43bb012bc5e26effe2d3578d054c2",
+        "0xe91321c3bb268a6f9a5b1f34afb1ae93e2f43bb012bc5e26effe2d3578d054c2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "symbol": "无头苍蝇"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x5c8fb0f805f62cd082c00d9d250a388b543cc453",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 5,
+        "reference_rows": 9,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288485,
+      "hypotheses": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 6,
+      "ranked_reference_rows": 3020,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0xcef7e1ada34a9b61c60c181d7839f16339788d65907fbcdec225702635ef133a",
+        "0xcef7e1ada34a9b61c60c181d7839f16339788d65907fbcdec225702635ef133a"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "symbol": "币神"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0x70a163085db5617b700fafeac1c7a2794e41a724",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1151,
+        "reference_rows": 1159,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 743,
+        "reference_rows": 751,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288450,
+      "hypotheses": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 2,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0x9bd9a0b7c19ee785c9008d614126ccfdd3e89b702f76b6bfa39474f519a7d8b2"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 8,
+      "ranked_reference_rows": 2940,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 32,
+      "runtime_hashes": [
+        "0x23a2e3eee2a796bd2feb231e814194baf13e34fb3dfbb73a3a2740a383c6c781",
+        "0x23a2e3eee2a796bd2feb231e814194baf13e34fb3dfbb73a3a2740a383c6c781"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 13,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 743,
+        "reference_rows": 751,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "symbol": "永生果蝇"
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x1922cf6ef99e41591a33687816baee1d5efc6db7",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 6,
+        "reference_rows": 14,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 7,
+        "reference_rows": 17,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288491,
+      "hypotheses": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 5,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0xbe826a8f7315eba1955e1e12c46e5409832cd80e4a39a96b443e12b32f3e8be8"
+        },
+        {
+          "matched": 0,
+          "mismatched": 1,
+          "nonzero_holders": 0,
+          "slot": "0xcbc300e4d9f6a4ae13fb1b2f86f81355b4cc79736660f9a3c35fcd99ae2663dc"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 22,
+      "ranked_reference_rows": 933,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 36,
+      "runtime_hashes": [
+        "0xc90d869093dead20f59f1723726549cf3421a80c589be795ace5ec3a7fe1ee1c",
+        "0xc90d869093dead20f59f1723726549cf3421a80c589be795ace5ec3a7fe1ee1c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 9,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 7,
+        "reference_rows": 17,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "symbol": "Arc主网"
+    },
+    {
+      "candidate_balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 69,
+        "reference_rows": 103,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 71,
+        "reference_rows": 105,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288535,
+      "hypotheses": [
+        {
+          "matched": 34,
+          "mismatched": 0,
+          "nonzero_holders": 2,
+          "slot": "0x000000000000000000000000000000000000000000000000000000000000000e"
+        }
+      ],
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 39,
+      "ranked_reference_rows": 573,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 136,
+      "runtime_hashes": [
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2",
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 64,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_errors": [],
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 71,
+        "reference_rows": 105,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "symbol": "vUSDT"
+    }
+  ],
+  "tool_language": "Rust"
+}

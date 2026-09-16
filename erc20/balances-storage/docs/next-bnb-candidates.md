@@ -1,5 +1,10 @@
 # Additional BNB candidates and RPC compatibility fixes
 
+This page records the eight-token qualification. The subsequent
+[fallback and vUSDT follow-up](fallback-balances.md) expands the test fixture to
+14 tokens, resolves the seven fallback mismatches and the vUSDT mapper errors,
+and adds longer WASM and holder-state checks. Results below remain historical.
+
 The reviewed configuration now covers eight tokens: USDT, WBNB, USDC, BTCB,
 ETH, BUSD, CAKE and USD1. Use the explicit
 [expanded fixture](../tests/fixtures/bsc-expanded-layouts.json); it does not change

@@ -13,13 +13,42 @@ pub struct Inspect {
     pub address: String,
     #[arg(long)]
     pub balance_slot: String,
+    /// Optional scalar dependency to probe while holding the balance word at 0/1.
+    #[arg(long)]
+    pub zero_dependency_slot: Option<String>,
     #[arg(long)]
     pub block: u64,
     /// Sourcify v2 response to bind reviewed source to this historical runtime.
     #[arg(long)]
     pub source: Option<PathBuf>,
+    /// Project-published deployment JSON containing deployedBytecode and metadata.
+    #[arg(long, conflicts_with = "source", requires = "artifact_url")]
+    pub deployment_artifact: Option<PathBuf>,
+    /// Immutable source URL for the supplied deployment artifact.
+    #[arg(long, requires = "deployment_artifact")]
+    pub artifact_url: Option<String>,
     #[arg(long)]
     pub output: PathBuf,
+}
+
+pub fn bind_deployment(artifact: &Value, contract: &str, runtime: &[u8]) -> Result<Value> {
+    ensure!(binary(&artifact["address"], 20)? == contract, "deployment artifact address differs");
+    let code = text(&artifact["deployedBytecode"])?;
+    ensure!(
+        hex::decode(code.strip_prefix("0x").context("artifact runtime prefix")?)? == runtime,
+        "deployment artifact runtime differs"
+    );
+    let metadata: Value = serde_json::from_str(text(&artifact["metadata"])?)?;
+    let sources = metadata["sources"].as_object().context("missing artifact sources")?;
+    ensure!(!sources.is_empty(), "empty artifact sources");
+    let mut hashes = serde_json::Map::new();
+    for (name, source) in sources {
+        let content = text(&source["content"])?;
+        let hash = format!("0x{}", hex::encode(erc20_balances_storage::hash(content.as_bytes())));
+        ensure!(source["keccak256"] == hash, "artifact source content hash differs");
+        hashes.insert(name.clone(), json!(hash));
+    }
+    Ok(json!({"compiler":metadata["compiler"],"settings":metadata["settings"],"source_hashes":hashes,"storage_layout":artifact["storageLayout"]}))
 }
 
 pub fn storage_reads(trace: &Value) -> Result<Vec<Value>> {
@@ -81,6 +110,13 @@ pub fn run(args: Inspect) -> Result<bool> {
                 report["source_storage_layout"] = source["storageLayout"].clone();
                 report["source_proxy_resolution"] = source["proxyResolution"].clone();
             }
+            if let Some(path) = &args.deployment_artifact {
+                let artifact: Value = serde_json::from_slice(&fs::read(path)?)?;
+                report["deployment_artifact"] = bind_deployment(&artifact, &contract, &bytes)?;
+                report["artifact_sha256"] = json!(sha256(path)?);
+                report["artifact_url"] = json!(args.artifact_url);
+                report["artifact_runtime_match"] = json!(true);
+            }
             fs::write(args.output.join("runtime.hex"), text(&code)?)?;
             report["hash"] = json!(hash);
             report["storage_key"] = json!(key);
@@ -111,6 +147,21 @@ pub fn run(args: Inspect) -> Result<bool> {
                 overrides.push(json!({"overridden_mapping_word":amount.to_string(),"balance_of":balance_result(&actual,true)?.to_string()}));
             }
             report["read_only_state_overrides"] = json!(overrides);
+            if let Some(dependency) = &args.zero_dependency_slot {
+                let dependency = binary(&json!(dependency), 32)?;
+                ensure!(dependency != key, "dependency cannot be the tested holder key");
+                let mut checks = Vec::new();
+                for (word, global) in [(0_u64, 0.into()), (0, 17.into()), (1, 17.into()), (0, primitive_types::U256::MAX)] {
+                    let overrides =
+                        json!({contract.clone():{"stateDiff":{key.clone():format!("0x{word:064x}"),dependency.clone():format!("0x{global:064x}")}}});
+                    let response = rpc.call("eth_call", json!([call, reference, overrides]))?;
+                    checks.push(
+                        json!({"mapping_word":word.to_string(),"dependency_word":global.to_string(),"balance_of":balance_result(&response,true)?.to_string()}),
+                    );
+                }
+                report["zero_dependency_slot"] = json!(dependency);
+                report["read_only_dependency_overrides"] = json!(checks);
+            }
             ensure!(rpc.header(args.block)?["hash"] == header["hash"], "header changed during inspection");
             report["status"] = json!("inspected");
             Ok(())

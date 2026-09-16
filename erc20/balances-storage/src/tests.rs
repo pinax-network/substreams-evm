@@ -227,6 +227,115 @@ fn preserves_uint256_max() {
     );
 }
 #[test]
+fn fallback_changes_public_values_without_weakening_raw_continuity() {
+    let mut l = layouts();
+    l[0].zero_balance = Some(layout::VerifiedZeroBalance {
+        value: slot(8),
+        storage_slot: Some(slot(4)),
+    });
+    let mut b = block();
+    let mut c = token_call(&l[0], &[6; 20], 3, 0);
+    b.transaction_traces = vec![tx(c.clone())];
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "8");
+    assert_eq!(changes(&b, &l).unwrap()[0].amount, "0");
+    // 0 and 8 project to the same public amount but are distinct raw words.
+    let mut broken = c.storage_changes[0].clone();
+    broken.old_value = vec![8];
+    broken.new_value = vec![2];
+    broken.ordinal = 20;
+    c.storage_changes.push(broken);
+    b.transaction_traces = vec![tx(c)];
+    assert!(project(&b, &l).unwrap_err().to_string().contains("discontinuous"));
+}
+#[test]
+fn seven_recorded_fallback_mismatches_match_with_explicit_reviewed_rules() {
+    let layouts = layout::parse(include_str!("../tests/fixtures/bsc-fallback-layouts.json")).unwrap();
+    let recorded: Vec<serde_json::Value> = serde_json::from_str(include_str!("../docs/evidence/top50-mismatches.json")).unwrap();
+    assert_eq!(recorded.len(), 7);
+    for row in recorded {
+        let contract = hex_bytes(row["contract"].as_str().unwrap()).unwrap();
+        let l = layouts.iter().find(|l| l.contract == contract).unwrap();
+        let raw = row["storage"].as_str().unwrap();
+        let rpc = row["rpc"].as_str().unwrap();
+        assert_ne!(raw, rpc, "fixture must preserve the original failure");
+        assert_eq!(l.project_amount(raw), rpc);
+        let owner = hex_bytes(row["address"].as_str().unwrap()).unwrap();
+        assert_eq!(format!("0x{}", hex::encode(mapping(&owner, &l.balance_slot))), row["storage_key"]);
+        let mut b = block();
+        b.transaction_traces = vec![tx(token_call(l, &owner, 1, 0))];
+        assert_eq!(project(&b, std::slice::from_ref(l)).unwrap().balances[0].amount, rpc);
+    }
+}
+#[test]
+fn constant_fallback_preserves_uint256_max_without_rewriting_nonzero_words() {
+    let mut l = layouts();
+    l[0].zero_balance = Some(layout::VerifiedZeroBalance {
+        value: [255; 32],
+        storage_slot: None,
+    });
+    let mut b = block();
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 1, 0))];
+    assert_eq!(
+        project(&b, &l).unwrap().balances[0].amount,
+        "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+    );
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 0, 1))];
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "1");
+}
+#[test]
+fn fallback_dependency_changes_fail_even_if_restored_or_holder_silent() {
+    let mut l = layouts();
+    l[0].zero_balance = Some(layout::VerifiedZeroBalance {
+        value: slot(8),
+        storage_slot: Some(slot(4)),
+    });
+    let mut b = block();
+    let mut c = eth::Call {
+        address: l[0].contract.clone(),
+        ..Default::default()
+    };
+    for (ordinal, old, new) in [(10, 8, 7), (20, 7, 8)] {
+        c.storage_changes.push(eth::StorageChange {
+            address: l[0].contract.clone(),
+            key: slot(4).to_vec(),
+            old_value: vec![old],
+            new_value: vec![new],
+            ordinal,
+        });
+    }
+    b.transaction_traces = vec![tx(c)];
+    assert!(project(&b, &l).unwrap_err().to_string().contains("zero-balance dependency changed"));
+    b.transaction_traces[0].calls[0].state_reverted = true;
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+}
+#[test]
+fn output_excludes_null_holders_like_the_rpc_reference() {
+    let mut b = block();
+    let l = layouts();
+    b.transaction_traces = vec![tx(token_call(&l[0], &[0; 20], 1, 9))];
+    assert_eq!(changes(&b, &l).unwrap().len(), 1);
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+}
+#[test]
+fn fallback_dependencies_cannot_be_ignored_or_confused_with_other_roles() {
+    let original: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-reviewed-layouts.json")).unwrap();
+    for field in ["balance_slot", "code_hash"] {
+        let mut invalid = original.clone();
+        invalid[2]["zero_balance"] = json!({"value":"0x01","storage_slot":invalid[2][field]});
+        assert!(layout::parse(&invalid.to_string()).is_err());
+    }
+    for dep in [
+        original[2]["balance_slot"].clone(),
+        original[2]["proxy"]["implementation_slot"].clone(),
+        original[2]["other_slots"][0].clone(),
+        original[2]["other_mapping_slots"][0].clone(),
+    ] {
+        let mut invalid = original.clone();
+        invalid[2]["zero_balance"] = json!({"value":format!("0x{}",hex::encode(slot(8))),"storage_slot":dep});
+        assert!(layout::parse(&invalid.to_string()).is_err());
+    }
+}
+#[test]
 fn incomplete_or_ambiguous_input_fails() {
     let l = layouts();
     let mut b = block();

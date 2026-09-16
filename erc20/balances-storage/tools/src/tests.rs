@@ -9,6 +9,46 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn published_deployment_must_match_address_runtime_and_source_hashes() {
+    let content = "contract Example {}";
+    let metadata =
+        json!({"sources":{"Example.sol":{"content":content,"keccak256":format!("0x{}",hex::encode(erc20_balances_storage::hash(content.as_bytes())))}}});
+    let artifact = json!({"address":TOKEN,"deployedBytecode":"0xabcd","metadata":metadata.to_string()});
+    assert!(crate::inspect::bind_deployment(&artifact, TOKEN, &[0xab, 0xcd]).is_ok());
+    assert!(crate::inspect::bind_deployment(&artifact, &address(), &[0xab, 0xcd]).is_err());
+    assert!(crate::inspect::bind_deployment(&artifact, TOKEN, &[0xab, 0xce]).is_err());
+    let mut bad = artifact;
+    let mut metadata = metadata;
+    metadata["sources"]["Example.sol"]["content"] = json!("contract Changed {}");
+    bad["metadata"] = json!(metadata.to_string());
+    assert!(crate::inspect::bind_deployment(&bad, TOKEN, &[0xab, 0xcd]).is_err());
+}
+
+#[test]
+fn runtime_qualification_rejects_a_changed_zero_balance_dependency() {
+    struct DependencyRpc;
+    impl Rpc for DependencyRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            let result = match payload["method"].as_str().unwrap() {
+                "eth_getCode" => json!("0xaa"),
+                "eth_getStorageAt" => json!(hash(8)),
+                _ => return FakeRpc::default().request(payload),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let mut params = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xaa]))),"zero_balance":{"value":hash(8),"storage_slot":hash(4)}}]);
+    qualify_runtime(&DependencyRpc, 1, 2, &erc20_balances_storage::layout::parse(&params.to_string()).unwrap()).unwrap();
+    params[0]["zero_balance"]["value"] = json!(hash(9));
+    assert!(
+        qualify_runtime(&DependencyRpc, 1, 2, &erc20_balances_storage::layout::parse(&params.to_string()).unwrap())
+            .unwrap_err()
+            .to_string()
+            .contains("dependency value")
+    );
+}
+
+#[test]
 fn targeted_survey_preserves_rank_order_and_rejects_unranked_contracts() {
     let ranked = vec![json!({"contract":TOKEN,"rank":1}), json!({"contract":address(),"rank":2})];
     assert_eq!(crate::survey::select_tokens(&ranked, &[]).unwrap().len(), 2);

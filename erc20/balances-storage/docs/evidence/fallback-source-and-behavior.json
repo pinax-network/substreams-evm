@@ -1,0 +1,1138 @@
+[
+  {
+    "local_capture": "out/fallback-fruit-dependency",
+    "report": {
+      "address": "0xe2e3b2505b363cb14954f9fa69be35e338e49769",
+      "balance_of": "7000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "block": 122288165,
+      "contract": "0x45056c2627c9e60753aeef604ee9575709f8e88f",
+      "elapsed_seconds": 0.555682625,
+      "hash": "0x2132825f233a3bd15f2e372fd1ff301ab786fe51fcdddfa5d4fd6c9adb2db5bf",
+      "read_only_dependency_overrides": [
+        {
+          "balance_of": "0",
+          "dependency_word": "0",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "17",
+          "dependency_word": "17",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "dependency_word": "17",
+          "mapping_word": "1"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "dependency_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "mapping_word": "0"
+        }
+      ],
+      "read_only_state_overrides": [
+        {
+          "balance_of": "7000000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x437e9d0011092604850c1214eb7093f58c91b684c615a7947718411fadd94792",
+      "status": "inspected",
+      "storage_key": "0x3cb970d07a30bf226377ff8e1a36c45ab6e1b141d863de4d46f22fb5aec8b20e",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x3cb970d07a30bf226377ff8e1a36c45ab6e1b141d863de4d46f22fb5aec8b20e",
+          "pc": 2082,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 2094,
+          "value": "0x0000000000000000000000000000000000000000000000006124fee993bc0000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "0e774d6285496b153c66cf615459419b588485606c6fb5cccb012cc495543761",
+      "zero_dependency_slot": "0x0000000000000000000000000000000000000000000000000000000000000004"
+    }
+  },
+  {
+    "local_capture": "out/fallback-original-dependency",
+    "report": {
+      "address": "0xf9f48e81ac7033924907ffe9ec09d86bb21636aa",
+      "balance_of": "8000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "block": 122288388,
+      "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+      "elapsed_seconds": 0.571870625,
+      "hash": "0x0ba4ffd40e3d5fda664bb29b23f5c53e01b86615a84c59208de8b7b3a751594c",
+      "read_only_dependency_overrides": [
+        {
+          "balance_of": "0",
+          "dependency_word": "0",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "17",
+          "dependency_word": "17",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "dependency_word": "17",
+          "mapping_word": "1"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "dependency_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "mapping_word": "0"
+        }
+      ],
+      "read_only_state_overrides": [
+        {
+          "balance_of": "8000000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xe91321c3bb268a6f9a5b1f34afb1ae93e2f43bb012bc5e26effe2d3578d054c2",
+      "status": "inspected",
+      "storage_key": "0xceb9a2880617ba4a0f2f65117f17aec0144fa71326ac2de53ca32e1c87d599c1",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xceb9a2880617ba4a0f2f65117f17aec0144fa71326ac2de53ca32e1c87d599c1",
+          "pc": 2082,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 2094,
+          "value": "0x0000000000000000000000000000000000000000000000006f05b59d3b200000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "4b93f08cbbf55a96e03d45441e569fb5705d5352d49e87ab24f63d50298db3af",
+      "zero_dependency_slot": "0x0000000000000000000000000000000000000000000000000000000000000004"
+    }
+  },
+  {
+    "local_capture": "out/fallback-coin-dependency",
+    "report": {
+      "address": "0x70d796a3c760e572972850226fa1711ea5cdef49",
+      "balance_of": "8000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "block": 122288746,
+      "contract": "0x5c8fb0f805f62cd082c00d9d250a388b543cc453",
+      "elapsed_seconds": 0.549735542,
+      "hash": "0x727f759f285cd39b83dc50e408c7fcb8e21d318948263dbfd15b527a599cbe59",
+      "read_only_dependency_overrides": [
+        {
+          "balance_of": "0",
+          "dependency_word": "0",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "17",
+          "dependency_word": "17",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "dependency_word": "17",
+          "mapping_word": "1"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "dependency_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "mapping_word": "0"
+        }
+      ],
+      "read_only_state_overrides": [
+        {
+          "balance_of": "8000000000000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xcef7e1ada34a9b61c60c181d7839f16339788d65907fbcdec225702635ef133a",
+      "status": "inspected",
+      "storage_key": "0xdd0066daed3995a7ba9a2a4c9ae87061251a13d59600e4f14722801a3f112974",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xdd0066daed3995a7ba9a2a4c9ae87061251a13d59600e4f14722801a3f112974",
+          "pc": 2082,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 2094,
+          "value": "0x0000000000000000000000000000000000000000000000006f05b59d3b200000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "dd3b56227677d4775eb4a6b1b1bb24535700898474bba272303a42faa35ff0af",
+      "zero_dependency_slot": "0x0000000000000000000000000000000000000000000000000000000000000004"
+    }
+  },
+  {
+    "local_capture": "out/fallback-arc-dependency",
+    "report": {
+      "address": "0x927a87a97ed817a4c63e4674e295e2ab59c3a676",
+      "balance_of": "9000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288279,
+      "contract": "0x1922cf6ef99e41591a33687816baee1d5efc6db7",
+      "elapsed_seconds": 0.575015917,
+      "hash": "0x8fc7f00c87d42493388b498f18acb298af05f01d32760b05f48abe26426c5b62",
+      "read_only_dependency_overrides": [
+        {
+          "balance_of": "0",
+          "dependency_word": "0",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "17",
+          "dependency_word": "17",
+          "mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "dependency_word": "17",
+          "mapping_word": "1"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "dependency_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "mapping_word": "0"
+        }
+      ],
+      "read_only_state_overrides": [
+        {
+          "balance_of": "9000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xc90d869093dead20f59f1723726549cf3421a80c589be795ace5ec3a7fe1ee1c",
+      "status": "inspected",
+      "storage_key": "0xb54659853a6c6b9c9fe2b09901576f4a11912cf2e91ace3c7f9a382c4d57d6fe",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb54659853a6c6b9c9fe2b09901576f4a11912cf2e91ace3c7f9a382c4d57d6fe",
+          "pc": 2780,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "pc": 2794,
+          "value": "0x0000000000000000000000000000000000000000000000000000000218711a00"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "58e6793f85581cb2dcce6d6a479362eb2d7e6c822b779ccae1b327a7959a8238",
+      "zero_dependency_slot": "0x0000000000000000000000000000000000000000000000000000000000000007"
+    }
+  },
+  {
+    "local_capture": "out/next-eternal-inspect",
+    "report": {
+      "address": "0x596acf993fff13b32390bba672f39c9cba00ceff",
+      "balance_of": "320173463400000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288805,
+      "contract": "0x70a163085db5617b700fafeac1c7a2794e41a724",
+      "elapsed_seconds": 0.395583875,
+      "hash": "0x947f81f0940ec91a8f23fb6d23c8c5e784668375852b7703fa9a295936053814",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "320173463400000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x23a2e3eee2a796bd2feb231e814194baf13e34fb3dfbb73a3a2740a383c6c781",
+      "status": "inspected",
+      "storage_key": "0xdcb9691e0c8bfe10a0c87638c0b43f0f19fefd5a9cd6f71b1ab107e45a8ffe0f",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 301,
+          "value": "0x00000000000000000000000075cc906469c92fb3f742a79369a30102d129fae9"
+        },
+        {
+          "depth": 2,
+          "key": "0xdcb9691e0c8bfe10a0c87638c0b43f0f19fefd5a9cd6f71b1ab107e45a8ffe0f",
+          "pc": 3330,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "6b8241de02977155d39355c881d39ae9cdf657b6dbf1434dc8c867bb9e1703f7"
+    }
+  },
+  {
+    "local_capture": "out/constant-fallback-implementation",
+    "report": {
+      "address": "0x596acf993fff13b32390bba672f39c9cba00ceff",
+      "balance_of": "320173463400000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288805,
+      "contract": "0x75cc906469c92fb3f742a79369a30102d129fae9",
+      "elapsed_seconds": 0.315188833,
+      "hash": "0x947f81f0940ec91a8f23fb6d23c8c5e784668375852b7703fa9a295936053814",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "320173463400000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x0d808d0af487a2e40e803702b7db15b877e6e33844aeb71e4cc773a7f637d798",
+      "status": "inspected",
+      "storage_key": "0xdcb9691e0c8bfe10a0c87638c0b43f0f19fefd5a9cd6f71b1ab107e45a8ffe0f",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xdcb9691e0c8bfe10a0c87638c0b43f0f19fefd5a9cd6f71b1ab107e45a8ffe0f",
+          "pc": 3330,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "585cab4f0d36e1e477513402f71c44223115bb89380a3facabe7f129c6755ff8"
+    }
+  },
+  {
+    "local_capture": "out/next-vusdt-qualified",
+    "report": {
+      "address": "0x9400f8ad57e9e0f352345935d6d3175975eb1d9f",
+      "balance_of": "21323187432458722",
+      "balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          }
+        },
+        "compilerVersion": "0.5.17+commit.d19bba13",
+        "fullyQualifiedName": "VBep20Delegator.sol:VBep20Delegator",
+        "language": "Solidity",
+        "name": "VBep20Delegator"
+      },
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "elapsed_seconds": 0.443036292,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2",
+      "source_proxy_resolution": {
+        "implementations": [],
+        "isProxy": false,
+        "proxyType": null
+      },
+      "source_runtime_match": true,
+      "source_sha256": "e2274cdf86cc044a7b291cd78664bae529e68dfdaab03d88a0a373dd19401f45",
+      "source_storage_layout": {
+        "storage": [
+          {
+            "astId": 910,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "_notEntered",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 912,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "name",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 914,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "symbol",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 916,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "decimals",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 924,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "admin",
+            "offset": 1,
+            "slot": "3",
+            "type": "t_address_payable"
+          },
+          {
+            "astId": 926,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "pendingAdmin",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address_payable"
+          },
+          {
+            "astId": 928,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "comptroller",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_contract(ComptrollerInterface)227"
+          },
+          {
+            "astId": 930,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "interestRateModel",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_contract(InterestRateModel)257"
+          },
+          {
+            "astId": 932,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "initialExchangeRateMantissa",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 934,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "reserveFactorMantissa",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 936,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "accrualBlockNumber",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 938,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "borrowIndex",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 940,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "totalBorrows",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 942,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "totalReserves",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 944,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "totalSupply",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 948,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "accountTokens",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 954,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "transferAllowances",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 963,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "accountBorrows",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_mapping(t_address,t_struct(BorrowSnapshot)959_storage)"
+          },
+          {
+            "astId": 1267,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "underlying",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_address"
+          },
+          {
+            "astId": 1335,
+            "contract": "VBep20Delegator.sol:VBep20Delegator",
+            "label": "implementation",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_address"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_address_payable": {
+            "encoding": "inplace",
+            "label": "address payable",
+            "numberOfBytes": "20"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(ComptrollerInterface)227": {
+            "encoding": "inplace",
+            "label": "contract ComptrollerInterface",
+            "numberOfBytes": "20"
+          },
+          "t_contract(InterestRateModel)257": {
+            "encoding": "inplace",
+            "label": "contract InterestRateModel",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_struct(BorrowSnapshot)959_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct VTokenStorage.BorrowSnapshot)",
+            "numberOfBytes": "32",
+            "value": "t_struct(BorrowSnapshot)959_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(BorrowSnapshot)959_storage": {
+            "encoding": "inplace",
+            "label": "struct VTokenStorage.BorrowSnapshot",
+            "members": [
+              {
+                "astId": 956,
+                "contract": "VBep20Delegator.sol:VBep20Delegator",
+                "label": "principal",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 958,
+                "contract": "VBep20Delegator.sol:VBep20Delegator",
+                "label": "interestIndex",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xfd5840cd36d94d7229439859c0112a4185bc0255?fields=all",
+      "status": "inspected",
+      "storage_key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000012",
+          "pc": 2757,
+          "value": "0x000000000000000000000000cdfea50f7ceccb24fe804657db8e6c93b689941e"
+        },
+        {
+          "depth": 3,
+          "key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+          "pc": 1778,
+          "value": "0x000000000000000000000000000000000000000000000000004bc153746409e2"
+        }
+      ],
+      "storage_word": "21323187432458722",
+      "tool_language": "Rust",
+      "trace_sha256": "63161fe16b4a5942155036202853f9f905181d7519c04cbbca8eec14485d3ac1"
+    }
+  },
+  {
+    "local_capture": "out/vusdt-implementation-bound",
+    "report": {
+      "address": "0x9400f8ad57e9e0f352345935d6d3175975eb1d9f",
+      "artifact_runtime_match": true,
+      "artifact_sha256": "e3e9d309e7aac5edfe1684a77312927d3e8e0959ad3436b46428b8500972ca87",
+      "artifact_url": "https://github.com/VenusProtocol/venus-protocol/blob/42db10c5ad8ba6feb9e48959ad6427cfe8b06e08/deployments/bscmainnet/VBep20Delegate.json",
+      "balance_of": "0",
+      "balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "block": 122288005,
+      "contract": "0xcdfea50f7ceccb24fe804657db8e6c93b689941e",
+      "deployment_artifact": {
+        "compiler": {
+          "version": "0.8.25+commit.b61c2a91"
+        },
+        "settings": {
+          "compilationTarget": {
+            "contracts/Tokens/VTokens/VBep20Delegate.sol": "VBep20Delegate"
+          },
+          "evmVersion": "cancun",
+          "libraries": {},
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": true
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": []
+        },
+        "source_hashes": {
+          "@openzeppelin/contracts/access/IAccessControl.sol": "0x59ce320a585d7e1f163cd70390a0ef2ff9cec832e2aa544293a00692465a7a57",
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol": "0xec63854014a5b4f2b3290ab9103a21bdf902a508d0f41a8573fea49e98bf571a",
+          "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": "0xabefac93435967b4d36a4fabcbdbb918d1f0b7ae3c3d85bc30923b326c927ed1",
+          "@openzeppelin/contracts/utils/Address.sol": "0x006dd67219697fe68d7fbfdea512e7c4cb64a43565ed86171d67e844982da6fa",
+          "@venusprotocol/governance-contracts/contracts/Governance/IAccessControlManagerV8.sol": "0xaa29b098440d0b3a131c5ecdf25ce548790c1b5ac7bf9b5c0264b6af6f7a1e0b",
+          "@venusprotocol/oracle/contracts/interfaces/IDeviationBoundedOracle.sol": "0xe223d88c17c0d752fdb33fa223b63ce124a798512f3d69f3800e9508e7dff931",
+          "@venusprotocol/oracle/contracts/interfaces/OracleInterface.sol": "0xd3bbb7c9eef19e8f467342df6034ef95399a00964646fb8c82b438968ae3a8c0",
+          "@venusprotocol/solidity-utilities/contracts/constants.sol": "0x14de93ead464da249af31bea0e3bcfb62ec693bea3475fb4d90f055ac81dc5eb",
+          "contracts/Comptroller/ComptrollerInterface.sol": "0x79fb234214cebf97f6e85c2bbe013977a4cd38ff6146a7c405a2fa9521e0cd4a",
+          "contracts/Comptroller/Diamond/interfaces/IFacetBase.sol": "0x454a2e213a5f54fbe7991193b78ae23406234f465c9806f75ee7bf2fe6d1531c",
+          "contracts/Comptroller/Types/PoolMarketId.sol": "0xf68bde30ddd6f8bf08194b493991c2a2ebd3814972f93a804beb9b366004cbe3",
+          "contracts/InterestRateModels/InterestRateModelV8.sol": "0x4d5595e761d50a1431c34b39e72dde6c09b0ebccdbe8c5c4e12c8a2ac7b796e1",
+          "contracts/Tokens/VAI/VAIControllerInterface.sol": "0x69d2f9e13b7fbf0a29885048503642372d9ba3d37f2427d4b9cffb87eddd925b",
+          "contracts/Tokens/VTokens/VBep20.sol": "0x703fe7d921dfb7229f57f946c7e3f07fc86e1fe80751c8b8e21371f299ec04b6",
+          "contracts/Tokens/VTokens/VBep20Delegate.sol": "0xd418c6bf1e7ed46fc1923b107a00d42d6df5a1b404275fb46062f77d20b88181",
+          "contracts/Tokens/VTokens/VToken.sol": "0xb4892af6565008bb421f9c1c537955772bc72aeb07ddc89155aad9fedb08c6b3",
+          "contracts/Tokens/VTokens/VTokenInterfaces.sol": "0xeeddfdee80a924cbb6ce515e556ace8f9640d7190ad9dd32deb9ba44c2629b9c",
+          "contracts/Utils/CarefulMath.sol": "0xb7ca049dc6f4a31c8994ad5fd2093b9f7f60c21495ff8386c7802ef13d9858a7",
+          "contracts/Utils/ErrorReporter.sol": "0x3ad1805533ad6afba254decd05ceb1d5f2777494725a29c930310b8490edb5c6",
+          "contracts/Utils/Exponential.sol": "0x6b9b293a09a3ec69ac16f58dce449a553b44121eb9aad666a777d8f6f4ae83f0",
+          "contracts/Utils/ExponentialNoError.sol": "0xce75802a56763fb96b2046b374127f080a425cfe3634670767ec040ccb6ea7e0",
+          "contracts/external/IProtocolShareReserve.sol": "0x029861e068e9c4d802650eaf6dd8cfed0980d2ce9a45e6fcc1e1e628ecc1f523"
+        },
+        "storage_layout": {
+          "storage": [
+            {
+              "astId": 33807,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "_notEntered",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool"
+            },
+            {
+              "astId": 33810,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "name",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage"
+            },
+            {
+              "astId": 33813,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "symbol",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_string_storage"
+            },
+            {
+              "astId": 33816,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "decimals",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_uint8"
+            },
+            {
+              "astId": 33827,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "admin",
+              "offset": 1,
+              "slot": "3",
+              "type": "t_address_payable"
+            },
+            {
+              "astId": 33830,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "pendingAdmin",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_address_payable"
+            },
+            {
+              "astId": 33834,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "comptroller",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_contract(ComptrollerInterface)2053"
+            },
+            {
+              "astId": 33838,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "interestRateModel",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_contract(InterestRateModelV8)20478"
+            },
+            {
+              "astId": 33841,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "initialExchangeRateMantissa",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33844,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "reserveFactorMantissa",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33847,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "accrualBlockNumber",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33850,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "borrowIndex",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33853,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "totalBorrows",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33856,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "totalReserves",
+              "offset": 0,
+              "slot": "12",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33859,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "totalSupply",
+              "offset": 0,
+              "slot": "13",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33864,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "accountTokens",
+              "offset": 0,
+              "slot": "14",
+              "type": "t_mapping(t_address,t_uint256)"
+            },
+            {
+              "astId": 33871,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "transferAllowances",
+              "offset": 0,
+              "slot": "15",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+            },
+            {
+              "astId": 33877,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "accountBorrows",
+              "offset": 0,
+              "slot": "16",
+              "type": "t_mapping(t_address,t_struct(BorrowSnapshot)33804_storage)"
+            },
+            {
+              "astId": 33880,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "underlying",
+              "offset": 0,
+              "slot": "17",
+              "type": "t_address"
+            },
+            {
+              "astId": 33883,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "implementation",
+              "offset": 0,
+              "slot": "18",
+              "type": "t_address"
+            },
+            {
+              "astId": 33886,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "reduceReservesBlockDelta",
+              "offset": 0,
+              "slot": "19",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33889,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "reduceReservesBlockNumber",
+              "offset": 0,
+              "slot": "20",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33892,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "protocolShareReserve",
+              "offset": 0,
+              "slot": "21",
+              "type": "t_address_payable"
+            },
+            {
+              "astId": 33895,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "accessControlManager",
+              "offset": 0,
+              "slot": "22",
+              "type": "t_address"
+            },
+            {
+              "astId": 33901,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "isFlashLoanEnabled",
+              "offset": 20,
+              "slot": "22",
+              "type": "t_bool"
+            },
+            {
+              "astId": 33904,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "flashLoanFeeMantissa",
+              "offset": 0,
+              "slot": "23",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33907,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "flashLoanProtocolShareMantissa",
+              "offset": 0,
+              "slot": "24",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33910,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "flashLoanAmount",
+              "offset": 0,
+              "slot": "25",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33913,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "internalCash",
+              "offset": 0,
+              "slot": "26",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 33918,
+              "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+              "label": "__gap",
+              "offset": 0,
+              "slot": "27",
+              "type": "t_array(t_uint256)45_storage"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "encoding": "inplace",
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_address_payable": {
+              "encoding": "inplace",
+              "label": "address payable",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_uint256)45_storage": {
+              "base": "t_uint256",
+              "encoding": "inplace",
+              "label": "uint256[45]",
+              "numberOfBytes": "1440"
+            },
+            "t_bool": {
+              "encoding": "inplace",
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_contract(ComptrollerInterface)2053": {
+              "encoding": "inplace",
+              "label": "contract ComptrollerInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(InterestRateModelV8)20478": {
+              "encoding": "inplace",
+              "label": "contract InterestRateModelV8",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "encoding": "mapping",
+              "key": "t_address",
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32",
+              "value": "t_mapping(t_address,t_uint256)"
+            },
+            "t_mapping(t_address,t_struct(BorrowSnapshot)33804_storage)": {
+              "encoding": "mapping",
+              "key": "t_address",
+              "label": "mapping(address => struct VTokenStorageBase.BorrowSnapshot)",
+              "numberOfBytes": "32",
+              "value": "t_struct(BorrowSnapshot)33804_storage"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "encoding": "mapping",
+              "key": "t_address",
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32",
+              "value": "t_uint256"
+            },
+            "t_string_storage": {
+              "encoding": "bytes",
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(BorrowSnapshot)33804_storage": {
+              "encoding": "inplace",
+              "label": "struct VTokenStorageBase.BorrowSnapshot",
+              "members": [
+                {
+                  "astId": 33801,
+                  "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+                  "label": "principal",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 33803,
+                  "contract": "contracts/Tokens/VTokens/VBep20Delegate.sol:VBep20Delegate",
+                  "label": "interestIndex",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_uint256"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "encoding": "inplace",
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "encoding": "inplace",
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          }
+        }
+      },
+      "elapsed_seconds": 0.793904875,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x07be7d50696863d816c35478f99af270669c02c9c76be536a19682b4f02d3192",
+      "status": "inspected",
+      "storage_key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xc08b41f5852a81716238002449ab6f6bddf1fe3efa2c77be1e4c690571e72783",
+          "pc": 1778,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "c8482bd8cdb84fbe674f3d49d2de76d712c6555d73679816e1c11029588a8fd0"
+    }
+  }
+]

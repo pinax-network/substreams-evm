@@ -102,11 +102,16 @@ struct Hypothesis {
 fn token_rows(block: &Value, contract: &str) -> Result<Balances> {
     Ok(candidate_rows(block)?.into_iter().filter(|(key, _)| key.0 == contract).collect())
 }
-fn selected_rows(discovery: &Value, contract: &str, slot: &str) -> Result<Balances> {
+fn selected_rows(discovery: &Value, contract: &str, slot: &str, layout: &VerifiedLayout) -> Result<Balances> {
     items(discovery, "candidates")?
         .iter()
-        .filter(|r| r["contract"] == contract && r["mappingSlot"] == slot)
-        .map(|r| Ok(((contract.to_string(), binary(&r["address"], 20)?), uint(&r["amount"])?)))
+        .filter(|r| r["contract"] == contract && r["mappingSlot"] == slot && r["address"] != "0x0000000000000000000000000000000000000000")
+        .map(|r| {
+            Ok((
+                (contract.to_string(), binary(&r["address"], 20)?),
+                uint(&json!(layout.project_amount(text(&r["amount"])?)))?,
+            ))
+        })
         .collect()
 }
 
@@ -209,6 +214,7 @@ pub fn run(args: Survey) -> Result<bool> {
             let mut observations = File::create(args.output.join("observations.jsonl"))?;
             for token in selected {
                 let contract = text(&token["contract"])?;
+                let known = reviewed.iter().find(|l| format!("0x{}", hex::encode(&l.contract)) == contract);
                 let active = blocks
                     .keys()
                     .copied()
@@ -263,7 +269,7 @@ pub fn run(args: Survey) -> Result<bool> {
                 }
                 result["runtime_hashes"] = json!(codes);
                 result["runtime_stable_at_boundaries"] = json!(codes[0] == codes[1]);
-                if matching.len() != 1 {
+                if matching.len() != 1 && known.is_none() {
                     result["status"] = json!(if matching.is_empty() {
                         "no_direct_mapping_evidence"
                     } else {
@@ -279,7 +285,10 @@ pub fn run(args: Survey) -> Result<bool> {
                     write_report(&args.output, report)?;
                     continue;
                 }
-                let slot = matching[0].0;
+                // Reviewed transforms are supplied independently of discovery.
+                // A raw direct-mapping hypothesis must never erase their zero rule.
+                let configured_slot = known.map(|l| format!("0x{}", hex::encode(l.balance_slot)));
+                let slot = configured_slot.as_ref().unwrap_or_else(|| matching[0].0);
                 result["candidate_balance_slot"] = json!(slot);
                 // No unknown write is automatically declared harmless. The mapper
                 // runs with an empty ignore list; errors remain distinct from no rows.
@@ -290,10 +299,11 @@ pub fn run(args: Survey) -> Result<bool> {
                     other_slots: BTreeSet::new(),
                     other_mapping_slots: BTreeSet::new(),
                     other_mapping_words: BTreeMap::new(),
+                    zero_balance: None,
                     proxy: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
-                if let Some(known) = reviewed.iter().find(|l| l.contract == layout.contract) {
+                if let Some(known) = known {
                     ensure!(
                         known.balance_slot == layout.balance_slot && known.code_hash == layout.code_hash,
                         "reviewed layout differs from observed candidate"
@@ -312,7 +322,7 @@ pub fn run(args: Survey) -> Result<bool> {
                 for height in blocks.keys() {
                     let d = &discovered[height];
                     let expected = token_rows(&reference[height], contract)?;
-                    let proposed = selected_rows(d, contract, slot)?;
+                    let proposed = selected_rows(d, contract, slot, &layout)?;
                     if *height < cutoff {
                         discovery_metrics.observe(&proposed, &expected);
                     } else {
@@ -363,7 +373,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     let mut evidence = Vec::new();
                     for row in items(d, "candidates")?
                         .iter()
-                        .filter(|r| r["contract"] == contract && r["mappingSlot"] == *slot)
+                        .filter(|r| r["contract"] == contract && r["mappingSlot"] == *slot && r["address"] != "0x0000000000000000000000000000000000000000")
                     {
                         for (boundary, hash, amount) in [("before", &d["parentHash"], &row["oldAmount"]), ("after", &d["hash"], &row["amount"])] {
                             requests.push(balance_request(contract, text(&row["address"])?, block_ref(text(hash)?)));
@@ -377,7 +387,9 @@ pub fn run(args: Survey) -> Result<bool> {
                             } else {
                                 None
                             };
-                            let expected = uint(&row["storage"])?;
+                            let raw = uint(&row["storage"])?;
+                            let expected = uint(&json!(layout.project_amount(&raw.to_string())))?;
+                            row["projected"] = json!(expected.to_string());
                             value_checks += 1;
                             rpc_errors += u64::from(actual.is_none());
                             rpc_mismatches += u64::from(actual.is_some_and(|v| v != expected));
@@ -393,7 +405,7 @@ pub fn run(args: Survey) -> Result<bool> {
                                 let stored = rpc.call("eth_getStorageAt", json!([contract, key, block_ref(text(&row["hash"])?)]))?;
                                 row["rpc_storage_word"] = json!(quantity(&stored)?.to_string());
                                 row["storage_key"] = json!(key);
-                                row["rpc_storage_matches_firehose"] = json!(quantity(&stored)? == expected);
+                                row["rpc_storage_matches_firehose"] = json!(quantity(&stored)? == raw);
                             }
                             writeln!(checks, "{row}")?;
                         }

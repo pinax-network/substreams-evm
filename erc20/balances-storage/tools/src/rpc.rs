@@ -152,6 +152,18 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                 !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
                 "unqualified runtime for configured token"
             );
+            if let Some(rule) = &layout.zero_balance {
+                if let Some(slot) = rule.storage_slot {
+                    let actual = rpc.call(
+                        "eth_getStorageAt",
+                        json!([contract, format!("0x{}", hex::encode(slot)), block_ref(text(&h["hash"])?)]),
+                    )?;
+                    ensure!(
+                        binary(&actual, 32)? == format!("0x{}", hex::encode(rule.value)),
+                        "unqualified zero-balance dependency value"
+                    );
+                }
+            }
             if let Some(proxy) = &layout.proxy {
                 let slot = format!("0x{}", hex::encode(proxy.implementation_slot));
                 let target = rpc.call("eth_getStorageAt", json!([contract, slot, block_ref(text(&h["hash"])?)]))?;

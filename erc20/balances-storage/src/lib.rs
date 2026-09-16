@@ -210,6 +210,10 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             layout.proxy.as_ref().is_none_or(|p| p.implementation_slot != key),
             "proxy implementation slot changed; requalify layout",
         )?;
+        require(
+            layout.zero_balance.as_ref().and_then(|r| r.storage_slot) != Some(key),
+            "zero-balance dependency changed; requalify and rebuild dependent holder state",
+        )?;
         let owner = preimages
             .get(&key)
             .filter(|p| p.len() == 64 && p[..12] == [0; 12] && p[32..] == layout.balance_slot)
@@ -217,23 +221,27 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             .or_else(|| candidates[&layout.balance_slot].get(&key).cloned());
         if let Some(owner) = owner {
             insert(&mut rows, &c.address, &owner, &c.old_value, &c.new_value, c.ordinal)?;
-        } else {
-            require(
-                layout.other_slots.contains(&key) || ignored_mapping(key, &preimages, layout),
-                "unresolved storage for configured token; refusing incomplete events",
-            )?;
+        } else if !layout.other_slots.contains(&key) && !ignored_mapping(key, &preimages, layout) {
+            return Err(Error::msg(format!(
+                "unresolved storage for configured token 0x{} at key 0x{}; refusing incomplete events",
+                hex::encode(&c.address),
+                hex::encode(key)
+            )));
         }
     }
     Ok(rows.into_values().collect())
 }
 pub fn project(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<balances_pb::Events, Error> {
+    let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.as_slice(), l)).collect();
     Ok(balances_pb::Events {
         balances: changes(block, layouts)?
             .into_iter()
+            // The RPC reference's common::is_valid_evm_address excludes null.
+            .filter(|b| b.address.iter().any(|byte| *byte != 0))
             .map(|b| balances_pb::Balance {
+                amount: configured[b.contract.as_slice()].project_amount(&b.amount),
                 contract: Some(b.contract),
                 address: b.address,
-                amount: b.amount,
             })
             .collect(),
     })

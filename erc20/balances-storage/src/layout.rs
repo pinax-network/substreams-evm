@@ -17,8 +17,25 @@ pub struct Layout {
     /// Reviewed non-balance mapping bases whose values span multiple words.
     #[serde(default)]
     pub other_mapping_words: BTreeMap<String, u8>,
+    /// Reviewed replacement for a zero balance word. No inferred defaults.
+    #[serde(default)]
+    pub zero_balance: Option<ZeroBalance>,
     #[serde(default)]
     pub proxy: Option<ProxyLayout>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ZeroBalance {
+    /// Full uint256 word, including leading zeros.
+    pub value: String,
+    /// Omit only when the value is an immutable runtime constant.
+    #[serde(default)]
+    pub storage_slot: Option<String>,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedZeroBalance {
+    pub value: [u8; 32],
+    pub storage_slot: Option<[u8; 32]>,
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -41,7 +58,21 @@ pub struct VerifiedLayout {
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_words: BTreeMap<[u8; 32], u8>,
+    pub zero_balance: Option<VerifiedZeroBalance>,
     pub proxy: Option<VerifiedProxy>,
+}
+impl VerifiedLayout {
+    /// Input is the canonical decimal uint256 decoded from the raw storage word.
+    /// Apply only after raw-word continuity checks; zero and the fallback value
+    /// can represent different storage states with the same public balance.
+    pub fn project_amount(&self, raw: &str) -> String {
+        if raw == "0" {
+            if let Some(rule) = &self.zero_balance {
+                return substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value).to_string();
+            }
+        }
+        raw.to_owned()
+    }
 }
 fn fixed(value: &str, size: usize) -> Result<Vec<u8>, Error> {
     require(value.starts_with("0x"), "layout values must be 0x-prefixed hex")?;
@@ -102,6 +133,26 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let zero_balance = layout
+                .zero_balance
+                .map(|rule| -> Result<VerifiedZeroBalance, Error> {
+                    let storage_slot = rule.storage_slot.as_deref().map(word).transpose()?;
+                    if let Some(slot) = storage_slot {
+                        require(
+                            slot != balance_slot
+                                && !other_slots.contains(&slot)
+                                && !other_mapping_slots.contains(&slot)
+                                && !other_mapping_words.contains_key(&slot)
+                                && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot),
+                            "zero-balance dependency must be distinct and cannot be ignored",
+                        )?;
+                    }
+                    Ok(VerifiedZeroBalance {
+                        value: word(&rule.value)?,
+                        storage_slot,
+                    })
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
@@ -109,6 +160,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 other_slots,
                 other_mapping_slots,
                 other_mapping_words,
+                zero_balance,
                 proxy,
             })
         })

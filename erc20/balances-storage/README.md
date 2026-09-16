@@ -10,8 +10,8 @@ or generated bindings in this package. Only `map_events` creates an output cache
 
 No token address, balance slot or runtime is built into the mapper. Supply a JSON
 array in the `map_events` parameter. The default is `[]`, which emits no balances.
-Each entry describes a **previously qualified direct balance mapping**, optionally
-behind a reviewed proxy with its implementation pinned:
+Each entry describes a **previously qualified balance mapping**, optionally
+with a reviewed zero-word fallback or proxy with its implementation pinned:
 
 | Field | Format | Meaning |
 | --- | --- | --- |
@@ -21,9 +21,10 @@ behind a reviewed proxy with its implementation pinned:
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
+| `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 
-The caller must establish that the configured mapping equals `balanceOf` for the
+The caller must establish that the configured projection equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
 is insufficient. The mapper cannot infer preexisting code identity from a block
 without code changes: independently qualify the starting runtime before using
@@ -34,12 +35,22 @@ at both boundaries. The map rejects **every persisted implementation-slot write*
 (including an upgrade and upgrade back) and all implementation code changes.
 The implementation slot cannot appear in an ignore list. A proxy runtime hash
 alone is insufficient; the implementation's balance semantics must also be reviewed.
-Beacon/diamond proxies and computed/rebasing/default balances remain unsupported.
+Beacon/diamond proxies, rebasing balances and other computed balances remain unsupported.
+
+With `zero_balance`, nonzero mapping words pass through unchanged. Zero words
+emit the explicitly pinned fallback. Raw words still drive continuity checks;
+projection happens only at output. For a storage-dependent fallback, the tools
+verify its value at both boundaries, and the mapper rejects **every persisted
+dependency-slot write**, including change-and-restore and holder-silent changes.
+The dependency cannot be ignored. Such changes need requalification and a rebuild
+of affected holder state; they are not implemented as silent global updates.
 
 Verified Keccak preimages identify holder keys. Transaction/call/log addresses
 are fallback candidates, accepted only when their mapping hash matches exactly.
 Persisted writes are ordered by execution ordinal; reverted execution cannot
-emit balances. Explicit zero and full uint256 values are preserved. Unknown
+emit balances. Direct layouts preserve zero and full uint256 values; fallback
+layouts apply their explicit zero rule. Null holder addresses are excluded, as in
+the RPC reference. Unknown
 writes for a configured token cause an error unless they belong to an explicitly
 configured other slot/mapping. Unconfigured contracts emit no rows.
 
@@ -175,6 +186,11 @@ USD1 in `tests/fixtures/bsc-expanded-layouts.json`. It includes multiword govern
 storage, an ABI decoding compatibility fix, and explicit diagnosis of calls before
 contract deployment. The new fixture is also caller-supplied, never a default.
 
+The [fallback and vUSDT follow-up](docs/fallback-balances.md) expands the explicit
+test configuration to 14 tokens in `tests/fixtures/bsc-fallback-layouts.json`.
+It fixes all seven recorded fallback-value mismatches and qualifies vUSDT's
+custom proxy implementation using Venus's published deployment artifact.
+
 `recheck-rpc --checks <rpc-checks.jsonl> --output <new-directory>` diagnoses prior
 unresolved checks without overwriting them. `test-ranked` accepts repeated
 `--contract` filters for focused retests of selected ranked tokens and records the
@@ -206,3 +222,10 @@ and read-only state overrides for zero, 1, 123 and uint256 max. Optional
 `--source <Sourcify-v2-response.json>` verifies that the source record's runtime
 matches the historical runtime before saving its layout/provenance. Overrides
 simulate `eth_call`; no transaction is sent.
+
+For a project-published deployment artifact, use `--deployment-artifact <json>`
+with `--artifact-url <immutable-source-url>` instead of `--source`. The tool binds
+the artifact address and runtime to historical RPC and checks each literal
+source's hash. `--zero-dependency-slot <32-byte-hex>` also probes the scalar
+dependency with zero, 17 and uint256 max while controlling the holder word.
+These controls are evidence for review, not automatic layout qualification.

@@ -146,15 +146,19 @@ pub fn run(args: Coverage) -> Result<bool> {
                 for (i, key) in chunk.iter().enumerate() {
                     let word = quantity(&responses[i * 2])?;
                     let balance = balance_result(&responses[i * 2 + 1], true)?;
-                    ensure!(word == balance, "checkpoint storage does not equal balanceOf");
-                    checkpoint.insert((*key).clone(), word);
-                    let stats = per_token.entry(key.0.clone()).or_insert_with(|| json!({"holders":0,"nonzero_holders":0}));
+                    let projected = uint(&json!(configured[&key.0].project_amount(&word.to_string())))?;
+                    ensure!(projected == balance, "checkpoint projection does not equal balanceOf");
+                    checkpoint.insert((*key).clone(), projected);
+                    let stats = per_token
+                        .entry(key.0.clone())
+                        .or_insert_with(|| json!({"holders":0,"nonzero_holders":0,"zero_word_fallback_holders":0}));
                     inc(stats, "holders", 1);
-                    inc(stats, "nonzero_holders", u64::from(!word.is_zero()));
+                    inc(stats, "nonzero_holders", u64::from(!projected.is_zero()));
+                    inc(stats, "zero_word_fallback_holders", u64::from(word.is_zero() && !projected.is_zero()));
                     writeln!(
                         file,
                         "{}",
-                        json!({"contract":key.0,"address":key.1,"hash":initial_hash,"storage_key":keys[i],"storage":word.to_string(),"rpc":balance.to_string()})
+                        json!({"contract":key.0,"address":key.1,"hash":initial_hash,"storage_key":keys[i],"storage":word.to_string(),"projected":projected.to_string(),"rpc":balance.to_string()})
                     )?;
                 }
             }
