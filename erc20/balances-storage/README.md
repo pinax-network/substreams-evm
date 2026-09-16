@@ -112,3 +112,46 @@ Repeat `--block-file` for consecutive blocks. These must be full Extended block
 fixtures, not JSON-RPC blocks. Hypotheses are checked with historical `balanceOf`
 and remain diagnostics; no layout is automatically promoted into parameters.
 See [qualification](docs/qualification.md) and [ERC-20 expansion](docs/erc20-expansion.md).
+
+## Test the busiest tokens from the RPC stream
+
+The Rust tools can select tokens from actual `erc20/balances` output and test
+their storage on earlier/later active block samples. They create no additional
+Substreams modules or caches. See the [first top-ten results](docs/top-token-parity.md).
+
+```sh
+cargo run --locked -p erc20-balances-storage-tools -- rank-tokens \
+  --blocks 512 --top 10 --output erc20/balances-storage/out/ranking
+
+cargo run --locked -p erc20-balances-storage-tools -- capture-blocks \
+  --ranking erc20/balances-storage/out/ranking/report.json \
+  --samples-per-token 8 --output erc20/balances-storage/out/active-blocks
+
+cargo run --locked -p erc20-balances-storage-tools -- test-ranked \
+  --ranking erc20/balances-storage/out/ranking/report.json \
+  --block-dir erc20/balances-storage/out/active-blocks \
+  --layouts erc20/balances-storage/tests/fixtures/verified-layouts.json \
+  --output erc20/balances-storage/out/ranked-parity
+```
+
+`rank-tokens` defaults to a window just before the finalized BSC head; `--start`
+makes it reproducible. Ranking counts emitted balance rows, not market cap or
+transfer count. `capture-blocks` uses the `firecore` CLI with gzip and canonical
+block IDs; both it and `substreams` must be on PATH. Configure their endpoints
+with `--endpoint`; RPC credentials follow the environment variables above.
+
+The test selects a mapping hypothesis from the earlier half of each token's
+sampled active blocks, then freezes it for the later half. It checks every
+observed candidate value before and after the block with hash-pinned `balanceOf`.
+Mismatches also trigger a hash-pinned `eth_getStorageAt` check. The actual native
+mapper is replayed with caller-supplied reviewed layouts when available; other
+tokens use **unqualified diagnostic inputs with empty ignore lists**. Unknown
+writes remain mapper errors, never automatically become ignored storage.
+
+Each report separates hypothesis values from strict mapper output and missing
+reference rows. No state is carried across missing sampled blocks, no RPC row
+seeds the mapper, and no hypothesis is promoted into configuration. A completed
+investigation with gaps or mismatches exits nonzero; `bounded_parity` alone exits
+zero and still does not establish universal token semantics. Preserve the entire
+output directory: JSONL observations and checks are referenced by their SHA-256
+digests in the report. Repeat `--block-dir` to add more captured samples.

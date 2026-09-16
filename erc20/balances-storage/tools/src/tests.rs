@@ -8,6 +8,87 @@ use serde_json::{json, Value};
 use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
+#[test]
+fn ranking_uses_rows_and_deterministic_contract_ties() {
+    let mut second = reference("9");
+    second["balances"][0]["contract"] = json!(address());
+    let r = crate::ranking::rank(&[(1, reference("1")), (2, reference("1")), (3, second.clone())].into()).unwrap();
+    assert_eq!(r[0]["contract"], TOKEN);
+    assert_eq!(r[0]["reference_rows"], 2);
+    assert_eq!(r[0]["unique_holders"], 1);
+    assert_eq!(r[0]["heights"], json!([1, 2]));
+    let tied = crate::ranking::rank(&[(1, reference("1")), (2, second)].into()).unwrap();
+    assert_eq!(tied[0]["contract"], address());
+}
+
+#[test]
+fn active_samples_include_rare_tokens_and_both_range_boundaries() {
+    let r = json!({"selected_tokens":[{"heights":[1,2,3,4,5,6,7,8,9]},{"heights":[15,18]},{"heights":[30]}]});
+    assert_eq!(crate::ranking::sample_heights(&r, 3).unwrap(), vec![1, 5, 9, 15, 18, 30]);
+    for heights in [json!([]), json!([2, 1]), json!([1, 1]), json!([0, 1])] {
+        assert!(crate::ranking::sample_heights(&json!({"selected_tokens":[{"heights":heights}]}), 8).is_err());
+    }
+}
+
+#[test]
+fn survey_never_calls_shared_value_equality_complete_parity() {
+    let reference = candidate_rows(&reference("0")).unwrap();
+    let mut metrics = crate::survey::Metrics::default();
+    metrics.observe(&reference, &reference);
+    assert_eq!(metrics.json()["exact_row_parity"], true);
+    metrics.observe(&Balances::new(), &reference);
+    assert_eq!(metrics.json()["reference_only_rows"], 1);
+    assert_eq!(metrics.json()["value_mismatches"], 0);
+    assert_eq!(metrics.json()["exact_row_parity"], false);
+    assert_eq!(crate::survey::Metrics::default().json()["exact_row_parity"], false);
+}
+
+#[test]
+fn survey_retains_wrong_values_and_extra_storage_rows() {
+    let mut metrics = crate::survey::Metrics::default();
+    metrics.observe(&candidate_rows(&reference("9")).unwrap(), &candidate_rows(&reference("8")).unwrap());
+    assert_eq!(metrics.json()["value_mismatches"], 1);
+    assert_eq!(metrics.json()["exact_row_parity"], false);
+    metrics.observe(&candidate_rows(&reference("0")).unwrap(), &Balances::new());
+    assert_eq!(metrics.json()["storage_only_rows"], 1);
+}
+
+#[test]
+fn completed_survey_fails_parity_for_missing_rows_errors_or_mismatches() {
+    use crate::survey::parity_status;
+    assert_eq!(parity_status(&[]), "insufficient_samples");
+    assert_eq!(parity_status(&[json!({"status":"insufficient_samples"})]), "insufficient_samples");
+    assert_eq!(parity_status(&[json!({"status":"rpc_unresolved"})]), "rpc_unresolved");
+    assert_eq!(parity_status(&[json!({"status":"value_mismatch"})]), "mismatch");
+    assert_eq!(
+        parity_status(&[json!({"status":"candidate_matches_values_not_qualified","exact_mapper_parity":false})]),
+        "coverage_gap"
+    );
+    assert_eq!(parity_status(&[json!({"exact_mapper_parity":true})]), "bounded_parity");
+}
+
+#[test]
+fn diagnostic_storage_key_matches_captured_keccak_preimages() {
+    use prost::Message;
+    let block = substreams_ethereum::pb::eth::v2::Block::decode(include_bytes!("../../tests/fixtures/bsc-122260950.pb").as_slice()).unwrap();
+    let rows = erc20_balances_storage::discovery::project(&block).unwrap().candidates;
+    assert!(!rows.is_empty());
+    for row in rows {
+        assert_eq!(
+            crate::survey::mapping_key(&format!("0x{}", hex::encode(row.address)), &format!("0x{}", hex::encode(row.mapping_slot))).unwrap(),
+            format!("0x{}", hex::encode(row.storage_key))
+        );
+    }
+}
+
+#[test]
+fn ranking_and_capture_do_not_require_a_token_layout_or_extra_map() {
+    assert!(Cli::try_parse_from(["tools", "rank-tokens", "--output", "out"]).is_ok());
+    assert!(Cli::try_parse_from(["tools", "capture-blocks", "--ranking", "rank.json", "--output", "out"]).is_ok());
+    assert!(Cli::try_parse_from(["tools", "capture-blocks", "--output", "out"]).is_err());
+    assert!(Cli::try_parse_from(["tools", "capture-blocks", "--ranking", "rank.json", "--start", "1", "--output", "out"]).is_err());
+}
+
 fn address() -> String {
     format!("0x{}", "11".repeat(20))
 }

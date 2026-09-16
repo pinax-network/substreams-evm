@@ -1,0 +1,30 @@
+[
+  {
+    "address": "0xe22f75f89eb7542aa56dac0dcfc3ef1d6fe9880c",
+    "block": 122284599,
+    "boundary": "before",
+    "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+    "hash": "0xf86b6fedacb7dbc9f6b48177ebb9c72f586993efcdfb2ae35c446aae76307d78",
+    "holdout": false,
+    "match": false,
+    "rpc": "8000000000000000000",
+    "rpc_storage_matches_firehose": true,
+    "rpc_storage_word": "0",
+    "storage": "0",
+    "storage_key": "0x3948762d55e99ffe33a5734769bd6343b7fca20137b5b3f85a4aac335b92d733"
+  },
+  {
+    "address": "0x12bc56a931f888e0f669b1f36eea7c5bcc681b21",
+    "block": 122284986,
+    "boundary": "before",
+    "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+    "hash": "0x11479beb8a6a865d37a6904b726cee03d121e1caa5bae7086faa528b1d207433",
+    "holdout": true,
+    "match": false,
+    "rpc": "8000000000000000000",
+    "rpc_storage_matches_firehose": true,
+    "rpc_storage_word": "0",
+    "storage": "0",
+    "storage_key": "0xd939b1688eb011a1be6162f42c22b26459470d84163512b5b3271e17f8145679"
+  }
+]

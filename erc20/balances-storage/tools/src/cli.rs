@@ -18,12 +18,54 @@ pub struct Cli {
 }
 #[derive(Subcommand)]
 pub enum Commands {
+    /// Stream the RPC reference and rank contracts by emitted balance rows.
+    RankTokens(Rank),
+    /// Capture canonical Extended blocks for native tests, without a map module.
+    CaptureBlocks(CaptureBlocks),
+    /// Test ranked tokens with native storage hypotheses; never promote layouts.
+    TestRanked(crate::survey::Survey),
     /// Compare map_events with erc20/balances v0.3.4, retaining coverage gaps.
     Compare(Compare),
     /// Audit every emitted end-of-block balance using canonical block hashes.
     AuditRpc(Audit),
     /// Native discovery over captured Extended Block .pb files; no map/cache.
     ProbeErc20(Probe),
+}
+#[derive(Args)]
+pub struct CaptureBlocks {
+    #[arg(long, required_unless_present = "ranking", conflicts_with = "ranking")]
+    pub start: Option<u64>,
+    /// Ranking report whose selected tokens determine active block samples.
+    #[arg(long)]
+    pub ranking: Option<PathBuf>,
+    #[arg(long, default_value_t = 8)]
+    pub samples_per_token: usize,
+    #[arg(long, default_value_t = 32)]
+    pub blocks: u64,
+    #[arg(long)]
+    pub output: PathBuf,
+    #[arg(long, default_value = "bsc.firehose.pinax.network:443")]
+    pub endpoint: String,
+    #[arg(long, default_value_t = 60)]
+    pub timeout: u64,
+}
+#[derive(Args)]
+pub struct Rank {
+    /// Omit to sample immediately before the current finalized head.
+    #[arg(long)]
+    pub start: Option<u64>,
+    #[arg(long, default_value_t = 512)]
+    pub blocks: u64,
+    #[arg(long, default_value_t = 10)]
+    pub top: usize,
+    #[arg(long)]
+    pub output: PathBuf,
+    #[arg(long, default_value_os_t=default_reference())]
+    pub reference: PathBuf,
+    #[arg(long, default_value = "bsc.substreams.pinax.network:443")]
+    pub endpoint: String,
+    #[arg(long, default_value_t = 600)]
+    pub timeout: u64,
 }
 #[derive(Args)]
 pub struct Range {
@@ -96,7 +138,9 @@ pub fn record_run(output: &Path, mut report: Value, work: impl FnOnce(&mut Value
     report["elapsed_seconds"] = json!(started.elapsed().as_secs_f64());
     report["tool_language"] = json!("Rust");
     write_report(output, &report)?;
-    let good = ["bounded_parity", "rpc_parity", "discovery_only"].iter().any(|s| report["status"] == *s);
+    let good = ["bounded_parity", "rpc_parity", "discovery_only", "ranked", "captured"]
+        .iter()
+        .any(|s| report["status"] == *s);
     let mut summary = report;
     for key in ["layouts", "tokens", "independent_rpc_checks"] {
         summary.as_object_mut().unwrap().remove(key);
@@ -250,6 +294,9 @@ fn run_probe(args: Probe) -> Result<bool> {
 }
 pub fn run() -> Result<bool> {
     match Cli::parse().command {
+        Commands::RankTokens(args) => crate::ranking::run(args),
+        Commands::CaptureBlocks(args) => capture::blocks(args),
+        Commands::TestRanked(args) => crate::survey::run(args),
         Commands::Compare(args) => run_compare(args),
         Commands::AuditRpc(args) => run_audit(args),
         Commands::ProbeErc20(args) => run_probe(args),
