@@ -138,8 +138,10 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     let mut raw = Changes::default();
     persist::collect_block(block, &mut raw)?;
     require(
-        !raw.codes.iter().any(|c| configured.contains_key(&c.address)),
-        "configured token code changed; requalify layout",
+        !raw.codes
+            .iter()
+            .any(|c| configured.contains_key(&c.address) || layouts.iter().any(|l| l.proxy.as_ref().is_some_and(|p| p.implementation == c.address))),
+        "configured token or implementation code changed; requalify layout",
     )?;
     let mut preimages = BTreeMap::new();
     let mut candidates = BTreeSet::new();
@@ -187,6 +189,10 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             continue;
         };
         let key = word(&c.key)?;
+        require(
+            layout.proxy.as_ref().is_none_or(|p| p.implementation_slot != key),
+            "proxy implementation slot changed; requalify layout",
+        )?;
         let owner = preimages
             .get(&key)
             .filter(|p| p.len() == 64 && p[..12] == [0; 12] && p[32..] == layout.balance_slot)

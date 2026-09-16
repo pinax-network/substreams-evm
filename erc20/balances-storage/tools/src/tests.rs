@@ -9,6 +9,82 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn holder_state_distinguishes_unknowns_repeats_and_explicit_zero() {
+    use crate::coverage::HolderState;
+    let key = (TOKEN.to_string(), address());
+    let checkpoint = [(key.clone(), 5.into())].into();
+    let mut state = HolderState::new(checkpoint);
+    state.apply(1, &hash(1), &hash(0), &Balances::new(), &[(key.clone(), 5.into())].into()).unwrap();
+    assert_eq!(state.tokens[TOKEN]["unseeded_unknown_rows"], 1);
+    assert_eq!(state.tokens[TOKEN]["seeded_matches"], 1);
+    state
+        .apply(2, &hash(2), &hash(1), &[(key.clone(), 0.into())].into(), &[(key.clone(), 0.into())].into())
+        .unwrap();
+    state.apply(3, &hash(3), &hash(2), &Balances::new(), &[(key, 0.into())].into()).unwrap();
+    assert_eq!(state.tokens[TOKEN]["carry_forward_matches"], 1);
+    assert_eq!(state.tokens[TOKEN]["seeded_matches"], 3);
+    assert_eq!(state.tokens[TOKEN]["unseeded_unknown_rows"], 1);
+}
+#[test]
+fn holder_state_rejects_gaps_and_detects_missed_mutations() {
+    use crate::coverage::HolderState;
+    let key = (TOKEN.to_string(), address());
+    let mut state = HolderState::new([(key.clone(), 5.into())].into());
+    state.apply(1, &hash(1), &hash(0), &Balances::new(), &[(key.clone(), 6.into())].into()).unwrap();
+    assert_eq!(state.tokens[TOKEN]["seeded_value_mismatches"], 1);
+    assert!(state.apply(3, &hash(3), &hash(1), &Balances::new(), &Balances::new()).is_err());
+    assert!(state.apply(2, &hash(2), &hash(0), &Balances::new(), &Balances::new()).is_err());
+    assert_eq!(state.tokens[TOKEN]["unseeded_unknown_rows"], 1);
+}
+#[test]
+fn sload_diagnostics_preserve_zero_extra_reads_and_depth() {
+    let trace = json!({"structLogs":[{"pc":10,"op":"SLOAD","depth":1,"stack":["0x123"]},{"pc":11,"op":"POP","depth":1,"stack":["0x0"]},{"pc":20,"op":"SLOAD","depth":1,"stack":["4"]},{"pc":21,"op":"JUMP","depth":1,"stack":["6f05b59d3b200000"]}]});
+    let reads = crate::inspect::storage_reads(&trace).unwrap();
+    assert_eq!(reads.len(), 2);
+    assert_eq!(reads[0]["value"], hash(0));
+    assert_eq!(quantity(&reads[1]["value"]).unwrap().to_string(), "8000000000000000000");
+    let mut bad = trace;
+    bad["structLogs"][1]["depth"] = json!(2);
+    assert!(crate::inspect::storage_reads(&bad).is_err());
+}
+
+#[test]
+fn captured_core_layouts_emit_correct_balances_for_all_four_tokens() {
+    use prost::Message;
+    let b = substreams_ethereum::pb::eth::v2::Block::decode(include_bytes!("../../tests/fixtures/bsc-122260950.pb").as_slice()).unwrap();
+    let layouts = erc20_balances_storage::layout::parse(include_str!("../../tests/fixtures/bsc-reviewed-layouts.json")).unwrap();
+    let reference: Value = serde_json::from_str(include_str!("../../tests/fixtures/bsc-122260950-core-reference.json")).unwrap();
+    assert_eq!(reference["block"], b.number);
+    let expected = candidate_rows(&reference).unwrap();
+    let events = erc20_balances_storage::project(&b, &layouts).unwrap();
+    let emitted=candidate_rows(&json!({"balances":events.balances.into_iter().map(|b|json!({"contract":format!("0x{}",hex::encode(b.contract.unwrap())),"address":format!("0x{}",hex::encode(b.address)),"amount":b.amount})).collect::<Vec<_>>()})).unwrap();
+    assert_eq!(emitted.keys().map(|k| &k.0).collect::<std::collections::BTreeSet<_>>().len(), 4);
+    assert!(emitted.len() > 18);
+    for (key, amount) in emitted {
+        assert_eq!(expected.get(&key), Some(&amount), "{key:?}");
+    }
+}
+
+#[test]
+fn real_default_balance_counterexample_fails_direct_mapping_qualification() {
+    let r: Value = serde_json::from_str(include_str!("../../tests/fixtures/default-balance-inspection.json")).unwrap();
+    assert_eq!(r["storage_word"], "0");
+    assert_eq!(r["balance_of"], "8000000000000000000");
+    let checks = items(&r, "read_only_state_overrides").unwrap();
+    assert_eq!(checks.len(), 4);
+    // Nonzero and uint256-max controls would falsely suggest a direct mapping.
+    assert!(checks[1..].iter().all(|c| c["overridden_mapping_word"] == c["balance_of"]));
+    let mismatches = checks.iter().filter(|c| c["overridden_mapping_word"] != c["balance_of"]).count();
+    let stats = json!({"nonzero_holders":2,"changed_observations":4,"mismatches":mismatches});
+    assert_eq!(classify_layout(&stats), "not_direct_balance_mapping");
+    assert_eq!(r["storage_reads"][1]["key"], hash(4));
+    assert_eq!(
+        quantity(&r["storage_reads"][1]["value"]).unwrap().to_string(),
+        r["balance_of"].as_str().unwrap()
+    );
+}
+
+#[test]
 fn ranking_uses_rows_and_deterministic_contract_ties() {
     let mut second = reference("9");
     second["balances"][0]["contract"] = json!(address());
@@ -484,4 +560,67 @@ fn runtime_qualification_uses_each_configured_contract_and_code_hash() {
     drop(calls);
     layouts[1].code_hash = [0; 32];
     assert!(qualify_runtime(&rpc, 1, 2, &layouts).is_err());
+}
+
+#[test]
+fn runtime_qualification_rejects_changed_proxy_target_or_implementation_code() {
+    struct ProxyRpc {
+        wrong_target: bool,
+        wrong_code: bool,
+    }
+    impl Rpc for ProxyRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            let result = match text(&payload["method"])? {
+                "eth_getStorageAt" => json!(format!(
+                    "0x{}{}",
+                    "00".repeat(12),
+                    if self.wrong_target { "33".repeat(20) } else { "11".repeat(20) }
+                )),
+                "eth_getCode" => json!(if payload["params"][0] == TOKEN {
+                    "0xaa"
+                } else if self.wrong_code {
+                    "0xcc"
+                } else {
+                    "0xbb"
+                }),
+                _ => return FakeRpc::default().request(payload),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let layouts=erc20_balances_storage::layout::parse(&json!([{"contract":TOKEN,"balance_slot":hash(1),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xaa]))),"proxy":{"implementation_slot":hash(99),"implementation":address(),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xbb])))}}]).to_string()).unwrap();
+    qualify_runtime(
+        &ProxyRpc {
+            wrong_target: false,
+            wrong_code: false,
+        },
+        1,
+        2,
+        &layouts,
+    )
+    .unwrap();
+    assert!(qualify_runtime(
+        &ProxyRpc {
+            wrong_target: true,
+            wrong_code: false
+        },
+        1,
+        2,
+        &layouts
+    )
+    .unwrap_err()
+    .to_string()
+    .contains("proxy implementation"));
+    assert!(qualify_runtime(
+        &ProxyRpc {
+            wrong_target: false,
+            wrong_code: true
+        },
+        1,
+        2,
+        &layouts
+    )
+    .unwrap_err()
+    .to_string()
+    .contains("implementation runtime"));
 }

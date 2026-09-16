@@ -24,6 +24,10 @@ pub enum Commands {
     CaptureBlocks(CaptureBlocks),
     /// Test ranked tokens with native storage hypotheses; never promote layouts.
     TestRanked(crate::survey::Survey),
+    /// Inspect balanceOf execution and its storage reads at a canonical block.
+    InspectBalance(crate::inspect::Inspect),
+    /// Compare holder state with and without a bounded historical RPC checkpoint.
+    HolderCoverage(crate::coverage::Coverage),
     /// Compare map_events with erc20/balances v0.3.4, retaining coverage gaps.
     Compare(Compare),
     /// Audit every emitted end-of-block balance using canonical block hashes.
@@ -138,7 +142,7 @@ pub fn record_run(output: &Path, mut report: Value, work: impl FnOnce(&mut Value
     report["elapsed_seconds"] = json!(started.elapsed().as_secs_f64());
     report["tool_language"] = json!("Rust");
     write_report(output, &report)?;
-    let good = ["bounded_parity", "rpc_parity", "discovery_only", "ranked", "captured"]
+    let good = ["bounded_parity", "rpc_parity", "discovery_only", "ranked", "captured", "inspected"]
         .iter()
         .any(|s| report["status"] == *s);
     let mut summary = report;
@@ -297,6 +301,8 @@ pub fn run() -> Result<bool> {
         Commands::RankTokens(args) => crate::ranking::run(args),
         Commands::CaptureBlocks(args) => capture::blocks(args),
         Commands::TestRanked(args) => crate::survey::run(args),
+        Commands::InspectBalance(args) => crate::inspect::run(args),
+        Commands::HolderCoverage(args) => crate::coverage::run(args),
         Commands::Compare(args) => run_compare(args),
         Commands::AuditRpc(args) => run_audit(args),
         Commands::ProbeErc20(args) => run_probe(args),

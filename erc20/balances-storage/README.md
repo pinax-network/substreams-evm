@@ -10,7 +10,8 @@ or generated bindings in this package. Only `map_events` creates an output cache
 
 No token address, balance slot or runtime is built into the mapper. Supply a JSON
 array in the `map_events` parameter. The default is `[]`, which emits no balances.
-Each entry describes a **previously qualified non-proxy direct balance mapping**:
+Each entry describes a **previously qualified direct balance mapping**, optionally
+behind a reviewed proxy with its implementation pinned:
 
 | Field | Format | Meaning |
 | --- | --- | --- |
@@ -19,15 +20,20 @@ Each entry describes a **previously qualified non-proxy direct balance mapping**
 | `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
+| `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 
 The caller must establish that the configured mapping equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
 is insufficient. The mapper cannot infer preexisting code identity from a block
 without code changes: independently qualify the starting runtime before using
 it outside the audit tools. All persisted code changes to configured contracts
-fail, including changes back to the expected runtime. Proxy implementation
-changes and computed/rebasing balances require other adapters; a proxy's runtime
-hash alone does not qualify its balance semantics.
+fail, including changes back to the expected runtime. For a configured proxy,
+the tools also check the implementation storage word and implementation runtime
+at both boundaries. The map rejects **every persisted implementation-slot write**
+(including an upgrade and upgrade back) and all implementation code changes.
+The implementation slot cannot appear in an ignore list. A proxy runtime hash
+alone is insufficient; the implementation's balance semantics must also be reviewed.
+Beacon/diamond proxies and computed/rebasing/default balances remain unsupported.
 
 Verified Keccak preimages identify holder keys. Transaction/call/log addresses
 are fallback candidates, accepted only when their mapping hash matches exactly.
@@ -155,3 +161,36 @@ investigation with gaps or mismatches exits nonzero; `bounded_parity` alone exit
 zero and still does not establish universal token semantics. Preserve the entire
 output directory: JSONL observations and checks are referenced by their SHA-256
 digests in the report. Repeat `--block-dir` to add more captured samples.
+
+## Reviewed candidates and holder state
+
+`tests/fixtures/bsc-reviewed-layouts.json` explicitly configures BSC USDT, BTCB,
+USDC (pinned implementation), and the existing WBNB control. The file is not a
+default. See [expanded qualification and holder coverage](docs/holder-coverage.md)
+for source/runtime evidence, the zero-word mismatch explanation and live checks.
+
+The `holder-coverage` Rust command compares a cold consumer with one initialized
+from a **test-only historical RPC checkpoint**. It requires consecutive captured
+blocks and a ranking that includes them:
+
+```sh
+cargo run --locked -p erc20-balances-storage-tools -- holder-coverage \
+  --ranking erc20/balances-storage/out/ranking/report.json \
+  --block-dir erc20/balances-storage/out/consecutive-blocks \
+  --layouts erc20/balances-storage/tests/fixtures/bsc-reviewed-layouts.json \
+  --output erc20/balances-storage/out/holder-state-test
+```
+
+It records the setup RPC reads and checkpoint hash, then applies actual map
+outputs without consulting RPC for balances during processing. Reference amounts
+are only compared, never inserted into consumer state. The test checkpoint covers
+only addresses queried in that bounded reference window; it is not a complete
+global holder snapshot or a deployed sink. Full cold-start coverage still needs
+a trusted checkpoint or complete history, plus a consumer that retains updates.
+
+`inspect-balance --contract ... --address ... --balance-slot ... --block ...
+--output ...` diagnoses a mapping at a canonical block using `debug_traceCall`
+and read-only state overrides for zero, 1, 123 and uint256 max. Optional
+`--source <Sourcify-v2-response.json>` verifies that the source record's runtime
+matches the historical runtime before saving its layout/provenance. Overrides
+simulate `eth_call`; no transaction is sent.

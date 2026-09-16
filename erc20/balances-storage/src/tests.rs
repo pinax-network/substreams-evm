@@ -218,6 +218,70 @@ fn configured_code_changes_fail_even_when_returning_to_pinned_code() {
     b.code_changes[0].address = vec![0x77; 20];
     assert!(project(&b, &l).is_ok());
 }
+
+fn proxy_layouts() -> Vec<VerifiedLayout> {
+    let mut l = layouts();
+    l[0].proxy = Some(layout::VerifiedProxy {
+        implementation_slot: slot(99),
+        implementation: vec![0xcc; 20],
+        code_hash: [0xdd; 32],
+    });
+    l
+}
+#[test]
+fn pinned_proxy_emits_balances_for_proxy_address() {
+    let l = proxy_layouts();
+    let mut b = block();
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 1, 2))];
+    let events = project(&b, &l).unwrap();
+    assert_eq!(events.balances[0].contract, Some(l[0].contract.clone()));
+    assert_eq!(events.balances[0].amount, "2");
+}
+#[test]
+fn proxy_upgrade_and_upgrade_back_require_requalification() {
+    let l = proxy_layouts();
+    let mut call = token_call(&l[0], &[6; 20], 1, 2);
+    for (ordinal, old, new) in [(20, 0xcc, 0xee), (30, 0xee, 0xcc)] {
+        call.storage_changes.push(eth::StorageChange {
+            address: l[0].contract.clone(),
+            key: slot(99).to_vec(),
+            old_value: vec![old; 20],
+            new_value: vec![new; 20],
+            ordinal,
+        });
+    }
+    let mut b = block();
+    b.transaction_traces = vec![tx(call)];
+    assert!(project(&b, &l).unwrap_err().to_string().contains("proxy implementation slot changed"));
+    b.transaction_traces[0].calls[0].state_reverted = true;
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+}
+#[test]
+fn implementation_code_changes_are_rejected_without_proxy_code_change() {
+    let l = proxy_layouts();
+    let mut b = block();
+    b.code_changes = vec![eth::CodeChange {
+        address: l[0].proxy.as_ref().unwrap().implementation.clone(),
+        new_hash: vec![0xdd; 32],
+        ordinal: 5,
+        ..Default::default()
+    }];
+    assert!(project(&b, &l).unwrap_err().to_string().contains("implementation code changed"));
+}
+#[test]
+fn proxy_layout_cannot_ignore_upgrade_slot_or_pin_zero_self_implementation() {
+    let value: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-reviewed-layouts.json")).unwrap();
+    for field in ["other_slots", "other_mapping_slots"] {
+        let mut bad = value.clone();
+        bad[2][field] = json!([bad[2]["proxy"]["implementation_slot"]]);
+        assert!(layout::parse(&bad.to_string()).is_err());
+    }
+    for implementation in [format!("0x{}", "00".repeat(20)), value[2]["contract"].as_str().unwrap().into()] {
+        let mut bad = value.clone();
+        bad[2]["proxy"]["implementation"] = json!(implementation);
+        assert!(layout::parse(&bad.to_string()).is_err());
+    }
+}
 #[test]
 fn layout_parameters_reject_ambiguity_and_malformed_values() {
     assert!(layout::parse("[]").unwrap().is_empty());

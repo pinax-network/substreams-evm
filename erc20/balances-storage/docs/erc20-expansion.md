@@ -5,6 +5,11 @@ Block protobuf files. It is excluded from WASM and creates no Substreams map or
 cache. Hypotheses never enter `map_events` unless separately qualified and
 supplied as an explicit token-layout configuration.
 
+The [expanded BSC qualification](holder-coverage.md) adds reviewed USDT and BTCB
+layouts, a USDC configuration with pinned proxy implementation guards, and native
+holder-state tests with explicit checkpoints. The top-50 survey is candidate
+evidence only; it does not automatically qualify the remaining layouts.
+
 ## Historical multi-map experiment
 
 Over BSC blocks 122260950–122260965, the module observed **239 contracts** emitting
@@ -50,9 +55,10 @@ does not prove which value a contract returns.
    `balanceOf` semantics, resolving multiple candidate mappings, and testing
    independent windows, zero balances, mint/burn and non-Transfer mutations.
    Store contract/code identity, mapping slot and evidence in a versioned registry.
-2. Track proxy implementation identity and upgrade boundaries, including changes
-   to implementation storage with no proxy code change. Route unresolved versions
-   to an explicit unsupported state until requalified.
+2. The explicit proxy configuration now pins implementation identity and rejects
+   implementation-slot writes or code changes during continuous processing.
+   New proxy types, implementation versions and layouts still need separate
+   review and qualification; arbitrary proxies are not supported automatically.
 3. Handle computed/rebasing/reflection balances with contract-specific rules or
    local EVM execution over complete reconstructed state. A storage word may be
    shares rather than the externally visible token balance. Shared-state changes

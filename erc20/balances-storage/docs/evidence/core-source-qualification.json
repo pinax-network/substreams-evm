@@ -1,0 +1,596 @@
+[
+  {
+    "address": "0xe22f75f89eb7542aa56dac0dcfc3ef1d6fe9880c",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.5.16+commit.9c3226ce",
+      "fullyQualifiedName": "BEP20USDT.sol:BEP20USDT",
+      "language": "Solidity",
+      "name": "BEP20USDT"
+    },
+    "contract": "0x55d398326f99059ff775485246999027b3197955",
+    "elapsed_seconds": 0.391240916,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x97a48aa4c129657440dafdacd4c836389734d28cc4a0ca7403e68da660a74a59",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "158d36ee6871cf4d79c43d9a461d5143daba3f252e01d76365113e25dd3ad1f8",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 302,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 417,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 423,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 425,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 427,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 429,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 431,
+          "contract": "BEP20USDT.sol:BEP20USDT",
+          "label": "_name",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_string_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x55d398326f99059ff775485246999027b3197955?fields=all",
+    "status": "inspected",
+    "storage_key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+        "pc": 1481,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "f0631b9c649ff251fcbb02d0d557e98bf17fa30c4c8faf2442b194250f6e1631"
+  },
+  {
+    "address": "0xe22f75f89eb7542aa56dac0dcfc3ef1d6fe9880c",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.5.16+commit.9c3226ce",
+      "fullyQualifiedName": "BEP20Token.sol:BEP20Token",
+      "language": "Solidity",
+      "name": "BEP20Token"
+    },
+    "contract": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+    "elapsed_seconds": 0.391362375,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x3ad0053f60cb104f6f7e6dcd102b84045e26e444bc334ba254e57bc43497516c",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "1d3922c26a5d1614225c4784adf8ba822df5a8ea647889282a0bbdb211ef8188",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 302,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 417,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 423,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 425,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 427,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 429,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 431,
+          "contract": "BEP20Token.sol:BEP20Token",
+          "label": "_name",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_string_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c?fields=all",
+    "status": "inspected",
+    "storage_key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+        "pc": 1481,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "f0631b9c649ff251fcbb02d0d557e98bf17fa30c4c8faf2442b194250f6e1631"
+  },
+  {
+    "address": "0xe22f75f89eb7542aa56dac0dcfc3ef1d6fe9880c",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        }
+      },
+      "compilerVersion": "0.6.4+commit.1dca32f3",
+      "fullyQualifiedName": "BEP20UpgradeableProxy.sol:BEP20UpgradeableProxy",
+      "language": "Solidity",
+      "name": "BEP20UpgradeableProxy"
+    },
+    "contract": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "elapsed_seconds": 0.389286791,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+    "source_proxy_resolution": {
+      "implementations": [
+        {
+          "address": "0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C",
+          "name": "BEP20TokenImplementation"
+        }
+      ],
+      "isProxy": true,
+      "proxyType": "EIP1967Proxy"
+    },
+    "source_runtime_match": true,
+    "source_sha256": "7a320e9f13c2291566fcab2badd685f9b963cc5a2a0e0e27194b593f05f8817a",
+    "source_storage_layout": {
+      "storage": [],
+      "types": null
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d?fields=all",
+    "status": "inspected",
+    "storage_key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+        "pc": 1151,
+        "value": "0x000000000000000000000000d2f93484f2d319194cba95c5171b18c1d8cfd6c4"
+      },
+      {
+        "depth": 1,
+        "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "pc": 1078,
+        "value": "0x000000000000000000000000ba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      },
+      {
+        "depth": 2,
+        "key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+        "pc": 1775,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "62ca6e2df463f76612e60cee11df2b437863022b60329ea03ad53d7dc2ef1f82"
+  },
+  {
+    "address": "0xe22f75f89eb7542aa56dac0dcfc3ef1d6fe9880c",
+    "balance_of": "0",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "block": 122288005,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "libraries": {},
+        "optimizer": {
+          "enabled": true,
+          "runs": 200
+        }
+      },
+      "compilerVersion": "0.6.4+commit.1dca32f3",
+      "fullyQualifiedName": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+      "language": "Solidity",
+      "name": "BEP20TokenImplementation"
+    },
+    "contract": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+    "elapsed_seconds": 0.38944675,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "bcba02a53112f14d561535896a49d246a5bddaaa426d9309d8f664da5612e871",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 321,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_initialized",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 323,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_initializing",
+          "offset": 1,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 399,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 405,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 407,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 409,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_name",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 411,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 413,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 415,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_owner",
+          "offset": 1,
+          "slot": "6",
+          "type": "t_address"
+        },
+        {
+          "astId": 423,
+          "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+          "label": "_mintable",
+          "offset": 21,
+          "slot": "6",
+          "type": "t_bool"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c?fields=all",
+    "status": "inspected",
+    "storage_key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0xe162c5bfff6821bd72a977063a087325a3d81698224fddf2795973222627a0ef",
+        "pc": 1775,
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "storage_word": "0",
+    "tool_language": "Rust",
+    "trace_sha256": "008d9bd7648a3f18d17750d9999aef7dfb2b64008ec57bf828c89343a6a8d623"
+  }
+]

@@ -1,0 +1,3337 @@
+{
+  "elapsed_seconds": 472.008176834,
+  "investigation_complete": true,
+  "observations_sha256": "010cefc143ad5bc06d05b3bb223de095fc9cae6b117b65f0198bd951f5bd61d8",
+  "promoted_layouts": 0,
+  "ranked_blocks": 1024,
+  "ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "reviewed_layouts_sha256": "0cdfd0c757dc33b5261d72f6d68a6cae08364a1378be7d7f4844d0f179a4ba29",
+  "rpc_checks_sha256": "8e631595dc91c9011252bf4e999b1820a74e271cb7f0e58e60948dd272614846",
+  "sampled_blocks": 339,
+  "scope": "Exploratory native tests on sampled active blocks; hypotheses are not verified layouts; no cross-gap carry-forward",
+  "status": "insufficient_samples",
+  "summary": {
+    "rpc_errors": 280,
+    "rpc_mismatches": 7,
+    "rpc_value_checks": 57686,
+    "tested_tokens": 50,
+    "tokens_with_exact_mapper_parity": 0,
+    "tokens_with_matching_candidate": 40
+  },
+  "tokens": [
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x55d398326f99059ff775485246999027b3197955",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 2746,
+        "reference_rows": 10847,
+        "shared_rows": 8101,
+        "storage_only_rows": 0,
+        "storage_rows": 8101,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3083,
+        "reference_rows": 10765,
+        "shared_rows": 7682,
+        "storage_only_rows": 0,
+        "storage_rows": 7682,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288432,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 1,
+      "ranked_reference_rows": 64293,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 31566,
+      "runtime_hashes": [
+        "0x97a48aa4c129657440dafdacd4c836389734d28cc4a0ca7403e68da660a74a59",
+        "0x97a48aa4c129657440dafdacd4c836389734d28cc4a0ca7403e68da660a74a59"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 339,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3083,
+        "reference_rows": 10765,
+        "shared_rows": 7682,
+        "storage_only_rows": 0,
+        "storage_rows": 7682,
+        "value_mismatches": 0
+      },
+      "symbol": "USDT",
+      "hypotheses_count": 831,
+      "candidate_hypothesis": [
+        {
+          "matched": 8101,
+          "mismatched": 0,
+          "nonzero_holders": 3858,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1361,
+        "reference_rows": 3524,
+        "shared_rows": 2163,
+        "storage_only_rows": 0,
+        "storage_rows": 2163,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1232,
+        "reference_rows": 3209,
+        "shared_rows": 1977,
+        "storage_only_rows": 0,
+        "storage_rows": 1977,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288432,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 2,
+      "ranked_reference_rows": 19033,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 8280,
+      "runtime_hashes": [
+        "0xb7d84205eaaf83ce7b3940c6beaad6d22790255e34a9a2b486aa8cdfff118fe6",
+        "0xb7d84205eaaf83ce7b3940c6beaad6d22790255e34a9a2b486aa8cdfff118fe6"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 339,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1232,
+        "reference_rows": 3209,
+        "shared_rows": 1977,
+        "storage_only_rows": 0,
+        "storage_rows": 1977,
+        "value_mismatches": 0
+      },
+      "symbol": "WBNB",
+      "hypotheses_count": 26,
+      "candidate_hypothesis": [
+        {
+          "matched": 2163,
+          "mismatched": 0,
+          "nonzero_holders": 468,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 511,
+        "reference_rows": 1403,
+        "shared_rows": 892,
+        "storage_only_rows": 0,
+        "storage_rows": 892,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 450,
+        "reference_rows": 1188,
+        "shared_rows": 738,
+        "storage_only_rows": 0,
+        "storage_rows": 738,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288450,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 3,
+      "ranked_reference_rows": 7681,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 3260,
+      "runtime_hashes": [
+        "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+        "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 283,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 450,
+        "reference_rows": 1188,
+        "shared_rows": 738,
+        "storage_only_rows": 0,
+        "storage_rows": 738,
+        "value_mismatches": 0
+      },
+      "symbol": "USDC",
+      "hypotheses_count": 50,
+      "candidate_hypothesis": [
+        {
+          "matched": 892,
+          "mismatched": 0,
+          "nonzero_holders": 280,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x45056c2627c9e60753aeef604ee9575709f8e88f",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 8,
+        "reference_rows": 12,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288529,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 4,
+      "ranked_reference_rows": 3026,
+      "rpc_errors": 0,
+      "rpc_mismatches": 2,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0x437e9d0011092604850c1214eb7093f58c91b684c615a7947718411fadd94792",
+        "0x437e9d0011092604850c1214eb7093f58c91b684c615a7947718411fadd94792"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 8,
+      "status": "value_mismatch",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1,
+        "reference_rows": 3,
+        "shared_rows": 2,
+        "storage_only_rows": 0,
+        "storage_rows": 2,
+        "value_mismatches": 0
+      },
+      "symbol": "果蝇人生",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "strict_mapper_error_count": 5,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288068,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288099,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 5,
+        "reference_rows": 9,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288579,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 5,
+      "ranked_reference_rows": 3020,
+      "rpc_errors": 0,
+      "rpc_mismatches": 1,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0xe91321c3bb268a6f9a5b1f34afb1ae93e2f43bb012bc5e26effe2d3578d054c2",
+        "0xe91321c3bb268a6f9a5b1f34afb1ae93e2f43bb012bc5e26effe2d3578d054c2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "value_mismatch",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3003,
+        "reference_rows": 3005,
+        "shared_rows": 2,
+        "storage_only_rows": 0,
+        "storage_rows": 2,
+        "value_mismatches": 0
+      },
+      "symbol": "无头苍蝇",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "strict_mapper_error_count": 4,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288252,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288282,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+      "contract": "0x5c8fb0f805f62cd082c00d9d250a388b543cc453",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 5,
+        "reference_rows": 9,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3007,
+        "reference_rows": 3011,
+        "shared_rows": 4,
+        "storage_only_rows": 0,
+        "storage_rows": 4,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288485,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 6,
+      "ranked_reference_rows": 3020,
+      "rpc_errors": 0,
+      "rpc_mismatches": 1,
+      "rpc_value_checks": 16,
+      "runtime_hashes": [
+        "0xcef7e1ada34a9b61c60c181d7839f16339788d65907fbcdec225702635ef133a",
+        "0xcef7e1ada34a9b61c60c181d7839f16339788d65907fbcdec225702635ef133a"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "value_mismatch",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3003,
+        "reference_rows": 3005,
+        "shared_rows": 2,
+        "storage_only_rows": 0,
+        "storage_rows": 2,
+        "value_mismatches": 0
+      },
+      "symbol": "币神",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 4,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000008"
+        }
+      ],
+      "strict_mapper_error_count": 4,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288171,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288202,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "contract": "0xec22e64c0a16821dc1b457045936c0219b47155e",
+      "exact_mapper_parity": false,
+      "rank": 7,
+      "ranked_reference_rows": 3002,
+      "sampled_active_blocks": 1,
+      "status": "insufficient_samples",
+      "hypotheses_count": 0,
+      "candidate_hypothesis": [],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0x70a163085db5617b700fafeac1c7a2794e41a724",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1151,
+        "reference_rows": 1159,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 743,
+        "reference_rows": 751,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288450,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 8,
+      "ranked_reference_rows": 2940,
+      "rpc_errors": 0,
+      "rpc_mismatches": 1,
+      "rpc_value_checks": 32,
+      "runtime_hashes": [
+        "0x23a2e3eee2a796bd2feb231e814194baf13e34fb3dfbb73a3a2740a383c6c781",
+        "0x23a2e3eee2a796bd2feb231e814194baf13e34fb3dfbb73a3a2740a383c6c781"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 13,
+      "status": "value_mismatch",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 738,
+        "reference_rows": 744,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "symbol": "永生果蝇",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 2,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        }
+      ],
+      "strict_mapper_error_count": 4,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288096,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288398,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0xe485050ef170385eb3e1efe4de4e47aaf7017c79",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1028,
+        "reference_rows": 1034,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 714,
+        "reference_rows": 724,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288465,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 9,
+      "ranked_reference_rows": 2698,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 32,
+      "runtime_hashes": [
+        "0xf9214c8ab1e35e00300c1027453408bb62585bc5da52694f23edfb0586ddabda",
+        "0xf9214c8ab1e35e00300c1027453408bb62585bc5da52694f23edfb0586ddabda"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 11,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 712,
+        "reference_rows": 720,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "symbol": "万福金安",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 6,
+          "mismatched": 0,
+          "nonzero_holders": 3,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        }
+      ],
+      "strict_mapper_error_count": 2,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288352,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288884,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": true
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x7c8d5502b544ddaf8852fc46d1174e34876d545c",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 23,
+        "reference_rows": 749,
+        "shared_rows": 726,
+        "storage_only_rows": 0,
+        "storage_rows": 726,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 38,
+        "reference_rows": 375,
+        "shared_rows": 337,
+        "storage_only_rows": 0,
+        "storage_rows": 337,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288414,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 10,
+      "ranked_reference_rows": 2401,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 2126,
+      "runtime_hashes": [
+        "0x5e8ff1005307d5f9da9595343cb925437ba8c146898e89e217033e3eecdcdbf9",
+        "0x5e8ff1005307d5f9da9595343cb925437ba8c146898e89e217033e3eecdcdbf9"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 27,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 21,
+        "reference_rows": 347,
+        "shared_rows": 326,
+        "storage_only_rows": 0,
+        "storage_rows": 326,
+        "value_mismatches": 0
+      },
+      "symbol": "BNC4",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 726,
+          "mismatched": 0,
+          "nonzero_holders": 710,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 7,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288025,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288414,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": true
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 151,
+        "reference_rows": 332,
+        "shared_rows": 181,
+        "storage_only_rows": 0,
+        "storage_rows": 181,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 161,
+        "reference_rows": 347,
+        "shared_rows": 186,
+        "storage_only_rows": 0,
+        "storage_rows": 186,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288407,
+      "mapper_configuration": "caller-supplied reviewed layout",
+      "rank": 11,
+      "ranked_reference_rows": 2034,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 734,
+      "runtime_hashes": [
+        "0x3ad0053f60cb104f6f7e6dcd102b84045e26e444bc334ba254e57bc43497516c",
+        "0x3ad0053f60cb104f6f7e6dcd102b84045e26e444bc334ba254e57bc43497516c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 114,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 161,
+        "reference_rows": 347,
+        "shared_rows": 186,
+        "storage_only_rows": 0,
+        "storage_rows": 186,
+        "value_mismatches": 0
+      },
+      "symbol": "BTCB",
+      "hypotheses_count": 14,
+      "candidate_hypothesis": [
+        {
+          "matched": 181,
+          "mismatched": 0,
+          "nonzero_holders": 52,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0xeec6574eabba52bac3f0277f2cd5ac7e67197886",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 54,
+        "reference_rows": 324,
+        "shared_rows": 270,
+        "storage_only_rows": 0,
+        "storage_rows": 270,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 57,
+        "reference_rows": 194,
+        "shared_rows": 137,
+        "storage_only_rows": 0,
+        "storage_rows": 137,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288369,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 12,
+      "ranked_reference_rows": 1870,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 814,
+      "runtime_hashes": [
+        "0x33931281671f898cf8a47a09448a435833c9cd31a21654081f4bb2bba6806f46",
+        "0x33931281671f898cf8a47a09448a435833c9cd31a21654081f4bb2bba6806f46"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 53,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 47,
+        "reference_rows": 171,
+        "shared_rows": 124,
+        "storage_only_rows": 0,
+        "storage_rows": 124,
+        "value_mismatches": 0
+      },
+      "symbol": "KII",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 270,
+          "mismatched": 0,
+          "nonzero_holders": 78,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 5,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288047,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288180,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 84,
+        "reference_rows": 198,
+        "shared_rows": 114,
+        "storage_only_rows": 0,
+        "storage_rows": 114,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 121,
+        "reference_rows": 269,
+        "shared_rows": 148,
+        "storage_only_rows": 0,
+        "storage_rows": 148,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288333,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 13,
+      "ranked_reference_rows": 1365,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 524,
+      "runtime_hashes": [
+        "0x24d639ec3ab0dfc14d482da65b0dfc3c325351d938d8cfffa4aa47e4ac8f0e65",
+        "0x24d639ec3ab0dfc14d482da65b0dfc3c325351d938d8cfffa4aa47e4ac8f0e65"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 75,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 48,
+        "reference_rows": 115,
+        "shared_rows": 67,
+        "storage_only_rows": 0,
+        "storage_rows": 67,
+        "value_mismatches": 0
+      },
+      "symbol": "ETH",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 114,
+          "mismatched": 0,
+          "nonzero_holders": 42,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 20,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288012,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288023,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 86,
+        "reference_rows": 215,
+        "shared_rows": 129,
+        "storage_only_rows": 0,
+        "storage_rows": 129,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 91,
+        "reference_rows": 212,
+        "shared_rows": 121,
+        "storage_only_rows": 0,
+        "storage_rows": 121,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288462,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 14,
+      "ranked_reference_rows": 1112,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 500,
+      "runtime_hashes": [
+        "0xffc1e02a7c786f856f8cb5f8767858426242c4a197b5aaafb9e11aa04dcf46e2",
+        "0xffc1e02a7c786f856f8cb5f8767858426242c4a197b5aaafb9e11aa04dcf46e2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 81,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 73,
+        "reference_rows": 179,
+        "shared_rows": 106,
+        "storage_only_rows": 0,
+        "storage_rows": 106,
+        "value_mismatches": 0
+      },
+      "symbol": "USD1",
+      "hypotheses_count": 7,
+      "candidate_hypothesis": [
+        {
+          "matched": 129,
+          "mismatched": 0,
+          "nonzero_holders": 38,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 14,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288016,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288027,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x29a864a830528667e571c7a8f5f722cf704753c2",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 21,
+        "reference_rows": 63,
+        "shared_rows": 42,
+        "storage_only_rows": 0,
+        "storage_rows": 42,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 21,
+        "reference_rows": 66,
+        "shared_rows": 45,
+        "storage_only_rows": 0,
+        "storage_rows": 45,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288733,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 15,
+      "ranked_reference_rows": 1081,
+      "rpc_errors": 1,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 174,
+      "runtime_hashes": [
+        "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500"
+      ],
+      "runtime_stable_at_boundaries": false,
+      "sampled_active_blocks": 38,
+      "status": "rpc_unresolved",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 18,
+        "reference_rows": 61,
+        "shared_rows": 43,
+        "storage_only_rows": 0,
+        "storage_rows": 43,
+        "value_mismatches": 0
+      },
+      "symbol": "巨蟹座链",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 42,
+          "mismatched": 0,
+          "nonzero_holders": 13,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 3,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288338,
+          "error": "configured token or implementation code changed; requalify layout",
+          "holdout": false
+        },
+        {
+          "block": 122288606,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x66661c7229901f568f16bd1551b3ba826f83ce49",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 70,
+        "reference_rows": 168,
+        "shared_rows": 98,
+        "storage_only_rows": 0,
+        "storage_rows": 98,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 76,
+        "reference_rows": 177,
+        "shared_rows": 101,
+        "storage_only_rows": 0,
+        "storage_rows": 101,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288538,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 16,
+      "ranked_reference_rows": 1043,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 398,
+      "runtime_hashes": [
+        "0xcf28820f219837cba7e1fa5b2cdc52fc75a86878a350d331a97adfc96941a86e",
+        "0xcf28820f219837cba7e1fa5b2cdc52fc75a86878a350d331a97adfc96941a86e"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 72,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 58,
+        "reference_rows": 128,
+        "shared_rows": 70,
+        "storage_only_rows": 0,
+        "storage_rows": 70,
+        "value_mismatches": 0
+      },
+      "symbol": "DEBIT",
+      "hypotheses_count": 5,
+      "candidate_hypothesis": [
+        {
+          "matched": 98,
+          "mismatched": 0,
+          "nonzero_holders": 17,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 18,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288019,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288046,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3,
+        "reference_rows": 9,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1006,
+        "reference_rows": 1012,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288560,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 17,
+      "ranked_reference_rows": 1021,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 24,
+      "runtime_hashes": [
+        "0x6062780cf2a0f7631e87e0faedbf645424391c3c43ff162b334525748e6efd10",
+        "0x6062780cf2a0f7631e87e0faedbf645424391c3c43ff162b334525748e6efd10"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 7,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 1006,
+        "reference_rows": 1012,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "symbol": "AXIS",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 6,
+          "mismatched": 0,
+          "nonzero_holders": 4,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x9dc44ae5be187eca9e2a67e33f27a4c91cea1223",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 97,
+        "reference_rows": 200,
+        "shared_rows": 103,
+        "storage_only_rows": 0,
+        "storage_rows": 103,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 96,
+        "reference_rows": 194,
+        "shared_rows": 98,
+        "storage_only_rows": 0,
+        "storage_rows": 98,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288326,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 18,
+      "ranked_reference_rows": 1006,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 402,
+      "runtime_hashes": [
+        "0x9c9b0b14f80ef1c701c9fc5b9421c85092d8ddc3e0b35a78e3404d0f109c6a56",
+        "0x9c9b0b14f80ef1c701c9fc5b9421c85092d8ddc3e0b35a78e3404d0f109c6a56"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 88,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 96,
+        "reference_rows": 194,
+        "shared_rows": 98,
+        "storage_only_rows": 0,
+        "storage_rows": 98,
+        "value_mismatches": 0
+      },
+      "symbol": "POWER",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 103,
+          "mismatched": 0,
+          "nonzero_holders": 20,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 3,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288014,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288068,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xc69b16cf18cea1e5d0bb6a1a9db802097790ddd2",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 72,
+        "reference_rows": 168,
+        "shared_rows": 96,
+        "storage_only_rows": 0,
+        "storage_rows": 96,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 82,
+        "reference_rows": 181,
+        "shared_rows": 99,
+        "storage_only_rows": 0,
+        "storage_rows": 99,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288508,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 19,
+      "ranked_reference_rows": 994,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 390,
+      "runtime_hashes": [
+        "0x25df292a8bd90f6b87ceff9510ad10460b3570d8f0c53b40a6c7301be648431e",
+        "0x25df292a8bd90f6b87ceff9510ad10460b3570d8f0c53b40a6c7301be648431e"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 76,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 68,
+        "reference_rows": 149,
+        "shared_rows": 81,
+        "storage_only_rows": 0,
+        "storage_rows": 81,
+        "value_mismatches": 0
+      },
+      "symbol": "CNPY",
+      "hypotheses_count": 4,
+      "candidate_hypothesis": [
+        {
+          "matched": 96,
+          "mismatched": 0,
+          "nonzero_holders": 19,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 9,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288053,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288117,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "contract": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 72,
+        "reference_rows": 187,
+        "shared_rows": 115,
+        "storage_only_rows": 0,
+        "storage_rows": 115,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 81,
+        "reference_rows": 214,
+        "shared_rows": 133,
+        "storage_only_rows": 0,
+        "storage_rows": 133,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288429,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 20,
+      "ranked_reference_rows": 975,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 496,
+      "runtime_hashes": [
+        "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 63,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 34,
+        "reference_rows": 93,
+        "shared_rows": 59,
+        "storage_only_rows": 0,
+        "storage_rows": 59,
+        "value_mismatches": 0
+      },
+      "symbol": "QQQB",
+      "hypotheses_count": 14,
+      "candidate_hypothesis": [
+        {
+          "matched": 115,
+          "mismatched": 0,
+          "nonzero_holders": 45,
+          "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00"
+        }
+      ],
+      "strict_mapper_error_count": 30,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288008,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288014,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 75,
+        "reference_rows": 180,
+        "shared_rows": 105,
+        "storage_only_rows": 0,
+        "storage_rows": 105,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 66,
+        "reference_rows": 161,
+        "shared_rows": 95,
+        "storage_only_rows": 0,
+        "storage_rows": 95,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288450,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 21,
+      "ranked_reference_rows": 936,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 400,
+      "runtime_hashes": [
+        "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 74,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 27,
+        "reference_rows": 81,
+        "shared_rows": 54,
+        "storage_only_rows": 0,
+        "storage_rows": 54,
+        "value_mismatches": 0
+      },
+      "symbol": "priceless",
+      "hypotheses_count": 18,
+      "candidate_hypothesis": [
+        {
+          "matched": 105,
+          "mismatched": 0,
+          "nonzero_holders": 34,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 31,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288012,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288018,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x1922cf6ef99e41591a33687816baee1d5efc6db7",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 6,
+        "reference_rows": 14,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 7,
+        "reference_rows": 17,
+        "shared_rows": 10,
+        "storage_only_rows": 0,
+        "storage_rows": 10,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288491,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 22,
+      "ranked_reference_rows": 933,
+      "rpc_errors": 0,
+      "rpc_mismatches": 2,
+      "rpc_value_checks": 36,
+      "runtime_hashes": [
+        "0xc90d869093dead20f59f1723726549cf3421a80c589be795ace5ec3a7fe1ee1c",
+        "0xc90d869093dead20f59f1723726549cf3421a80c589be795ace5ec3a7fe1ee1c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 9,
+      "status": "value_mismatch",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 3,
+        "reference_rows": 9,
+        "shared_rows": 6,
+        "storage_only_rows": 0,
+        "storage_rows": 6,
+        "value_mismatches": 0
+      },
+      "symbol": "Arc主网",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 5,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 4,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288060,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288385,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x10d4183389e99233db3cc981c43443ebd28ebd5e",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 82,
+        "reference_rows": 159,
+        "shared_rows": 77,
+        "storage_only_rows": 0,
+        "storage_rows": 77,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 93,
+        "reference_rows": 175,
+        "shared_rows": 82,
+        "storage_only_rows": 0,
+        "storage_rows": 82,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288414,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 23,
+      "ranked_reference_rows": 913,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 318,
+      "runtime_hashes": [
+        "0xe0c8c14c691a297e13d820af7b41a3a32cbf8f8844da9014e16c72f426b81ff5",
+        "0xe0c8c14c691a297e13d820af7b41a3a32cbf8f8844da9014e16c72f426b81ff5"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 67,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 93,
+        "reference_rows": 175,
+        "shared_rows": 82,
+        "storage_only_rows": 0,
+        "storage_rows": 82,
+        "value_mismatches": 0
+      },
+      "symbol": "DGAI",
+      "hypotheses_count": 4,
+      "candidate_hypothesis": [
+        {
+          "matched": 77,
+          "mismatched": 0,
+          "nonzero_holders": 18,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 2,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288086,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288259,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0xce24439f2d9c6a2289f741120fe202248b666666",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 63,
+        "reference_rows": 170,
+        "shared_rows": 107,
+        "storage_only_rows": 0,
+        "storage_rows": 107,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 64,
+        "reference_rows": 163,
+        "shared_rows": 99,
+        "storage_only_rows": 0,
+        "storage_rows": 99,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288467,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 24,
+      "ranked_reference_rows": 883,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 412,
+      "runtime_hashes": [
+        "0xae12b1d61f7ed4febf649ccf319cb49a0e921cca3739dcb01b47d316049d46ff",
+        "0xae12b1d61f7ed4febf649ccf319cb49a0e921cca3739dcb01b47d316049d46ff"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 64,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 37,
+        "reference_rows": 106,
+        "shared_rows": 69,
+        "storage_only_rows": 0,
+        "storage_rows": 69,
+        "value_mismatches": 0
+      },
+      "symbol": "U",
+      "hypotheses_count": 8,
+      "candidate_hypothesis": [
+        {
+          "matched": 107,
+          "mismatched": 0,
+          "nonzero_holders": 16,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 18,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288068,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288109,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x2c3a8ee94ddd97244a93bc48298f97d2c412f7db",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 65,
+        "reference_rows": 134,
+        "shared_rows": 69,
+        "storage_only_rows": 0,
+        "storage_rows": 69,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 74,
+        "reference_rows": 149,
+        "shared_rows": 75,
+        "storage_only_rows": 0,
+        "storage_rows": 75,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288349,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 25,
+      "ranked_reference_rows": 843,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 288,
+      "runtime_hashes": [
+        "0x0a459be37738dedba9216fe860d6e213fd7b39c6cc2f9e0ec2af7b162d82e0c0",
+        "0x0a459be37738dedba9216fe860d6e213fd7b39c6cc2f9e0ec2af7b162d82e0c0"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 65,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 74,
+        "reference_rows": 149,
+        "shared_rows": 75,
+        "storage_only_rows": 0,
+        "storage_rows": 75,
+        "value_mismatches": 0
+      },
+      "symbol": "AKE",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 69,
+          "mismatched": 0,
+          "nonzero_holders": 18,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 2,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288061,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288333,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0xcccbd077b612a42f896b53e24a11c36d32117777",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 46,
+        "reference_rows": 251,
+        "shared_rows": 205,
+        "storage_only_rows": 0,
+        "storage_rows": 205,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 48,
+        "reference_rows": 105,
+        "shared_rows": 57,
+        "storage_only_rows": 0,
+        "storage_rows": 57,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288516,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 26,
+      "ranked_reference_rows": 802,
+      "rpc_errors": 143,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 524,
+      "runtime_hashes": [
+        "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+      ],
+      "runtime_stable_at_boundaries": false,
+      "sampled_active_blocks": 68,
+      "status": "rpc_unresolved",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 27,
+        "reference_rows": 82,
+        "shared_rows": 55,
+        "storage_only_rows": 0,
+        "storage_rows": 55,
+        "value_mismatches": 0
+      },
+      "symbol": "脑鼠",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 205,
+          "mismatched": 0,
+          "nonzero_holders": 169,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 14,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288172,
+          "error": "configured token or implementation code changed; requalify layout",
+          "holdout": false
+        },
+        {
+          "block": 122288247,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 68,
+        "reference_rows": 161,
+        "shared_rows": 93,
+        "storage_only_rows": 0,
+        "storage_rows": 93,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 53,
+        "reference_rows": 117,
+        "shared_rows": 64,
+        "storage_only_rows": 0,
+        "storage_rows": 64,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288380,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 27,
+      "ranked_reference_rows": 748,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 314,
+      "runtime_hashes": [
+        "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 54,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 35,
+        "reference_rows": 82,
+        "shared_rows": 47,
+        "storage_only_rows": 0,
+        "storage_rows": 47,
+        "value_mismatches": 0
+      },
+      "symbol": "NVDAB",
+      "hypotheses_count": 7,
+      "candidate_hypothesis": [
+        {
+          "matched": 93,
+          "mismatched": 0,
+          "nonzero_holders": 28,
+          "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00"
+        }
+      ],
+      "strict_mapper_error_count": 13,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288036,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288054,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x8e31486873aa8a20cf5706d8445496e6d5f17777",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 71,
+        "reference_rows": 149,
+        "shared_rows": 78,
+        "storage_only_rows": 0,
+        "storage_rows": 78,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 63,
+        "reference_rows": 145,
+        "shared_rows": 82,
+        "storage_only_rows": 0,
+        "storage_rows": 82,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288299,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 28,
+      "ranked_reference_rows": 738,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 320,
+      "runtime_hashes": [
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 94,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 39,
+        "reference_rows": 119,
+        "shared_rows": 80,
+        "storage_only_rows": 0,
+        "storage_rows": 80,
+        "value_mismatches": 0
+      },
+      "symbol": "XIJINPING",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 78,
+          "mismatched": 0,
+          "nonzero_holders": 24,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 20,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288016,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288034,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x8d4967f460282145ff1ceca9bf78e1c2a358d176",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 48,
+        "reference_rows": 140,
+        "shared_rows": 92,
+        "storage_only_rows": 0,
+        "storage_rows": 92,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 48,
+        "reference_rows": 140,
+        "shared_rows": 92,
+        "storage_only_rows": 0,
+        "storage_rows": 92,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288461,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 29,
+      "ranked_reference_rows": 720,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 368,
+      "runtime_hashes": [
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500",
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 80,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 36,
+        "reference_rows": 126,
+        "shared_rows": 90,
+        "storage_only_rows": 0,
+        "storage_rows": 90,
+        "value_mismatches": 0
+      },
+      "symbol": "金融",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 92,
+          "mismatched": 0,
+          "nonzero_holders": 18,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 8,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288044,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288207,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xcc43a8d700162b344b787d757a1b7fed32b78df3",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 43,
+        "reference_rows": 121,
+        "shared_rows": 78,
+        "storage_only_rows": 0,
+        "storage_rows": 78,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 39,
+        "reference_rows": 119,
+        "shared_rows": 80,
+        "storage_only_rows": 0,
+        "storage_rows": 80,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288461,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 30,
+      "ranked_reference_rows": 713,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 316,
+      "runtime_hashes": [
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500",
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 70,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 33,
+        "reference_rows": 107,
+        "shared_rows": 74,
+        "storage_only_rows": 0,
+        "storage_rows": 74,
+        "value_mismatches": 0
+      },
+      "symbol": "双子座火",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 78,
+          "mismatched": 0,
+          "nonzero_holders": 21,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 6,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288237,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288240,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 60,
+        "reference_rows": 134,
+        "shared_rows": 74,
+        "storage_only_rows": 0,
+        "storage_rows": 74,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 72,
+        "reference_rows": 167,
+        "shared_rows": 95,
+        "storage_only_rows": 0,
+        "storage_rows": 95,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288392,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 31,
+      "ranked_reference_rows": 672,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 338,
+      "runtime_hashes": [
+        "0xef7c92fa9a420641957d53a1701086b4a99cea09458d0bc47ccfe1b455b8f529",
+        "0xef7c92fa9a420641957d53a1701086b4a99cea09458d0bc47ccfe1b455b8f529"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 47,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 31,
+        "reference_rows": 72,
+        "shared_rows": 41,
+        "storage_only_rows": 0,
+        "storage_rows": 41,
+        "value_mismatches": 0
+      },
+      "symbol": "ZEC",
+      "hypotheses_count": 6,
+      "candidate_hypothesis": [
+        {
+          "matched": 74,
+          "mismatched": 0,
+          "nonzero_holders": 23,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 15,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288043,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288165,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 51,
+        "reference_rows": 130,
+        "shared_rows": 79,
+        "storage_only_rows": 0,
+        "storage_rows": 79,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 57,
+        "reference_rows": 121,
+        "shared_rows": 64,
+        "storage_only_rows": 0,
+        "storage_rows": 64,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288473,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 32,
+      "ranked_reference_rows": 661,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 286,
+      "runtime_hashes": [
+        "0xd2417b9d5d4dab7c4b4aeeb9913a3e3e8d25c1a426849a8abdb5575d96e5dfcd",
+        "0xd2417b9d5d4dab7c4b4aeeb9913a3e3e8d25c1a426849a8abdb5575d96e5dfcd"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 51,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 51,
+        "reference_rows": 112,
+        "shared_rows": 61,
+        "storage_only_rows": 0,
+        "storage_rows": 61,
+        "value_mismatches": 0
+      },
+      "symbol": "BUSD",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 79,
+          "mismatched": 0,
+          "nonzero_holders": 29,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 3,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288066,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288293,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x2bf97abb0acab18157ad16fa3cb49396ff888888",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 33,
+        "reference_rows": 101,
+        "shared_rows": 68,
+        "storage_only_rows": 0,
+        "storage_rows": 68,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 33,
+        "reference_rows": 100,
+        "shared_rows": 67,
+        "storage_only_rows": 0,
+        "storage_rows": 67,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288500,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 33,
+      "ranked_reference_rows": 648,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 270,
+      "runtime_hashes": [
+        "0xc1328264f42feff0f9aaf7abdaf7a9ac827bd304f6cbf7089b1aedb6e9291058",
+        "0xc1328264f42feff0f9aaf7abdaf7a9ac827bd304f6cbf7089b1aedb6e9291058"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 66,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 0,
+        "reference_rows": 0,
+        "shared_rows": 0,
+        "storage_only_rows": 0,
+        "storage_rows": 0,
+        "value_mismatches": 0
+      },
+      "symbol": "XERA",
+      "hypotheses_count": 5,
+      "candidate_hypothesis": [
+        {
+          "matched": 68,
+          "mismatched": 0,
+          "nonzero_holders": 5,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 66,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288008,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288014,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0x6067490d05f3cf2fdffc0e353b1f5fd6e5ccdf70",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 106,
+        "shared_rows": 66,
+        "storage_only_rows": 0,
+        "storage_rows": 66,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 125,
+        "shared_rows": 85,
+        "storage_only_rows": 0,
+        "storage_rows": 85,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288392,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 34,
+      "ranked_reference_rows": 622,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 302,
+      "runtime_hashes": [
+        "0x93c3c347309df533b875c5c61cb45b46637628ad7d8fcbbe8473ea5ab92a9996",
+        "0x93c3c347309df533b875c5c61cb45b46637628ad7d8fcbbe8473ea5ab92a9996"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 41,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 29,
+        "reference_rows": 85,
+        "shared_rows": 56,
+        "storage_only_rows": 0,
+        "storage_rows": 56,
+        "value_mismatches": 0
+      },
+      "symbol": "MMPRO",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 66,
+          "mismatched": 0,
+          "nonzero_holders": 18,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        }
+      ],
+      "strict_mapper_error_count": 8,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288259,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288291,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x000ae314e2a2172a039b26378814c252734f556a",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 46,
+        "reference_rows": 112,
+        "shared_rows": 66,
+        "storage_only_rows": 0,
+        "storage_rows": 66,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 50,
+        "reference_rows": 125,
+        "shared_rows": 75,
+        "storage_only_rows": 0,
+        "storage_rows": 75,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288421,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 35,
+      "ranked_reference_rows": 611,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 282,
+      "runtime_hashes": [
+        "0x945cdf9ce612f36491a1d5257fa2f4bad29d9bc5aac314cb1dddaf61b3211a40",
+        "0x945cdf9ce612f36491a1d5257fa2f4bad29d9bc5aac314cb1dddaf61b3211a40"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 45,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 46,
+        "reference_rows": 107,
+        "shared_rows": 61,
+        "storage_only_rows": 0,
+        "storage_rows": 61,
+        "value_mismatches": 0
+      },
+      "symbol": "ASTER",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 66,
+          "mismatched": 0,
+          "nonzero_holders": 18,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 3,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288156,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288881,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": true
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x8d65744527f55d0b2338350912d5c99a81ddf0e2",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 118,
+        "shared_rows": 78,
+        "storage_only_rows": 0,
+        "storage_rows": 78,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 41,
+        "reference_rows": 114,
+        "shared_rows": 73,
+        "storage_only_rows": 0,
+        "storage_rows": 73,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288487,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 36,
+      "ranked_reference_rows": 602,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 302,
+      "runtime_hashes": [
+        "0x0d6d2a0e313361ae0b74ac249451cda28b761e541032f9c6e2e2c96eecffbbdf",
+        "0x0d6d2a0e313361ae0b74ac249451cda28b761e541032f9c6e2e2c96eecffbbdf"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 50,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 9,
+        "reference_rows": 32,
+        "shared_rows": 23,
+        "storage_only_rows": 0,
+        "storage_rows": 23,
+        "value_mismatches": 0
+      },
+      "symbol": "Pro",
+      "hypotheses_count": 12,
+      "candidate_hypothesis": [
+        {
+          "matched": 78,
+          "mismatched": 0,
+          "nonzero_holders": 27,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 37,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288007,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288026,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x1dc6cbcf7da108e58f144f30d47d5e579d467777",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 55,
+        "reference_rows": 121,
+        "shared_rows": 66,
+        "storage_only_rows": 0,
+        "storage_rows": 66,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 52,
+        "reference_rows": 126,
+        "shared_rows": 74,
+        "storage_only_rows": 0,
+        "storage_rows": 74,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288166,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 37,
+      "ranked_reference_rows": 581,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 280,
+      "runtime_hashes": [
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 79,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 34,
+        "reference_rows": 106,
+        "shared_rows": 72,
+        "storage_only_rows": 0,
+        "storage_rows": 72,
+        "value_mismatches": 0
+      },
+      "symbol": "万事币",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 66,
+          "mismatched": 0,
+          "nonzero_holders": 21,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 14,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288017,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288025,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x9558a9254890b2a8b057a789f413631b9084f4a3",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 49,
+        "reference_rows": 119,
+        "shared_rows": 70,
+        "storage_only_rows": 0,
+        "storage_rows": 70,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 45,
+        "reference_rows": 140,
+        "shared_rows": 95,
+        "storage_only_rows": 0,
+        "storage_rows": 95,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288737,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 38,
+      "ranked_reference_rows": 577,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 330,
+      "runtime_hashes": [
+        "0x153440fe8a55e5236ed805838ecd1b9e6eef9cc533c3ee9d0dafd832003205bf",
+        "0x153440fe8a55e5236ed805838ecd1b9e6eef9cc533c3ee9d0dafd832003205bf"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 46,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 44,
+        "reference_rows": 133,
+        "shared_rows": 89,
+        "storage_only_rows": 0,
+        "storage_rows": 89,
+        "value_mismatches": 0
+      },
+      "symbol": "AIN",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 70,
+          "mismatched": 0,
+          "nonzero_holders": 9,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 2,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288016,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288818,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": true
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x000000000000000000000000000000000000000000000000000000000000000e",
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 69,
+        "reference_rows": 103,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 71,
+        "reference_rows": 105,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288535,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 39,
+      "ranked_reference_rows": 573,
+      "rpc_errors": 136,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 136,
+      "runtime_hashes": [
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2",
+        "0xd6e00b8c8f24fb40df4eaeb95fcce7f605177339f239d1b04b2c21664c1b3ab2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 64,
+      "status": "rpc_unresolved",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 0,
+        "reference_rows": 0,
+        "shared_rows": 0,
+        "storage_only_rows": 0,
+        "storage_rows": 0,
+        "value_mismatches": 0
+      },
+      "symbol": "vUSDT",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 34,
+          "mismatched": 0,
+          "nonzero_holders": 2,
+          "slot": "0x000000000000000000000000000000000000000000000000000000000000000e"
+        }
+      ],
+      "strict_mapper_error_count": 64,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288010,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288011,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "contract": "0x3e26ff1d7c6f72c5dbb6f6ac3833ccffec0f7777",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 55,
+        "reference_rows": 123,
+        "shared_rows": 68,
+        "storage_only_rows": 0,
+        "storage_rows": 68,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 48,
+        "reference_rows": 122,
+        "shared_rows": 74,
+        "storage_only_rows": 0,
+        "storage_rows": 74,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288174,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 40,
+      "ranked_reference_rows": 563,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 284,
+      "runtime_hashes": [
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 79,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 36,
+        "reference_rows": 110,
+        "shared_rows": 74,
+        "storage_only_rows": 0,
+        "storage_rows": 74,
+        "value_mismatches": 0
+      },
+      "symbol": "脑鼠",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 68,
+          "mismatched": 0,
+          "nonzero_holders": 28,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+        }
+      ],
+      "strict_mapper_error_count": 12,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288008,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288015,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xe448283a8b6331ef5061b35a45ba99fef9db0bd7",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 108,
+        "shared_rows": 68,
+        "storage_only_rows": 0,
+        "storage_rows": 68,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 34,
+        "reference_rows": 105,
+        "shared_rows": 71,
+        "storage_only_rows": 0,
+        "storage_rows": 71,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288299,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 41,
+      "ranked_reference_rows": 550,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 278,
+      "runtime_hashes": [
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500",
+        "0xb4748757c11589b797d709cb055fac974dcce3d9c75522b9373aeaf91669d500"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 61,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 31,
+        "reference_rows": 102,
+        "shared_rows": 71,
+        "storage_only_rows": 0,
+        "storage_rows": 71,
+        "value_mismatches": 0
+      },
+      "symbol": "BRIN",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 68,
+          "mismatched": 0,
+          "nonzero_holders": 17,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 6,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288044,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288192,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x92aa03137385f18539301349dcfc9ebc923ffb10",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 98,
+        "shared_rows": 58,
+        "storage_only_rows": 0,
+        "storage_rows": 58,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 43,
+        "reference_rows": 93,
+        "shared_rows": 50,
+        "storage_only_rows": 0,
+        "storage_rows": 50,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288221,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 42,
+      "ranked_reference_rows": 543,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 216,
+      "runtime_hashes": [
+        "0x5d73a81f3adf44803c5e600a48a21f32c52a1db118a1f2b00925f53ce01e3e98",
+        "0x5d73a81f3adf44803c5e600a48a21f32c52a1db118a1f2b00925f53ce01e3e98"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 40,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 43,
+        "reference_rows": 93,
+        "shared_rows": 50,
+        "storage_only_rows": 0,
+        "storage_rows": 50,
+        "value_mismatches": 0
+      },
+      "symbol": "SKYAI",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 58,
+          "mismatched": 0,
+          "nonzero_holders": 14,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xeccbb861c0dda7efd964010085488b69317e4444",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 29,
+        "reference_rows": 63,
+        "shared_rows": 34,
+        "storage_only_rows": 0,
+        "storage_rows": 34,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 30,
+        "reference_rows": 71,
+        "shared_rows": 41,
+        "storage_only_rows": 0,
+        "storage_rows": 41,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288604,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 43,
+      "ranked_reference_rows": 523,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 150,
+      "runtime_hashes": [
+        "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 24,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 30,
+        "reference_rows": 71,
+        "shared_rows": 41,
+        "storage_only_rows": 0,
+        "storage_rows": 41,
+        "value_mismatches": 0
+      },
+      "symbol": "龙虾",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 34,
+          "mismatched": 0,
+          "nonzero_holders": 15,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 1,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288033,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "contract": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 37,
+        "reference_rows": 78,
+        "shared_rows": 41,
+        "storage_only_rows": 0,
+        "storage_rows": 41,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 45,
+        "reference_rows": 99,
+        "shared_rows": 54,
+        "storage_only_rows": 0,
+        "storage_rows": 54,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288311,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 44,
+      "ranked_reference_rows": 515,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 190,
+      "runtime_hashes": [
+        "0x21b2b23f1103cfdca4d9dd3ba0480364852b6cc3c71497a1f3f0bd7d4b56264c",
+        "0x21b2b23f1103cfdca4d9dd3ba0480364852b6cc3c71497a1f3f0bd7d4b56264c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 34,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 33,
+        "reference_rows": 83,
+        "shared_rows": 50,
+        "storage_only_rows": 0,
+        "storage_rows": 50,
+        "value_mismatches": 0
+      },
+      "symbol": "Cake",
+      "hypotheses_count": 3,
+      "candidate_hypothesis": [
+        {
+          "matched": 41,
+          "mismatched": 0,
+          "nonzero_holders": 23,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "strict_mapper_error_count": 7,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288131,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288165,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "contract": "0x0e63b9c287e32a05e6b9ab8ee8df88a2760225a9",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 35,
+        "reference_rows": 80,
+        "shared_rows": 45,
+        "storage_only_rows": 0,
+        "storage_rows": 45,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 40,
+        "reference_rows": 100,
+        "shared_rows": 60,
+        "storage_only_rows": 0,
+        "storage_rows": 60,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288464,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 45,
+      "ranked_reference_rows": 496,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 210,
+      "runtime_hashes": [
+        "0x3db252c719f84a07c25453e236f371e2a9428a7fb97e113b869c8d961d02cee2",
+        "0x3db252c719f84a07c25453e236f371e2a9428a7fb97e113b869c8d961d02cee2"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 35,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 30,
+        "reference_rows": 70,
+        "shared_rows": 40,
+        "storage_only_rows": 0,
+        "storage_rows": 40,
+        "value_mismatches": 0
+      },
+      "symbol": "PIEVERSE",
+      "hypotheses_count": 2,
+      "candidate_hypothesis": [
+        {
+          "matched": 45,
+          "mismatched": 0,
+          "nonzero_holders": 8,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        }
+      ],
+      "strict_mapper_error_count": 9,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288421,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288423,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xe27023ef180541ce8dce4f507c7914b1f59fd96c",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 31,
+        "reference_rows": 96,
+        "shared_rows": 65,
+        "storage_only_rows": 0,
+        "storage_rows": 65,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 30,
+        "reference_rows": 95,
+        "shared_rows": 65,
+        "storage_only_rows": 0,
+        "storage_rows": 65,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288389,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 46,
+      "ranked_reference_rows": 493,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 260,
+      "runtime_hashes": [
+        "0xaadedd52abe1ce923797199fb848ca95c9994832e153335e10bbc8dd44756f87",
+        "0xaadedd52abe1ce923797199fb848ca95c9994832e153335e10bbc8dd44756f87"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 60,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 30,
+        "reference_rows": 95,
+        "shared_rows": 65,
+        "storage_only_rows": 0,
+        "storage_rows": 65,
+        "value_mismatches": 0
+      },
+      "symbol": "FTS",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 65,
+          "mismatched": 0,
+          "nonzero_holders": 35,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x595e21b20e78674f8a64c1566a20b2b316bc3511",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 35,
+        "reference_rows": 94,
+        "shared_rows": 59,
+        "storage_only_rows": 0,
+        "storage_rows": 59,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 37,
+        "reference_rows": 88,
+        "shared_rows": 51,
+        "storage_only_rows": 0,
+        "storage_rows": 51,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288465,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 47,
+      "ranked_reference_rows": 483,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 220,
+      "runtime_hashes": [
+        "0xe7a43f6a2fa05dd9d6958671f4fdd1b840e383e13cc49e8f78e4475532d2b286",
+        "0xe7a43f6a2fa05dd9d6958671f4fdd1b840e383e13cc49e8f78e4475532d2b286"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 31,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 32,
+        "reference_rows": 76,
+        "shared_rows": 44,
+        "storage_only_rows": 0,
+        "storage_rows": 44,
+        "value_mismatches": 0
+      },
+      "symbol": "BULLA",
+      "hypotheses_count": 4,
+      "candidate_hypothesis": [
+        {
+          "matched": 59,
+          "mismatched": 0,
+          "nonzero_holders": 17,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 6,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288008,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288048,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "contract": "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9",
+      "exact_mapper_parity": false,
+      "holdout_start": 122288462,
+      "rank": 48,
+      "ranked_reference_rows": 482,
+      "runtime_hashes": [
+        "0x127e23a084fb3dda73acc6564b85ddf58b67a2056b5fdca450eccf3380c0b77b",
+        "0x127e23a084fb3dda73acc6564b85ddf58b67a2056b5fdca450eccf3380c0b77b"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 49,
+      "sampled_reference_rows": 201,
+      "status": "no_direct_mapping_evidence",
+      "symbol": "WCOL",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [],
+      "strict_mapper_error_count": 0,
+      "strict_mapper_error_examples": []
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "contract": "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 153,
+        "reference_rows": 166,
+        "shared_rows": 13,
+        "storage_only_rows": 0,
+        "storage_rows": 13,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 151,
+        "reference_rows": 165,
+        "shared_rows": 14,
+        "storage_only_rows": 0,
+        "storage_rows": 14,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288352,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 49,
+      "ranked_reference_rows": 475,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 54,
+      "runtime_hashes": [
+        "0xab0d52d20b21f0d4befbc9b0d087d1acf14b2cfed6ea968ee211c9152671b94c",
+        "0xab0d52d20b21f0d4befbc9b0d087d1acf14b2cfed6ea968ee211c9152671b94c"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 15,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 148,
+        "reference_rows": 156,
+        "shared_rows": 8,
+        "storage_only_rows": 0,
+        "storage_rows": 8,
+        "value_mismatches": 0
+      },
+      "symbol": "中国制造",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 13,
+          "mismatched": 0,
+          "nonzero_holders": 4,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        }
+      ],
+      "strict_mapper_error_count": 5,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288060,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288254,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    },
+    {
+      "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0xcae117ca6bc8a341d2e7207f30e180f0e5618b9d",
+      "discovery": {
+        "exact_row_parity": false,
+        "reference_only_rows": 26,
+        "reference_rows": 75,
+        "shared_rows": 49,
+        "storage_only_rows": 0,
+        "storage_rows": 49,
+        "value_mismatches": 0
+      },
+      "evaluated_blocks": 339,
+      "exact_mapper_parity": false,
+      "holdout": {
+        "exact_row_parity": false,
+        "reference_only_rows": 26,
+        "reference_rows": 78,
+        "shared_rows": 52,
+        "storage_only_rows": 0,
+        "storage_rows": 52,
+        "value_mismatches": 0
+      },
+      "holdout_start": 122288448,
+      "mapper_configuration": "unqualified balance-slot hypothesis; empty ignore lists",
+      "rank": 50,
+      "ranked_reference_rows": 475,
+      "rpc_errors": 0,
+      "rpc_mismatches": 0,
+      "rpc_value_checks": 202,
+      "runtime_hashes": [
+        "0x196c71c9a40c3b040f84551eb256d421c0670736700ea48e32d8ef5bd60939f6",
+        "0x196c71c9a40c3b040f84551eb256d421c0670736700ea48e32d8ef5bd60939f6"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 46,
+      "status": "candidate_matches_values_not_qualified",
+      "strict_mapper_successful_holdout_blocks_only": {
+        "exact_row_parity": false,
+        "reference_only_rows": 20,
+        "reference_rows": 69,
+        "shared_rows": 49,
+        "storage_only_rows": 0,
+        "storage_rows": 49,
+        "value_mismatches": 0
+      },
+      "symbol": "ARK",
+      "hypotheses_count": 1,
+      "candidate_hypothesis": [
+        {
+          "matched": 49,
+          "mismatched": 0,
+          "nonzero_holders": 31,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "strict_mapper_error_count": 5,
+      "strict_mapper_error_examples": [
+        {
+          "block": 122288055,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        },
+        {
+          "block": 122288267,
+          "error": "unresolved storage for configured token; refusing incomplete events",
+          "holdout": false
+        }
+      ]
+    }
+  ],
+  "tool_language": "Rust",
+  "source_report_sha256": "785d2dc966e79c009a888aa75bc912274f0966d84e6310fa238d1c1815e91c65",
+  "reduction": "Full report retained locally in out/top50-parity; omit captured block list, summarize rejected hypotheses and repeated mapper errors"
+}

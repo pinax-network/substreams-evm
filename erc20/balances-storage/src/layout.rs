@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
 use substreams::errors::Error;
 
-/// A caller-qualified, non-proxy direct balance mapping. No default token list.
+/// A caller-qualified direct balance mapping, optionally behind a pinned proxy.
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Layout {
@@ -14,6 +14,21 @@ pub struct Layout {
     pub other_slots: Vec<String>,
     #[serde(default)]
     pub other_mapping_slots: Vec<String>,
+    #[serde(default)]
+    pub proxy: Option<ProxyLayout>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ProxyLayout {
+    pub implementation_slot: String,
+    pub implementation: String,
+    pub code_hash: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedProxy {
+    pub implementation_slot: [u8; 32],
+    pub implementation: Vec<u8>,
+    pub code_hash: [u8; 32],
 }
 #[derive(Clone, Debug)]
 pub struct VerifiedLayout {
@@ -22,6 +37,7 @@ pub struct VerifiedLayout {
     pub code_hash: [u8; 32],
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
+    pub proxy: Option<VerifiedProxy>,
 }
 fn fixed(value: &str, size: usize) -> Result<Vec<u8>, Error> {
     require(value.starts_with("0x"), "layout values must be 0x-prefixed hex")?;
@@ -48,12 +64,35 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 !other_mapping_slots.contains(&balance_slot) && !other_slots.contains(&balance_slot),
                 "balance slot cannot be ignored",
             )?;
+            let proxy = layout
+                .proxy
+                .map(|p| -> Result<VerifiedProxy, Error> {
+                    let implementation = fixed(&p.implementation, 20)?;
+                    require(
+                        implementation.iter().any(|b| *b != 0) && implementation != contract,
+                        "invalid proxy implementation",
+                    )?;
+                    let implementation_slot = word(&p.implementation_slot)?;
+                    require(
+                        implementation_slot != balance_slot
+                            && !other_slots.contains(&implementation_slot)
+                            && !other_mapping_slots.contains(&implementation_slot),
+                        "proxy implementation slot cannot be ignored or used for balances",
+                    )?;
+                    Ok(VerifiedProxy {
+                        implementation_slot,
+                        implementation,
+                        code_hash: word(&p.code_hash)?,
+                    })
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
                 code_hash: word(&layout.code_hash)?,
                 other_slots,
                 other_mapping_slots,
+                proxy,
             })
         })
         .collect()

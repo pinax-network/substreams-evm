@@ -146,6 +146,23 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                 !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
                 "unqualified runtime for configured token"
             );
+            if let Some(proxy) = &layout.proxy {
+                let slot = format!("0x{}", hex::encode(proxy.implementation_slot));
+                let target = rpc.call("eth_getStorageAt", json!([contract, slot, block_ref(text(&h["hash"])?)]))?;
+                let mut expected = vec![0; 12];
+                expected.extend_from_slice(&proxy.implementation);
+                ensure!(
+                    binary(&target, 32)? == format!("0x{}", hex::encode(expected)),
+                    "unqualified proxy implementation"
+                );
+                let implementation = format!("0x{}", hex::encode(&proxy.implementation));
+                let code = rpc.call("eth_getCode", json!([implementation, block_ref(text(&h["hash"])?)]))?;
+                let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid implementation runtime hex")?)?;
+                ensure!(
+                    !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == proxy.code_hash,
+                    "unqualified implementation runtime"
+                );
+            }
         }
     }
     Ok(())

@@ -1,5 +1,10 @@
 # Single-map ERC-20 qualification
 
+This page records the original single-map WBNB qualification. The subsequent
+[expanded qualification](holder-coverage.md) adds reviewed USDT/BTCB layouts,
+USDC implementation guards, and explicit holder checkpoint tests. Artifact hashes
+and measurements below belong to the earlier WBNB-only build.
+
 The current package has exactly one module, `map_events`, taking parameters and
 Extended blocks directly and returning `evm.balances.v1.Events`. It has no custom
 protobuf, generated `pb.rs`, Buf config or intermediate cache. The only protobuf
@@ -14,8 +19,9 @@ Runtime identity is checked by the Rust validation tools at both range
 boundaries. The mapper rejects all code changes for configured contracts and
 unresolved writes. Qualifying the configured storage semantics and starting
 runtime remains a caller prerequisite; the stateless map cannot independently
-recover preexisting code identity. Proxy and computed-balance layouts remain
-outside this adapter.
+recover preexisting code identity. The earlier build described below did not
+support proxies; the current extension supports explicitly pinned implementations.
+Computed-balance layouts remain outside the direct-mapping adapter.
 
 ## Tests
 

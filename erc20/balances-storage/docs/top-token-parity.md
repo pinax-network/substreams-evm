@@ -1,5 +1,9 @@
 # Top ERC-20 tokens from the BSC RPC balances stream
 
+This is the initial top-ten survey. See [expanded qualification and holder
+coverage](holder-coverage.md) for the subsequent top-50 run, reviewed
+USDT/USDC/BTCB configurations, live WASM checks and mismatch diagnosis.
+
 On 2026-09-16, streamed `erc20/balances` v0.3.4 `map_events` for finalized BSC
 blocks **122284478–122284989** (512 blocks). The stream contained **108,845 rows
 from 1,353 contracts**. Ranked contracts by emitted balance rows, with contract

@@ -269,6 +269,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     code_hash: hex::decode(&codes[0][2..])?.try_into().unwrap(),
                     other_slots: BTreeSet::new(),
                     other_mapping_slots: BTreeSet::new(),
+                    proxy: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
                 if let Some(known) = reviewed.iter().find(|l| l.contract == layout.contract) {
