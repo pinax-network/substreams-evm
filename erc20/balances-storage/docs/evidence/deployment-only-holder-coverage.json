@@ -1,0 +1,38 @@
+{
+  "checkpoint_hash": "0xa0be08676e9e1a5da4abe58ae5b717f67e598963280b0fc0b5b970c15a85bc35",
+  "checkpoint_holders": 0,
+  "checkpoint_rpc_reads": 0,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "checkpoint_tokens": {},
+  "deployment_initialized_holders": {
+    "0x29a864a830528667e571c7a8f5f722cf704753c2": 19
+  },
+  "elapsed_seconds": 14.676439541,
+  "event_row_parity_claimed": false,
+  "holder_checks_sha256": "e459e885109c92eb25ac5054a068c03bcf8ec8162286ea8dd12af650835ced9c",
+  "layouts_sha256": "6103b705a1b832bab332d30b6eb131ea08e947c5578436181daec4e200871814",
+  "processing_rpc_calls": 0,
+  "raw_report_sha256": "972b1368e146bb06e8a2684d7c3ad734f5dd06911b2af572231062cfc51883ce",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "start": 122288330,
+  "status": "bounded_parity",
+  "stop_exclusive": 122288458,
+  "tokens": [
+    {
+      "carry_forward_matches": 13,
+      "contract": "0x29a864a830528667e571c7a8f5f722cf704753c2",
+      "emitted_rows": 20,
+      "reference_rows": 33,
+      "seeded_matches": 33,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 0,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust",
+  "unobserved_tokens": []
+}

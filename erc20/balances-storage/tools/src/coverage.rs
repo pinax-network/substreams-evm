@@ -35,12 +35,50 @@ pub struct HolderState {
     pub tokens: BTreeMap<String, Value>,
     last: Option<(u64, String)>,
 }
+pub fn outcome(tokens: &BTreeMap<String, Value>, configured: &BTreeSet<String>) -> (&'static str, Vec<String>) {
+    let missing = configured
+        .iter()
+        .filter(|contract| !tokens.contains_key(*contract))
+        .cloned()
+        .collect::<Vec<_>>();
+    let bad = tokens.iter().any(|(contract, stats)| {
+        !configured.contains(contract)
+            || stats["seeded_value_mismatches"] != 0
+            || stats["seeded_unknown_rows"] != 0
+            || stats["reference_rows"].as_u64().unwrap_or(0) == 0
+    });
+    (
+        if bad {
+            "mismatch"
+        } else if !missing.is_empty() || configured.is_empty() {
+            "coverage_gap"
+        } else {
+            "bounded_parity"
+        },
+        missing,
+    )
+}
 impl HolderState {
     pub fn new(checkpoint: Balances) -> Self {
         Self {
             seeded: checkpoint,
             ..Default::default()
         }
+    }
+    /// Call only after the mapper validates this block's pinned first CREATE.
+    /// This baseline is EVM initial storage, never a pre-deployment balanceOf.
+    pub fn initialize_deployed_token(&mut self, contract: &str, holders: &BTreeSet<(String, String)>) -> Result<usize> {
+        ensure!(
+            !self.seeded.keys().chain(self.observed.keys()).any(|key| key.0 == contract),
+            "deployment token already has holder state"
+        );
+        let mut count = 0;
+        for key in holders.iter().filter(|key| key.0 == contract) {
+            self.seeded.insert(key.clone(), primitive_types::U256::zero());
+            self.observed.insert(key.clone(), primitive_types::U256::zero());
+            count += 1;
+        }
+        Ok(count)
     }
     pub fn apply(&mut self, height: u64, hash: &str, parent: &str, emitted: &Balances, reference: &Balances) -> Result<()> {
         if let Some((previous, previous_hash)) = &self.last {
@@ -116,6 +154,10 @@ pub fn run(args: Coverage) -> Result<bool> {
                     .filter(|(key, _)| configured.contains_key(&key.0))
                     .collect();
                 holders.extend(rows.keys().cloned());
+                ensure!(
+                    rows.keys().all(|key| configured[&key.0].deployment.as_ref().is_none_or(|d| height >= d.block)),
+                    "reference returned a holder before qualified token deployment"
+                );
                 refs.insert(height, rows);
             }
             ensure!(!holders.is_empty(), "no configured reference holders");
@@ -127,13 +169,18 @@ pub fn run(args: Coverage) -> Result<bool> {
             report["start"] = json!(start);
             report["stop_exclusive"] = json!(stop);
             report["checkpoint_hash"] = json!(initial_hash);
-            report["checkpoint_holders"] = json!(holders.len());
+            let existing_holders = holders
+                .iter()
+                .filter(|key| configured[&key.0].deployment.as_ref().is_none_or(|d| d.block < start))
+                .collect::<Vec<_>>();
+            report["checkpoint_holders"] = json!(existing_holders.len());
+            report["deployment_initialized_holders"] = json!({});
             report["layouts_sha256"] = json!(sha256(&args.layouts)?);
             report["reference_sha256"] = ranking["reference_sha256"].clone();
             let mut checkpoint = Balances::new();
             let mut file = File::create(args.output.join("checkpoint.jsonl"))?;
             let mut per_token = BTreeMap::<String, Value>::new();
-            for chunk in holders.iter().collect::<Vec<_>>().chunks(25) {
+            for chunk in existing_holders.chunks(25) {
                 let mut calls = Vec::new();
                 let mut keys = Vec::new();
                 for (contract, address) in chunk {
@@ -163,7 +210,7 @@ pub fn run(args: Coverage) -> Result<bool> {
                 }
             }
             file.flush()?;
-            report["checkpoint_rpc_reads"] = json!(holders.len() * 2);
+            report["checkpoint_rpc_reads"] = json!(existing_holders.len() * 2);
             report["checkpoint_sha256"] = json!(sha256(&args.output.join("checkpoint.jsonl"))?);
             report["checkpoint_tokens"] = json!(per_token);
             write_report(&args.output, report)?;
@@ -176,6 +223,12 @@ pub fn run(args: Coverage) -> Result<bool> {
                 ensure!(*height != start || parent == initial_hash, "checkpoint is not capture parent");
                 ensure!(rpc.header(*height)?["hash"] == digest, "RPC/capture fork");
                 let events = erc20_balances_storage::project(block, &layouts)?;
+                for (contract, layout) in &configured {
+                    if layout.deployment.as_ref().is_some_and(|d| d.block == *height) {
+                        let count = state.initialize_deployed_token(contract, &holders)?;
+                        report["deployment_initialized_holders"][contract] = json!(count);
+                    }
+                }
                 let emitted = candidate_rows(
                     &json!({"balances":events.balances.into_iter().map(|b|json!({"contract":b.contract.map(|c|format!("0x{}",hex::encode(c))),"address":format!("0x{}",hex::encode(b.address)),"amount":b.amount})).collect::<Vec<_>>()}),
                 )?;
@@ -196,12 +249,9 @@ pub fn run(args: Coverage) -> Result<bool> {
             );
             report["captured"] = json!(captured);
             report["tokens"] = json!(state.tokens.values().collect::<Vec<_>>());
-            let seeded_ok = state.tokens.len() == layouts.len()
-                && state
-                    .tokens
-                    .values()
-                    .all(|v| v["seeded_value_mismatches"] == 0 && v["seeded_unknown_rows"] == 0 && v["reference_rows"].as_u64().unwrap_or(0) > 0);
-            report["status"] = json!(if seeded_ok { "bounded_parity" } else { "mismatch" });
+            let (status, missing) = outcome(&state.tokens, &configured.keys().cloned().collect());
+            report["status"] = json!(status);
+            report["unobserved_tokens"] = json!(missing);
             report["holder_checks_sha256"] = json!(sha256(&args.output.join("holder-checks.jsonl"))?);
             report["event_row_parity_claimed"] = json!(false);
             Ok(())

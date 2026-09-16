@@ -1,0 +1,25 @@
+{
+  "blocks": 256,
+  "capture": {
+    "blocks_per_second_including_startup": 45.12171140746064,
+    "package_sha256": "36c8a7720ae7f80b31b3988addc8ff8d51f8272ed95a06839c092acafa47eeea",
+    "seconds_including_startup": 5.673543667
+  },
+  "checked_blocks": 256,
+  "checks": 18878,
+  "checks_sha256": "88ad06c24908c23b29cf8190ce676a63afd9bf80e415abc0578f252bc6a8fa53",
+  "configured_tokens": 21,
+  "elapsed_seconds": 43.882605167,
+  "first_hash": "0x18f612ce319379ae9e300596b227eebd7b690ef2060561c67168b793c08931d6",
+  "last_hash": "0x508bfb1c550a9c9fb2b58a0f3a3d8afe9c61f1d6ae6477b362575be412aeace1",
+  "layouts_sha256": "7bf8d441ddd5567c1b15b72c18cc07106388279186e7707c7d1c79a77f2e5103",
+  "mismatches": 0,
+  "raw_report_sha256": "c7631638fd13ee1a03d224232774f1a3fbeb8cfbbfa89bd8796a0dd94829d24f",
+  "rpc_block_binding": "EIP-1898 blockHash, requireCanonical=true",
+  "scope": "Every emitted end-of-block ERC-20 balance; Events has no old value or source hash",
+  "start": 122288330,
+  "status": "rpc_parity",
+  "token_checks": 18878,
+  "tool_language": "Rust",
+  "zero_checks": 2582
+}

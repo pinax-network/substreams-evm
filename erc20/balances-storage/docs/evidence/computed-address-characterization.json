@@ -1,0 +1,165 @@
+{
+  "block": 122288080,
+  "contract": "0xec22e64c0a16821dc1b457045936c0219b47155e",
+  "formula": "(uint256(keccak256(packed_20_byte_holder)) % 9001 + 8434) * 10^18",
+  "formula_with_special_storage_mismatches": 0,
+  "hash": "0x27c2647da96d0df9987ad544657b3d55798865f5f0ad2d8d937c951087e6710b",
+  "independent_rpc_checks": [
+    {
+      "address": "0x0017b8451b980b7c4fd91826bde27af249c7fc1a",
+      "expected": "9699000000000000000000",
+      "match": true,
+      "rpc": "9699000000000000000000"
+    },
+    {
+      "address": "0x0da523631023162c0b45aaba99ebfb7505d42fa0",
+      "expected": "14330000000000000000000",
+      "match": true,
+      "rpc": "14330000000000000000000"
+    },
+    {
+      "address": "0x18b540b6221ebc63a8c661a073f2482ee4cdbbe6",
+      "expected": "10395000000000000000000",
+      "match": true,
+      "rpc": "10395000000000000000000"
+    },
+    {
+      "address": "0x270310340462153e02e0e6859f6e56a8bf4851ce",
+      "expected": "14678000000000000000000",
+      "match": true,
+      "rpc": "14678000000000000000000"
+    },
+    {
+      "address": "0x349d1750c0f21dbc47fe67a6ce7a0b8d25525229",
+      "expected": "13175000000000000000000",
+      "match": true,
+      "rpc": "13175000000000000000000"
+    },
+    {
+      "address": "0x434f68a2900aedd8ae4b3e8de5e9e3beef70b574",
+      "expected": "10409000000000000000000",
+      "match": true,
+      "rpc": "10409000000000000000000"
+    },
+    {
+      "address": "0x50208e5579d31a6f3cd82c7ab4a2279da143403f",
+      "expected": "17403000000000000000000",
+      "match": true,
+      "rpc": "17403000000000000000000"
+    },
+    {
+      "address": "0x5d25caffb2eeee298240df86ed641d9821e325e4",
+      "expected": "11705000000000000000000",
+      "match": true,
+      "rpc": "11705000000000000000000"
+    },
+    {
+      "address": "0x69ec7d66453f2fc66b432ba7c817f84c7d9240b7",
+      "expected": "15223000000000000000000",
+      "match": true,
+      "rpc": "15223000000000000000000"
+    },
+    {
+      "address": "0x76f3702e3050af48fa78b5d6c0cf90ef6d5708c2",
+      "expected": "13373000000000000000000",
+      "match": true,
+      "rpc": "13373000000000000000000"
+    },
+    {
+      "address": "0x84a88978be4463ec8989fe5a692f74ad74eb0622",
+      "expected": "15638000000000000000000",
+      "match": true,
+      "rpc": "15638000000000000000000"
+    },
+    {
+      "address": "0x9227cf2cada4e951da99b894ffcd6a567e4d0e3d",
+      "expected": "13286000000000000000000",
+      "match": true,
+      "rpc": "13286000000000000000000"
+    },
+    {
+      "address": "0x9ddce26b92ca3cfa5c80cc295d8e06abf3277d63",
+      "expected": "14987000000000000000000",
+      "match": true,
+      "rpc": "14987000000000000000000"
+    },
+    {
+      "address": "0xaadf3f5338877dc3752358a20565aacefc35a580",
+      "expected": "11654000000000000000000",
+      "match": true,
+      "rpc": "11654000000000000000000"
+    },
+    {
+      "address": "0xb67e3ed6faf908ee2b62add827924a5ba718c2d2",
+      "expected": "10949000000000000000000",
+      "match": true,
+      "rpc": "10949000000000000000000"
+    },
+    {
+      "address": "0xc3a4905ec7016881ee8a0a005fb09d8d0cca659a",
+      "expected": "17094000000000000000000",
+      "match": true,
+      "rpc": "17094000000000000000000"
+    },
+    {
+      "address": "0xd02f57aa0e6db609c6cf313c9fba84c4fdbd86a2",
+      "expected": "16412000000000000000000",
+      "match": true,
+      "rpc": "16412000000000000000000"
+    },
+    {
+      "address": "0xdcb05f7d568872434a1c26f0a18307f830da057a",
+      "expected": "10012000000000000000000",
+      "match": true,
+      "rpc": "10012000000000000000000"
+    },
+    {
+      "address": "0xe8407270ec80dea45ef2978648584c494cf97043",
+      "expected": "9298000000000000000000",
+      "match": true,
+      "rpc": "9298000000000000000000"
+    },
+    {
+      "address": "0xf385b4e2b53b8b997ca029ec2a0dd3f3bab1eb6b",
+      "expected": "9620000000000000000000",
+      "match": true,
+      "rpc": "9620000000000000000000"
+    },
+    {
+      "address": "0xffe19026c3bcd736e1200047c0b22dbd123d95a9",
+      "expected": "10105000000000000000000",
+      "match": true,
+      "rpc": "10105000000000000000000"
+    }
+  ],
+  "ordinary_formula_mismatches": 1,
+  "production_supported": false,
+  "read_only_dependency_controls": [
+    {
+      "dependency_slot": 3,
+      "overridden_address": "0x0017b8451b980b7c4fd91826bde27af249c7fc1a",
+      "rpc": "0"
+    },
+    {
+      "dependency_slot": 4,
+      "overridden_address": "0x0017b8451b980b7c4fd91826bde27af249c7fc1a",
+      "rpc": "0"
+    }
+  ],
+  "reference_rows": 3002,
+  "scope": "Characterization only; not a production layout or full semantic qualification",
+  "special_address_checks": [
+    {
+      "address": "0x0000000000000000000000000000000000000000",
+      "ordinary_formula": "10242000000000000000000",
+      "rpc": "0"
+    },
+    {
+      "address": "0xc54cb14840cabf9a29b43d528af7dea7771f7494",
+      "ordinary_formula": "11848000000000000000000",
+      "rpc": "5000000000000000000000000000"
+    }
+  ],
+  "special_mapping_base": 5,
+  "special_mapping_word": "5000000000000000000000000000"
+}

@@ -1,4 +1,5 @@
 //! A single RPC-free map with the shared ERC-20 Events output.
+mod deployment;
 #[cfg(not(target_arch = "wasm32"))]
 pub mod discovery;
 pub mod layout;
@@ -48,15 +49,26 @@ fn hex_bytes(s: &str) -> Result<Vec<u8>, Error> {
 #[derive(Default)]
 struct Changes {
     storage: Vec<eth::StorageChange>,
-    codes: Vec<eth::CodeChange>,
+    codes: Vec<CodeRecord>,
+}
+struct CodeRecord {
+    change: eth::CodeChange,
+    scope: persist::Scope,
+    tx_index: u32,
+    call_index: u32,
 }
 impl persist::Sink for Changes {
     fn balance(&mut self, _: &eth::BalanceChange, _: persist::Ctx) {}
     fn storage(&mut self, c: &eth::StorageChange, _: persist::Ctx) {
         self.storage.push(c.clone());
     }
-    fn code(&mut self, c: &eth::CodeChange, _: persist::Ctx) {
-        self.codes.push(c.clone());
+    fn code(&mut self, c: &eth::CodeChange, ctx: persist::Ctx) {
+        self.codes.push(CodeRecord {
+            change: c.clone(),
+            scope: ctx.scope,
+            tx_index: ctx.tx_index,
+            call_index: ctx.call_index,
+        });
     }
     fn nonce(&mut self, _: &eth::NonceChange, _: persist::Ctx) {}
 }
@@ -146,7 +158,7 @@ fn ignored_mapping(key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, layou
 }
 
 /// Layout semantics and the starting runtime must be qualified by the caller.
-/// All changes to configured contracts' code are rejected, even to the pinned code.
+/// Code changes are rejected except explicitly qualified first deployments.
 /// The audit runner checks code_hash at both boundaries; the stateless mapper
 /// cannot infer preexisting runtime identity from a block with no code change.
 pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Change>, Error> {
@@ -154,9 +166,13 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.clone(), l)).collect();
     let mut raw = Changes::default();
     persist::collect_block(block, &mut raw)?;
+    deployment::validate(block, layouts, &raw)?;
     require(
-        !raw.codes.iter().any(|c| {
-            configured.contains_key(&c.address)
+        !raw.codes.iter().any(|record| {
+            let c = &record.change;
+            configured
+                .get(&c.address)
+                .is_some_and(|l| l.deployment.as_ref().is_none_or(|d| d.block != block.number))
                 || layouts.iter().any(|l| {
                     l.proxy.as_ref().is_some_and(|p| p.implementation == c.address)
                         || l.beacon_proxy.as_ref().is_some_and(|p| p.beacon == c.address || p.implementation == c.address)
@@ -209,6 +225,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         beacon_slots.entry(beacon.beacon.clone()).or_default().insert(beacon.implementation_slot);
     }
     raw.storage.sort_by_key(|c| c.ordinal);
+    let mut deployment_keys = BTreeSet::new();
     for c in raw.storage {
         if !configured.contains_key(&c.address) && !beacon_slots.contains_key(&c.address) {
             continue;
@@ -221,6 +238,9 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         let Some(layout) = configured.get(&c.address) else {
             continue;
         };
+        if layout.deployment.as_ref().is_some_and(|d| d.block == block.number) && deployment_keys.insert((c.address.clone(), key)) {
+            require(word(&c.old_value)? == [0; 32], "initial deployment storage must start at zero")?;
+        }
         require(
             layout.beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != key),
             "proxy beacon changed; requalify layout",

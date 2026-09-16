@@ -142,12 +142,29 @@ pub fn ensure_finalized(rpc: &dyn Rpc, stop: u64) -> Result<()> {
     Ok(())
 }
 pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_balances_storage::layout::VerifiedLayout]) -> Result<()> {
-    for height in [start - 1, stop - 1] {
-        let h = rpc.header(height)?;
-        for layout in layouts {
+    ensure!(start > 0 && stop > start, "invalid runtime qualification range");
+    for layout in layouts {
+        let mut heights = std::collections::BTreeSet::from([start - 1, stop - 1]);
+        if let Some(deployment) = &layout.deployment {
+            heights.extend([deployment.block - 1, deployment.block]);
+        }
+        for height in heights {
+            let h = rpc.header(height)?;
+            if let Some(deployment) = layout.deployment.as_ref().filter(|d| d.block == height) {
+                ensure!(
+                    binary(&h["hash"], 32)? == format!("0x{}", hex::encode(deployment.block_hash)),
+                    "qualified deployment block changed"
+                );
+            }
             let contract = format!("0x{}", hex::encode(&layout.contract));
             let code = rpc.call("eth_getCode", json!([contract, block_ref(text(&h["hash"])?)]))?;
             let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid runtime hex")?)?;
+            if layout.deployment.as_ref().is_some_and(|d| height < d.block) {
+                ensure!(bytes.is_empty(), "token code exists before qualified deployment");
+                let nonce = rpc.call("eth_getTransactionCount", json!([contract, block_ref(text(&h["hash"])?)]))?;
+                ensure!(quantity(&nonce)?.is_zero(), "token nonce exists before qualified deployment");
+                continue;
+            }
             ensure!(
                 !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
                 "unqualified runtime for configured token"

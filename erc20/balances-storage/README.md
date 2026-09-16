@@ -18,6 +18,7 @@ with a reviewed zero-word fallback or proxy with its implementation pinned:
 | `contract` | 20-byte `0x` hex | Token contract |
 | `balance_slot` | 32-byte `0x` hex | Mapping base for `mapping(address => uint256)` balances |
 | `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
+| `deployment` | Optional object | `block` and 32-byte `block_hash` pin first CREATE for a direct mapping without a proxy or zero-word fallback |
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
@@ -29,8 +30,9 @@ The caller must establish that the configured projection equals `balanceOf` for 
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
 is insufficient. The mapper cannot infer preexisting code identity from a block
 without code changes: independently qualify the starting runtime before using
-it outside the audit tools. All persisted code changes to configured contracts
-fail, including changes back to the expected runtime. For a configured proxy,
+it outside the audit tools. Persisted code changes to configured contracts
+fail, including changes back to the expected runtime, except a qualified first
+CREATE described below. For a configured proxy,
 the tools also check the implementation storage word and implementation runtime
 at both boundaries. The map rejects **every persisted implementation-slot write**
 (including an upgrade and upgrade back) and all implementation code changes.
@@ -44,6 +46,18 @@ including a beacon upgrade with no token writes and an upgrade followed by a
 restore. The caller must review that the beacon getter reads this scalar directly;
 arbitrary computed or nested beacon resolvers are unsupported. Diamond proxies,
 rebasing balances and other computed balances also remain unsupported.
+
+With `deployment`, the tools verify empty code and nonce zero immediately before
+the pinned block, and the expected runtime at deployment and audit boundaries.
+The mapper requires exactly one persisted code creation in a successful CREATE,
+checks its runtime bytes and execution ordinals, and rejects earlier storage/code
+activity, nonzero initial storage, and later code changes. Constructor writes
+before the code-change ordinal are included. Deployment support currently applies
+only to direct mappings; proxy and fallback initialization remain unsupported.
+The native holder replay initializes the observed holder set to zero **at the
+validated CREATE**, then applies that block's writes. It does not call `balanceOf`
+before deployment or treat an unavailable response as zero. This is a bounded
+test baseline, not a complete global holder enumeration.
 
 With `zero_balance`, nonzero mapping words pass through unchanged. Zero words
 emit the explicitly pinned fallback. Raw words still drive continuity checks;

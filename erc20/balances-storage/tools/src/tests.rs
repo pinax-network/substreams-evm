@@ -742,6 +742,94 @@ fn runtime_qualification_uses_each_configured_contract_and_code_hash() {
 }
 
 #[test]
+fn deployment_runtime_qualification_checks_birth_even_after_the_window_start() {
+    struct CreationRpc {
+        bad: &'static str,
+        calls: Mutex<Vec<Value>>,
+    }
+    impl Rpc for CreationRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            self.calls.lock().unwrap().push(payload.clone());
+            let before = payload["params"][1]["blockHash"] == hash(9);
+            let result = match payload["method"].as_str().unwrap() {
+                "eth_getCode" if before => json!(if self.bad == "early_code" { "0xaa" } else { "0x" }),
+                "eth_getCode" => json!(if self.bad == "wrong_runtime" { "0xbb" } else { "0xaa" }),
+                "eth_getTransactionCount" => json!(if self.bad == "early_nonce" { "0x1" } else { "0x0" }),
+                _ => return FakeRpc::default().request(payload),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let params = json!([{"contract":TOKEN,"balance_slot":hash(0),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xaa]))),"deployment":{"block":10,"block_hash":hash(10)}}]);
+    let mut layouts = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    let rpc = CreationRpc {
+        bad: "",
+        calls: Mutex::new(vec![]),
+    };
+    qualify_runtime(&rpc, 11, 13, &layouts).unwrap();
+    let calls = rpc.calls.lock().unwrap();
+    assert!(calls.iter().any(|p| p["method"] == "eth_getCode" && p["params"][1] == block_ref(&hash(9))));
+    assert!(calls.iter().all(|p| p["method"] != "eth_call"));
+    drop(calls);
+    for bad in ["early_code", "wrong_runtime", "early_nonce"] {
+        assert!(
+            qualify_runtime(
+                &CreationRpc {
+                    bad,
+                    calls: Mutex::new(vec![])
+                },
+                10,
+                13,
+                &layouts
+            )
+            .is_err(),
+            "{bad}"
+        );
+    }
+    layouts[0].deployment.as_mut().unwrap().block_hash = [42; 32];
+    assert!(qualify_runtime(&rpc, 11, 13, &layouts).is_err());
+}
+
+#[test]
+fn deployment_holder_baseline_is_distinct_from_an_rpc_checkpoint() {
+    use crate::coverage::HolderState;
+    let minted = (TOKEN.to_owned(), address());
+    let untouched = (TOKEN.to_owned(), format!("0x{}", "23".repeat(20)));
+    let other = (format!("0x{}", "99".repeat(20)), address());
+    let holders = [minted.clone(), untouched.clone(), other.clone()].into();
+    let mut state = HolderState::default();
+    assert!(state.seeded.is_empty());
+    assert_eq!(state.initialize_deployed_token(TOKEN, &holders).unwrap(), 2);
+    let emitted = [(minted.clone(), U256::from(100))].into();
+    let reference = [(minted.clone(), U256::from(100)), (untouched.clone(), U256::zero())].into();
+    state.apply(10, &hash(10), &hash(9), &emitted, &reference).unwrap();
+    state.apply(11, &hash(11), &hash(10), &Balances::new(), &reference).unwrap();
+    assert_eq!(state.tokens[TOKEN]["seeded_matches"], 4);
+    assert_eq!(state.tokens[TOKEN]["unseeded_unknown_rows"], 0);
+    assert_eq!(state.observed[&minted], U256::from(100));
+    assert!(!state.seeded.contains_key(&other));
+    assert!(state.initialize_deployed_token(TOKEN, &holders).is_err());
+}
+
+#[test]
+fn inactive_holder_tokens_are_coverage_gaps_not_balance_mismatches() {
+    use crate::coverage::outcome;
+    let contracts = [TOKEN.to_string(), address()].into();
+    let mut tokens = std::collections::BTreeMap::from([(
+        TOKEN.to_string(),
+        json!({"reference_rows":33,"seeded_value_mismatches":0,"seeded_unknown_rows":0}),
+    )]);
+    assert_eq!(outcome(&tokens, &contracts), ("coverage_gap", vec![address()]));
+    tokens.insert(address(), tokens[TOKEN].clone());
+    assert_eq!(outcome(&tokens, &contracts), ("bounded_parity", vec![]));
+    tokens.get_mut(TOKEN).unwrap()["seeded_unknown_rows"] = json!(1);
+    assert_eq!(outcome(&tokens, &contracts).0, "mismatch");
+    tokens.get_mut(TOKEN).unwrap()["seeded_unknown_rows"] = json!(0);
+    tokens.get_mut(TOKEN).unwrap()["seeded_value_mismatches"] = json!(1);
+    assert_eq!(outcome(&tokens, &contracts).0, "mismatch");
+}
+
+#[test]
 fn runtime_qualification_rejects_changed_proxy_target_or_implementation_code() {
     struct ProxyRpc {
         wrong_target: bool,

@@ -1,0 +1,368 @@
+{
+  "checkpoint_hash": "0xa0be08676e9e1a5da4abe58ae5b717f67e598963280b0fc0b5b970c15a85bc35",
+  "checkpoint_holders": 9353,
+  "checkpoint_rpc_reads": 18706,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "5a92625b185068527e3e0f387fe964e81cfc58574b55cada585fa66a5a64753c",
+  "checkpoint_tokens": {
+    "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82": {
+      "holders": 31,
+      "nonzero_holders": 20,
+      "zero_word_fallback_holders": 0
+    },
+    "0x1922cf6ef99e41591a33687816baee1d5efc6db7": {
+      "holders": 904,
+      "nonzero_holders": 904,
+      "zero_word_fallback_holders": 902
+    },
+    "0x2170ed0880ac9a755fd29b2688956bd959f933f8": {
+      "holders": 101,
+      "nonzero_holders": 43,
+      "zero_word_fallback_holders": 0
+    },
+    "0x2b74ac567edaa7a65237b4f92042667e784439d3": {
+      "holders": 3,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 1
+    },
+    "0x55d398326f99059ff775485246999027b3197955": {
+      "holders": 4181,
+      "nonzero_holders": 2866,
+      "zero_word_fallback_holders": 0
+    },
+    "0x5c8fb0f805f62cd082c00d9d250a388b543cc453": {
+      "holders": 3,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 1
+    },
+    "0x70a163085db5617b700fafeac1c7a2794e41a724": {
+      "holders": 1010,
+      "nonzero_holders": 1010,
+      "zero_word_fallback_holders": 1008
+    },
+    "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c": {
+      "holders": 138,
+      "nonzero_holders": 64,
+      "zero_word_fallback_holders": 0
+    },
+    "0x7c8d5502b544ddaf8852fc46d1174e34876d545c": {
+      "holders": 330,
+      "nonzero_holders": 311,
+      "zero_word_fallback_holders": 0
+    },
+    "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d": {
+      "holders": 412,
+      "nonzero_holders": 200,
+      "zero_word_fallback_holders": 0
+    },
+    "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d": {
+      "holders": 86,
+      "nonzero_holders": 38,
+      "zero_word_fallback_holders": 0
+    },
+    "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6": {
+      "holders": 3,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 1
+    },
+    "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c": {
+      "holders": 1068,
+      "nonzero_holders": 463,
+      "zero_word_fallback_holders": 0
+    },
+    "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9": {
+      "holders": 16,
+      "nonzero_holders": 1,
+      "zero_word_fallback_holders": 0
+    },
+    "0xe485050ef170385eb3e1efe4de4e47aaf7017c79": {
+      "holders": 922,
+      "nonzero_holders": 922,
+      "zero_word_fallback_holders": 919
+    },
+    "0xe9e7cea3dedca5984780bafc599bd69add087d56": {
+      "holders": 31,
+      "nonzero_holders": 20,
+      "zero_word_fallback_holders": 0
+    },
+    "0xeec6574eabba52bac3f0277f2cd5ac7e67197886": {
+      "holders": 87,
+      "nonzero_holders": 78,
+      "zero_word_fallback_holders": 0
+    },
+    "0xfd5840cd36d94d7229439859c0112a4185bc0255": {
+      "holders": 24,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 0
+    },
+    "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701": {
+      "holders": 3,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 1
+    }
+  },
+  "corrected_classification": {
+    "method": "Offline classification of unchanged recorded metrics with corrected outcome logic; original status retained above",
+    "status": "coverage_gap",
+    "unobserved_tokens": [
+      "0x45056c2627c9e60753aeef604ee9575709f8e88f"
+    ]
+  },
+  "deployment_initialized_holders": {
+    "0x29a864a830528667e571c7a8f5f722cf704753c2": 19
+  },
+  "elapsed_seconds": 50.422624333,
+  "event_row_parity_claimed": false,
+  "holder_checks_sha256": "c11d90c484bfdcea595778bec5c3454c4bf6db86b5a8d69a77ca81ab7584d805",
+  "layouts_sha256": "7bf8d441ddd5567c1b15b72c18cc07106388279186e7707c7d1c79a77f2e5103",
+  "processing_rpc_calls": 0,
+  "raw_report_sha256": "cee8497ad9ac149a82e5b0525989f03663aab7b6135229385e6e3e1d3ca9f27a",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "start": 122288330,
+  "status": "mismatch",
+  "stop_exclusive": 122288458,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "emitted_rows": 25,
+      "reference_rows": 41,
+      "seeded_matches": 41,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 10,
+      "unseeded_unknown_rows": 16,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 1,
+      "contract": "0x1922cf6ef99e41591a33687816baee1d5efc6db7",
+      "emitted_rows": 2,
+      "reference_rows": 906,
+      "seeded_matches": 906,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 903,
+      "unseeded_unknown_rows": 903,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "emitted_rows": 121,
+      "reference_rows": 205,
+      "seeded_matches": 205,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 33,
+      "unseeded_unknown_rows": 84,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 13,
+      "contract": "0x29a864a830528667e571c7a8f5f722cf704753c2",
+      "emitted_rows": 20,
+      "reference_rows": 33,
+      "seeded_matches": 33,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 0,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x2b74ac567edaa7a65237b4f92042667e784439d3",
+      "emitted_rows": 2,
+      "reference_rows": 3,
+      "seeded_matches": 3,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 1,
+      "unseeded_unknown_rows": 1,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 170,
+      "contract": "0x55d398326f99059ff775485246999027b3197955",
+      "emitted_rows": 6133,
+      "reference_rows": 8056,
+      "seeded_matches": 8056,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 419,
+      "unseeded_unknown_rows": 1753,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5c8fb0f805f62cd082c00d9d250a388b543cc453",
+      "emitted_rows": 2,
+      "reference_rows": 3,
+      "seeded_matches": 3,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 1,
+      "unseeded_unknown_rows": 1,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x70a163085db5617b700fafeac1c7a2794e41a724",
+      "emitted_rows": 2,
+      "reference_rows": 1015,
+      "seeded_matches": 1015,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 1013,
+      "unseeded_unknown_rows": 1013,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 3,
+      "contract": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+      "emitted_rows": 191,
+      "reference_rows": 341,
+      "seeded_matches": 341,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 68,
+      "unseeded_unknown_rows": 147,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x7c8d5502b544ddaf8852fc46d1174e34876d545c",
+      "emitted_rows": 329,
+      "reference_rows": 348,
+      "seeded_matches": 348,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 10,
+      "unseeded_unknown_rows": 19,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 5,
+      "contract": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+      "emitted_rows": 646,
+      "reference_rows": 982,
+      "seeded_matches": 982,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 114,
+      "unseeded_unknown_rows": 331,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+      "emitted_rows": 96,
+      "reference_rows": 165,
+      "seeded_matches": 165,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 34,
+      "unseeded_unknown_rows": 69,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x98d1341b8ba3dd907d14cf2915014bc3221e80c6",
+      "emitted_rows": 4,
+      "reference_rows": 6,
+      "seeded_matches": 6,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 2,
+      "unseeded_unknown_rows": 2,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 8,
+      "contract": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+      "emitted_rows": 1611,
+      "reference_rows": 2629,
+      "seeded_matches": 2629,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 274,
+      "unseeded_unknown_rows": 1010,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xcfb9bef5f7b748ac72311f057f3a888bc73334d9",
+      "emitted_rows": 26,
+      "reference_rows": 52,
+      "seeded_matches": 52,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 26,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xe485050ef170385eb3e1efe4de4e47aaf7017c79",
+      "emitted_rows": 4,
+      "reference_rows": 925,
+      "seeded_matches": 925,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 921,
+      "unseeded_unknown_rows": 921,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+      "emitted_rows": 39,
+      "reference_rows": 67,
+      "seeded_matches": 67,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 13,
+      "unseeded_unknown_rows": 28,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xeec6574eabba52bac3f0277f2cd5ac7e67197886",
+      "emitted_rows": 209,
+      "reference_rows": 256,
+      "seeded_matches": 256,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 26,
+      "unseeded_unknown_rows": 47,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "emitted_rows": 22,
+      "reference_rows": 63,
+      "seeded_matches": 63,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 20,
+      "unseeded_unknown_rows": 41,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xfebbd3f5fd764ad71cf7895d23caebd1eb4b8701",
+      "emitted_rows": 2,
+      "reference_rows": 3,
+      "seeded_matches": 3,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 1,
+      "unseeded_unknown_rows": 1,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust"
+}

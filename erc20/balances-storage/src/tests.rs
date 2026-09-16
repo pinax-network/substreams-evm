@@ -2,6 +2,127 @@ use super::*;
 use prost::Message;
 use serde_json::json;
 
+fn deployed_case() -> (eth::Block, Vec<VerifiedLayout>) {
+    let mut b = block();
+    let mut l = layouts();
+    l.truncate(1);
+    l[0].code_hash = hash(&[0x60, 0x00]);
+    l[0].deployment = Some(layout::VerifiedDeployment {
+        block: b.number,
+        block_hash: b.hash.clone().try_into().unwrap(),
+    });
+    let mut c = token_call(&l[0], &[6; 20], 0, 100);
+    c.call_type = eth::CallType::Create as i32;
+    c.begin_ordinal = 5;
+    c.end_ordinal = 30;
+    c.code_changes.push(eth::CodeChange {
+        address: l[0].contract.clone(),
+        old_hash: hash(&[]).to_vec(),
+        new_hash: l[0].code_hash.to_vec(),
+        new_code: vec![0x60, 0],
+        ordinal: 20,
+        ..Default::default()
+    });
+    b.transaction_traces = vec![tx(c)];
+    (b, l)
+}
+#[test]
+fn captured_first_create_matches_the_historical_rpc_initial_mint() {
+    // Fixture retains the actual deployment transaction, header and identity;
+    // unrelated transactions/system changes are omitted to keep it small.
+    let block = eth::Block::decode(include_bytes!("../tests/fixtures/bsc-122288338-deployment-tx.pb").as_slice()).unwrap();
+    let layouts = layout::parse(include_str!("../tests/fixtures/bsc-deployment-layouts.json")).unwrap();
+    let token = layouts.iter().find(|l| l.deployment.is_some()).unwrap();
+    let events = project(&block, std::slice::from_ref(token)).unwrap();
+    assert_eq!(events.balances.len(), 1);
+    assert_eq!(hex::encode(&events.balances[0].address), "3dc263d768385802c8d2d20e9f7f06f6e9128782");
+    assert_eq!(events.balances[0].amount, "1000000000000000000000000000");
+    assert_eq!(changes(&block, std::slice::from_ref(token)).unwrap()[0].old_amount, "0");
+}
+#[test]
+fn qualified_create_emits_constructor_mint_and_later_same_block_changes() {
+    let (mut b, l) = deployed_case();
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "100");
+    let mut later = token_call(&l[0], &[6; 20], 100, 90);
+    later.index = 1;
+    later.storage_changes[0].ordinal = 40;
+    b.transaction_traces[0].calls.push(later);
+    let rows = changes(&b, &l).unwrap();
+    assert_eq!((&*rows[0].old_amount, &*rows[0].amount), ("0", "90"));
+}
+#[test]
+fn deployment_rejects_unpinned_missing_reverted_and_ambiguous_creation() {
+    let (b, l) = deployed_case();
+    let mut no_pin = l.clone();
+    no_pin[0].deployment = None;
+    assert!(project(&b, &no_pin).is_err());
+    for case in 0..12 {
+        let mut b = b.clone();
+        match case {
+            0 => b.hash[0] ^= 1,
+            1 => b.transaction_traces[0].calls[0].code_changes.clear(),
+            2 => b.transaction_traces[0].calls[0].state_reverted = true,
+            3 => b.transaction_traces[0].status = eth::TransactionTraceStatus::Failed as i32,
+            4 => {
+                let c = b.transaction_traces[0].calls[0].code_changes[0].clone();
+                b.transaction_traces[0].calls[0].code_changes.push(c);
+            }
+            5 => b.transaction_traces[0].calls[0].call_type = eth::CallType::Call as i32,
+            6 => b.transaction_traces[0].calls[0].code_changes[0].new_code.push(1),
+            7 => b.transaction_traces[0].calls[0].code_changes[0].old_code.push(1),
+            8 => b.transaction_traces[0].calls[0].code_changes[0].old_hash = vec![0; 32],
+            9 => b.transaction_traces[0].calls[0].code_changes[0].ordinal = 30,
+            10 => b.transaction_traces[0].calls[0].begin_ordinal = 0,
+            11 => {
+                let c = b.transaction_traces[0].calls[0].code_changes.remove(0);
+                b.code_changes.push(c);
+            }
+            _ => unreachable!(),
+        }
+        assert!(project(&b, &l).is_err(), "case {case}");
+    }
+}
+#[test]
+fn deployment_rejects_preexisting_storage_early_writes_and_later_redeployment() {
+    let (b, l) = deployed_case();
+    for case in 0..4 {
+        let mut b = b.clone();
+        match case {
+            0 => b.transaction_traces[0].calls[0].storage_changes[0].old_value = vec![1],
+            1 => b.transaction_traces[0].calls[0].storage_changes[0].ordinal = 4,
+            2 => {
+                b.number += 1;
+                b.header.as_mut().unwrap().number += 1;
+            }
+            3 => {
+                b.number -= 1;
+                b.header.as_mut().unwrap().number -= 1;
+                b.transaction_traces[0].calls[0].code_changes.clear();
+            }
+            _ => unreachable!(),
+        }
+        assert!(project(&b, &l).is_err(), "case {case}");
+    }
+    let mut before = b.clone();
+    before.number -= 1;
+    before.header.as_mut().unwrap().number -= 1;
+    before.transaction_traces.clear();
+    assert!(project(&before, &l).unwrap().balances.is_empty());
+}
+#[test]
+fn deployment_configuration_requires_direct_mapping_and_valid_identity() {
+    let mut p = json!([{"contract":format!("0x{}","aa".repeat(20)),"balance_slot":format!("0x{}","00".repeat(32)),"code_hash":format!("0x{}","11".repeat(32)),"deployment":{"block":1,"block_hash":format!("0x{}","22".repeat(32))}}]);
+    assert!(layout::parse(&p.to_string()).is_ok());
+    p[0]["zero_balance"] = json!({"value":format!("0x{}","01".repeat(32))});
+    assert!(layout::parse(&p.to_string()).is_err());
+    p[0].as_object_mut().unwrap().remove("zero_balance");
+    p[0]["deployment"]["block"] = json!(0);
+    assert!(layout::parse(&p.to_string()).is_err());
+    p[0]["deployment"]["block"] = json!(1);
+    p[0]["deployment"]["block_hash"] = json!(format!("0x{}", "00".repeat(32)));
+    assert!(layout::parse(&p.to_string()).is_err());
+}
+
 fn slot(n: u8) -> [u8; 32] {
     let mut value = [0; 32];
     value[31] = n;

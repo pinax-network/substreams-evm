@@ -10,6 +10,9 @@ pub struct Layout {
     pub contract: String,
     pub balance_slot: String,
     pub code_hash: String,
+    /// Explicitly qualified first deployment; currently direct mappings only.
+    #[serde(default)]
+    pub deployment: Option<Deployment>,
     #[serde(default)]
     pub other_slots: Vec<String>,
     #[serde(default)]
@@ -24,6 +27,17 @@ pub struct Layout {
     pub proxy: Option<ProxyLayout>,
     #[serde(default)]
     pub beacon_proxy: Option<BeaconProxyLayout>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct Deployment {
+    pub block: u64,
+    pub block_hash: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedDeployment {
+    pub block: u64,
+    pub block_hash: [u8; 32],
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -76,6 +90,7 @@ pub struct VerifiedLayout {
     pub contract: Vec<u8>,
     pub balance_slot: [u8; 32],
     pub code_hash: [u8; 32],
+    pub deployment: Option<VerifiedDeployment>,
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_words: BTreeMap<[u8; 32], u8>,
@@ -208,10 +223,24 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let deployment = layout
+                .deployment
+                .map(|d| -> Result<VerifiedDeployment, Error> {
+                    require(d.block > 0, "deployment block must be positive")?;
+                    require(
+                        proxy.is_none() && beacon_proxy.is_none() && zero_balance.is_none(),
+                        "deployment qualification currently requires a direct mapping without a zero-balance rule",
+                    )?;
+                    let block_hash = word(&d.block_hash)?;
+                    require(block_hash != [0; 32], "deployment block hash cannot be zero")?;
+                    Ok(VerifiedDeployment { block: d.block, block_hash })
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
                 code_hash: word(&layout.code_hash)?,
+                deployment,
                 other_slots,
                 other_mapping_slots,
                 other_mapping_words,
