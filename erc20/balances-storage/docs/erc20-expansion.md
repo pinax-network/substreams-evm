@@ -1,10 +1,11 @@
 # Expanding toward all ERC-20 balances
 
-Following the earlier BNB/WBNB prototype, the current ERC-20 experiment includes `map_erc20_candidates`, a separate RPC-free discovery
-module, plus the Rust `probe-erc20` command for validation. It is not connected to
-`map_events`, so an unverified layout cannot become a served balance.
+The Rust `probe-erc20` command now runs discovery directly over captured Extended
+Block protobuf files. It is excluded from WASM and creates no Substreams map or
+cache. Hypotheses never enter `map_events` unless separately qualified and
+supplied as an explicit token-layout configuration.
 
-## First experiment
+## Historical multi-map experiment
 
 Over BSC blocks 122260950–122260965, the module observed **239 contracts** emitting
 ERC-20-shaped Transfer logs and **522 candidate mapping layouts**. For **215
@@ -18,7 +19,7 @@ layouts, and even a unique match can be a mirror, a conditional code path or a
 short-window coincidence. No additional adapter has been promoted automatically.
 The contract set is derived from log shape, not a verified token registry.
 
-The mapper reads persisted storage writes and verified Keccak preimages across
+The native extractor reads persisted storage writes and verified Keccak preimages across
 all observed token-like contracts. It emits the holder, full 256-bit mapping
 base, actual storage key, first old value and final new value. This handles
 candidate bases outside a small numeric slot range. Scalar writes, missing
@@ -30,14 +31,12 @@ The probe evaluates each hypothesis using EIP-1898 block hashes at the parent an
 current block. Allowance or unrelated mappings normally disagree and are retained
 as rejected hypotheses; zeros alone cannot pass the evidence gate. Contract/RPC
 errors remain unresolved. Full before/after check records are retained locally,
-with their digest in the summary. The module itself has no RPC imports.
+with their digest in the summary. The extractor is an ordinary Rust function, not a map module.
 
 ```sh
-make -C erc20/balances-storage pack
 cargo run --locked -p erc20-balances-storage-tools -- probe-erc20 \
-  --start 122260950 --blocks 16 \
-  --output erc20/balances-storage/out/my-erc20-probe \
-  --endpoint bsc.substreams.pinax.network:443
+  --block-file erc20/balances-storage/tests/fixtures/bsc-122260950.pb \
+  --output erc20/balances-storage/out/my-erc20-probe
 ```
 
 ## What makes broader support correct
@@ -64,4 +63,5 @@ does not prove which value a contract returns.
 
 The next adapter qualification candidates should come from the probe's strongest
 and most frequently observed matches. Universal ERC-20 support remains unfinished;
-the current public event output supports only changed holders of pinned WBNB.
+the current public event output supports changed holders of explicitly configured,
+qualified direct-mapping layouts.

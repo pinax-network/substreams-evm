@@ -114,7 +114,7 @@ spkg/             # Pre-built Substreams packages
 | `transfers` | `Transfer` and `Approval` events |
 | `tokens` | Protocol-specific events: WETH, USDC, USDT, WBTC, SAI, stETH |
 | `balances` | Token balances via batched RPC `balanceOf` calls |
-| [`balances-storage`](erc20/balances-storage/README.md) | Experimental RPC-free balance events with the same protobuf as `balances`; BSC WBNB adapter |
+| [`balances-storage`](erc20/balances-storage/README.md) | Single RPC-free `map_events` with the same protobuf as `balances`; configurable verified token layouts |
 | `supply` | Token supply tracking |
 
 ### Native (`/native`)

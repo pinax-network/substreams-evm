@@ -3,37 +3,22 @@ package:
   name: erc20_balances_storage
   version: v0.1.0
   url: https://github.com/pinax-network/substreams-evm
-  description: Experimental RPC-free ERC-20 balance events from Extended storage changes; BSC WBNB adapter.
+  description: RPC-free ERC-20 Events from caller-qualified storage layouts.
 protobuf:
-  files: [balances.proto, storage.proto]
-  importPaths: [../../proto/v1, "."]
+  files: [balances.proto]
+  importPaths: [../../proto/v1]
 binaries:
   default:
     type: wasm/rust-v1
     file: ../../target/wasm32-unknown-unknown/release/erc20_balances_storage.wasm
 modules:
-  - name: map_storage_changes
-    kind: map
-    inputs:
-      - source: sf.ethereum.type.v2.Block
-    output:
-      type: proto:evm.balances.storage.v1.BlockBalances
-  - name: map_balance_changes
-    kind: map
-    inputs:
-      - map: map_storage_changes
-    output:
-      type: proto:evm.balances.v1.BalanceChanges
   - name: map_events
     kind: map
     inputs:
-      - map: map_storage_changes
-    output:
-      type: proto:evm.balances.v1.Events
-  - name: map_erc20_candidates
-    kind: map
-    inputs:
+      - params: string
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:evm.balances.storage.v1.StorageCandidates
+      type: proto:evm.balances.v1.Events
+params:
+  map_events: '[]'
 network: bsc

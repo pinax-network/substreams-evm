@@ -1,119 +1,114 @@
 # erc20/balances-storage
 
-Experimental RPC-free ERC-20 balance events from Firehose Extended storage
-changes. The reference implementation is [`erc20/balances`](../balances/).
-Both packages use the **same shared protobuf definitions and generated Rust
-types** from [`proto/v1/balances.proto`](../../proto/v1/balances.proto).
+A single RPC-free `map_events` reads Firehose Extended blocks and emits
+**`evm.balances.v1.Events`**, using the exact shared protobuf and Rust types from
+[`erc20/balances`](../balances/) and [`proto/v1/balances.proto`](../../proto/v1/balances.proto).
+There are no intermediate map modules, imported map dependencies, custom protobufs
+or generated bindings in this package. Only `map_events` creates an output cache.
 
-| Module | Output protobuf | Meaning |
+## Configurable verified layouts
+
+No token address, balance slot or runtime is built into the mapper. Supply a JSON
+array in the `map_events` parameter. The default is `[]`, which emits no balances.
+Each entry describes a **previously qualified non-proxy direct balance mapping**:
+
+| Field | Format | Meaning |
 | --- | --- | --- |
-| `map_events` | `evm.balances.v1.Events` | `balances[]`: optional bytes `contract` (field 1), bytes `address` (2), decimal string `amount` (3) |
-| `map_balance_changes` | `evm.balances.v1.BalanceChanges` | `balance_changes[]`: optional bytes `contract` (1), bytes `address` (2) |
-| `map_storage_changes` | `evm.balances.storage.v1.BlockBalances` | Separate diagnostics: block identity, first old/final new values, unresolved slots |
-| `map_erc20_candidates` | `evm.balances.storage.v1.StorageCandidates` | Separate discovery hypotheses, never promoted into balance events |
+| `contract` | 20-byte `0x` hex | Token contract |
+| `balance_slot` | 32-byte `0x` hex | Mapping base for `mapping(address => uint256)` balances |
+| `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
+| `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
+| `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 
-Public `map_events` and `map_balance_changes` are wire-compatible with
-`erc20/balances`: no custom balance wrapper, native balances, block markers or
-DatabaseChanges. Storage diagnostics are kept in a separate module. The existing
-aggregator/sink packages can consume the shared event type; no production wiring
-is changed by this experiment.
+The caller must establish that the configured mapping equals `balanceOf` for the
+pinned runtime. Matching a few samples or finding a mapping-shaped write alone
+is insufficient. The mapper cannot infer preexisting code identity from a block
+without code changes: independently qualify the starting runtime before using
+it outside the audit tools. All persisted code changes to configured contracts
+fail, including changes back to the expected runtime. Proxy implementation
+changes and computed/rebasing balances require other adapters; a proxy's runtime
+hash alone does not qualify its balance semantics.
 
-## Coverage
+Verified Keccak preimages identify holder keys. Transaction/call/log addresses
+are fallback candidates, accepted only when their mapping hash matches exactly.
+Persisted writes are ordered by execution ordinal; reverted execution cannot
+emit balances. Explicit zero and full uint256 values are preserved. Unknown
+writes for a configured token cause an error unless they belong to an explicitly
+configured other slot/mapping. Unconfigured contracts emit no rows.
 
-**Identical protobuf schema does not yet mean identical coverage.** The current
-qualified adapter covers changed holders of BSC WBNB
-`0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c`, mapping slot 3. The RPC reference
-also queries unchanged event participants, approvals, transaction senders, token
-contracts and special token events across many tokens. Those additional rows
-remain coverage gaps until their state and token semantics are supported.
+Identical protobuf format does not mean complete ERC-20 coverage: unchanged
+participants and holders with no observed write remain unknown. The reference
+also queries approval participants, senders, token contracts and special events.
+Missing data never becomes zero. A full holder dataset still needs a verified
+bootstrap and additional qualified token semantics.
 
-The mapper preserves explicit zero and full uint256 values. It reads persisted
-writes, verifies Keccak preimages, separates the nested allowance mapping at
-slot 4, orders changes by execution ordinal and rejects discontinuity. Failed
-or reverted execution cannot become a balance update. Nonces help determine
-persistence boundaries; they do not encode token balances.
-
-The qualified WBNB runtime Keccak-256 is
-`b7d84205eaaf83ce7b3940c6beaad6d22790255e34a9a2b486aa8cdfff118fe6`.
-The Rust validation tools verify exact runtime code before and after each range.
-Any persisted WBNB code change or unresolved WBNB write prevents public event
-output. A standalone consumer must qualify the starting runtime separately;
-a stateless block does not reveal preexisting code identity. Use BSC, Extended
-producer versions 3–5 (live fixtures cover version 5), and start after deployment.
-
-There is no complete holder bootstrap yet. Missing holders or unknown slots are
-never treated as zero. Proxy upgrades, computed/rebasing/reflection balances and
-other token layouts require additional qualification. See
-[ERC-20 expansion](docs/erc20-expansion.md).
-
-## Build and test
-
-All new implementation, tests and validation commands are Rust. The native tools
-are a separate workspace crate so HTTP/SQLite dependencies stay out of WASM.
-From the repository root:
+## Build and Rust tests
 
 ```sh
 make -C erc20/balances-storage test
 make -C erc20/balances-storage pack
-cargo run --locked -p erc20-balances-storage-tools -- --help
 ```
 
-The package is `spkg/erc20-balances-storage-v0.1.0.spkg`. The shared public
-protobuf is imported directly, never copied. To regenerate diagnostics after
-editing `storage.proto`, use `make -C erc20/balances-storage protogen` (Substreams
-CLI and Buf required).
+Output: `spkg/erc20-balances-storage-v0.1.0.spkg`. No Buf generation is needed here;
+the public schema is already maintained by the shared `proto` crate.
 
-Offline tests cover persisted/reverted execution, EIP-7702, allowances, corrupt
-preimages, zero/max values, protobuf wire compatibility, real BSC fixtures,
-comparison gaps, state continuity, RPC batch IDs, canonical hash binding and
-partial failure evidence. The full-block fixture includes recorded RPC oracles;
-the ERC-20 test checks all 18 WBNB updates and excludes native balances.
+Tests call extraction functions directly in Rust. They cover two arbitrary token
+addresses with different mapping bases (including a full-width 256-bit base),
+zero/max values, allowances, malformed configuration, code changes, reverted and
+failed transactions, real captured blocks, RPC failures and schema compatibility.
+The native tools' HTTP/SQLite dependencies do not enter the mapper's WASM.
 
-## Validate against RPC and the correct reference
+## Compare and audit
 
-Choose a new output directory for each run. Substreams CLI uses its normal
-authentication. RPC uses `RPC_URL` (default `https://bsc.rpc.pinax.network`) and
-optionally `RPC_API_KEY` or `SUBSTREAMS_API_KEY`. Credentials stay in environment
-variables; transport errors do not print provider URLs or keys.
+The regression layout file below is an **explicit test input**, containing the
+previously qualified BSC WBNB layout. It is not a default or built-in token list.
+Replace it with your qualified layouts. Current live qualification uses BSC.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- audit-rpc \
+  --layouts erc20/balances-storage/tests/fixtures/verified-layouts.json \
   --start 122260950 --blocks 64 \
-  --output erc20/balances-storage/out/rpc-64
+  --output erc20/balances-storage/out/single-map-audit
 
 cargo run --locked -p erc20-balances-storage-tools -- compare \
+  --layouts erc20/balances-storage/tests/fixtures/verified-layouts.json \
   --start 122260950 --blocks 64 \
-  --output erc20/balances-storage/out/reference-64
-
-cargo run --locked -p erc20-balances-storage-tools -- probe-erc20 \
-  --start 122260950 --blocks 16 \
-  --output erc20/balances-storage/out/discovery-16
+  --output erc20/balances-storage/out/single-map-comparison
 ```
 
-Use `--endpoint` to select the Substreams endpoint. `audit-rpc` checks every
-emitted old/new value with historical `balanceOf` at the canonical parent/current
-block hash (EIP-1898 `requireCanonical: true`), with no height/latest fallback.
-It also checks that public `map_events` equals the diagnostic projection on every
-block. Empty, malformed, missing, duplicate-ID or error RPC results cannot pass.
-Completed checks and counts survive a later transport failure.
+Both commands capture only `map_events`. The comparison reference is
+`erc20-balances-v0.3.4.spkg`. Runtime identity is verified at both range boundaries
+for every configured token. `audit-rpc` checks **every emitted end-of-block
+balance** with EIP-1898 `blockHash` / `requireCanonical: true`. The shared Events
+schema has no old values or source hash; old/new extraction ordering is tested
+natively, while live audit binds finalized capture heights to RPC headers and
+rechecks their continuity/stability. It trusts provider finality, not independent
+consensus proofs.
 
-`compare` captures **both packages' `map_events`**, using the repository's
-`erc20-balances-v0.3.4.spkg` as its default reference. It records every observed
-row in SQLite, compares shared values, counts reference-only/candidate-only rows
-on every block, and audits disputed values at their original hashes. WBNB
-reference-only initial values may seed a comparison ledger; seed-only checks are
-counted separately and never claimed as verified storage updates. Unsupported
-contracts remain explicit coverage gaps. Ordering of repeated balances is not
-significant; keys and exact amounts are compared.
+All observed rows, value differences and coverage gaps are retained in SQLite;
+reference-only holders never seed candidate state. Raw captures, RPC checks and
+JSON reports remain in each new output directory, including partial failures.
+Comparison exits zero only for bounded value and row-coverage parity. RPC audit
+exits zero only when all emitted values pass and at least one was checked.
 
-Raw outputs, logs, the SQLite comparison database and a JSON report are retained.
-Exit code 0 for `compare` requires bounded value **and row-coverage parity**.
-Coverage gaps, mismatches and incomplete captures return nonzero. All tools check
-BSC chain ID and provider finality; the schema has no block hash, so reference
-stream identity relies on exact capture heights and stable RPC boundary headers.
-These are bounded historical checks, not a production cutover qualification.
+Use `--endpoint` for the Substreams endpoint. RPC uses `RPC_URL` (default
+`https://bsc.rpc.pinax.network`) with optional `RPC_API_KEY` or
+`SUBSTREAMS_API_KEY`. The Substreams CLI uses its normal authentication.
+Credentials remain in environment variables, not report fields.
 
-See [qualification evidence](docs/qualification.md) for current results. The
-[earlier aggregator prototype's evidence](docs/legacy-qualification.md) is kept
-for provenance; its native balance results do not establish parity with the
-ERC-20 reference.
+## Native layout discovery
+
+Discovery operates directly on captured `sf.ethereum.type.v2.Block` protobuf
+files in the Rust tool. It is excluded from WASM, has no map handler and creates
+no Substreams cache:
+
+```sh
+cargo run --locked -p erc20-balances-storage-tools -- probe-erc20 \
+  --block-file erc20/balances-storage/tests/fixtures/bsc-122260950.pb \
+  --output erc20/balances-storage/out/native-discovery
+```
+
+Repeat `--block-file` for consecutive blocks. These must be full Extended block
+fixtures, not JSON-RPC blocks. Hypotheses are checked with historical `balanceOf`
+and remain diagnostics; no layout is automatically promoted into parameters.
+See [qualification](docs/qualification.md) and [ERC-20 expansion](docs/erc20-expansion.md).

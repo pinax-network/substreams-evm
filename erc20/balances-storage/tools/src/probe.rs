@@ -79,7 +79,7 @@ pub fn analyze(rpc: &dyn Rpc, blocks: &Blocks, output: &Path) -> Result<Value> {
         let mut observations = BTreeMap::new();
         for chunk in requests.iter().collect::<Vec<_>>().chunks(25) {
             let calls = chunk.iter().map(|(_, call)| (*call).clone()).collect::<Vec<_>>();
-            let responses = batch_responses(rpc.request(batch_payload(&calls))?, calls.len())?;
+            let responses = rpc.batch_rows(&calls)?;
             for ((key, _), response) in chunk.iter().zip(responses) {
                 let actual = if response["error"].is_null() {
                     balance_result(&response["result"], true).ok()

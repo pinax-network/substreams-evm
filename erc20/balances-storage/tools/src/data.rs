@@ -10,10 +10,9 @@ use std::{
     path::{Path, PathBuf},
 };
 
-pub const WBNB: &str = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
 pub type Key = (String, String);
 pub type Blocks = BTreeMap<u64, Value>;
-pub type Changes = BTreeMap<Key, (U256, U256)>;
+pub type Balances = BTreeMap<Key, U256>;
 
 pub fn package_dir() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap().to_path_buf()
@@ -86,8 +85,6 @@ pub fn read_stream(path: &Path, start: u64, stop: u64, module: &str) -> Result<B
     let mut blocks = Blocks::new();
     let expected_type = match module {
         "map_events" => "evm.balances.v1.Events",
-        "map_storage_changes" => "evm.balances.storage.v1.BlockBalances",
-        "map_erc20_candidates" => "evm.balances.storage.v1.StorageCandidates",
         _ => return Err(anyhow!("unsupported capture module")),
     };
     for line in BufReader::new(fs::File::open(path)?).lines() {
@@ -111,20 +108,12 @@ pub fn validate_blocks(blocks: &Blocks) -> Result<()> {
     }
     Ok(())
 }
-pub fn candidate_rows(block: &Value) -> Result<Changes> {
-    let mut rows = Changes::new();
+pub fn candidate_rows(block: &Value) -> Result<Balances> {
+    let mut rows = Balances::new();
     for row in items(block, "balances")? {
-        let contract = match row.get("contract") {
-            None => String::new(),
-            Some(v) if v == "" => String::new(),
-            Some(v) => binary(v, 20)?,
-        };
-        ensure!(contract == WBNB, "unsupported ERC-20 contract in candidate");
+        let contract = binary(&row["contract"], 20)?;
         let key = (contract, binary(&row["address"], 20)?);
-        ensure!(
-            rows.insert(key, (uint(&row["oldAmount"])?, uint(&row["amount"])?)).is_none(),
-            "duplicate candidate balance"
-        );
+        ensure!(rows.insert(key, uint(&row["amount"])?).is_none(), "duplicate candidate balance");
     }
     Ok(rows)
 }

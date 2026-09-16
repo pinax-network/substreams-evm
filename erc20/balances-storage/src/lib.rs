@@ -1,18 +1,16 @@
-//! ERC-20 changed balances from persisted Extended state. No RPC imports.
-mod discovery;
-pub mod pb;
+//! A single RPC-free map with the shared ERC-20 Events output.
+#[cfg(not(target_arch = "wasm32"))]
+pub mod discovery;
+pub mod layout;
 #[allow(dead_code)]
-mod persist;
+pub mod persist;
 
-use pb::{Balance, BlockBalances, UnresolvedSlot};
+use layout::VerifiedLayout;
 use proto::pb::evm::balances::v1 as balances_pb;
 use std::collections::{BTreeMap, BTreeSet};
 use substreams::{errors::Error, scalar::BigInt};
 use substreams_ethereum::pb::eth::v2 as eth;
 use tiny_keccak::{Hasher, Keccak};
-
-pub const WBNB: &str = "bb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-pub const WBNB_CODE_HASH: &str = "b7d84205eaaf83ce7b3940c6beaad6d22790255e34a9a2b486aa8cdfff118fe6";
 
 fn require(ok: bool, message: &str) -> Result<(), Error> {
     if ok {
@@ -21,7 +19,7 @@ fn require(ok: bool, message: &str) -> Result<(), Error> {
         Err(Error::msg(message.to_string()))
     }
 }
-fn hash(bytes: &[u8]) -> [u8; 32] {
+pub fn hash(bytes: &[u8]) -> [u8; 32] {
     let mut result = [0; 32];
     let mut hasher = Keccak::v256();
     hasher.update(bytes);
@@ -37,19 +35,14 @@ fn word(bytes: &[u8]) -> Result<[u8; 32], Error> {
 fn amount(bytes: &[u8]) -> Result<String, Error> {
     Ok(BigInt::from_unsigned_bytes_be(&word(bytes)?).to_string())
 }
-fn slot(n: u8) -> [u8; 32] {
-    let mut w = [0; 32];
-    w[31] = n;
-    w
-}
-fn mapping(owner: &[u8], position: u8) -> [u8; 32] {
+fn mapping(owner: &[u8], position: &[u8; 32]) -> [u8; 32] {
     let mut preimage = [0; 64];
     preimage[12..32].copy_from_slice(owner);
-    preimage[63] = position;
+    preimage[32..].copy_from_slice(position);
     hash(&preimage)
 }
 fn hex_bytes(s: &str) -> Result<Vec<u8>, Error> {
-    hex::decode(s.strip_prefix("0x").unwrap_or(s)).map_err(|_| Error::msg("invalid preimage hex"))
+    hex::decode(s.strip_prefix("0x").unwrap_or(s)).map_err(|_| Error::msg("invalid hex"))
 }
 
 #[derive(Default)]
@@ -60,19 +53,24 @@ struct Changes {
 impl persist::Sink for Changes {
     fn balance(&mut self, _: &eth::BalanceChange, _: persist::Ctx) {}
     fn storage(&mut self, c: &eth::StorageChange, _: persist::Ctx) {
-        if hex::encode(&c.address) == WBNB {
-            self.storage.push(c.clone());
-        }
+        self.storage.push(c.clone());
     }
     fn code(&mut self, c: &eth::CodeChange, _: persist::Ctx) {
-        if hex::encode(&c.address) == WBNB {
-            self.codes.push(c.clone());
-        }
+        self.codes.push(c.clone());
     }
     fn nonce(&mut self, _: &eth::NonceChange, _: persist::Ctx) {}
 }
 
-fn insert(rows: &mut BTreeMap<(Vec<u8>, Vec<u8>), Balance>, contract: &[u8], address: &[u8], old: &[u8], new: &[u8], ordinal: u64) -> Result<(), Error> {
+// Ordinary Rust intermediates, not protobufs or additional Substreams outputs.
+#[derive(Debug)]
+pub struct Change {
+    pub contract: Vec<u8>,
+    pub address: Vec<u8>,
+    pub old_amount: String,
+    pub amount: String,
+    pub ordinal: u64,
+}
+fn insert(rows: &mut BTreeMap<(Vec<u8>, Vec<u8>), Change>, contract: &[u8], address: &[u8], old: &[u8], new: &[u8], ordinal: u64) -> Result<(), Error> {
     require(address.len() == 20, "invalid balance address")?;
     require(ordinal > 0, "persisted balance has no execution ordinal")?;
     let old = amount(old)?;
@@ -86,7 +84,7 @@ fn insert(rows: &mut BTreeMap<(Vec<u8>, Vec<u8>), Balance>, contract: &[u8], add
     } else {
         rows.insert(
             key,
-            Balance {
+            Change {
                 contract: contract.to_vec(),
                 address: address.to_vec(),
                 old_amount: old,
@@ -97,8 +95,7 @@ fn insert(rows: &mut BTreeMap<(Vec<u8>, Vec<u8>), Balance>, contract: &[u8], add
     }
     Ok(())
 }
-
-fn validate_block(block: &eth::Block) -> Result<u64, Error> {
+fn validate_block(block: &eth::Block) -> Result<(), Error> {
     require(
         block.detail_level == eth::block::DetailLevel::DetaillevelExtended as i32,
         "Extended blocks required",
@@ -110,47 +107,59 @@ fn validate_block(block: &eth::Block) -> Result<u64, Error> {
         "invalid block identity",
     )?;
     require(header.number == block.number, "header number mismatch")?;
-    let timestamp = header.timestamp.as_ref().ok_or_else(|| Error::msg("missing timestamp"))?;
-    require(timestamp.seconds >= 0, "negative timestamp")?;
     for tx in &block.transaction_traces {
         require((1..=3).contains(&tx.status) && !tx.calls.is_empty(), "incomplete transaction persistence data")?;
     }
-    Ok(timestamp.seconds as u64)
+    Ok(())
+}
+fn ignored_mapping(mut key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, layout: &VerifiedLayout) -> bool {
+    // Follow verified nested mapping preimages; never guess an unknown slot's role.
+    let mut visited = BTreeSet::new();
+    while visited.insert(key) {
+        let Some(preimage) = preimages.get(&key).filter(|p| p.len() == 64) else {
+            return false;
+        };
+        let base: [u8; 32] = preimage[32..].try_into().unwrap();
+        if layout.other_mapping_slots.contains(&base) {
+            return true;
+        }
+        key = base;
+    }
+    false
 }
 
-/// Valid only for BSC's pinned WBNB implementation. Code identity is verified by
-/// the comparison/bootstrap runner before a range; in-range code changes fail.
-pub fn project(block: &eth::Block) -> Result<BlockBalances, Error> {
-    let timestamp = validate_block(block)?;
-    let mut changes = Changes::default();
-    persist::collect_block(block, &mut changes)?;
-    // Starting runtime must already be qualified. Even a change *to* the
-    // expected runtime can follow writes made under a different layout earlier
-    // in the block. Requalify that boundary instead of interpreting those writes.
-    require(changes.codes.is_empty(), "WBNB code changed; storage adapter must be requalified")?;
+/// Layout semantics and the starting runtime must be qualified by the caller.
+/// All changes to configured contracts' code are rejected, even to the pinned code.
+/// The audit runner checks code_hash at both boundaries; the stateless mapper
+/// cannot infer preexisting runtime identity from a block with no code change.
+pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Change>, Error> {
+    validate_block(block)?;
+    let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.clone(), l)).collect();
+    let mut raw = Changes::default();
+    persist::collect_block(block, &mut raw)?;
+    require(
+        !raw.codes.iter().any(|c| configured.contains_key(&c.address)),
+        "configured token code changed; requalify layout",
+    )?;
     let mut preimages = BTreeMap::new();
     let mut candidates = BTreeSet::new();
-    let wbnb = hex::decode(WBNB).unwrap();
     for tx in &block.transaction_traces {
-        if tx.from.len() == 20 {
-            candidates.insert(tx.from.clone());
-        }
-        if tx.to.len() == 20 {
-            candidates.insert(tx.to.clone());
+        for address in [&tx.from, &tx.to] {
+            if address.len() == 20 {
+                candidates.insert(address.clone());
+            }
         }
     }
     for call in block.system_calls.iter().chain(block.transaction_traces.iter().flat_map(|tx| &tx.calls)) {
-        if call.address.len() == 20 {
-            candidates.insert(call.address.clone());
+        for address in [&call.address, &call.caller] {
+            if address.len() == 20 {
+                candidates.insert(address.clone());
+            }
         }
-        if call.caller.len() == 20 {
-            candidates.insert(call.caller.clone());
-        }
-        if call.address != wbnb && !call.storage_changes.iter().any(|c| c.address == wbnb) {
+        if !configured.contains_key(&call.address) && !call.storage_changes.iter().any(|c| configured.contains_key(&c.address)) {
             continue;
         }
-        // Preimages are discovery hints, even in reverted calls; only persisted
-        // writes below can become output balances. Verify every hint used.
+        // Reverted preimages are discovery hints only; only persisted writes emit balances.
         for (key, value) in &call.keccak_preimages {
             let key = hex_bytes(key)?;
             let value = hex_bytes(value)?;
@@ -158,7 +167,7 @@ pub fn project(block: &eth::Block) -> Result<BlockBalances, Error> {
             preimages.insert(word(&key)?, value);
         }
         for log in &call.logs {
-            if log.address == wbnb {
+            if configured.contains_key(&log.address) {
                 for topic in log.topics.iter().skip(1) {
                     if topic.len() == 32 && topic[..12] == [0; 12] {
                         candidates.insert(topic[12..].to_vec());
@@ -167,95 +176,54 @@ pub fn project(block: &eth::Block) -> Result<BlockBalances, Error> {
             }
         }
     }
-    let candidates: BTreeMap<_, _> = candidates.into_iter().map(|a| (mapping(&a, 3), a)).collect();
-    let mut out = BlockBalances {
-        number: block.number,
-        hash: block.hash.clone(),
-        parent_hash: block.header.as_ref().unwrap().parent_hash.clone(),
-        timestamp,
-        preimage_count: preimages.len() as u64,
-        wbnb_storage_changes: changes.storage.len() as u64,
-        ..Default::default()
-    };
+    let candidates: BTreeMap<_, BTreeMap<_, _>> = layouts
+        .iter()
+        .map(|l| (l.balance_slot, candidates.iter().map(|a| (mapping(a, &l.balance_slot), a.clone())).collect()))
+        .collect();
     let mut rows = BTreeMap::new();
-    changes.storage.sort_by_key(|c| c.ordinal);
-    for c in changes.storage {
+    raw.storage.sort_by_key(|c| c.ordinal);
+    for c in raw.storage {
+        let Some(layout) = configured.get(&c.address) else {
+            continue;
+        };
         let key = word(&c.key)?;
-        let preimage = preimages.get(&key).filter(|p| p.len() == 64 && p[..12] == [0; 12]);
-        let owner = preimage
-            .filter(|p| p[32..] == slot(3))
+        let owner = preimages
+            .get(&key)
+            .filter(|p| p.len() == 64 && p[..12] == [0; 12] && p[32..] == layout.balance_slot)
             .map(|p| p[12..32].to_vec())
-            .or_else(|| candidates.get(&key).cloned());
+            .or_else(|| candidates[&layout.balance_slot].get(&key).cloned());
         if let Some(owner) = owner {
-            insert(&mut rows, &wbnb, &owner, &c.old_value, &c.new_value, c.ordinal)?;
+            insert(&mut rows, &c.address, &owner, &c.old_value, &c.new_value, c.ordinal)?;
         } else {
-            // WBNB's only other mutable mapping is allowance[owner][spender]
-            // at slot 4. Require both verified preimages, not a guessed label.
-            let allowance = preimage
-                .and_then(|p| preimages.get(&word(&p[32..]).ok()?))
-                .is_some_and(|p| p.len() == 64 && p[..12] == [0; 12] && p[32..] == slot(4));
-            if !allowance {
-                out.unresolved_wbnb_slots.push(UnresolvedSlot {
-                    key: key.to_vec(),
-                    new_value: c.new_value,
-                    ordinal: c.ordinal,
-                });
-            }
+            require(
+                layout.other_slots.contains(&key) || ignored_mapping(key, &preimages, layout),
+                "unresolved storage for configured token; refusing incomplete events",
+            )?;
         }
     }
-    out.balances = rows.into_values().collect();
-    Ok(out)
+    Ok(rows.into_values().collect())
 }
-
-#[substreams::handlers::map]
-pub fn map_storage_changes(block: eth::Block) -> Result<BlockBalances, Error> {
-    project(&block)
-}
-
-#[substreams::handlers::map]
-pub fn map_erc20_candidates(block: eth::Block) -> Result<pb::StorageCandidates, Error> {
-    discovery::project(&block)
-}
-
-pub fn events(block: &BlockBalances) -> Result<balances_pb::Events, Error> {
-    require(
-        block.unresolved_wbnb_slots.is_empty(),
-        "unresolved WBNB storage: refusing incomplete balance events",
-    )?;
-    let mut out = balances_pb::Events::default();
-    for balance in &block.balances {
-        require(balance.contract == hex_bytes(WBNB)?, "unsupported ERC-20 contract")?;
-        out.balances.push(balances_pb::Balance {
-            contract: Some(balance.contract.clone()),
-            address: balance.address.clone(),
-            amount: balance.amount.clone(),
-        });
-    }
-    Ok(out)
-}
-
-#[substreams::handlers::map]
-pub fn map_events(block: BlockBalances) -> Result<balances_pb::Events, Error> {
-    events(&block)
-}
-
-pub fn balance_changes(block: &BlockBalances) -> Result<balances_pb::BalanceChanges, Error> {
-    Ok(balances_pb::BalanceChanges {
-        balance_changes: events(block)?
-            .balances
+pub fn project(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<balances_pb::Events, Error> {
+    Ok(balances_pb::Events {
+        balances: changes(block, layouts)?
             .into_iter()
-            .map(|balance| balances_pb::BalanceChange {
-                contract: balance.contract,
-                address: balance.address,
+            .map(|b| balances_pb::Balance {
+                contract: Some(b.contract),
+                address: b.address,
+                amount: b.amount,
             })
             .collect(),
     })
 }
-
-#[substreams::handlers::map]
-pub fn map_balance_changes(block: BlockBalances) -> Result<balances_pb::BalanceChanges, Error> {
-    balance_changes(&block)
+// The SDK macro generates raw-pointer parameter decoding and discards function
+// attributes. Keep its ABI-specific lint exception scoped to this wrapper.
+#[allow(clippy::not_unsafe_ptr_arg_deref)]
+mod handler {
+    use super::*;
+    #[substreams::handlers::map]
+    fn map_events(params: String, block: eth::Block) -> Result<balances_pb::Events, Error> {
+        project(&block, &layout::parse(&params)?)
+    }
 }
-
 #[cfg(test)]
 mod tests;

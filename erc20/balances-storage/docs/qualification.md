@@ -1,85 +1,95 @@
-# ERC-20 storage qualification
+# Single-map ERC-20 qualification
 
-The current implementation lives in `erc20/balances-storage`, with
-`erc20/balances` v0.3.4 as its reference. Both public modules reuse the existing
-`evm.balances.v1` protobuf definitions and Rust types. The diagnostics schema is
-separate. Native balance projection and the prototype's database/sink outputs
-have been removed from this package.
+The current package has exactly one module, `map_events`, taking parameters and
+Extended blocks directly and returning `evm.balances.v1.Events`. It has no custom
+protobuf, generated `pb.rs`, Buf config or intermediate cache. The only protobuf
+source is the same shared `balances.proto` used by `erc20/balances`.
 
-All comparison, RPC auditing and discovery tools and tests are native Rust.
-Earlier aggregator/native evidence is retained separately in
-[legacy qualification](legacy-qualification.md); it is not evidence of complete
-ERC-20 reference parity.
+There is no built-in token address, runtime or balance slot. JSON parameters
+supply caller-qualified direct-mapping layouts, runtime hashes and explicitly
+ignored non-balance storage. The default layout list is empty. WBNB appears only
+as an explicit regression fixture/test configuration, not in production logic.
 
-## Current package, 2026-09-16
+Runtime identity is checked by the Rust validation tools at both range
+boundaries. The mapper rejects all code changes for configured contracts and
+unresolved writes. Qualifying the configured storage semantics and starting
+runtime remains a caller prerequisite; the stateless map cannot independently
+recover preexisting code identity. Proxy and computed-balance layouts remain
+outside this adapter.
 
-`spkg/erc20-balances-storage-v0.1.0.spkg` SHA-256:
-`78e7ce9aa2815d38a481869863d2c432fabcba7ed56319ff9a0ac303b3de4b71`.
+## Tests
+
+Rust regression tests cover arbitrary token addresses, multiple mapping bases
+including a full-width 256-bit slot, exact shared event encoding, scalar and
+nested non-balance mappings, corrupt configuration/preimages, explicit zero,
+uint256 max, code changes, failed/reverted execution and captured BSC blocks.
+The captured complete block still matches all 18 recorded ERC-20 RPC values when
+its layout is passed explicitly.
+
+Native discovery runs directly over captured Extended Block protobuf files and
+is excluded from WASM. It is no longer a Substreams map or output cache.
+
+## Evidence boundaries
+
+The single-map live audit checks each emitted **end-of-block** balance against
+canonical block-hash-pinned `balanceOf`. It no longer captures custom old/new
+storage diagnostics. Events has no source hash, so the runner binds finalized
+capture heights to RPC headers, validates continuity and rechecks stability.
+This trusts provider finality, not independent consensus proofs.
+
+The comparator checks the new and reference packages' `map_events` outputs and
+reports every row-coverage gap. Only candidate-observed values enter its ledger;
+reference-only rows never seed candidate state. Matching schema and sampled
+values does not establish complete token/holder coverage.
+
+Earlier [multi-map qualification](multi-map-qualification.md) and
+[aggregator prototype qualification](legacy-qualification.md) are retained as
+historical evidence. Their package hashes and before/after audit counts do not
+qualify this new artifact. Current single-map results are recorded below.
+
+## Final artifact and results — 2026-09-16
+
+Package SHA-256:
+`255730e1269615545b00f7c84e475fa04716f3325e7fa275ecde25184e920f0e`.
 WASM SHA-256:
-`e90ae2f27b6cf64ec711572be5413e24a822d40da218556ad4c25794c4adf039`.
-Import inspection found only `env.output`, `env.register_panic` and
-`env.skip_empty_output`; no RPC host imports. Package inspection confirms the
-same `map_events` / `map_balance_changes` output type names as the reference.
-The public protobuf file is imported directly from the same shared directory,
-and a Rust wire-format test covers the shared generated types and explicit zero.
+`9be227abf6f47afacee33ce156d3dc586c4de1b92dd944eb0585ce7bffe2705c`.
+The packaged graph contains exactly `map_events`; its only non-runtime function
+export is `map_events`. Host imports remain `env.output`, `env.register_panic`
+and `env.skip_empty_output`, with no RPC imports.
 
-## Comparison against erc20/balances
+The explicit regression configuration has SHA-256
+`c24596b31fe5027fafcca5ddffc08456de7859649299d8cd11a748568357f1ea`.
+These live runs use that WBNB test configuration, not a built-in address list.
 
-Over finalized BSC blocks **122260950–122261013**, the new `map_events` output
-matched **all 1,414 shared WBNB updates**, with zero balance disagreements.
-All 20 independent final-block `balanceOf` samples passed. The comparison ledger
-performed 17,633 comparisons after storage-derived updates; 19,863 seed-only
-comparisons are counted separately and are not independent validation.
+| Run | Blocks | Emitted balances checked | Zero values | Mismatches |
+| --- | ---: | ---: | ---: | ---: |
+| [RPC audit 122260950–122261013](evidence/single-map-rpc-64.json) | 64 | 1,414 | 298 | 0 |
+| [RPC audit 122261100–122261227](evidence/single-map-rpc-128.json) | 128 | 2,227 | 519 | 0 |
 
-The reference emitted **17,701 additional rows**, including balances for
-**621 other token contracts** and unchanged WBNB participants. No candidate row
-was missing from the reference. The result is **`coverage_gap` with exit code 1**,
-not full parity. The report retains this distinction:
-[64-block ERC-20 comparison](evidence/rust-erc20-reference-64.json).
+Together: **3,641 end-of-block RPC checks across 192 blocks, zero mismatches**.
+These counts are intentionally different from the earlier two-sided audit: the
+single public Events output contains final amounts only.
 
-The reference artifact is `erc20-balances-v0.3.4.spkg`, SHA-256
-`8aaa03b551b9d67ce1ea9aa0dae4310eda1807f2bc161bd53b17f82de9d92543`.
-Its public `Events` schema has no block hash; the runner checks exact output
-heights and stable RPC boundary headers around finalized captures. This trusts
-provider finality rather than independently verifying consensus.
+The [reference comparison](evidence/single-map-reference-64.json) matches all
+1,414 shared updates and 20/20 final-block RPC samples. It records 17,701
+reference-only rows and 621 reference token contracts without candidate updates.
+There are zero value disagreements or candidate-only rows. The correct result
+remains `coverage_gap`, exit code 1, not universal ERC-20 parity.
 
-## Direct RPC audit
+Two earlier runs are preserved as incomplete: [25-call batches](evidence/single-map-rpc-64-incomplete.json)
+stopped after 341 checks/15 blocks, and [10-call batches](evidence/single-map-rpc-64-small-incomplete.json)
+stopped after 117 checks/6 blocks. Both failed on a non-array response at a
+single-call remainder. The Rust client now sends ordinary single requests for
+such remainders and keeps strict response-ID/error/value validation. The complete
+runs above used this correction, one worker and batches of up to 25.
 
-The [64-block Rust audit](evidence/rust-erc20-rpc-64.json) checked **2,828 WBNB
-balances**, covering every old/new value for all 1,414 emitted updates:
-**zero mismatches**, including 594 explicit zeros. Every RPC request uses an
-EIP-1898 block hash and `requireCanonical: true`. Public `map_events` output was
-also checked against the diagnostic projection on every block. Runtime identity
-is verified before the first block and after the last.
+The [native discovery probe](evidence/single-map-native-probe.json) reads the
+captured block 122260950 directly: 26 token-like contracts, 42 layout hypotheses,
+364 candidate-value checks and zero promoted adapters. No extra Substreams map
+or cache is used.
 
-The [disjoint 128-block Rust audit](evidence/rust-erc20-rpc-128.json), blocks
-122261100–122261227, adds **4,454 checks with zero mismatches**, including 1,040
-explicit zeros. Together the two windows cover **7,282 WBNB old/new checks over
-192 blocks**, and public event/diagnostic equality on every block. Both ran the
-package hash above, using one worker and batches of 25.
-
-## Rust discovery replay
-
-The [16-block Rust probe](evidence/rust-erc20-discovery-16.json) repeated the
-earlier discovery window: 239 token-like contracts, 522 candidate layouts,
-6,380 before/after candidate-value checks and 215 contracts with a matching
-candidate. One contract still has multiple matching layouts. **Zero adapters
-were promoted**. Every layout and token statistic matched the retained
-[detailed discovery report](evidence/erc20-discovery-16.json); the new summary
-records the Rust run's package/check hashes and timing. Raw checks remain in
-the local run directory. Matching a short window does not qualify an adapter.
-
-## Tests and limits
-
-- 24 mapper/persistence/protobuf tests and 25 native tool tests pass on Rust 1.88.
-- The complete workspace's 66 library/binary tests and WASM target check pass.
-- Targeted Clippy passes with warnings denied; the package builds and packs.
-- All six prototype Python scripts/tests were replaced by the Rust tools crate.
-- An expanded workspace run also attempted unrelated generated documentation
-  examples and found a preexisting non-Rust example in `proto/src/pb/uniswap.v3.rs`
-  (Swap). CI retains library tests and adds binary tests; the new crates' own
-  documentation tests pass. This unrelated generated example was left unchanged.
-
-Full ERC-20 row coverage, complete holder bootstrap, proxy and computed-balance
-semantics, longer live sink runs, restart/reorg handling and end-to-end Token API
-queries remain unqualified. No production sink or aggregator was rewired.
+All **68 workspace library/binary tests** pass on Rust 1.88, including 25 mapper,
+persistence/configuration/schema tests and 26 native-tool tests. Workspace WASM
+checking, targeted Clippy with warnings denied, and packing pass. The SDK's
+macro-generated string-pointer ABI wrapper has a narrowly scoped Clippy
+exception; extraction and native tools retain the normal checks.

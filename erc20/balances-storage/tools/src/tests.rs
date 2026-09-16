@@ -6,6 +6,7 @@ use primitive_types::U256;
 use rusqlite::Connection;
 use serde_json::{json, Value};
 use std::{fs, sync::Mutex};
+const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 fn address() -> String {
     format!("0x{}", "11".repeat(20))
@@ -13,12 +14,12 @@ fn address() -> String {
 fn hash(height: u64) -> String {
     format!("0x{height:064x}")
 }
-fn candidate(height: u64, before: &str, after: &str) -> Value {
+fn candidate(height: u64, _before: &str, after: &str) -> Value {
     json!({"number":height.to_string(),"hash":hash(height),"parentHash":hash(height-1),
-        "balances":[{"contract":WBNB,"address":address(),"oldAmount":before,"amount":after}]})
+        "balances":[{"contract":TOKEN,"address":address(),"amount":after}]})
 }
 fn reference(amount: &str) -> Value {
-    json!({"balances":[{"contract":WBNB,"address":address(),"amount":amount}]})
+    json!({"balances":[{"contract":TOKEN,"address":address(),"amount":amount}]})
 }
 fn report(ours: Blocks, theirs: Blocks) -> Value {
     let temp = tempfile::tempdir().unwrap();
@@ -58,9 +59,9 @@ impl Rpc for FakeRpc {
                 if self.fail_height == Some(height) {
                     bail!("test RPC transport failed");
                 }
-                Ok(json!({"id":1,"result":{"number":format!("{height:#x}"),"hash":hash(height)}}))
+                Ok(json!({"id":1,"result":{"number":format!("{height:#x}"),"hash":hash(height),"parentHash":hash(height.saturating_sub(1))}}))
             }
-            "eth_call" => Ok(json!({"id":1,"result":format!("0x{:064x}",self.after)})),
+            "eth_call" => Ok(json!({"id":payload["id"],"result":format!("0x{:064x}",self.after)})),
             _ => bail!("unexpected test RPC method"),
         }
     }
@@ -91,13 +92,12 @@ fn uint256_and_explicit_zero_remain_sqlite_text() {
     assert_eq!(rows, vec![(max, "text".into()), ("0".into(), "text".into())]);
 }
 #[test]
-fn reference_seed_is_not_verified_and_reports_output_coverage_gap() {
+fn reference_only_rows_never_seed_candidate_state() {
     let mut ours = candidate(1, "5", "0");
     ours["balances"] = json!([]);
     let r = report([(1, ours)].into(), [(1, reference("0"))].into());
-    assert_eq!(r["reference_bootstrap_seeds"], 1);
     assert_eq!(r["snapshot_comparisons"], 0);
-    assert_eq!(r["seed_only_comparisons"], 1);
+    assert_eq!(r["distinct_storage_keys"], 0);
     assert_eq!(r["reference_only_updates"], 1);
     assert_eq!(r["status"], "coverage_gap");
 }
@@ -121,16 +121,15 @@ fn unsupported_reference_tokens_are_visible_not_claimed_as_storage() {
     let mut other = reference("20");
     other["balances"][0]["contract"] = json!(address());
     let r = report([(1, candidate(1, "5", "0"))].into(), [(1, other)].into());
-    assert_eq!(r["unsupported_contracts"], 1);
+    assert_eq!(r["reference_contracts_without_candidate_updates"], 1);
     assert_eq!(r["reference_only_updates"], 1);
-    assert_eq!(r["reference_bootstrap_seeds"], 0);
     assert_eq!(r["status"], "coverage_gap");
 }
 #[test]
-fn unresolved_storage_cannot_pass() {
+fn any_token_address_is_supported_without_a_builtin_allowlist() {
     let mut ours = candidate(1, "5", "0");
-    ours["unresolvedWbnbSlots"] = json!([{"key":hash(0)}]);
-    assert_eq!(report([(1, ours)].into(), [(1, reference("0"))].into())["status"], "mismatch");
+    ours["balances"][0]["contract"] = json!(address());
+    assert_eq!(candidate_rows(&ours).unwrap().len(), 1);
 }
 #[test]
 fn forks_and_wrong_block_numbers_are_rejected() {
@@ -140,16 +139,9 @@ fn forks_and_wrong_block_numbers_are_rejected() {
     assert!(validate_blocks(&[(2, candidate(1, "5", "0"))].into()).is_err());
 }
 #[test]
-fn cross_block_old_balance_discontinuity_is_rejected() {
-    let temp = tempfile::tempdir().unwrap();
-    assert!(compare(
-        &[(1, candidate(1, "5", "0")), (2, candidate(2, "5", "0"))].into(),
-        &[(1, reference("0")), (2, reference("0"))].into(),
-        1,
-        3,
-        &temp.path().join("db")
-    )
-    .is_err());
+fn public_events_are_bound_to_contiguous_rpc_headers_for_auditing() {
+    let blocks = bind_headers(&FakeRpc::default(), &[(1, reference("0")), (2, reference("0"))].into()).unwrap();
+    assert_eq!(blocks[&2]["parentHash"], hash(1));
 }
 #[test]
 fn duplicate_candidate_and_reference_holders_are_rejected() {
@@ -164,14 +156,14 @@ fn stream_requires_exact_range_and_rejects_duplicates_or_wrong_module() {
     let path = temp.path().join("capture.jsonl");
     let row = format!(
         "{}\n",
-        json!({"@module":"map_storage_changes","@type":"evm.balances.storage.v1.BlockBalances","@block":1,"@data":candidate(1,"5","0")})
+        json!({"@module":"map_events","@type":"evm.balances.v1.Events","@block":1,"@data":reference("0")})
     );
     fs::write(&path, &row).unwrap();
-    assert!(read_stream(&path, 1, 2, "map_storage_changes").is_ok());
-    assert!(read_stream(&path, 1, 3, "map_storage_changes").is_err());
-    assert!(read_stream(&path, 1, 2, "map_events").is_err());
+    assert!(read_stream(&path, 1, 2, "map_events").is_ok());
+    assert!(read_stream(&path, 1, 3, "map_events").is_err());
+    assert!(read_stream(&path, 1, 2, "unknown_module").is_err());
     fs::write(&path, row.repeat(2)).unwrap();
-    assert!(read_stream(&path, 1, 2, "map_storage_changes").is_err());
+    assert!(read_stream(&path, 1, 2, "map_events").is_err());
 }
 #[test]
 fn rpc_disagreement_audit_preserves_database_and_uses_original_hash() {
@@ -230,16 +222,15 @@ fn token_result_requires_one_complete_abi_word() {
     }
 }
 #[test]
-fn every_balance_uses_parent_and_current_canonical_hash() {
+fn every_emitted_balance_uses_its_current_canonical_hash() {
     let rpc = FakeRpc::default();
     let checks = audit_block(&rpc, &candidate(1, "5", "0"), 25).unwrap();
-    assert_eq!(checks.len(), 2);
+    assert_eq!(checks.len(), 1);
     assert!(checks.iter().all(|c| c["match"] == true));
     let requests = rpc.requests.lock().unwrap();
-    let batch = requests.iter().find_map(Value::as_array).unwrap();
-    assert_eq!(batch[0]["params"][1], block_ref(&hash(0)));
-    assert_eq!(batch[1]["params"][1], block_ref(&hash(1)));
-    assert!(batch.iter().all(|r| r["method"] == "eth_call"));
+    let request = requests.iter().find(|r| r["method"] == "eth_call").unwrap();
+    assert_eq!(request["params"][1], block_ref(&hash(1)));
+    assert!(!requests.iter().any(Value::is_array));
 }
 #[test]
 fn rpc_balance_mismatch_is_retained() {
@@ -252,19 +243,16 @@ fn rpc_balance_mismatch_is_retained() {
         25,
     )
     .unwrap();
-    assert_eq!(checks[0]["match"], true);
-    assert_eq!(checks[1]["match"], false);
-    assert_eq!(checks[1]["rpc"], "1");
+    assert_eq!(checks[0]["match"], false);
+    assert_eq!(checks[0]["rpc"], "1");
 }
 #[test]
-fn wrong_hash_or_unresolved_slots_fail_before_balance_calls() {
-    for key in ["hash", "unresolvedWbnbSlots"] {
-        let rpc = FakeRpc::default();
-        let mut c = candidate(1, "5", "0");
-        c[key] = if key == "hash" { json!(hash(9)) } else { json!([{}]) };
-        assert!(audit_block(&rpc, &c, 25).is_err());
-        assert!(!rpc.requests.lock().unwrap().iter().any(Value::is_array));
-    }
+fn wrong_hash_fails_before_balance_calls() {
+    let rpc = FakeRpc::default();
+    let mut c = candidate(1, "5", "0");
+    c["hash"] = json!(hash(9));
+    assert!(audit_block(&rpc, &c, 25).is_err());
+    assert!(!rpc.requests.lock().unwrap().iter().any(|r| r.is_array() || r["method"] == "eth_call"));
 }
 #[test]
 fn zero_only_or_single_holder_discovery_is_insufficient() {
@@ -290,11 +278,11 @@ fn discovery_code_changes_errors_and_mismatches_prevent_qualification() {
     }
 }
 #[test]
-fn public_output_must_match_storage_exactly_and_never_include_native() {
+fn public_output_must_respect_configured_layouts_and_never_include_native() {
     let blocks = [(1, candidate(1, "5", "0"))].into();
-    assert!(verify_public_output(&blocks, &[(1, reference("0"))].into()).is_ok());
-    assert!(verify_public_output(&blocks, &[(1, reference("1"))].into()).is_err());
-    assert!(verify_public_output(&blocks, &[(1, json!({}))].into()).is_err());
+    let layouts = erc20_balances_storage::layout::parse(&json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":hash(8)}]).to_string()).unwrap();
+    assert!(validate_events_layouts(&blocks, &layouts).is_ok());
+    assert!(validate_events_layouts(&blocks, &[]).is_err());
     let mut native = candidate(1, "5", "0");
     native["balances"][0]["contract"] = json!("");
     assert!(candidate_rows(&native).is_err());
@@ -306,15 +294,7 @@ fn public_output_must_match_storage_exactly_and_never_include_native() {
 fn failure_retains_completed_blocks_and_a_report() {
     let temp = tempfile::tempdir().unwrap();
     let output = temp.path().join("audit");
-    let args = Range {
-        start: 1,
-        blocks: 2,
-        output: output.clone(),
-        package: default_package(),
-        endpoint: String::new(),
-        timeout: 1,
-    };
-    let success = record_run(&args, json!({"status":"incomplete","checks":0,"mismatches":0}), |report| {
+    let success = record_run(&output, json!({"status":"incomplete","checks":0,"mismatches":0}), |report| {
         audit_blocks(
             &FakeRpc {
                 fail_height: Some(2),
@@ -332,13 +312,13 @@ fn failure_retains_completed_blocks_and_a_report() {
     let result: Value = serde_json::from_slice(&fs::read(output.join("report.json")).unwrap()).unwrap();
     assert_eq!(result["status"], "incomplete");
     assert_eq!(result["checked_blocks"], 1);
-    assert_eq!(result["checks"], 2);
-    assert_eq!(fs::read_to_string(output.join("rpc-checks.jsonl")).unwrap().lines().count(), 2);
+    assert_eq!(result["checks"], 1);
+    assert_eq!(fs::read_to_string(output.join("rpc-checks.jsonl")).unwrap().lines().count(), 1);
     assert!(new_output(&output).is_err());
 }
 #[test]
 fn cli_uses_erc20_reference_and_rejects_invalid_bounds() {
-    let cli = Cli::try_parse_from(["tools", "compare", "--start", "1", "--output", "out"]).unwrap();
+    let cli = Cli::try_parse_from(["tools", "compare", "--start", "1", "--output", "out", "--layouts", "layouts.json"]).unwrap();
     let Commands::Compare(args) = cli.command else { panic!() };
     assert!(args.reference.ends_with("spkg/erc20-balances-v0.3.4.spkg"));
     assert!(args.range.validate(10000).is_ok());
@@ -377,7 +357,7 @@ fn http_errors_do_not_expose_endpoint_or_credentials() {
 
 #[test]
 fn discovery_checks_are_persisted_and_later_code_changes_invalidate_layouts() {
-    let contract = WBNB;
+    let contract = TOKEN;
     let holder = address();
     let mut first = candidate(1, "5", "0");
     first["tokens"] = json!([{"contract":contract,"transferHolders":[holder],"storageChanges":1}]);
@@ -391,4 +371,36 @@ fn discovery_checks_are_persisted_and_later_code_changes_invalidate_layouts() {
     assert_eq!(result["tokens"][0]["holders_with_some_matching_candidate"], 1);
     assert_eq!(result["candidate_contracts_matching_rpc"], 0);
     assert_eq!(fs::read_to_string(temp.path().join("checks.jsonl")).unwrap().lines().count(), 2);
+}
+
+#[test]
+fn runtime_qualification_uses_each_configured_contract_and_code_hash() {
+    struct CodeRpc {
+        calls: Mutex<Vec<Value>>,
+    }
+    impl Rpc for CodeRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            if payload["method"] == "eth_getCode" {
+                self.calls.lock().unwrap().push(payload.clone());
+                let code = if payload["params"][0] == TOKEN { "0xaa" } else { "0xbb" };
+                Ok(json!({"id":1,"result":code}))
+            } else {
+                FakeRpc::default().request(payload)
+            }
+        }
+    }
+    let json = json!([
+        {"contract":TOKEN,"balance_slot":hash(7),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xaa])))},
+        {"contract":address(),"balance_slot":hash(100),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xbb])))}
+    ]);
+    let mut layouts = erc20_balances_storage::layout::parse(&json.to_string()).unwrap();
+    let rpc = CodeRpc { calls: Mutex::new(Vec::new()) };
+    qualify_runtime(&rpc, 1, 2, &layouts).unwrap();
+    let calls = rpc.calls.lock().unwrap();
+    assert_eq!(calls.len(), 4);
+    assert_eq!(calls[0]["params"], json!([TOKEN, block_ref(&hash(0))]));
+    assert_eq!(calls[3]["params"], json!([address(), block_ref(&hash(1))]));
+    drop(calls);
+    layouts[1].code_hash = [0; 32];
+    assert!(qualify_runtime(&rpc, 1, 2, &layouts).is_err());
 }

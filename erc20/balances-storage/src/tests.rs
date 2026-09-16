@@ -1,6 +1,24 @@
 use super::*;
 use prost::Message;
+use serde_json::json;
 
+fn slot(n: u8) -> [u8; 32] {
+    let mut value = [0; 32];
+    value[31] = n;
+    value
+}
+fn layouts() -> Vec<VerifiedLayout> {
+    layout::parse(
+        &json!([
+            {"contract":format!("0x{}", "aa".repeat(20)),"balance_slot":format!("0x{}",hex::encode(slot(7))),
+             "code_hash":format!("0x{}","11".repeat(32)),"other_mapping_slots":[format!("0x{}",hex::encode(slot(8)))]},
+            {"contract":format!("0x{}", "bb".repeat(20)),"balance_slot":format!("0x{}","ff".repeat(32)),
+             "code_hash":format!("0x{}","22".repeat(32))}
+        ])
+        .to_string(),
+    )
+    .unwrap()
+}
 fn block() -> eth::Block {
     eth::Block {
         ver: 5,
@@ -11,7 +29,6 @@ fn block() -> eth::Block {
             number: 122260950,
             parent_hash: vec![2; 32],
             state_root: vec![3; 32],
-            timestamp: Some(prost_types::Timestamp { seconds: 1789570000, nanos: 0 }),
             ..Default::default()
         }),
         ..Default::default()
@@ -24,25 +41,16 @@ fn tx(call: eth::Call) -> eth::TransactionTrace {
         ..Default::default()
     }
 }
-fn native(ordinal: u64, old: u8, new: u8) -> eth::BalanceChange {
-    eth::BalanceChange {
-        address: vec![4; 20],
-        old_value: Some(eth::BigInt { bytes: vec![old] }),
-        new_value: Some(eth::BigInt { bytes: vec![new] }),
-        ordinal,
-        reason: eth::balance_change::Reason::Transfer as i32,
-    }
-}
-fn wbnb_call(owner: &[u8], old: u8, new: u8) -> eth::Call {
+fn token_call(layout: &VerifiedLayout, owner: &[u8], old: u8, new: u8) -> eth::Call {
     let mut preimage = vec![0; 64];
     preimage[12..32].copy_from_slice(owner);
-    preimage[63] = 3;
+    preimage[32..].copy_from_slice(&layout.balance_slot);
     let key = hash(&preimage);
     eth::Call {
-        address: hex::decode(WBNB).unwrap(),
+        address: layout.contract.clone(),
         keccak_preimages: [(hex::encode(key), hex::encode(preimage))].into(),
         storage_changes: vec![eth::StorageChange {
-            address: hex::decode(WBNB).unwrap(),
+            address: layout.contract.clone(),
             key: key.to_vec(),
             old_value: vec![old],
             new_value: vec![new],
@@ -52,203 +60,221 @@ fn wbnb_call(owner: &[u8], old: u8, new: u8) -> eth::Call {
     }
 }
 #[test]
-fn takes_last_persisted_value_by_ordinal_and_preserves_first_old() {
+fn two_arbitrary_tokens_and_full_width_slots_use_same_shared_events() {
+    let l = layouts();
     let mut b = block();
-    let mut c = wbnb_call(&[6; 20], 5, 9);
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 5, 0)), tx(token_call(&l[1], &[9; 20], 2, 8))];
+    let expected = balances_pb::Events {
+        balances: vec![
+            balances_pb::Balance {
+                contract: Some(l[0].contract.clone()),
+                address: vec![6; 20],
+                amount: "0".into(),
+            },
+            balances_pb::Balance {
+                contract: Some(l[1].contract.clone()),
+                address: vec![9; 20],
+                amount: "8".into(),
+            },
+        ],
+    };
+    assert_eq!(project(&b, &l).unwrap().encode_to_vec(), expected.encode_to_vec());
+    assert_eq!(changes(&b, &l).unwrap()[0].old_amount, "5");
+}
+#[test]
+fn last_persisted_value_wins_and_first_old_value_is_retained() {
+    let l = layouts();
+    let mut c = token_call(&l[0], &[6; 20], 5, 9);
     let mut last = c.storage_changes[0].clone();
     last.ordinal = 30;
     last.old_value = vec![9];
     last.new_value = vec![0];
     c.storage_changes.insert(0, last);
+    let mut b = block();
     b.transaction_traces = vec![tx(c)];
-    let out = project(&b).unwrap();
-    assert_eq!(out.balances.len(), 1);
-    assert_eq!((&*out.balances[0].old_amount, &*out.balances[0].amount), ("5", "0"));
-    assert_eq!(out.balances[0].ordinal, 30);
+    let rows = changes(&b, &l).unwrap();
+    assert_eq!(rows.len(), 1);
+    assert_eq!((&*rows[0].old_amount, &*rows[0].amount, rows[0].ordinal), ("5", "0", 30));
 }
 #[test]
-fn reverted_child_does_not_leak_state() {
+fn reverted_execution_does_not_emit_balances() {
+    let l = layouts();
     let mut b = block();
-    let mut c = wbnb_call(&[6; 20], 5, 8);
+    let mut c = token_call(&l[0], &[6; 20], 5, 8);
     c.state_reverted = true;
-    c.balance_changes = vec![native(0, 3, 0)];
     b.transaction_traces = vec![tx(c)];
-    let out = project(&b).unwrap();
-    assert!(out.balances.is_empty());
-    assert_eq!(out.wbnb_storage_changes, 0);
+    assert!(project(&b, &l).unwrap().balances.is_empty());
 }
 #[test]
-fn discovers_holder_from_preimage_without_transfer_event() {
+fn holder_preimage_does_not_require_a_transfer_log() {
+    let l = layouts();
     let mut b = block();
-    b.transaction_traces = vec![tx(wbnb_call(&[6; 20], 8, 0))];
-    let out = project(&b).unwrap();
-    assert_eq!(out.balances[0].address, vec![6; 20]);
-    assert_eq!(out.balances[0].amount, "0");
-    assert!(out.unresolved_wbnb_slots.is_empty());
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 8, 0))];
+    assert_eq!(project(&b, &l).unwrap().balances[0].amount, "0");
 }
 #[test]
-fn candidate_address_is_only_accepted_when_slot_hash_matches() {
+fn fallback_address_must_match_the_configured_mapping_hash() {
+    let l = layouts();
     let mut b = block();
-    let mut c = wbnb_call(&[6; 20], 8, 2);
+    let mut c = token_call(&l[0], &[6; 20], 8, 2);
     c.keccak_preimages.clear();
     c.caller = vec![6; 20];
     b.transaction_traces = vec![tx(c)];
-    assert_eq!(project(&b).unwrap().balances.len(), 1);
+    assert_eq!(project(&b, &l).unwrap().balances.len(), 1);
     b.transaction_traces[0].calls[0].caller = vec![7; 20];
-    let out = project(&b).unwrap();
-    assert!(out.balances.is_empty());
-    assert_eq!(out.unresolved_wbnb_slots.len(), 1);
-    assert!(events(&out).is_err());
+    assert!(project(&b, &l).is_err());
 }
 #[test]
-fn rejects_corrupt_preimage() {
+fn corrupt_preimage_is_rejected() {
+    let l = layouts();
     let mut b = block();
-    let mut c = wbnb_call(&[6; 20], 1, 2);
-    c.keccak_preimages.values_mut().for_each(|x| *x = "00".into());
+    let mut c = token_call(&l[0], &[6; 20], 1, 2);
+    c.keccak_preimages.values_mut().for_each(|v| *v = "00".into());
     b.transaction_traces = vec![tx(c)];
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
 }
 #[test]
-fn allowance_is_not_a_token_balance() {
+fn only_explicitly_configured_other_storage_is_ignored() {
+    let mut l = layouts();
     let mut b = block();
     let mut p1 = vec![0; 64];
     p1[12..32].copy_from_slice(&[6; 20]);
-    p1[63] = 4;
+    p1[32..].copy_from_slice(&slot(8));
     let h1 = hash(&p1);
     let mut p2 = vec![0; 64];
     p2[12..32].copy_from_slice(&[7; 20]);
     p2[32..].copy_from_slice(&h1);
     let h2 = hash(&p2);
-    let c = eth::Call {
-        address: hex::decode(WBNB).unwrap(),
+    b.transaction_traces = vec![tx(eth::Call {
+        address: l[0].contract.clone(),
         keccak_preimages: [(hex::encode(h1), hex::encode(p1)), (hex::encode(h2), hex::encode(p2))].into(),
         storage_changes: vec![eth::StorageChange {
-            address: hex::decode(WBNB).unwrap(),
+            address: l[0].contract.clone(),
             key: h2.to_vec(),
-            old_value: vec![],
             new_value: vec![9],
             ordinal: 10,
+            ..Default::default()
         }],
         ..Default::default()
-    };
-    b.transaction_traces = vec![tx(c)];
-    let out = project(&b).unwrap();
-    assert!(out.balances.is_empty());
-    assert!(out.unresolved_wbnb_slots.is_empty());
+    })];
+    assert!(project(&b, &l).unwrap().balances.is_empty());
+    l[0].other_mapping_slots.clear();
+    assert!(project(&b, &l).is_err());
+    b.transaction_traces[0].calls[0].storage_changes[0].key = slot(2).to_vec();
+    assert!(project(&b, &l).is_err());
+    l[0].other_slots.insert(slot(2));
+    assert!(project(&b, &l).unwrap().balances.is_empty());
 }
 #[test]
 fn preserves_uint256_max() {
+    let l = layouts();
     let mut b = block();
-    let mut c = wbnb_call(&[6; 20], 0, 1);
+    let mut c = token_call(&l[0], &[6; 20], 0, 1);
     c.storage_changes[0].new_value = vec![255; 32];
     b.transaction_traces = vec![tx(c)];
     assert_eq!(
-        project(&b).unwrap().balances[0].amount,
+        project(&b, &l).unwrap().balances[0].amount,
         "115792089237316195423570985008687907853269984665640564039457584007913129639935"
     );
 }
 #[test]
 fn incomplete_or_ambiguous_input_fails() {
+    let l = layouts();
     let mut b = block();
     b.detail_level = 1;
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
     b = block();
     b.ver = 99;
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
     b = block();
-    let mut c = wbnb_call(&[6; 20], 0, 1);
+    let mut c = token_call(&l[0], &[6; 20], 0, 1);
     c.storage_changes.push(c.storage_changes[0].clone());
     b.transaction_traces = vec![tx(c)];
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
     b.transaction_traces[0].calls[0].storage_changes[1].ordinal = 20;
     b.transaction_traces[0].calls[0].storage_changes[1].old_value = vec![3];
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
 }
 #[test]
-fn empty_block_has_the_same_empty_events_encoding_as_reference() {
-    let out = project(&block()).unwrap();
-    let encoded = events(&out).unwrap().encode_to_vec();
-    assert!(encoded.is_empty());
-    assert_eq!(balances_pb::Events::decode(encoded.as_slice()).unwrap(), balances_pb::Events::default());
+fn no_configured_tokens_or_no_changes_emits_empty_shared_events() {
+    let l = layouts();
+    let mut b = block();
+    assert!(project(&b, &l).unwrap().encode_to_vec().is_empty());
+    b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 1, 2))];
+    assert!(project(&b, &[]).unwrap().balances.is_empty());
+    assert!(project(&b, &l[1..]).unwrap().balances.is_empty());
 }
 #[test]
-fn fails_on_wbnb_code_change() {
+fn configured_code_changes_fail_even_when_returning_to_pinned_code() {
+    let l = layouts();
     let mut b = block();
     b.code_changes = vec![eth::CodeChange {
-        address: hex::decode(WBNB).unwrap(),
-        new_hash: vec![4; 32],
-        new_code: vec![0],
+        address: l[0].contract.clone(),
+        new_hash: l[0].code_hash.to_vec(),
         ordinal: 5,
         ..Default::default()
     }];
-    assert!(project(&b).is_err());
-    b.code_changes[0].new_hash = hex_bytes(WBNB_CODE_HASH).unwrap();
-    b.code_changes[0].new_code = hex_bytes(include_str!("../tests/fixtures/wbnb-runtime.hex").trim()).unwrap();
-    // Returning to the expected code cannot qualify earlier writes in this block.
-    assert!(project(&b).is_err());
+    assert!(project(&b, &l).is_err());
+    b.code_changes[0].address = vec![0x77; 20];
+    assert!(project(&b, &l).is_ok());
 }
 #[test]
-fn pinned_runtime_matches_previously_proven_wbnb_code_hash() {
-    let code = hex_bytes(include_str!("../tests/fixtures/wbnb-runtime.hex").trim()).unwrap();
-    assert_eq!(hex::encode(hash(&code)), WBNB_CODE_HASH);
+fn layout_parameters_reject_ambiguity_and_malformed_values() {
+    assert!(layout::parse("[]").unwrap().is_empty());
+    let good = include_str!("../tests/fixtures/verified-layouts.json");
+    let mut v: serde_json::Value = serde_json::from_str(good).unwrap();
+    let duplicate = v[0].clone();
+    v.as_array_mut().unwrap().push(duplicate);
+    assert!(layout::parse(&v.to_string()).is_err());
+    for field in ["contract", "balance_slot", "code_hash"] {
+        let mut v: serde_json::Value = serde_json::from_str(good).unwrap();
+        v[0][field] = json!("0x01");
+        assert!(layout::parse(&v.to_string()).is_err());
+    }
+    let mut v: serde_json::Value = serde_json::from_str(good).unwrap();
+    v[0]["other_mapping_slots"] = json!([v[0]["balance_slot"]]);
+    assert!(layout::parse(&v.to_string()).is_err());
+}
+
+#[test]
+fn package_has_exactly_one_map_and_only_the_shared_protobuf() {
+    let manifest = include_str!("../substreams.yaml");
+    let modules = manifest.lines().filter(|line| line.starts_with("  - name:")).collect::<Vec<_>>();
+    assert_eq!(modules, vec!["  - name: map_events"]);
+    assert!(manifest.contains("files: [balances.proto]"));
+    assert!(manifest.contains("type: proto:evm.balances.v1.Events"));
 }
 #[test]
-fn captured_failed_authorization_transactions_project_without_rpc() {
+fn captured_failed_authorizations_are_processed_without_rpc() {
+    let l = layouts();
     for bytes in [
         include_bytes!("../tests/fixtures/bsc-121114122-failed-setcode.pb").as_slice(),
         include_bytes!("../tests/fixtures/bsc-121114153-failed-setcode.pb").as_slice(),
     ] {
         let mut b = block();
         b.transaction_traces = vec![eth::TransactionTrace::decode(bytes).unwrap()];
-        let out = project(&b).unwrap();
-        assert!(out.balances.iter().all(|b| hex::encode(&b.contract) == WBNB));
-        assert!(events(&out).is_ok());
+        assert!(project(&b, &l).is_ok());
     }
 }
-
 #[test]
-fn captured_complete_bsc_block_matches_18_historical_erc20_rpc_balances() {
+fn captured_block_matches_all_18_recorded_erc20_balances_with_external_layout() {
     let b = eth::Block::decode(include_bytes!("../tests/fixtures/bsc-122260950.pb").as_slice()).unwrap();
+    let l = layout::parse(include_str!("../tests/fixtures/verified-layouts.json")).unwrap();
     let expected: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-122260950.json")).unwrap();
-    let out = project(&b).unwrap();
-    assert_eq!(format!("0x{}", hex::encode(&out.hash)), expected["block_hash"]);
-    assert_eq!(out.number, 122260950);
-    assert!(out.unresolved_wbnb_slots.is_empty());
-    let oracle = expected["rpc_checks"].as_array().unwrap();
-    assert_eq!(oracle.len(), 100);
+    let out = project(&b, &l).unwrap();
     assert_eq!(out.balances.len(), 18);
-    for row in oracle.iter().filter(|row| row["contract"] != "") {
+    for row in expected["rpc_checks"].as_array().unwrap().iter().filter(|r| r["contract"] != "") {
         let address = hex_bytes(row["address"].as_str().unwrap()).unwrap();
         let contract = hex_bytes(row["contract"].as_str().unwrap()).unwrap();
-        let actual = out.balances.iter().find(|b| b.address == address && b.contract == contract).unwrap();
-        assert_eq!(actual.amount, row["balance"].as_str().unwrap(), "address {}", row["address"]);
+        let actual = out
+            .balances
+            .iter()
+            .find(|v| v.address == address && v.contract.as_ref() == Some(&contract))
+            .unwrap();
+        assert_eq!(actual.amount, row["balance"].as_str().unwrap());
     }
-    let public = events(&out).unwrap();
-    assert_eq!(public.balances.len(), 18);
-    assert!(public.balances.iter().all(|b| b.contract.is_some()));
-}
-
-#[test]
-fn event_wire_format_is_exactly_the_shared_reference_protobuf() {
-    let mut b = block();
-    b.balance_changes = vec![native(1, 0, 99)];
-    b.transaction_traces = vec![tx(wbnb_call(&[6; 20], 8, 0))];
-    let storage = project(&b).unwrap();
-    let expected = balances_pb::Events {
-        balances: vec![balances_pb::Balance {
-            contract: Some(hex_bytes(WBNB).unwrap()),
-            address: vec![6; 20],
-            amount: "0".into(),
-        }],
-    };
-    assert_eq!(events(&storage).unwrap().encode_to_vec(), expected.encode_to_vec());
     assert_eq!(
-        balance_changes(&storage).unwrap(),
-        balances_pb::BalanceChanges {
-            balance_changes: vec![balances_pb::BalanceChange {
-                contract: expected.balances[0].contract.clone(),
-                address: vec![6; 20],
-            }]
-        }
+        hash(&hex_bytes(include_str!("../tests/fixtures/wbnb-runtime.hex").trim()).unwrap()),
+        l[0].code_hash
     );
 }

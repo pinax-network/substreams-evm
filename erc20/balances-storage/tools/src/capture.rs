@@ -28,6 +28,11 @@ pub fn stream(args: &Range, package: &Path, module: &str, output: &Path) -> Resu
     if args.endpoint.ends_with(":80") || args.endpoint.starts_with("http://") {
         command.arg("--plaintext");
     }
+    if package == args.package {
+        let layouts = std::fs::read_to_string(&args.layouts)?;
+        erc20_balances_storage::layout::parse(&layouts)?;
+        command.arg("-p").arg(format!("map_events={layouts}"));
+    }
     command.stdout(File::create(output)?).stderr(File::create(output.with_extension("log"))?);
     let began = Instant::now();
     let mut child = command.spawn().context("could not start substreams")?;

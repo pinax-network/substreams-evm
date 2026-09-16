@@ -1,7 +1,44 @@
-//! Experimental inventory across every contract emitting ERC-20-shaped Transfer
-//! logs in a block. Mapping candidates are never fed into the balances sink.
+//! Native-only discovery over captured Extended blocks. No Substreams handler,
+//! protobuf, WASM code or cache is created for these diagnostic hypotheses.
 use super::*;
-use pb::{MappingCandidate, StorageCandidates, TokenActivity};
+use serde_json::{json, Value};
+
+#[derive(Default)]
+pub struct StorageCandidates {
+    pub number: u64,
+    pub hash: Vec<u8>,
+    pub parent_hash: Vec<u8>,
+    pub candidates: Vec<MappingCandidate>,
+    pub tokens: Vec<TokenActivity>,
+}
+pub struct MappingCandidate {
+    pub contract: Vec<u8>,
+    pub address: Vec<u8>,
+    pub mapping_slot: Vec<u8>,
+    pub storage_key: Vec<u8>,
+    pub old_amount: String,
+    pub amount: String,
+    pub ordinal: u64,
+}
+#[derive(Default)]
+pub struct TokenActivity {
+    pub contract: Vec<u8>,
+    pub transfer_holders: Vec<Vec<u8>>,
+    pub storage_changes: u64,
+    pub unclassified_storage_changes: u64,
+    pub code_changed: bool,
+}
+impl StorageCandidates {
+    pub fn into_json(self) -> Value {
+        let hex = |bytes: &[u8]| format!("0x{}", hex::encode(bytes));
+        json!({"number":self.number,"hash":hex(&self.hash),"parentHash":hex(&self.parent_hash),
+            "candidates":self.candidates.into_iter().map(|c| json!({"contract":hex(&c.contract),"address":hex(&c.address),
+                "mappingSlot":hex(&c.mapping_slot),"storageKey":hex(&c.storage_key),"oldAmount":c.old_amount,"amount":c.amount,"ordinal":c.ordinal})).collect::<Vec<_>>(),
+            "tokens":self.tokens.into_iter().map(|t| json!({"contract":hex(&t.contract),
+                "transferHolders":t.transfer_holders.iter().map(|a|hex(a)).collect::<Vec<_>>(),"storageChanges":t.storage_changes,
+                "unclassifiedStorageChanges":t.unclassified_storage_changes,"codeChanged":t.code_changed})).collect::<Vec<_>>()})
+    }
+}
 
 const TRANSFER: &str = "ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 
@@ -122,8 +159,8 @@ mod tests {
         let b = eth::Block::decode(include_bytes!("../tests/fixtures/bsc-122260950.pb").as_slice()).unwrap();
         let out = project(&b).unwrap();
         assert!(out.tokens.len() > 5);
-        assert!(out.candidates.iter().any(|c| hex::encode(&c.contract) != WBNB));
-        assert!(out.candidates.iter().any(|c| c.mapping_slot != slot(3)));
+        assert!(out.candidates.iter().map(|c| &c.contract).collect::<BTreeSet<_>>().len() > 5);
+        assert!(out.candidates.iter().map(|c| &c.mapping_slot).collect::<BTreeSet<_>>().len() > 2);
         assert!(out.candidates.iter().all(|c| c.storage_key.len() == 32 && c.mapping_slot.len() == 32));
     }
     #[test]

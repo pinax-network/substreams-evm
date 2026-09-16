@@ -1,22 +1,28 @@
 use crate::{audit, capture, comparison, data::*, probe, rpc::*};
 use anyhow::{ensure, Context, Result};
 use clap::{Args, Parser, Subcommand};
+use erc20_balances_storage::layout::{self, VerifiedLayout};
+use prost::Message;
 use serde_json::{json, Value};
-use std::{path::PathBuf, time::Instant};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+    time::Instant,
+};
 
 #[derive(Parser)]
-#[command(about = "Qualify RPC-free ERC-20 balances against erc20/balances and historical balanceOf")]
+#[command(about = "Qualify the single RPC-free ERC-20 map_events against historical balanceOf")]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
 }
 #[derive(Subcommand)]
 pub enum Commands {
-    /// Compare map_events with erc20/balances v0.3.4, retaining every coverage gap.
+    /// Compare map_events with erc20/balances v0.3.4, retaining coverage gaps.
     Compare(Compare),
-    /// Audit every emitted WBNB old/new balance using canonical block hashes.
+    /// Audit every emitted end-of-block balance using canonical block hashes.
     AuditRpc(Audit),
-    /// Probe ERC-20 storage hypotheses; never promote an adapter automatically.
+    /// Native discovery over captured Extended Block .pb files; no map/cache.
     ProbeErc20(Probe),
 }
 #[derive(Args)]
@@ -27,7 +33,10 @@ pub struct Range {
     pub blocks: u64,
     #[arg(long)]
     pub output: PathBuf,
-    #[arg(long, default_value_os_t = default_package())]
+    /// JSON array of caller-qualified token layouts; no built-in token list.
+    #[arg(long)]
+    pub layouts: PathBuf,
+    #[arg(long,default_value_os_t=default_package())]
     pub package: PathBuf,
     #[arg(long, default_value = "bsc.substreams.pinax.network:443")]
     pub endpoint: String,
@@ -52,7 +61,7 @@ impl Range {
 pub struct Compare {
     #[command(flatten)]
     pub range: Range,
-    #[arg(long, default_value_os_t = default_reference())]
+    #[arg(long,default_value_os_t=default_reference())]
     pub reference: PathBuf,
     #[arg(long, default_value_t = 20)]
     pub rpc_samples: usize,
@@ -70,13 +79,15 @@ pub struct Audit {
 }
 #[derive(Args)]
 pub struct Probe {
-    #[command(flatten)]
-    pub range: Range,
+    /// Captured sf.ethereum.type.v2.Block protobuf files, in consecutive order.
+    #[arg(long = "block-file", required = true)]
+    pub block_files: Vec<PathBuf>,
+    #[arg(long)]
+    pub output: PathBuf,
 }
 
-// Once the directory exists, every failed run leaves a report and all partial captures.
-pub fn record_run(args: &Range, mut report: Value, work: impl FnOnce(&mut Value) -> Result<()>) -> Result<bool> {
-    new_output(&args.output)?;
+pub fn record_run(output: &Path, mut report: Value, work: impl FnOnce(&mut Value) -> Result<()>) -> Result<bool> {
+    new_output(output)?;
     let started = Instant::now();
     if let Err(error) = work(&mut report) {
         report["status"] = json!("incomplete");
@@ -84,7 +95,7 @@ pub fn record_run(args: &Range, mut report: Value, work: impl FnOnce(&mut Value)
     }
     report["elapsed_seconds"] = json!(started.elapsed().as_secs_f64());
     report["tool_language"] = json!("Rust");
-    write_report(&args.output, &report)?;
+    write_report(output, &report)?;
     let good = ["bounded_parity", "rpc_parity", "discovery_only"].iter().any(|s| report["status"] == *s);
     let mut summary = report;
     for key in ["layouts", "tokens", "independent_rpc_checks"] {
@@ -96,80 +107,76 @@ pub fn record_run(args: &Range, mut report: Value, work: impl FnOnce(&mut Value)
     println!("{}", serde_json::to_string_pretty(&summary)?);
     Ok(good)
 }
-
-pub fn verify_public_output(storage: &Blocks, events: &Blocks) -> Result<()> {
-    ensure!(storage.keys().eq(events.keys()), "public output block range mismatch");
-    for (height, block) in storage {
-        ensure!(items(block, "unresolvedWbnbSlots")?.is_empty(), "unresolved storage prevents event output");
-        let expected = candidate_rows(block)?
-            .into_iter()
-            .map(|(key, (_, amount))| (key, amount))
-            .collect::<comparison::State>();
-        ensure!(
-            comparison::reference_rows(&events[height])? == expected,
-            "public events differ from storage projection at {height}"
-        );
+fn load_layouts(r: &Range, report: &mut Value) -> Result<Vec<VerifiedLayout>> {
+    let layouts = layout::parse(&fs::read_to_string(&r.layouts)?)?;
+    ensure!(!layouts.is_empty(), "qualification requires at least one configured token layout");
+    report["layouts_sha256"] = json!(sha256(&r.layouts)?);
+    report["configured_tokens"] = json!(layouts.len());
+    Ok(layouts)
+}
+pub fn validate_events_layouts(events: &Blocks, layouts: &[VerifiedLayout]) -> Result<()> {
+    let allowed = layouts
+        .iter()
+        .map(|l| format!("0x{}", hex::encode(&l.contract)))
+        .collect::<std::collections::BTreeSet<_>>();
+    for block in events.values() {
+        for (contract, _) in candidate_rows(block)?.keys() {
+            ensure!(allowed.contains(contract), "map emitted an unconfigured token");
+        }
     }
     Ok(())
 }
-
 fn run_compare(args: Compare) -> Result<bool> {
     let r = &args.range;
     r.validate(10000)?;
     ensure!(args.rpc_samples >= 2, "at least two independent RPC samples required");
-    record_run(r, json!({"status":"incomplete","start":r.start,"blocks":r.blocks}), |report| {
+    record_run(&r.output, json!({"status":"incomplete","start":r.start,"blocks":r.blocks}), |report| {
         let rpc = HttpRpc::from_env();
         let stop = r.stop()?;
+        let layouts = load_layouts(r, report)?;
         ensure_finalized(&rpc, stop)?;
-        qualify_runtime(&rpc, r.start, stop)?;
+        qualify_runtime(&rpc, r.start, stop, &layouts)?;
         let first = rpc.header(r.start)?;
         let last = rpc.header(stop - 1)?;
-        let storage_timing = capture::stream(r, &r.package, "map_storage_changes", &r.output.join("storage.jsonl"))?;
-        let event_timing = capture::stream(r, &r.package, "map_events", &r.output.join("events.jsonl"))?;
+        let candidate_timing = capture::stream(r, &r.package, "map_events", &r.output.join("events.jsonl"))?;
         let reference_timing = capture::stream(r, &args.reference, "map_events", &r.output.join("reference.jsonl"))?;
-        let storage = read_stream(&r.output.join("storage.jsonl"), r.start, stop, "map_storage_changes")?;
         let events = read_stream(&r.output.join("events.jsonl"), r.start, stop, "map_events")?;
         let reference = read_stream(&r.output.join("reference.jsonl"), r.start, stop, "map_events")?;
+        validate_events_layouts(&events, &layouts)?;
+        let blocks = bind_headers(&rpc, &events)?;
         ensure!(
-            binary(&storage[&r.start]["hash"], 32)? == binary(&first["hash"], 32)?,
-            "first block differs from RPC"
+            blocks[&r.start]["hash"] == first["hash"] && blocks[&(stop - 1)]["hash"] == last["hash"],
+            "capture boundary header changed"
         );
-        ensure!(
-            binary(&storage[&(stop - 1)]["hash"], 32)? == binary(&last["hash"], 32)?,
-            "last block differs from RPC"
-        );
-        verify_public_output(&storage, &events)?;
-        let result = comparison::compare(&storage, &reference, r.start, stop, &r.output.join("comparison.sqlite"))?;
-        *report = result.report;
+        let result = comparison::compare(&blocks, &reference, r.start, stop, &r.output.join("comparison.sqlite"))?;
+        report.as_object_mut().unwrap().extend(result.report.as_object().unwrap().clone());
         let keys = result.changed.iter().collect::<Vec<_>>();
         let count = keys.len().min(args.rpc_samples);
         let mut checks = Vec::new();
         for i in 0..count {
             let key = keys[i * keys.len() / count];
             let actual = rpc.balance(&key.0, &key.1, block_ref(text(&report["final_hash"])?))?;
-            checks.push(json!({"contract":key.0,"address":key.1,"block":stop-1,"hash":report["final_hash"],
-                "storage":result.state[key].to_string(),"rpc":actual.to_string(),"match":result.state[key] == actual}));
+            checks.push(json!({"contract":key.0,"address":key.1,"block":stop-1,"hash":report["final_hash"],"storage":result.state[key].to_string(),"rpc":actual.to_string(),"match":result.state[key]==actual}));
         }
         ensure!(
             rpc.header(r.start)?["hash"] == first["hash"] && rpc.header(stop - 1)?["hash"] == last["hash"],
             "RPC header changed during comparison"
         );
-        let audit = comparison::audit_differences(&rpc, &r.output.join("comparison.sqlite"), &storage, args.audit_mismatches)?;
+        let audit = comparison::audit_differences(&rpc, &r.output.join("comparison.sqlite"), &blocks, args.audit_mismatches)?;
         if checks.is_empty() || checks.iter().any(|c| c["match"] != true) {
             report["status"] = json!("mismatch");
         }
-        report["timing"] = json!({"storage":storage_timing,"events":event_timing,"reference":reference_timing});
+        report["timing"] = json!({"events":candidate_timing,"reference":reference_timing});
         report["independent_rpc_checks"] = json!(checks);
         report["mismatch_rpc_audit"] = audit;
-        report["scope"] = json!("Shared ERC-20 Events protobuf; WBNB changed holders only; all reference-only rows reported as coverage gaps");
+        report["scope"] = json!("Configured direct-mapping ERC-20 changed holders; reference-only rows are coverage gaps, never candidate seeds");
         report["reference"] = json!("erc20/balances map_events v0.3.4");
         report["rpc_in_ingestion"] = json!(false);
         report["chain_id"] = json!(56);
-        report["finality_trust"] = json!("RPC provider finalized header; stable boundary headers around captures");
+        report["finality_trust"] = json!("RPC provider finalized headers; Events contains no source hash");
         Ok(())
     })
 }
-
 fn run_audit(args: Audit) -> Result<bool> {
     let r = &args.range;
     r.validate(2048)?;
@@ -178,42 +185,63 @@ fn run_audit(args: Audit) -> Result<bool> {
         "workers 1..4; batch size 1..100"
     );
     record_run(
-        r,
-        json!({"status":"incomplete","start":r.start,"blocks":r.blocks,"checks":0,"native_checks":0,"token_checks":0,
-        "zero_checks":0,"mismatches":0,"before_checks":0,"after_checks":0,"checked_blocks":0,
-        "rpc_block_binding":"EIP-1898 blockHash, requireCanonical=true","scope":"Every emitted WBNB balance before and after each block; not full holder discovery"}),
+        &r.output,
+        json!({"status":"incomplete","start":r.start,"blocks":r.blocks,"checks":0,"token_checks":0,
+        "zero_checks":0,"mismatches":0,"checked_blocks":0,"rpc_block_binding":"EIP-1898 blockHash, requireCanonical=true",
+        "scope":"Every emitted end-of-block ERC-20 balance; Events has no old value or source hash"}),
         |report| {
             let rpc = HttpRpc::from_env();
             let stop = r.stop()?;
+            let layouts = load_layouts(r, report)?;
             ensure_finalized(&rpc, stop)?;
-            report["capture"] = capture::stream(r, &r.package, "map_storage_changes", &r.output.join("storage.jsonl"))?;
-            report["events_capture"] = capture::stream(r, &r.package, "map_events", &r.output.join("events.jsonl"))?;
-            let blocks = read_stream(&r.output.join("storage.jsonl"), r.start, stop, "map_storage_changes")?;
+            qualify_runtime(&rpc, r.start, stop, &layouts)?;
+            let first = rpc.header(r.start)?;
+            let last = rpc.header(stop - 1)?;
+            report["capture"] = capture::stream(r, &r.package, "map_events", &r.output.join("events.jsonl"))?;
             let events = read_stream(&r.output.join("events.jsonl"), r.start, stop, "map_events")?;
-            qualify_runtime(&rpc, r.start, stop)?;
-            validate_blocks(&blocks)?;
-            verify_public_output(&blocks, &events)?;
-            report["first_hash"] = json!(binary(&blocks[&r.start]["hash"], 32)?);
-            report["last_hash"] = json!(binary(&blocks[&(stop - 1)]["hash"], 32)?);
-            audit::audit_blocks(&rpc, &blocks, args.batch_size, args.workers, &r.output, report)
+            validate_events_layouts(&events, &layouts)?;
+            let blocks = bind_headers(&rpc, &events)?;
+            ensure!(
+                blocks[&r.start]["hash"] == first["hash"] && blocks[&(stop - 1)]["hash"] == last["hash"],
+                "capture boundary header changed"
+            );
+            report["first_hash"] = first["hash"].clone();
+            report["last_hash"] = last["hash"].clone();
+            audit::audit_blocks(&rpc, &blocks, args.batch_size, args.workers, &r.output, report)?;
+            ensure!(
+                rpc.header(r.start)?["hash"] == first["hash"] && rpc.header(stop - 1)?["hash"] == last["hash"],
+                "RPC header changed during audit"
+            );
+            Ok(())
         },
     )
 }
-
 fn run_probe(args: Probe) -> Result<bool> {
-    let r = &args.range;
-    r.validate(128)?;
+    ensure!((1..=128).contains(&args.block_files.len()), "choose 1..128 captured block files");
     record_run(
-        r,
-        json!({"status":"incomplete","start":r.start,"blocks":r.blocks,"promoted_adapters":0,
-        "scope":"Contracts with ERC-20-shaped Transfer logs in this window; direct mapping hypotheses only"}),
+        &args.output,
+        json!({"status":"incomplete","promoted_adapters":0,"scope":"Native discovery over captured Extended blocks; no map/cache"}),
         |report| {
+            let mut blocks = Blocks::new();
+            let mut files = Vec::new();
+            for path in &args.block_files {
+                let block = substreams_ethereum::pb::eth::v2::Block::decode(fs::read(path)?.as_slice())?;
+                files.push(json!({"block":block.number,"sha256":sha256(path)?}));
+                let discovery = erc20_balances_storage::discovery::project(&block)?;
+                ensure!(blocks.insert(block.number, discovery.into_json()).is_none(), "duplicate captured block");
+            }
+            let start = *blocks.first_key_value().unwrap().0;
+            let stop = blocks.last_key_value().unwrap().0.checked_add(1).context("range overflow")?;
+            ensure!(
+                start > 0 && blocks.keys().copied().eq(start..stop),
+                "captured blocks must form a contiguous positive range"
+            );
             let rpc = HttpRpc::from_env();
-            let stop = r.stop()?;
             ensure_finalized(&rpc, stop)?;
-            report["capture"] = capture::stream(r, &r.package, "map_erc20_candidates", &r.output.join("candidates.jsonl"))?;
-            let blocks = read_stream(&r.output.join("candidates.jsonl"), r.start, stop, "map_erc20_candidates")?;
-            let analysis = probe::analyze(&rpc, &blocks, &r.output)?;
+            report["start"] = json!(start);
+            report["blocks"] = json!(blocks.len());
+            report["captured_files"] = json!(files);
+            let analysis = probe::analyze(&rpc, &blocks, &args.output)?;
             report.as_object_mut().unwrap().extend(analysis.as_object().unwrap().clone());
             report["status"] = json!("discovery_only");
             Ok(())

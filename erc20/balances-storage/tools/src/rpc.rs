@@ -14,7 +14,20 @@ pub trait Rpc: Sync {
         Ok(row["result"].clone())
     }
     fn batch(&self, calls: &[Call]) -> Result<Vec<Value>> {
-        batch_results(self.request(batch_payload(calls))?, calls.len())
+        batch_results(json!(self.batch_rows(calls)?), calls.len())
+    }
+    fn batch_rows(&self, calls: &[Call]) -> Result<Vec<Value>> {
+        ensure!(!calls.is_empty(), "empty RPC batch");
+        let payload = batch_payload(calls);
+        // Some gateways do not preserve the array envelope for singleton
+        // batches. Send an ordinary single request instead; IDs and errors
+        // still pass the same strict validation as multi-request batches.
+        let response = if calls.len() == 1 {
+            json!([self.request(payload[0].clone())?])
+        } else {
+            self.request(payload)?
+        };
+        batch_responses(response, calls.len())
     }
     fn header(&self, height: u64) -> Result<Value> {
         let h = self.call("eth_getBlockByNumber", json!([format!("{height:#x}"), false]))?;
@@ -122,12 +135,35 @@ pub fn ensure_finalized(rpc: &dyn Rpc, stop: u64) -> Result<()> {
     ensure!(U256::from(stop - 1) <= quantity(&head["number"])?, "range is not finalized");
     Ok(())
 }
-pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64) -> Result<()> {
-    let runtime = include_str!("../../tests/fixtures/wbnb-runtime.hex").trim();
+pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_balances_storage::layout::VerifiedLayout]) -> Result<()> {
     for height in [start - 1, stop - 1] {
         let h = rpc.header(height)?;
-        let code = rpc.call("eth_getCode", json!([WBNB, block_ref(text(&h["hash"])?)]))?;
-        ensure!(text(&code)?.eq_ignore_ascii_case(runtime), "unqualified WBNB runtime");
+        for layout in layouts {
+            let contract = format!("0x{}", hex::encode(&layout.contract));
+            let code = rpc.call("eth_getCode", json!([contract, block_ref(text(&h["hash"])?)]))?;
+            let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid runtime hex")?)?;
+            ensure!(
+                !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
+                "unqualified runtime for configured token"
+            );
+        }
     }
     Ok(())
+}
+
+/// Events has no block metadata. Bind captured heights to finalized RPC headers,
+/// then recheck boundaries after auditing; no extra Substreams module is needed.
+pub fn bind_headers(rpc: &dyn Rpc, events: &Blocks) -> Result<Blocks> {
+    let mut blocks = Blocks::new();
+    for (height, event) in events {
+        let h = rpc.header(*height)?;
+        let mut block = event.clone();
+        ensure!(block.is_object(), "invalid Events object");
+        block["number"] = json!(height);
+        block["hash"] = json!(binary(&h["hash"], 32)?);
+        block["parentHash"] = json!(binary(&h["parentHash"], 32)?);
+        blocks.insert(*height, block);
+    }
+    validate_blocks(&blocks)?;
+    Ok(blocks)
 }

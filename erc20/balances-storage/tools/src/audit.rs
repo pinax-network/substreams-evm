@@ -8,18 +8,14 @@ pub fn audit_block(rpc: &dyn Rpc, block: &Value, batch_size: usize) -> Result<Ve
     let height = number(&block["number"])?;
     ensure!(height > 0, "positive block required");
     let hash = binary(&block["hash"], 32)?;
-    let parent = binary(&block["parentHash"], 32)?;
     ensure!(binary(&rpc.header(height)?["hash"], 32)? == hash, "RPC block identity mismatch");
-    ensure!(items(block, "unresolvedWbnbSlots")?.is_empty(), "unresolved storage prevents qualification");
     let mut pending = Vec::new();
-    for ((contract, address), (before, after)) in candidate_rows(block)? {
-        for (boundary, expected, at_height, digest) in [("before", before, height - 1, &parent), ("after", after, height, &hash)] {
-            pending.push((
-                json!({"block":height,"at_height":at_height,"hash":digest,"boundary":boundary,"contract":contract,
+    for ((contract, address), expected) in candidate_rows(block)? {
+        pending.push((
+            json!({"block":height,"hash":hash,"contract":contract,
                 "address":address,"storage":expected.to_string()}),
-                balance_request(&contract, &address, block_ref(digest)),
-            ));
-        }
+            balance_request(&contract, &address, block_ref(&hash)),
+        ));
     }
     let mut checks = Vec::new();
     for chunk in pending.chunks(batch_size) {
@@ -57,8 +53,7 @@ pub fn audit_blocks(rpc: &dyn Rpc, blocks: &Blocks, batch_size: usize, workers: 
                 serde_json::to_writer(&mut raw, &check)?;
                 writeln!(raw)?;
                 inc(report, "checks", 1);
-                inc(report, if check["contract"] == "" { "native_checks" } else { "token_checks" }, 1);
-                inc(report, &format!("{}_checks", text(&check["boundary"])?), 1);
+                inc(report, "token_checks", 1);
                 inc(report, "zero_checks", u64::from(check["storage"] == "0"));
                 inc(report, "mismatches", u64::from(check["match"] != true));
             }
