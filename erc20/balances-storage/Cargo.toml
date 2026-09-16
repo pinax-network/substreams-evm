@@ -11,6 +11,7 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 substreams = { workspace = true }
 substreams-ethereum = { workspace = true }
+substreams-abis = { workspace = true }
 proto = { path = "../../proto" }
 prost = { workspace = true }
 hex = "0.4"

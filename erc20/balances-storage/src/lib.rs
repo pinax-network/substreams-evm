@@ -1,4 +1,5 @@
 //! A single RPC-free map with the shared ERC-20 Events output.
+mod computed;
 mod deployment;
 #[cfg(not(target_arch = "wasm32"))]
 pub mod discovery;
@@ -254,6 +255,15 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             layout.zero_balance.as_ref().and_then(|r| r.storage_slot) != Some(key),
             "zero-balance dependency changed; requalify and rebuild dependent holder state",
         )?;
+        if let Some(address) = layout.address_hash_balance.as_ref().and_then(|rule| rule.stored_addresses.get(&key)) {
+            require(
+                &word(&c.old_value)?[12..] == address && &word(&c.new_value)?[12..] == address,
+                "computed balance address selector changed; requalify and rebuild dependent holder state",
+            )?;
+            // The getter masks the low 160 bits. Reviewed packed flags above
+            // the address do not change which holders use stored balances.
+            continue;
+        }
         let owner = preimages
             .get(&key)
             .filter(|p| p.len() == 64 && p[..12] == [0; 12] && p[32..] == layout.balance_slot)
@@ -273,17 +283,39 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
 }
 pub fn project(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<balances_pb::Events, Error> {
     let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.as_slice(), l)).collect();
+    let mut balances = changes(block, layouts)?
+        .into_iter()
+        // The RPC reference's common::is_valid_evm_address excludes null.
+        .filter(|b| b.address.iter().any(|byte| *byte != 0))
+        .map(|b| {
+            (
+                (b.contract.clone(), b.address.clone()),
+                balances_pb::Balance {
+                    amount: configured[b.contract.as_slice()].project_amount(&b.address, &b.amount),
+                    contract: Some(b.contract),
+                    address: b.address,
+                },
+            )
+        })
+        .collect::<BTreeMap<_, _>>();
+    for (contract, address) in computed::holders(block, layouts)? {
+        if let Some(amount) = configured[contract.as_slice()]
+            .address_hash_balance
+            .as_ref()
+            .and_then(|rule| rule.amount(&address))
+        {
+            balances.insert(
+                (contract.clone(), address.clone()),
+                balances_pb::Balance {
+                    contract: Some(contract),
+                    address,
+                    amount,
+                },
+            );
+        }
+    }
     Ok(balances_pb::Events {
-        balances: changes(block, layouts)?
-            .into_iter()
-            // The RPC reference's common::is_valid_evm_address excludes null.
-            .filter(|b| b.address.iter().any(|byte| *byte != 0))
-            .map(|b| balances_pb::Balance {
-                amount: configured[b.contract.as_slice()].project_amount(&b.amount),
-                contract: Some(b.contract),
-                address: b.address,
-            })
-            .collect(),
+        balances: balances.into_values().collect(),
     })
 }
 // The SDK macro generates raw-pointer parameter decoding and discards function
@@ -296,5 +328,7 @@ mod handler {
         project(&block, &layout::parse(&params)?)
     }
 }
+#[cfg(test)]
+mod computed_tests;
 #[cfg(test)]
 mod tests;

@@ -29,6 +29,38 @@ pub struct Layout {
     pub beacon_proxy: Option<BeaconProxyLayout>,
     #[serde(default)]
     pub minimal_proxy: Option<MinimalProxyLayout>,
+    #[serde(default)]
+    pub address_hash_balance: Option<AddressHashBalance>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct AddressHashBalance {
+    pub modulus: String,
+    pub offset: String,
+    pub multiplier: String,
+    /// These scalar slots select holders that read the ordinary balance mapping.
+    pub stored_addresses: Vec<StoredAddress>,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct StoredAddress {
+    pub slot: String,
+    pub address: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedAddressHashBalance {
+    pub modulus: substreams::scalar::BigInt,
+    pub offset: substreams::scalar::BigInt,
+    pub multiplier: substreams::scalar::BigInt,
+    pub stored_addresses: BTreeMap<[u8; 32], Vec<u8>>,
+}
+impl VerifiedAddressHashBalance {
+    pub fn amount(&self, address: &[u8]) -> Option<String> {
+        if self.stored_addresses.values().any(|stored| stored == address) {
+            return None;
+        }
+        Some(((substreams::scalar::BigInt::from_unsigned_bytes_be(&hash(address)) % &self.modulus + &self.offset) * &self.multiplier).to_string())
+    }
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -120,12 +152,16 @@ pub struct VerifiedLayout {
     pub proxy: Option<VerifiedProxy>,
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
     pub minimal_proxy: Option<VerifiedMinimalProxy>,
+    pub address_hash_balance: Option<VerifiedAddressHashBalance>,
 }
 impl VerifiedLayout {
     /// Input is the canonical decimal uint256 decoded from the raw storage word.
     /// Apply only after raw-word continuity checks; zero and the fallback value
     /// can represent different storage states with the same public balance.
-    pub fn project_amount(&self, raw: &str) -> String {
+    pub fn project_amount(&self, address: &[u8], raw: &str) -> String {
+        if let Some(amount) = self.address_hash_balance.as_ref().and_then(|rule| rule.amount(address)) {
+            return amount;
+        }
         if raw == "0" {
             if let Some(rule) = &self.zero_balance {
                 return substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value).to_string();
@@ -280,6 +316,46 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     Ok(parsed)
                 })
                 .transpose()?;
+            let address_hash_balance = layout
+                .address_hash_balance
+                .map(|rule| -> Result<VerifiedAddressHashBalance, Error> {
+                    use substreams::scalar::BigInt;
+                    require(
+                        zero_balance.is_none() && deployment.is_none(),
+                        "address-hash balances cannot combine with a zero fallback or deployment baseline",
+                    )?;
+                    let modulus = BigInt::from_unsigned_bytes_be(&word(&rule.modulus)?);
+                    let offset = BigInt::from_unsigned_bytes_be(&word(&rule.offset)?);
+                    let multiplier = BigInt::from_unsigned_bytes_be(&word(&rule.multiplier)?);
+                    let max = BigInt::from_unsigned_bytes_be(&[255; 32]);
+                    require(modulus > 0, "address-hash modulus must be positive")?;
+                    let largest = &modulus - BigInt::from(1) + &offset;
+                    require(largest <= max && &largest * &multiplier <= max, "address-hash arithmetic exceeds uint256")?;
+                    let mut stored_addresses = BTreeMap::new();
+                    for dependency in rule.stored_addresses {
+                        let slot = word(&dependency.slot)?;
+                        require(
+                            slot != balance_slot
+                                && !other_slots.contains(&slot)
+                                && !other_mapping_slots.contains(&slot)
+                                && !other_mapping_words.contains_key(&slot)
+                                && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
+                                && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot),
+                            "address selector slot cannot be ignored or reused",
+                        )?;
+                        require(
+                            stored_addresses.insert(slot, fixed(&dependency.address, 20)?).is_none(),
+                            "duplicate address selector slot",
+                        )?;
+                    }
+                    Ok(VerifiedAddressHashBalance {
+                        modulus,
+                        offset,
+                        multiplier,
+                        stored_addresses,
+                    })
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
@@ -292,6 +368,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 proxy,
                 beacon_proxy,
                 minimal_proxy,
+                address_hash_balance,
             })
         })
         .collect()

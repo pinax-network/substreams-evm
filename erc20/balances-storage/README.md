@@ -11,7 +11,7 @@ or generated bindings in this package. Only `map_events` creates an output cache
 No token address, balance slot or runtime is built into the mapper. Supply a JSON
 array in the `map_events` parameter. The default is `[]`, which emits no balances.
 Each entry describes a **previously qualified balance mapping**, optionally
-with a reviewed zero-word fallback or proxy with its implementation pinned:
+with a reviewed zero-word fallback, address-derived balance, or pinned proxy:
 
 | Field | Format | Meaning |
 | --- | --- | --- |
@@ -26,6 +26,7 @@ with a reviewed zero-word fallback or proxy with its implementation pinned:
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
+| `address_hash_balance` | Optional object | Full 32-byte `modulus`, `offset`, `multiplier` constants and `stored_addresses` entries with a 32-byte `slot` and 20-byte `address`; all `0x` hex |
 
 The caller must establish that the configured projection equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
@@ -46,7 +47,8 @@ return value. The mapper rejects changes to either pointer or dependency code,
 including a beacon upgrade with no token writes and an upgrade followed by a
 restore. The caller must review that the beacon getter reads this scalar directly;
 arbitrary computed or nested beacon resolvers are unsupported. Diamond proxies,
-rebasing balances and other computed balances also remain unsupported.
+rebasing balances and computed balances outside the explicit rule below remain
+unsupported.
 
 For `minimal_proxy`, the implementation address is embedded in the exact
 [ERC-1167 runtime](https://eips.ethereum.org/EIPS/eip-1167), rather than a storage
@@ -77,6 +79,25 @@ dependency-slot write**, including change-and-restore and holder-silent changes.
 The dependency cannot be ignored. Such changes need requalification and a rebuild
 of affected holder state; they are not implemented as silent global updates.
 
+With `address_hash_balance`, ordinary holders return
+`(uint256(keccak256(packed_20_byte_address)) % modulus + offset) * multiplier`.
+The modulus must be nonzero and the full expression must fit uint256. Holders
+selected by the low 160 bits of the configured scalar slots instead read
+`balance_slot`. The tools qualify these selectors at both boundaries; the map
+rejects changes to either selector, including change-and-restore. Reviewed
+packed flags above those address bits can change. This rule cannot be combined
+with a zero-word fallback or deployment initialization.
+
+Computed holders can emit without a storage write. Transfer, Approval and the
+reference's non-indexed OwnershipTransferred event supply their participants,
+transaction sender and token address, using the same ABI decoders and persisted
+log selection as the reference. Unreviewed or malformed events on these tokens
+fail. Special stored holders still require a write or verified prior state;
+the map never guesses their balance. The native holder replay computes ordinary
+holders' initial values independently and reports them separately from measured
+RPC checkpoint reads. This narrow rule requires a runtime/getter review and
+does not infer balance semantics from event amounts.
+
 Verified Keccak preimages identify holder keys. Transaction/call/log addresses
 are fallback candidates, accepted only when their mapping hash matches exactly.
 Persisted writes are ordered by execution ordinal; reverted execution cannot
@@ -87,7 +108,9 @@ writes for a configured token cause an error unless they belong to an explicitly
 configured other slot/mapping. Unconfigured contracts emit no rows.
 
 Identical protobuf format does not mean complete ERC-20 coverage: unchanged
-participants and holders with no observed write remain unknown. The reference
+stored-balance participants and holders with no observed write remain unknown.
+Explicit address-derived layouts cover their observed ordinary holders without
+writes, but do not enumerate every possible address. The reference
 also queries approval participants, senders, token contracts and special events.
 Missing data never becomes zero. A full holder dataset still needs a verified
 bootstrap and additional qualified token semantics.
@@ -236,6 +259,12 @@ source-verified minimal-proxy implementation and replays both deployments with
 `tests/fixtures/bsc-clone-layouts.json` (22 explicit test layouts). Three more
 individually checked tokens with that same implementation are included in
 `tests/fixtures/bsc-clone-family-layouts.json` (25 layouts).
+
+The [address-derived balance follow-up](docs/computed-holder-coverage.md) adds the
+rank-7 token to `tests/fixtures/bsc-computed-family-layouts.json` (26 explicit
+test layouts). Its 3,000 Transfer logs have no balance writes, so a pure storage
+delta stream cannot discover their public balances. The qualified getter rule
+covers ordinary participants while preserving the special stored-holder gap.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

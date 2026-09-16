@@ -443,7 +443,7 @@ fn seven_recorded_fallback_mismatches_match_with_explicit_reviewed_rules() {
         let raw = row["storage"].as_str().unwrap();
         let rpc = row["rpc"].as_str().unwrap();
         assert_ne!(raw, rpc, "fixture must preserve the original failure");
-        assert_eq!(l.project_amount(raw), rpc);
+        assert_eq!(l.project_amount(&[42; 20], raw), rpc);
         let owner = hex_bytes(row["address"].as_str().unwrap()).unwrap();
         assert_eq!(format!("0x{}", hex::encode(mapping(&owner, &l.balance_slot))), row["storage_key"]);
         let mut b = block();

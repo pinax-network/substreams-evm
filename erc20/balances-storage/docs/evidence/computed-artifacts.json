@@ -1,0 +1,30 @@
+{
+  "fixture_scope": "Actual computed-token transactions and original header; unrelated transactions/system changes removed",
+  "fixture_sha256": "9c048643ed012bd42473894233403a1993234d6ab5bde022480b583150754a21",
+  "full_block_sha256": "e0a50475829ed0066d4b87efd8c31b341a7b3a9ae9615838412c4a67bda3e824",
+  "module_hash": "47367f6241ca237a8ffd6d7ef08db77a83a21565",
+  "package_sha256": "ae76638f8bc7227a77e9db4541eff8c6bae5a324bc3ab58c4217a9f98e67a65c",
+  "runtime_hex_sha256": "25dd285fb369404b67ace759963d94bf996adc44e19d77d3c467f73eb536a0d6",
+  "wasm_imports": {
+    "imports": [
+      {
+        "function": "println",
+        "module": "logger"
+      },
+      {
+        "function": "output",
+        "module": "env"
+      },
+      {
+        "function": "register_panic",
+        "module": "env"
+      },
+      {
+        "function": "skip_empty_output",
+        "module": "env"
+      }
+    ],
+    "rpc_imports": 0
+  },
+  "wasm_sha256": "420eb6d539c4540ba3a0c5e833859d0f8ca732d59e1d87c9e8fc93722d087454"
+}

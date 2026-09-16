@@ -172,6 +172,13 @@ pub fn run(args: Coverage) -> Result<bool> {
             let existing_holders = holders
                 .iter()
                 .filter(|key| configured[&key.0].deployment.as_ref().is_none_or(|d| d.block < start))
+                .filter(|key| {
+                    configured[&key.0]
+                        .address_hash_balance
+                        .as_ref()
+                        .and_then(|rule| rule.amount(&hex::decode(&key.1[2..]).unwrap()))
+                        .is_none()
+                })
                 .collect::<Vec<_>>();
             report["checkpoint_holders"] = json!(existing_holders.len());
             report["deployment_initialized_holders"] = json!({});
@@ -180,6 +187,23 @@ pub fn run(args: Coverage) -> Result<bool> {
             let mut checkpoint = Balances::new();
             let mut file = File::create(args.output.join("checkpoint.jsonl"))?;
             let mut per_token = BTreeMap::<String, Value>::new();
+            let mut computed_holders = BTreeMap::<String, u64>::new();
+            for key in &holders {
+                if let Some(value) = configured[&key.0]
+                    .address_hash_balance
+                    .as_ref()
+                    .and_then(|rule| rule.amount(&hex::decode(&key.1[2..]).unwrap()))
+                {
+                    checkpoint.insert(key.clone(), uint(&json!(value))?);
+                    *computed_holders.entry(key.0.clone()).or_default() += 1;
+                    writeln!(
+                        file,
+                        "{}",
+                        json!({"contract":key.0,"address":key.1,"hash":initial_hash,"source":"qualified_address_hash_formula","projected":value,"storage":null,"rpc":null})
+                    )?;
+                }
+            }
+            report["computed_initialized_holders"] = json!(computed_holders);
             for chunk in existing_holders.chunks(25) {
                 let mut calls = Vec::new();
                 let mut keys = Vec::new();
@@ -193,7 +217,7 @@ pub fn run(args: Coverage) -> Result<bool> {
                 for (i, key) in chunk.iter().enumerate() {
                     let word = quantity(&responses[i * 2])?;
                     let balance = balance_result(&responses[i * 2 + 1], true)?;
-                    let projected = uint(&json!(configured[&key.0].project_amount(&word.to_string())))?;
+                    let projected = uint(&json!(configured[&key.0].project_amount(&hex::decode(&key.1[2..])?, &word.to_string())))?;
                     ensure!(projected == balance, "checkpoint projection does not equal balanceOf");
                     checkpoint.insert((*key).clone(), projected);
                     let stats = per_token

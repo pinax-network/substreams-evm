@@ -114,7 +114,10 @@ fn selected_rows(discovery: &Value, contract: &str, slot: &str, layout: &Verifie
         .map(|r| {
             Ok((
                 (contract.to_string(), binary(&r["address"], 20)?),
-                uint(&json!(layout.project_amount(text(&r["amount"])?)))?,
+                uint(&json!(layout.project_amount(
+                    &hex::decode(text(&r["address"])?.trim_start_matches("0x"))?,
+                    text(&r["amount"])?
+                )))?,
             ))
         })
         .collect()
@@ -309,6 +312,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     proxy: None,
                     beacon_proxy: None,
                     minimal_proxy: None,
+                    address_hash_balance: None,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
                 if let Some(known) = known {
@@ -411,7 +415,9 @@ pub fn run(args: Survey) -> Result<bool> {
                                 None
                             };
                             let raw = uint(&row["storage"])?;
-                            let expected = uint(&json!(layout.project_amount(&raw.to_string())))?;
+                            let expected = uint(&json!(
+                                layout.project_amount(&hex::decode(text(&row["address"])?.trim_start_matches("0x"))?, &raw.to_string())
+                            ))?;
                             row["projected"] = json!(expected.to_string());
                             value_checks += 1;
                             rpc_errors += u64::from(actual.is_none());

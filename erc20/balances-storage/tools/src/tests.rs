@@ -9,6 +9,66 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn computed_runtime_qualification_binds_masked_selectors_at_both_boundaries() {
+    let mut params: Value = serde_json::from_str(include_str!("../../tests/fixtures/bsc-computed-layout.json")).unwrap();
+    params[0]["code_hash"] = json!(format!("0x{}", hex::encode(erc20_balances_storage::hash(&[0xaa]))));
+    let layouts = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    struct SelectorRpc {
+        bad: &'static str,
+        calls: Mutex<Vec<Value>>,
+    }
+    impl Rpc for SelectorRpc {
+        fn request(&self, p: Value) -> Result<Value> {
+            self.calls.lock().unwrap().push(p.clone());
+            let result = match p["method"].as_str().unwrap() {
+                "eth_getCode" => json!(if self.bad == "runtime" { "0xbb" } else { "0xaa" }),
+                "eth_getStorageAt" => {
+                    let owner_slot = p["params"][1] == hash(3);
+                    let address = if owner_slot {
+                        "c54cb14840cabf9a29b43d528af7dea7771f7494"
+                    } else {
+                        "0000000000000000000000000000000000000000"
+                    };
+                    if (self.bad == "owner" && owner_slot) || (self.bad == "zero" && !owner_slot) {
+                        json!(hash(1))
+                    } else {
+                        // The upper 96 bits are packed flags, not the selector.
+                        json!(format!("0x{}{}", "ff".repeat(12), address))
+                    }
+                }
+                _ => return FakeRpc::default().request(p),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let rpc = SelectorRpc {
+        bad: "",
+        calls: Mutex::new(vec![]),
+    };
+    qualify_runtime(&rpc, 10, 20, &layouts).unwrap();
+    let calls = rpc.calls.lock().unwrap();
+    let selectors = calls.iter().filter(|c| c["method"] == "eth_getStorageAt").collect::<Vec<_>>();
+    assert_eq!(selectors.len(), 4);
+    assert!(selectors.iter().all(|c| c["params"][0] == params[0]["contract"]));
+    assert_ne!(selectors[0]["params"][2], selectors[2]["params"][2]);
+    for bad in ["owner", "zero", "runtime"] {
+        assert!(
+            qualify_runtime(
+                &SelectorRpc {
+                    bad,
+                    calls: Mutex::new(vec![])
+                },
+                10,
+                20,
+                &layouts
+            )
+            .is_err(),
+            "{bad}"
+        );
+    }
+}
+
+#[test]
 fn clone_runtime_qualification_checks_the_forwarder_and_implementation() {
     use erc20_balances_storage::layout::{parse, VerifiedMinimalProxy};
     let proxy = VerifiedMinimalProxy {

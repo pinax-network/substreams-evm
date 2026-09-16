@@ -169,6 +169,16 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                 !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == layout.code_hash,
                 "unqualified runtime for configured token"
             );
+            if let Some(rule) = &layout.address_hash_balance {
+                for (slot, address) in &rule.stored_addresses {
+                    let actual = rpc.call(
+                        "eth_getStorageAt",
+                        json!([contract, format!("0x{}", hex::encode(slot)), block_ref(text(&h["hash"])?)]),
+                    )?;
+                    let bytes = hex::decode(binary(&actual, 32)?.trim_start_matches("0x"))?;
+                    ensure!(&bytes[12..] == address, "unqualified computed balance address selector");
+                }
+            }
             if let Some(proxy) = &layout.minimal_proxy {
                 ensure!(bytes == proxy.runtime(), "minimal proxy forwarding runtime differs");
                 let implementation = format!("0x{}", hex::encode(&proxy.implementation));

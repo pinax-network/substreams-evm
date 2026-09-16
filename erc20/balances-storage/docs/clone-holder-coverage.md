@@ -126,8 +126,10 @@ from the CI-equivalent library/binary check. Clippy with warnings denied,
 workspace WASM compilation, targeted formatting and diff checks also pass.
 All executable tooling is Rust.
 
-The rank-7 computed token, shared-default changes, remaining unreviewed top-50
-layouts and full holder bootstrap remain outstanding. Passing these windows
+The rank-7 computed token was outstanding in this batch; the
+[address-derived follow-up](computed-holder-coverage.md) adds its explicit rule.
+Shared-default changes, remaining unreviewed top-50 layouts and full holder
+bootstrap remain outstanding. Passing these windows
 does not establish universal ERC-20 behavior or identical raw event-row coverage.
 
 Reproduce with the existing `audit-rpc`, `test-ranked` and `holder-coverage`
