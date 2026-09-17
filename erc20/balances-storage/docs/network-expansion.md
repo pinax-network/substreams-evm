@@ -36,12 +36,13 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 198 qualified profiles: the original top 100 plus
-49 from ranks 101–150 and 49 from ranks 151–200. The
-[latest candidate follow-up](vsd-holder-coverage.md) retains only LBP (143)
-and hLBP (189) outside the active fixture. The
+The BSC campaign now includes 199 qualified profiles: the original top 100 plus
+49 from ranks 101–150 and all 50 from ranks 151–200. The
+[latest candidate follow-up](hlbp-active-holder-coverage.md) retains only LBP
+(143) outside the qualified fixture. hLBP has a captured mint in a separate
+older interval; 198 profiles emit in the original 1,024-block interval. The
 [removal correction](shareholder-removal-coverage.md) now passes a captured
-shareholder tail pop; the latest combined capture preserves all 198 profiles'
+shareholder tail pop; the latest combined capture preserves all 199 profiles'
 audited output. Swap-and-pop
 has synthetic coverage but no captured swap transaction yet. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
@@ -49,7 +50,8 @@ enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay
 required for holders whose prior balances cannot be derived from the window.
 
-[hLBP's separate quiet-holder audit](hlbp-quiet-holder-coverage.md) now confirms
-88 initialized observations and four final holder balances from actual WASM.
-It remains outside the 198 active profiles until a changed-balance case is
-captured and audited. Empty output alone cannot establish a holder's balance.
+[hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
+observations and four final balances. Its new mint audit checks one emitted
+balance, four observations and four final holders in a distinct older 64-block
+interval. The two intervals remain separately measured. Empty output alone
+cannot establish a holder's balance.

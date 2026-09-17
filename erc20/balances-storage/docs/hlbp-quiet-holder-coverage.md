@@ -1,5 +1,9 @@
 # hLBP holder coverage without balance changes
 
+The later [captured mint audit](hlbp-active-holder-coverage.md) qualifies hLBP
+and expands the fixture to 199 profiles. This report preserves the earlier quiet
+audit's original scope, counts and qualification status.
+
 Rank 189, **hLBP** (`0x5e3cbc82d020be91a989eb747934104e9ab585fe`), now has
 independent getter and initialized-holder evidence. It remains outside the
 **188 active qualified profiles** because no actual changed-balance case has

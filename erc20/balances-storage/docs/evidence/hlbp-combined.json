@@ -1,0 +1,29 @@
+{
+  "all_balance_event_fields_equal": true,
+  "baseline_holder_observations_with_identical_event_history": 169854,
+  "baseline_initialized_carry_forward_matches": 66208,
+  "baseline_profiles_with_emitted_rows": 198,
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 18.05739111049845,
+    "empty_output_delivery": null,
+    "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+    "seconds_including_startup": 56.708081125
+  },
+  "configured_profiles": 199,
+  "elapsed_seconds": 98.710671625,
+  "events_sha256": "27ec516a65fccd685e42045661334fcc93c3fea8f44e6dfe5c4b6c817a77ba18",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "4374f2ac89d51bb807f1649517a69443036fbb2e421ffec6c0424e46db65caba",
+  "prior_combined_report_sha256": "7aedd0ad753bcf55fc857636517a4a33240e3666e8a9b328f0d036e32bd0a7db",
+  "quiet_holder_report_sha256": "c9bd8dc35a7c233690e145e8e270ed0b15ebd86da2f9c9868d11ef92b1bfe37e",
+  "reused_verified_rpc_rows": 103647,
+  "scope": "Fresh 199-profile WASM capture at the original 1024-block interval. Full-field comparison with the verified 198-profile capture and hLBP's canonically confirmed empty output. hLBP's active mint is separately audited at an older 64-block interval; no repeated balance RPC calls in this combined check.",
+  "separate_active_holder_report_sha256": "bae8912e0954c32c81d1c8b38f411edb7d13fb757b95b3dc5fbb3954f911ecc2",
+  "separate_active_rpc_report_sha256": "80d664e5471f580385b2bce7df7f1576303c3f7abf51f2c917c09e929c11c6c7",
+  "status": "bounded_parity",
+  "tool_language": "Rust",
+  "wasm_sha256": "861a879353a7fc7163a26c80f671fc3011e9ca3ee32a65dfc0badd99ac9794b6"
+}

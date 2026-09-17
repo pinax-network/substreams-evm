@@ -380,6 +380,8 @@ mod divisor_tests;
 #[cfg(test)]
 mod final_proxy_tests;
 #[cfg(test)]
+mod hlbp_tests;
+#[cfg(test)]
 mod holder_registration_tests;
 #[cfg(test)]
 mod immutable_zero_tests;

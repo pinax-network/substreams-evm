@@ -1,5 +1,8 @@
 # VSD proxy and holder qualification
 
+The subsequent [hLBP mint audit](hlbp-active-holder-coverage.md) expands the
+fixture to 199 profiles. This report retains its original 198-profile snapshot.
+
 VSD, rank **179** (`0x404ad8a572bb30bf22c5228e1e210a4a0162399f`), now passes
 the BSC campaign over **122288006–122289029**, inclusive. The
 [combined fixture](../tests/fixtures/bsc-vsd-layouts.json) contains **198 profiles**.
