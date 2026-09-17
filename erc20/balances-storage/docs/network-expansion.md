@@ -50,6 +50,11 @@ enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay
 required for holders whose prior balances cannot be derived from the window.
 
+The remaining [LBP reward-state diagnostic](lbp-reward-model.md) now matches
+594 sampled RPC observations and 34 simulated-state cases. It does not add
+production LBP support: durable holder and reward state still requires a design
+decision. The other networks remain at preliminary RPC prerequisite probes.
+
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted
 balance, four observations and four final holders in a distinct older 64-block

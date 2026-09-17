@@ -1,0 +1,57 @@
+{
+  "chain_id": 56,
+  "checkpoint_sha256": "7376734069834de824562c7b0fb18855e2c51292152c7b636ee5e266d0310c86",
+  "checks_sha256": "b58ee5bdb5cd669e120383cbb52d9b7a4d6d575c0e3f6f3e357cf451be7ad887",
+  "control_rpc_calls": 68,
+  "controls": 34,
+  "controls_sha256": "7d81c13da4a83fdb24de1ca7af01d9a91df329f5d698c97bddc2d4b01f1b1dc7",
+  "exemptions": [
+    "0x88886f0fd371dff856291badced45922bc888888",
+    "0x000000000000000000000000000000000000dead",
+    "0x00e3ea08fd8cbad955ec5d2292ad637670c31524",
+    "0xdba2097923b75921657054af11be74475d2105ee",
+    "0xc2c7af29335386eea1b84df05567e21823865016",
+    "0x01c87119a0d1c3730534b8d909efeb1911b9fdb0",
+    "0xc6e06d3f7ed6475a555f4e23286a28f9ed3c7e81",
+    "0x5e3cbc82d020be91a989eb747934104e9ab585fe"
+  ],
+  "parent_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "production_changed": false,
+  "qualified": false,
+  "replay_sha256": "2a81307de25a5301fa026ba9b170c3f1d041e1e475476d626ed4f97aca752bc4",
+  "schema": 1,
+  "scope": "Historical 33-holder regression plus read-only simulated-state controls at one canonical block. No production WASM reward support, universal holder enumeration, or persistence design claimed.",
+  "source_report": {
+    "blocks": 1024,
+    "checkpoint_sha256": "7376734069834de824562c7b0fb18855e2c51292152c7b636ee5e266d0310c86",
+    "checkpoint_storage_reads": 171,
+    "checks_sha256": "b58ee5bdb5cd669e120383cbb52d9b7a4d6d575c0e3f6f3e357cf451be7ad887",
+    "computed_observations": 33792,
+    "computed_sha256": "63a4466cb7fe846723819ae9f132c91980fc2e78bbdaf5bf2a564869d52c62d1",
+    "elapsed_seconds": 11.2497395,
+    "flattened_source_sha256": "ab10cbec1f1246a7141b3c2c8e1a8eda65c3baf1ab53ddc8191eb738efb4c54b",
+    "holders": 33,
+    "mismatches": 0,
+    "processing_rpc_reads": 0,
+    "production_changed": false,
+    "qualified": false,
+    "raw_holder_balance_updates": 0,
+    "scope": "Host-only reward-state diagnostic for the 33 known counterexample holders. Explicit initial storage checkpoint, captured persisted updates and exact source integer arithmetic. Validation RPC never repairs replay state. Not production map parity or full holder enumeration.",
+    "source_bindings": [
+      {
+        "contract": "0x88886f0fd371dff856291badced45922bc888888",
+        "source_sha256": "def766d9a5568fd07f95ea88cb8dfade485d452addd0a2698c495032b9cff2dd"
+      },
+      {
+        "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+        "source_sha256": "5b61fc47bb9852f0a362309d06cd638c3a6c3540d1c6a2ad5cb778df736d0d8b"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust",
+    "tracked_storage_updates": 110,
+    "validated_observations": 594,
+    "validation_rpc_calls": 1188
+  },
+  "tracked_updates": 110
+}

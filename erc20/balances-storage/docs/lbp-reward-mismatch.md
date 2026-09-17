@@ -57,7 +57,14 @@ state and block time. Qualification must account for those dependencies and
 updates to untouched holders; adding storage ignore rules or emitting raw
 words would conceal incorrect balances.
 
-No LBP profile is included in the 149 qualified layouts. These counterexamples
+No LBP profile is included in the qualified layouts. These counterexamples
 are separate from their passing audits. They establish a concrete remaining
 gap; they do not establish complete holder enumeration, full reward-model
 support or completion of the BSC work.
+
+The [reward-state follow-up](lbp-reward-model.md) now reproduces 594 sampled
+RPC observations for these 33 holders using a storage checkpoint, persisted
+dependency updates and the source's integer reward calculation. Its Rust
+regressions and 34 read-only simulated-state controls remain host-side
+diagnostics. The production fixture now has 199 profiles; LBP is still excluded
+pending persistent holder/reward-state support.
