@@ -1,0 +1,59 @@
+{
+  "checkpoint_sha256": "7675e8c0b0d9518312ab32fa35e016e5f07ca5cb03f08a75d000f6e5b764c074",
+  "checks_sha256": "3e45ab2ce16bd2e0b8651467503bba69b397501c0683a540776954183d003d4e",
+  "configured_tokens": 3,
+  "deployment_initialization": [],
+  "events_sha256": "c6f327b54ef824b4b4cad0adc17d99d4a92a1d4353c42c39ec7cb8eede57b916",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 54,
+  "layouts_sha256": "138d31f8f21f081556a0b2313d5a0fbda65878417e1b101cbe70cc4074b7541a",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 108,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Three bytecode-reviewed LP mappings with ten fixed fields plus allowance and nonce mappings on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 36,
+  "snapshot_zeros": 30,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+      "emitted_rows": 18,
+      "reference_rows": 36,
+      "seeded_matches": 36,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 18,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+      "emitted_rows": 18,
+      "reference_rows": 36,
+      "seeded_matches": 36,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 18,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+      "emitted_rows": 18,
+      "reference_rows": 36,
+      "seeded_matches": 36,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 18,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

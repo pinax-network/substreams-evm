@@ -346,18 +346,19 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [AR, ARZ and ARS follow-up](docs/sparse400-coverage.md) brings the
-explicit test configuration to 380 profiles in
-`tests/fixtures/bsc-sparse400-layouts.json`. These three additions match 54 emitted
-RPC balances, 108 initialized observations and all 36 final holder balances.
-Their complete valid getter paths were reviewed in bytecode; no metadata slots
-are ignored. The unchanged package preserves every protobuf event field for
-109,181 previously RPC-verified balances across the combined configuration.
-Fifteen candidates from
+The latest [three Cake-LP profiles](docs/lp400-coverage.md) bring the explicit
+test configuration to 383 profiles in `tests/fixtures/bsc-lp400-full-layouts.json`.
+The additions match 54 emitted RPC balances, 108 initialized observations and
+all 36 final holder balances. Their complete valid getter paths and ten fixed
+metadata fields plus allowance/nonce mappings were reviewed independently.
+The unchanged package preserves every protobuf event field for 109,235
+previously RPC-verified balances across the combined configuration.
+The [AR, ARZ and ARS follow-up](docs/sparse400-coverage.md) retains its separate
+bytecode and sparse-discovery evidence. Twelve candidates from
 the [next-50 investigation](docs/ranks351-400-investigation.md) remain unqualified,
 alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The
 [Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) and previous
-[27-profile cohort](docs/ranks400-coverage.md) retains its separate source,
+[27-profile cohort](docs/ranks400-coverage.md) retain their separate source,
 proxy-family and holder evidence. The earlier
 [MUSD/GAIX follow-up](docs/direct-discovery-gaps.md) retains its separate evidence.
 The [reflection host model](docs/reflection-holder-model.md) matches 329

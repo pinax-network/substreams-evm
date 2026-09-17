@@ -1,0 +1,1812 @@
+{
+  "qualification_sha256": "eecb7ec06ef99df4ca52c2e49673e0aa1af86907a765b640fbe1f8d7536bf669",
+  "scope": "Independent historical raw-word and metadata-isolation RPC controls. Synthetic Extended-block regressions reproduce the metadata stateDiff values; EVM call dispatch evidence remains separate.",
+  "tokens": [
+    {
+      "block": 122288114,
+      "contract": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "holder": "0xe1b331a886e8cee72bcd8767864a5b3d16af443b",
+      "masked_address_control": {
+        "balance_of": "123",
+        "call": {
+          "data": "0x70a08231ffffffffffffffffffffffffe1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        }
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x707c821bd0a278eb6c57d1d07b406d413e1edebe4b8862990578a3e157e8b1aa": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x707c821bd0a278eb6c57d1d07b406d413e1edebe4b8862990578a3e157e8b1aa": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe00000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xb6bb7f204df2509900031837d1d12789f2a62efaf2ba6f4ca64542efa067c0b8": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe00000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xb6bb7f204df2509900031837d1d12789f2a62efaf2ba6f4ca64542efa067c0b8": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000ffffffffffffffffffffffffffff000000000000000000000000000000000000ffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000ffffffff"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        }
+      ],
+      "rank": 353,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x8d5f29952312452c2b046888abb1db6441520f2f2086b0289409a8e6627ffb98"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x8d5f29952312452c2b046888abb1db6441520f2f2086b0289409a8e6627ffb98"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x8d5f29952312452c2b046888abb1db6441520f2f2086b0289409a8e6627ffb98"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x8d5f29952312452c2b046888abb1db6441520f2f2086b0289409a8e6627ffb98"
+        },
+        {
+          "address": "0xe1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84"
+        },
+        {
+          "address": "0xe1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84"
+        },
+        {
+          "address": "0xe1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84"
+        },
+        {
+          "address": "0xe1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xa5e6893151cbb4175ee948e4d2e34b7969fad8ae48b0b0e692d43c35c06ded84"
+        }
+      ]
+    },
+    {
+      "block": 122288114,
+      "contract": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "holder": "0x84abf90ac87c8b091447df5aca8056660b5ebdd1",
+      "masked_address_control": {
+        "balance_of": "123",
+        "call": {
+          "data": "0x70a08231ffffffffffffffffffffffff84abf90ac87c8b091447df5aca8056660b5ebdd1",
+          "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+        }
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e00000000000000000000000084abf90ac87c8b091447df5aca8056660b5ebdd1000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x323ab450e7f15452a2abb9a1ca2fdd82a93fb998b3d50428b40ac3ec21a747af": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e00000000000000000000000084abf90ac87c8b091447df5aca8056660b5ebdd1000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x323ab450e7f15452a2abb9a1ca2fdd82a93fb998b3d50428b40ac3ec21a747af": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe0000000000000000000000000084abf90ac87c8b091447df5aca8056660b5ebdd1",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x495927fff0c96c2ec00d7585532bca059b4477f685abfd281aa2a33bc70bed30": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe0000000000000000000000000084abf90ac87c8b091447df5aca8056660b5ebdd1",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x495927fff0c96c2ec00d7585532bca059b4477f685abfd281aa2a33bc70bed30": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000ffffffffffffffffffffffffffff000000000000000000000000000000000000ffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000ffffffff"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        }
+      ],
+      "rank": 355,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x1286d4ce660d2c7b36cf84531e79e35dabaec11b424b94e6cd8f2e6016bf9b86"
+        },
+        {
+          "address": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x1286d4ce660d2c7b36cf84531e79e35dabaec11b424b94e6cd8f2e6016bf9b86"
+        },
+        {
+          "address": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x1286d4ce660d2c7b36cf84531e79e35dabaec11b424b94e6cd8f2e6016bf9b86"
+        },
+        {
+          "address": "0x528f7144a1ad78e05c7226ffbcbef9ee9223f382",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x1286d4ce660d2c7b36cf84531e79e35dabaec11b424b94e6cd8f2e6016bf9b86"
+        },
+        {
+          "address": "0x84abf90ac87c8b091447df5aca8056660b5ebdd1",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc"
+        },
+        {
+          "address": "0x84abf90ac87c8b091447df5aca8056660b5ebdd1",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc"
+        },
+        {
+          "address": "0x84abf90ac87c8b091447df5aca8056660b5ebdd1",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc"
+        },
+        {
+          "address": "0x84abf90ac87c8b091447df5aca8056660b5ebdd1",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x366edd5ee61ea52f6a40507770ef1289609710165142a31a2faacd9fcffafbdc"
+        }
+      ]
+    },
+    {
+      "block": 122288114,
+      "contract": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "holder": "0x25ed1a4d796b211c146897ff476f3d27b3301e99",
+      "masked_address_control": {
+        "balance_of": "123",
+        "call": {
+          "data": "0x70a08231ffffffffffffffffffffffff25ed1a4d796b211c146897ff476f3d27b3301e99",
+          "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+        }
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "slot": 0,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000000": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e00000000000000000000000025ed1a4d796b211c146897ff476f3d27b3301e99000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xe3d744356d8a7cea0233ac5faa02429c1660d054b5a57396bb582bd98713f370": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e00000000000000000000000025ed1a4d796b211c146897ff476f3d27b3301e99000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "slot": 2,
+          "state_diff": {
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xe3d744356d8a7cea0233ac5faa02429c1660d054b5a57396bb582bd98713f370": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x3644e515",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "DOMAIN_SEPARATOR()",
+          "slot": 3,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe0000000000000000000000000025ed1a4d796b211c146897ff476f3d27b3301e99",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xe7858ab313e9aa660a043110ee9858e147e66d55d848df4a1fb45123c01b2321": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7ecebe0000000000000000000000000025ed1a4d796b211c146897ff476f3d27b3301e99",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "nonce",
+          "name": "nonces(address)",
+          "slot": 4,
+          "state_diff": {
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xe7858ab313e9aa660a043110ee9858e147e66d55d848df4a1fb45123c01b2321": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xc45a0155",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "factory()",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0dfe1681",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token0()",
+          "slot": 6,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xd21220a7",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "address",
+          "name": "token1()",
+          "slot": 7,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x0902f1ac",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000ffffffffffffffffffffffffffff000000000000000000000000000000000000ffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000ffffffff"
+          },
+          "kind": "reserves",
+          "name": "getReserves()",
+          "slot": 8,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000008": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5909c0d5",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price0CumulativeLast()",
+          "slot": 9,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000009": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x5a3d5493",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "price1CumulativeLast()",
+          "slot": 10,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000a": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x7464fc3d",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "kind": "scalar",
+          "name": "kLast()",
+          "slot": 11,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000b": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+            "to": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee"
+          },
+          "field_response": {
+            "error": {
+              "code": 3,
+              "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f50616e63616b653a204c4f434b45440000000000000000000000000000000000",
+              "message": "execution reverted: Pancake: LOCKED"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "kind": "lock",
+          "name": "mint(address)",
+          "slot": 12,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000000c": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        }
+      ],
+      "rank": 361,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xa6eef7e35abe7026729641147f7915573c7e97b47efa546f5f6e3230263bcb49"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xb34209a263f6c38fe55f099e9e70f9d67e93982480ff3234a5e0108028ad164d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x73df27e0fa8bbb6c6a588f907379871e0f69a2bae64ea632056f6dabc259f362"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x92a63f2bfe26c86de5a8a25dc3b8ae0e30f61db483f8c9c412aa2ae09f995c11"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x92a63f2bfe26c86de5a8a25dc3b8ae0e30f61db483f8c9c412aa2ae09f995c11"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x92a63f2bfe26c86de5a8a25dc3b8ae0e30f61db483f8c9c412aa2ae09f995c11"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x92a63f2bfe26c86de5a8a25dc3b8ae0e30f61db483f8c9c412aa2ae09f995c11"
+        },
+        {
+          "address": "0x25ed1a4d796b211c146897ff476f3d27b3301e99",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6"
+        },
+        {
+          "address": "0x25ed1a4d796b211c146897ff476f3d27b3301e99",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6"
+        },
+        {
+          "address": "0x25ed1a4d796b211c146897ff476f3d27b3301e99",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6"
+        },
+        {
+          "address": "0x25ed1a4d796b211c146897ff476f3d27b3301e99",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x541f87f37578fd059d29c71478295093b1052fc01fdc3a23790f3a26c5a8cec6"
+        }
+      ]
+    }
+  ]
+}

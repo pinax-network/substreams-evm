@@ -1,0 +1,435 @@
+{
+  "paths": [
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x1\n358: JUMPDEST \n359: DUP1 \n360: PUSH4 022c0d9f\n365: EQ \n366: PUSH2 01ae\n369: JUMPI  target=0x1ae condition=0x0\n370: DUP1 \n371: PUSH4 06fdde03\n376: EQ \n377: PUSH2 025b\n380: JUMPI  target=0x25b condition=0x0\n381: DUP1 \n382: PUSH4 0902f1ac\n387: EQ \n388: PUSH2 02de\n391: JUMPI  target=0x2de condition=0x0\n392: DUP1 \n393: PUSH4 095ea7b3\n398: EQ \n399: PUSH2 0356\n402: JUMPI  target=0x356 condition=0x0\n403: DUP1 \n404: PUSH4 0dfe1681\n409: EQ \n410: PUSH2 03bc\n413: JUMPI  target=0x3bc condition=0x0\n414: DUP1 \n415: PUSH4 18160ddd\n420: EQ \n421: PUSH2 0406\n424: JUMPI  target=0x406 condition=0x1\n1030: JUMPDEST \n1031: PUSH2 040e\n1034: PUSH2 1307\n1037: JUMP  target=0x1307\n4871: JUMPDEST \n4872: PUSH1 00\n4874: SLOAD \n4875: DUP2 \n4876: JUMP  target=0x40e\n1038: JUMPDEST \n1039: PUSH1 40\n1041: MLOAD \n1042: DUP1 \n1043: DUP3 \n1044: DUP2 \n1045: MSTORE \n1046: PUSH1 20\n1048: ADD \n1049: SWAP2 \n1050: POP \n1051: POP \n1052: PUSH1 40\n1054: MLOAD \n1055: DUP1 \n1056: SWAP2 \n1057: SUB \n1058: SWAP1 \n1059: RETURN ",
+      "name": "totalSupply()",
+      "path_sha256": "7b598bc20b0058a8915427f671328ce7ff47ac1f4d156940ba9c37395b1510bf",
+      "slot": 0
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x0\n54: DUP1 \n55: PUSH4 d21220a7\n60: GT \n61: PUSH2 0071\n64: JUMPI  target=0x71 condition=0x0\n65: DUP1 \n66: PUSH4 d21220a7\n71: EQ \n72: PUSH2 08c4\n75: JUMPI  target=0x8c4 condition=0x0\n76: DUP1 \n77: PUSH4 d505accf\n82: EQ \n83: PUSH2 090e\n86: JUMPI  target=0x90e condition=0x0\n87: DUP1 \n88: PUSH4 dd62ed3e\n93: EQ \n94: PUSH2 09a7\n97: JUMPI  target=0x9a7 condition=0x1\n2471: JUMPDEST \n2472: PUSH2 0a09\n2475: PUSH1 04\n2477: DUP1 \n2478: CALLDATASIZE \n2479: SUB \n2480: PUSH1 40\n2482: DUP2 \n2483: LT \n2484: ISZERO \n2485: PUSH2 09bd\n2488: JUMPI  target=0x9bd condition=0x1\n2493: JUMPDEST \n2494: DUP2 \n2495: ADD \n2496: SWAP1 \n2497: DUP1 \n2498: DUP1 \n2499: CALLDATALOAD \n2500: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2521: AND \n2522: SWAP1 \n2523: PUSH1 20\n2525: ADD \n2526: SWAP1 \n2527: SWAP3 \n2528: SWAP2 \n2529: SWAP1 \n2530: DUP1 \n2531: CALLDATALOAD \n2532: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2553: AND \n2554: SWAP1 \n2555: PUSH1 20\n2557: ADD \n2558: SWAP1 \n2559: SWAP3 \n2560: SWAP2 \n2561: SWAP1 \n2562: POP \n2563: POP \n2564: POP \n2565: PUSH2 27f4\n2568: JUMP  target=0x27f4\n10228: JUMPDEST \n10229: PUSH1 02\n10231: PUSH1 20\n10233: MSTORE \n10234: DUP2 \n10235: PUSH1 00\n10237: MSTORE \n10238: PUSH1 40\n10240: PUSH1 00\n10242: KECCAK256 \n10243: PUSH1 20\n10245: MSTORE \n10246: DUP1 \n10247: PUSH1 00\n10249: MSTORE \n10250: PUSH1 40\n10252: PUSH1 00\n10254: KECCAK256 \n10255: PUSH1 00\n10257: SWAP2 \n10258: POP \n10259: SWAP2 \n10260: POP \n10261: POP \n10262: SLOAD \n10263: DUP2 \n10264: JUMP  target=0xa09\n2569: JUMPDEST \n2570: PUSH1 40\n2572: MLOAD \n2573: DUP1 \n2574: DUP3 \n2575: DUP2 \n2576: MSTORE \n2577: PUSH1 20\n2579: ADD \n2580: SWAP2 \n2581: POP \n2582: POP \n2583: PUSH1 40\n2585: MLOAD \n2586: DUP1 \n2587: SWAP2 \n2588: SUB \n2589: SWAP1 \n2590: RETURN ",
+      "name": "allowance(address,address)",
+      "path_sha256": "5ffe9124a5336dee7d7e00c8e77b3dbd14334562fa87f7b4fd281914e0f880d6",
+      "slot": 2
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x0\n261: DUP1 \n262: PUSH4 3644e515\n267: GT \n268: PUSH2 0140\n271: JUMPI  target=0x140 condition=0x0\n272: DUP1 \n273: PUSH4 3644e515\n278: EQ \n279: PUSH2 04ec\n282: JUMPI  target=0x4ec condition=0x1\n1260: JUMPDEST \n1261: PUSH2 04f4\n1264: PUSH2 1504\n1267: JUMP  target=0x1504\n5380: JUMPDEST \n5381: PUSH1 03\n5383: SLOAD \n5384: DUP2 \n5385: JUMP  target=0x4f4\n1268: JUMPDEST \n1269: PUSH1 40\n1271: MLOAD \n1272: DUP1 \n1273: DUP3 \n1274: DUP2 \n1275: MSTORE \n1276: PUSH1 20\n1278: ADD \n1279: SWAP2 \n1280: POP \n1281: POP \n1282: PUSH1 40\n1284: MLOAD \n1285: DUP1 \n1286: SWAP2 \n1287: SUB \n1288: SWAP1 \n1289: RETURN ",
+      "name": "DOMAIN_SEPARATOR()",
+      "path_sha256": "4a4c95e334cb35ca696b4e64fbab01abc7a2dee0790bbc1a1a8c92a76bd15513",
+      "slot": 3
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x1\n151: JUMPDEST \n152: DUP1 \n153: PUSH4 7ecebe00\n158: GT \n159: PUSH2 00d3\n162: JUMPI  target=0xd3 condition=0x0\n163: DUP1 \n164: PUSH4 7ecebe00\n169: EQ \n170: PUSH2 0678\n173: JUMPI  target=0x678 condition=0x1\n1656: JUMPDEST \n1657: PUSH2 06ba\n1660: PUSH1 04\n1662: DUP1 \n1663: CALLDATASIZE \n1664: SUB \n1665: PUSH1 20\n1667: DUP2 \n1668: LT \n1669: ISZERO \n1670: PUSH2 068e\n1673: JUMPI  target=0x68e condition=0x1\n1678: JUMPDEST \n1679: DUP2 \n1680: ADD \n1681: SWAP1 \n1682: DUP1 \n1683: DUP1 \n1684: CALLDATALOAD \n1685: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n1706: AND \n1707: SWAP1 \n1708: PUSH1 20\n1710: ADD \n1711: SWAP1 \n1712: SWAP3 \n1713: SWAP2 \n1714: SWAP1 \n1715: POP \n1716: POP \n1717: POP \n1718: PUSH2 1b2e\n1721: JUMP  target=0x1b2e\n6958: JUMPDEST \n6959: PUSH1 04\n6961: PUSH1 20\n6963: MSTORE \n6964: DUP1 \n6965: PUSH1 00\n6967: MSTORE \n6968: PUSH1 40\n6970: PUSH1 00\n6972: KECCAK256 \n6973: PUSH1 00\n6975: SWAP2 \n6976: POP \n6977: SWAP1 \n6978: POP \n6979: SLOAD \n6980: DUP2 \n6981: JUMP  target=0x6ba\n1722: JUMPDEST \n1723: PUSH1 40\n1725: MLOAD \n1726: DUP1 \n1727: DUP3 \n1728: DUP2 \n1729: MSTORE \n1730: PUSH1 20\n1732: ADD \n1733: SWAP2 \n1734: POP \n1735: POP \n1736: PUSH1 40\n1738: MLOAD \n1739: DUP1 \n1740: SWAP2 \n1741: SUB \n1742: SWAP1 \n1743: RETURN ",
+      "name": "nonces(address)",
+      "path_sha256": "fdf07faf457c66ea82f099b7cc5ee92f8ba5c6a10c32adcd26246e6560dd2330",
+      "slot": 4
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x0\n54: DUP1 \n55: PUSH4 d21220a7\n60: GT \n61: PUSH2 0071\n64: JUMPI  target=0x71 condition=0x1\n113: JUMPDEST \n114: DUP1 \n115: PUSH4 ba9a7a56\n120: EQ \n121: PUSH2 0818\n124: JUMPI  target=0x818 condition=0x0\n125: DUP1 \n126: PUSH4 bc25cf77\n131: EQ \n132: PUSH2 0836\n135: JUMPI  target=0x836 condition=0x0\n136: DUP1 \n137: PUSH4 c45a0155\n142: EQ \n143: PUSH2 087a\n146: JUMPI  target=0x87a condition=0x1\n2170: JUMPDEST \n2171: PUSH2 0882\n2174: PUSH2 2464\n2177: JUMP  target=0x2464\n9316: JUMPDEST \n9317: PUSH1 05\n9319: PUSH1 00\n9321: SWAP1 \n9322: SLOAD \n9323: SWAP1 \n9324: PUSH2 0100\n9327: EXP \n9328: SWAP1 \n9329: DIV \n9330: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n9351: AND \n9352: DUP2 \n9353: JUMP  target=0x882\n2178: JUMPDEST \n2179: PUSH1 40\n2181: MLOAD \n2182: DUP1 \n2183: DUP3 \n2184: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2205: AND \n2206: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2227: AND \n2228: DUP2 \n2229: MSTORE \n2230: PUSH1 20\n2232: ADD \n2233: SWAP2 \n2234: POP \n2235: POP \n2236: PUSH1 40\n2238: MLOAD \n2239: DUP1 \n2240: SWAP2 \n2241: SUB \n2242: SWAP1 \n2243: RETURN ",
+      "name": "factory()",
+      "path_sha256": "8e9034c71979577b6f7220c04ac87ca978c0f40a9699aa8e05e883d1f8b04c87",
+      "slot": 5
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x1\n358: JUMPDEST \n359: DUP1 \n360: PUSH4 022c0d9f\n365: EQ \n366: PUSH2 01ae\n369: JUMPI  target=0x1ae condition=0x0\n370: DUP1 \n371: PUSH4 06fdde03\n376: EQ \n377: PUSH2 025b\n380: JUMPI  target=0x25b condition=0x0\n381: DUP1 \n382: PUSH4 0902f1ac\n387: EQ \n388: PUSH2 02de\n391: JUMPI  target=0x2de condition=0x0\n392: DUP1 \n393: PUSH4 095ea7b3\n398: EQ \n399: PUSH2 0356\n402: JUMPI  target=0x356 condition=0x0\n403: DUP1 \n404: PUSH4 0dfe1681\n409: EQ \n410: PUSH2 03bc\n413: JUMPI  target=0x3bc condition=0x1\n956: JUMPDEST \n957: PUSH2 03c4\n960: PUSH2 12e1\n963: JUMP  target=0x12e1\n4833: JUMPDEST \n4834: PUSH1 06\n4836: PUSH1 00\n4838: SWAP1 \n4839: SLOAD \n4840: SWAP1 \n4841: PUSH2 0100\n4844: EXP \n4845: SWAP1 \n4846: DIV \n4847: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n4868: AND \n4869: DUP2 \n4870: JUMP  target=0x3c4\n964: JUMPDEST \n965: PUSH1 40\n967: MLOAD \n968: DUP1 \n969: DUP3 \n970: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n991: AND \n992: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n1013: AND \n1014: DUP2 \n1015: MSTORE \n1016: PUSH1 20\n1018: ADD \n1019: SWAP2 \n1020: POP \n1021: POP \n1022: PUSH1 40\n1024: MLOAD \n1025: DUP1 \n1026: SWAP2 \n1027: SUB \n1028: SWAP1 \n1029: RETURN ",
+      "name": "token0()",
+      "path_sha256": "eba4e8f54c9609c6c6f063085a35e662cd4a0162b87f86bf8e0286c24a8bbd11",
+      "slot": 6
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x0\n54: DUP1 \n55: PUSH4 d21220a7\n60: GT \n61: PUSH2 0071\n64: JUMPI  target=0x71 condition=0x0\n65: DUP1 \n66: PUSH4 d21220a7\n71: EQ \n72: PUSH2 08c4\n75: JUMPI  target=0x8c4 condition=0x1\n2244: JUMPDEST \n2245: PUSH2 08cc\n2248: PUSH2 248a\n2251: JUMP  target=0x248a\n9354: JUMPDEST \n9355: PUSH1 07\n9357: PUSH1 00\n9359: SWAP1 \n9360: SLOAD \n9361: SWAP1 \n9362: PUSH2 0100\n9365: EXP \n9366: SWAP1 \n9367: DIV \n9368: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n9389: AND \n9390: DUP2 \n9391: JUMP  target=0x8cc\n2252: JUMPDEST \n2253: PUSH1 40\n2255: MLOAD \n2256: DUP1 \n2257: DUP3 \n2258: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2279: AND \n2280: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2301: AND \n2302: DUP2 \n2303: MSTORE \n2304: PUSH1 20\n2306: ADD \n2307: SWAP2 \n2308: POP \n2309: POP \n2310: PUSH1 40\n2312: MLOAD \n2313: DUP1 \n2314: SWAP2 \n2315: SUB \n2316: SWAP1 \n2317: RETURN ",
+      "name": "token1()",
+      "path_sha256": "749c298f30d35e0fc803c254fbd175f2e31c33e4f0990d2d63832a114e3914f0",
+      "slot": 7
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x1\n358: JUMPDEST \n359: DUP1 \n360: PUSH4 022c0d9f\n365: EQ \n366: PUSH2 01ae\n369: JUMPI  target=0x1ae condition=0x0\n370: DUP1 \n371: PUSH4 06fdde03\n376: EQ \n377: PUSH2 025b\n380: JUMPI  target=0x25b condition=0x0\n381: DUP1 \n382: PUSH4 0902f1ac\n387: EQ \n388: PUSH2 02de\n391: JUMPI  target=0x2de condition=0x1\n734: JUMPDEST \n735: PUSH2 02e6\n738: PUSH2 126d\n741: JUMP  target=0x126d\n4717: JUMPDEST \n4718: PUSH1 00\n4720: DUP1 \n4721: PUSH1 00\n4723: PUSH1 08\n4725: PUSH1 00\n4727: SWAP1 \n4728: SLOAD \n4729: SWAP1 \n4730: PUSH2 0100\n4733: EXP \n4734: SWAP1 \n4735: DIV \n4736: PUSH14 ffffffffffffffffffffffffffff\n4751: AND \n4752: SWAP3 \n4753: POP \n4754: PUSH1 08\n4756: PUSH1 0e\n4758: SWAP1 \n4759: SLOAD \n4760: SWAP1 \n4761: PUSH2 0100\n4764: EXP \n4765: SWAP1 \n4766: DIV \n4767: PUSH14 ffffffffffffffffffffffffffff\n4782: AND \n4783: SWAP2 \n4784: POP \n4785: PUSH1 08\n4787: PUSH1 1c\n4789: SWAP1 \n4790: SLOAD \n4791: SWAP1 \n4792: PUSH2 0100\n4795: EXP \n4796: SWAP1 \n4797: DIV \n4798: PUSH4 ffffffff\n4803: AND \n4804: SWAP1 \n4805: POP \n4806: SWAP1 \n4807: SWAP2 \n4808: SWAP3 \n4809: JUMP  target=0x2e6\n742: JUMPDEST \n743: PUSH1 40\n745: MLOAD \n746: DUP1 \n747: DUP5 \n748: PUSH14 ffffffffffffffffffffffffffff\n763: AND \n764: PUSH14 ffffffffffffffffffffffffffff\n779: AND \n780: DUP2 \n781: MSTORE \n782: PUSH1 20\n784: ADD \n785: DUP4 \n786: PUSH14 ffffffffffffffffffffffffffff\n801: AND \n802: PUSH14 ffffffffffffffffffffffffffff\n817: AND \n818: DUP2 \n819: MSTORE \n820: PUSH1 20\n822: ADD \n823: DUP3 \n824: PUSH4 ffffffff\n829: AND \n830: PUSH4 ffffffff\n835: AND \n836: DUP2 \n837: MSTORE \n838: PUSH1 20\n840: ADD \n841: SWAP4 \n842: POP \n843: POP \n844: POP \n845: POP \n846: PUSH1 40\n848: MLOAD \n849: DUP1 \n850: SWAP2 \n851: SUB \n852: SWAP1 \n853: RETURN ",
+      "name": "getReserves()",
+      "path_sha256": "e56bc8d958fe64450db0ed9946ce83f3c5c99689f1d90cdf60feb01beaefbb76",
+      "slot": 8
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x0\n261: DUP1 \n262: PUSH4 3644e515\n267: GT \n268: PUSH2 0140\n271: JUMPI  target=0x140 condition=0x0\n272: DUP1 \n273: PUSH4 3644e515\n278: EQ \n279: PUSH2 04ec\n282: JUMPI  target=0x4ec condition=0x0\n283: DUP1 \n284: PUSH4 485cc955\n289: EQ \n290: PUSH2 050a\n293: JUMPI  target=0x50a condition=0x0\n294: DUP1 \n295: PUSH4 5909c0d5\n300: EQ \n301: PUSH2 056e\n304: JUMPI  target=0x56e condition=0x1\n1390: JUMPDEST \n1391: PUSH2 0576\n1394: PUSH2 1653\n1397: JUMP  target=0x1653\n5715: JUMPDEST \n5716: PUSH1 09\n5718: SLOAD \n5719: DUP2 \n5720: JUMP  target=0x576\n1398: JUMPDEST \n1399: PUSH1 40\n1401: MLOAD \n1402: DUP1 \n1403: DUP3 \n1404: DUP2 \n1405: MSTORE \n1406: PUSH1 20\n1408: ADD \n1409: SWAP2 \n1410: POP \n1411: POP \n1412: PUSH1 40\n1414: MLOAD \n1415: DUP1 \n1416: SWAP2 \n1417: SUB \n1418: SWAP1 \n1419: RETURN ",
+      "name": "price0CumulativeLast()",
+      "path_sha256": "712011ad3d7b575f667acf2b437e9e4884b64933111ff1be88d0ff4e4ad5cb96",
+      "slot": 9
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x1\n249: JUMPDEST \n250: DUP1 \n251: PUSH4 23b872dd\n256: GT \n257: PUSH2 0166\n260: JUMPI  target=0x166 condition=0x0\n261: DUP1 \n262: PUSH4 3644e515\n267: GT \n268: PUSH2 0140\n271: JUMPI  target=0x140 condition=0x0\n272: DUP1 \n273: PUSH4 3644e515\n278: EQ \n279: PUSH2 04ec\n282: JUMPI  target=0x4ec condition=0x0\n283: DUP1 \n284: PUSH4 485cc955\n289: EQ \n290: PUSH2 050a\n293: JUMPI  target=0x50a condition=0x0\n294: DUP1 \n295: PUSH4 5909c0d5\n300: EQ \n301: PUSH2 056e\n304: JUMPI  target=0x56e condition=0x0\n305: DUP1 \n306: PUSH4 5a3d5493\n311: EQ \n312: PUSH2 058c\n315: JUMPI  target=0x58c condition=0x1\n1420: JUMPDEST \n1421: PUSH2 0594\n1424: PUSH2 1659\n1427: JUMP  target=0x1659\n5721: JUMPDEST \n5722: PUSH1 0a\n5724: SLOAD \n5725: DUP2 \n5726: JUMP  target=0x594\n1428: JUMPDEST \n1429: PUSH1 40\n1431: MLOAD \n1432: DUP1 \n1433: DUP3 \n1434: DUP2 \n1435: MSTORE \n1436: PUSH1 20\n1438: ADD \n1439: SWAP2 \n1440: POP \n1441: POP \n1442: PUSH1 40\n1444: MLOAD \n1445: DUP1 \n1446: SWAP2 \n1447: SUB \n1448: SWAP1 \n1449: RETURN ",
+      "name": "price1CumulativeLast()",
+      "path_sha256": "9a581c5c7d6492c7386572d648f7b3b8a643ef90c3512cce1539cffe416cfdc6",
+      "slot": 10
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x1\n151: JUMPDEST \n152: DUP1 \n153: PUSH4 7ecebe00\n158: GT \n159: PUSH2 00d3\n162: JUMPI  target=0xd3 condition=0x1\n211: JUMPDEST \n212: DUP1 \n213: PUSH4 6a627842\n218: EQ \n219: PUSH2 05aa\n222: JUMPI  target=0x5aa condition=0x0\n223: DUP1 \n224: PUSH4 70a08231\n229: EQ \n230: PUSH2 0602\n233: JUMPI  target=0x602 condition=0x0\n234: DUP1 \n235: PUSH4 7464fc3d\n240: EQ \n241: PUSH2 065a\n244: JUMPI  target=0x65a condition=0x1\n1626: JUMPDEST \n1627: PUSH2 0662\n1630: PUSH2 1b28\n1633: JUMP  target=0x1b28\n6952: JUMPDEST \n6953: PUSH1 0b\n6955: SLOAD \n6956: DUP2 \n6957: JUMP  target=0x662\n1634: JUMPDEST \n1635: PUSH1 40\n1637: MLOAD \n1638: DUP1 \n1639: DUP3 \n1640: DUP2 \n1641: MSTORE \n1642: PUSH1 20\n1644: ADD \n1645: SWAP2 \n1646: POP \n1647: POP \n1648: PUSH1 40\n1650: MLOAD \n1651: DUP1 \n1652: SWAP2 \n1653: SUB \n1654: SWAP1 \n1655: RETURN ",
+      "name": "kLast()",
+      "path_sha256": "35522b5b9937c55f8185603e0d5ffc815082a926cf7650943da41a33b78c7ddc",
+      "slot": 11
+    },
+    {
+      "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01a9\n25: JUMPI  target=0x1a9 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 6a627842\n38: GT \n39: PUSH2 00f9\n42: JUMPI  target=0xf9 condition=0x0\n43: DUP1 \n44: PUSH4 ba9a7a56\n49: GT \n50: PUSH2 0097\n53: JUMPI  target=0x97 condition=0x1\n151: JUMPDEST \n152: DUP1 \n153: PUSH4 7ecebe00\n158: GT \n159: PUSH2 00d3\n162: JUMPI  target=0xd3 condition=0x1\n211: JUMPDEST \n212: DUP1 \n213: PUSH4 6a627842\n218: EQ \n219: PUSH2 05aa\n222: JUMPI  target=0x5aa condition=0x1\n1450: JUMPDEST \n1451: PUSH2 05ec\n1454: PUSH1 04\n1456: DUP1 \n1457: CALLDATASIZE \n1458: SUB \n1459: PUSH1 20\n1461: DUP2 \n1462: LT \n1463: ISZERO \n1464: PUSH2 05c0\n1467: JUMPI  target=0x5c0 condition=0x1\n1472: JUMPDEST \n1473: DUP2 \n1474: ADD \n1475: SWAP1 \n1476: DUP1 \n1477: DUP1 \n1478: CALLDATALOAD \n1479: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n1500: AND \n1501: SWAP1 \n1502: PUSH1 20\n1504: ADD \n1505: SWAP1 \n1506: SWAP3 \n1507: SWAP2 \n1508: SWAP1 \n1509: POP \n1510: POP \n1511: POP \n1512: PUSH2 165f\n1515: JUMP  target=0x165f\n5727: JUMPDEST \n5728: PUSH1 00\n5730: PUSH1 01\n5732: PUSH1 0c\n5734: SLOAD \n5735: EQ \n5736: PUSH2 16d9\n5739: JUMPI  target=0x16d9 condition=0x1\n5849: JUMPDEST \n5850: PUSH1 00\n5852: PUSH1 0c\n5854: DUP2 \n5855: SWAP1 \n5856: SSTORE ",
+      "name": "mint(address)",
+      "path_sha256": "dd3cf8dcb2ef0fac6012317222256a302f8197772bbaa6908a125fe71500cdb6",
+      "slot": 12
+    }
+  ],
+  "report": {
+    "block": 122288114,
+    "code_hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8",
+    "contract": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+    "fields": [
+      {
+        "call": {
+          "data": "0x18160ddd",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "scalar",
+        "name": "totalSupply()",
+        "path_file": "slot0-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x0",
+            "pc": 4874
+          }
+        ],
+        "return_value": "0x00000000000000000000000000000000000000000000054e71c9be9672c8beaa",
+        "slot": 0,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "trace_sha256": "05df56e1f938559f2ddc2168e3c3da2685d245a11bbe289d1d2240dc07f72155",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0xdd62ed3e000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b000000000000000000000000000000000000000000000000000000000000dead",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "allowance",
+        "name": "allowance(address,address)",
+        "path_file": "slot2-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x707c821bd0a278eb6c57d1d07b406d413e1edebe4b8862990578a3e157e8b1aa",
+            "pc": 10262
+          }
+        ],
+        "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "slot": 2,
+        "storage_key": "0x707c821bd0a278eb6c57d1d07b406d413e1edebe4b8862990578a3e157e8b1aa",
+        "trace_sha256": "c3893dd8e45110e4a5d7631e307fb13a8ff310dfac802758c97211e2cbb3fbfd",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x3644e515",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "scalar",
+        "name": "DOMAIN_SEPARATOR()",
+        "path_file": "slot3-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x3",
+            "pc": 5383
+          }
+        ],
+        "return_value": "0xa059af646b7c023777fa35f2d9d19a79889ba6d8ea24bc813a777735a8a9e9bb",
+        "slot": 3,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "trace_sha256": "f8604e05a9cdfdb74a8de86b59b6b12c4836976e28fbb21222f96b60d3c6d44a",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x7ecebe00000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "nonce",
+        "name": "nonces(address)",
+        "path_file": "slot4-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0xb6bb7f204df2509900031837d1d12789f2a62efaf2ba6f4ca64542efa067c0b8",
+            "pc": 6979
+          }
+        ],
+        "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "slot": 4,
+        "storage_key": "0xb6bb7f204df2509900031837d1d12789f2a62efaf2ba6f4ca64542efa067c0b8",
+        "trace_sha256": "b18499214bb61e962d2add1616c5c9d752d725d1781eb30e6e722aaaa06cbcd2",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0xc45a0155",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "address",
+        "name": "factory()",
+        "path_file": "slot5-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x5",
+            "pc": 9322
+          }
+        ],
+        "return_value": "0x000000000000000000000000ca143ce32fe78f1f7019d7d551a6402fc5350c73",
+        "slot": 5,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "trace_sha256": "9b7e40664cdb75cc395966a337ebc17f3b1fbaa87ff9f26479f495851539fbf2",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x0dfe1681",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "address",
+        "name": "token0()",
+        "path_file": "slot6-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x6",
+            "pc": 4839
+          }
+        ],
+        "return_value": "0x000000000000000000000000000ae314e2a2172a039b26378814c252734f556a",
+        "slot": 6,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "trace_sha256": "b45d7ba1f35432ec43c1ae90715d2de057c5f5c7c8af8290f65109a6ab10a3ba",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0xd21220a7",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "address",
+        "name": "token1()",
+        "path_file": "slot7-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x7",
+            "pc": 9360
+          }
+        ],
+        "return_value": "0x000000000000000000000000e9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "slot": 7,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "trace_sha256": "9882184f3468c58ee57fbe70bc8ddd6b4595a866fb4db66fb6dbab826bd4781b",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x0902f1ac",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "reserves",
+        "name": "getReserves()",
+        "path_file": "slot8-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4728
+          },
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4759
+          },
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4790
+          }
+        ],
+        "return_value": "0x000000000000000000000000000000000000000000000e1e9fe4112238a5fc2b000000000000000000000000000000000000000000000136359c7b6fda938c00000000000000000000000000000000000000000000000000000000006aab0062",
+        "slot": 8,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "trace_sha256": "98680b2b3d5838fe98bffc5508057b6ede0de4927878120b0ede5ed0ea11ea3d",
+        "words": 3,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x5909c0d5",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "scalar",
+        "name": "price0CumulativeLast()",
+        "path_file": "slot9-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0x9",
+            "pc": 5718
+          }
+        ],
+        "return_value": "0x00000000000000000000000000000002f76e0134b6b944066547916e1c2f26f4",
+        "slot": 9,
+        "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "trace_sha256": "c1a78bdc5e62068e6f9398ecaac41938b68206384f1e845cd1c4443dbbb7eccc",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x5a3d5493",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "scalar",
+        "name": "price1CumulativeLast()",
+        "path_file": "slot10-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0xa",
+            "pc": 5724
+          }
+        ],
+        "return_value": "0x00000000000000000000000000000429b8d191280e805fb8e66ae49f88f463e6",
+        "slot": 10,
+        "storage_key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "trace_sha256": "9ebdeb02cc698fdfd44e4d702797e3bf764555f3dd01f1ecf627f094e118a6d2",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x7464fc3d",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": false,
+        "kind": "scalar",
+        "name": "kLast()",
+        "path_file": "slot11-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0xb",
+            "pc": 6955
+          }
+        ],
+        "return_value": "0x00000000000000000000000000111c0a96bf481f3f29e378959796ac30988400",
+        "slot": 11,
+        "storage_key": "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "trace_sha256": "a81526466096b7bc2ee5e378246ed5384270af65c017e9eabb486819d10d740a",
+        "words": 1,
+        "writes": []
+      },
+      {
+        "call": {
+          "data": "0x6a627842000000000000000000000000e1b331a886e8cee72bcd8767864a5b3d16af443b",
+          "to": "0x29e8f7b1195cae4f761815bdec29200e15566983"
+        },
+        "failed": true,
+        "kind": "lock",
+        "name": "mint(address)",
+        "path_file": "slot12-getter.txt",
+        "reads": [
+          {
+            "depth": 1,
+            "key": "0xc",
+            "pc": 5734
+          },
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4728
+          },
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4759
+          },
+          {
+            "depth": 1,
+            "key": "0x8",
+            "pc": 4790
+          },
+          {
+            "depth": 1,
+            "key": "0x6",
+            "pc": 5881
+          },
+          {
+            "depth": 2,
+            "key": "0x2a0ba170a82f4217129bb54a04111ba093ea8a5db0613f2ad08ffceb9704f3ad",
+            "pc": 375
+          },
+          {
+            "depth": 1,
+            "key": "0x7",
+            "pc": 6103
+          },
+          {
+            "depth": 2,
+            "key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce",
+            "pc": 1495
+          },
+          {
+            "depth": 1,
+            "key": "0x5",
+            "pc": 13316
+          },
+          {
+            "depth": 2,
+            "key": "0x0",
+            "pc": 939
+          },
+          {
+            "depth": 1,
+            "key": "0xb",
+            "pc": 13531
+          },
+          {
+            "depth": 1,
+            "key": "0x0",
+            "pc": 6413
+          }
+        ],
+        "return_value": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002650616e63616b653a20494e53554646494349454e545f4c49515549444954595f4d494e5445440000000000000000000000000000000000000000000000000000",
+        "slot": 12,
+        "storage_key": "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "trace_sha256": "2c9a327828ac719bb58cf8b3112eb0d5afc26d4b7e683b50e59556763ac60966",
+        "words": 0,
+        "writes": [
+          {
+            "depth": 1,
+            "key": "0xc",
+            "pc": 5856,
+            "value": "0x0"
+          }
+        ]
+      }
+    ],
+    "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+    "scope": "Fresh getter traces for fixed metadata and the mint lock prologue. Full traces retained; complete body/packing review and independent balance-isolation controls remain required. No layout promoted.",
+    "status": "inspected"
+  },
+  "source_report_sha256": "3c53020fab585a76abe3e30b5cee1e7d4c781e1cf410ceb6b17c77f6b0fbf278"
+}
