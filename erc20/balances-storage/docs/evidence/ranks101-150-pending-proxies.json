@@ -1,0 +1,1218 @@
+[
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      }
+    ],
+    "contract": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 108,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0x9151434b16b9763660705744891fa906f660ecc5",
+            "bytes": 17861,
+            "historical_runtime_bound": false,
+            "name": null,
+            "runtime_hash": "0x61466328a9d17e782f4a37d32db189f981ce32e45de6a4668c3f7bb1cd8d49ae",
+            "source_verified": false,
+            "storage": null
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0x9151434b16b9763660705744891fa906f660ecc5"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0x9151434b16b9763660705744891fa906f660ecc5",
+            "bytes": 17861,
+            "historical_runtime_bound": false,
+            "name": null,
+            "runtime_hash": "0x61466328a9d17e782f4a37d32db189f981ce32e45de6a4668c3f7bb1cd8d49ae",
+            "source_verified": false,
+            "storage": null
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0x9151434b16b9763660705744891fa906f660ecc5"
+      }
+    ],
+    "contract": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 122,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0x3184f3165012753a9cff47df27776a1a8685a8ef",
+            "bytes": 9425,
+            "historical_runtime_bound": true,
+            "name": "BurnMintERC20Upgrade",
+            "runtime_hash": "0x5db3246c7a51faf8d15d7fd7f1525c65a4203291c550f3a9a976081a9829a9ab",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 395,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 398,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 1737,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 694,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "51",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 700,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "52",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 702,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "53",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 704,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_name",
+                "offset": 0,
+                "slot": "54",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 706,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "55",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 1285,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "56",
+                "type": "t_array(t_uint256)45_storage"
+              },
+              {
+                "astId": 1427,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "101",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 2446,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_pendingOwner",
+                "offset": 0,
+                "slot": "151",
+                "type": "t_address"
+              },
+              {
+                "astId": 2449,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_owner",
+                "offset": 0,
+                "slot": "152",
+                "type": "t_address"
+              },
+              {
+                "astId": 2451,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initializing",
+                "offset": 20,
+                "slot": "152",
+                "type": "t_bool"
+              },
+              {
+                "astId": 377,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "153",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 674,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "203",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 1885,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "i_decimals",
+                "offset": 0,
+                "slot": "253",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 1887,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "i_maxSupply",
+                "offset": 0,
+                "slot": "254",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 1889,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_ccipAdmin",
+                "offset": 0,
+                "slot": "255",
+                "type": "t_address"
+              },
+              {
+                "astId": 1892,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_minters",
+                "offset": 0,
+                "slot": "256",
+                "type": "t_struct(AddressSet)3004_storage"
+              },
+              {
+                "astId": 1895,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_burners",
+                "offset": 0,
+                "slot": "258",
+                "type": "t_struct(AddressSet)3004_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0x3184f3165012753a9cff47df27776a1a8685a8ef"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0x3184f3165012753a9cff47df27776a1a8685a8ef",
+            "bytes": 9425,
+            "historical_runtime_bound": true,
+            "name": "BurnMintERC20Upgrade",
+            "runtime_hash": "0x5db3246c7a51faf8d15d7fd7f1525c65a4203291c550f3a9a976081a9829a9ab",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 395,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 398,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 1737,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 694,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "51",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 700,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "52",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 702,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "53",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 704,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_name",
+                "offset": 0,
+                "slot": "54",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 706,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "55",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 1285,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "56",
+                "type": "t_array(t_uint256)45_storage"
+              },
+              {
+                "astId": 1427,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "101",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 2446,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_pendingOwner",
+                "offset": 0,
+                "slot": "151",
+                "type": "t_address"
+              },
+              {
+                "astId": 2449,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_owner",
+                "offset": 0,
+                "slot": "152",
+                "type": "t_address"
+              },
+              {
+                "astId": 2451,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "_initializing",
+                "offset": 20,
+                "slot": "152",
+                "type": "t_bool"
+              },
+              {
+                "astId": 377,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "153",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 674,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "203",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 1885,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "i_decimals",
+                "offset": 0,
+                "slot": "253",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 1887,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "i_maxSupply",
+                "offset": 0,
+                "slot": "254",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 1889,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_ccipAdmin",
+                "offset": 0,
+                "slot": "255",
+                "type": "t_address"
+              },
+              {
+                "astId": 1892,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_minters",
+                "offset": 0,
+                "slot": "256",
+                "type": "t_struct(AddressSet)3004_storage"
+              },
+              {
+                "astId": 1895,
+                "contract": "contracts/TokenUpgrade.sol:BurnMintERC20Upgrade",
+                "label": "s_burners",
+                "offset": 0,
+                "slot": "258",
+                "type": "t_struct(AddressSet)3004_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0x3184f3165012753a9cff47df27776a1a8685a8ef"
+      }
+    ],
+    "contract": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 128,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      }
+    ],
+    "contract": "0x2859e4544c4bb03966803b044a93563bd2d0dd4d",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 130,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+            "bytes": 5066,
+            "historical_runtime_bound": true,
+            "name": "BEP20TokenImplementation",
+            "runtime_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 321,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 323,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 399,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 405,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 407,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 409,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_name",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 411,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 413,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 415,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_owner",
+                "offset": 1,
+                "slot": "6",
+                "type": "t_address"
+              },
+              {
+                "astId": 423,
+                "contract": "BEP20TokenImplementation.sol:BEP20TokenImplementation",
+                "label": "_mintable",
+                "offset": 21,
+                "slot": "6",
+                "type": "t_bool"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+      }
+    ],
+    "contract": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 136,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+            "bytes": 729,
+            "historical_runtime_bound": true,
+            "name": "TokenBridge",
+            "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+            "source_verified": true,
+            "storage": []
+          },
+          {
+            "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+            "bytes": 6680,
+            "historical_runtime_bound": true,
+            "name": "TokenImplementation",
+            "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 126,
+                "contract": "null:TokenImplementation",
+                "label": "_state",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(State)118_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+            "bytes": 729,
+            "historical_runtime_bound": true,
+            "name": "TokenBridge",
+            "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+            "source_verified": true,
+            "storage": []
+          },
+          {
+            "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+            "bytes": 6680,
+            "historical_runtime_bound": true,
+            "name": "TokenImplementation",
+            "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 126,
+                "contract": "null:TokenImplementation",
+                "label": "_state",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(State)118_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+      }
+    ],
+    "contract": "0x30117e4bc17d7b044194b76a38365c53b72f7d49",
+    "kind": "beacon_probe",
+    "qualified": false,
+    "rank": 142,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xa9d0b1770ad65cbc4f5dffc0f24f42c57933a877",
+            "bytes": 17189,
+            "historical_runtime_bound": true,
+            "name": "COAI",
+            "runtime_hash": "0xc089027a5766d4fe941cf24adda82b772a9a208b4eefb2bad87b660318e8ca40",
+            "source_verified": true,
+            "storage": []
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xa9d0b1770ad65cbc4f5dffc0f24f42c57933a877"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xa9d0b1770ad65cbc4f5dffc0f24f42c57933a877",
+            "bytes": 17189,
+            "historical_runtime_bound": true,
+            "name": "COAI",
+            "runtime_hash": "0xc089027a5766d4fe941cf24adda82b772a9a208b4eefb2bad87b660318e8ca40",
+            "source_verified": true,
+            "storage": []
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xa9d0b1770ad65cbc4f5dffc0f24f42c57933a877"
+      }
+    ],
+    "contract": "0x0a8d6c86e1bce73fe4d0bd531e1a567306836ea5",
+    "kind": "implementation_probe",
+    "qualified": false,
+    "rank": 145,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+  },
+  {
+    "boundaries": [
+      {
+        "block": 122288005,
+        "dependencies": [
+          {
+            "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+            "bytes": 729,
+            "historical_runtime_bound": true,
+            "name": "TokenBridge",
+            "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+            "source_verified": true,
+            "storage": []
+          },
+          {
+            "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+            "bytes": 6680,
+            "historical_runtime_bound": true,
+            "name": "TokenImplementation",
+            "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 126,
+                "contract": "null:TokenImplementation",
+                "label": "_state",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(State)118_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+      },
+      {
+        "block": 122289029,
+        "dependencies": [
+          {
+            "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+            "bytes": 729,
+            "historical_runtime_bound": true,
+            "name": "TokenBridge",
+            "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+            "source_verified": true,
+            "storage": []
+          },
+          {
+            "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+            "bytes": 6680,
+            "historical_runtime_bound": true,
+            "name": "TokenImplementation",
+            "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+            "source_verified": true,
+            "storage": [
+              {
+                "astId": 126,
+                "contract": "null:TokenImplementation",
+                "label": "_state",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(State)118_storage"
+              }
+            ]
+          }
+        ],
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+      }
+    ],
+    "contract": "0x595deaad1eb5476ff1e649fdb7efc36f1e4679cc",
+    "kind": "beacon_probe",
+    "qualified": false,
+    "rank": 149,
+    "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+    "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+  }
+]

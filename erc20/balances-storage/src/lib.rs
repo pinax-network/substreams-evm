@@ -277,6 +277,10 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             layout.zero_balance.as_ref().and_then(|r| r.storage_slot) != Some(key),
             "zero-balance dependency changed; requalify and rebuild dependent holder state",
         )?;
+        require(
+            layout.balance_divisor.as_ref().is_none_or(|r| r.storage_slot != key),
+            "balance divisor changed; requalify layout and rebuild retained holder balances",
+        )?;
         if let Some(address) = layout.address_hash_balance.as_ref().and_then(|rule| rule.stored_addresses.get(&key)) {
             require(
                 &word(&c.old_value)?[12..] == address && &word(&c.new_value)?[12..] == address,
@@ -362,6 +366,8 @@ mod direct_bytecode_tests;
 #[cfg(test)]
 mod direct_source_tests;
 #[cfg(test)]
+mod divisor_tests;
+#[cfg(test)]
 mod final_proxy_tests;
 #[cfg(test)]
 mod holder_registration_tests;
@@ -373,6 +379,8 @@ mod log_only_tests;
 mod next_candidate_tests;
 #[cfg(test)]
 mod next_proxy_tests;
+#[cfg(test)]
+mod ranked_cohort_tests;
 #[cfg(test)]
 mod securities_proxy_tests;
 #[cfg(test)]

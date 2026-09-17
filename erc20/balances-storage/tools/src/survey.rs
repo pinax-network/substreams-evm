@@ -311,6 +311,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     voting_checkpoints: None,
                     address_lists: BTreeSet::new(),
                     zero_balance: None,
+                    balance_divisor: None,
                     proxy: None,
                     beacon_proxy: None,
                     minimal_proxy: None,

@@ -219,6 +219,40 @@ fn runtime_qualification_rejects_a_changed_zero_balance_dependency() {
     );
 }
 #[test]
+fn runtime_qualification_checks_divisor_at_both_boundaries() {
+    struct DivisorRpc {
+        mismatch_on: usize,
+        reads: std::sync::atomic::AtomicUsize,
+    }
+    impl Rpc for DivisorRpc {
+        fn request(&self, payload: Value) -> Result<Value> {
+            let result = match payload["method"].as_str().unwrap() {
+                "eth_getCode" => json!("0xaa"),
+                "eth_getStorageAt" => {
+                    let n = self.reads.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                    assert_eq!(payload["params"][1], hash(4));
+                    assert_eq!(payload["params"][2]["requireCanonical"], true);
+                    json!(hash(if self.mismatch_on == n { 9 } else { 8 }))
+                }
+                _ => return FakeRpc::default().request(payload),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let params = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":format!("0x{}",hex::encode(erc20_balances_storage::hash(&[0xaa]))),"balance_divisor":{"value":hash(8),"storage_slot":hash(4)}}]);
+    let layouts = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    for mismatch_on in [0, 1, 2] {
+        let rpc = DivisorRpc { mismatch_on, reads: 0.into() };
+        let result = qualify_runtime(&rpc, 1, 3, &layouts);
+        if mismatch_on < 2 {
+            assert!(result.unwrap_err().to_string().contains("divisor dependency value"));
+        } else {
+            result.unwrap();
+            assert_eq!(rpc.reads.load(std::sync::atomic::Ordering::SeqCst), 2);
+        }
+    }
+}
+#[test]
 fn beacon_runtime_qualification_checks_both_pointers_code_and_getter() {
     struct BeaconRpc {
         bad: &'static str,

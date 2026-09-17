@@ -1,0 +1,219 @@
+{
+  "carry_forward_matches": 2142,
+  "checkpoint_sha256": "b4828560939cba20ead60d377dda1474d6a4e08827a4ca0d48eaa9d140752797",
+  "checks_sha256": "da33765e34468b2a1b44405e5622495ed18c6cbc6506e60b4d53fdc20f24d156",
+  "events_sha256": "8c5554d6cce464eaa31790304b7199016ccbff86b9291c15fb028c2c9e410bf1",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "a1ee4fbd7e9ffd62f0758457f4034bbff02b743adcdad57902c991eab847786b",
+  "mismatches": 0,
+  "package_sha256": "e5e51e29969dcd6500551000693cad78681dc1ccc6ada688109d085206b49900",
+  "raw_report_sha256": "5c968beabf05f152671edd40bfec3f562658d545a0e19e7f255a039f6827ebb9",
+  "reference_observations": 5138,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "33 newly qualified tokens; checkpoint covers observed holders only. Actual WASM updates applied in canonical order; reference rows never repair retained state. Final snapshot also includes newly emitted holders.",
+  "snapshot_holders": 1282,
+  "snapshot_zeros": 674,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 52,
+      "contract": "0x066baa58160c39c569cd25db27e2a1f7b1b47777",
+      "emitted_balances": 129,
+      "reference_observations": 181
+    },
+    {
+      "carry_forward_matches": 67,
+      "contract": "0x0e4f6209ed984b21edea43ace6e09559ed051d48",
+      "emitted_balances": 76,
+      "reference_observations": 143
+    },
+    {
+      "carry_forward_matches": 88,
+      "contract": "0x0f0df6cb17ee5e883eddfef9153fc6036bdb4e37",
+      "emitted_balances": 90,
+      "reference_observations": 178
+    },
+    {
+      "carry_forward_matches": 93,
+      "contract": "0x1d28d989f9e3ccb8b15d0cec601734514f958e4d",
+      "emitted_balances": 102,
+      "reference_observations": 195
+    },
+    {
+      "carry_forward_matches": 75,
+      "contract": "0x32f1518baace69e85b9e5ff844ebd617c52573ac",
+      "emitted_balances": 93,
+      "reference_observations": 168
+    },
+    {
+      "carry_forward_matches": 46,
+      "contract": "0x36f8276cc22f9b9d4e1af7114cb1830fb62a8888",
+      "emitted_balances": 93,
+      "reference_observations": 139
+    },
+    {
+      "carry_forward_matches": 77,
+      "contract": "0x3d4f0513e8a29669b960f9dbca61861548a9a760",
+      "emitted_balances": 59,
+      "reference_observations": 136
+    },
+    {
+      "carry_forward_matches": 85,
+      "contract": "0x405fbc9004d857903bfd6b3357792d71a50726b0",
+      "emitted_balances": 86,
+      "reference_observations": 171
+    },
+    {
+      "carry_forward_matches": 46,
+      "contract": "0x43e871ab77e5caa52440df6d14476afab519491e",
+      "emitted_balances": 87,
+      "reference_observations": 133
+    },
+    {
+      "carry_forward_matches": 68,
+      "contract": "0x4af1d41cd9dd950dca43984b43aaa2a8702714ac",
+      "emitted_balances": 77,
+      "reference_observations": 145
+    },
+    {
+      "carry_forward_matches": 74,
+      "contract": "0x4b3d30992f003c8167699735f5ab2831b2a087d3",
+      "emitted_balances": 80,
+      "reference_observations": 154
+    },
+    {
+      "carry_forward_matches": 51,
+      "contract": "0x4d41a5d412f4ef44a35b9f53b06db65ede249493",
+      "emitted_balances": 72,
+      "reference_observations": 123
+    },
+    {
+      "carry_forward_matches": 82,
+      "contract": "0x53ec33cd4fa46b9eced9ca3f6db626c5ffcd55cc",
+      "emitted_balances": 91,
+      "reference_observations": 173
+    },
+    {
+      "carry_forward_matches": 67,
+      "contract": "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274",
+      "emitted_balances": 69,
+      "reference_observations": 136
+    },
+    {
+      "carry_forward_matches": 63,
+      "contract": "0x5fdcf85d132edb88ee0d073cdb42168bcf724444",
+      "emitted_balances": 111,
+      "reference_observations": 174
+    },
+    {
+      "carry_forward_matches": 46,
+      "contract": "0x60e98bdd5dac46b6ed392e39f15f742cdd3c571f",
+      "emitted_balances": 92,
+      "reference_observations": 138
+    },
+    {
+      "carry_forward_matches": 48,
+      "contract": "0x64a6c4c1c558be705c66ee60cd4ad5f2cc2c7777",
+      "emitted_balances": 151,
+      "reference_observations": 199
+    },
+    {
+      "carry_forward_matches": 72,
+      "contract": "0x66239b70133773a72a0d589e5564e88a50cd39e7",
+      "emitted_balances": 72,
+      "reference_observations": 144
+    },
+    {
+      "carry_forward_matches": 66,
+      "contract": "0x7083609fce4d1d8dc0c979aab8c869ea2c873402",
+      "emitted_balances": 73,
+      "reference_observations": 139
+    },
+    {
+      "carry_forward_matches": 29,
+      "contract": "0x87ae267002cd1ea0ec86bf3601d4a8ad76a47777",
+      "emitted_balances": 118,
+      "reference_observations": 147
+    },
+    {
+      "carry_forward_matches": 62,
+      "contract": "0x904567252d8f48555b7447c67dca23f0372e16be",
+      "emitted_balances": 66,
+      "reference_observations": 128
+    },
+    {
+      "carry_forward_matches": 71,
+      "contract": "0x92516e0ddf1ddbf7fab1b79cac26689fdc5ba8e6",
+      "emitted_balances": 83,
+      "reference_observations": 154
+    },
+    {
+      "carry_forward_matches": 47,
+      "contract": "0xaa4de3b6196ea6d1b5c4ed3980ed908888888888",
+      "emitted_balances": 81,
+      "reference_observations": 128
+    },
+    {
+      "carry_forward_matches": 68,
+      "contract": "0xafcc12e4040615e7afe9fb4330eb3d9120acac05",
+      "emitted_balances": 99,
+      "reference_observations": 167
+    },
+    {
+      "carry_forward_matches": 68,
+      "contract": "0xb994882a1b9bd98a71dd6ea5f61577c42848b0e8",
+      "emitted_balances": 130,
+      "reference_observations": 198
+    },
+    {
+      "carry_forward_matches": 68,
+      "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "emitted_balances": 103,
+      "reference_observations": 171
+    },
+    {
+      "carry_forward_matches": 56,
+      "contract": "0xc51a9250795c0186a6fb4a7d20a90330651e4444",
+      "emitted_balances": 83,
+      "reference_observations": 139
+    },
+    {
+      "carry_forward_matches": 48,
+      "contract": "0xd5df4d260d7a0145f655bcbf3b398076f21016c7",
+      "emitted_balances": 98,
+      "reference_observations": 146
+    },
+    {
+      "carry_forward_matches": 64,
+      "contract": "0xda7ad9dea9397cffddae2f8a052b82f1484252b3",
+      "emitted_balances": 72,
+      "reference_observations": 136
+    },
+    {
+      "carry_forward_matches": 78,
+      "contract": "0xdfe1308fb3ef1dc2f87b4ffaef5ebdf80be1e4ea",
+      "emitted_balances": 78,
+      "reference_observations": 156
+    },
+    {
+      "carry_forward_matches": 64,
+      "contract": "0xe0a281deff5c9d8d67af09d39340e134ac81b82e",
+      "emitted_balances": 108,
+      "reference_observations": 172
+    },
+    {
+      "carry_forward_matches": 71,
+      "contract": "0xf3d5b4c34ed623478cc5141861776e6cf7ae3a1e",
+      "emitted_balances": 72,
+      "reference_observations": 143
+    },
+    {
+      "carry_forward_matches": 82,
+      "contract": "0xfe189e97832da1573e4e4ff034f4ffc3a15c7777",
+      "emitted_balances": 102,
+      "reference_observations": 184
+    }
+  ]
+}

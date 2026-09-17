@@ -36,7 +36,9 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The current BSC top-100 review is a bounded candidate campaign. Completing it
+The BSC campaign now includes 133 qualified profiles: the original top 100 plus
+33 from ranks 101–150. The [current cohort report](ranks101-150-coverage.md)
+retains the other 17 candidates as unqualified. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
 enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay

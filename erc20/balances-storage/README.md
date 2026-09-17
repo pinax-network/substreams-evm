@@ -26,6 +26,7 @@ mapping, or pinned proxy:
 | `voting_checkpoints` | Optional object | Reviewed OpenZeppelin `Trace208` arrays: `clock` is `block_number` or `timestamp`; `slots` lists direct array roots and `mapping_slots` lists `mapping(address => Trace208)` bases, all 32-byte hex |
 | `address_lists` | Optional array of 32-byte `0x` hex roots | Reviewed append-only `address[]` bookkeeping, with a persisted length increment and exact element witness for each append |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
+| `balance_divisor` | Optional object | Positive `value` and required `storage_slot` (both 32-byte `0x` hex). A reviewed getter returns `floor(raw / value)`; every persisted change to the divisor stops processing and invalidates retained holder balances |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
@@ -74,6 +75,16 @@ The native holder replay initializes the observed holder set to zero **at the
 validated CREATE**, then applies that block's writes. It does not call `balanceOf`
 before deployment or treat an unavailable response as zero. This is a bounded
 test baseline, not a complete global holder enumeration.
+
+With `balance_divisor`, raw storage words remain intact through continuity checks,
+then unsigned floor division produces the public amount. Checkpoint values use
+the same projection. The qualification runner pins the divisor at both interval
+boundaries; the mapper rejects any persisted change, including change-and-restore
+and blocks without holder writes. Reverted changes and unchanged words are safe.
+This rule cannot combine with another balance formula or a deployment baseline.
+It covers an explicitly verified interval with a stable conversion value, not
+rebasing across rate changes: requalify and rebuild retained holder balances
+before resuming after a change. See the [BSC ranks 101–150 review](docs/ranks101-150-coverage.md).
 
 With `zero_balance`, nonzero mapping words pass through unchanged. Zero words
 emit the explicitly pinned fallback, except for caller-qualified

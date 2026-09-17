@@ -201,6 +201,16 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                     );
                 }
             }
+            if let Some(rule) = &layout.balance_divisor {
+                let actual = rpc.call(
+                    "eth_getStorageAt",
+                    json!([contract, format!("0x{}", hex::encode(rule.storage_slot)), block_ref(text(&h["hash"])?)]),
+                )?;
+                ensure!(
+                    binary(&actual, 32)? == format!("0x{}", hex::encode(rule.value)),
+                    "unqualified balance divisor dependency value"
+                );
+            }
             if let Some(proxy) = &layout.proxy {
                 let slot = format!("0x{}", hex::encode(proxy.implementation_slot));
                 let target = rpc.call("eth_getStorageAt", json!([contract, slot, block_ref(text(&h["hash"])?)]))?;

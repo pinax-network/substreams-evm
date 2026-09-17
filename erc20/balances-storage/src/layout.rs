@@ -30,6 +30,9 @@ pub struct Layout {
     /// Reviewed replacement for a zero balance word. No inferred defaults.
     #[serde(default)]
     pub zero_balance: Option<ZeroBalance>,
+    /// Reviewed floor(raw balance word / pinned positive scalar).
+    #[serde(default)]
+    pub balance_divisor: Option<BalanceDivisor>,
     #[serde(default)]
     pub proxy: Option<ProxyLayout>,
     #[serde(default)]
@@ -166,6 +169,19 @@ pub struct VerifiedZeroBalance {
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct BalanceDivisor {
+    /// Full positive uint256 word, including leading zeros.
+    pub value: String,
+    /// Changes invalidate all retained balances, including untouched holders.
+    pub storage_slot: String,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedBalanceDivisor {
+    pub value: [u8; 32],
+    pub storage_slot: [u8; 32],
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ProxyLayout {
     pub implementation_slot: String,
     pub implementation: String,
@@ -189,6 +205,7 @@ pub struct VerifiedLayout {
     pub voting_checkpoints: Option<VerifiedVotingCheckpoints>,
     pub address_lists: BTreeSet<[u8; 32]>,
     pub zero_balance: Option<VerifiedZeroBalance>,
+    pub balance_divisor: Option<VerifiedBalanceDivisor>,
     pub proxy: Option<VerifiedProxy>,
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
     pub minimal_proxy: Option<VerifiedMinimalProxy>,
@@ -209,6 +226,11 @@ impl VerifiedLayout {
     /// Apply only after raw-word continuity checks; zero and the fallback value
     /// can represent different storage states with the same public balance.
     pub fn project_amount(&self, address: &[u8], raw: &str) -> String {
+        if let Some(rule) = &self.balance_divisor {
+            return (raw.parse::<substreams::scalar::BigInt>().expect("canonical unsigned balance")
+                / substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value))
+            .to_string();
+        }
         if let Some(amount) = self.address_hash_balance.as_ref().and_then(|rule| rule.amount(address)) {
             return amount;
         }
@@ -413,6 +435,28 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let balance_divisor = layout
+                .balance_divisor
+                .map(|rule| -> Result<VerifiedBalanceDivisor, Error> {
+                    require(
+                        zero_balance.is_none() && address_hash_balance.is_none() && deployment.is_none() && !layout.immutable_zero_mapping,
+                        "balance divisor cannot combine with another balance rule or deployment baseline",
+                    )?;
+                    let value = word(&rule.value)?;
+                    require(value != [0; 32], "balance divisor must be positive")?;
+                    let storage_slot = word(&rule.storage_slot)?;
+                    require(
+                        storage_slot != balance_slot
+                            && !other_slots.contains(&storage_slot)
+                            && !other_mapping_slots.contains(&storage_slot)
+                            && !other_mapping_words.contains_key(&storage_slot)
+                            && proxy.as_ref().is_none_or(|p| p.implementation_slot != storage_slot)
+                            && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != storage_slot),
+                        "balance divisor dependency must be distinct and cannot be ignored",
+                    )?;
+                    Ok(VerifiedBalanceDivisor { value, storage_slot })
+                })
+                .transpose()?;
             let voting_checkpoints = layout
                 .voting_checkpoints
                 .map(|rule| -> Result<VerifiedVotingCheckpoints, Error> {
@@ -428,6 +472,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                                 && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
                                 && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot)
                                 && zero_balance.as_ref().is_none_or(|p| p.storage_slot != Some(slot))
+                                && balance_divisor.as_ref().is_none_or(|p| p.storage_slot != slot)
                                 && address_hash_balance.as_ref().is_none_or(|p| !p.stored_addresses.contains_key(&slot)),
                             "voting checkpoint root overlaps another configured field",
                         )?;
@@ -452,6 +497,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                         && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
                         && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot)
                         && zero_balance.as_ref().is_none_or(|p| p.storage_slot != Some(slot))
+                        && balance_divisor.as_ref().is_none_or(|p| p.storage_slot != slot)
                         && address_hash_balance.as_ref().is_none_or(|p| !p.stored_addresses.contains_key(&slot))
                         && voting_checkpoints
                             .as_ref()
@@ -480,6 +526,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 voting_checkpoints,
                 address_lists,
                 zero_balance,
+                balance_divisor,
                 proxy,
                 beacon_proxy,
                 minimal_proxy,
