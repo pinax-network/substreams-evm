@@ -1,0 +1,293 @@
+{
+  "balance_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 0168\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 06fdde03\n36: EQ \n37: PUSH2 016c\n40: JUMPI \n41: DUP1 \n42: PUSH4 095ea7b3\n47: EQ \n48: PUSH2 018a\n51: JUMPI \n52: DUP1 \n53: PUSH4 18160ddd\n58: EQ \n59: PUSH2 01ad\n62: JUMPI \n63: DUP1 \n64: PUSH4 226cfa3d\n69: EQ \n70: PUSH2 01bf\n73: JUMPI \n74: DUP1 \n75: PUSH4 23b872dd\n80: EQ \n81: PUSH2 01de\n84: JUMPI \n85: DUP1 \n86: PUSH4 27ce0147\n91: EQ \n92: PUSH2 01f1\n95: JUMPI \n96: DUP1 \n97: PUSH4 3009a609\n102: EQ \n103: PUSH2 0204\n106: JUMPI \n107: DUP1 \n108: PUSH4 313ce567\n113: EQ \n114: PUSH2 020d\n117: JUMPI \n118: DUP1 \n119: PUSH4 31e79db0\n124: EQ \n125: PUSH2 021c\n128: JUMPI \n129: DUP1 \n130: PUSH4 39509351\n135: EQ \n136: PUSH2 0231\n139: JUMPI \n140: DUP1 \n141: PUSH4 4e7b827f\n146: EQ \n147: PUSH2 0244\n150: JUMPI \n151: DUP1 \n152: PUSH4 51c2a0e3\n157: EQ \n158: PUSH2 0266\n161: JUMPI \n162: DUP1 \n163: PUSH4 6a474002\n168: EQ \n169: PUSH2 0279\n172: JUMPI \n173: DUP1 \n174: PUSH4 70a08231\n179: EQ \n180: PUSH2 0281\n183: JUMPI \n641: JUMPDEST \n642: PUSH2 01b1\n645: PUSH2 028f\n648: CALLDATASIZE \n649: PUSH1 04\n651: PUSH2 13c3\n654: JUMP \n5059: JUMPDEST \n5060: PUSH0 \n5061: PUSH1 20\n5063: DUP3 \n5064: DUP5 \n5065: SUB \n5066: SLT \n5067: ISZERO \n5068: PUSH2 13d3\n5071: JUMPI \n5075: JUMPDEST \n5076: DUP2 \n5077: CALLDATALOAD \n5078: PUSH2 0c87\n5081: DUP2 \n5082: PUSH2 1385\n5085: JUMP \n4997: JUMPDEST \n4998: PUSH1 01\n5000: PUSH1 01\n5002: PUSH1 a0\n5004: SHL \n5005: SUB \n5006: DUP2 \n5007: AND \n5008: DUP2 \n5009: EQ \n5010: PUSH2 071c\n5013: JUMPI \n1820: JUMPDEST \n1821: POP \n1822: JUMP \n3207: JUMPDEST \n3208: SWAP4 \n3209: SWAP3 \n3210: POP \n3211: POP \n3212: POP \n3213: JUMP \n655: JUMPDEST \n656: PUSH2 0728\n659: JUMP \n1832: JUMPDEST \n1833: PUSH1 01\n1835: PUSH1 01\n1837: PUSH1 a0\n1839: SHL \n1840: SUB \n1841: AND \n1842: PUSH0 \n1843: SWAP1 \n1844: DUP2 \n1845: MSTORE \n1846: PUSH1 20\n1848: DUP2 \n1849: SWAP1 \n1850: MSTORE \n1851: PUSH1 40\n1853: SWAP1 \n1854: KECCAK256 \n1855: SLOAD \n1856: SWAP1 \n1857: JUMP \n433: JUMPDEST \n434: PUSH1 40\n436: MLOAD \n437: SWAP1 \n438: DUP2 \n439: MSTORE \n440: PUSH1 20\n442: ADD \n443: PUSH2 0181\n446: JUMP \n385: JUMPDEST \n386: PUSH1 40\n388: MLOAD \n389: DUP1 \n390: SWAP2 \n391: SUB \n392: SWAP1 \n393: RETURN ",
+  "block": 122288026,
+  "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+  "getters": [
+    {
+      "failed": false,
+      "proposed_signature": "allowance(address,address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xb19a572c6ecee1d328c80318eab90e312063ea129656fae551ff505a95fd38ad",
+          "pc": 938,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selector": "dd62ed3e",
+      "trace_sha256": "d901b3ec7430ea13bb4a3e8826a3b9b23239427edd3aa651f3bdc9ec16fd1412"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "totalSupply()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "pc": 432,
+          "value": "0x000000000000000000000000000000000000000000970442b5b23f4327291027"
+        }
+      ],
+      "returned": "0x000000000000000000000000000000000000000000970442b5b23f4327291027",
+      "selector": "18160ddd",
+      "trace_sha256": "0ddb38b60bd107fc072a1d0e7b838ee9b98b587a74dddb8cf5e3824c12e89089"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "name()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "pc": 1031,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "pc": 1075,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "pc": 1104,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000007547261636b657200000000000000000000000000000000000000000000000000",
+      "selector": "06fdde03",
+      "trace_sha256": "7747f2f2a1224d3486f4d12b45befe2ae57dd26f87e030d2477c87dbcc0c9d62"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "symbol()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 1970,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 1075,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "pc": 1104,
+          "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000007547261636b657200000000000000000000000000000000000000000000000000",
+      "selector": "95d89b41",
+      "trace_sha256": "a5feabd6dfdb2ffa66284467fc42778f1f56dce92495dff9ce38b703c3d744d7"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "owner()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "pc": 680,
+          "value": "0x0000000000000000000000003cbd513239d9e5538a4caed8ed53ef77009df473"
+        }
+      ],
+      "returned": "0x0000000000000000000000003cbd513239d9e5538a4caed8ed53ef77009df473",
+      "selector": "8da5cb5b",
+      "trace_sha256": "c4c744678195e4bf2b2b6ee05a15d59fe574b97f02a2a2bfadb6a7c0ce2deaf5"
+    },
+    {
+      "failed": true,
+      "proposed_signature": "magnifiedDividendPerShare()",
+      "reads": [],
+      "returned": "0x",
+      "selector": "3a7960e0",
+      "trace_sha256": "f1e1572810992904d6d29809d1d4d1b243eb6f112c0b27bfaf3c6e528337afcb"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "totalDividendsDistributed()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "pc": 674,
+          "value": "0x00000000000000000000000000000000000000000000267ef0c3cd8b87e62666"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000267ef0c3cd8b87e62666",
+      "selector": "85a6b3ae",
+      "trace_sha256": "3f4d5752f43535fd21d97b26418183a9427bca67bec3e1f49f113ead221fba3b"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "withdrawableDividendOf(address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "pc": 2084,
+          "value": "0x00000000000000000000000000000000000000000000000000f53218018b3e78"
+        },
+        {
+          "depth": 1,
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "pc": 1321,
+          "value": "0xffffffffffffffff2c2fbd4b9b2b2c4bb11575e3bc7fa089ad64b6d75a9cac4e"
+        },
+        {
+          "depth": 1,
+          "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+          "pc": 1855,
+          "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "pc": 1353,
+          "value": "0x00000000000000000000000000000000003edb953526af25d95b930fb3f6d6a2"
+        }
+      ],
+      "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selector": "a8b9d240",
+      "trace_sha256": "285258e8600621cb60382f1cc5e73d2810613a440fb84f595c009d2d91e2fc73"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "withdrawnDividendOf(address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "pc": 835,
+          "value": "0x00000000000000000000000000000000000000000000000000f53218018b3e78"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000000000f53218018b3e78",
+      "selector": "aafd847a",
+      "trace_sha256": "1fd383dae7bab4d8c9a36e1e6135e6a529e0f393bad82f0ac67613ce8c9781bc"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "accumulativeDividendOf(address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "pc": 1321,
+          "value": "0xffffffffffffffff2c2fbd4b9b2b2c4bb11575e3bc7fa089ad64b6d75a9cac4e"
+        },
+        {
+          "depth": 1,
+          "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+          "pc": 1855,
+          "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "pc": 1353,
+          "value": "0x00000000000000000000000000000000003edb953526af25d95b930fb3f6d6a2"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000000000f53218018b3e78",
+      "selector": "27ce0147",
+      "trace_sha256": "6da683619e18f66c541d086e1d0648c320d92fd8b1a5d7ee1a407dc75d829da7"
+    },
+    {
+      "failed": true,
+      "proposed_signature": "getAccount(address)",
+      "reads": [],
+      "returned": "0x",
+      "selector": "fbcbc0f1",
+      "trace_sha256": "051b8f7bd4a0620ccac8271324f70a06b1d615c07e181aa4f8d199d9b6863b48"
+    },
+    {
+      "failed": true,
+      "proposed_signature": "getNumberOfTokenHolders()",
+      "reads": [],
+      "returned": "0x",
+      "selector": "09bbedde",
+      "trace_sha256": "538ee17ec71d07900fb342be438b507cf8dc8ed74d18f8bc3eeff0df4dcb65ea"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "lastProcessedIndex()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "pc": 522,
+          "value": "0x000000000000000000000000000000000000000000000000000000000000095f"
+        }
+      ],
+      "returned": "0x000000000000000000000000000000000000000000000000000000000000095f",
+      "selector": "3009a609",
+      "trace_sha256": "9e2eb57232525a35cfeb9848c08bbea5c5dec2e2c84632b653e1a0476004a13c"
+    },
+    {
+      "failed": true,
+      "proposed_signature": "claimWait()",
+      "reads": [],
+      "returned": "0x",
+      "selector": "6f2789ec",
+      "trace_sha256": "02ee9814c39befd1f14dde7c34152af19cfe393b08b6a0a98b8c27d7751b6cfd"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "minimumTokenBalanceForDividends()",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000012",
+          "pc": 882,
+          "value": "0x00000000000000000000000000000000000000000000003635c9adc5dea00000"
+        }
+      ],
+      "returned": "0x00000000000000000000000000000000000000000000003635c9adc5dea00000",
+      "selector": "be10b614",
+      "trace_sha256": "cce3b2e122f36dccf173ae05a5921d194ae23b86f616a05eb77a93fe3057c7f1"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "excludedFromDividends(address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0x5e990ffee461f4ecd959b2da2b2f398a283e17edfe886d38fba323187071ad70",
+          "pc": 608,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selector": "4e7b827f",
+      "trace_sha256": "e202999373d489ab748257741f259d092c23730b216dd2dc00ef07d27b32fef3"
+    },
+    {
+      "failed": false,
+      "proposed_signature": "lastClaimTimes(address)",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "pc": 475,
+          "value": "0x000000000000000000000000000000000000000000000000000000006aab003b"
+        }
+      ],
+      "returned": "0x000000000000000000000000000000000000000000000000000000006aab003b",
+      "selector": "226cfa3d",
+      "trace_sha256": "16453e3c4ce08b424a0a661c9aee2a798febcb583b8e392c64eadf8268322646"
+    }
+  ],
+  "hash": "0x07021cbb376354ccf6471741c25e9abcc6693169f260bbf8aa6075ec434357b3",
+  "qualified": false,
+  "report_sha256": "6cb33c0e62bd818e7007b3b3726ce5862d0e72277292fcba4ce5109ce120ad11",
+  "runtime_hash": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b",
+  "status": "inspected_not_qualified"
+}

@@ -36,13 +36,19 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 296 qualified profiles: the original top 100 plus
+The BSC campaign now includes **332 qualified profiles**. The latest
+[36-token qualification](ranks301-350-coverage.md) adds source-bound direct/public
+mappings and freshly checked runtime families from ranks 301–350. All 935 new
+emitted balances, 1,458 initialized observations and 637 final balances match
+RPC. Fourteen candidates from that batch remain pending.
+
+The earlier 296-profile qualification comprised the original top 100 plus
 49 from ranks 101–150, all 50 from ranks 151–200, 47 from ranks 201–250 and all 50
-from ranks 251–300. The [latest candidate follow-up](pending300-coverage.md)
-leaves LBP (143), TITAN (203), ORD (209) and YBC (238) outside the qualified
-fixture. hLBP has a captured mint in a separate older interval; 295 profiles
-emit in the original 1,024-block interval. The latest combined capture
-preserves all 296 profiles' audited output. Captured DIA append and ETZ
+from ranks 251–300. That [earlier follow-up](pending300-coverage.md)
+left LBP (143), TITAN (203), ORD (209) and YBC (238) outside the qualified
+fixture; they remain excluded. hLBP has a captured mint in a separate older
+interval. The latest combined capture preserves all 332 profiles' audited
+output, with 331 emitting in the original 1,024-block interval. Captured DIA append and ETZ
 swap-and-pop transactions now pass packaged RPC and initialized-holder checks,
 in addition to the earlier captured shareholder tail pop. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
@@ -65,9 +71,10 @@ and verifies 986 distinct canonical storage words. Its subsequent
 [host-only arithmetic model](ybc-reward-model.md) matches 24 independently
 initialized snapshots and 30 read-only controls, explaining all six known
 raw-word mismatches. Production state and affected-holder output remain
-unqualified. The [next 50 BSC candidates](ranks301-350-investigation.md) have
-2,106 successful exploratory RPC checks and no value mismatches; none is
-promoted before complete getter, mapper and holder qualification.
+unqualified. The [next 50 BSC candidates](ranks301-350-investigation.md) originally
+had 2,106 successful exploratory RPC checks and no value mismatches. The later
+36-token qualification above adds the required mapper and holder evidence;
+the remaining 14 candidates are still excluded.
 
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted

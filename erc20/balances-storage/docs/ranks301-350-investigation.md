@@ -1,7 +1,9 @@
 # BSC candidates ranked 301–350
 
-The next 50 candidates have an exploratory survey and getter controls, with
-**no new production profiles promoted**. The qualified fixture remains at 296.
+This report records the original exploratory survey and getter controls, when
+**no new production profiles were promoted** and the fixture had 296 profiles.
+The subsequent [qualification](ranks301-350-coverage.md) adds 36 reviewed
+profiles after full-window, packaged RPC and holder audits; 14 remain pending.
 Selection uses the original immutable RPC ranking for blocks
 **122288006–122289029**; it does not rerank a newer interval.
 
@@ -43,7 +45,7 @@ The original survey's `rpc_unresolved` status remains unchanged. The separate
 classification, original response, canonical parent/current hashes and digests.
 No RPC value mismatch was discarded or retried into a passing sample.
 
-Next steps are to review source or historical bytecode, configure only justified
-storage rules, scan all 1,024 consecutive blocks and compare actual packaged
-WASM with historical RPC and initialized holder state. Cold unknown balances,
+The subsequent qualification performs source/runtime review, explicit storage
+rules, all 1,024 consecutive blocks and actual packaged-WASM comparisons for
+36 candidates. The remaining 14 still need those gates. Cold unknown balances,
 unchanged holders and global enumeration remain separately measured.

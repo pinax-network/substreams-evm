@@ -338,19 +338,18 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [top-300 follow-up](docs/pending300-coverage.md) brings the explicit
-test configuration to 296 profiles in `tests/fixtures/bsc-pending300-layouts.json`.
-The new 17-token cohort matches 528 emitted RPC balances, 869 initialized
-holder observations and 363 final holder balances. Separate older DIA append
-and ETZ swap-and-pop captures pass packaged RPC and holder checks. Four
-computed-balance candidates remain pending across the top 300; these figures
-do not claim global holders or all-token support. Earlier reports below retain
-their original cohort scopes.
+The latest [ranks 301–350 follow-up](docs/ranks301-350-coverage.md) brings the
+explicit test configuration to 332 profiles in
+`tests/fixtures/bsc-ranks301-350-layouts.json`. The new 36-token cohort matches
+935 emitted RPC balances, 1,458 initialized holder observations and all 637
+final holder balances. Fourteen candidates from the latest 50 remain pending,
+alongside LBP, TITAN, ORD and YBC. These figures do not claim global holders or
+all-token support. The original [survey](docs/ranks301-350-investigation.md)
+retains its exploratory outcomes separately from this qualification.
 
-The [ranks 301–350 investigation](docs/ranks301-350-investigation.md) adds 2,106
-successful exploratory RPC value checks with no value mismatches. These 50
-candidates remain outside the qualified fixture pending complete storage-rule
-review and packaged holder audits.
+The earlier [top-300 follow-up](docs/pending300-coverage.md) retains the previous
+296-profile scope and separate older DIA append and ETZ swap-and-pop captures.
+Earlier reports below keep their original cohort scopes.
 
 `tests/fixtures/bsc-reviewed-layouts.json` explicitly configures BSC USDT, BTCB,
 USDC (pinned implementation), and the existing WBNB control. The file is not a

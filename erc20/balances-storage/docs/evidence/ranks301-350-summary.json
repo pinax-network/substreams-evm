@@ -1,0 +1,398 @@
+{
+  "added_profiles": 36,
+  "cold_unknown_nonzero": 206,
+  "cold_unknown_observations": 513,
+  "combined": {
+    "aggregate_emitted_zero_checks": 15036,
+    "all_balance_event_fields_equal": true,
+    "baseline_report_sha256": "666711018630293b93e3c61c01a59db965dc5e5ffe78bec12bf87cfd728fa784",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 11.613495959016085,
+      "empty_output_delivery": null,
+      "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+      "seconds_including_startup": 88.173277333
+    },
+    "configured_profiles": 332,
+    "elapsed_seconds": 156.56786225,
+    "events_sha256": "6c3812909507456855e3bdfb323218c81cc4945612cbe67f1ed474957a904c97",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 177227,
+    "initialized_carry_forward_matches": 69016,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "4ce54c79bab2d614ac85d089df6c5e6d6ad4fdfd19fffd7c7dcc6106fc4f3185",
+    "profiles_with_emitted_rows": 331,
+    "reused_verified_rpc_rows": 108212,
+    "scope": "Fresh 332-profile actual-WASM capture. Full-field comparison with the verified 296-profile capture and 36 newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-332 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "adb594cc3f6b09b64afe14830107d3b355541edefa496ead4f51b10a05d8b23c",
+        "cohort": "ranks301-350",
+        "events_sha256": "222b822a1f45d26b17462ab948c973467859d96cf8061904b1ecc0e46ee8f36a",
+        "holder_report_sha256": "e22d597c82989ed0f3b30ee3bcb2ff54c09575c4e217042ecbcb41998154a43d",
+        "layouts_sha256": "44aad72f13ddcc17c08011795c2cb0971608f5b190d8c0501ece7245108a0c3e",
+        "rpc_report_sha256": "2a1e0e2547a5f9ad1d36cb43b04f35ec139b9a5aa8a9a7b5f450d888e6e84447"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "emitted_zeros": 121,
+  "final_holders": 637,
+  "final_zeros": 203,
+  "fixture_cases": 36,
+  "fixture_rpc_balances": 136,
+  "holder_observations": 1458,
+  "initialization": {
+    "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holders": 637,
+    "rpc_reads": 1274
+  },
+  "initialized_carry_forward": 523,
+  "pending": [
+    {
+      "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 303,
+      "symbol": "SPARK"
+    },
+    {
+      "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 312,
+      "symbol": "MOMO"
+    },
+    {
+      "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+      "original_status": "rpc_unresolved",
+      "rank": 319,
+      "symbol": "金麟人生"
+    },
+    {
+      "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 321,
+      "symbol": "牛来金库"
+    },
+    {
+      "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 325,
+      "symbol": "NVB2"
+    },
+    {
+      "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 326,
+      "symbol": "HIGH"
+    },
+    {
+      "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+      "original_status": "ambiguous_layout",
+      "rank": 327,
+      "symbol": "Tracker"
+    },
+    {
+      "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 332,
+      "symbol": "招财牛"
+    },
+    {
+      "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 333,
+      "symbol": "AUT"
+    },
+    {
+      "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 338,
+      "symbol": "钻石"
+    },
+    {
+      "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 339,
+      "symbol": "O"
+    },
+    {
+      "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 341,
+      "symbol": "TAKE"
+    },
+    {
+      "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 342,
+      "symbol": "STBU"
+    },
+    {
+      "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+      "original_status": "candidate_matches_values_not_qualified",
+      "rank": 345,
+      "symbol": "IRYS"
+    }
+  ],
+  "qualified_profiles": 332,
+  "reviewed_runtime_family_profiles": 10,
+  "rpc_checks": 935,
+  "source_bound_direct_profiles": 26,
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x444045b0ee1ee319a660a5e3d604ca0ffa35acaa",
+      "rank": 301,
+      "runtime_hash": "0xb63d9e4a397c0270af2ce392f787c8b3a80619e524a94e91b0ca7588eb60f6d7",
+      "symbol": "BTW"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x5c999e15b71de2bb8e651f0f999fb0bc321a0dfe",
+      "rank": 302,
+      "runtime_hash": "0xa740aae7cb2dc42dcc5bb0e9a2747ba41677729ddee0a692890be8b5aeaa964a",
+      "symbol": "ZED"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x95c9b514566fbd224dc2037f5914eb8ab91c9201",
+      "rank": 304,
+      "runtime_hash": "0xad37698ee6c61b5bd8aad7b0356c66e3150347d924c106a2ee6eeb64c83a8fd2",
+      "symbol": "PTB"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x9840652dc04fb9db2c43853633f0f62be6f00f98",
+      "rank": 305,
+      "runtime_hash": "0x9cafcf90e7d1961839213ba9af3b39b5045be9936a39e15cf4217c537e52407b",
+      "symbol": "CGPT"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x031b41e504677879370e9dbcf937283a8691fa7f",
+      "rank": 306,
+      "runtime_hash": "0x6e3e52d423c05528838baee3490fd92e429812e3df65ad7d39e6cba473f8b2ed",
+      "symbol": "FET"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x034ac777ecee4d87cccc224dd714076866adfadb",
+      "rank": 307,
+      "runtime_hash": "0x6445bdf61b0c8289c3e4b0cac5a6a8bdb5922120fd11fc20e49e47abb27f19ae",
+      "symbol": "MMB"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x6894cde390a3f51155ea41ed24a33a4827d3063d",
+      "rank": 308,
+      "runtime_hash": "0xd39786f972c5322f4eeeebd4485611b01a7098814f14210a098404bd4c48f327",
+      "symbol": "CAT"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x6925ba4f502eb081cdfaaddcdaf92394343e4040",
+      "rank": 309,
+      "runtime_hash": "0xd884597898c1a0aa010c76618c9bb6470efbd041d2f1e2ed2944e9c8b3bfb4af",
+      "symbol": "McDonald"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x715d400f88c167884bbcc41c5fea407ed4d2f8a0",
+      "rank": 310,
+      "runtime_hash": "0x83286e6603e5438137daf601561c2013e66fa84a967364f53ab02dacee83dfe8",
+      "symbol": "AXS"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x7d1481568c72891bb87a964c3a6e6213bd73d114",
+      "rank": 311,
+      "runtime_hash": "0x1e02d563612f80e6ce19615e9677c4221890cdfb5d0d5e8260ddb3492fbf4911",
+      "symbol": "YD"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0xf49725118cb0707b8706ffffe895f3ab16da7777",
+      "rank": 313,
+      "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "symbol": "b-money"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x19640000000ba88d36206beb10d0e86011c8d08c",
+      "rank": 314,
+      "runtime_hash": "0x929f6005f62903151015102f662deecd68ead401421ffdece19c0cf88ba0e059",
+      "symbol": "RALLY"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x334d1942e89584daa30a89f2de8d5d5def7e7777",
+      "rank": 315,
+      "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "symbol": "币安股链"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x4d2d32d8652058bf98c772953e1df5c5c85d9f45",
+      "rank": 316,
+      "runtime_hash": "0xedce3de177e8df4f9569b6851dfd262b01ffe521058ddfc3220b7f3d1ebe9084",
+      "symbol": "DAO"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x673b5618bdb2c363e01ea164d894dd36b0582777",
+      "rank": 317,
+      "runtime_hash": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+      "symbol": "脑鼠"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xd888e9d5d6af1fe304c33906217ff6a108952e41",
+      "rank": 318,
+      "runtime_hash": "0x3dd3494fbf8c4e6e07abc4f1f9601f3f3327844d045b88bf5d3558665fb2aed5",
+      "symbol": "CRBOT"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x6bc3855827fa6ee1229c937a26bb9fca1a0ffbf0",
+      "rank": 320,
+      "runtime_hash": "0x5abd99d8b89782a05aec4b8269d9d69693932fb6f57bc76464a5e0a8f50b8cdf",
+      "symbol": "Anome"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0xf545af97ea5405f6eb4b396b571338ef15357777",
+      "rank": 322,
+      "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "symbol": "永生果蝇"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x18ea4df6a9cde2472f2321a4ec77da106498a66e",
+      "rank": 323,
+      "runtime_hash": "0x522ac11709e7c1543ec0362f5dd737135516f0abc806ba28110839451d3276ac",
+      "symbol": "SINGULARRY"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x1b282603099647e2ec3461b2714acf38009d66b6",
+      "rank": 324,
+      "runtime_hash": "0x3984320917f93845267209cf4090bddfd5e1695dbb76e45286685170e7138e37",
+      "symbol": "WMAI"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x800d454a087fac862d6336e46136e95d6a074fe1",
+      "rank": 328,
+      "runtime_hash": "0x220518fcd489dc244e88af31007ed66420060004124d1a601db2e9de5f7f8996",
+      "symbol": "COD"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0xa04fb32ed0d0068e65df14c10dde57e868627777",
+      "rank": 329,
+      "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "symbol": "XIJINPING"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xaa036928c9c0df07d525b55ea8ee690bb5a628c1",
+      "rank": 330,
+      "runtime_hash": "0x626de32b134b220603c81e757428a10b60d20915e14f749c080b837e6e0002cf",
+      "symbol": "EVAA"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xab6b429c73c22ecabc763635dace7efac524993c",
+      "rank": 331,
+      "runtime_hash": "0x70205e90139f52470d2f673139b0e2d4a9119c9112c8289bb450db14bbec25a5",
+      "symbol": "DAOvc"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xb2089a7069861c8d90c8da3aacab8e9188c0c531",
+      "rank": 334,
+      "runtime_hash": "0xecb8c2a1b16ef0d183c3ebba75ac97f6e094402d25e858b7a2645973ed8eba18",
+      "symbol": "GREEN"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xd12ecbd5f508106ec242881530767ff15a6a7549",
+      "rank": 335,
+      "runtime_hash": "0x8b2758381a324c07b20fd06fef67ddceb0142ee74d2a30ef549747201b219c59",
+      "symbol": "TSL"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xdf9e1a85db4f985d5bb5644ad07d9d7ee5673b5e",
+      "rank": 336,
+      "runtime_hash": "0x3d37d7dc6ebace33211bc6ea26eeeac9d34454310fee7bf3063b32f3ce05dcd4",
+      "symbol": "MM72"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x18d0e455b3491e09210292d3953157a4bf104444",
+      "rank": 337,
+      "runtime_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "symbol": "比特币"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x87aa6aeb62ff128aaa96e275d7b24cd12a72aba1",
+      "rank": 340,
+      "runtime_hash": "0x1f4392999150360e28e4a0a83cbcb8d02f37368f79fd9d2d234d2e4c79fc91d4",
+      "symbol": "PUBLIC"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x5f980533b994c93631a639deda7892fc49995839",
+      "rank": 343,
+      "runtime_hash": "0x49465ecbc40a5a6fed4dc364ae9ade7aae80d8a8603e441a8733a8206f58f75f",
+      "symbol": "COSA"
+    },
+    {
+      "basis": "Exact reviewed runtime family; fresh token-specific canonical dependency qualification follows",
+      "contract": "0x7fc21d196dcaafc1381679b15cf756eb8ed67777",
+      "rank": 344,
+      "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "symbol": "TRIPLETS"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xeed8be061b2c0b9474e3a0df1f8a3e4293ff6666",
+      "rank": 346,
+      "runtime_hash": "0x93ec9d20e375646282e692fc93fa71fd92b3a4e1bf7c317204915ea4353f675d",
+      "symbol": "UPEPE"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0xfb93ee8152dd0a0e6f4b49c66c06d800cf1db72d",
+      "rank": 347,
+      "runtime_hash": "0xa72a56e9ae70f3e59087db0f00e4ecef276f056fa19d0a512a7508e1e0a023c1",
+      "symbol": "YB"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x086f405146ce90135750bbec9a063a8b20a8bffb",
+      "rank": 348,
+      "runtime_hash": "0x6990a7143f512c1cab2851297b53e69a991e4d3ba3fc35379a2e48a9ca942e91",
+      "symbol": "BREV"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x0d064a5f5d3fba0dc751c478e98ec1d7407ac0d8",
+      "rank": 349,
+      "runtime_hash": "0xe5ef5f5f8bec2e37371800b6ab3fda268439e0125f96ab78ef12a659076556e9",
+      "symbol": "MEW"
+    },
+    {
+      "basis": "Verified historical direct/public mapping source with explicit reviewed named fields and independent getter word controls",
+      "contract": "0x17eafd08994305d8ace37efb82f1523177ec70ee",
+      "rank": 350,
+      "runtime_hash": "0x59cd0e00fde7e90959fcfcd86d16dc7e72f9e5dae9d5f96c5c72c116ebbdee96",
+      "symbol": "USDA"
+    }
+  ]
+}
