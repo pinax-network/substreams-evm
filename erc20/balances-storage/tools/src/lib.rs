@@ -12,6 +12,7 @@ pub mod lbp_rewards;
 pub mod probe;
 pub mod ranking;
 pub mod recheck;
+pub mod reflection;
 pub mod rpc;
 pub mod survey;
 pub mod trace_context;

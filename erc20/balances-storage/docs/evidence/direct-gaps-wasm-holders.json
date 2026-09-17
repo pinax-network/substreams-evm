@@ -1,0 +1,47 @@
+{
+  "checkpoint_sha256": "65ade32555a1072c2a9460549fd21c270abbd3f4fff19e112885e04707234182",
+  "checks_sha256": "c0afce37649f49e8ac1868653e8706ab9ce6ece0eadda44688a62772800994c7",
+  "configured_tokens": 2,
+  "deployment_initialization": [],
+  "events_sha256": "3f740558fa21db2abc09d64f2514e2fee56d863a1184098d60e923490cad92b4",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 29,
+  "layouts_sha256": "dc2b0f26a98f18ead54255b220005ace5383dc5957bd7537b8e375901cdcedef",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 64,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Two source-bound direct-mapping tokens on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 18,
+  "snapshot_zeros": 12,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x22a2c54b15287472f4adbe7587226e3c998cdd96",
+      "emitted_rows": 16,
+      "reference_rows": 32,
+      "seeded_matches": 32,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 2,
+      "unseeded_unknown_rows": 16,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xc12efb9e4a1a753e7f6523482c569793c2271dbb",
+      "emitted_rows": 19,
+      "reference_rows": 32,
+      "seeded_matches": 32,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 6,
+      "unseeded_unknown_rows": 13,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

@@ -346,14 +346,18 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [XVS width follow-up](docs/xvs-uint96.md) brings the explicit test
-configuration to 346 profiles in `tests/fixtures/bsc-xvs-layouts.json`.
-Its reviewed `uint96` getter matches 19 emitted RPC balances, 36 initialized
-holder observations and all 21 final holder balances. The rebuilt package also
-preserves every protobuf event field for 108,526 previously RPC-verified
+The latest [source-led follow-up](docs/direct-discovery-gaps.md) brings the
+explicit test configuration to 348 profiles in
+`tests/fixtures/bsc-direct-gaps-layouts.json`. MUSD and GAIX match 35 emitted
+RPC balances, 64 initialized observations and all 18 final holder balances.
+The unchanged package also preserves every protobuf event field for 108,561 previously RPC-verified
 balances across the combined configuration. The
-[next-50 investigation](docs/ranks351-400-investigation.md) leaves 49 candidates
+[next-50 investigation](docs/ranks351-400-investigation.md) leaves 47 candidates
 unqualified, alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks.
+The [reflection host model](docs/reflection-holder-model.md) matches 329
+historical getter checks for BabyDoge and 10SET and confirms passive 10SET
+holder changes, but does not add production reflection support. The
+[XVS width follow-up](docs/xvs-uint96.md) retains its `uint96` getter evidence.
 The prior [13-token cohort](docs/pending350-coverage.md) retains its separate
 direct-mapping, dividend-bookkeeping, proxy and deployment evidence. These
 figures do not claim global holders or all-token support. The original

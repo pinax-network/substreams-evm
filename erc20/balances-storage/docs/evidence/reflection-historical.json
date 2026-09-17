@@ -1,0 +1,285 @@
+{
+  "elapsed_seconds": 5.987757333,
+  "qualified": false,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Independent canonical historical storage snapshots and RPC getters. Host model only; no production reflection profile, retained replay or global holder enumeration.",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "contract": "0xc748673057861a797275cd8a068abb95a902e8de",
+      "metrics": {
+        "excluded_checks": 22,
+        "getter_checks": 209,
+        "holders": 19,
+        "ordinary_checks": 187,
+        "passive_changes": [],
+        "plain_token_word_mismatches": 132,
+        "reference_checks": 34,
+        "storage_reads": 1122
+      },
+      "name": "BabyDoge",
+      "runtime_hash": "0xf267028176840847b59638fb29923b617f85eae9696c6182ee407a1cba3e0cd9",
+      "snapshot_sha256": "5e248c83e7c9d82c54d51a9742c47aab62182d539075ad97a492bd0e774da706",
+      "source_sha256": "a83222287f471061fb345c52e4e3565591fb1e7253a554dab65fccf3ea4356dd"
+    },
+    {
+      "contract": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+      "metrics": {
+        "excluded_checks": 0,
+        "getter_checks": 120,
+        "holders": 12,
+        "ordinary_checks": 120,
+        "passive_changes": [
+          {
+            "from_balance": "2883221374061125826921",
+            "from_block": 122288005,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883223669097866505494",
+            "to_block": 122288024,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "645542680598943225851",
+            "from_block": 122288005,
+            "holder": "0x3474d625e491ac5b4aec2bdd8cd3ee3c5fc4df14",
+            "to_balance": "645543194449243788758",
+            "to_block": 122288024,
+            "unchanged_holder_storage": [
+              "302676549036319230484738803056792648135584460324902268911047727071380846",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883223669097866505494",
+            "from_block": 122288024,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883223744963691865594",
+            "to_block": 122288044,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "166653516197058435837899",
+            "from_block": 122288024,
+            "holder": "0x27118fe8ea1a158816c74e7a99c1418aff7aa9c7",
+            "to_balance": "166653520582187030251981",
+            "to_block": 122288044,
+            "unchanged_holder_storage": [
+              "78139017808606174177098697491656952265311963446553759679887758630292514563",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883223744963691865594",
+            "from_block": 122288044,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883228857141220168553",
+            "to_block": 122288155,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "609678850519533419236",
+            "from_block": 122288044,
+            "holder": "0x3474d625e491ac5b4aec2bdd8cd3ee3c5fc4df14",
+            "to_balance": "609679931527042653240",
+            "to_block": 122288155,
+            "unchanged_holder_storage": [
+              "285860787049994028298705273789903063385696003063859822493124810505046728",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883228857141220168553",
+            "from_block": 122288155,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883228942758096236758",
+            "to_block": 122288225,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "167826036291950723795140",
+            "from_block": 122288155,
+            "holder": "0x27118fe8ea1a158816c74e7a99c1418aff7aa9c7",
+            "to_balance": "167826041275509664889037",
+            "to_block": 122288225,
+            "unchanged_holder_storage": [
+              "78688637006202566391031195436963053467542717761611938363623398175345952303",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883228942758096236758",
+            "from_block": 122288225,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883229001679284811245",
+            "to_block": 122288245,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "167826041275509664889037",
+            "from_block": 122288225,
+            "holder": "0x27118fe8ea1a158816c74e7a99c1418aff7aa9c7",
+            "to_balance": "167826044705174815324367",
+            "to_block": 122288245,
+            "unchanged_holder_storage": [
+              "78688637006202566391031195436963053467542717761611938363623398175345952303",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "569206080554277323110",
+            "from_block": 122288225,
+            "holder": "0x3474d625e491ac5b4aec2bdd8cd3ee3c5fc4df14",
+            "to_balance": "569206092186478399033",
+            "to_block": 122288245,
+            "unchanged_holder_storage": [
+              "266883794159988323189283572436956045767809480477925473300999602059171908",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883229001679284811245",
+            "from_block": 122288245,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883230902093722493483",
+            "to_block": 122288469,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "569206092186478399033",
+            "from_block": 122288245,
+            "holder": "0x3474d625e491ac5b4aec2bdd8cd3ee3c5fc4df14",
+            "to_balance": "569206467365652504815",
+            "to_block": 122288469,
+            "unchanged_holder_storage": [
+              "266883794159988323189283572436956045767809480477925473300999602059171908",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "27296872917491032409",
+            "from_block": 122288245,
+            "holder": "0x426603bac5e0ea73fd13aecad7a80c9f963f6eac",
+            "to_balance": "27296890909600353508",
+            "to_block": 122288469,
+            "unchanged_holder_storage": [
+              "12798691217339179793509575013011771989889044992128341132967590421796680",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883230902093722493483",
+            "from_block": 122288469,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883234583061051785769",
+            "to_block": 122288664,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "569206467365652504815",
+            "from_block": 122288469,
+            "holder": "0x3474d625e491ac5b4aec2bdd8cd3ee3c5fc4df14",
+            "to_balance": "569207194060974920145",
+            "to_block": 122288664,
+            "unchanged_holder_storage": [
+              "266883794159988323189283572436956045767809480477925473300999602059171908",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "27296890909600353508",
+            "from_block": 122288469,
+            "holder": "0x426603bac5e0ea73fd13aecad7a80c9f963f6eac",
+            "to_balance": "27296925759033868017",
+            "to_block": 122288664,
+            "unchanged_holder_storage": [
+              "12798691217339179793509575013011771989889044992128341132967590421796680",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "2883234583061051785769",
+            "from_block": 122288664,
+            "holder": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+            "to_balance": "2883234731663175006407",
+            "to_block": 122288675,
+            "unchanged_holder_storage": [
+              "1351860259338528193584663105545204227502984971528644181107290793547447304",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "165187873878431760738355",
+            "from_block": 122288664,
+            "holder": "0x27118fe8ea1a158816c74e7a99c1418aff7aa9c7",
+            "to_balance": "165187882392226972842385",
+            "to_block": 122288675,
+            "unchanged_holder_storage": [
+              "77451527299521258926142024468248852509874263758960633608098888809079659171",
+              "0",
+              false
+            ]
+          },
+          {
+            "from_balance": "27296925759033868017",
+            "from_block": 122288664,
+            "holder": "0x426603bac5e0ea73fd13aecad7a80c9f963f6eac",
+            "to_balance": "27296927165919436406",
+            "to_block": 122288675,
+            "unchanged_holder_storage": [
+              "12798691217339179793509575013011771989889044992128341132967590421796680",
+              "0",
+              false
+            ]
+          }
+        ],
+        "plain_token_word_mismatches": 45,
+        "reference_checks": 33,
+        "storage_reads": 430
+      },
+      "name": "10SET",
+      "runtime_hash": "0xc8126f49784c57beacffe3f31e6ee4b4bee741a625327362b289fa3a276e18ce",
+      "snapshot_sha256": "14a83963515efea0bdc6479a2f220c219710e280f5a7b96176f4be472293f8e5",
+      "source_sha256": "083a44ab01fd109dad4e7a4b7c5a4061b963454a86a35d9f0be439a045c8d87d"
+    }
+  ],
+  "tool_language": "Rust"
+}

@@ -384,6 +384,8 @@ mod computed_tests;
 #[cfg(test)]
 mod direct_bytecode_tests;
 #[cfg(test)]
+mod direct_gaps_tests;
+#[cfg(test)]
 mod direct_source_tests;
 #[cfg(test)]
 mod divisor_tests;

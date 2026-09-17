@@ -1,0 +1,38 @@
+{
+  "aggregate_emitted_zero_checks": 15079,
+  "all_balance_event_fields_equal": true,
+  "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "baseline_report_sha256": "7e879a47256d9f7db0c7f18e4c2daed8b0a7844d8bc279378620e202ae1a9b9c",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 11.179697969814614,
+    "empty_output_delivery": null,
+    "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "seconds_including_startup": 91.59460325
+  },
+  "configured_profiles": 348,
+  "elapsed_seconds": 239.015408667,
+  "events_sha256": "03d1d2634960b830da4f3ec339a1dd5c2407f82171854b6e332c731eea7d45a2",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 177844,
+  "initialized_carry_forward_matches": 69284,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "8cf13cfd95995055d699552b50ddf58be4f62ae7b37d8265c416b67e1a1b34ff",
+  "package_change_scope": "Same packaged code; two independently qualified direct layouts added to the previous immutable verified output",
+  "profiles_with_emitted_rows": 347,
+  "reused_verified_rpc_rows": 108561,
+  "scope": "Fresh 348-profile actual-WASM capture. Full-field comparison with the verified 346-profile capture and two newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-348 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "fb81457e25001dca827881d5ae07d35e91b0f5360645e297463b59305d9037c6",
+      "cohort": "direct-gaps",
+      "events_sha256": "3f740558fa21db2abc09d64f2514e2fee56d863a1184098d60e923490cad92b4",
+      "holder_report_sha256": "9822508f9a0b6bf0d2422aa6ac0c4d42abd06d758e88bef98263dff4a3a10715",
+      "layouts_sha256": "dc2b0f26a98f18ead54255b220005ace5383dc5957bd7537b8e375901cdcedef",
+      "rpc_report_sha256": "d27f355fe972dea637b95a64fe27af3882e8ea663ff4c8a8a44f523960a4b59f"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

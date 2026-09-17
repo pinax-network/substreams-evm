@@ -12,20 +12,25 @@ Forty-four candidates have a unique matching mapping hypothesis. The
 [getter controls](evidence/ranks351-400-getters.json) inspect those 44 and find
 one nonzero-word transformation: XVS's `uint96` getter. Its separately verified
 [width correction and holder audit](xvs-uint96.md) add one qualified profile.
-The other 49 candidates remain outside the latest combined configuration.
+That follow-up left 49 candidates outside its combined configuration. The
+subsequent [MUSD/GAIX source-led qualification](direct-discovery-gaps.md) adds
+two profiles, leaving **47** from this group still unqualified.
 
 Eleven historical runtime hashes match an already reviewed family. Each still
 needs its own source/getter/dependency binding, explicit storage rules and
 complete interval checks; matching a shell or a sampled value does not promote
 a profile.
 
-The six candidates with no direct-mapping hypothesis are AR (351), ARZ (354),
+The six candidates below the direct-mapping discovery threshold are AR (351), ARZ (354),
 ARS (364), 10SET (377), MUSD (386) and GAIX (394). That status is a discovery
 gap, not a claimed zero balance or a proven computed getter. MUSD and GAIX have
-source-bound direct getters and need independent follow-up without relaxing
-discovery thresholds. 10SET's verified source uses reflection accounting.
+source-bound direct getters; each matching hypothesis had only one nonzero
+holder. Their later qualification uses independent source/getter and full
+interval checks without relaxing discovery thresholds. 10SET's verified source uses reflection accounting.
 Baby Doge (372) also has a reflection getter; a sample on its excluded-account
-branch is not proof of a direct mapping for all holders.
+branch is not proof of a direct mapping for all holders. The subsequent
+[reflection diagnostic](reflection-holder-model.md) confirms that distinction
+and passive holder changes, without promoting either token.
 
 All source/runtime and diagnostic evidence remains separate from production
 qualification. Cold unknowns, emitted rows, initialized retained holders and

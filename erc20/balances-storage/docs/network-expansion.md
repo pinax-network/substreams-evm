@@ -36,12 +36,19 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes **346 qualified profiles**. The latest
+The BSC campaign now includes **348 qualified profiles**. The latest
+[source-led follow-up](direct-discovery-gaps.md) resolves MUSD and GAIX's
+insufficient discovery samples without changing the two-holder threshold.
+It adds 35 emitted RPC checks, 64 initialized observations and 18 final holder
+balances. The combined package output matches every field for 108,561
+previously RPC-verified emitted balances.
+
+The earlier
 [XVS follow-up](xvs-uint96.md) adds an explicitly reviewed `uint96` balance
 getter, 19 emitted RPC checks, 36 initialized observations and 21 final holder
 balances. The rebuilt package preserves every protobuf field for 108,526
 previously RPC-verified emitted balances. The
-[ranks 351–400 investigation](ranks351-400-investigation.md) leaves 49 candidates
+[ranks 351–400 investigation](ranks351-400-investigation.md) now leaves 47 candidates
 outside qualification, including reflection getters that cannot be promoted
 from a sample on one account's direct-mapping branch.
 
@@ -57,8 +64,8 @@ The earlier 296-profile qualification comprised the original top 100 plus
 from ranks 251–300. That [earlier follow-up](pending300-coverage.md)
 left LBP (143), TITAN (203), ORD (209) and YBC (238) outside the qualified
 fixture; they remain excluded. hLBP has a captured mint in a separate older
-interval. The latest combined capture preserves all 346 profiles' audited
-output, with 345 emitting in the original 1,024-block interval. Captured DIA append and ETZ
+interval. The latest combined capture preserves all 348 profiles' audited
+output, with 347 emitting in the original 1,024-block interval. Captured DIA append and ETZ
 swap-and-pop transactions now pass packaged RPC and initialized-holder checks,
 in addition to the earlier captured shareholder tail pop. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
@@ -70,6 +77,13 @@ The remaining [LBP reward-state diagnostic](lbp-reward-model.md) now matches
 594 sampled RPC observations and 34 simulated-state cases. It does not add
 production LBP support: durable holder and reward state still requires a design
 decision. The other networks remain at preliminary RPC prerequisite probes.
+
+The [BabyDoge/10SET host model](reflection-holder-model.md) matches 329
+independent historical getters and 48 read-only controls, including expected
+reverts. Its raw-storage replay verifies passive 10SET holder changes that a
+direct-balance update stream would miss. Both tokens remain outside production
+qualification until dependency initialization, affected-holder output and
+restart/rewind handling are established.
 
 The [TITAN/ORD follow-up](external-getter-contexts.md) checks 96 additional ORD
 candidate addresses and independently validates account attribution through

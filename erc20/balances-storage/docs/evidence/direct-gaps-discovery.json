@@ -1,0 +1,61 @@
+{
+  "original_survey_sha256": "0d514f64e8b3408acc19bb43f6f60418af590ec4dbdab7ca68a0ad439532475f",
+  "reason": "Each matching candidate had only one nonzero holder, below the existing two-holder discovery threshold. Independent source-led qualification did not relax this threshold.",
+  "status": "inspected",
+  "tokens": [
+    {
+      "contract": "0x22a2c54b15287472f4adbe7587226e3c998cdd96",
+      "exact_mapper_parity": false,
+      "holdout_start": 122288352,
+      "hypotheses": [
+        {
+          "matched": 8,
+          "mismatched": 0,
+          "nonzero_holders": 1,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        {
+          "matched": 0,
+          "mismatched": 4,
+          "nonzero_holders": 0,
+          "slot": "0xf257bcb9cb8fcf83b4ca73c3209400942282871cab0cec961f7647b8992d8344"
+        }
+      ],
+      "rank": 386,
+      "ranked_reference_rows": 32,
+      "runtime_hashes": [
+        "0x33c553fc95d9f7270270684c02a560f36b8cf27612e572f0dccfbc2677bc5967",
+        "0x33c553fc95d9f7270270684c02a560f36b8cf27612e572f0dccfbc2677bc5967"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 8,
+      "sampled_reference_rows": 32,
+      "status": "no_direct_mapping_evidence",
+      "symbol": "MUSD"
+    },
+    {
+      "contract": "0xc12efb9e4a1a753e7f6523482c569793c2271dbb",
+      "exact_mapper_parity": false,
+      "holdout_start": 122288554,
+      "hypotheses": [
+        {
+          "matched": 9,
+          "mismatched": 0,
+          "nonzero_holders": 1,
+          "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "rank": 394,
+      "ranked_reference_rows": 32,
+      "runtime_hashes": [
+        "0x34d91c3366d8b412a3c4808654b7b676a09b3290961e2f7cbb78ddb032b6f582",
+        "0x34d91c3366d8b412a3c4808654b7b676a09b3290961e2f7cbb78ddb032b6f582"
+      ],
+      "runtime_stable_at_boundaries": true,
+      "sampled_active_blocks": 6,
+      "sampled_reference_rows": 32,
+      "status": "no_direct_mapping_evidence",
+      "symbol": "GAIX"
+    }
+  ]
+}
