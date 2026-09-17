@@ -1,5 +1,10 @@
 # BSC ranks 51–100 and holder exceptions
 
+This records the 76-profile batch. The subsequent
+[proxy and deployment review](next-proxy-holder-coverage.md) qualifies eleven of
+the 24 candidates left below and expands the replay to 87 profiles. The earlier
+reports and diagnostics remain unchanged.
+
 The [expanded fixture](../tests/fixtures/bsc-next-candidates-layouts.json) contains
 76 qualified layouts: the original 50 plus 26 candidates from ranks 51–100 of the
 same immutable 1,024-block RPC capture. Rankings count reference balance rows,

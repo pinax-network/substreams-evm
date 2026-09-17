@@ -1,0 +1,208 @@
+{
+  "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+  "contract": "0x9b8e987e6fec8cf1380c4dca7071e2c7853aeea1",
+  "dependencies": [
+    {
+      "address": "0xc046b05a920e4b412815934dd8e58904dda73315",
+      "name": null,
+      "role": "beacon",
+      "runtime_hash": "0x90d14c8f8d7d3468b5215829b587058c5e7f78acaef6b946c20caa3de92bf410",
+      "source_bound": false,
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xc046b05a920e4b412815934dd8e58904dda73315?fields=all",
+      "storage": null
+    },
+    {
+      "address": "0x578f397ca4661d1db4d9a65065d6b284a1a850fd",
+      "name": "GMToken",
+      "role": "implementation",
+      "runtime_hash": "0x85d44c72e84a34f0b4a3bceca35289b10bd0c5510c5a441466a755e903edc36a",
+      "source_bound": true,
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x578f397ca4661d1db4d9a65065d6b284a1a850fd?fields=all",
+      "storage": [
+        {
+          "astId": 589,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_initialized",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 592,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_initializing",
+          "offset": 1,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1795,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 816,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "51",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 822,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "52",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 824,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "53",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 826,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_name",
+          "offset": 0,
+          "slot": "54",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 828,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "55",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 1407,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "56",
+          "type": "t_array(t_uint256)45_storage"
+        },
+        {
+          "astId": 796,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "101",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 1839,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "151",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 184,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_roles",
+          "offset": 0,
+          "slot": "201",
+          "type": "t_mapping(t_bytes32,t_struct(RoleData)179_storage)"
+        },
+        {
+          "astId": 483,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "202",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 33,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "_roleMembers",
+          "offset": 0,
+          "slot": "251",
+          "type": "t_mapping(t_bytes32,t_struct(AddressSet)2152_storage)"
+        },
+        {
+          "astId": 143,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "252",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 3025,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "compliance",
+          "offset": 0,
+          "slot": "301",
+          "type": "t_contract(IOndoComplianceGMView)3014"
+        },
+        {
+          "astId": 3115,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "302",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 3138,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "tokenPauseManager",
+          "offset": 0,
+          "slot": "351",
+          "type": "t_contract(ITokenPauseManager)3127"
+        },
+        {
+          "astId": 3230,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "352",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 2713,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "nameOverride",
+          "offset": 0,
+          "slot": "401",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 2716,
+          "contract": "contracts/globalMarkets/GMToken.sol:GMToken",
+          "label": "symbolOverride",
+          "offset": 0,
+          "slot": "402",
+          "type": "t_string_storage"
+        }
+      ]
+    }
+  ],
+  "identities": [
+    {
+      "beacon": "0xc046b05a920e4b412815934dd8e58904dda73315",
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "implementation": "0x578f397ca4661d1db4d9a65065d6b284a1a850fd"
+    },
+    {
+      "beacon": "0xc046b05a920e4b412815934dd8e58904dda73315",
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "implementation": "0x578f397ca4661d1db4d9a65065d6b284a1a850fd"
+    }
+  ],
+  "rank": 57
+}

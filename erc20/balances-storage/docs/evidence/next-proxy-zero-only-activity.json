@@ -1,0 +1,48 @@
+{
+  "block": 122288749,
+  "calls": [
+    {
+      "address": "0xe0150e5020e6326448502d0e3f03afd971a85fd8",
+      "call": 2,
+      "log_examples": [
+        {
+          "data": "0x0000000000000000000000000000000000000000000000022b1c8c1227a00000",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000103c9bd9ef4486926d613f125dd3e99b14f6f5a4",
+            "0x000000000000000000000000216957ac864d09d55c910780cb57cc1a345fc353"
+          ]
+        },
+        {
+          "data": "0x0000000000000000000000000000000000000000000000056bc75e2d63100000",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x00000000000000000000000073beb14640be6fd6c24152f95d2372d3180926b2",
+            "0x000000000000000000000000e8fdec69e0b9e091945219ddd20fc44d932e3b88"
+          ]
+        },
+        {
+          "data": "0x0000000000000000000000000000000000000000000000056bc75e2d63100000",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x000000000000000000000000d9589ae56ef414f59c43a938bb6e4194f80926b2",
+            "0x000000000000000000000000ea95f8b50fa187b03d98ef47f3251baede2e3b88"
+          ]
+        }
+      ],
+      "logs": 159,
+      "reverted": false,
+      "selector": "0xa9059cbb",
+      "storage": [],
+      "tx": "0x695164dbf69cf87966c44ba787707f1960ba86d20750694a81c40576d1bba3d8",
+      "tx_status": 1
+    }
+  ],
+  "contract": "0xe0150e5020e6326448502d0e3f03afd971a85fd8",
+  "full_block_sha256": "45af3e585cbf0a3dbd0c9682f4579b66111a302cca3ea91e23af47fdab216ae5",
+  "hash": "0xd531ec8ec233b9fce2f80f8d282b1ecdd5e3f30bc46e332271fad7887907bf82",
+  "mapping_only_projection": {
+    "balances": 0
+  },
+  "rank": 70
+}

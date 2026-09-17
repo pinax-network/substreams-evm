@@ -296,7 +296,13 @@ more candidates, bringing `tests/fixtures/bsc-next-candidates-layouts.json` to 7
 profiles. It also fixes holder-specific zero fallbacks found by explicit burn
 address controls, including one previously sampled token. The retained reports
 describe the exact earlier artifacts; historical fixture digests predate this
-correction. Another 24 candidates remain explicitly unqualified.
+correction. That batch left 24 candidates unqualified.
+
+The [next proxy and deployment batch](docs/next-proxy-holder-coverage.md) qualifies
+eleven of those candidates, bringing `tests/fixtures/bsc-next-proxy-layouts.json`
+to 87 profiles. It covers eight FlapTaxTokenV3 clones, a TokenV2 clone, GMToken and
+BTRToken, including two new deployment baselines. Thirteen of the original top
+100 candidates remain unqualified.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
