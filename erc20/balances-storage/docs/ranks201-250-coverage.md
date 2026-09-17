@@ -149,6 +149,13 @@ Its source is unavailable. The detailed trace fails with RPC code `-32008`,
 later explicit trace failure are retained. No detailed YBC storage trace or
 complete reward model is claimed.
 
+Later follow-up: [compact YBC tracing](ybc-reward-trace.md) recovers the execution
+and independently checks its storage reads. It also corrects the old
+`dynamic_reward` label: the second reward tuple word is a stopping hour. The
+original response-limit failure above remains historical evidence; YBC is still
+unqualified because its complete reward model and holder-output behavior remain
+unresolved.
+
 Ranks **203, 204, 208, 209, 210, 212, 214, 220, 222, 224, 236, 238, 239, 240,
 246, 248** remain unqualified. Next reviews include voting histories, holder
 arrays, new proxy dependencies and source-unavailable getters. LBP (143) remains

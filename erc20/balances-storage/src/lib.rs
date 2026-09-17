@@ -414,6 +414,8 @@ mod ranks151_200_tests;
 #[cfg(test)]
 mod ranks201_250_tests;
 #[cfg(test)]
+mod ranks251_300_tests;
+#[cfg(test)]
 mod remaining_ranked_tests;
 #[cfg(test)]
 mod securities_proxy_tests;

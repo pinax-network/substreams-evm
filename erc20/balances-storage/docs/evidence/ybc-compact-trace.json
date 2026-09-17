@@ -1,0 +1,318 @@
+{
+  "call_analysis": {
+    "calls": {
+      "0x5473f664eaa1c6fea8306133241000b758cb326a:0x0902f1ac": {
+        "count": 1,
+        "examples": [
+          {
+            "input": "0x0902f1ac",
+            "output": "0x0000000000000000000000000000000000000000000000017df09ccba69ea875000000000000000000000000000000000000000000091230ee5fcbd067a9b883000000000000000000000000000000000000000000000000000000006aab001b"
+          }
+        ],
+        "name": "getReserves()",
+        "selector": "0x0902f1ac",
+        "to": "0x5473f664eaa1c6fea8306133241000b758cb326a"
+      },
+      "0x5473f664eaa1c6fea8306133241000b758cb326a:0xd21220a7": {
+        "count": 1,
+        "examples": [
+          {
+            "input": "0xd21220a7",
+            "output": "0x000000000000000000000000ebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+          }
+        ],
+        "name": null,
+        "selector": "0xd21220a7",
+        "to": "0x5473f664eaa1c6fea8306133241000b758cb326a"
+      },
+      "0xe8058da568eb94194588bc9bae53a5e584fe7471:0xd82e3962": {
+        "count": 2,
+        "examples": [
+          {
+            "input": "0xd82e39620000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461",
+            "output": "0x00000000000000000000000000000000000000000000028dbccb6ce7abf2ad05000000000000000000000000000000000000000000000000000000000000078f"
+          },
+          {
+            "input": "0xd82e39620000000000000000000000005473f664eaa1c6fea8306133241000b758cb326a",
+            "output": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "name": "calculateReward(address)",
+        "selector": "0xd82e3962",
+        "to": "0xe8058da568eb94194588bc9bae53a5e584fe7471"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0x38c70704": {
+        "count": 240,
+        "examples": [
+          {
+            "input": "0x38c70704000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "input": "0x38c7070400000000000000000000000000000000000000000000000000000000000006a0",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "input": "0x38c7070400000000000000000000000000000000000000000000000000000000000006a1",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "name": "noBurnCycle(uint256)",
+        "selector": "0x38c70704",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0x655bce22": {
+        "count": 1,
+        "examples": [
+          {
+            "input": "0x655bce22",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000001179"
+          }
+        ],
+        "name": "getCycle()",
+        "selector": "0x655bce22",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0x70a08231": {
+        "count": 2,
+        "examples": [
+          {
+            "input": "0x70a082310000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461",
+            "output": "0x00000000000000000000000000000000000000000000028dbccb6ce7e78d7705"
+          },
+          {
+            "input": "0x70a082310000000000000000000000005473f664eaa1c6fea8306133241000b758cb326a",
+            "output": "0x000000000000000000000000000000000000000000091230ee5fcbd067a9b883"
+          }
+        ],
+        "name": "balanceOf(address)",
+        "selector": "0x70a08231",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0x98e19630": {
+        "count": 1,
+        "examples": [
+          {
+            "input": "0x98e196300000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461",
+            "output": "0x000000000000000000000000000000000000000000000000000000000000069f00000000000000000000000000000000000000000000000000000000000001d8"
+          }
+        ],
+        "name": "userLasts(address)",
+        "selector": "0x98e19630",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0xa87430ba": {
+        "count": 2,
+        "examples": [
+          {
+            "input": "0xa87430ba0000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461",
+            "output": "0x0000000000000000000000007e617482ca59fa977926e2930bc598ff1f96939400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000008a4e21c9490c42ea60000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000002540be40000000000000000000000000000000000000000000000000002667ca9c2bfaae000000000000000000000000000000000000000000000000002667ca9c2bfaae0000000000000000000000000000000000000000000000e6f11feddb29f72778a0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "input": "0xa87430ba0000000000000000000000005473f664eaa1c6fea8306133241000b758cb326a",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "name": "users(address)",
+        "selector": "0xa87430ba",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0xf18734bf": {
+        "count": 241,
+        "examples": [
+          {
+            "input": "0xf18734bf0000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x00000000000000000000000000000000000000000000000000000002540be400"
+          },
+          {
+            "input": "0xf18734bf0000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b461000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x00000000000000000000000000000000000000000000000000000002540be400"
+          },
+          {
+            "input": "0xf18734bf0000000000000000000000002aafce28b5552e216811fb5a1cb015178a29b46100000000000000000000000000000000000000000000000000000000000006a0",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "name": "usersCycleStaticRate(address,uint256)",
+        "selector": "0xf18734bf",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0xf60970ae": {
+        "count": 240,
+        "examples": [
+          {
+            "input": "0xf60970ae000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x000000000000000000000000000000000000000000000276981f1bda634acea1"
+          },
+          {
+            "input": "0xf60970ae00000000000000000000000000000000000000000000000000000000000006a0",
+            "output": "0x000000000000000000000000000000000000000000000276397f88c2bb1b5f02"
+          },
+          {
+            "input": "0xf60970ae00000000000000000000000000000000000000000000000000000000000006a1",
+            "output": "0x000000000000000000000000000000000000000000000275d4a988d5cf2664de"
+          }
+        ],
+        "name": "hourlyCycleReward(uint256)",
+        "selector": "0xf60970ae",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      },
+      "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319:0xfdc2776b": {
+        "count": 241,
+        "examples": [
+          {
+            "input": "0xfdc2776b000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x00000000000000000000000000000000000000000000000000000217c604609c"
+          },
+          {
+            "input": "0xfdc2776b000000000000000000000000000000000000000000000000000000000000069f",
+            "output": "0x00000000000000000000000000000000000000000000000000000217c604609c"
+          },
+          {
+            "input": "0xfdc2776b00000000000000000000000000000000000000000000000000000000000006a0",
+            "output": "0x00000000000000000000000000000000000000000000000000000217c604609c"
+          }
+        ],
+        "name": "hourlyCycleRate(uint256)",
+        "selector": "0xfdc2776b",
+        "to": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319"
+      }
+    },
+    "prestate_accounts": [
+      {
+        "address": "0x0000000000000000000000000000000000000000",
+        "code_bytes": null,
+        "storage_words": 0
+      },
+      {
+        "address": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+        "code_bytes": 14981,
+        "storage_words": 2
+      },
+      {
+        "address": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+        "code_bytes": 12731,
+        "storage_words": 0
+      },
+      {
+        "address": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+        "code_bytes": 23626,
+        "storage_words": 984
+      },
+      {
+        "address": "0xfffffffffffffffffffffffffffffffffffffffe",
+        "code_bytes": null,
+        "storage_words": 0
+      }
+    ],
+    "qualified": false,
+    "source_sha256": "5edd2d1462a99b23fc8208f38d42a400bdb36e98caeadca85785a82b46f976df",
+    "status": "inspected",
+    "storage_read_steps": 991,
+    "unique_read_words": 986
+  },
+  "canonical_distinct_storage_checks": 986,
+  "compact_trace": {
+    "bytes": 95966227,
+    "call_tracer": {
+      "bytes": 447500,
+      "error": null,
+      "sha256": "ec56305a303eb881f57e205757cb7cbc39e634734462cdb7a0540fa77bea3777"
+    },
+    "instructions": 446934,
+    "prestate_tracer": {
+      "bytes": 249252,
+      "error": null,
+      "sha256": "ba654457882e7aa30f92e550c33330a6367ca468cc843ff58e09ecfb1a60c443"
+    },
+    "sha256": "cb2b2d7ae63a9aa1c62905905cd4f925d30c8cc9ad42c8fbc2f748c464555b7c",
+    "status": "inspected"
+  },
+  "counterexample": {
+    "balance": "12059327966975017973509",
+    "block": 122288005,
+    "candidate_key": "0x3bfca691119a7c5e279a4e72384101c22bd3d839ece1740d5b0776750526ef74",
+    "candidate_word": "1000000000",
+    "direct_word_match": false,
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+    "reward_attributed": true,
+    "static_reward": "12059327966974017973509",
+    "stopping_hour": "1935"
+  },
+  "execution_code": [
+    {
+      "address": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+      "checked_instructions": 4,
+      "runtime_hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8"
+    },
+    {
+      "address": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+      "checked_instructions": 969,
+      "runtime_hash": "0xb3d6938e8c9477247d16e146b97c511d1c0c232b3b76394f204a31d239b38c1f"
+    },
+    {
+      "address": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "checked_instructions": 989,
+      "runtime_hash": "0x0b81e9dd6c0529eb50a2f0437da20126cbaf40f6c79c4973fe1c44ee95ba7128"
+    }
+  ],
+  "fixture": {
+    "case_sha256": "6e65fbd7750373e233f98c4e398428b7189fee89a3a0615620fe3d262a0f2324",
+    "retained_instructions": 5868,
+    "trace_sha256": "86eb0125192cf8f7b819da812ba18f4b05954bc6ed1b60fb3df06a54b7c72518"
+  },
+  "inspector": {
+    "failure": "RPC eth_call returned error/null",
+    "max_word_control": {
+      "interpretation": "Solidity arithmetic panic 0x11; preserved as incomplete inspection rather than direct-mapping qualification",
+      "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "response": {
+        "error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      }
+    },
+    "read_only_state_overrides": [
+      {
+        "balance_of": "12059327966974017973509",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "12059327966974017973510",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "12059327966974017973632",
+        "overridden_mapping_word": "123"
+      }
+    ],
+    "status": "incomplete",
+    "trace_sha256": "cb2b2d7ae63a9aa1c62905905cd4f925d30c8cc9ad42c8fbc2f748c464555b7c"
+  },
+  "original_trace": {
+    "provider_response_cap_bytes": 167772160,
+    "retained_in": "ranks201-250-mismatches.json",
+    "status": "response_limit_exceeded"
+  },
+  "qualified": false,
+  "scope": "One actual historical reward-bearing path, independent canonical word checks and explicit read-only controls. Not a complete reward formula, affected-holder emission rule, persistence model or qualified layout.",
+  "status": "inspected",
+  "trace_config": {
+    "disableStack": false,
+    "disableStorage": true,
+    "enableMemory": false,
+    "enableReturnData": false,
+    "timeout": "10s"
+  },
+  "tuple_field_correction": {
+    "corrected_label": "stopping_hour",
+    "old_diagnostic_label": "dynamic_reward",
+    "scope": "Token source uses the second tuple word to advance userLasts.lastCycle. balanceOf adds only the first word. Historical reports remain unchanged.",
+    "source_consumer": "_claimStaticReward: (uint256 totalReward, uint256 stopedhour) = ISwapper(swapper).calculateReward(user)"
+  }
+}

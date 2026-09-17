@@ -135,6 +135,46 @@ fn captured_ord_branch_preserves_nested_and_sibling_account_contexts() {
 }
 
 #[test]
+fn captured_ybc_reward_loop_attributes_reads_to_token_and_pool() {
+    let folder = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../tests/fixtures/ybc-reward-trace");
+    let case: Value = serde_json::from_slice(&std::fs::read(folder.join("case.json")).unwrap()).unwrap();
+    let path = folder.join(case["trace"].as_str().unwrap());
+    assert_eq!(sha256(&path).unwrap(), case["trace_sha256"]);
+    let trace: Value = serde_json::from_slice(&std::fs::read(path).unwrap()).unwrap();
+    let token = case["contract"].as_str().unwrap();
+    let context = inspect(&trace, token).unwrap();
+    assert_eq!(context, case["expected"]);
+    assert_eq!(items(&context, "storage_reads").unwrap().len(), 991);
+    assert_eq!(items(&context, "calls").unwrap().len(), 971);
+    let words = items(&case, "independent_storage_words").unwrap();
+    assert_eq!(words.len(), 986);
+    let mut accounts = std::collections::BTreeSet::new();
+    for read in items(&context, "storage_reads").unwrap() {
+        // Each distinct read was checked with canonical eth_getStorageAt and
+        // independently with prestateTracer, not just the attribution code.
+        let independent = words
+            .iter()
+            .find(|w| w["address"] == read["storage_address"] && w["key"] == read["key"])
+            .unwrap();
+        assert_eq!(read["value"], independent["value"]);
+        assert_eq!(read["storage_address"], read["code_address"]);
+        accounts.insert(read["storage_address"].as_str().unwrap());
+    }
+    assert_eq!(
+        accounts,
+        std::collections::BTreeSet::from([token, "0x5473f664eaa1c6fea8306133241000b758cb326a"])
+    );
+    let check = &case["counterexample"];
+    assert_ne!(check["candidate_word"], check["balance"]);
+    assert_eq!(
+        uint(&check["candidate_word"]).unwrap() + uint(&check["static_reward"]).unwrap(),
+        uint(&check["balance"]).unwrap()
+    );
+    assert_eq!(check["stopping_hour"], "1935");
+    assert!(check.get("dynamic_reward").is_none());
+}
+
+#[test]
 fn code_attribution_requires_matching_historical_opcodes_and_resolved_runtime() {
     struct CodeRpc(&'static str);
     impl crate::rpc::Rpc for CodeRpc {

@@ -22,6 +22,9 @@ pub struct InspectRanked {
     pub survey: PathBuf,
     #[arg(long = "contract")]
     pub contracts: Vec<String>,
+    /// Omit per-step memory/storage snapshots while retaining stack attribution.
+    #[arg(long)]
+    pub compact_trace: bool,
     #[arg(long)]
     pub output: PathBuf,
 }
@@ -106,6 +109,7 @@ pub fn run(args: InspectRanked) -> Result<bool> {
                         balance_slot: slot.into(),
                         zero_dependency_slot: None,
                         block,
+                        compact_trace: args.compact_trace,
                         source: None,
                         deployment_artifact: None,
                         artifact_url: None,

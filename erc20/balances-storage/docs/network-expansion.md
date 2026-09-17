@@ -36,13 +36,14 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 246 qualified profiles: the original top 100 plus
-49 from ranks 101–150, all 50 from ranks 151–200 and 47 from ranks 201–250. The
-[latest candidate follow-up](beacon-admin-holder-coverage.md) leaves three candidates
-from ranks 201–250 and LBP (143) outside the qualified fixture. hLBP has a captured
-mint in a separate older interval; 245 profiles emit in the original 1,024-block
+The BSC campaign now includes 279 qualified profiles: the original top 100 plus
+49 from ranks 101–150, all 50 from ranks 151–200, 47 from ranks 201–250 and 33
+from ranks 251–300. The [latest candidate follow-up](ranks251-300-coverage.md)
+leaves 17 candidates from ranks 251–300, three from ranks 201–250 and LBP (143)
+outside the qualified fixture. hLBP has a captured
+mint in a separate older interval; 278 profiles emit in the original 1,024-block
 interval. The [removal correction](shareholder-removal-coverage.md) passes a captured
-shareholder tail pop; the latest combined capture preserves all 246 profiles'
+shareholder tail pop; the latest combined capture preserves all 279 profiles'
 audited output. Swap-and-pop has synthetic coverage but no captured swap
 transaction yet. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
@@ -59,6 +60,10 @@ The [TITAN/ORD follow-up](external-getter-contexts.md) checks 96 additional ORD
 candidate addresses and independently validates account attribution through
 external proxies and nested callbacks. Both tokens remain unqualified; observed
 zero rewards do not establish general raw-storage parity.
+
+[YBC's compact trace](ybc-reward-trace.md) now exposes its 240-hour reward path
+and verifies 986 distinct canonical storage words. Its complete reward formula
+and affected-holder output remain unqualified.
 
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted

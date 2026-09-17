@@ -338,6 +338,13 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
+The latest [ranks 251–300 review](docs/ranks251-300-coverage.md) brings the explicit
+test configuration to 279 profiles in `tests/fixtures/bsc-ranks251-300-layouts.json`.
+The new 33-token cohort matches 1,128 emitted RPC balances, 1,724 initialized
+holder observations and 736 final holder balances. Twenty-one reviewed candidates
+remain pending across the top 300; these figures do not claim global holders or
+all-token support. Earlier reports below retain their original cohort scopes.
+
 `tests/fixtures/bsc-reviewed-layouts.json` explicitly configures BSC USDT, BTCB,
 USDC (pinned implementation), and the existing WBNB control. The file is not a
 default. See [expanded qualification and holder coverage](docs/holder-coverage.md)
@@ -486,6 +493,13 @@ and read-only state overrides for zero, 1, 123 and uint256 max. Optional
 `--source <Sourcify-v2-response.json>` verifies that the source record's runtime
 matches the historical runtime before saving its layout/provenance. Overrides
 simulate `eth_call`; no transaction is sent.
+
+For large getters, `--compact-trace` omits per-step memory, storage snapshots
+and return data while retaining stack and call-depth attribution. This option
+also works with `inspect-ranked`; compact traces cannot recover mapping
+preimages from memory. Successful word controls remain recorded if a later
+control reverts. The [YBC diagnostic](docs/ybc-reward-trace.md) recovers a real
+reward-bearing trace and preserves its expected maximal-word overflow.
 
 For a project-published deployment artifact, use `--deployment-artifact <json>`
 with `--artifact-url <immutable-source-url>` instead of `--source`. The tool binds

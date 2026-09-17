@@ -18,6 +18,10 @@ pub struct Inspect {
     pub zero_dependency_slot: Option<String>,
     #[arg(long)]
     pub block: u64,
+    /// Omit memory, storage snapshots and per-step return data for large getters.
+    /// Stack and call depth remain available; mapping preimages do not.
+    #[arg(long)]
+    pub compact_trace: bool,
     /// Sourcify v2 response to bind reviewed source to this historical runtime.
     #[arg(long)]
     pub source: Option<PathBuf>,
@@ -126,10 +130,9 @@ pub fn run(args: Inspect) -> Result<bool> {
             write_report(&args.output, report)?;
             let (_, params) = balance_request(&contract, &address, reference.clone());
             let call = params[0].clone();
-            let trace = rpc.call(
-                "debug_traceCall",
-                json!([call,reference,{"enableMemory":true,"disableStack":false,"disableStorage":false,"enableReturnData":true,"timeout":"10s"}]),
-            )?;
+            let trace_config = json!({"enableMemory":!args.compact_trace,"disableStack":false,"disableStorage":args.compact_trace,"enableReturnData":!args.compact_trace,"timeout":"10s"});
+            report["trace_config"] = trace_config.clone();
+            let trace = rpc.call("debug_traceCall", json!([call, reference, trace_config]))?;
             fs::write(args.output.join("trace.json"), serde_json::to_vec(&trace)?)?;
             ensure!(trace["failed"] == false, "balanceOf trace failed");
             let returned = text(&trace["returnValue"])?;
@@ -147,8 +150,10 @@ pub fn run(args: Inspect) -> Result<bool> {
                 let override_state = json!({contract.clone():{"stateDiff":{key.clone():format!("0x{amount:064x}")}}});
                 let actual = rpc.call("eth_call", json!([call, reference, override_state]))?;
                 overrides.push(json!({"overridden_mapping_word":amount.to_string(),"balance_of":balance_result(&actual,true)?.to_string()}));
+                // Preserve earlier controls when a later one reverts, as can
+                // happen when a computed reward overflows a maximal raw word.
+                report["read_only_state_overrides"] = json!(overrides);
             }
-            report["read_only_state_overrides"] = json!(overrides);
             if let Some(dependency) = &args.zero_dependency_slot {
                 let dependency = binary(&json!(dependency), 32)?;
                 ensure!(dependency != key, "dependency cannot be the tested holder key");

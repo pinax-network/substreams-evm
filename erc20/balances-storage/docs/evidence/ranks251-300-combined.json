@@ -1,0 +1,36 @@
+{
+  "aggregate_emitted_zero_checks": 14871,
+  "all_balance_event_fields_equal": true,
+  "baseline_report_sha256": "3de386736ef044d4dd0b424e66ad06187f5be23bfd9a21e13d0eebf3cb462b15",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 13.532926890574458,
+    "empty_output_delivery": null,
+    "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+    "seconds_including_startup": 75.667297125
+  },
+  "configured_profiles": 279,
+  "elapsed_seconds": 196.979272791,
+  "events_sha256": "b8c9bae000361987cb86201f3640188ecff64efec033b998afc1cd865520c828",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 174900,
+  "initialized_carry_forward_matches": 68152,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "358bc4e2e872dcf69562ac3ad631aaf41a5581099da86e34a84d8121268083ee",
+  "profiles_with_emitted_rows": 278,
+  "reused_verified_rpc_rows": 106749,
+  "scope": "Fresh 279-profile actual-WASM capture. Full-field comparison with the verified 246-profile capture and 33 newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-279 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "a325cbbf1041d60f19100142315960c057dad3a542f81a675626a276b74b018e",
+      "cohort": "ranks251-300",
+      "events_sha256": "48c7fcfa173e500c199d6c42337542f4bf41daaf642425ae95fa958129c6db3b",
+      "holder_report_sha256": "9c8775919517c3d902a5e9ae171de498675db684b6e6be5ec1ce0ea601acb828",
+      "layouts_sha256": "63800852530e8e991c68e2be33e781d563a21f607b29b4cb2d58f4de01218afe",
+      "rpc_report_sha256": "5447d88be0976568122edf0ab758d9a96b476097431afab6dea877d5f7104cec"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}
