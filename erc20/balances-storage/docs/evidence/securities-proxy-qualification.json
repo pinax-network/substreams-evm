@@ -1,0 +1,1885 @@
+{
+  "beacon": {
+    "block": 122288005,
+    "contract": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+    "controls": [
+      {
+        "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "word": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "returned": "0x0000000000000000000000001111111111111111111111111111111111111111",
+        "word": "0x0000000000000000000000001111111111111111111111111111111111111111"
+      },
+      {
+        "returned": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff",
+        "word": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "getter_path": [
+      {
+        "op": "PUSH1",
+        "pc": 0
+      },
+      {
+        "op": "PUSH1",
+        "pc": 2
+      },
+      {
+        "op": "MSTORE",
+        "pc": 4
+      },
+      {
+        "op": "CALLVALUE",
+        "pc": 5
+      },
+      {
+        "op": "DUP1",
+        "pc": 6
+      },
+      {
+        "op": "ISZERO",
+        "pc": 7
+      },
+      {
+        "op": "PUSH2",
+        "pc": 8
+      },
+      {
+        "op": "JUMPI",
+        "pc": 11
+      },
+      {
+        "op": "JUMPDEST",
+        "pc": 15
+      },
+      {
+        "op": "POP",
+        "pc": 16
+      },
+      {
+        "op": "PUSH1",
+        "pc": 17
+      },
+      {
+        "op": "CALLDATASIZE",
+        "pc": 19
+      },
+      {
+        "op": "LT",
+        "pc": 20
+      },
+      {
+        "op": "PUSH2",
+        "pc": 21
+      },
+      {
+        "op": "JUMPI",
+        "pc": 24
+      },
+      {
+        "op": "PUSH0",
+        "pc": 25
+      },
+      {
+        "op": "CALLDATALOAD",
+        "pc": 26
+      },
+      {
+        "op": "PUSH1",
+        "pc": 27
+      },
+      {
+        "op": "SHR",
+        "pc": 29
+      },
+      {
+        "op": "DUP1",
+        "pc": 30
+      },
+      {
+        "op": "PUSH4",
+        "pc": 31
+      },
+      {
+        "op": "EQ",
+        "pc": 36
+      },
+      {
+        "op": "PUSH2",
+        "pc": 37
+      },
+      {
+        "op": "JUMPI",
+        "pc": 40
+      },
+      {
+        "op": "DUP1",
+        "pc": 41
+      },
+      {
+        "op": "PUSH4",
+        "pc": 42
+      },
+      {
+        "op": "EQ",
+        "pc": 47
+      },
+      {
+        "op": "PUSH2",
+        "pc": 48
+      },
+      {
+        "op": "JUMPI",
+        "pc": 51
+      },
+      {
+        "op": "JUMPDEST",
+        "pc": 110
+      },
+      {
+        "op": "PUSH1",
+        "pc": 111
+      },
+      {
+        "op": "SLOAD",
+        "pc": 113
+      },
+      {
+        "op": "PUSH1",
+        "pc": 114
+      },
+      {
+        "op": "PUSH1",
+        "pc": 116
+      },
+      {
+        "op": "PUSH1",
+        "pc": 118
+      },
+      {
+        "op": "SHL",
+        "pc": 120
+      },
+      {
+        "op": "SUB",
+        "pc": 121
+      },
+      {
+        "op": "AND",
+        "pc": 122
+      },
+      {
+        "op": "JUMPDEST",
+        "pc": 123
+      },
+      {
+        "op": "PUSH1",
+        "pc": 124
+      },
+      {
+        "op": "MLOAD",
+        "pc": 126
+      },
+      {
+        "op": "PUSH1",
+        "pc": 127
+      },
+      {
+        "op": "PUSH1",
+        "pc": 129
+      },
+      {
+        "op": "PUSH1",
+        "pc": 131
+      },
+      {
+        "op": "SHL",
+        "pc": 133
+      },
+      {
+        "op": "SUB",
+        "pc": 134
+      },
+      {
+        "op": "SWAP1",
+        "pc": 135
+      },
+      {
+        "op": "SWAP2",
+        "pc": 136
+      },
+      {
+        "op": "AND",
+        "pc": 137
+      },
+      {
+        "op": "DUP2",
+        "pc": 138
+      },
+      {
+        "op": "MSTORE",
+        "pc": 139
+      },
+      {
+        "op": "PUSH1",
+        "pc": 140
+      },
+      {
+        "op": "ADD",
+        "pc": 142
+      },
+      {
+        "op": "PUSH1",
+        "pc": 143
+      },
+      {
+        "op": "MLOAD",
+        "pc": 145
+      },
+      {
+        "op": "DUP1",
+        "pc": 146
+      },
+      {
+        "op": "SWAP2",
+        "pc": 147
+      },
+      {
+        "op": "SUB",
+        "pc": 148
+      },
+      {
+        "op": "SWAP1",
+        "pc": 149
+      },
+      {
+        "op": "RETURN",
+        "pc": 150
+      }
+    ],
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "qualification": "Reviewed getter bytecode, single-slot trace, read-only controls and runtime boundary checks",
+    "runtime": "0x608060405234801561000f575f80fd5b5060043610610055575f3560e01c80633659cfe6146100595780635c60da1b1461006e578063715018a6146100975780638da5cb5b1461009f578063f2fde38b146100af575b5f80fd5b61006c610067366004610221565b6100c2565b005b6001546001600160a01b03165b6040516001600160a01b03909116815260200160405180910390f35b61006c6100d6565b5f546001600160a01b031661007b565b61006c6100bd366004610221565b6100e9565b6100ca610128565b6100d381610154565b50565b6100de610128565b6100e75f6101d2565b565b6100f1610128565b6001600160a01b03811661011f57604051631e4fbdf760e01b81525f60048201526024015b60405180910390fd5b6100d3816101d2565b5f546001600160a01b031633146100e75760405163118cdaa760e01b8152336004820152602401610116565b806001600160a01b03163b5f036101895760405163211eb15960e21b81526001600160a01b0382166004820152602401610116565b600180546001600160a01b0319166001600160a01b0383169081179091556040517fbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b905f90a250565b5f80546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b5f60208284031215610231575f80fd5b81356001600160a01b0381168114610247575f80fd5b939250505056fea2646970667358221220c7e504b85d5e0bb6243182eefc4bbcd9df1b8fa67cce4b94ce8ea3ae718059e064736f6c63430008180033",
+    "source_verified": false,
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "pc": 113,
+        "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+      }
+    ],
+    "trace_sha256": "26322367b6f4f8af507f0e7d9c05d47a98d685f632edf745254f93187b9d6b19"
+  },
+  "dependency_boundaries": [
+    {
+      "compilation": null,
+      "contract": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+      "first_block": 122288005,
+      "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "last_block": 122289029,
+      "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "runtime_bytes": 644,
+      "runtime_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+      "runtime_match": null,
+      "source_bound": false,
+      "source_sha256": "60a2a64ad4bac9bd51244291fcf6e5548001cf6893d47979267b37d2830b14f2",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x156d6dce9a4f6139a3406f1f021f1a4880de93a3?fields=all",
+      "storage_layout": null
+    },
+    {
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "cancun",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+            "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "forge-std/=lib/forge-std/src/",
+            "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.24+commit.e11b9ed9",
+        "fullyQualifiedName": "src/SecuritiesToken.sol:SecuritiesToken",
+        "language": "Solidity",
+        "name": "SecuritiesToken"
+      },
+      "contract": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+      "first_block": 122288005,
+      "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "last_block": 122289029,
+      "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "runtime_bytes": 10836,
+      "runtime_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+      "runtime_match": "exact_match",
+      "source_bound": true,
+      "source_sha256": "fd44489fbc3e55ef5669b0a90246f32cd8b248079aa1cd58c5af2288a27daef2",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xcfed6c4679297ea4889f8183bc057b4a86c64e46?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 7951,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_uiMultiplier",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7953,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nextUiMultiplier",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7955,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nextUiMultiplierEffectiveAt",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8456,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)47_storage"
+          },
+          {
+            "astId": 8581,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "compliance",
+            "offset": 0,
+            "slot": "50",
+            "type": "t_contract(ICompliance)8731"
+          },
+          {
+            "astId": 8719,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 8753,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "pauseManager",
+            "offset": 0,
+            "slot": "100",
+            "type": "t_contract(IPauseManager)8742"
+          },
+          {
+            "astId": 8885,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 7242,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "mintEnabled",
+            "offset": 0,
+            "slot": "150",
+            "type": "t_bool"
+          },
+          {
+            "astId": 7245,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "burnEnabled",
+            "offset": 1,
+            "slot": "150",
+            "type": "t_bool"
+          },
+          {
+            "astId": 7248,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nameOverride",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7251,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_symbolOverride",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7254,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "identifier",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7906,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)46_storage"
+          }
+        ],
+        "types": {
+          "t_array(t_uint256)46_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[46]",
+            "numberOfBytes": "1472"
+          },
+          "t_array(t_uint256)47_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[47]",
+            "numberOfBytes": "1504"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(ICompliance)8731": {
+            "encoding": "inplace",
+            "label": "contract ICompliance",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IPauseManager)8742": {
+            "encoding": "inplace",
+            "label": "contract IPauseManager",
+            "numberOfBytes": "20"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    {
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "prague",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+            "forge-std/=lib/forge-std/src/",
+            "ds-test/=lib/forge-std/lib/ds-test/src/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.28+commit.7893614a",
+        "fullyQualifiedName": "src/StablecoinV2.sol:StablecoinV2",
+        "language": "Solidity",
+        "name": "StablecoinV2"
+      },
+      "contract": "0xbef21313c69c009fd7d9510a8d3a481a32473dfc",
+      "first_block": 122288005,
+      "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "last_block": 122289029,
+      "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "runtime_bytes": 12027,
+      "runtime_hash": "0x72a63adfb9af6944c694e1ecb76b566fd921a10ce98754f2f841a821ff8fb16f",
+      "runtime_match": "exact_match",
+      "source_bound": true,
+      "source_sha256": "8fc85ab9bf817855e3e3b1b2ba3d85d9516d47311a089f48d773f023899cacfd",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xbef21313c69c009fd7d9510a8d3a481a32473dfc?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 258,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 261,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1814,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 566,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 572,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 574,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 576,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_name",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 578,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1158,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "56",
+            "type": "t_array(t_uint256)45_storage"
+          },
+          {
+            "astId": 2434,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_HASHED_NAME",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 2436,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_HASHED_VERSION",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 2574,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 1288,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_nonces",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_mapping(t_address,t_struct(Counter)1821_storage)"
+          },
+          {
+            "astId": 1296,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 1452,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "155",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 116,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_address"
+          },
+          {
+            "astId": 236,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 25,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_pendingOwner",
+            "offset": 0,
+            "slot": "254",
+            "type": "t_address"
+          },
+          {
+            "astId": 104,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "255",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 441,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_paused",
+            "offset": 0,
+            "slot": "304",
+            "type": "t_bool"
+          },
+          {
+            "astId": 546,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "305",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 3628,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "frozen",
+            "offset": 0,
+            "slot": "354",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 3630,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "nonce",
+            "offset": 0,
+            "slot": "355",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 3632,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "chainId",
+            "offset": 0,
+            "slot": "356",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 3634,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "autoOwner",
+            "offset": 0,
+            "slot": "357",
+            "type": "t_address"
+          },
+          {
+            "astId": 3636,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "autoMintMaxLimit",
+            "offset": 0,
+            "slot": "358",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4206,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_authorizationStates",
+            "offset": 0,
+            "slot": "359",
+            "type": "t_mapping(t_address,t_mapping(t_bytes32,t_bool))"
+          },
+          {
+            "astId": 4208,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "eip7598EnableFlag",
+            "offset": 0,
+            "slot": "360",
+            "type": "t_bool"
+          },
+          {
+            "astId": 4607,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "361",
+            "type": "t_array(t_uint256)48_storage"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)45_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[45]",
+            "numberOfBytes": "1440"
+          },
+          "t_array(t_uint256)48_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[48]",
+            "numberOfBytes": "1536"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "encoding": "inplace",
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_bytes32,t_bool))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(bytes32 => bool))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_bytes32,t_bool)"
+          },
+          "t_mapping(t_address,t_struct(Counter)1821_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct CountersUpgradeable.Counter)",
+            "numberOfBytes": "32",
+            "value": "t_struct(Counter)1821_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1821_storage": {
+            "encoding": "inplace",
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "astId": 1820,
+                "contract": "src/StablecoinV2.sol:StablecoinV2",
+                "label": "_value",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  ],
+  "implementations": [
+    {
+      "address": "0x1111111111111111111111111111111111111111",
+      "balance_of": "0",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "cancun",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+            "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "forge-std/=lib/forge-std/src/",
+            "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.24+commit.e11b9ed9",
+        "fullyQualifiedName": "src/SecuritiesToken.sol:SecuritiesToken",
+        "language": "Solidity",
+        "name": "SecuritiesToken"
+      },
+      "contract": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+      "elapsed_seconds": 0.401772542,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+      "source_proxy_resolution": {
+        "implementations": [],
+        "isProxy": false,
+        "proxyType": null
+      },
+      "source_runtime_match": true,
+      "source_sha256": "fd44489fbc3e55ef5669b0a90246f32cd8b248079aa1cd58c5af2288a27daef2",
+      "source_storage_layout": {
+        "storage": [
+          {
+            "astId": 7951,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_uiMultiplier",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7953,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nextUiMultiplier",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7955,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nextUiMultiplierEffectiveAt",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 8456,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)47_storage"
+          },
+          {
+            "astId": 8581,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "compliance",
+            "offset": 0,
+            "slot": "50",
+            "type": "t_contract(ICompliance)8731"
+          },
+          {
+            "astId": 8719,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 8753,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "pauseManager",
+            "offset": 0,
+            "slot": "100",
+            "type": "t_contract(IPauseManager)8742"
+          },
+          {
+            "astId": 8885,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 7242,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "mintEnabled",
+            "offset": 0,
+            "slot": "150",
+            "type": "t_bool"
+          },
+          {
+            "astId": 7245,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "burnEnabled",
+            "offset": 1,
+            "slot": "150",
+            "type": "t_bool"
+          },
+          {
+            "astId": 7248,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_nameOverride",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7251,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "_symbolOverride",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7254,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "identifier",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 7906,
+            "contract": "src/SecuritiesToken.sol:SecuritiesToken",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_array(t_uint256)46_storage"
+          }
+        ],
+        "types": {
+          "t_array(t_uint256)46_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[46]",
+            "numberOfBytes": "1472"
+          },
+          "t_array(t_uint256)47_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[47]",
+            "numberOfBytes": "1504"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(ICompliance)8731": {
+            "encoding": "inplace",
+            "label": "contract ICompliance",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IPauseManager)8742": {
+            "encoding": "inplace",
+            "label": "contract IPauseManager",
+            "numberOfBytes": "20"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xcfed6c4679297ea4889f8183bc057b4a86c64e46?fields=all",
+      "status": "inspected",
+      "storage_key": "0x1d71aecb7d0688f097f24a3c9e2db1a4bcfddc6f627e76835baf8a6a2195e460",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x1d71aecb7d0688f097f24a3c9e2db1a4bcfddc6f627e76835baf8a6a2195e460",
+          "pc": 2317,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "81999363322092e75a52420dc4db005f42a453cb1c96bd265ec43d6e80871bd2"
+    },
+    {
+      "address": "0x1111111111111111111111111111111111111111",
+      "balance_of": "0",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288005,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "prague",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+            "forge-std/=lib/forge-std/src/",
+            "ds-test/=lib/forge-std/lib/ds-test/src/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.28+commit.7893614a",
+        "fullyQualifiedName": "src/StablecoinV2.sol:StablecoinV2",
+        "language": "Solidity",
+        "name": "StablecoinV2"
+      },
+      "contract": "0xbef21313c69c009fd7d9510a8d3a481a32473dfc",
+      "elapsed_seconds": 0.337551625,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x72a63adfb9af6944c694e1ecb76b566fd921a10ce98754f2f841a821ff8fb16f",
+      "source_proxy_resolution": {
+        "implementations": [],
+        "isProxy": false,
+        "proxyType": null
+      },
+      "source_runtime_match": true,
+      "source_sha256": "8fc85ab9bf817855e3e3b1b2ba3d85d9516d47311a089f48d773f023899cacfd",
+      "source_storage_layout": {
+        "storage": [
+          {
+            "astId": 258,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 261,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1814,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 566,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 572,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 574,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "53",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 576,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_name",
+            "offset": 0,
+            "slot": "54",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 578,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "55",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1158,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "56",
+            "type": "t_array(t_uint256)45_storage"
+          },
+          {
+            "astId": 2434,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_HASHED_NAME",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 2436,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_HASHED_VERSION",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 2574,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 1288,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_nonces",
+            "offset": 0,
+            "slot": "153",
+            "type": "t_mapping(t_address,t_struct(Counter)1821_storage)"
+          },
+          {
+            "astId": 1296,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+            "offset": 0,
+            "slot": "154",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 1452,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "155",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 116,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_address"
+          },
+          {
+            "astId": 236,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 25,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_pendingOwner",
+            "offset": 0,
+            "slot": "254",
+            "type": "t_address"
+          },
+          {
+            "astId": 104,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "255",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 441,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_paused",
+            "offset": 0,
+            "slot": "304",
+            "type": "t_bool"
+          },
+          {
+            "astId": 546,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "305",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 3628,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "frozen",
+            "offset": 0,
+            "slot": "354",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 3630,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "nonce",
+            "offset": 0,
+            "slot": "355",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 3632,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "chainId",
+            "offset": 0,
+            "slot": "356",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 3634,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "autoOwner",
+            "offset": 0,
+            "slot": "357",
+            "type": "t_address"
+          },
+          {
+            "astId": 3636,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "autoMintMaxLimit",
+            "offset": 0,
+            "slot": "358",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4206,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "_authorizationStates",
+            "offset": 0,
+            "slot": "359",
+            "type": "t_mapping(t_address,t_mapping(t_bytes32,t_bool))"
+          },
+          {
+            "astId": 4208,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "eip7598EnableFlag",
+            "offset": 0,
+            "slot": "360",
+            "type": "t_bool"
+          },
+          {
+            "astId": 4607,
+            "contract": "src/StablecoinV2.sol:StablecoinV2",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "361",
+            "type": "t_array(t_uint256)48_storage"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)45_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[45]",
+            "numberOfBytes": "1440"
+          },
+          "t_array(t_uint256)48_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[48]",
+            "numberOfBytes": "1536"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "encoding": "inplace",
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_bytes32,t_bool))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(bytes32 => bool))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_bytes32,t_bool)"
+          },
+          "t_mapping(t_address,t_struct(Counter)1821_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct CountersUpgradeable.Counter)",
+            "numberOfBytes": "32",
+            "value": "t_struct(Counter)1821_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1821_storage": {
+            "encoding": "inplace",
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "astId": 1820,
+                "contract": "src/StablecoinV2.sol:StablecoinV2",
+                "label": "_value",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xbef21313c69c009fd7d9510a8d3a481a32473dfc?fields=all",
+      "status": "inspected",
+      "storage_key": "0x8df201bd27f2966348a2a146b04f0d259c4e6d127bc13c15dc7ac7298c950197",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x8df201bd27f2966348a2a146b04f0d259c4e6d127bc13c15dc7ac7298c950197",
+          "pc": 1010,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "storage_word": "0",
+      "tool_language": "Rust",
+      "trace_sha256": "f0e6f820defb74c7f6e083eec9d0503b3d41fcf9f8a10744dd885d393924e4b6"
+    }
+  ],
+  "tokens": [
+    {
+      "address": "0xed1029bbaea4a2903993b43f24f52a36eca717b8",
+      "balance_of": "196704646216679684315",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288008,
+      "contract": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+      "elapsed_seconds": 0.346305542,
+      "equivalent_verified_shell": {
+        "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+        "embedded_beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "historical_bytes_equal": true,
+        "source_sha256": "9912056e3c783cc8d1817502aa4ee7fd1e53ec0fe33623bbb8dd94da01eacfe3"
+      },
+      "hash": "0x55e1f0bed43bd7fab9bb6d29ec6490cd48dcbbb214c1eb747e3333ca22e0dd93",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "semantic_controls": [
+        {
+          "balance_of": "123",
+          "balance_of_ui": "246",
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "selected_ui_multiplier": 2,
+          "state_override": {
+            "0x205812cdbed920aff76c6580abd681a46d11efc7": {
+              "stateDiff": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00000000000000000000000000000000000000000000000029a2241af62c0000",
+                "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000001bc16d674ec80000",
+                "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x05b7a3e469c0a1fdc4a2da8f15a675eef4e1294688c8035cff0855e969321e02": "0x000000000000000000000000000000000000000000000000000000000000007b"
+              }
+            }
+          }
+        },
+        {
+          "balance_of": "123",
+          "balance_of_ui": "369",
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "selected_ui_multiplier": 3,
+          "state_override": {
+            "0x205812cdbed920aff76c6580abd681a46d11efc7": {
+              "stateDiff": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00000000000000000000000000000000000000000000000029a2241af62c0000",
+                "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000001bc16d674ec80000",
+                "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "0x05b7a3e469c0a1fdc4a2da8f15a675eef4e1294688c8035cff0855e969321e02": "0x000000000000000000000000000000000000000000000000000000000000007b"
+              }
+            }
+          }
+        }
+      ],
+      "status": "inspected",
+      "storage_key": "0x05b7a3e469c0a1fdc4a2da8f15a675eef4e1294688c8035cff0855e969321e02",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0x05b7a3e469c0a1fdc4a2da8f15a675eef4e1294688c8035cff0855e969321e02",
+          "pc": 2317,
+          "value": "0x00000000000000000000000000000000000000000000000aa9d3498c5613f8db"
+        }
+      ],
+      "storage_word": "196704646216679684315",
+      "tool_language": "Rust",
+      "trace_sha256": "7686cb29450fb8f7e138963796f105d0f3103a1754203f73e658a5bba3f7bc3b"
+    },
+    {
+      "address": "0xd38e82b4701c38f022dd0a1086da8d5eaffa56bf",
+      "balance_of": "1",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288036,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "cancun",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+            "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "forge-std/=lib/forge-std/src/",
+            "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.24+commit.e11b9ed9",
+        "fullyQualifiedName": "lib/openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol:BeaconProxy",
+        "language": "Solidity",
+        "name": "BeaconProxy"
+      },
+      "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "elapsed_seconds": 0.332257083,
+      "equivalent_verified_shell": {
+        "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+        "embedded_beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "historical_bytes_equal": true,
+        "source_sha256": "9912056e3c783cc8d1817502aa4ee7fd1e53ec0fe33623bbb8dd94da01eacfe3"
+      },
+      "hash": "0xafb869b488efef61d20a28ed8b534fdbb51ad87320a72a398d08451222484d47",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "semantic_controls": [
+        {
+          "balance_of": "123",
+          "balance_of_ui": "246",
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "selected_ui_multiplier": 2,
+          "state_override": {
+            "0x02fca66c1d1afb4e2a7884261eb00f63598a7436": {
+              "stateDiff": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00000000000000000000000000000000000000000000000029a2241af62c0000",
+                "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000001bc16d674ec80000",
+                "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x0b78813b3e07f6ad8f39eb2cbca1ede593eaeb6dc5e8f648be382163b4f98e7f": "0x000000000000000000000000000000000000000000000000000000000000007b"
+              }
+            }
+          }
+        },
+        {
+          "balance_of": "123",
+          "balance_of_ui": "369",
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "selected_ui_multiplier": 3,
+          "state_override": {
+            "0x02fca66c1d1afb4e2a7884261eb00f63598a7436": {
+              "stateDiff": {
+                "0x0000000000000000000000000000000000000000000000000000000000000000": "0x00000000000000000000000000000000000000000000000029a2241af62c0000",
+                "0x0000000000000000000000000000000000000000000000000000000000000001": "0x0000000000000000000000000000000000000000000000001bc16d674ec80000",
+                "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "0x0b78813b3e07f6ad8f39eb2cbca1ede593eaeb6dc5e8f648be382163b4f98e7f": "0x000000000000000000000000000000000000000000000000000000000000007b"
+              }
+            }
+          }
+        }
+      ],
+      "source_proxy_resolution": {
+        "implementations": [
+          {
+            "address": "0xCFEd6c4679297ea4889F8183bC057B4A86C64e46",
+            "name": "SecuritiesToken"
+          }
+        ],
+        "isProxy": true,
+        "proxyType": "EIP1967Proxy"
+      },
+      "source_runtime_match": true,
+      "source_sha256": "9912056e3c783cc8d1817502aa4ee7fd1e53ec0fe33623bbb8dd94da01eacfe3",
+      "source_storage_layout": {
+        "storage": [],
+        "types": null
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x02fca66c1d1afb4e2a7884261eb00f63598a7436?fields=all",
+      "status": "inspected",
+      "storage_key": "0x0b78813b3e07f6ad8f39eb2cbca1ede593eaeb6dc5e8f648be382163b4f98e7f",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0x0b78813b3e07f6ad8f39eb2cbca1ede593eaeb6dc5e8f648be382163b4f98e7f",
+          "pc": 2317,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "storage_word": "1",
+      "tool_language": "Rust",
+      "trace_sha256": "842dece4fb72163c611a23bc0393a43102e13e98389a004792390c466f4fc56d"
+    },
+    {
+      "address": "0xbc1d9760bd6ca468ca9fb5ff2cfbeac35d86c973",
+      "balance_of": "2005522558197297930249",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288013,
+      "compilation": {
+        "compiler": "solc",
+        "compilerSettings": {
+          "evmVersion": "prague",
+          "metadata": {
+            "appendCBOR": true,
+            "bytecodeHash": "ipfs",
+            "useLiteralContent": false
+          },
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "remappings": [
+            "ds-test/=lib/forge-std/lib/ds-test/src/",
+            "forge-std/=lib/forge-std/src/",
+            "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+            "openzeppelin-contracts/=lib/openzeppelin-contracts/"
+          ],
+          "viaIR": false
+        },
+        "compilerVersion": "0.8.28+commit.7893614a",
+        "fullyQualifiedName": "lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:TransparentUpgradeableProxy",
+        "language": "Solidity",
+        "name": "TransparentUpgradeableProxy"
+      },
+      "contract": "0xce24439f2d9c6a2289f741120fe202248b666666",
+      "elapsed_seconds": 0.322344917,
+      "hash": "0xda2fc5c24b52a09047f0acef448513a14799fa1942c473753f94616a8f3afeaf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xae12b1d61f7ed4febf649ccf319cb49a0e921cca3739dcb01b47d316049d46ff",
+      "semantic_controls": [
+        {
+          "balance_of": "123",
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder_frozen": true,
+          "paused": true,
+          "state_override": {
+            "0xce24439f2d9c6a2289f741120fe202248b666666": {
+              "stateDiff": {
+                "0x0000000000000000000000000000000000000000000000000000000000000130": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "0x0d7930b5d0827315ab2c84ac618b42ccfa276dd5aa539d75db4468b5b5c21d6a": "0x000000000000000000000000000000000000000000000000000000000000007b",
+                "0xc6133cb4776410a1c9041038f82b3da465ac34921ee776e12b5bd175f42fdabb": "0x0000000000000000000000000000000000000000000000000000000000000001"
+              }
+            }
+          }
+        }
+      ],
+      "source_proxy_resolution": {
+        "implementations": [
+          {
+            "address": "0xbef21313C69c009fD7D9510A8d3A481a32473DFC",
+            "name": "StablecoinV2"
+          }
+        ],
+        "isProxy": true,
+        "proxyType": "EIP1967Proxy"
+      },
+      "source_runtime_match": true,
+      "source_sha256": "ecee913b9784f7bfc6a69a2d024c5f02a48e3c72318b6fce3d9c574dc8feb865",
+      "source_storage_layout": {
+        "storage": [],
+        "types": null
+      },
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xce24439f2d9c6a2289f741120fe202248b666666?fields=all",
+      "status": "inspected",
+      "storage_key": "0x0d7930b5d0827315ab2c84ac618b42ccfa276dd5aa539d75db4468b5b5c21d6a",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 772,
+          "value": "0x00000000000000000000000036124fa57e049846e9dc181c8caa31a3c5da4e9c"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 772,
+          "value": "0x000000000000000000000000bef21313c69c009fd7d9510a8d3a481a32473dfc"
+        },
+        {
+          "depth": 2,
+          "key": "0x0d7930b5d0827315ab2c84ac618b42ccfa276dd5aa539d75db4468b5b5c21d6a",
+          "pc": 1010,
+          "value": "0x00000000000000000000000000000000000000000000006cb8376cf76e9d6009"
+        }
+      ],
+      "storage_word": "2005522558197297930249",
+      "tool_language": "Rust",
+      "trace_sha256": "30ce974b49e28d2740096da435e06ae99da5b2eb0d75ad1604dd79f83718ca4c"
+    }
+  ]
+}

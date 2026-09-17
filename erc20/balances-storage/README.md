@@ -273,6 +273,13 @@ ProToken, AIN, SKYAI, PIEVERSE, BULLA and ARK. Their getters read direct balance
 mappings; transfer fees, permit nonces and minting roles are reviewed separately
 from those mappings. Unknown non-balance writes still fail.
 
+The [proxy-token follow-up](docs/securities-proxy-holder-coverage.md) adds two
+SecuritiesToken beacon proxies and a StablecoinV2 transparent proxy in
+`tests/fixtures/bsc-securities-proxy-layouts.json` (42 explicit test layouts).
+Namespaced balances remain raw even when a scheduled UI multiplier changes.
+Pause and freeze flags likewise do not transform the stablecoin's balance getter.
+Proxy, beacon and implementation identities are checked separately.
+
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
   --survey erc20/balances-storage/out/ranked-parity/report.json \

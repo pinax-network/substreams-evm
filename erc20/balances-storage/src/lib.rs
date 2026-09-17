@@ -333,4 +333,6 @@ mod computed_tests;
 #[cfg(test)]
 mod direct_source_tests;
 #[cfg(test)]
+mod securities_proxy_tests;
+#[cfg(test)]
 mod tests;
