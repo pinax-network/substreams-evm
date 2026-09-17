@@ -4,6 +4,12 @@ use substreams::errors::Error;
 use substreams_abis::dex::uniswap::v2::pair::events::Sync;
 use substreams_ethereum::{pb::eth::v2::Block, Event};
 
+// Sync(uint112,uint112), from the existing generated Uniswap V2 ABI.
+const SYNC: [u8; 32] = [
+    0x1c, 0x41, 0x1e, 0x9a, 0x96, 0xe0, 0x71, 0x24, 0x1c, 0x2f, 0x21, 0xf7, 0x72, 0x6b, 0x17, 0xae, 0x89, 0xe3, 0xca, 0xb4, 0xc7, 0x8b, 0xe5, 0x0e, 0x06, 0x2b,
+    0x03, 0xa9, 0xff, 0xfb, 0xba, 0xd1,
+];
+
 /// Collect complete-block closing reserve observations without interpreting
 /// token identities, decimal scaling, liquidity qualification or USD prices.
 pub(crate) fn extract(block: &Block) -> Result<pb::BlockPoolCloses, Error> {
@@ -34,25 +40,42 @@ pub(crate) fn extract(block: &Block) -> Result<pb::BlockPoolCloses, Error> {
             transaction.logs_with_calls().map(|(log, _)| log).collect()
         };
         for log in logs {
-            let Some(sync) = Sync::match_and_decode(log) else {
+            if log.topics.first().map(Vec::as_slice) != Some(SYNC.as_slice()) {
                 continue;
-            };
+            }
             if log.address.len() != 20 || !positions.insert(log.block_index) {
                 return Err(Error::msg("invalid or duplicate canonical log position"));
             }
-            if pools.get(&log.address).is_some_and(|old| old.block_log_index > log.block_index) {
-                continue;
+            // A matching topic is significant even when the generic decoder
+            // rejects its shape. Validate canonical uint112 ABI words before
+            // decoding; do not quietly carry a previous observation on failure.
+            let sync = if log.topics.len() == 1 && log.data.len() == 64 && log.data[..18].iter().all(|b| *b == 0) && log.data[32..50].iter().all(|b| *b == 0) {
+                Sync::match_and_decode(log)
+            } else {
+                None
+            };
+            let mut close = pb::PoolClose {
+                pool: log.address.clone(),
+                reserve0: sync.as_ref().map(|s| s.reserve0.to_string()).unwrap_or_default(),
+                reserve1: sync.as_ref().map(|s| s.reserve1.to_string()).unwrap_or_default(),
+                block_log_index: log.block_index,
+                ordinal: log.ordinal,
+                invalid: sync.is_none(),
+            };
+            if let Some(old) = pools.remove(&log.address) {
+                let invalid = old.invalid || close.invalid;
+                if old.block_log_index > close.block_log_index {
+                    close = old;
+                }
+                close.invalid = invalid;
             }
-            pools.insert(
-                log.address.clone(),
-                pb::PoolClose {
-                    pool: log.address.clone(),
-                    reserve0: sync.reserve0.to_string(),
-                    reserve1: sync.reserve1.to_string(),
-                    block_log_index: log.block_index,
-                    ordinal: log.ordinal,
-                },
-            );
+            // Invalidity is sticky for this pool/block, regardless of iteration
+            // order or a later well-formed Sync. Unrelated pools remain usable.
+            if close.invalid {
+                close.reserve0.clear();
+                close.reserve1.clear();
+            }
+            pools.insert(log.address.clone(), close);
         }
     }
     Ok(pb::BlockPoolCloses {
@@ -180,5 +203,34 @@ mod tests {
         let mut input = block(vec![]);
         input.transaction_traces[0].receipt = None;
         assert!(extract(&input).is_err());
+    }
+
+    #[test]
+    fn malformed_syncs_invalidate_only_the_affected_pool_and_remain_visible() {
+        for mutation in 0..6 {
+            let mut invalid = sync(1, 4, 1, 2);
+            match mutation {
+                0 => invalid.data.truncate(63),
+                1 => invalid.data.push(0),
+                2 => invalid.topics.push(vec![0; 32]),
+                3 => invalid.data[17] = 1, // uint112 overflow in reserve0
+                4 => invalid.data[49] = 1, // uint112 overflow in reserve1
+                _ => invalid.data[0] = 255,
+            }
+            for logs in [
+                vec![sync(1, 1, 5, 6), invalid.clone(), sync(1, 7, 8, 9), sync(2, 8, 10, 11)],
+                vec![sync(2, 8, 10, 11), sync(1, 7, 8, 9), invalid.clone(), sync(1, 1, 5, 6)],
+            ] {
+                let output = extract(&block(logs)).unwrap();
+                let bad = &output.pools[0];
+                assert!(bad.invalid, "accepted mutation {mutation}");
+                assert!(bad.reserve0.is_empty() && bad.reserve1.is_empty());
+                assert_eq!(bad.block_log_index, 7);
+                assert!(!output.pools[1].invalid);
+                assert_eq!(output.pools[1].reserve0, "10");
+            }
+            let output = extract(&block(vec![invalid])).unwrap();
+            assert!(output.pools[0].invalid);
+        }
     }
 }

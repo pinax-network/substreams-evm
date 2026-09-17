@@ -50,6 +50,7 @@ mod tests {
                 reserve1: "0".into(),
                 block_log_index: 1,
                 ordinal: 10,
+                invalid: false,
             }],
         };
         let v3 = v3::BlockPoolChanges {

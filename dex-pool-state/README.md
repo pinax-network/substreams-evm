@@ -6,7 +6,9 @@ ordered-change modules at the same Substreams block. Consumers receive both
 protocols before calculating any block-level result. Mismatched block identities
 or timestamps fail instead of joining unrelated observations.
 
-- `v2_pools` retains final successful Sync reserves, including zero reserves.
+- `v2_pools` retains final successful Sync reserves, including zero reserves. A
+  malformed matching Sync invalidates that pool for the block, with empty reserve
+  strings and `invalid: true`; consumers must discard its cached reserve state.
 - `v3_pools` retains all ordered Initialize, Swap, Mint, Burn and invalid markers.
 
 These protocol semantics remain distinct. V3 is not a standalone snapshot: it

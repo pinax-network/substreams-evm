@@ -159,6 +159,10 @@ pub struct PoolClose {
     pub block_log_index: u32,
     #[prost(uint64, tag="5")]
     pub ordinal: u64,
+    /// At least one matching Sync in this block had an invalid ABI shape or value.
+    /// Reserves are empty strings; consumers must invalidate cached pool state.
+    #[prost(bool, tag="6")]
+    pub invalid: bool,
 }
 /// Always emitted, including blocks without a matching Sync. Only pools updated
 /// in this block are listed; absence is not a zero reserve or a fresh observation.

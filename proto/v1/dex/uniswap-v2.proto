@@ -96,6 +96,9 @@ message PoolClose {
   string reserve1 = 3; // uint112
   uint32 block_log_index = 4;
   uint64 ordinal = 5;
+  // At least one matching Sync in this block had an invalid ABI shape or value.
+  // Reserves are empty strings; consumers must invalidate cached pool state.
+  bool invalid = 6;
 }
 
 // Always emitted, including blocks without a matching Sync. Only pools updated
