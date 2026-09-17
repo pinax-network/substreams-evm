@@ -1,0 +1,54 @@
+{
+  "before_deployment": 1,
+  "check_records": [
+    {
+      "classification": "before_deployment",
+      "current_code_empty": false,
+      "current_hash": "0x365484c428fb584eec1dd87d8d282b99ed9a731307e87f9beabcb1a5ab778b32",
+      "decoded": null,
+      "original": {
+        "address": "0xa73a98291ddbd087d0cd46f95ff83c090efbf950",
+        "block": 122288321,
+        "boundary": "before",
+        "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+        "hash": "0xebad57da3064ede5cf4b969d254808a4f46bc01f7617642440815092032656b7",
+        "holdout": false,
+        "match": false,
+        "projected": "0",
+        "rpc": null,
+        "rpc_response": {
+          "id": 0,
+          "jsonrpc": "2.0",
+          "result": "0x"
+        },
+        "storage": "0"
+      },
+      "parent_code_empty": true,
+      "response": {
+        "id": 0,
+        "jsonrpc": "2.0",
+        "result": "0x"
+      }
+    }
+  ],
+  "checks": 1,
+  "checks_sha256": "62eb4dc37e3e935435a86c60401b4708d4d8e736452680aa7940dce6f6f2cee5",
+  "elapsed_seconds": 0.716663708,
+  "original_checks_sha256": "7944cde9e3f033e26970b6d1d59e2f77c70981a1fbffb2a1b2b3eb3c7a0a0978",
+  "report_sha256": "d316c6dd74a749f17b8788127125e3c0b1b9604065c7dec34b16ff9525e66b10",
+  "resolved_matches": 0,
+  "scope": "Diagnosis of prior unresolved calls; absent predeployment balanceOf is never converted to zero or a passing value check",
+  "status": "inspected",
+  "tokens": {
+    "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e": {
+      "before_deployment": 1,
+      "checks": 1,
+      "resolved_matches": 0,
+      "unresolved": 0,
+      "value_mismatches": 0
+    }
+  },
+  "tool_language": "Rust",
+  "unresolved": 0,
+  "value_mismatches": 0
+}

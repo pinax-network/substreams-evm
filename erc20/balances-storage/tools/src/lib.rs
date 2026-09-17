@@ -15,6 +15,7 @@ pub mod recheck;
 pub mod rpc;
 pub mod survey;
 pub mod trace_context;
+pub mod ybc_rewards;
 
 #[cfg(test)]
 mod tests;

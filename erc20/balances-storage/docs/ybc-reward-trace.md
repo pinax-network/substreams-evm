@@ -75,10 +75,12 @@ No transaction is submitted and no mismatch is promoted to a direct layout.
 
 ## Remaining work
 
-The trace establishes an actual dependency path, not the complete reward
-formula. Qualification still needs all arithmetic and branch behavior,
-dependency-change guards, durable initialization and affected-holder output
-when rewards change without a raw balance write. The dependency source was
-unavailable in the earlier source lookup. BSC holder coverage must continue to
-exclude YBC until those requirements are met; this diagnostic adds no store or
-extra map module.
+The trace established the dependency path. The subsequent
+[host-only reward model](ybc-reward-model.md) now matches all 24 historical
+snapshots, explains the six raw-word mismatches and passes 30 read-only control
+cases, including expected reverts. The dependency source remains unavailable;
+the arithmetic review is bound to historical bytecode and tested controls.
+Qualification still needs dependency-change guards, durable initialization,
+untested branch coverage and affected-holder output when rewards change without
+a raw balance write. BSC holder coverage continues to exclude YBC; neither
+diagnostic adds a store or extra map module.

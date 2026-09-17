@@ -1,0 +1,2942 @@
+[
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "153"
+        ]
+      },
+      "reward": {
+        "values": [
+          "30",
+          "103"
+        ]
+      }
+    },
+    "name": "base",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "static_below_threshold",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "999999999",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "launch_in_future",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789591602",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "closed_cycle",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789591601",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "already_claimed",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "103",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "future_claim",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "104",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "zero_user_rate",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "0",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "zero_total_rate",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "0",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "0",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "0",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "0",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "153"
+        ]
+      },
+      "reward": {
+        "values": [
+          "30",
+          "103"
+        ]
+      }
+    },
+    "name": "carry_rates",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "0",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "0",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "143"
+        ]
+      },
+      "reward": {
+        "values": [
+          "20",
+          "103"
+        ]
+      }
+    },
+    "name": "skip_burn_rate_changes",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": true,
+          "reward": "103",
+          "total_rate": "99",
+          "user_rate": "98"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "0",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "184"
+        ]
+      },
+      "reward": {
+        "values": [
+          "61",
+          "103"
+        ]
+      }
+    },
+    "name": "missing_hourly_reward",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "246"
+        ]
+      },
+      "reward": {
+        "values": [
+          "123",
+          "103"
+        ]
+      }
+    },
+    "name": "preview_all_hours",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "zero_pool",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "0",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "zero_burn",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "0",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "burn_rounds_to_zero",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "pool_underflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "48000000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "pool_multiplication_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "0",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "reward_multiplication_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "sum_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "57896044618658097711785492504343953926634992332820282019728792003956564819968",
+          "total_rate": "1",
+          "user_rate": "1"
+        },
+        {
+          "no_burn": false,
+          "reward": "57896044618658097711785492504343953926634992332820282019728792003956564819968",
+          "total_rate": "1",
+          "user_rate": "1"
+        },
+        {
+          "no_burn": false,
+          "reward": "57896044618658097711785492504343953926634992332820282019728792003956564819968",
+          "total_rate": "1",
+          "user_rate": "1"
+        }
+      ],
+      "initial_total_rate": "1",
+      "initial_user_rate": "1",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "cap_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      }
+    },
+    "name": "cap_addition_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "138"
+        ]
+      },
+      "reward": {
+        "values": [
+          "15",
+          "103"
+        ]
+      }
+    },
+    "name": "cap_partial",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "3",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "10"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "cap_equal_claimed",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "13",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "10"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "cap_over_claimed",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "14",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "10"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000016494e53554646494349454e545f4c495155494449545900000000000000000000"
+      },
+      "reward": {
+        "revert_data": "0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000016494e53554646494349454e545f4c495155494449545900000000000000000000"
+      }
+    },
+    "name": "zero_reserves",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "0",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "123"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "103"
+        ]
+      }
+    },
+    "name": "zero_reward_zero_reserves",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "0",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "0",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "revert_data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011"
+      },
+      "reward": {
+        "values": [
+          "30",
+          "103"
+        ]
+      }
+    },
+    "name": "balance_overflow",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "2165"
+        ]
+      },
+      "reward": {
+        "values": [
+          "2042",
+          "340"
+        ]
+      }
+    },
+    "name": "240_hour_limit",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1787791601",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        ]
+      },
+      "reward": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "early_exit_skips_invalid_state",
+    "pool_token_order_reversed": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789591602",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "static_rate": "0",
+      "token_reserve": "11",
+      "wbnb_value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+    }
+  },
+  {
+    "expected": {
+      "balance": {
+        "values": [
+          "153"
+        ]
+      },
+      "reward": {
+        "values": [
+          "30",
+          "103"
+        ]
+      }
+    },
+    "name": "opposite_pool_token_order",
+    "pool_token_order_reversed": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "101",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "103",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "107",
+          "total_rate": "10000000000",
+          "user_rate": "1000000000"
+        }
+      ],
+      "initial_total_rate": "10000000000",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "100",
+      "launch_time": "1789220801",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "1000000",
+      "quote_reserve": "7",
+      "raw": "123",
+      "static_rate": "1000000000",
+      "token_reserve": "11",
+      "wbnb_value": "1000"
+    }
+  }
+]

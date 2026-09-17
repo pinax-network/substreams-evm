@@ -347,6 +347,11 @@ computed-balance candidates remain pending across the top 300; these figures
 do not claim global holders or all-token support. Earlier reports below retain
 their original cohort scopes.
 
+The [ranks 301–350 investigation](docs/ranks301-350-investigation.md) adds 2,106
+successful exploratory RPC value checks with no value mismatches. These 50
+candidates remain outside the qualified fixture pending complete storage-rule
+review and packaged holder audits.
+
 `tests/fixtures/bsc-reviewed-layouts.json` explicitly configures BSC USDT, BTCB,
 USDC (pinned implementation), and the existing WBNB control. The file is not a
 default. See [expanded qualification and holder coverage](docs/holder-coverage.md)
@@ -502,6 +507,9 @@ also works with `inspect-ranked`; compact traces cannot recover mapping
 preimages from memory. Successful word controls remain recorded if a later
 control reverts. The [YBC diagnostic](docs/ybc-reward-trace.md) recovers a real
 reward-bearing trace and preserves its expected maximal-word overflow.
+The subsequent [YBC arithmetic model](docs/ybc-reward-model.md) explains all six
+known raw-word mismatches, with 24 historical snapshots and 30 read-only control
+cases retained as Rust fixtures. YBC remains outside production qualification.
 
 For a project-published deployment artifact, use `--deployment-artifact <json>`
 with `--artifact-url <immutable-source-url>` instead of `--source`. The tool binds

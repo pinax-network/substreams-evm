@@ -1,0 +1,83 @@
+{
+  "arithmetic_trace_sha256": "ab4b10525c6fd51ae0886dac88d6ed931f933a1b43fdcf46c56776cfc84a7c13",
+  "control_block": 122288005,
+  "control_cases": 30,
+  "control_getter_calls": 60,
+  "control_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "control_reverts": 17,
+  "controls_fixture_sha256": "241ed0f223f2dcbab06e6b989f10a0544269cc1d23fff9b71a7f26df202fadd4",
+  "controls_report_sha256": "5782fbe68e9ae5e5d01b3dc8c3599aa49a03ac630cbb4ff2edc565909b29a383",
+  "dependency_metadata_attempt": {
+    "metadata_cbor": "a26469706673582212200438bfb44e9710a38f1bafaba691be3275b8c5edeba02153b975a2bbc7e9657964736f6c634300081a",
+    "metadata_cid": "QmNd8XeoUFnXiJmoKftzaq5Lo9iiQkapnznHjRYFhiKDZi",
+    "responses": [
+      {
+        "result": {
+          "content_bound": false,
+          "file": "erc20/balances-storage/out/ybc-metadata-gateways/response-0.txt",
+          "sha256": "d9aad0b885f751e7e2969ffe60569ade69fd8ba53799165b4d25a21830d9c2a5",
+          "status": 429
+        },
+        "url": "https://ipfs.io/ipfs/QmNd8XeoUFnXiJmoKftzaq5Lo9iiQkapnznHjRYFhiKDZi"
+      },
+      {
+        "result": {
+          "content_bound": false,
+          "file": "erc20/balances-storage/out/ybc-metadata-gateways/response-1.txt",
+          "sha256": "d9aad0b885f751e7e2969ffe60569ade69fd8ba53799165b4d25a21830d9c2a5",
+          "status": 429
+        },
+        "url": "https://dweb.link/ipfs/QmNd8XeoUFnXiJmoKftzaq5Lo9iiQkapnznHjRYFhiKDZi"
+      },
+      {
+        "result": {
+          "error": "https://ipfs.filebase.io/ipfs/QmNd8XeoUFnXiJmoKftzaq5Lo9iiQkapnznHjRYFhiKDZi: Network Error: Network Error: Error encountered in the status line: timed out reading response"
+        },
+        "url": "https://ipfs.filebase.io/ipfs/QmNd8XeoUFnXiJmoKftzaq5Lo9iiQkapnznHjRYFhiKDZi"
+      }
+    ],
+    "source_qualified": false,
+    "status": "inspected"
+  },
+  "dependency_runtime_hex_sha256": "a30f66370bfad215644ea6e34e743eab6d530a7be55f6b296a1095918782bf2e",
+  "historical_boundaries": [
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "storage_reads": 1705,
+      "storage_sha256": "832529828c0618dfe18bd2bba6ef9705b27a01a231c8bd2d0e28c21a3f35d37b",
+      "timestamp": "1789591601"
+    },
+    {
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "storage_reads": 1705,
+      "storage_sha256": "8497b145bb57f5721a0ee3c0a8c0011b4d0f28616b96e5890c522bdd6f362fef",
+      "timestamp": "1789592062"
+    }
+  ],
+  "historical_fixture_sha256": "62a2b7b034d931d2b29ab3ce94a51e1c50c1dd139efe7a46f1f78d4aa148af8b",
+  "historical_getter_calls": 48,
+  "historical_report_sha256": "6e4f06c35e9bfd8d9f72f98911d7b58b3702b6fb17f6def607613b349f418ab4",
+  "historical_snapshots": 24,
+  "historical_storage_reads": 3410,
+  "qualified": false,
+  "raw_word_mismatches_explained": 6,
+  "runtimes": [
+    {
+      "address": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "hash": "0x0b81e9dd6c0529eb50a2f0437da20126cbaf40f6c79c4973fe1c44ee95ba7128"
+    },
+    {
+      "address": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+      "hash": "0xb3d6938e8c9477247d16e146b97c511d1c0c232b3b76394f204a31d239b38c1f"
+    },
+    {
+      "address": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+      "hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8"
+    }
+  ],
+  "scope": "Host-only reward arithmetic from independently read storage, with fresh canonical balance/reward RPC expectations. No production layout, per-block replay, durable holder state or enumeration. Pool recursion is excluded by checking that the pool holder has a below-threshold static rate. No expected RPC value initializes state.",
+  "status": "bounded_arithmetic_model",
+  "token_source_sha256": "5edd2d1462a99b23fc8208f38d42a400bdb36e98caeadca85785a82b46f976df"
+}

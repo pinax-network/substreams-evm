@@ -1,0 +1,6776 @@
+[
+  {
+    "block": 122288005,
+    "expected_balance": "322374394416956181048437706",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x000000000000000000000000000000000000dead",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "322374394416956181048437706",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "1000000000",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x07964f135f276412b3182a3b2407b8dd45000000",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "1000000000",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "12056986387307456933174",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "12056986387307456933174",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "0",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "0",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "12059327966975017973509",
+    "expected_reward": "12059327966974017973509",
+    "expected_stopping_hour": "1935",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "11632410277079843262113",
+          "total_rate": "2301129679004",
+          "user_rate": "10000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "11625591946989165829890",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11618325952022297601246",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11613875965320047516878",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11606617292841722487180",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11599363157033696410626",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11592113555060550350370",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11584868484088637506400",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11577627941286082107959",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11570391923822778306642",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11563160428870389070200",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11555933453602345077031",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11555475100575457389982",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11548252928637597729114",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11541035270557199230533",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11533822123513100981014",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11526613484685905292900",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11519409351257976602092",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11512209720413440366716",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11505014589338181966487",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11497823955219845602758",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11490637815247833199256",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11483786358765005980412",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11476608992290777851674",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11469436111670596115517",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11462267714100801992945",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11460274941461419477090",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11463109403234142647906",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11690270925488283824919",
+          "total_rate": "2301129679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11633842333291356284648",
+          "total_rate": "2284159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11631538837553285646635",
+          "total_rate": "2284159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11613275550495545760779",
+          "total_rate": "2279159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11606017253276486044678",
+          "total_rate": "2279159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11598952327597632308684",
+          "total_rate": "2279159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11591702982392883788491",
+          "total_rate": "2279159679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11570817718036593266485",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11563832444120783512096",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11556605048843208022400",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11549382170687681017386",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11542585974060408379251",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11535371857826620624014",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11528162250415478986124",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11520957149008969311758",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11513756550790838705938",
+          "total_rate": "2274119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11408503736913443292792",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11401373422077872390734",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11394247563689073720490",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11387126158961768049414",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11380396225634612547362",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11374293741648067224678",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11372529251876046127310",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11365705951963368012972",
+          "total_rate": "2244119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11388364866615972878815",
+          "total_rate": "2249119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11407945191822145330566",
+          "total_rate": "2249119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11410666395753272985816",
+          "total_rate": "2251119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11418550570051912661444",
+          "total_rate": "2255119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11434369578753875357942",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11427223097767154185843",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11420328131382154015025",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11414408628504492546505",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11408004330932915350890",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11400874328226082278796",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11393748781770940977371",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11386627688782334139260",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11379511046476845180424",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11372398852072797152186",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11365291102790251653966",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11358187795851007746682",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11351088928478600866840",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11343994497898301741298",
+          "total_rate": "2257119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11304675546772119318559",
+          "total_rate": "2247119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11298230184273802650753",
+          "total_rate": "2247119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11291168790408631524096",
+          "total_rate": "2247119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11284111809914626129394",
+          "total_rate": "2247119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11277059240033429488063",
+          "total_rate": "2247119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11246808070652278576100",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11239778815608120901990",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11241253540031987758390",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11244800295729322112246",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11262738925064961871321",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11255699713236796270152",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11291303995292309692863",
+          "total_rate": "2237119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11291409455745845391008",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11284739561876841481945",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11287906232599250738405",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11280851291203876206694",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11276287728275256513662",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11269240048445084478342",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11262196773414806300542",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11255157900431422046604",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11248123426743652407826",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11241093349601937625070",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11234067666258436414055",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11227046373967024891296",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11220029469983295500739",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11226322839060431615384",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11219306387286018845625",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11319138897579216273548",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11401587635520940660122",
+          "total_rate": "2236119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11433054737797059510048",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11434132405758716697632",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11458963674997862168678",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11453435310109973429021",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11458141461955276504966",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11456988187700984595400",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11449827570083671480028",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11444734178435917894017",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11490828845210502786762",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11483647077182246222520",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11515830733321409549676",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11508633339113083668708",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11501440443276137991414",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11494252042999090405170",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11487068135472215973667",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11479888717887545838683",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11472713787438866122534",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11471048599899885713598",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11464228328281958658666",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11461365242840032549224",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11457336181957638211804",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11450175346843914687921",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11443018987252137241241",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11435867100385104655466",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11428719683447363965056",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11423610441686190694263",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11416470685160136825080",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11415764965765255734626",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11408630112661652449792",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11401499718841238917011",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11395320972742869116341",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11388198897134904823143",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11382407699046857830582",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11375655089904699423486",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11368545305473508986346",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11361439964657588043230",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11361178905798041398198",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11358383771418848562988",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11351284781561711782636",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11344190228573235712772",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11337651699902272427951",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11330565667589833507684",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11323813475845476754410",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11316736092423073331438",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11309663132365308910606",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11302594592907580592536",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11302095580298316508994",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11323456533983221130158",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11316379373649481616951",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11312647336284027925438",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11310787145749150219938",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11303717903783057001051",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11301507089344377495677",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11294443647413537259742",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11287384620133903798955",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11281819877420512555097",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11279652213655959390880",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11283447000240227705781",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11276394845865077563465",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11273491796119237565661",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11266445863746663042182",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11259404335081821377781",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11252367207372395239420",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11245334477867787492395",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11238306143819120125212",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11231282202479233175134",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11224947917996113434446",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11217932325547365863549",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11215328518380914685016",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11208741212240818458881",
+          "total_rate": "2238119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11199786831119547892521",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11192786964350098175088",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11186464979068649589440",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11179473438456731683447",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11180265917957530783687",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11173278251758807326948",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11169619726368544763093",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11162638714039564422616",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11155662064843289694852",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11156647589451255695475",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11150333364776937188716",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11143364406423951602974",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11136399803669936633222",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11129439553792642922826",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11122483654071522520999",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11115532101787727819424",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11108584894224110489536",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11101642028665220420480",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11094703502397304657718",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11087769312708306342306",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11080839456887863650842",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11074132021521425174341",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11067210689007974283607",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11060293682327344299680",
+          "total_rate": "2233119679004",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11078307832765617602794",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11075487838330146710326",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11068565658431190368632",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11061647804894670874652",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11054734275016611705355",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11048872688763148006474",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11041967143332671038970",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11065192268636638450031",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11058276523468740551000",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11051365100641572588155",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11048366442666305891586",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11044195746129859761796",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11038726212348152277875",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11036236462501298767725",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11029338814712235455995",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11022445477953040308835",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11015556449529319658642",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11008671726748363833856",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "11001791306919146106459",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10994915187352321640143",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10988043365360226439118",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10981175838256876297593",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10975912825432340688714",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10975241567643764797895",
+          "total_rate": "2232814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10965897428363411583618",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10959556721991818099982",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10952706999040573213669",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10947311557166172855411",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10947545869402887707914",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10940703653234510903097",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10933865713451239333782",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10927032047380332309199",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10934577411545748891783",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10927743300663532798726",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10920913461100618090726",
+          "total_rate": "2224814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10921874200967933511603",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10915048029592328553158",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10908226124573833347812",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10901408483245974701970",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10894595102943945967781",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10887785981004606001552",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10880981114766478122800",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10874180501569749073974",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10867384138756267980802",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10860592023669545313314",
+          "total_rate": "2223814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10817827616073192459928",
+          "total_rate": "2210814495973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "10815106536313146714640",
+          "total_rate": "2210814495973",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "2301129679004",
+      "initial_user_rate": "10000000000",
+      "last_cycle": "1695",
+      "launch_time": "1773486000",
+      "lp_reward": "172962704259001056",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "1000000000",
+      "static_rate": "10000000000",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "1000000000000000000"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "10966237593610454011852931",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "10966237593610454011852931",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "1000000000",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "1000000000",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "1111241123578888916974",
+    "expected_reward": "325203260438103769058",
+    "expected_stopping_hour": "4473",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x7e617482ca59fa977926e2930bc598ff1f969394",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "4738895443949710712365",
+          "total_rate": "1931640457982",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735933634297242143170",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735691432600549296832",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4733069645601502356175",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4730938254055197153727",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4731759718908359016154",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4728965245030979527616",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4726009641752835165411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4723261367815728487926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4720309329460843657621",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717359136129930630335",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717488550421642008877",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4714540120077628482622",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4711593532502579964820",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4708648786544765852342",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4705705881053175373684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4703006492105693943830",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4700067113048127885115",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4697129571102472805187",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4694193865120533759684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4691259993954833426084",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4689062175482846868886",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4686376949541310239901",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4683846695205028708390",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4688380645108216584876",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4685450407205023949510",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4682522000700520809542",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4679595424450082984036",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4676670677309801682171",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673747758136483056120",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670826665787647754210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667907399121530474363",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4665919113776594071666",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4663002914330483700371",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670411074286782903315",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673573398282184702106",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670652414908258336668",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667733257148940675207",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4664815923863222587285",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4661900413910808073168",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4658986726152113818122",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4656074859448268746986",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4653164812661113579019",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4650256584653200383032",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647350174287792132793",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647213732720299139573",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4646469968483498485153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4643565924753196298600",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4640969606868590408766",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4638069000864297539760",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4635170207738757353798",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4632273226358920630452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4629378055592446305058",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4626484694307701026118",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4623593141373758712976",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620703395660400113780",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620004617606277397362",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4618124327962248147002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4615238000257271741910",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4612353476507110947072",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611431764768381204612",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608549619915400966360",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605669276402953840756",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602790733105201994605",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599913988897011243358",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597039042653950611332",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596546461873830642152",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593873697611158694625",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591507705258879511043",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611292829727655704395",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608578163850458725930",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605697802498052189226",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602819241371490906608",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599942479345633724791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597067515296042703713",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4594194348098982677023",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591322976631420812850",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588453399771026174842",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585585616396169283483",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4582719625385921677681",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4589987161045043605288",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588190263159964439704",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590114663576041408926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4587245841911306383046",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4584378813260111816556",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581513576501824246671",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602483418016510606517",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599606865880250287388",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596732111589075130958",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593859154019331959001",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590987992048069876527",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588118624553039832854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588001743493188071627",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585134242403504829082",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4583989218961798464452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581124225699947340411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4578261023058884873324",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4575399609919473070278",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4572539985163273399609",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4569682147672546353734",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4570136293032105561764",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4567734544141684622643",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4564879710051596069754",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4562026660232813822210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4559175393570168313572",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4556325908949186958376",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553478205256093716526",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553514819774650983626",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4551038623012291826761",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4548194223872909144370",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4545351602482988576154",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542510757731436708294",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4539671688507854560352",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4536834393702537151252",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4533998872206473065532",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531165122911344019866",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528333144709524429854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4532623370058011736050",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4529790480451725478716",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4547034973901442787791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4544193077042754386049",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542281318869602664558",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4540166668045309150392",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4537329063877780832173",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4534493233212857219153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531659174942099183391",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528826887957760371402",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4525996371152786771170",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4523167623420816279438",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4520340643656178269263",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4527318753194378654012",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546561253833436178002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4554750194565425789104",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4552298204430732116803",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4549453018052962909230",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546609609916679807412",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "1931640457982",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "4337",
+      "launch_time": "1773486000",
+      "lp_reward": "109923116155921767",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "786037863140785147916",
+      "static_rate": "1000000000",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "100000000000000000"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "1017205416618942253436",
+    "expected_reward": "325203260438103769058",
+    "expected_stopping_hour": "4473",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x836110414c4c5ef3405498cc470dfa672bb63225",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "4738895443949710712365",
+          "total_rate": "1931640457982",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735933634297242143170",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735691432600549296832",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4733069645601502356175",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4730938254055197153727",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4731759718908359016154",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4728965245030979527616",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4726009641752835165411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4723261367815728487926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4720309329460843657621",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717359136129930630335",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717488550421642008877",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4714540120077628482622",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4711593532502579964820",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4708648786544765852342",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4705705881053175373684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4703006492105693943830",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4700067113048127885115",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4697129571102472805187",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4694193865120533759684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4691259993954833426084",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4689062175482846868886",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4686376949541310239901",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4683846695205028708390",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4688380645108216584876",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4685450407205023949510",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4682522000700520809542",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4679595424450082984036",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4676670677309801682171",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673747758136483056120",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670826665787647754210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667907399121530474363",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4665919113776594071666",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4663002914330483700371",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670411074286782903315",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673573398282184702106",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670652414908258336668",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667733257148940675207",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4664815923863222587285",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4661900413910808073168",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4658986726152113818122",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4656074859448268746986",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4653164812661113579019",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4650256584653200383032",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647350174287792132793",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647213732720299139573",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4646469968483498485153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4643565924753196298600",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4640969606868590408766",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4638069000864297539760",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4635170207738757353798",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4632273226358920630452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4629378055592446305058",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4626484694307701026118",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4623593141373758712976",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620703395660400113780",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620004617606277397362",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4618124327962248147002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4615238000257271741910",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4612353476507110947072",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611431764768381204612",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608549619915400966360",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605669276402953840756",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602790733105201994605",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599913988897011243358",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597039042653950611332",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596546461873830642152",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593873697611158694625",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591507705258879511043",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611292829727655704395",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608578163850458725930",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605697802498052189226",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602819241371490906608",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599942479345633724791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597067515296042703713",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4594194348098982677023",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591322976631420812850",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588453399771026174842",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585585616396169283483",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4582719625385921677681",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4589987161045043605288",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588190263159964439704",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590114663576041408926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4587245841911306383046",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4584378813260111816556",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581513576501824246671",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602483418016510606517",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599606865880250287388",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596732111589075130958",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593859154019331959001",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590987992048069876527",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588118624553039832854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588001743493188071627",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585134242403504829082",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4583989218961798464452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581124225699947340411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4578261023058884873324",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4575399609919473070278",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4572539985163273399609",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4569682147672546353734",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4570136293032105561764",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4567734544141684622643",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4564879710051596069754",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4562026660232813822210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4559175393570168313572",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4556325908949186958376",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553478205256093716526",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553514819774650983626",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4551038623012291826761",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4548194223872909144370",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4545351602482988576154",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542510757731436708294",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4539671688507854560352",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4536834393702537151252",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4533998872206473065532",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531165122911344019866",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528333144709524429854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4532623370058011736050",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4529790480451725478716",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4547034973901442787791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4544193077042754386049",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542281318869602664558",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4540166668045309150392",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4537329063877780832173",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4534493233212857219153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531659174942099183391",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528826887957760371402",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4525996371152786771170",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4523167623420816279438",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4520340643656178269263",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4527318753194378654012",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546561253833436178002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4554750194565425789104",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4552298204430732116803",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4549453018052962909230",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546609609916679807412",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "1931640457982",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "4337",
+      "launch_time": "1773486000",
+      "lp_reward": "53621302892341667",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "692002156180838484378",
+      "static_rate": "1000000000",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "100000000000000000"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "0",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0x88df55cb2ab40260da7beaae21d5d5e9af4a4427",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "0",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "2943539561865330352006",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "2943539561865330352006",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122288005,
+    "expected_balance": "23237997572272938536305138",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "holder": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789591601",
+      "pool_balance": "10966237593610454011852931",
+      "quote_reserve": "27521669721348810869",
+      "raw": "23237997572272938536305138",
+      "static_rate": "0",
+      "token_reserve": "10966237593610454011852931",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "322404460810095498720766414",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x000000000000000000000000000000000000dead",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "322404460810095498720766414",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "1000000000",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x07964f135f276412b3182a3b2407b8dd45000000",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "1000000000",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "12241179116355898503492",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "12241179116355898503492",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "0",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "0",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "8071375754606938065052",
+    "expected_reward": "8071375754605938065052",
+    "expected_stopping_hour": "3375",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "7002735890430374600774",
+          "total_rate": "2068784643973",
+          "user_rate": "10000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "6998359180498855616648",
+          "total_rate": "2068784643973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6994596381011043831888",
+          "total_rate": "2068784643973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6990224758272911929493",
+          "total_rate": "2068784643973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6988196720936828148226",
+          "total_rate": "2068784643973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6983989933736394484954",
+          "total_rate": "2068784643973",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6979544965583177883616",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6976752818816524144738",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6972392348304763817148",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6970630103087073339762",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6966273459272643918925",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6962022185775015078924",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6960450720295332021923",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6956100438595147439409",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6951752875821025472260",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6947408030273637331340",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6943065900254716308008",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6938726484067057110315",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6934389780014515199621",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6930055786402006127621",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6932266615601652495167",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6927933948966901462357",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6923603990248797148943",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6921551052426413058440",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6960808483538714236052",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6956457978236502539654",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6952110192000104725567",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6948801517930359266609",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6944458516981652792068",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6940118230408539259072",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6935780656514533922036",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6931445793604212338334",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6927113639983209705623",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6922784193958220199557",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6919365814537962327172",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6915041210903876100718",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6911487466655812818724",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6907167786989152935712",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6918469881344568578003",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6914145837668728222642",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6915910205919029222154",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6911587762040329828890",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6907268019689054622747",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6902950977176748963608",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6898636632816013495506",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6894324984920503487071",
+          "total_rate": "2059238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6873960254192186720608",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6869834948446458094259",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6865541301603679057950",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6861250338290176758539",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6856962056828745398065",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6867086555543227432191",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6867328040003882260528",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6863035959978879834116",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6858746562503893034219",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6870102318211773526060",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6865808504262891167606",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6861517373947726860627",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6857848880312195437685",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6853562724762000315536",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6849279248059024065339",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6844998448528987175298",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6840720324498656558314",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6836444874295844897965",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6832172096249409994904",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6827901988689254113657",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6823634549946323329836",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6819369778352606877754",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6817582651875926684848",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6813321662718504230670",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6809063336679305165526",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6804807672093880599797",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6800745744259215480996",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6796495278169053471321",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6792247468620197812902",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6788002313952310189268",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6783759812506089995400",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6781033098035629808864",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6779425986899452750704",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6775188845657640592734",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6774551440129104567364",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6824692345479023877009",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6820426912763099487086",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6822961688246979826081",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6819315725446547672658",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6818126432167554848455",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6835600126964281457506",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6831327876884928781595",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6827058296961875701106",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6822791385526274528793",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6818527140910320607212",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6814265561447251656833",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6810006645471347124548",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6805750391317927532595",
+          "total_rate": "2049238613034",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6801472933914857275758",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6797222013331160489961",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6792973749572828514655",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6788728140979345496833",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6784485185891233405898",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6780244882650051385019",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6776007229598395102904",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6771772225079896105964",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6767569897670184239963",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6763340166484140374813",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6762158557912890879912",
+          "total_rate": "2049219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6758567863014546022814",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6754961370478906541712",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6751127980008578728014",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6746908525021073366310",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6742691707192935195456",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6738984860353861348458",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6734772994816140185116",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6730563761694380097500",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6726357159343321109939",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6722153186118731534246",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6717951840377407327036",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6713753120477171447457",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6709557024776873215302",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6705363551636387669543",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6701172699416614927250",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6702732275214443525873",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6700134750423234871976",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6695947166204220350181",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6691762199225342712462",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6687579847850826873267",
+          "total_rate": "2039219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6691247984155001593093",
+          "total_rate": "2036219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6701547291441249782433",
+          "total_rate": "2036219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6710408672800390989694",
+          "total_rate": "2029219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6747501034027897903819",
+          "total_rate": "2018219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6772906081858166865575",
+          "total_rate": "2004219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6812685265375382247819",
+          "total_rate": "1988219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6815143444552852540592",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6810883979900007007754",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6812446221006883468440",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6867320990245150406464",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6863028914626247187460",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6858739521554605782968",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6854452809353634154354",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6850168776347788133008",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6849554200893942157437",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6845273229518383443589",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6840994933749934453936",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6841703741447910040533",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6839256705757527828872",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6842966329877396646048",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6838689475921223273144",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6834415294998772508598",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6830143785439398275780",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6825874945573498651858",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6821608773732515215200",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6821192415023687318745",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6816929169764297514170",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6812668589033194828224",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6811418195798725242585",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6807161059426351039308",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6802906583764209569909",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6801370970032377365010",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6797120113176107129156",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6792871913105372062201",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6788626368159681204662",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6784383476679581403909",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6780143237006656665532",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6775905647483527505116",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6780409033372561316387",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6776242107931145380812",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6772006956613688414949",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6768382140123450259125",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6764267189748477474848",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6760039522754884676426",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6755814498053162873503",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6751592113991879646707",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6747372368920634721928",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6743991618094616081691",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6743254454556890478549",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6740502998761991863731",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6736290184387765618816",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6783104406106802911044",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6786301213383800533820",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6788166276910695704590",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6783923672987626519775",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6779683720692009253200",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6775446418366576747417",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6771211764355097636950",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6766979757002375700926",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6769332735612223042121",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6765101902652465402720",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6760873713963307611843",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6759026522494039579550",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6754802130917480804813",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6750580379585657379310",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6746361266848416343448",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6742174320255830492234",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6737960461305670598176",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6734667638909859134671",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6730643515263791050118",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6726436863066751180712",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6722232840027334461224",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6718031444502317377185",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6713832674849503428824",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6709636529427722489182",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6705443006596830162626",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6704436974081745644789",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6703196577189107671297",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6700005766828364479002",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6695818263224096751203",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6691633376809581690734",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6687451105949075702176",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6686217677073546259408",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6682038791025375292996",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6677862516780984433437",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6673688852707996318166",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6669517797175053820468",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6665605636051819411830",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6661679200196338274935",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6657515650696215563514",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6653354703414530428786",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6649226826122535047470",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6645071059356208463066",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6640917889944110832776",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6653218866931779856616",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6649869342639947494206",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6645713174300797527022",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6666955944150016830502",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6671791805671179541510",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6667621935792635054296",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6663454672082764657387",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6659290012912712929476",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6655127956654642483896",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6650968501681733332343",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6647183786052647972692",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6643029296186365067709",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6638877402876248589542",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6634728104499450934174",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6630581399434138777340",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6626437286059492440604",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6622295762755705257828",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6618156827903982942042",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6614020479886542952704",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6609886717086613863358",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "6605755537888434729694",
+          "total_rate": "1986219581954",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "2068784643973",
+      "initial_user_rate": "10000000000",
+      "last_cycle": "3135",
+      "launch_time": "1773486000",
+      "lp_reward": "326415465565117426",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "1000000000",
+      "static_rate": "10000000000",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "1000000000000000000"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "11021329638870637485535908",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "11021329638870637485535908",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "1000000000",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "1000000000",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "4795095704667360323389",
+    "expected_reward": "325203260438103769058",
+    "expected_stopping_hour": "4473",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x7e617482ca59fa977926e2930bc598ff1f969394",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "4738895443949710712365",
+          "total_rate": "1931640457982",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735933634297242143170",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735691432600549296832",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4733069645601502356175",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4730938254055197153727",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4731759718908359016154",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4728965245030979527616",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4726009641752835165411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4723261367815728487926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4720309329460843657621",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717359136129930630335",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717488550421642008877",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4714540120077628482622",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4711593532502579964820",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4708648786544765852342",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4705705881053175373684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4703006492105693943830",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4700067113048127885115",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4697129571102472805187",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4694193865120533759684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4691259993954833426084",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4689062175482846868886",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4686376949541310239901",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4683846695205028708390",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4688380645108216584876",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4685450407205023949510",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4682522000700520809542",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4679595424450082984036",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4676670677309801682171",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673747758136483056120",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670826665787647754210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667907399121530474363",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4665919113776594071666",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4663002914330483700371",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670411074286782903315",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673573398282184702106",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670652414908258336668",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667733257148940675207",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4664815923863222587285",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4661900413910808073168",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4658986726152113818122",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4656074859448268746986",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4653164812661113579019",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4650256584653200383032",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647350174287792132793",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647213732720299139573",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4646469968483498485153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4643565924753196298600",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4640969606868590408766",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4638069000864297539760",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4635170207738757353798",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4632273226358920630452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4629378055592446305058",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4626484694307701026118",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4623593141373758712976",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620703395660400113780",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620004617606277397362",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4618124327962248147002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4615238000257271741910",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4612353476507110947072",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611431764768381204612",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608549619915400966360",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605669276402953840756",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602790733105201994605",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599913988897011243358",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597039042653950611332",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596546461873830642152",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593873697611158694625",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591507705258879511043",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611292829727655704395",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608578163850458725930",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605697802498052189226",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602819241371490906608",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599942479345633724791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597067515296042703713",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4594194348098982677023",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591322976631420812850",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588453399771026174842",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585585616396169283483",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4582719625385921677681",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4589987161045043605288",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588190263159964439704",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590114663576041408926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4587245841911306383046",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4584378813260111816556",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581513576501824246671",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602483418016510606517",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599606865880250287388",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596732111589075130958",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593859154019331959001",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590987992048069876527",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588118624553039832854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588001743493188071627",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585134242403504829082",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4583989218961798464452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581124225699947340411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4578261023058884873324",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4575399609919473070278",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4572539985163273399609",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4569682147672546353734",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4570136293032105561764",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4567734544141684622643",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4564879710051596069754",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4562026660232813822210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4559175393570168313572",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4556325908949186958376",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553478205256093716526",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553514819774650983626",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4551038623012291826761",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4548194223872909144370",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4545351602482988576154",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542510757731436708294",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4539671688507854560352",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4536834393702537151252",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4533998872206473065532",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531165122911344019866",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528333144709524429854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4532623370058011736050",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4529790480451725478716",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4547034973901442787791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4544193077042754386049",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542281318869602664558",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4540166668045309150392",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4537329063877780832173",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4534493233212857219153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531659174942099183391",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528826887957760371402",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4525996371152786771170",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4523167623420816279438",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4520340643656178269263",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4527318753194378654012",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546561253833436178002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4554750194565425789104",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4552298204430732116803",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4549453018052962909230",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546609609916679807412",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "1931640457982",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "4337",
+      "launch_time": "1773486000",
+      "lp_reward": "119130281834288746",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "4469892444229256554331",
+      "static_rate": "1000000000",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "100000000000000000"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "4087084234192668425448",
+    "expected_reward": "325203260438103769058",
+    "expected_stopping_hour": "4473",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x836110414c4c5ef3405498cc470dfa672bb63225",
+    "match": true,
+    "raw_word_mismatch": true,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [
+        {
+          "no_burn": false,
+          "reward": "4738895443949710712365",
+          "total_rate": "1931640457982",
+          "user_rate": "1000000000"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735933634297242143170",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4735691432600549296832",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4733069645601502356175",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4730938254055197153727",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4731759718908359016154",
+          "total_rate": "1931640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4728965245030979527616",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4726009641752835165411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4723261367815728487926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4720309329460843657621",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717359136129930630335",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4717488550421642008877",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4714540120077628482622",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4711593532502579964820",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4708648786544765852342",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4705705881053175373684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4703006492105693943830",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4700067113048127885115",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4697129571102472805187",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4694193865120533759684",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4691259993954833426084",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4689062175482846868886",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4686376949541310239901",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4683846695205028708390",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4688380645108216584876",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4685450407205023949510",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4682522000700520809542",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4679595424450082984036",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4676670677309801682171",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673747758136483056120",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670826665787647754210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667907399121530474363",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4665919113776594071666",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4663002914330483700371",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670411074286782903315",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4673573398282184702106",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4670652414908258336668",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4667733257148940675207",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4664815923863222587285",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4661900413910808073168",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4658986726152113818122",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4656074859448268746986",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4653164812661113579019",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4650256584653200383032",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647350174287792132793",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4647213732720299139573",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4646469968483498485153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4643565924753196298600",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4640969606868590408766",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4638069000864297539760",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4635170207738757353798",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4632273226358920630452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4629378055592446305058",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4626484694307701026118",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4623593141373758712976",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620703395660400113780",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4620004617606277397362",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4618124327962248147002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4615238000257271741910",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4612353476507110947072",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611431764768381204612",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608549619915400966360",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605669276402953840756",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602790733105201994605",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599913988897011243358",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597039042653950611332",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596546461873830642152",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593873697611158694625",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591507705258879511043",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4611292829727655704395",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4608578163850458725930",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4605697802498052189226",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602819241371490906608",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599942479345633724791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4597067515296042703713",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4594194348098982677023",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4591322976631420812850",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588453399771026174842",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585585616396169283483",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4582719625385921677681",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4589987161045043605288",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588190263159964439704",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590114663576041408926",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4587245841911306383046",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4584378813260111816556",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581513576501824246671",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4602483418016510606517",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4599606865880250287388",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4596732111589075130958",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4593859154019331959001",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4590987992048069876527",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588118624553039832854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4588001743493188071627",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4585134242403504829082",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4583989218961798464452",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4581124225699947340411",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4578261023058884873324",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4575399609919473070278",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4572539985163273399609",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4569682147672546353734",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4570136293032105561764",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4567734544141684622643",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4564879710051596069754",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4562026660232813822210",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4559175393570168313572",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4556325908949186958376",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553478205256093716526",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4553514819774650983626",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4551038623012291826761",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4548194223872909144370",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4545351602482988576154",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542510757731436708294",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4539671688507854560352",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4536834393702537151252",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4533998872206473065532",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531165122911344019866",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528333144709524429854",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4532623370058011736050",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4529790480451725478716",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4547034973901442787791",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4544193077042754386049",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4542281318869602664558",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4540166668045309150392",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4537329063877780832173",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4534493233212857219153",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4531659174942099183391",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4528826887957760371402",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4525996371152786771170",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4523167623420816279438",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4520340643656178269263",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4527318753194378654012",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546561253833436178002",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4554750194565425789104",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4552298204430732116803",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4549453018052962909230",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        },
+        {
+          "no_burn": false,
+          "reward": "4546609609916679807412",
+          "total_rate": "1930640457982",
+          "user_rate": "0"
+        }
+      ],
+      "initial_total_rate": "1931640457982",
+      "initial_user_rate": "1000000000",
+      "last_cycle": "4337",
+      "launch_time": "1773486000",
+      "lp_reward": "61293940957647483",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "3761880973754564656390",
+      "static_rate": "1000000000",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "100000000000000000"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "0",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0x88df55cb2ab40260da7beaae21d5d5e9af4a4427",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "0",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "2943539561865330352006",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "2943539561865330352006",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  },
+  {
+    "block": 122289029,
+    "expected_balance": "23145901207745726751144708",
+    "expected_reward": "0",
+    "expected_stopping_hour": "0",
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "holder": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+    "match": true,
+    "raw_word_mismatch": false,
+    "state": {
+      "burn_per_day": "15000",
+      "hours": [],
+      "initial_total_rate": "0",
+      "initial_user_rate": "0",
+      "last_cycle": "0",
+      "launch_time": "1773486000",
+      "lp_reward": "0",
+      "now": "1789592062",
+      "pool_balance": "11021329638870637485535908",
+      "quote_reserve": "27384440773130575140",
+      "raw": "23145901207745726751144708",
+      "static_rate": "0",
+      "token_reserve": "11021329638870637485535908",
+      "wbnb_value": "0"
+    }
+  }
+]

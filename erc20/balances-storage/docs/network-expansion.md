@@ -61,8 +61,13 @@ external proxies and nested callbacks. Both tokens remain unqualified; observed
 zero rewards do not establish general raw-storage parity.
 
 [YBC's compact trace](ybc-reward-trace.md) now exposes its 240-hour reward path
-and verifies 986 distinct canonical storage words. Its complete reward formula
-and affected-holder output remain unqualified.
+and verifies 986 distinct canonical storage words. Its subsequent
+[host-only arithmetic model](ybc-reward-model.md) matches 24 independently
+initialized snapshots and 30 read-only controls, explaining all six known
+raw-word mismatches. Production state and affected-holder output remain
+unqualified. The [next 50 BSC candidates](ranks301-350-investigation.md) have
+2,106 successful exploratory RPC checks and no value mismatches; none is
+promoted before complete getter, mapper and holder qualification.
 
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted
