@@ -8,6 +8,7 @@ This guide captures practical repo knowledge for fast orientation and implementa
 - `proto/`: protobuf types used across packages.
 - `common/`: shared Rust helpers used by multiple modules.
 - `dex/`: protocol-specific DEX extractors (Uniswap, Balancer, Curve, etc.).
+- `dex-pool-state/`: complete-block raw V2 reserves and ordered V3 changes in one envelope; see its README for semantics and packaging.
 - `erc20/`, `native/`, `erc1155/`, `dex-nfts/seaport/`: domain event modules.
 - `evm-*` aggregators: database-oriented `db_out` pipelines that compose lower-level modules.
 - `blocks/clickhouse/`: block-level dataset package.

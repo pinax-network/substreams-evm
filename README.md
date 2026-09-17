@@ -13,6 +13,7 @@ evm-nfts/         # NFT aggregator (db_out) + clickhouse/ + postgres/
 evm-contracts/    # Contract metadata aggregator (db_out) + clickhouse/ + postgres/
 blocks/           # Block metadata + clickhouse/
 dex/              # Individual DEX map_events modules
+dex-pool-state/   # Complete-block V2 reserves + ordered V3 pool changes
 dex-nfts/         # NFT market protocol modules (for example, Seaport)
 erc20/            # ERC-20 modules (transfers/ balances/ balances-storage/ supply/ tokens/)
 native/           # Native transfer/balance modules (transfers/ balances/)
@@ -25,6 +26,10 @@ spkg/             # Pre-built Substreams packages
 ```
 
 ## DEX Modules (`/dex`)
+
+[Complete-block pool state](dex-pool-state/README.md) combines V2 closing reserves
+and ordered V3 changes in one block envelope. It is a raw state input for consumers
+that need both protocols before calculating a block-level result.
 
 ### Uniswap Family
 | Module | Protocol | Events |
