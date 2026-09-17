@@ -1,5 +1,10 @@
 # Additional BSC proxies and deployments
 
+This records the 87-profile batch. The subsequent
+[voting-token review](voting-holder-coverage.md) adds SENTIS and STAR, with
+checkpoint-array handling and historical mint regressions, bringing the test
+set to 89. The evidence below retains the earlier artifacts.
+
 The [87-profile fixture](../tests/fixtures/bsc-next-proxy-layouts.json) adds eleven
 contracts from the same ranked RPC capture, using the existing single RPC-free
 `map_events` and shared `evm.balances.v1.Events`. This batch changes qualified

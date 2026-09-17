@@ -82,6 +82,14 @@ pub fn new_output(output: &Path) -> Result<()> {
     fs::create_dir(output).context("output directory must not already exist")
 }
 pub fn read_stream(path: &Path, start: u64, stop: u64, module: &str) -> Result<Blocks> {
+    let blocks = read_sparse_stream(path, start, stop, module)?;
+    ensure!(blocks.keys().copied().eq(start..stop), "incomplete or out-of-range stream");
+    Ok(blocks)
+}
+/// Sparse JSONL is not proof of complete delivery. Only capture's independently
+/// verified block-clock pass may confirm missing rows as empty Events.
+pub fn read_sparse_stream(path: &Path, start: u64, stop: u64, module: &str) -> Result<Blocks> {
+    ensure!(start > 0 && stop > start, "invalid stream bounds");
     let mut blocks = Blocks::new();
     let expected_type = match module {
         "map_events" => "evm.balances.v1.Events",
@@ -92,10 +100,10 @@ pub fn read_stream(path: &Path, start: u64, stop: u64, module: &str) -> Result<B
         ensure!(row["@module"] == module, "unexpected module output");
         ensure!(row["@type"] == expected_type, "unexpected protobuf output type");
         let height = number(&row["@block"])?;
+        ensure!((start..stop).contains(&height), "out-of-range stream");
         let data = row.get("@data").context("missing module data")?.clone();
         ensure!(blocks.insert(height, data).is_none(), "duplicate block output");
     }
-    ensure!(blocks.keys().copied().eq(start..stop), "incomplete or out-of-range stream");
     Ok(blocks)
 }
 pub fn validate_blocks(blocks: &Blocks) -> Result<()> {

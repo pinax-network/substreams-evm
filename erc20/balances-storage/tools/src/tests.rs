@@ -586,6 +586,81 @@ fn stream_requires_exact_range_and_rejects_duplicates_or_wrong_module() {
     assert!(read_stream(&path, 1, 2, "map_events").is_err());
 }
 #[test]
+fn sparse_events_require_complete_delivery_and_canonical_clocks_before_empty_normalization() {
+    let temp = tempfile::tempdir().unwrap();
+    let path = temp.path().join("events.jsonl");
+    let clock_path = temp.path().join("clocks.txt");
+    let row = format!(
+        "{}\n",
+        json!({"@module":"map_events","@type":"evm.balances.v1.Events","@block":2,"@data":reference("5")})
+    );
+    fs::write(&path, &row).unwrap();
+    fs::write(
+        &clock_path,
+        (1..4)
+            .map(|n| format!("----------- BLOCK #{n} ({}) age=1s ---------------\n", hash(n)))
+            .collect::<String>(),
+    )
+    .unwrap();
+    assert!(read_stream(&path, 1, 4, "map_events").is_err());
+    assert!(crate::capture::confirm_empty_outputs(&FakeRpc::default(), &path, &clock_path, 1, 4, 2).is_err());
+    assert_eq!(fs::read_to_string(&path).unwrap(), row);
+    let receipt = crate::capture::confirm_empty_outputs(&FakeRpc::default(), &path, &clock_path, 1, 4, 3).unwrap();
+    assert_eq!(receipt["empty_blocks"], 2);
+    let complete = read_stream(&path, 1, 4, "map_events").unwrap();
+    assert!(candidate_rows(&complete[&1]).unwrap().is_empty());
+    assert!(candidate_rows(&complete[&3]).unwrap().is_empty());
+    assert_eq!(complete[&2], reference("5"));
+    assert_eq!(fs::read_to_string(path.with_extension("sparse.jsonl")).unwrap(), row);
+}
+#[test]
+fn delivered_clocks_reject_gaps_duplicates_partial_blocks_bad_hashes_and_forks() {
+    let temp = tempfile::tempdir().unwrap();
+    let path = temp.path().join("clocks.txt");
+    let line = |n| format!("----------- BLOCK #{n} ({}) age=1s ---------------\n", hash(n));
+    for bad in [
+        line(1),
+        format!("{}{}", line(1), line(1)),
+        format!("{}{}", line(1), line(3)),
+        line(1).replace("BLOCK #", "PARTIAL BLOCK #"),
+        line(1).replace(&hash(1), "bad"),
+        "UNDO: 1\n".into(),
+    ] {
+        fs::write(&path, bad).unwrap();
+        assert!(crate::capture::read_clocks(&path, 1, 3).is_err());
+    }
+    fs::write(&path, format!("{}{}", line(1), line(2))).unwrap();
+    let mut clocks = crate::capture::read_clocks(&path, 1, 3).unwrap();
+    crate::capture::verify_clocks(&FakeRpc::default(), &clocks).unwrap();
+    clocks.insert(2, hash(99));
+    assert!(crate::capture::verify_clocks(&FakeRpc::default(), &clocks).is_err());
+    struct ForkRpc;
+    impl Rpc for ForkRpc {
+        fn request(&self, value: Value) -> Result<Value> {
+            let mut response = FakeRpc::default().request(value)?;
+            response["result"]["parentHash"] = json!(hash(99));
+            Ok(response)
+        }
+    }
+    clocks.insert(2, hash(2));
+    assert!(crate::capture::verify_clocks(&ForkRpc, &clocks).is_err());
+}
+#[test]
+fn capture_delivery_receipt_rejects_missing_or_ambiguous_counts() {
+    let temp = tempfile::tempdir().unwrap();
+    let path = temp.path().join("capture.log");
+    fs::write(&path, " • Received Blocks: 1,024 blocks\nCompleted successfully\n").unwrap();
+    assert_eq!(crate::capture::received_blocks(&path).unwrap(), 1024);
+    for bad in [
+        "Completed successfully\n",
+        " • Received Blocks: unknown blocks\n",
+        " • Received Blocks: 1 blocks\n • Received Blocks: 1 blocks\n",
+    ] {
+        fs::write(&path, bad).unwrap();
+        assert!(crate::capture::received_blocks(&path).is_err());
+    }
+}
+#[test]
 fn rpc_disagreement_audit_preserves_database_and_uses_original_hash() {
     let temp = tempfile::tempdir().unwrap();
     let db = temp.path().join("db");

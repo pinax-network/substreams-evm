@@ -22,6 +22,7 @@ with a reviewed zero-word fallback, address-derived balance, or pinned proxy:
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
+| `voting_checkpoints` | Optional object | Reviewed OpenZeppelin `Trace208` arrays: `clock` is `block_number` or `timestamp`; `slots` lists direct array roots and `mapping_slots` lists `mapping(address => Trace208)` bases, all 32-byte hex |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
@@ -82,6 +83,23 @@ verify its value at both boundaries, and the mapper rejects **every persisted
 dependency-slot write**, including change-and-restore and holder-silent changes.
 The dependency cannot be ignored. Such changes need requalification and a rebuild
 of affected holder state; they are not implemented as silent global updates.
+
+`voting_checkpoints` supports the reviewed packed `uint48` clock / `uint208`
+vote histories separately from balances. Array roots must not overlap other
+configured fields. Mapping roots require verified address/slot Keccak preimages.
+Length writes must preserve continuity and append at most one entry per clock;
+an append must be followed by its exact final element, initially empty. Element
+writes retain the current clock and their own old/new continuity.
+
+Timestamp histories can update their last entry across blocks in the same
+second without writing the length. Such updates require the old and new packed
+clock to equal the block timestamp and may touch only one element per array.
+The index cannot exceed the clock: the qualified insertion rule permits only
+one entry for each distinct nonnegative clock value. This bound follows from
+the reviewed contract semantics; it is not a configurable arbitrary ignore
+range. Block-number histories always require the append witness in the current
+block. Arbitrary arrays, different packed formats and custom clocks remain
+unsupported, and unknown writes still fail.
 
 With `address_hash_balance`, ordinary holders return
 `(uint256(keccak256(packed_20_byte_address)) % modulus + offset) * multiplier`.
@@ -161,6 +179,14 @@ schema has no old values or source hash; old/new extraction ordering is tested
 natively, while live audit binds finalized capture heights to RPC headers and
 rechecks their continuity/stability. It trusts provider finality, not independent
 consensus proofs.
+
+The CLI omits empty Events from JSONL. For sparse output, the Rust capture tool
+requires the original CLI delivery count to cover the whole requested range,
+then captures block clocks for the same package and parameters. Every clock must
+be consecutive and match a canonical RPC header before an absent Events message
+is recorded as an empty list. Original sparse output, clocks and their digests
+are retained. Truncated delivery, gaps, duplicate clocks, forks and wrong hashes
+still fail; absent holder balances are never filled with zero.
 
 All observed rows, value differences and coverage gaps are retained in SQLite;
 reference-only holders never seed candidate state. Raw captures, RPC checks and
@@ -303,6 +329,12 @@ eleven of those candidates, bringing `tests/fixtures/bsc-next-proxy-layouts.json
 to 87 profiles. It covers eight FlapTaxTokenV3 clones, a TokenV2 clone, GMToken and
 BTRToken, including two new deployment baselines. Thirteen of the original top
 100 candidates remain unqualified.
+
+The [voting-token review](docs/voting-holder-coverage.md) adds SENTIS and STAR in
+`tests/fixtures/bsc-voting-layouts.json`, bringing the configured test set to 89.
+It includes older deployment/mint captures that exercise voting checkpoint
+arrays, beyond ordinary transfers in the ranked window. Eleven of the original
+top 100 candidates remain unqualified.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

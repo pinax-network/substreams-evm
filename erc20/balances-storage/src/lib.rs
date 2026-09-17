@@ -1,4 +1,5 @@
 //! A single RPC-free map with the shared ERC-20 Events output.
+mod checkpoints;
 mod computed;
 mod deployment;
 #[cfg(not(target_arch = "wasm32"))]
@@ -227,6 +228,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         beacon_slots.entry(beacon.beacon.clone()).or_default().insert(beacon.implementation_slot);
     }
     raw.storage.sort_by_key(|c| c.ordinal);
+    let checkpoint_keys = checkpoints::validate(block, layouts, &raw.storage, &preimages)?;
     let mut deployment_keys = BTreeSet::new();
     for c in raw.storage {
         if !configured.contains_key(&c.address) && !beacon_slots.contains_key(&c.address) {
@@ -271,7 +273,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             .or_else(|| candidates[&layout.balance_slot].get(&key).cloned());
         if let Some(owner) = owner {
             insert(&mut rows, &c.address, &owner, &c.old_value, &c.new_value, c.ordinal)?;
-        } else if !layout.other_slots.contains(&key) && !ignored_mapping(key, &preimages, layout) {
+        } else if !layout.other_slots.contains(&key) && !ignored_mapping(key, &preimages, layout) && !checkpoint_keys.contains(&(c.address.clone(), key)) {
             return Err(Error::msg(format!(
                 "unresolved storage for configured token 0x{} at key 0x{}; refusing incomplete events",
                 hex::encode(&c.address),
@@ -329,6 +331,8 @@ mod handler {
     }
 }
 #[cfg(test)]
+mod checkpoint_tests;
+#[cfg(test)]
 mod computed_tests;
 #[cfg(test)]
 mod direct_source_tests;
@@ -342,3 +346,5 @@ mod securities_proxy_tests;
 mod tests;
 #[cfg(test)]
 mod top50_tests;
+#[cfg(test)]
+mod voting_tests;

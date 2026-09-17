@@ -20,6 +20,9 @@ pub struct Layout {
     /// Reviewed non-balance mapping bases whose values span multiple words.
     #[serde(default)]
     pub other_mapping_words: BTreeMap<String, u8>,
+    /// Reviewed OpenZeppelin Trace208 arrays, separate from ordinary balances.
+    #[serde(default)]
+    pub voting_checkpoints: Option<VotingCheckpoints>,
     /// Reviewed replacement for a zero balance word. No inferred defaults.
     #[serde(default)]
     pub zero_balance: Option<ZeroBalance>,
@@ -31,6 +34,29 @@ pub struct Layout {
     pub minimal_proxy: Option<MinimalProxyLayout>,
     #[serde(default)]
     pub address_hash_balance: Option<AddressHashBalance>,
+}
+#[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum CheckpointClock {
+    BlockNumber,
+    Timestamp,
+}
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct VotingCheckpoints {
+    pub clock: CheckpointClock,
+    /// Direct Trace208 arrays, normally the total-supply vote history.
+    #[serde(default)]
+    pub slots: Vec<String>,
+    /// mapping(address => Trace208), with its array at struct offset zero.
+    #[serde(default)]
+    pub mapping_slots: Vec<String>,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedVotingCheckpoints {
+    pub clock: CheckpointClock,
+    pub slots: BTreeSet<[u8; 32]>,
+    pub mapping_slots: BTreeSet<[u8; 32]>,
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -152,6 +178,7 @@ pub struct VerifiedLayout {
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_words: BTreeMap<[u8; 32], u8>,
+    pub voting_checkpoints: Option<VerifiedVotingCheckpoints>,
     pub zero_balance: Option<VerifiedZeroBalance>,
     pub proxy: Option<VerifiedProxy>,
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
@@ -367,6 +394,33 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let voting_checkpoints = layout
+                .voting_checkpoints
+                .map(|rule| -> Result<VerifiedVotingCheckpoints, Error> {
+                    let mut roots = BTreeSet::new();
+                    for value in rule.slots.iter().chain(&rule.mapping_slots) {
+                        let slot = word(value)?;
+                        require(roots.insert(slot), "duplicate voting checkpoint root")?;
+                        require(
+                            slot != balance_slot
+                                && !other_slots.contains(&slot)
+                                && !other_mapping_slots.contains(&slot)
+                                && !other_mapping_words.contains_key(&slot)
+                                && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
+                                && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot)
+                                && zero_balance.as_ref().is_none_or(|p| p.storage_slot != Some(slot))
+                                && address_hash_balance.as_ref().is_none_or(|p| !p.stored_addresses.contains_key(&slot)),
+                            "voting checkpoint root overlaps another configured field",
+                        )?;
+                    }
+                    require(!roots.is_empty(), "voting checkpoint roots are empty")?;
+                    Ok(VerifiedVotingCheckpoints {
+                        clock: rule.clock,
+                        slots: rule.slots.iter().map(|s| word(s)).collect::<Result<_, _>>()?,
+                        mapping_slots: rule.mapping_slots.iter().map(|s| word(s)).collect::<Result<_, _>>()?,
+                    })
+                })
+                .transpose()?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
@@ -375,6 +429,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 other_slots,
                 other_mapping_slots,
                 other_mapping_words,
+                voting_checkpoints,
                 zero_balance,
                 proxy,
                 beacon_proxy,

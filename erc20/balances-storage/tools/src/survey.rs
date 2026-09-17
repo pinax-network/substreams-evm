@@ -308,6 +308,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     other_slots: BTreeSet::new(),
                     other_mapping_slots: BTreeSet::new(),
                     other_mapping_words: BTreeMap::new(),
+                    voting_checkpoints: None,
                     zero_balance: None,
                     proxy: None,
                     beacon_proxy: None,
