@@ -1,0 +1,1148 @@
+{
+  "elapsed_seconds": 17.966523958,
+  "layouts_sha256": "840f17565a730cd155799d6365092a96ff3e8d2b83419372b6a0fdb2b80b318d",
+  "native_scan": {
+    "blocks": 1024,
+    "captured_sha256": "c9e2354983ffeac41ed7777e7e02ac765368d1b0eb893f4b64e5b7ae8f2ab5ce",
+    "counts": {
+      "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5": 30,
+      "0xc23db46993f643f1fa0494cd30f9f43505885d84": 38,
+      "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715": 34
+    },
+    "errors": [],
+    "special_rule_witnesses": {}
+  },
+  "qualification": [
+    {
+      "basis": "Historical-runtime-bound source, direct getter controls, reviewed packed checkpoint or burn-address-list writes",
+      "boundaries": [
+        {
+          "block": 122288005,
+          "clock": {
+            "actual": "122288005",
+            "expected": "122288005",
+            "kind": "block_number"
+          },
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0x45f4c83f6728a7a8d03862224f3c68b9d9bef5869f202f7f0108b1f0f55954aa"
+        },
+        {
+          "block": 122289029,
+          "clock": {
+            "actual": "122289029",
+            "expected": "122289029",
+            "kind": "block_number"
+          },
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0x45f4c83f6728a7a8d03862224f3c68b9d9bef5869f202f7f0108b1f0f55954aa"
+        }
+      ],
+      "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+      "getter": {
+        "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+        "getters": [
+          {
+            "code": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+            "source": "ERC20.sol"
+          }
+        ],
+        "name": "MyToken",
+        "public_mapping": [],
+        "rank": 214
+      },
+      "inspection": {
+        "address": "0x549296df74558b1342ffb5509eb97c225a27cd9e",
+        "balance_of": "707113336213092467246922",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288090,
+        "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+        "elapsed_seconds": 0.312039708,
+        "hash": "0x8ad9ffa62d3bfd1280d904fe706671080d519bf0568cf580109f0c6b73b2669f",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x45f4c83f6728a7a8d03862224f3c68b9d9bef5869f202f7f0108b1f0f55954aa",
+        "status": "inspected",
+        "storage_key": "0x002dc00746b4fcf627a023c152beebb031b956cb286e607f4eec4859ee5c4ded",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x002dc00746b4fcf627a023c152beebb031b956cb286e607f4eec4859ee5c4ded",
+            "pc": 2355,
+            "value": "0x0000000000000000000000000000000000000000000095bcb0d606c9705c874a"
+          }
+        ],
+        "storage_word": "707113336213092467246922",
+        "tool_language": "Rust",
+        "trace_sha256": "6ee078f733edbdfc6ef4a6c53d9f5d0d6120ef0da3d770505f08a80f3d25f861"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x45f4c83f6728a7a8d03862224f3c68b9d9bef5869f202f7f0108b1f0f55954aa",
+        "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x000000000000000000000000000000000000000000000000000000000000000e"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d"
+        ],
+        "voting_checkpoints": {
+          "clock": "block_number",
+          "mapping_slots": [
+            "0x0000000000000000000000000000000000000000000000000000000000000009"
+          ],
+          "slots": [
+            "0x000000000000000000000000000000000000000000000000000000000000000a"
+          ]
+        }
+      },
+      "name": "MyToken",
+      "rank": 214,
+      "source_sha256": "b9f77e23cbd58bc649ac0fc439ad30146d3ab1ff55e496632ac0f4679e2ee6b5",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xc23db46993f643f1fa0494cd30f9f43505885d84?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 2208,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 2214,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 2216,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2218,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_name",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2220,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1995,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_nameFallback",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1997,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_versionFallback",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 4981,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_nonces",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 9201,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_delegatee",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_address)"
+          },
+          {
+            "astId": 9206,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_delegateCheckpoints",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_mapping(t_address,t_struct(Trace208)536_storage)"
+          },
+          {
+            "astId": 9209,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_totalCheckpoints",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_struct(Trace208)536_storage"
+          },
+          {
+            "astId": 5044,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_address"
+          },
+          {
+            "astId": 9863,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "transferAllowedTimestamp",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9865,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "ETA",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9869,
+            "contract": "tcom_token.sol:MyToken",
+            "label": "whitelist",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_mapping(t_address,t_bool)"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Checkpoint208)541_storage)dyn_storage": {
+            "base": "t_struct(Checkpoint208)541_storage",
+            "encoding": "dynamic_array",
+            "label": "struct Checkpoints.Checkpoint208[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_address)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => address)",
+            "numberOfBytes": "32",
+            "value": "t_address"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_struct(Trace208)536_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct Checkpoints.Trace208)",
+            "numberOfBytes": "32",
+            "value": "t_struct(Trace208)536_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Checkpoint208)541_storage": {
+            "encoding": "inplace",
+            "label": "struct Checkpoints.Checkpoint208",
+            "members": [
+              {
+                "astId": 538,
+                "contract": "tcom_token.sol:MyToken",
+                "label": "_key",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint48"
+              },
+              {
+                "astId": 540,
+                "contract": "tcom_token.sol:MyToken",
+                "label": "_value",
+                "offset": 6,
+                "slot": "0",
+                "type": "t_uint208"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(Trace208)536_storage": {
+            "encoding": "inplace",
+            "label": "struct Checkpoints.Trace208",
+            "members": [
+              {
+                "astId": 535,
+                "contract": "tcom_token.sol:MyToken",
+                "label": "_checkpoints",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_array(t_struct(Checkpoint208)541_storage)dyn_storage"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint208": {
+            "encoding": "inplace",
+            "label": "uint208",
+            "numberOfBytes": "26"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint48": {
+            "encoding": "inplace",
+            "label": "uint48",
+            "numberOfBytes": "6"
+          }
+        }
+      }
+    },
+    {
+      "basis": "Historical-runtime-bound source, direct getter controls, reviewed packed checkpoint or burn-address-list writes",
+      "boundaries": [
+        {
+          "block": 122288005,
+          "clock": {
+            "actual": "1789591601",
+            "expected": "1789591601",
+            "kind": "timestamp"
+          },
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0x6804800a4a4d3e218c994c7c5a0f51d21e90f8072a2a0d13115a449c566a94a4"
+        },
+        {
+          "block": 122289029,
+          "clock": {
+            "actual": "1789592062",
+            "expected": "1789592062",
+            "kind": "timestamp"
+          },
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0x6804800a4a4d3e218c994c7c5a0f51d21e90f8072a2a0d13115a449c566a94a4"
+        }
+      ],
+      "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+      "getter": {
+        "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+        "getters": [
+          {
+            "code": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+            "source": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol"
+          }
+        ],
+        "name": "PeerToken",
+        "public_mapping": [],
+        "rank": 240
+      },
+      "inspection": {
+        "address": "0x8cf1eb91e004583449b0fd864e5001d36e8bab96",
+        "balance_of": "250739416382229935899",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288057,
+        "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+        "elapsed_seconds": 0.289677375,
+        "hash": "0xc4a8ba7f1320701003c796cf8c97d35817c64a1b592c360e2dbc47f8285118e1",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x6804800a4a4d3e218c994c7c5a0f51d21e90f8072a2a0d13115a449c566a94a4",
+        "status": "inspected",
+        "storage_key": "0x23cb2eb4f262bdb1a942627257e6cd96267e44b6c2770d78b5f52a180f473bd6",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x23cb2eb4f262bdb1a942627257e6cd96267e44b6c2770d78b5f52a180f473bd6",
+            "pc": 2698,
+            "value": "0x00000000000000000000000000000000000000000000000d97b55ab9ab93771b"
+          }
+        ],
+        "storage_word": "250739416382229935899",
+        "tool_language": "Rust",
+        "trace_sha256": "4082114634234e9cf49b4a48a7d62945828534e0e161454697e1e3caaa0a4a99"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x6804800a4a4d3e218c994c7c5a0f51d21e90f8072a2a0d13115a449c566a94a4",
+        "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c"
+        ],
+        "voting_checkpoints": {
+          "clock": "timestamp",
+          "mapping_slots": [
+            "0x0000000000000000000000000000000000000000000000000000000000000009"
+          ],
+          "slots": [
+            "0x000000000000000000000000000000000000000000000000000000000000000a"
+          ]
+        }
+      },
+      "name": "PeerToken",
+      "rank": 240,
+      "source_sha256": "3d194f9b0622de69fb5d66a59a6e653defcf5be0ece686d2cb20068cbcf7be9b",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 988,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 994,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 996,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 998,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_name",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1000,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 3017,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_nameFallback",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 3019,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_versionFallback",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1996,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_nonces",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 270,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_delegatee",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_address)"
+          },
+          {
+            "astId": 275,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_delegateCheckpoints",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_mapping(t_address,t_struct(Trace208)6729_storage)"
+          },
+          {
+            "astId": 278,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_totalCheckpoints",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_struct(Trace208)6729_storage"
+          },
+          {
+            "astId": 8,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_address"
+          },
+          {
+            "astId": 8189,
+            "contract": "src/PeerToken.sol:PeerToken",
+            "label": "minter",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_address"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Checkpoint208)6734_storage)dyn_storage": {
+            "base": "t_struct(Checkpoint208)6734_storage",
+            "encoding": "dynamic_array",
+            "label": "struct Checkpoints.Checkpoint208[]",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_address)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => address)",
+            "numberOfBytes": "32",
+            "value": "t_address"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_struct(Trace208)6729_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct Checkpoints.Trace208)",
+            "numberOfBytes": "32",
+            "value": "t_struct(Trace208)6729_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Checkpoint208)6734_storage": {
+            "encoding": "inplace",
+            "label": "struct Checkpoints.Checkpoint208",
+            "members": [
+              {
+                "astId": 6731,
+                "contract": "src/PeerToken.sol:PeerToken",
+                "label": "_key",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint48"
+              },
+              {
+                "astId": 6733,
+                "contract": "src/PeerToken.sol:PeerToken",
+                "label": "_value",
+                "offset": 6,
+                "slot": "0",
+                "type": "t_uint208"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(Trace208)6729_storage": {
+            "encoding": "inplace",
+            "label": "struct Checkpoints.Trace208",
+            "members": [
+              {
+                "astId": 6728,
+                "contract": "src/PeerToken.sol:PeerToken",
+                "label": "_checkpoints",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_array(t_struct(Checkpoint208)6734_storage)dyn_storage"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint208": {
+            "encoding": "inplace",
+            "label": "uint208",
+            "numberOfBytes": "26"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint48": {
+            "encoding": "inplace",
+            "label": "uint48",
+            "numberOfBytes": "6"
+          }
+        }
+      }
+    },
+    {
+      "basis": "Historical-runtime-bound source, direct getter controls, reviewed packed checkpoint or burn-address-list writes",
+      "boundaries": [
+        {
+          "block": 122288005,
+          "clock": null,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0xd1b15e37eb36294e445c00b24470c419ad1afe609945aa53244fe0f62e9cf44c"
+        },
+        {
+          "block": 122289029,
+          "clock": null,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0xd1b15e37eb36294e445c00b24470c419ad1afe609945aa53244fe0f62e9cf44c"
+        }
+      ],
+      "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+      "getter": {
+        "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+        "getters": [
+          {
+            "code": "function balanceOf(address account) public view virtual returns (uint256) {\r\n        return _balances[account];\r\n    }",
+            "source": "E315.sol"
+          }
+        ],
+        "name": "E315",
+        "public_mapping": [],
+        "rank": 246
+      },
+      "inspection": {
+        "address": "0x108b986c68fe59781e6a40de89ad8e7ca276b9cc",
+        "balance_of": "9869607000000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288083,
+        "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+        "elapsed_seconds": 0.294232375,
+        "hash": "0xa4277e88768e89a8cb47aae62cb609a6382fc09219e23405251f67ab2a8325b7",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xd1b15e37eb36294e445c00b24470c419ad1afe609945aa53244fe0f62e9cf44c",
+        "status": "inspected",
+        "storage_key": "0x3c2130dbf1c0915f90209bd8e52a87723b333fdd5b3cca2d47bf71669e21c15e",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x3c2130dbf1c0915f90209bd8e52a87723b333fdd5b3cca2d47bf71669e21c15e",
+            "pc": 1947,
+            "value": "0x00000000000000000000000000000000000000000000000088f7e3466bb57000"
+          }
+        ],
+        "storage_word": "9869607000000000000",
+        "tool_language": "Rust",
+        "trace_sha256": "8716d38e20d32c30887647ace8c78c3fc0b304ede555cedec6b6dfeaac5f5a6f"
+      },
+      "layout": {
+        "address_lists": [
+          "0x000000000000000000000000000000000000000000000000000000000000000d"
+        ],
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xd1b15e37eb36294e445c00b24470c419ad1afe609945aa53244fe0f62e9cf44c",
+        "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x000000000000000000000000000000000000000000000000000000000000000e",
+          "0x0000000000000000000000000000000000000000000000000000000000000018",
+          "0x0000000000000000000000000000000000000000000000000000000000000019"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "0x0000000000000000000000000000000000000000000000000000000000000010",
+          "0x0000000000000000000000000000000000000000000000000000000000000011",
+          "0x0000000000000000000000000000000000000000000000000000000000000012",
+          "0x0000000000000000000000000000000000000000000000000000000000000013",
+          "0x0000000000000000000000000000000000000000000000000000000000000014",
+          "0x0000000000000000000000000000000000000000000000000000000000000015",
+          "0x0000000000000000000000000000000000000000000000000000000000000016",
+          "0x0000000000000000000000000000000000000000000000000000000000000017",
+          "0x000000000000000000000000000000000000000000000000000000000000001a",
+          "0x000000000000000000000000000000000000000000000000000000000000001b",
+          "0x000000000000000000000000000000000000000000000000000000000000001c",
+          "0x000000000000000000000000000000000000000000000000000000000000001d"
+        ]
+      },
+      "name": "E315",
+      "rank": 246,
+      "source_sha256": "b22783eb65de9fbd3cbe1d94b41d11008e794453d410f2b56d8d83a06e1f9254",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 839,
+            "contract": "E315.sol:E315",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 843,
+            "contract": "E315.sol:E315",
+            "label": "_lastTxTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 847,
+            "contract": "E315.sol:E315",
+            "label": "_lastTransaction",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_uint32)"
+          },
+          {
+            "astId": 853,
+            "contract": "E315.sol:E315",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 855,
+            "contract": "E315.sol:E315",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 857,
+            "contract": "E315.sol:E315",
+            "label": "maxWallet",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 859,
+            "contract": "E315.sol:E315",
+            "label": "blockToUnlockLiquidity",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 861,
+            "contract": "E315.sol:E315",
+            "label": "_name",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 863,
+            "contract": "E315.sol:E315",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 865,
+            "contract": "E315.sol:E315",
+            "label": "_decimals",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 867,
+            "contract": "E315.sol:E315",
+            "label": "owner",
+            "offset": 1,
+            "slot": "9",
+            "type": "t_address"
+          },
+          {
+            "astId": 869,
+            "contract": "E315.sol:E315",
+            "label": "liquidityProvider",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address"
+          },
+          {
+            "astId": 871,
+            "contract": "E315.sol:E315",
+            "label": "airdropProvider",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_address"
+          },
+          {
+            "astId": 873,
+            "contract": "E315.sol:E315",
+            "label": "tradingEnable",
+            "offset": 20,
+            "slot": "11",
+            "type": "t_bool"
+          },
+          {
+            "astId": 875,
+            "contract": "E315.sol:E315",
+            "label": "liquidityAdded",
+            "offset": 21,
+            "slot": "11",
+            "type": "t_bool"
+          },
+          {
+            "astId": 877,
+            "contract": "E315.sol:E315",
+            "label": "maxWalletEnable",
+            "offset": 22,
+            "slot": "11",
+            "type": "t_bool"
+          },
+          {
+            "astId": 879,
+            "contract": "E315.sol:E315",
+            "label": "tradingTime",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 882,
+            "contract": "E315.sol:E315",
+            "label": "burnUsers",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 886,
+            "contract": "E315.sol:E315",
+            "label": "burnAmounts",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 888,
+            "contract": "E315.sol:E315",
+            "label": "burnTotalAmount",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 890,
+            "contract": "E315.sol:E315",
+            "label": "burnMinLimit",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 893,
+            "contract": "E315.sol:E315",
+            "label": "fundFee",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 896,
+            "contract": "E315.sol:E315",
+            "label": "burnFee",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 898,
+            "contract": "E315.sol:E315",
+            "label": "fundAddress",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_address"
+          },
+          {
+            "astId": 904,
+            "contract": "E315.sol:E315",
+            "label": "bounsAddress",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_address"
+          },
+          {
+            "astId": 906,
+            "contract": "E315.sol:E315",
+            "label": "pancakeAddress",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_address"
+          },
+          {
+            "astId": 909,
+            "contract": "E315.sol:E315",
+            "label": "_WETH",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_address"
+          },
+          {
+            "astId": 915,
+            "contract": "E315.sol:E315",
+            "label": "pancakeV2Router",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_contract(IPancakeRouter02)738"
+          },
+          {
+            "astId": 919,
+            "contract": "E315.sol:E315",
+            "label": "_isExcluded",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 923,
+            "contract": "E315.sol:E315",
+            "label": "_isBlacked",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 2819,
+            "contract": "E315.sol:E315",
+            "label": "lpBurnEnabled",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2822,
+            "contract": "E315.sol:E315",
+            "label": "lpBurnFrequency",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2824,
+            "contract": "E315.sol:E315",
+            "label": "lastLpBurnTime",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2827,
+            "contract": "E315.sol:E315",
+            "label": "percentForLPBurn",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_uint256"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "base": "t_address",
+            "encoding": "dynamic_array",
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IPancakeRouter02)738": {
+            "encoding": "inplace",
+            "label": "contract IPancakeRouter02",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_address,t_uint32)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint32)",
+            "numberOfBytes": "32",
+            "value": "t_uint32"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "encoding": "inplace",
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Source-bound voting and burn-participant layouts, full native interval; packaged RPC and holder audits still required",
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

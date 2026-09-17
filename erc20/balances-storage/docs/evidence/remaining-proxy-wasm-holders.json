@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "ffb11073c48f640ea7dcc24d2433426a3df0001c57ac901627cec486289ed3bf",
+  "checks_sha256": "7c766813e04a3df5d6eee1c79b6aee67bc6b7a012176b86a5b19e1a96e37cd1b",
+  "configured_tokens": 3,
+  "events_sha256": "270bfa3f372b7b31bf0df204ef200581329e75040f1240d3e3b0b016dd88a8c6",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 98,
+  "layouts_sha256": "1550b4af1ec31d5e7c1d5fee8faedc12d1c72ce1da48ac90d3bcaa4280876d56",
+  "mismatches": 0,
+  "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 227,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Three source-bound proxy tokens on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 34,
+  "snapshot_zeros": 16,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 2,
+      "contract": "0x1f8955e640cbd9abc3c3bb408c9e2e1f5f20dfe6",
+      "emitted_rows": 42,
+      "reference_rows": 71,
+      "seeded_matches": 71,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 4,
+      "unseeded_unknown_rows": 27,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5d7909f951436d4e6974d841316057df3a622962",
+      "emitted_rows": 40,
+      "reference_rows": 79,
+      "seeded_matches": 79,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 20,
+      "unseeded_unknown_rows": 39,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xb305e6954e4e0cd021c06ec355681abc8a00dbd7",
+      "emitted_rows": 47,
+      "reference_rows": 77,
+      "seeded_matches": 77,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 17,
+      "unseeded_unknown_rows": 30,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "activity": [
+    {
+      "blocks": 1,
+      "checks": 1,
+      "rank": 214,
+      "scope": "Separate captured activity block, excluded from baseline aggregate",
+      "start": 57207279
+    },
+    {
+      "blocks": 1,
+      "checks": 1,
+      "rank": 240,
+      "scope": "Separate captured activity block, excluded from baseline aggregate",
+      "start": 104975334
+    },
+    {
+      "blocks": 1,
+      "checks": 4,
+      "rank": 246,
+      "scope": "Separate captured activity block, excluded from baseline aggregate",
+      "start": 122259869
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "voting-burn-qualification.json",
+      "sha256": "4c4d31afad51c0ddb6b9a1ab334cc00c57690a61cef8b720d3e655da0fc3f298",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "voting-burn-rpc.json",
+      "sha256": "8ab438b516ad1b037e291aa697057bfb45145503aee30956a88a7982f5722310",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "voting-burn-holder-coverage.json",
+      "sha256": "73e1abe2ff762310ea6eb1f531920ced9a32792563ba1bb80f4226f206146196",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "voting-burn-wasm-holders.json",
+      "sha256": "8f591cbab9244fb2557564678801cf70bce0590e0dd65765add6ed20ae8fcf50",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "voting-burn-activity-initial.json",
+      "sha256": "af16404b5aa353a67f1baabbe9308d6d9253e0be187b7fd36d7f9414393b0582",
+      "status": "incomplete"
+    },
+    {
+      "file": "voting-burn-fetch-initial.json",
+      "sha256": "12208cb3217322626867ea4e941305a3dcaccf4fa405e9dc5187ef8ae91e7e03",
+      "status": "incomplete"
+    },
+    {
+      "file": "voting-burn-activity.json",
+      "sha256": "5ff31dd77fa3b89b87e7260fe3ef91b002e768c05f62eb1b54752b89af09f86b",
+      "status": "inspected"
+    },
+    {
+      "file": "voting-burn-activity-rpc-214.json",
+      "sha256": "f3a2047a81788d2b3d3958e5fd3c3045e55a96d91906fbc12dd61eba6cba2f69",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "voting-burn-activity-rpc-240.json",
+      "sha256": "500b9d5fcfd6e69c87669224b8b44883233f690cc16a957bf78445c634f9234f",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "voting-burn-activity-rpc-246.json",
+      "sha256": "e7e265b5cb0d8b1699f6ac047641ccc2664efc5c199bd45d8575575c995d6e94",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "remaining-proxy-qualification.json",
+      "sha256": "8b883e036aef41cc6eee58d82e9d740354a4cede8827c46d3994ac997af58f7a",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "remaining-proxy-rpc.json",
+      "sha256": "237772500fac6868de4021dd2a43e67c69494f1367f13177992d9503332516ee",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "remaining-proxy-holder-coverage.json",
+      "sha256": "ccb70d385823b54a72614b03a7cea2a933757455ade7cd7de60b42e3f93ec4aa",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "remaining-proxy-wasm-holders.json",
+      "sha256": "c4a016a3b003e3c68697d00185c59b9f2f002f2d22fbeae8d3ec33fec5a4c753",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "voting-proxy-combined.json",
+      "sha256": "61b5f7ee968177109cfcdf4b9bb88c9296b078b44918c6477e2f58bbff40dd5b",
+      "status": "bounded_parity"
+    }
+  ],
+  "cohorts": [
+    {
+      "checkpoint_holders": 60,
+      "checkpoint_rpc_reads": 120,
+      "cohort": "voting-burn",
+      "cold_unknown_nonzero_observations": 23,
+      "cold_unknown_observations": 102,
+      "emitted_rpc_checks": 102,
+      "initialized_carry_forward_matches": 102,
+      "reference_observations": 204,
+      "snapshot_holders": 60,
+      "snapshot_zeros": 39,
+      "zero_checks": 5
+    },
+    {
+      "checkpoint_holders": 34,
+      "checkpoint_rpc_reads": 68,
+      "cohort": "remaining-proxy",
+      "cold_unknown_nonzero_observations": 41,
+      "cold_unknown_observations": 96,
+      "emitted_rpc_checks": 129,
+      "initialized_carry_forward_matches": 98,
+      "reference_observations": 227,
+      "snapshot_holders": 34,
+      "snapshot_zeros": 16,
+      "zero_checks": 23
+    }
+  ],
+  "combined": {
+    "aggregate_emitted_zero_checks": 14739,
+    "all_balance_event_fields_equal": true,
+    "baseline_report_sha256": "9da548408e43d0be4f20197246b72eee254ba6df679ef398bf4f83559e78c690",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 15.690435171196766,
+      "empty_output_delivery": null,
+      "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+      "seconds_including_startup": 65.262689583
+    },
+    "configured_profiles": 239,
+    "elapsed_seconds": 112.860353875,
+    "events_sha256": "e14620a35df7c34f02fde5baecaa0af5edc6f70f0a559402923316940e2a6724",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 172681,
+    "initialized_carry_forward_matches": 67345,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "bb480a950ec65282533e7cbee32d10ea7c8dcf51dbed9fd92997bbd5c43c2274",
+    "profiles_with_emitted_rows": 238,
+    "reused_verified_rpc_rows": 105337,
+    "scope": "Fresh 239-profile actual-WASM capture. Full-field comparison with the verified 233-profile capture and six newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-239 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "1b7cc9d51cb46f73c840e6fe2f03bce7c44e32ba4d5eb85f8b2979c5b2b1d18d",
+        "cohort": "voting-burn",
+        "events_sha256": "4a8418297ecd24a3f300a31be59e5a30bb22e69efa4b99f5398cdf72610f02ae",
+        "holder_report_sha256": "8f591cbab9244fb2557564678801cf70bce0590e0dd65765add6ed20ae8fcf50",
+        "layouts_sha256": "840f17565a730cd155799d6365092a96ff3e8d2b83419372b6a0fdb2b80b318d",
+        "rpc_report_sha256": "8ab438b516ad1b037e291aa697057bfb45145503aee30956a88a7982f5722310"
+      },
+      {
+        "checks_sha256": "6157a0adbf2cd218b94a95f529d2064b6f3a16c94ecb34ba1b147c6008e3c2ed",
+        "cohort": "remaining-proxy",
+        "events_sha256": "270bfa3f372b7b31bf0df204ef200581329e75040f1240d3e3b0b016dd88a8c6",
+        "holder_report_sha256": "c4a016a3b003e3c68697d00185c59b9f2f002f2d22fbeae8d3ec33fec5a4c753",
+        "layouts_sha256": "1550b4af1ec31d5e7c1d5fee8faedc12d1c72ce1da48ac90d3bcaa4280876d56",
+        "rpc_report_sha256": "237772500fac6868de4021dd2a43e67c69494f1367f13177992d9503332516ee"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "configured_profiles": 239,
+  "newly_qualified_ranks": [
+    208,
+    212,
+    214,
+    222,
+    240,
+    246
+  ],
+  "scope": "Six newly qualified BSC profiles with separate observed-holder and captured activity evidence; not global enumeration",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tool_language": "Rust",
+  "unqualified_top250": [
+    {
+      "contract": "0x88886f0fd371dff856291badced45922bc888888",
+      "rank": 143
+    },
+    {
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "rank": 203
+    },
+    {
+      "contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+      "rank": 204
+    },
+    {
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "rank": 209
+    },
+    {
+      "contract": "0xf69baf63d210d74c915338f7d033228890db324f",
+      "rank": 210
+    },
+    {
+      "contract": "0x4bafbe9f5fdf15b4bd6210e55e100d2266b169e3",
+      "rank": 220
+    },
+    {
+      "contract": "0x3cbd513239d9e5538a4caed8ed53ef77009df473",
+      "rank": 224
+    },
+    {
+      "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+      "rank": 236
+    },
+    {
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "rank": 238
+    },
+    {
+      "contract": "0xb90b7c68ffd41ec3493ca7b6fd71d451cbcc47e8",
+      "rank": 239
+    },
+    {
+      "contract": "0xac4beaa86f8596675a92b2ffd3312f49d4e45406",
+      "rank": 248
+    }
+  ]
+}

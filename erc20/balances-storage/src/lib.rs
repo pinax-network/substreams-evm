@@ -414,6 +414,8 @@ mod tests;
 #[cfg(test)]
 mod top50_tests;
 #[cfg(test)]
+mod voting_proxy_followup_tests;
+#[cfg(test)]
 mod voting_tests;
 #[cfg(test)]
 mod vsd_tests;

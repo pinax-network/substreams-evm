@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "2ecb4d70a28fa00f9497798797173d4f05fe3836d1e70374d40310f85683738e",
+  "checks_sha256": "3851bb9734c6e06b31bc4d81cfee105cb49d0ebfa5be2176abe2d05d2981d242",
+  "configured_tokens": 3,
+  "events_sha256": "4a8418297ecd24a3f300a31be59e5a30bb22e69efa4b99f5398cdf72610f02ae",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 102,
+  "layouts_sha256": "840f17565a730cd155799d6365092a96ff3e8d2b83419372b6a0fdb2b80b318d",
+  "mismatches": 0,
+  "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 204,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Three voting/burn bookkeeping tokens on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 60,
+  "snapshot_zeros": 39,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+      "emitted_rows": 30,
+      "reference_rows": 63,
+      "seeded_matches": 63,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 9,
+      "unseeded_unknown_rows": 33,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+      "emitted_rows": 38,
+      "reference_rows": 76,
+      "seeded_matches": 76,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 38,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+      "emitted_rows": 34,
+      "reference_rows": 65,
+      "seeded_matches": 65,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 14,
+      "unseeded_unknown_rows": 31,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

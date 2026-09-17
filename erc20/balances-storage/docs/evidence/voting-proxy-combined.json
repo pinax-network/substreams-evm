@@ -1,0 +1,44 @@
+{
+  "aggregate_emitted_zero_checks": 14739,
+  "all_balance_event_fields_equal": true,
+  "baseline_report_sha256": "9da548408e43d0be4f20197246b72eee254ba6df679ef398bf4f83559e78c690",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 15.690435171196766,
+    "empty_output_delivery": null,
+    "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+    "seconds_including_startup": 65.262689583
+  },
+  "configured_profiles": 239,
+  "elapsed_seconds": 112.860353875,
+  "events_sha256": "e14620a35df7c34f02fde5baecaa0af5edc6f70f0a559402923316940e2a6724",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 172681,
+  "initialized_carry_forward_matches": 67345,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "bb480a950ec65282533e7cbee32d10ea7c8dcf51dbed9fd92997bbd5c43c2274",
+  "profiles_with_emitted_rows": 238,
+  "reused_verified_rpc_rows": 105337,
+  "scope": "Fresh 239-profile actual-WASM capture. Full-field comparison with the verified 233-profile capture and six newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-239 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "1b7cc9d51cb46f73c840e6fe2f03bce7c44e32ba4d5eb85f8b2979c5b2b1d18d",
+      "cohort": "voting-burn",
+      "events_sha256": "4a8418297ecd24a3f300a31be59e5a30bb22e69efa4b99f5398cdf72610f02ae",
+      "holder_report_sha256": "8f591cbab9244fb2557564678801cf70bce0590e0dd65765add6ed20ae8fcf50",
+      "layouts_sha256": "840f17565a730cd155799d6365092a96ff3e8d2b83419372b6a0fdb2b80b318d",
+      "rpc_report_sha256": "8ab438b516ad1b037e291aa697057bfb45145503aee30956a88a7982f5722310"
+    },
+    {
+      "checks_sha256": "6157a0adbf2cd218b94a95f529d2064b6f3a16c94ecb34ba1b147c6008e3c2ed",
+      "cohort": "remaining-proxy",
+      "events_sha256": "270bfa3f372b7b31bf0df204ef200581329e75040f1240d3e3b0b016dd88a8c6",
+      "holder_report_sha256": "c4a016a3b003e3c68697d00185c59b9f2f002f2d22fbeae8d3ec33fec5a4c753",
+      "layouts_sha256": "1550b4af1ec31d5e7c1d5fee8faedc12d1c72ce1da48ac90d3bcaa4280876d56",
+      "rpc_report_sha256": "237772500fac6868de4021dd2a43e67c69494f1367f13177992d9503332516ee"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}
