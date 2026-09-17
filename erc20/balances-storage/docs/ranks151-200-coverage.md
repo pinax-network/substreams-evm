@@ -1,5 +1,8 @@
 # BSC candidates ranked 151–200
 
+The [proxy and array follow-up](more-qualified-coverage.md) extends this snapshot
+to 188 profiles and preserves its remaining behavior gaps.
+
 This cohort adds **29 qualified profiles**, bringing the
 [combined fixture](../tests/fixtures/bsc-ranks151-200-layouts.json) to **178**.
 The test interval remains **122288006–122289029**, inclusive. The original RPC

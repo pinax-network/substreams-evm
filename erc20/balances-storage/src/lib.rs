@@ -386,6 +386,8 @@ mod immutable_zero_tests;
 #[cfg(test)]
 mod log_only_tests;
 #[cfg(test)]
+mod more_qualified_tests;
+#[cfg(test)]
 mod next_candidate_tests;
 #[cfg(test)]
 mod next_proxy_tests;

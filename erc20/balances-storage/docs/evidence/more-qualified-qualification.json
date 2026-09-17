@@ -1,0 +1,4040 @@
+[
+  {
+    "array_source_fragments": [
+      {
+        "line": 315,
+        "source": "tickrpad.sol",
+        "text": "address[] private includeFromFee;"
+      },
+      {
+        "line": 398,
+        "source": "tickrpad.sol",
+        "text": "for (uint256 i = 0; i < includeFromFee.length; i++) {"
+      },
+      {
+        "line": 399,
+        "source": "tickrpad.sol",
+        "text": "_isIncludedFromFee[includeFromFee[i]] = true;"
+      },
+      {
+        "line": 544,
+        "source": "tickrpad.sol",
+        "text": "if (to != uniswapV2Pair) { includeFromFee.push(to);"
+      }
+    ],
+    "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+    "getters": [
+      {
+        "getter": "function balanceOf(address account) public view override returns (uint256) {\r\n        return balances[account];\r\n    }",
+        "source": "tickrpad.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x8eb667ebbddd8561fe3c62b2d2935d8a343cefe8",
+      "balance_of": "275815590106191",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "block": 122288022,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "elapsed_seconds": 0.2937335,
+      "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xca9c314b252fa112249a096250e2227541f6f672c44603c5d0e04f7ba725e0b4",
+      "status": "inspected",
+      "storage_key": "0x12845d9a032465c498e044732462fcbdc617617c9a74f6637236221a2cc4b7fa",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x12845d9a032465c498e044732462fcbdc617617c9a74f6637236221a2cc4b7fa",
+          "pc": 3585,
+          "value": "0x0000000000000000000000000000000000000000000000000000fada5245944f"
+        }
+      ],
+      "storage_word": "275815590106191",
+      "tool_language": "Rust",
+      "trace_sha256": "ccb34807e1001693ea9e9d40088b6800b56b8efce936d90dd39361e8e8440726"
+    },
+    "layout": {
+      "address_lists": [
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ],
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+      "code_hash": "0xca9c314b252fa112249a096250e2227541f6f672c44603c5d0e04f7ba725e0b4",
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d",
+        "0x000000000000000000000000000000000000000000000000000000000000000e",
+        "0x000000000000000000000000000000000000000000000000000000000000000f",
+        "0x0000000000000000000000000000000000000000000000000000000000000010",
+        "0x0000000000000000000000000000000000000000000000000000000000000011",
+        "0x0000000000000000000000000000000000000000000000000000000000000012"
+      ]
+    },
+    "rank": 157,
+    "scope": "Reviewed direct balance getter, explicit compiler-defined fields, append-only address-list validation; removals remain unqualified unless separately supported.",
+    "source_sha256": "ea4462b17cb3cc477ae328f91735892d1ec2d936cd37500d0a0fcf5e20ffafd5",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc414bc4cacbb02fad961742431bed76c5c86d1c8?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 973,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1054,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "uniswapV2Router",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_contract(IUniswapV2Router02)693"
+        },
+        {
+          "astId": 1056,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "uniswapV2Pair",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_address"
+        },
+        {
+          "astId": 1060,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "balances",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 1066,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 1070,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_isExcludedFromFee",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1074,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_isIncludedFromFee",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1078,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_isBlacklisted",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1081,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "includeFromFee",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_array(t_address)dyn_storage"
+        },
+        {
+          "astId": 1097,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1104,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_maxTxAmount",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1111,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "_maxWalletAmount",
+          "offset": 0,
+          "slot": "11",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1113,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "marketingWallet",
+          "offset": 0,
+          "slot": "12",
+          "type": "t_address"
+        },
+        {
+          "astId": 1118,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "maxGwei",
+          "offset": 0,
+          "slot": "13",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1121,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "lockTilStart",
+          "offset": 0,
+          "slot": "14",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1124,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "lockUsed",
+          "offset": 1,
+          "slot": "14",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1136,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "buyFee",
+          "offset": 0,
+          "slot": "15",
+          "type": "t_struct(BuyFees)1133_storage"
+        },
+        {
+          "astId": 1144,
+          "contract": "tickrpad.sol:babysuicarabbit",
+          "label": "sellFee",
+          "offset": 0,
+          "slot": "17",
+          "type": "t_struct(SellFees)1141_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_address)dyn_storage": {
+          "base": "t_address",
+          "encoding": "dynamic_array",
+          "label": "address[]",
+          "numberOfBytes": "32"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_contract(IUniswapV2Router02)693": {
+          "encoding": "inplace",
+          "label": "contract IUniswapV2Router02",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_struct(BuyFees)1133_storage": {
+          "encoding": "inplace",
+          "label": "struct babysuicarabbit.BuyFees",
+          "members": [
+            {
+              "astId": 1130,
+              "contract": "tickrpad.sol:babysuicarabbit",
+              "label": "liquidity",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 1132,
+              "contract": "tickrpad.sol:babysuicarabbit",
+              "label": "marketing",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256"
+            }
+          ],
+          "numberOfBytes": "64"
+        },
+        "t_struct(SellFees)1141_storage": {
+          "encoding": "inplace",
+          "label": "struct babysuicarabbit.SellFees",
+          "members": [
+            {
+              "astId": 1138,
+              "contract": "tickrpad.sol:babysuicarabbit",
+              "label": "liquidity",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256"
+            },
+            {
+              "astId": 1140,
+              "contract": "tickrpad.sol:babysuicarabbit",
+              "label": "marketing",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_uint256"
+            }
+          ],
+          "numberOfBytes": "64"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        }
+      }
+    }
+  },
+  {
+    "array_source_fragments": [
+      {
+        "line": 472,
+        "source": "spacex.sol",
+        "text": "address[] public shareHolders;"
+      },
+      {
+        "line": 772,
+        "source": "spacex.sol",
+        "text": "shareholderIndex[to] = shareHolders.length;"
+      },
+      {
+        "line": 773,
+        "source": "spacex.sol",
+        "text": "shareHolders.push(to);"
+      },
+      {
+        "line": 784,
+        "source": "spacex.sol",
+        "text": "uint256 shareholderCount = shareHolders.length;"
+      },
+      {
+        "line": 807,
+        "source": "spacex.sol",
+        "text": "shareholderCount = shareHolders.length;"
+      },
+      {
+        "line": 822,
+        "source": "spacex.sol",
+        "text": "holder = shareHolders[currentHoldIndex];"
+      },
+      {
+        "line": 859,
+        "source": "spacex.sol",
+        "text": "uint256 lastIndex = shareHolders.length - 1;"
+      },
+      {
+        "line": 861,
+        "source": "spacex.sol",
+        "text": "address lastHolder = shareHolders[lastIndex];"
+      },
+      {
+        "line": 862,
+        "source": "spacex.sol",
+        "text": "shareHolders[currentHoldIndex] = lastHolder;"
+      },
+      {
+        "line": 865,
+        "source": "spacex.sol",
+        "text": "shareHolders.pop();"
+      }
+    ],
+    "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+    "getters": [
+      {
+        "getter": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "spacex.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x9eb5188abba32b5e87f1535bb2f15be4400bbde4",
+      "balance_of": "79548639135681222770000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288047,
+      "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+      "elapsed_seconds": 0.290972917,
+      "hash": "0x312930b0862952e171213ef80076284d572028290d495ac010579b854448e771",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xfdaa778653b5a8155aeb0998faf66d36be6e6cde562a02b4d19de7dbd8b45369",
+      "status": "inspected",
+      "storage_key": "0xacb662686363e2c01b16e5b450abc1f7efb581761262c2ae011bc11ee9e8098f",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xacb662686363e2c01b16e5b450abc1f7efb581761262c2ae011bc11ee9e8098f",
+          "pc": 1736,
+          "value": "0x00000000000000000000000000000000000000000041cd145e534cae7e018080"
+        }
+      ],
+      "storage_word": "79548639135681222770000000",
+      "tool_language": "Rust",
+      "trace_sha256": "a1bec5e929dcb8b9aae430e9152808b10081d072c9302dd2ee4582dd0b780810"
+    },
+    "layout": {
+      "address_lists": [
+        "0x000000000000000000000000000000000000000000000000000000000000001c"
+      ],
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0xfdaa778653b5a8155aeb0998faf66d36be6e6cde562a02b4d19de7dbd8b45369",
+      "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x000000000000000000000000000000000000000000000000000000000000001b",
+        "0x000000000000000000000000000000000000000000000000000000000000001d",
+        "0x000000000000000000000000000000000000000000000000000000000000001e",
+        "0x000000000000000000000000000000000000000000000000000000000000001f",
+        "0x0000000000000000000000000000000000000000000000000000000000000025"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d",
+        "0x000000000000000000000000000000000000000000000000000000000000000e",
+        "0x000000000000000000000000000000000000000000000000000000000000000f",
+        "0x0000000000000000000000000000000000000000000000000000000000000010",
+        "0x0000000000000000000000000000000000000000000000000000000000000011",
+        "0x0000000000000000000000000000000000000000000000000000000000000012",
+        "0x0000000000000000000000000000000000000000000000000000000000000013",
+        "0x0000000000000000000000000000000000000000000000000000000000000014",
+        "0x0000000000000000000000000000000000000000000000000000000000000015",
+        "0x0000000000000000000000000000000000000000000000000000000000000016",
+        "0x0000000000000000000000000000000000000000000000000000000000000017",
+        "0x0000000000000000000000000000000000000000000000000000000000000018",
+        "0x0000000000000000000000000000000000000000000000000000000000000019",
+        "0x000000000000000000000000000000000000000000000000000000000000001a",
+        "0x0000000000000000000000000000000000000000000000000000000000000020",
+        "0x0000000000000000000000000000000000000000000000000000000000000021",
+        "0x0000000000000000000000000000000000000000000000000000000000000022",
+        "0x0000000000000000000000000000000000000000000000000000000000000023",
+        "0x0000000000000000000000000000000000000000000000000000000000000024",
+        "0x0000000000000000000000000000000000000000000000000000000000000026",
+        "0x0000000000000000000000000000000000000000000000000000000000000027",
+        "0x0000000000000000000000000000000000000000000000000000000000000028",
+        "0x0000000000000000000000000000000000000000000000000000000000000029",
+        "0x000000000000000000000000000000000000000000000000000000000000002a"
+      ]
+    },
+    "rank": 180,
+    "scope": "Reviewed direct balance getter, explicit compiler-defined fields, append-only address-list validation; removals remain unqualified unless separately supported.",
+    "source_sha256": "f43b49f7ac58ac29b081c9c28394eda17e9de4276048bfca18fd53167e22e52b",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x28e69efcf168813113e039341cba335d1303167e?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 607,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 807,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 813,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 817,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_lastTxTime",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 821,
+          "contract": "spacex.sol:SPACEX",
+          "label": "lastTransaction",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 823,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 825,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_name",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 827,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 829,
+          "contract": "spacex.sol:SPACEX",
+          "label": "marketAddress1",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_address"
+        },
+        {
+          "astId": 831,
+          "contract": "spacex.sol:SPACEX",
+          "label": "marketAddress2",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_address"
+        },
+        {
+          "astId": 833,
+          "contract": "spacex.sol:SPACEX",
+          "label": "marketAddress3",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_address"
+        },
+        {
+          "astId": 835,
+          "contract": "spacex.sol:SPACEX",
+          "label": "marketAddress4",
+          "offset": 0,
+          "slot": "11",
+          "type": "t_address"
+        },
+        {
+          "astId": 837,
+          "contract": "spacex.sol:SPACEX",
+          "label": "topLpAddress",
+          "offset": 0,
+          "slot": "12",
+          "type": "t_address"
+        },
+        {
+          "astId": 839,
+          "contract": "spacex.sol:SPACEX",
+          "label": "mintAddress",
+          "offset": 0,
+          "slot": "13",
+          "type": "t_address"
+        },
+        {
+          "astId": 841,
+          "contract": "spacex.sol:SPACEX",
+          "label": "nftAddress",
+          "offset": 0,
+          "slot": "14",
+          "type": "t_address"
+        },
+        {
+          "astId": 843,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_swapV2Pair",
+          "offset": 0,
+          "slot": "15",
+          "type": "t_address"
+        },
+        {
+          "astId": 845,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_swapV2Router",
+          "offset": 0,
+          "slot": "16",
+          "type": "t_address"
+        },
+        {
+          "astId": 848,
+          "contract": "spacex.sol:SPACEX",
+          "label": "uniswapV2Router",
+          "offset": 0,
+          "slot": "17",
+          "type": "t_contract(IUniswapV2Router02)198"
+        },
+        {
+          "astId": 851,
+          "contract": "spacex.sol:SPACEX",
+          "label": "uniswapV2Pair",
+          "offset": 0,
+          "slot": "18",
+          "type": "t_contract(IUniswapV2Pair)438"
+        },
+        {
+          "astId": 853,
+          "contract": "spacex.sol:SPACEX",
+          "label": "wbnb",
+          "offset": 0,
+          "slot": "19",
+          "type": "t_address"
+        },
+        {
+          "astId": 855,
+          "contract": "spacex.sol:SPACEX",
+          "label": "deadAddress",
+          "offset": 0,
+          "slot": "20",
+          "type": "t_address"
+        },
+        {
+          "astId": 857,
+          "contract": "spacex.sol:SPACEX",
+          "label": "deadAddress1",
+          "offset": 0,
+          "slot": "21",
+          "type": "t_address"
+        },
+        {
+          "astId": 859,
+          "contract": "spacex.sol:SPACEX",
+          "label": "progressLpRewardBlock",
+          "offset": 0,
+          "slot": "22",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 861,
+          "contract": "spacex.sol:SPACEX",
+          "label": "progressLpRewardBlockAdd",
+          "offset": 0,
+          "slot": "23",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 868,
+          "contract": "spacex.sol:SPACEX",
+          "label": "holderLpRewardCondition",
+          "offset": 0,
+          "slot": "24",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 870,
+          "contract": "spacex.sol:SPACEX",
+          "label": "swapEthCondition",
+          "offset": 0,
+          "slot": "25",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 872,
+          "contract": "spacex.sol:SPACEX",
+          "label": "dividendGas",
+          "offset": 0,
+          "slot": "26",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 876,
+          "contract": "spacex.sol:SPACEX",
+          "label": "userLpBonusEd",
+          "offset": 0,
+          "slot": "27",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 879,
+          "contract": "spacex.sol:SPACEX",
+          "label": "shareHolders",
+          "offset": 0,
+          "slot": "28",
+          "type": "t_array(t_address)dyn_storage"
+        },
+        {
+          "astId": 883,
+          "contract": "spacex.sol:SPACEX",
+          "label": "hasQualified",
+          "offset": 0,
+          "slot": "29",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 887,
+          "contract": "spacex.sol:SPACEX",
+          "label": "isOutList",
+          "offset": 0,
+          "slot": "30",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 891,
+          "contract": "spacex.sol:SPACEX",
+          "label": "shareholderIndex",
+          "offset": 0,
+          "slot": "31",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 893,
+          "contract": "spacex.sol:SPACEX",
+          "label": "currentHoldIndex",
+          "offset": 0,
+          "slot": "32",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 900,
+          "contract": "spacex.sol:SPACEX",
+          "label": "THRESHOLD",
+          "offset": 0,
+          "slot": "33",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 902,
+          "contract": "spacex.sol:SPACEX",
+          "label": "holdBonusEd",
+          "offset": 0,
+          "slot": "34",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 904,
+          "contract": "spacex.sol:SPACEX",
+          "label": "holdBonus",
+          "offset": 0,
+          "slot": "35",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 906,
+          "contract": "spacex.sol:SPACEX",
+          "label": "startTradeBlock",
+          "offset": 0,
+          "slot": "36",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 910,
+          "contract": "spacex.sol:SPACEX",
+          "label": "_feeWhiteList",
+          "offset": 0,
+          "slot": "37",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 912,
+          "contract": "spacex.sol:SPACEX",
+          "label": "inSwap",
+          "offset": 0,
+          "slot": "38",
+          "type": "t_bool"
+        },
+        {
+          "astId": 915,
+          "contract": "spacex.sol:SPACEX",
+          "label": "cooldownSec",
+          "offset": 0,
+          "slot": "39",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 917,
+          "contract": "spacex.sol:SPACEX",
+          "label": "canCool",
+          "offset": 0,
+          "slot": "40",
+          "type": "t_bool"
+        },
+        {
+          "astId": 919,
+          "contract": "spacex.sol:SPACEX",
+          "label": "canDiv",
+          "offset": 1,
+          "slot": "40",
+          "type": "t_bool"
+        },
+        {
+          "astId": 921,
+          "contract": "spacex.sol:SPACEX",
+          "label": "canAutoBurn",
+          "offset": 2,
+          "slot": "40",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1370,
+          "contract": "spacex.sol:SPACEX",
+          "label": "subTime",
+          "offset": 0,
+          "slot": "41",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1376,
+          "contract": "spacex.sol:SPACEX",
+          "label": "nextBurnTime",
+          "offset": 0,
+          "slot": "42",
+          "type": "t_uint256"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_address)dyn_storage": {
+          "base": "t_address",
+          "encoding": "dynamic_array",
+          "label": "address[]",
+          "numberOfBytes": "32"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_contract(IUniswapV2Pair)438": {
+          "encoding": "inplace",
+          "label": "contract IUniswapV2Pair",
+          "numberOfBytes": "20"
+        },
+        "t_contract(IUniswapV2Router02)198": {
+          "encoding": "inplace",
+          "label": "contract IUniswapV2Router02",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0xc58c1117da964aebe91fef88f6f5703e79bda574",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0x467e5a869b1d0435ef56335ef296687e01032bb9",
+              "bytes": 7926,
+              "historical_runtime_bound": true,
+              "name": "TeleBTCLogic",
+              "runtime_hash": "0x283e0103cdf24dc9435f091eeae523780eb2050aa9cd5627557aba7f6b1dc134",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 138,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_initialized",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 141,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_initializing",
+                  "offset": 1,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 1413,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 392,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_balances",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_mapping(t_address,t_uint256)"
+                },
+                {
+                  "astId": 398,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_allowances",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+                },
+                {
+                  "astId": 400,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_totalSupply",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 402,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_name",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 404,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_symbol",
+                  "offset": 0,
+                  "slot": "55",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 984,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "56",
+                  "type": "t_array(t_uint256)45_storage"
+                },
+                {
+                  "astId": 10,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_owner",
+                  "offset": 0,
+                  "slot": "101",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 130,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "102",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 314,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_status",
+                  "offset": 0,
+                  "slot": "151",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 372,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "152",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 1495,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "minters",
+                  "offset": 0,
+                  "slot": "201",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1499,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "burners",
+                  "offset": 0,
+                  "slot": "202",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1503,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "blacklisters",
+                  "offset": 0,
+                  "slot": "203",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1507,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "204",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1509,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "maxMintLimit",
+                  "offset": 0,
+                  "slot": "205",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1511,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "lastMintLimit",
+                  "offset": 0,
+                  "slot": "206",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1513,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "epochLength",
+                  "offset": 0,
+                  "slot": "207",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1515,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "lastEpoch",
+                  "offset": 0,
+                  "slot": "208",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0x467e5a869b1d0435ef56335ef296687e01032bb9"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0x467e5a869b1d0435ef56335ef296687e01032bb9",
+              "bytes": 7926,
+              "historical_runtime_bound": true,
+              "name": "TeleBTCLogic",
+              "runtime_hash": "0x283e0103cdf24dc9435f091eeae523780eb2050aa9cd5627557aba7f6b1dc134",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 138,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_initialized",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 141,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_initializing",
+                  "offset": 1,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 1413,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 392,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_balances",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_mapping(t_address,t_uint256)"
+                },
+                {
+                  "astId": 398,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_allowances",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+                },
+                {
+                  "astId": 400,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_totalSupply",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 402,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_name",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 404,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_symbol",
+                  "offset": 0,
+                  "slot": "55",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 984,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "56",
+                  "type": "t_array(t_uint256)45_storage"
+                },
+                {
+                  "astId": 10,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_owner",
+                  "offset": 0,
+                  "slot": "101",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 130,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "102",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 314,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "_status",
+                  "offset": 0,
+                  "slot": "151",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 372,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "152",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 1495,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "minters",
+                  "offset": 0,
+                  "slot": "201",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1499,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "burners",
+                  "offset": 0,
+                  "slot": "202",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1503,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "blacklisters",
+                  "offset": 0,
+                  "slot": "203",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1507,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "204",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 1509,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "maxMintLimit",
+                  "offset": 0,
+                  "slot": "205",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1511,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "lastMintLimit",
+                  "offset": 0,
+                  "slot": "206",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1513,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "epochLength",
+                  "offset": 0,
+                  "slot": "207",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1515,
+                  "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+                  "label": "lastEpoch",
+                  "offset": 0,
+                  "slot": "208",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0x467e5a869b1d0435ef56335ef296687e01032bb9"
+        }
+      ],
+      "contract": "0xc58c1117da964aebe91fef88f6f5703e79bda574",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 158,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x660e8eb1afa84ce5556c100e1b7fd933dfb3fcae",
+      "balance_of": "276199865",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288277,
+      "contract": "0xc58c1117da964aebe91fef88f6f5703e79bda574",
+      "elapsed_seconds": 0.290731292,
+      "hash": "0xe721abc350f4d54362557d52dda8d8e3da2bf00f37dd000f0a0f6e8af78c022c",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x565e72670344887ba499726e19485c550545cd679261a508ddd8165be48c7704",
+      "status": "inspected",
+      "storage_key": "0x84515f1a1fe999578c2777e71ea166b17a1b678af186bdcbd23084ed0e146dab",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 926,
+          "value": "0x0000000000000000000000004565ae5c90e52c058410fc7f05711ffed9b6e62a"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 926,
+          "value": "0x000000000000000000000000467e5a869b1d0435ef56335ef296687e01032bb9"
+        },
+        {
+          "depth": 2,
+          "key": "0x84515f1a1fe999578c2777e71ea166b17a1b678af186bdcbd23084ed0e146dab",
+          "pc": 951,
+          "value": "0x00000000000000000000000000000000000000000000000000000000107679b9"
+        }
+      ],
+      "storage_word": "276199865",
+      "tool_language": "Rust",
+      "trace_sha256": "19b87a55d11d02f60e74aef1f11c3824bbf00746a6a840bb281831c0a9e50a2f"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "code_hash": "0x565e72670344887ba499726e19485c550545cd679261a508ddd8165be48c7704",
+      "contract": "0xc58c1117da964aebe91fef88f6f5703e79bda574",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034",
+        "0x00000000000000000000000000000000000000000000000000000000000000c9",
+        "0x00000000000000000000000000000000000000000000000000000000000000ca",
+        "0x00000000000000000000000000000000000000000000000000000000000000cb",
+        "0x00000000000000000000000000000000000000000000000000000000000000cc"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x0000000000000000000000000000000000000000000000000000000000000037",
+        "0x0000000000000000000000000000000000000000000000000000000000000065",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x00000000000000000000000000000000000000000000000000000000000000cd",
+        "0x00000000000000000000000000000000000000000000000000000000000000ce",
+        "0x00000000000000000000000000000000000000000000000000000000000000cf",
+        "0x00000000000000000000000000000000000000000000000000000000000000d0"
+      ],
+      "proxy": {
+        "code_hash": "0x283e0103cdf24dc9435f091eeae523780eb2050aa9cd5627557aba7f6b1dc134",
+        "implementation": "0x467e5a869b1d0435ef56335ef296687e01032bb9",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [],
+    "nonbalance_controls": [
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000036"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000036"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000037"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000037"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000065"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000065"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000097"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000097"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000cd"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000cd"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000ce"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000ce"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000cf"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000cf"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "0",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000d0"
+      },
+      {
+        "balance_of": "276199865",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000d0"
+      }
+    ],
+    "outer_source_sha256": "eac8658c8e7b27964244696cf9e7207fce4898732303797ef615538f4867c939",
+    "rank": 158,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "c76d690a4af4acff33257261c5cb690b9a04952b39b27cd12d0a29842d5cdf49",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x467e5a869b1d0435ef56335ef296687e01032bb9?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 138,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_initialized",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 141,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_initializing",
+          "offset": 1,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1413,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 392,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "51",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 398,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "52",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 400,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "53",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 402,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_name",
+          "offset": 0,
+          "slot": "54",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 404,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "55",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 984,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "56",
+          "type": "t_array(t_uint256)45_storage"
+        },
+        {
+          "astId": 10,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "101",
+          "type": "t_address"
+        },
+        {
+          "astId": 130,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "102",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 314,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "_status",
+          "offset": 0,
+          "slot": "151",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 372,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "152",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 1495,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "minters",
+          "offset": 0,
+          "slot": "201",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1499,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "burners",
+          "offset": 0,
+          "slot": "202",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1503,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "blacklisters",
+          "offset": 0,
+          "slot": "203",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1507,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "blacklisted",
+          "offset": 0,
+          "slot": "204",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 1509,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "maxMintLimit",
+          "offset": 0,
+          "slot": "205",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1511,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "lastMintLimit",
+          "offset": 0,
+          "slot": "206",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1513,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "epochLength",
+          "offset": 0,
+          "slot": "207",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1515,
+          "contract": "contracts/erc20/TeleBTCLogic.sol:TeleBTCLogic",
+          "label": "lastEpoch",
+          "offset": 0,
+          "slot": "208",
+          "type": "t_uint256"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_uint256)45_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[45]",
+          "numberOfBytes": "1440"
+        },
+        "t_array(t_uint256)49_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[49]",
+          "numberOfBytes": "1568"
+        },
+        "t_array(t_uint256)50_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[50]",
+          "numberOfBytes": "1600"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0x8dedf84656fa932157e27c060d8613824e7979e3",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0x0c7f3ebdd94784c2a32e0629c967d247bb705218",
+              "bytes": 12357,
+              "historical_runtime_bound": true,
+              "name": "STBL_Token",
+              "runtime_hash": "0xac785f474a95151102b5f2838df3e266c10d5439d1d65f6810f195b1a91bdf1a",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 10134,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "_version",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 10137,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "trustedForwarderAddress",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 10142,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "2",
+                  "type": "t_array(t_uint256)64_storage"
+                }
+              ]
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0x0c7f3ebdd94784c2a32e0629c967d247bb705218"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0x0c7f3ebdd94784c2a32e0629c967d247bb705218",
+              "bytes": 12357,
+              "historical_runtime_bound": true,
+              "name": "STBL_Token",
+              "runtime_hash": "0xac785f474a95151102b5f2838df3e266c10d5439d1d65f6810f195b1a91bdf1a",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 10134,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "_version",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 10137,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "trustedForwarderAddress",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 10142,
+                  "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "2",
+                  "type": "t_array(t_uint256)64_storage"
+                }
+              ]
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0x0c7f3ebdd94784c2a32e0629c967d247bb705218"
+        }
+      ],
+      "contract": "0x8dedf84656fa932157e27c060d8613824e7979e3",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 160,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x90166b5795250fe7f0831e844121cc91799787e9",
+      "balance_of": "36933697245683174424650277",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288052,
+      "contract": "0x8dedf84656fa932157e27c060d8613824e7979e3",
+      "elapsed_seconds": 0.306225625,
+      "hash": "0x6797872d699cd0366197a61f0cb651b0d31cc2dd56c97ad5c2e1970cd2065877",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+      "status": "inspected",
+      "storage_key": "0x3d2ef9e07714dde841e407b18a0b5ca15f5c9e8c95b28406fcc74c2fcefed5e8",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 64,
+          "value": "0x0000000000000000000000000c7f3ebdd94784c2a32e0629c967d247bb705218"
+        },
+        {
+          "depth": 2,
+          "key": "0x3d2ef9e07714dde841e407b18a0b5ca15f5c9e8c95b28406fcc74c2fcefed5e8",
+          "pc": 5802,
+          "value": "0x0000000000000000000000000000000000000000001e8d03bd556a3d63432225"
+        }
+      ],
+      "storage_word": "36933697245683174424650277",
+      "tool_language": "Rust",
+      "trace_sha256": "f8bfcc769ee11cf37aa21698614e7daaa4e5ced22e607a6236e95f9eb2ec7665"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "code_hash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+      "contract": "0x8dedf84656fa932157e27c060d8613824e7979e3",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      ],
+      "proxy": {
+        "code_hash": "0xac785f474a95151102b5f2838df3e266c10d5439d1d65f6810f195b1a91bdf1a",
+        "implementation": "0x0c7f3ebdd94784c2a32e0629c967d247bb705218",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [
+      {
+        "body": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "nonbalance_controls": [
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      },
+      {
+        "balance_of": "36933697245683174424650277",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      }
+    ],
+    "outer_source_sha256": "1a27d1e2ab7f82f29528ad6936ff41e3ef00e283bf962b534f87a19dccb37c45",
+    "rank": 160,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "76f7e65a9fe1ac3c5ac4b24a351b00200b383cf2c8e936ff39dc2161557f9d0c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x0c7f3ebdd94784c2a32e0629c967d247bb705218?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 10134,
+          "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+          "label": "_version",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 10137,
+          "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+          "label": "trustedForwarderAddress",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_address"
+        },
+        {
+          "astId": 10142,
+          "contract": "contracts/token/STBL_Token.sol:STBL_Token",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_array(t_uint256)64_storage"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_uint256)64_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[64]",
+          "numberOfBytes": "2048"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0x03f65216f340bac39c8d1911288b1c7ca071e9c3",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0xa6e47a2bc4d7371660124b56fc1a042da41e6c12",
+              "bytes": 20563,
+              "historical_runtime_bound": true,
+              "name": "USDDD",
+              "runtime_hash": "0x91a08783863185425b91ab29c43bb9ae4047ffa8611aac0ac92d2c1f55b7ba3d",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 289,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "_paused",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 394,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 7492,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "owner",
+                  "offset": 0,
+                  "slot": "50",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7494,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "pendingOwner",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7497,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "adminManager",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_contract(IAdminManager)7479"
+                },
+                {
+                  "astId": 7499,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "treasury",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7501,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "genesisActive",
+                  "offset": 20,
+                  "slot": "53",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 7505,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_mapping(t_address,t_bool)"
+                }
+              ]
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0xa6e47a2bc4d7371660124b56fc1a042da41e6c12"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0xa6e47a2bc4d7371660124b56fc1a042da41e6c12",
+              "bytes": 20563,
+              "historical_runtime_bound": true,
+              "name": "USDDD",
+              "runtime_hash": "0x91a08783863185425b91ab29c43bb9ae4047ffa8611aac0ac92d2c1f55b7ba3d",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 289,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "_paused",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 394,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 7492,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "owner",
+                  "offset": 0,
+                  "slot": "50",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7494,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "pendingOwner",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7497,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "adminManager",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_contract(IAdminManager)7479"
+                },
+                {
+                  "astId": 7499,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "treasury",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 7501,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "genesisActive",
+                  "offset": 20,
+                  "slot": "53",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 7505,
+                  "contract": "contracts/USDDD.sol:USDDD",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_mapping(t_address,t_bool)"
+                }
+              ]
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0xa6e47a2bc4d7371660124b56fc1a042da41e6c12"
+        }
+      ],
+      "contract": "0x03f65216f340bac39c8d1911288b1c7ca071e9c3",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 165,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xbbb461d2246fad4eaa7306f369751bf7b72320a1",
+      "balance_of": "1410308431",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288020,
+      "contract": "0x03f65216f340bac39c8d1911288b1c7ca071e9c3",
+      "elapsed_seconds": 0.320907083,
+      "hash": "0xc779062aa3cba00b82faab1d7d37443a73c583f57f869f7fe334afe21c5cc3ac",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x10acb08f697ee79a4344dcc72cb50c2855b904e5159d6b39b274f7f2baa48ab6",
+      "status": "inspected",
+      "storage_key": "0x929aad201cddea0f71436fcd7639edd7704e12e9cb85186914fba42a61c66fcd",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 470,
+          "value": "0x000000000000000000000000035fe89fb7cb7610a756f2d7fe5154fca5b2ed90"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1258,
+          "value": "0x000000000000000000000000a6e47a2bc4d7371660124b56fc1a042da41e6c12"
+        },
+        {
+          "depth": 2,
+          "key": "0x929aad201cddea0f71436fcd7639edd7704e12e9cb85186914fba42a61c66fcd",
+          "pc": 2119,
+          "value": "0x00000000000000000000000000000000000000000000000000000000540f994f"
+        }
+      ],
+      "storage_word": "1410308431",
+      "tool_language": "Rust",
+      "trace_sha256": "0e63fb3f980adc6841991c8f0c47c32000854da643a4c985255a7d574d2742c3"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "code_hash": "0x10acb08f697ee79a4344dcc72cb50c2855b904e5159d6b39b274f7f2baa48ab6",
+      "contract": "0x03f65216f340bac39c8d1911288b1c7ca071e9c3",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "0x0000000000000000000000000000000000000000000000000000000000000034",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      ],
+      "proxy": {
+        "code_hash": "0x91a08783863185425b91ab29c43bb9ae4047ffa8611aac0ac92d2c1f55b7ba3d",
+        "implementation": "0xa6e47a2bc4d7371660124b56fc1a042da41e6c12",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [
+      {
+        "body": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "nonbalance_controls": [
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000032"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000032"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000033"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000034"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000034"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      },
+      {
+        "balance_of": "1410308431",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      }
+    ],
+    "outer_source_sha256": "fc7273437a8b9117fbf496cdd9eee89f26443bc5baab7620ddc90009abdf051a",
+    "rank": 165,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "4adc8247266ac2f127ac76856d190ec7e9c21b60006280e5fae5eec5db3cb79c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xa6e47a2bc4d7371660124b56fc1a042da41e6c12?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 289,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "_paused",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 394,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 7492,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "owner",
+          "offset": 0,
+          "slot": "50",
+          "type": "t_address"
+        },
+        {
+          "astId": 7494,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "pendingOwner",
+          "offset": 0,
+          "slot": "51",
+          "type": "t_address"
+        },
+        {
+          "astId": 7497,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "adminManager",
+          "offset": 0,
+          "slot": "52",
+          "type": "t_contract(IAdminManager)7479"
+        },
+        {
+          "astId": 7499,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "treasury",
+          "offset": 0,
+          "slot": "53",
+          "type": "t_address"
+        },
+        {
+          "astId": 7501,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "genesisActive",
+          "offset": 20,
+          "slot": "53",
+          "type": "t_bool"
+        },
+        {
+          "astId": 7505,
+          "contract": "contracts/USDDD.sol:USDDD",
+          "label": "blacklisted",
+          "offset": 0,
+          "slot": "54",
+          "type": "t_mapping(t_address,t_bool)"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_uint256)49_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[49]",
+          "numberOfBytes": "1568"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_contract(IAdminManager)7479": {
+          "encoding": "inplace",
+          "label": "contract IAdminManager",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0x8105743e8a19c915a604d7d9e7aa3a060a4c2c32",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0xc401796ec909f7774703528571c3590748ebc563",
+              "bytes": 10348,
+              "historical_runtime_bound": true,
+              "name": "ArtxToken",
+              "runtime_hash": "0xf8ef8aafe948cf5240fb04631cd152673a48a13c9c6be2e638e2642250d4f03c",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 915,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_initialized",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 918,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_initializing",
+                  "offset": 1,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 2310,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 1234,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_balances",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_mapping(t_address,t_uint256)"
+                },
+                {
+                  "astId": 1240,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_allowances",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+                },
+                {
+                  "astId": 1242,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_totalSupply",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1244,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_name",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 1246,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_symbol",
+                  "offset": 0,
+                  "slot": "55",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 1826,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "56",
+                  "type": "t_array(t_uint256)45_storage"
+                },
+                {
+                  "astId": 2694,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "101",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 28,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_roles",
+                  "offset": 0,
+                  "slot": "151",
+                  "type": "t_mapping(t_bytes32,t_struct(RoleData)23_storage)"
+                },
+                {
+                  "astId": 335,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "152",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 421,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_owner",
+                  "offset": 0,
+                  "slot": "201",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 541,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "202",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 897,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "251",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 1213,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "301",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 3698,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "totalMinted",
+                  "offset": 0,
+                  "slot": "351",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 3700,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "totalBurned",
+                  "offset": 0,
+                  "slot": "352",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0xc401796ec909f7774703528571c3590748ebc563"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0xc401796ec909f7774703528571c3590748ebc563",
+              "bytes": 10348,
+              "historical_runtime_bound": true,
+              "name": "ArtxToken",
+              "runtime_hash": "0xf8ef8aafe948cf5240fb04631cd152673a48a13c9c6be2e638e2642250d4f03c",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 915,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_initialized",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 918,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_initializing",
+                  "offset": 1,
+                  "slot": "0",
+                  "type": "t_bool"
+                },
+                {
+                  "astId": 2310,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 1234,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_balances",
+                  "offset": 0,
+                  "slot": "51",
+                  "type": "t_mapping(t_address,t_uint256)"
+                },
+                {
+                  "astId": 1240,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_allowances",
+                  "offset": 0,
+                  "slot": "52",
+                  "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+                },
+                {
+                  "astId": 1242,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_totalSupply",
+                  "offset": 0,
+                  "slot": "53",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 1244,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_name",
+                  "offset": 0,
+                  "slot": "54",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 1246,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_symbol",
+                  "offset": 0,
+                  "slot": "55",
+                  "type": "t_string_storage"
+                },
+                {
+                  "astId": 1826,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "56",
+                  "type": "t_array(t_uint256)45_storage"
+                },
+                {
+                  "astId": 2694,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "101",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 28,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_roles",
+                  "offset": 0,
+                  "slot": "151",
+                  "type": "t_mapping(t_bytes32,t_struct(RoleData)23_storage)"
+                },
+                {
+                  "astId": 335,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "152",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 421,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "_owner",
+                  "offset": 0,
+                  "slot": "201",
+                  "type": "t_address"
+                },
+                {
+                  "astId": 541,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "202",
+                  "type": "t_array(t_uint256)49_storage"
+                },
+                {
+                  "astId": 897,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "251",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 1213,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "__gap",
+                  "offset": 0,
+                  "slot": "301",
+                  "type": "t_array(t_uint256)50_storage"
+                },
+                {
+                  "astId": 3698,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "totalMinted",
+                  "offset": 0,
+                  "slot": "351",
+                  "type": "t_uint256"
+                },
+                {
+                  "astId": 3700,
+                  "contract": "contracts/ArtxToken.sol:ArtxToken",
+                  "label": "totalBurned",
+                  "offset": 0,
+                  "slot": "352",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0xc401796ec909f7774703528571c3590748ebc563"
+        }
+      ],
+      "contract": "0x8105743e8a19c915a604d7d9e7aa3a060a4c2c32",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 169,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x43316c5fb6941ab1a6f7015ae04d8c5f40446507",
+      "balance_of": "334902830179404367965",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288061,
+      "contract": "0x8105743e8a19c915a604d7d9e7aa3a060a4c2c32",
+      "elapsed_seconds": 0.293747834,
+      "hash": "0x8c74e87bf964ab0cd61d3a5ec238df4e8c6babee919926ce9d98a1ba9e5d253b",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+      "status": "inspected",
+      "storage_key": "0x78444ace702aa22cdf69b9c67dfaf1a9382c035f554c6d49e9622d0e7885b191",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 64,
+          "value": "0x000000000000000000000000c401796ec909f7774703528571c3590748ebc563"
+        },
+        {
+          "depth": 2,
+          "key": "0x78444ace702aa22cdf69b9c67dfaf1a9382c035f554c6d49e9622d0e7885b191",
+          "pc": 1758,
+          "value": "0x00000000000000000000000000000000000000000000001227b5dda82c5e485d"
+        }
+      ],
+      "storage_word": "334902830179404367965",
+      "tool_language": "Rust",
+      "trace_sha256": "0a5faa13fd8aabbe04500af84ae13ebe75fbd565747dcd28d46c4dd1b22f4284"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "code_hash": "0x864cc9ad53b338b82da1f7cab85ab0b3d5c8861acb422b6fec63cf36234f36a6",
+      "contract": "0x8105743e8a19c915a604d7d9e7aa3a060a4c2c32",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000097": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x0000000000000000000000000000000000000000000000000000000000000037",
+        "0x00000000000000000000000000000000000000000000000000000000000000c9",
+        "0x000000000000000000000000000000000000000000000000000000000000015f",
+        "0x0000000000000000000000000000000000000000000000000000000000000160"
+      ],
+      "proxy": {
+        "code_hash": "0xf8ef8aafe948cf5240fb04631cd152673a48a13c9c6be2e638e2642250d4f03c",
+        "implementation": "0xc401796ec909f7774703528571c3590748ebc563",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [],
+    "nonbalance_controls": [
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000035"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000036"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000036"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000037"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000037"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000c9"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x00000000000000000000000000000000000000000000000000000000000000c9"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x000000000000000000000000000000000000000000000000000000000000015f"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x000000000000000000000000000000000000000000000000000000000000015f"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000160"
+      },
+      {
+        "balance_of": "334902830179404367965",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000160"
+      }
+    ],
+    "outer_source_sha256": "22e604d6c46a14825b5a95f686ffb1875475ad0725fe63d7d77747bb0931d9ab",
+    "rank": 169,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "f01037c490dd41a7e656ad3dcf8b7cfd95ee125f3378ceac81d663933a5d7e7e",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc401796ec909f7774703528571c3590748ebc563?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 915,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_initialized",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 918,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_initializing",
+          "offset": 1,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 2310,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 1234,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_balances",
+          "offset": 0,
+          "slot": "51",
+          "type": "t_mapping(t_address,t_uint256)"
+        },
+        {
+          "astId": 1240,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_allowances",
+          "offset": 0,
+          "slot": "52",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+        },
+        {
+          "astId": 1242,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_totalSupply",
+          "offset": 0,
+          "slot": "53",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1244,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_name",
+          "offset": 0,
+          "slot": "54",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 1246,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_symbol",
+          "offset": 0,
+          "slot": "55",
+          "type": "t_string_storage"
+        },
+        {
+          "astId": 1826,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "56",
+          "type": "t_array(t_uint256)45_storage"
+        },
+        {
+          "astId": 2694,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "101",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 28,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_roles",
+          "offset": 0,
+          "slot": "151",
+          "type": "t_mapping(t_bytes32,t_struct(RoleData)23_storage)"
+        },
+        {
+          "astId": 335,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "152",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 421,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "_owner",
+          "offset": 0,
+          "slot": "201",
+          "type": "t_address"
+        },
+        {
+          "astId": 541,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "202",
+          "type": "t_array(t_uint256)49_storage"
+        },
+        {
+          "astId": 897,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "251",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 1213,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "__gap",
+          "offset": 0,
+          "slot": "301",
+          "type": "t_array(t_uint256)50_storage"
+        },
+        {
+          "astId": 3698,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "totalMinted",
+          "offset": 0,
+          "slot": "351",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 3700,
+          "contract": "contracts/ArtxToken.sol:ArtxToken",
+          "label": "totalBurned",
+          "offset": 0,
+          "slot": "352",
+          "type": "t_uint256"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_array(t_uint256)45_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[45]",
+          "numberOfBytes": "1440"
+        },
+        "t_array(t_uint256)49_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[49]",
+          "numberOfBytes": "1568"
+        },
+        "t_array(t_uint256)50_storage": {
+          "base": "t_uint256",
+          "encoding": "inplace",
+          "label": "uint256[50]",
+          "numberOfBytes": "1600"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_bytes32": {
+          "encoding": "inplace",
+          "label": "bytes32",
+          "numberOfBytes": "32"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint256))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint256)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_mapping(t_bytes32,t_struct(RoleData)23_storage)": {
+          "encoding": "mapping",
+          "key": "t_bytes32",
+          "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+          "numberOfBytes": "32",
+          "value": "t_struct(RoleData)23_storage"
+        },
+        "t_string_storage": {
+          "encoding": "bytes",
+          "label": "string",
+          "numberOfBytes": "32"
+        },
+        "t_struct(RoleData)23_storage": {
+          "encoding": "inplace",
+          "label": "struct AccessControlUpgradeable.RoleData",
+          "members": [
+            {
+              "astId": 20,
+              "contract": "contracts/ArtxToken.sol:ArtxToken",
+              "label": "members",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_address,t_bool)"
+            },
+            {
+              "astId": 22,
+              "contract": "contracts/ArtxToken.sol:ArtxToken",
+              "label": "adminRole",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32"
+            }
+          ],
+          "numberOfBytes": "64"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0x61fac5f038515572d6f42d4bcb6b581642753d50",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0x3fe162dd973df944c43c8b7642e4e433dfe83dbe",
+              "bytes": 16133,
+              "historical_runtime_bound": true,
+              "name": "IN_Token",
+              "runtime_hash": "0x06ea661b6749170769e7e197380fd3ca50b1a637225021c3fe6f9aa38ea18cfa",
+              "source_verified": true,
+              "storage": []
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0x3fe162dd973df944c43c8b7642e4e433dfe83dbe"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0x3fe162dd973df944c43c8b7642e4e433dfe83dbe",
+              "bytes": 16133,
+              "historical_runtime_bound": true,
+              "name": "IN_Token",
+              "runtime_hash": "0x06ea661b6749170769e7e197380fd3ca50b1a637225021c3fe6f9aa38ea18cfa",
+              "source_verified": true,
+              "storage": []
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0x3fe162dd973df944c43c8b7642e4e433dfe83dbe"
+        }
+      ],
+      "contract": "0x61fac5f038515572d6f42d4bcb6b581642753d50",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 186,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x5bd808ab85c124f99080da5f864edcb39950ede5",
+      "balance_of": "28660828707502209639018473",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288069,
+      "contract": "0x61fac5f038515572d6f42d4bcb6b581642753d50",
+      "elapsed_seconds": 0.305874959,
+      "hash": "0x6e638607b5b4dec2ce2caf6fd1b13b4f77712cfa7b02c69d36c657059ada0241",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xe5e3693157141608a301682c8c228c0277eac7efc0b98b57f874ca49752b5fd8",
+      "status": "inspected",
+      "storage_key": "0x117638c8c306c4b1db87d7a0f02dcb9e530824860e855e613220d258d19578a3",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 1160,
+          "value": "0x0000000000000000000000006fa56f0c01ed6898b9447ff0351e0b70c8756717"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1160,
+          "value": "0x0000000000000000000000003fe162dd973df944c43c8b7642e4e433dfe83dbe"
+        },
+        {
+          "depth": 2,
+          "key": "0x117638c8c306c4b1db87d7a0f02dcb9e530824860e855e613220d258d19578a3",
+          "pc": 3947,
+          "value": "0x00000000000000000000000000000000000000000017b52aa332e6b3d3466fe9"
+        }
+      ],
+      "storage_word": "28660828707502209639018473",
+      "tool_language": "Rust",
+      "trace_sha256": "689929e633f3cf9191a48e07fcce03d9a307f6c4ac8b194b1f4634f87ed8cd8e"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "code_hash": "0xe5e3693157141608a301682c8c228c0277eac7efc0b98b57f874ca49752b5fd8",
+      "contract": "0x61fac5f038515572d6f42d4bcb6b581642753d50",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      ],
+      "proxy": {
+        "code_hash": "0x06ea661b6749170769e7e197380fd3ca50b1a637225021c3fe6f9aa38ea18cfa",
+        "implementation": "0x3fe162dd973df944c43c8b7642e4e433dfe83dbe",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [
+      {
+        "body": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "nonbalance_controls": [
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      },
+      {
+        "balance_of": "28660828707502209639018473",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      }
+    ],
+    "outer_source_sha256": "9341bab48e8f2d06c78b869a4c3d9e9e329ab83b7a5a53bd918b0156826faec0",
+    "rank": 186,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "1df48f24a9c7d0311937f9a6a170e0a958b4e647c540e4171ddc11d3a388aab5",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3fe162dd973df944c43c8b7642e4e433dfe83dbe?fields=all",
+    "storage": {
+      "storage": [],
+      "types": null
+    }
+  },
+  {
+    "contract": "0x299ad4299da5b2b93fba4c96967b040c7f611099",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0x5a9610919f5e81183823a2be4bd1beb2b4da2a20",
+              "bytes": 13992,
+              "historical_runtime_bound": true,
+              "name": "AprOFT",
+              "runtime_hash": "0xb31ecffbf17b3fabb9668748c1aa9004f17a1d9ab09613ce7e3a9ed7183535bd",
+              "source_verified": true,
+              "storage": []
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0x5a9610919f5e81183823a2be4bd1beb2b4da2a20"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0x5a9610919f5e81183823a2be4bd1beb2b4da2a20",
+              "bytes": 13992,
+              "historical_runtime_bound": true,
+              "name": "AprOFT",
+              "runtime_hash": "0xb31ecffbf17b3fabb9668748c1aa9004f17a1d9ab09613ce7e3a9ed7183535bd",
+              "source_verified": true,
+              "storage": []
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0x5a9610919f5e81183823a2be4bd1beb2b4da2a20"
+        }
+      ],
+      "contract": "0x299ad4299da5b2b93fba4c96967b040c7f611099",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 192,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      },
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x6245517f5403b276eab78a42a78edc9b144e2c97",
+      "balance_of": "399090311311426384099",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288058,
+      "contract": "0x299ad4299da5b2b93fba4c96967b040c7f611099",
+      "elapsed_seconds": 0.303661834,
+      "hash": "0x42abef5b6286e9f23734b88571f0977e9a171d3de2c099a2b36bd136d565dab3",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xe5e3693157141608a301682c8c228c0277eac7efc0b98b57f874ca49752b5fd8",
+      "status": "inspected",
+      "storage_key": "0x97190411fc789915e3e4a8d4d89cac008fb2605b8d2c3a5c179327956deabf72",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 1160,
+          "value": "0x000000000000000000000000e04278eb545d77464fe055edc1c4d362cb7531d3"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1160,
+          "value": "0x0000000000000000000000005a9610919f5e81183823a2be4bd1beb2b4da2a20"
+        },
+        {
+          "depth": 2,
+          "key": "0x97190411fc789915e3e4a8d4d89cac008fb2605b8d2c3a5c179327956deabf72",
+          "pc": 1451,
+          "value": "0x000000000000000000000000000000000000000000000015a27d9baaa9a0f0e3"
+        }
+      ],
+      "storage_word": "399090311311426384099",
+      "tool_language": "Rust",
+      "trace_sha256": "c872dbe30bf81e3b2896ad381bf0b5bdc3a1226b511a888674a77b0ac73e6661"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "code_hash": "0xe5e3693157141608a301682c8c228c0277eac7efc0b98b57f874ca49752b5fd8",
+      "contract": "0x299ad4299da5b2b93fba4c96967b040c7f611099",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      ],
+      "proxy": {
+        "code_hash": "0xb31ecffbf17b3fabb9668748c1aa9004f17a1d9ab09613ce7e3a9ed7183535bd",
+        "implementation": "0x5a9610919f5e81183823a2be4bd1beb2b4da2a20",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [
+      {
+        "body": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "nonbalance_controls": [
+      {
+        "balance_of": "399090311311426384099",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "399090311311426384099",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "399090311311426384099",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "399090311311426384099",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "399090311311426384099",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      },
+      {
+        "balance_of": "399090311311426384099",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      }
+    ],
+    "outer_source_sha256": "f7e6d6668aaa0b63bc283324ae963ec5b8124d9febb2e20aa6a08c0ea174f24a",
+    "rank": 192,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "46e597b7a211c471204bad84c28ca70351b9c744cdb9561edde2b4e388e29339",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x5a9610919f5e81183823a2be4bd1beb2b4da2a20?fields=all",
+    "storage": {
+      "storage": [],
+      "types": null
+    }
+  },
+  {
+    "contract": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+    "dependencies": {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependencies": [
+            {
+              "address": "0x3ac35062354ad2eb083ef7a2e5904b937701aa23",
+              "bytes": 8764,
+              "historical_runtime_bound": true,
+              "name": "MultiControlERC20",
+              "runtime_hash": "0x7d95d8ba9e11ec1061f8fc93c74fce848f302a20863663284fd33eb4c233b1f8",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 10767,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "_decimals",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 10781,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 10783,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "mintQuota",
+                  "offset": 0,
+                  "slot": "2",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "target": "0x3ac35062354ad2eb083ef7a2e5904b937701aa23"
+        },
+        {
+          "block": 122289029,
+          "dependencies": [
+            {
+              "address": "0x3ac35062354ad2eb083ef7a2e5904b937701aa23",
+              "bytes": 8764,
+              "historical_runtime_bound": true,
+              "name": "MultiControlERC20",
+              "runtime_hash": "0x7d95d8ba9e11ec1061f8fc93c74fce848f302a20863663284fd33eb4c233b1f8",
+              "source_verified": true,
+              "storage": [
+                {
+                  "astId": 10767,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "_decimals",
+                  "offset": 0,
+                  "slot": "0",
+                  "type": "t_uint8"
+                },
+                {
+                  "astId": 10781,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "blacklisted",
+                  "offset": 0,
+                  "slot": "1",
+                  "type": "t_mapping(t_address,t_bool)"
+                },
+                {
+                  "astId": 10783,
+                  "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+                  "label": "mintQuota",
+                  "offset": 0,
+                  "slot": "2",
+                  "type": "t_uint256"
+                }
+              ]
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "target": "0x3ac35062354ad2eb083ef7a2e5904b937701aa23"
+        }
+      ],
+      "contract": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+      "kind": "implementation_probe",
+      "qualified": false,
+      "rank": 195,
+      "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+    },
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x60b97709d633dd4e0f0f44f6102fd50341c0afa6",
+      "balance_of": "7135100000072286011392",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288082,
+      "contract": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+      "elapsed_seconds": 0.311109042,
+      "hash": "0xf2cd0e2e2d839132c117a99743d7fbcebb087dbf5b634a717dc6c540d37c123f",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x3f2c567bd11a67957901edead2344f7d8bf1983a8800b0298f1e7a791d1fd2cf",
+      "status": "inspected",
+      "storage_key": "0x34e64e4c22a32b30356d189b24551592ac5894856d7833646c41c84c6a7ee8ef",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 694,
+          "value": "0x0000000000000000000000003ac35062354ad2eb083ef7a2e5904b937701aa23"
+        },
+        {
+          "depth": 2,
+          "key": "0x34e64e4c22a32b30356d189b24551592ac5894856d7833646c41c84c6a7ee8ef",
+          "pc": 3683,
+          "value": "0x000000000000000000000000000000000000000000000182cb675eaf8e3b0000"
+        }
+      ],
+      "storage_word": "7135100000072286011392",
+      "tool_language": "Rust",
+      "trace_sha256": "8993acef1cc127b1c4e0c1b000de0113310a67586520b940f5e71ec9a669ddb6"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "code_hash": "0x3f2c567bd11a67957901edead2344f7d8bf1983a8800b0298f1e7a791d1fd2cf",
+      "contract": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      ],
+      "proxy": {
+        "code_hash": "0x7d95d8ba9e11ec1061f8fc93c74fce848f302a20863663284fd33eb4c233b1f8",
+        "implementation": "0x3ac35062354ad2eb083ef7a2e5904b937701aa23",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "namespace_binding": [
+      {
+        "body": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * All two of these values are immutable: they can only be set once during\n     * construction.\n     */\n    ",
+        "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+      }
+    ],
+    "nonbalance_controls": [
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000002"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "0",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      },
+      {
+        "balance_of": "7135100000072286011392",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+      }
+    ],
+    "outer_source_sha256": "c5bb1f144d9e469728c95c3b4bd3c8af68b65e44d347a32c72aa92b261e6bd9b",
+    "rank": 195,
+    "scope": "Pinned historical proxy and implementation; direct getter with explicit fields. Namespace fields beyond the ERC20 struct and unreviewed writes remain unresolved.",
+    "source_sha256": "734a00ef5631faf33c6186eecc28e3e98ce867ea7f05b7c4dd89f19765fd789a",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3ac35062354ad2eb083ef7a2e5904b937701aa23?fields=all",
+    "storage": {
+      "storage": [
+        {
+          "astId": 10767,
+          "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+          "label": "_decimals",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 10781,
+          "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+          "label": "blacklisted",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_bool)"
+        },
+        {
+          "astId": 10783,
+          "contract": "contracts/utils/MultiControlERC20.sol:MultiControlERC20",
+          "label": "mintQuota",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_bool": {
+          "encoding": "inplace",
+          "label": "bool",
+          "numberOfBytes": "1"
+        },
+        "t_mapping(t_address,t_bool)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => bool)",
+          "numberOfBytes": "32",
+          "value": "t_bool"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        }
+      }
+    }
+  },
+  {
+    "contract": "0x156ab3346823b651294766e23e6cf87254d68962",
+    "dependencies": [
+      {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "dependencies": [
+              {
+                "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+                "bytes": 729,
+                "historical_runtime_bound": true,
+                "name": "TokenBridge",
+                "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+                "source_verified": true,
+                "storage": []
+              },
+              {
+                "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+                "bytes": 6680,
+                "historical_runtime_bound": true,
+                "name": "TokenImplementation",
+                "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+                "source_verified": true,
+                "storage": [
+                  {
+                    "astId": 126,
+                    "contract": "null:TokenImplementation",
+                    "label": "_state",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_struct(State)118_storage"
+                  }
+                ]
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+          },
+          {
+            "block": 122289029,
+            "dependencies": [
+              {
+                "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+                "bytes": 729,
+                "historical_runtime_bound": true,
+                "name": "TokenBridge",
+                "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+                "source_verified": true,
+                "storage": []
+              },
+              {
+                "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+                "bytes": 6680,
+                "historical_runtime_bound": true,
+                "name": "TokenImplementation",
+                "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+                "source_verified": true,
+                "storage": [
+                  {
+                    "astId": 126,
+                    "contract": "null:TokenImplementation",
+                    "label": "_state",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_struct(State)118_storage"
+                  }
+                ]
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+          }
+        ],
+        "contract": "0x156ab3346823b651294766e23e6cf87254d68962",
+        "kind": "beacon_probe",
+        "qualified": false,
+        "rank": 177,
+        "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+        "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+      }
+    ],
+    "family_profile": "0x30117e4bc17d7b044194b76a38365c53b72f7d49",
+    "inspection": {
+      "address": "0x34c422989df98e8369f28eb9799eac1be2df70d0",
+      "balance_of": "860578048415849",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288011,
+      "contract": "0x156ab3346823b651294766e23e6cf87254d68962",
+      "elapsed_seconds": 0.312743916,
+      "hash": "0x8c81b179f0e181153150330c3752aed47924b19f7ebdff8129354ce2ea4648b8",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x86abc41531e40f899666c5dccc4da7138a718c7280f299d051ed8847c8282908",
+      "status": "inspected",
+      "storage_key": "0x485aca9008461beb661374dacc1aa950edc6d50d5fdb291721bc6d228fd14068",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "pc": 133,
+          "value": "0x000000000000000000000000b6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+        },
+        {
+          "depth": 2,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 133,
+          "value": "0x000000000000000000000000621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3"
+        },
+        {
+          "depth": 3,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 4702,
+          "value": "0x0000000000000000000000007f8c5e730121657e17e452c5a1ba3fa1ef96f22a"
+        },
+        {
+          "depth": 2,
+          "key": "0x485aca9008461beb661374dacc1aa950edc6d50d5fdb291721bc6d228fd14068",
+          "pc": 544,
+          "value": "0x00000000000000000000000000000000000000000000000000030eb0f0e09869"
+        }
+      ],
+      "storage_word": "860578048415849",
+      "tool_language": "Rust",
+      "trace_sha256": "f07e7e438d9aebd3a93a7d2acaa9d9b55515ea46cba8253bc2420ea3a77c2055"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "beacon_proxy": {
+        "beacon": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+        "beacon_code_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+        "implementation_code_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "proxy": {
+          "code_hash": "0x7b5dbbb9333e8973eb3e6ed329cf1505c087d69c4d7bfd3cf76a48a09c445ffc",
+          "implementation": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3",
+          "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+        }
+      },
+      "code_hash": "0x86abc41531e40f899666c5dccc4da7138a718c7280f299d051ed8847c8282908",
+      "contract": "0x156ab3346823b651294766e23e6cf87254d68962",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x000000000000000000000000000000000000000000000000000000000000000e"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d"
+      ]
+    },
+    "outer_source_sha256": "6e5e2fff6c1f58246afe15e9ec31c06c5ef75b259a1bce0d00686371bacb05e5",
+    "outer_source_url": "https://sourcify.dev/server/v2/contract/56/0x156ab3346823b651294766e23e6cf87254d68962?fields=all",
+    "proxy_semantics": "Runtime-bound BridgeToken inherits BeaconProxy; fallback delegates to IBeacon(_getBeacon()).implementation(). Same independently pinned beacon, delegate implementation and token implementation as reviewed rank 142; outer runtime differs and is qualified separately.",
+    "rank": 177
+  }
+]

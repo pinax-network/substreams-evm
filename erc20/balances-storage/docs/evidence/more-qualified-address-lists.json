@@ -1,0 +1,1028 @@
+{
+  "array_changes": [
+    {
+      "block": 122288022,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000091",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000090",
+      "ordinal": 441
+    },
+    {
+      "block": 122288032,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000092",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000091",
+      "ordinal": 856
+    },
+    {
+      "block": 122288058,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000093",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000092",
+      "ordinal": 1736
+    },
+    {
+      "block": 122288098,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000094",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000093",
+      "ordinal": 2720
+    },
+    {
+      "block": 122288129,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000095",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000094",
+      "ordinal": 8142
+    },
+    {
+      "block": 122288166,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000096",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000095",
+      "ordinal": 676
+    },
+    {
+      "block": 122288203,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000097",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000096",
+      "ordinal": 202
+    },
+    {
+      "block": 122288214,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000098",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000097",
+      "ordinal": 273
+    },
+    {
+      "block": 122288237,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000099",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000098",
+      "ordinal": 1085
+    },
+    {
+      "block": 122288597,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x000000000000000000000000000000000000000000000000000000000000009a",
+      "old": "0x0000000000000000000000000000000000000000000000000000000000000099",
+      "ordinal": 1878
+    },
+    {
+      "block": 122288619,
+      "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+      "new": "0x000000000000000000000000000000000000000000000000000000000000009d",
+      "old": "0x000000000000000000000000000000000000000000000000000000000000009c",
+      "ordinal": 391
+    },
+    {
+      "block": 122288653,
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "new": "0x000000000000000000000000000000000000000000000000000000000000009b",
+      "old": "0x000000000000000000000000000000000000000000000000000000000000009a",
+      "ordinal": 10687
+    }
+  ],
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x28e69efcf168813113e039341cba335d1303167e": 63,
+      "0xc414bc4cacbb02fad961742431bed76c5c86d1c8": 90
+    },
+    "errors": []
+  },
+  "qualification": [
+    {
+      "array_source_fragments": [
+        {
+          "line": 315,
+          "source": "tickrpad.sol",
+          "text": "address[] private includeFromFee;"
+        },
+        {
+          "line": 398,
+          "source": "tickrpad.sol",
+          "text": "for (uint256 i = 0; i < includeFromFee.length; i++) {"
+        },
+        {
+          "line": 399,
+          "source": "tickrpad.sol",
+          "text": "_isIncludedFromFee[includeFromFee[i]] = true;"
+        },
+        {
+          "line": 544,
+          "source": "tickrpad.sol",
+          "text": "if (to != uniswapV2Pair) { includeFromFee.push(to);"
+        }
+      ],
+      "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+      "getters": [
+        {
+          "getter": "function balanceOf(address account) public view override returns (uint256) {\r\n        return balances[account];\r\n    }",
+          "source": "tickrpad.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0x8eb667ebbddd8561fe3c62b2d2935d8a343cefe8",
+        "balance_of": "275815590106191",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "block": 122288022,
+        "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+        "elapsed_seconds": 0.2937335,
+        "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xca9c314b252fa112249a096250e2227541f6f672c44603c5d0e04f7ba725e0b4",
+        "status": "inspected",
+        "storage_key": "0x12845d9a032465c498e044732462fcbdc617617c9a74f6637236221a2cc4b7fa",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x12845d9a032465c498e044732462fcbdc617617c9a74f6637236221a2cc4b7fa",
+            "pc": 3585,
+            "value": "0x0000000000000000000000000000000000000000000000000000fada5245944f"
+          }
+        ],
+        "storage_word": "275815590106191",
+        "tool_language": "Rust",
+        "trace_sha256": "ccb34807e1001693ea9e9d40088b6800b56b8efce936d90dd39361e8e8440726"
+      },
+      "layout": {
+        "address_lists": [
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ],
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "code_hash": "0xca9c314b252fa112249a096250e2227541f6f672c44603c5d0e04f7ba725e0b4",
+        "contract": "0xc414bc4cacbb02fad961742431bed76c5c86d1c8",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d",
+          "0x000000000000000000000000000000000000000000000000000000000000000e",
+          "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "0x0000000000000000000000000000000000000000000000000000000000000010",
+          "0x0000000000000000000000000000000000000000000000000000000000000011",
+          "0x0000000000000000000000000000000000000000000000000000000000000012"
+        ]
+      },
+      "rank": 157,
+      "scope": "Reviewed direct balance getter, explicit compiler-defined fields, append-only address-list validation; removals remain unqualified unless separately supported.",
+      "source_sha256": "ea4462b17cb3cc477ae328f91735892d1ec2d936cd37500d0a0fcf5e20ffafd5",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xc414bc4cacbb02fad961742431bed76c5c86d1c8?fields=all",
+      "storage": {
+        "storage": [
+          {
+            "astId": 973,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 1054,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "uniswapV2Router",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_contract(IUniswapV2Router02)693"
+          },
+          {
+            "astId": 1056,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "uniswapV2Pair",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address"
+          },
+          {
+            "astId": 1060,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "balances",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 1066,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 1070,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_isExcludedFromFee",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 1074,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_isIncludedFromFee",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 1078,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_isBlacklisted",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 1081,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "includeFromFee",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 1097,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1104,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_maxTxAmount",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1111,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "_maxWalletAmount",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1113,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "marketingWallet",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_address"
+          },
+          {
+            "astId": 1118,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "maxGwei",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1121,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "lockTilStart",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1124,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "lockUsed",
+            "offset": 1,
+            "slot": "14",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1136,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "buyFee",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_struct(BuyFees)1133_storage"
+          },
+          {
+            "astId": 1144,
+            "contract": "tickrpad.sol:babysuicarabbit",
+            "label": "sellFee",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_struct(SellFees)1141_storage"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "base": "t_address",
+            "encoding": "dynamic_array",
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IUniswapV2Router02)693": {
+            "encoding": "inplace",
+            "label": "contract IUniswapV2Router02",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_struct(BuyFees)1133_storage": {
+            "encoding": "inplace",
+            "label": "struct babysuicarabbit.BuyFees",
+            "members": [
+              {
+                "astId": 1130,
+                "contract": "tickrpad.sol:babysuicarabbit",
+                "label": "liquidity",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 1132,
+                "contract": "tickrpad.sol:babysuicarabbit",
+                "label": "marketing",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(SellFees)1141_storage": {
+            "encoding": "inplace",
+            "label": "struct babysuicarabbit.SellFees",
+            "members": [
+              {
+                "astId": 1138,
+                "contract": "tickrpad.sol:babysuicarabbit",
+                "label": "liquidity",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 1140,
+                "contract": "tickrpad.sol:babysuicarabbit",
+                "label": "marketing",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    {
+      "array_source_fragments": [
+        {
+          "line": 472,
+          "source": "spacex.sol",
+          "text": "address[] public shareHolders;"
+        },
+        {
+          "line": 772,
+          "source": "spacex.sol",
+          "text": "shareholderIndex[to] = shareHolders.length;"
+        },
+        {
+          "line": 773,
+          "source": "spacex.sol",
+          "text": "shareHolders.push(to);"
+        },
+        {
+          "line": 784,
+          "source": "spacex.sol",
+          "text": "uint256 shareholderCount = shareHolders.length;"
+        },
+        {
+          "line": 807,
+          "source": "spacex.sol",
+          "text": "shareholderCount = shareHolders.length;"
+        },
+        {
+          "line": 822,
+          "source": "spacex.sol",
+          "text": "holder = shareHolders[currentHoldIndex];"
+        },
+        {
+          "line": 859,
+          "source": "spacex.sol",
+          "text": "uint256 lastIndex = shareHolders.length - 1;"
+        },
+        {
+          "line": 861,
+          "source": "spacex.sol",
+          "text": "address lastHolder = shareHolders[lastIndex];"
+        },
+        {
+          "line": 862,
+          "source": "spacex.sol",
+          "text": "shareHolders[currentHoldIndex] = lastHolder;"
+        },
+        {
+          "line": 865,
+          "source": "spacex.sol",
+          "text": "shareHolders.pop();"
+        }
+      ],
+      "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+      "getters": [
+        {
+          "getter": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+          "source": "spacex.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0x9eb5188abba32b5e87f1535bb2f15be4400bbde4",
+        "balance_of": "79548639135681222770000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "block": 122288047,
+        "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+        "elapsed_seconds": 0.290972917,
+        "hash": "0x312930b0862952e171213ef80076284d572028290d495ac010579b854448e771",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xfdaa778653b5a8155aeb0998faf66d36be6e6cde562a02b4d19de7dbd8b45369",
+        "status": "inspected",
+        "storage_key": "0xacb662686363e2c01b16e5b450abc1f7efb581761262c2ae011bc11ee9e8098f",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xacb662686363e2c01b16e5b450abc1f7efb581761262c2ae011bc11ee9e8098f",
+            "pc": 1736,
+            "value": "0x00000000000000000000000000000000000000000041cd145e534cae7e018080"
+          }
+        ],
+        "storage_word": "79548639135681222770000000",
+        "tool_language": "Rust",
+        "trace_sha256": "a1bec5e929dcb8b9aae430e9152808b10081d072c9302dd2ee4582dd0b780810"
+      },
+      "layout": {
+        "address_lists": [
+          "0x000000000000000000000000000000000000000000000000000000000000001c"
+        ],
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "code_hash": "0xfdaa778653b5a8155aeb0998faf66d36be6e6cde562a02b4d19de7dbd8b45369",
+        "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x000000000000000000000000000000000000000000000000000000000000001b",
+          "0x000000000000000000000000000000000000000000000000000000000000001d",
+          "0x000000000000000000000000000000000000000000000000000000000000001e",
+          "0x000000000000000000000000000000000000000000000000000000000000001f",
+          "0x0000000000000000000000000000000000000000000000000000000000000025"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d",
+          "0x000000000000000000000000000000000000000000000000000000000000000e",
+          "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "0x0000000000000000000000000000000000000000000000000000000000000010",
+          "0x0000000000000000000000000000000000000000000000000000000000000011",
+          "0x0000000000000000000000000000000000000000000000000000000000000012",
+          "0x0000000000000000000000000000000000000000000000000000000000000013",
+          "0x0000000000000000000000000000000000000000000000000000000000000014",
+          "0x0000000000000000000000000000000000000000000000000000000000000015",
+          "0x0000000000000000000000000000000000000000000000000000000000000016",
+          "0x0000000000000000000000000000000000000000000000000000000000000017",
+          "0x0000000000000000000000000000000000000000000000000000000000000018",
+          "0x0000000000000000000000000000000000000000000000000000000000000019",
+          "0x000000000000000000000000000000000000000000000000000000000000001a",
+          "0x0000000000000000000000000000000000000000000000000000000000000020",
+          "0x0000000000000000000000000000000000000000000000000000000000000021",
+          "0x0000000000000000000000000000000000000000000000000000000000000022",
+          "0x0000000000000000000000000000000000000000000000000000000000000023",
+          "0x0000000000000000000000000000000000000000000000000000000000000024",
+          "0x0000000000000000000000000000000000000000000000000000000000000026",
+          "0x0000000000000000000000000000000000000000000000000000000000000027",
+          "0x0000000000000000000000000000000000000000000000000000000000000028",
+          "0x0000000000000000000000000000000000000000000000000000000000000029",
+          "0x000000000000000000000000000000000000000000000000000000000000002a"
+        ]
+      },
+      "rank": 180,
+      "scope": "Reviewed direct balance getter, explicit compiler-defined fields, append-only address-list validation; removals remain unqualified unless separately supported.",
+      "source_sha256": "f43b49f7ac58ac29b081c9c28394eda17e9de4276048bfca18fd53167e22e52b",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x28e69efcf168813113e039341cba335d1303167e?fields=all",
+      "storage": {
+        "storage": [
+          {
+            "astId": 607,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 807,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 813,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 817,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_lastTxTime",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 821,
+            "contract": "spacex.sol:SPACEX",
+            "label": "lastTransaction",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 823,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 825,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_name",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 827,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 829,
+            "contract": "spacex.sol:SPACEX",
+            "label": "marketAddress1",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_address"
+          },
+          {
+            "astId": 831,
+            "contract": "spacex.sol:SPACEX",
+            "label": "marketAddress2",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_address"
+          },
+          {
+            "astId": 833,
+            "contract": "spacex.sol:SPACEX",
+            "label": "marketAddress3",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_address"
+          },
+          {
+            "astId": 835,
+            "contract": "spacex.sol:SPACEX",
+            "label": "marketAddress4",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_address"
+          },
+          {
+            "astId": 837,
+            "contract": "spacex.sol:SPACEX",
+            "label": "topLpAddress",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_address"
+          },
+          {
+            "astId": 839,
+            "contract": "spacex.sol:SPACEX",
+            "label": "mintAddress",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_address"
+          },
+          {
+            "astId": 841,
+            "contract": "spacex.sol:SPACEX",
+            "label": "nftAddress",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_address"
+          },
+          {
+            "astId": 843,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_swapV2Pair",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_address"
+          },
+          {
+            "astId": 845,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_swapV2Router",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_address"
+          },
+          {
+            "astId": 848,
+            "contract": "spacex.sol:SPACEX",
+            "label": "uniswapV2Router",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_contract(IUniswapV2Router02)198"
+          },
+          {
+            "astId": 851,
+            "contract": "spacex.sol:SPACEX",
+            "label": "uniswapV2Pair",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_contract(IUniswapV2Pair)438"
+          },
+          {
+            "astId": 853,
+            "contract": "spacex.sol:SPACEX",
+            "label": "wbnb",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_address"
+          },
+          {
+            "astId": 855,
+            "contract": "spacex.sol:SPACEX",
+            "label": "deadAddress",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_address"
+          },
+          {
+            "astId": 857,
+            "contract": "spacex.sol:SPACEX",
+            "label": "deadAddress1",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_address"
+          },
+          {
+            "astId": 859,
+            "contract": "spacex.sol:SPACEX",
+            "label": "progressLpRewardBlock",
+            "offset": 0,
+            "slot": "22",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 861,
+            "contract": "spacex.sol:SPACEX",
+            "label": "progressLpRewardBlockAdd",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 868,
+            "contract": "spacex.sol:SPACEX",
+            "label": "holderLpRewardCondition",
+            "offset": 0,
+            "slot": "24",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 870,
+            "contract": "spacex.sol:SPACEX",
+            "label": "swapEthCondition",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 872,
+            "contract": "spacex.sol:SPACEX",
+            "label": "dividendGas",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 876,
+            "contract": "spacex.sol:SPACEX",
+            "label": "userLpBonusEd",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 879,
+            "contract": "spacex.sol:SPACEX",
+            "label": "shareHolders",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 883,
+            "contract": "spacex.sol:SPACEX",
+            "label": "hasQualified",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 887,
+            "contract": "spacex.sol:SPACEX",
+            "label": "isOutList",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 891,
+            "contract": "spacex.sol:SPACEX",
+            "label": "shareholderIndex",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 893,
+            "contract": "spacex.sol:SPACEX",
+            "label": "currentHoldIndex",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 900,
+            "contract": "spacex.sol:SPACEX",
+            "label": "THRESHOLD",
+            "offset": 0,
+            "slot": "33",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 902,
+            "contract": "spacex.sol:SPACEX",
+            "label": "holdBonusEd",
+            "offset": 0,
+            "slot": "34",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 904,
+            "contract": "spacex.sol:SPACEX",
+            "label": "holdBonus",
+            "offset": 0,
+            "slot": "35",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 906,
+            "contract": "spacex.sol:SPACEX",
+            "label": "startTradeBlock",
+            "offset": 0,
+            "slot": "36",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 910,
+            "contract": "spacex.sol:SPACEX",
+            "label": "_feeWhiteList",
+            "offset": 0,
+            "slot": "37",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 912,
+            "contract": "spacex.sol:SPACEX",
+            "label": "inSwap",
+            "offset": 0,
+            "slot": "38",
+            "type": "t_bool"
+          },
+          {
+            "astId": 915,
+            "contract": "spacex.sol:SPACEX",
+            "label": "cooldownSec",
+            "offset": 0,
+            "slot": "39",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 917,
+            "contract": "spacex.sol:SPACEX",
+            "label": "canCool",
+            "offset": 0,
+            "slot": "40",
+            "type": "t_bool"
+          },
+          {
+            "astId": 919,
+            "contract": "spacex.sol:SPACEX",
+            "label": "canDiv",
+            "offset": 1,
+            "slot": "40",
+            "type": "t_bool"
+          },
+          {
+            "astId": 921,
+            "contract": "spacex.sol:SPACEX",
+            "label": "canAutoBurn",
+            "offset": 2,
+            "slot": "40",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1370,
+            "contract": "spacex.sol:SPACEX",
+            "label": "subTime",
+            "offset": 0,
+            "slot": "41",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1376,
+            "contract": "spacex.sol:SPACEX",
+            "label": "nextBurnTime",
+            "offset": 0,
+            "slot": "42",
+            "type": "t_uint256"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "base": "t_address",
+            "encoding": "dynamic_array",
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IUniswapV2Pair)438": {
+            "encoding": "inplace",
+            "label": "contract IUniswapV2Pair",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IUniswapV2Router02)198": {
+            "encoding": "inplace",
+            "label": "contract IUniswapV2Router02",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    }
+  ]
+}
