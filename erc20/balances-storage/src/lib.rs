@@ -394,6 +394,8 @@ mod ranked_cohort_tests;
 #[cfg(test)]
 mod ranked_proxy_tests;
 #[cfg(test)]
+mod remaining_ranked_tests;
+#[cfg(test)]
 mod securities_proxy_tests;
 #[cfg(test)]
 mod tests;

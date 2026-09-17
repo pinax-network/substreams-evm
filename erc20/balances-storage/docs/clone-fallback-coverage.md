@@ -1,5 +1,8 @@
 # BSC clone with a stored zero-word fallback
 
+The [subsequent eight-token qualification](remaining-ranked-coverage.md) extends
+coverage to 149 profiles. This report retains its original 141-profile scope.
+
 Rank **144**, `0xc4c5f33e3860e1ad31d52fd377cc39f74784d19f`, is now qualified
 for the same BSC interval, **122288006–122289029**. The
 [combined fixture](../tests/fixtures/bsc-clone-fallback-layouts.json) contains

@@ -1200,3 +1200,43 @@ fn immutable_zero_checkpoint_starts_only_after_qualified_creation() {
     layouts[0].immutable_zero_mapping = false;
     assert_eq!(known_checkpoint_amount(&layouts[0], birth + 1, &[7; 20]), None);
 }
+
+#[test]
+fn captured_pending_rewards_make_a_correct_checkpoint_stale_without_balance_writes() {
+    use crate::coverage::{outcome, HolderState};
+    use std::collections::BTreeSet;
+    let evidence: Value = serde_json::from_str(include_str!("../../docs/evidence/lbp-retained-drift.json")).unwrap();
+    let canonical: Value = serde_json::from_str(include_str!("../../docs/evidence/remaining-ranked-holder-coverage.json")).unwrap();
+    let contract = text(&evidence["contract"]).unwrap().to_owned();
+    let mut checkpoint = Balances::new();
+    let mut final_rpc = Balances::new();
+    for check in items(&evidence, "checks").unwrap() {
+        assert_eq!(check["persisted_balance_writes"], 0);
+        assert_eq!(check["initial"]["hash"], canonical["checkpoint_hash"]);
+        assert_eq!(check["initial"]["raw"], check["final"]["raw"]);
+        let key = (contract.clone(), text(&check["holder"]).unwrap().to_owned());
+        let initial = uint(&check["initial"]["rpc"]).unwrap();
+        let final_value = uint(&check["final"]["rpc"]).unwrap();
+        assert_eq!(initial, uint(&check["initial"]["raw"]).unwrap() + uint(&check["initial"]["pending"]).unwrap());
+        assert_eq!(final_value, uint(&check["final"]["raw"]).unwrap() + uint(&check["final"]["pending"]).unwrap());
+        assert!(final_value > initial);
+        assert!(checkpoint.insert(key.clone(), initial).is_none());
+        assert!(final_rpc.insert(key, final_value).is_none());
+    }
+    assert_eq!(checkpoint.len(), 33);
+    let mut state = HolderState::new(checkpoint.clone());
+    let mut parent = text(&canonical["checkpoint_hash"]).unwrap().to_owned();
+    let empty = Balances::new();
+    for block in items(&canonical, "captured").unwrap() {
+        let height = number(&block["block"]).unwrap();
+        let hash = text(&block["hash"]).unwrap();
+        let reference = if height == 122289029 { &final_rpc } else { &empty };
+        state.apply(height, hash, &parent, &empty, reference).unwrap();
+        parent = hash.to_owned();
+    }
+    assert_eq!(parent, evidence["checks"][0]["final"]["hash"]);
+    assert_eq!(state.seeded, checkpoint, "RPC observations must not silently repair state");
+    assert_eq!(state.tokens[&contract]["seeded_value_mismatches"], 33);
+    assert_eq!(state.tokens[&contract]["seeded_unknown_rows"], 0);
+    assert_eq!(outcome(&state.tokens, &BTreeSet::from([contract])).0, "mismatch");
+}

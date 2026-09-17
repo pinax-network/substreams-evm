@@ -1,0 +1,307 @@
+{
+  "boundaries": [
+    {
+      "block": 122288005,
+      "fields": {
+        "accountedEmission": "183729984218252045587926",
+        "lastEmissionUpdate": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "lastTickRLbp": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "nodeAccPerShare": "517422939807305584898591577090960543963",
+        "openTime": "1778126634",
+        "staticAccPerShare": "18864128148746683",
+        "totalNodeCount": "32",
+        "totalSupply": "10907003158292685320880407",
+        "tradingOpened": "1"
+      },
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "timestamp": "1789591601"
+    },
+    {
+      "block": 122288019,
+      "fields": {
+        "accountedEmission": "183730533301641853488221",
+        "lastEmissionUpdate": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "lastTickRLbp": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "nodeAccPerShare": "517424655692898734586997827090960543963",
+        "openTime": "1778126634",
+        "staticAccPerShare": "18864153319885896",
+        "totalNodeCount": "32",
+        "totalSupply": "10907003158292685320880407",
+        "tradingOpened": "1"
+      },
+      "hash": "0x39521816365e42e2310612c3538c5dc961d2e0cc58f89aecf3d4635658452b2e",
+      "timestamp": "1789591607"
+    },
+    {
+      "block": 122289029,
+      "fields": {
+        "accountedEmission": "183742476055488635176146",
+        "lastEmissionUpdate": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "lastTickRLbp": {
+          "error": "RPC eth_call returned error/null"
+        },
+        "nodeAccPerShare": "517461976798669927361529077090960543963",
+        "openTime": "1778126634",
+        "staticAccPerShare": "18864700800879219",
+        "totalNodeCount": "32",
+        "totalSupply": "10907003158292685320880407",
+        "tradingOpened": "1"
+      },
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "timestamp": "1789592062"
+    }
+  ],
+  "dependency": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+  "reads": [
+    {
+      "depth": 1,
+      "key": "0x1a60ff7a2eac70db8d801260461ca75ce89e5b11bb27969844036020a23041db",
+      "pc": 5882
+    }
+  ],
+  "scope": "Diagnostic only; no profile qualified",
+  "source_sha256": "3f6f582a2e37c7b0ab9d38650cf609d2fd403fdc1ac34c00c2e93baabd40225e",
+  "storage_layout": {
+    "storage": [
+      {
+        "astId": 159,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 165,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 167,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 169,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 171,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 9192,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "registeredLp",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 9195,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "tradingOpened",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_bool"
+      },
+      {
+        "astId": 9198,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "openTime",
+        "offset": 1,
+        "slot": "6",
+        "type": "t_uint64"
+      },
+      {
+        "astId": 9201,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "lastEmissionUpdate",
+        "offset": 9,
+        "slot": "6",
+        "type": "t_uint64"
+      },
+      {
+        "astId": 9204,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "lastTickRLbp",
+        "offset": 17,
+        "slot": "6",
+        "type": "t_uint112"
+      },
+      {
+        "astId": 9207,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "staticAccPerShare",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9210,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "nodeAccPerShare",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9215,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "userIndex",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 9220,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "userNodeIndex",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 9224,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "isNode",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 9226,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "totalNodeCount",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9231,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "referrer",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_mapping(t_address,t_address)"
+      },
+      {
+        "astId": 9236,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "sharedHashrate",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 9241,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "validDownlines",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 9246,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "rewardTriggered",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 9249,
+        "contract": "src/LBPHashrate.sol:LBPHashrate",
+        "label": "accountedEmission",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_address)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint112": {
+        "encoding": "inplace",
+        "label": "uint112",
+        "numberOfBytes": "14"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      }
+    }
+  },
+  "token": "0x88886f0fd371dff856291badced45922bc888888"
+}

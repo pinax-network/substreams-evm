@@ -1,0 +1,1207 @@
+[
+  {
+    "allowance_sload_pc": 262,
+    "allowance_trace_sha256": "57777a84b7f0b1978e0a8f7f511bed9163cc7268439325197d1fbfc39e44a41b",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x2f5ec19ab0583d3fcd9bcbcd9ab416d2858eea38",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x2f5ec19ab0583d3fcd9bcbcd9ab416d2858eea38",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x2f5ec19ab0583d3fcd9bcbcd9ab416d2858eea38",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x2f5ec19ab0583d3fcd9bcbcd9ab416d2858eea38",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288029,
+    "contract": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: SWAP1 \n5: DUP1 \n6: DUP3 \n7: MSTORE \n8: PUSH1 04\n10: DUP1 \n11: CALLDATASIZE \n12: LT \n13: ISZERO \n14: PUSH2 0015\n17: JUMPI \n21: JUMPDEST \n22: PUSH0 \n23: CALLDATALOAD \n24: PUSH1 e0\n26: SHR \n27: SWAP2 \n28: DUP3 \n29: PUSH4 06fdde03\n34: EQ \n35: PUSH2 0621\n38: JUMPI \n39: POP \n40: DUP2 \n41: PUSH4 07546172\n46: EQ \n47: PUSH2 05de\n50: JUMPI \n51: DUP2 \n52: PUSH4 095ea7b3\n57: EQ \n58: PUSH2 0536\n61: JUMPI \n62: DUP2 \n63: PUSH4 18160ddd\n68: EQ \n69: PUSH2 0518\n72: JUMPI \n73: DUP2 \n74: PUSH4 23b872dd\n79: EQ \n80: PUSH2 0426\n83: JUMPI \n84: DUP2 \n85: PUSH4 2e0f2625\n90: EQ \n91: PUSH2 040b\n94: JUMPI \n95: DUP2 \n96: PUSH4 313ce567\n101: EQ \n102: PUSH2 040b\n105: JUMPI \n106: DUP2 \n107: PUSH4 32cb6b0c\n112: EQ \n113: PUSH2 03ea\n116: JUMPI \n117: DUP2 \n118: PUSH4 40c10f19\n123: EQ \n124: PUSH2 02f8\n127: JUMPI \n128: DUP2 \n129: PUSH4 70a08231\n134: EQ \n135: PUSH2 02c2\n138: JUMPI \n706: JUMPDEST \n707: DUP3 \n708: CALLVALUE \n709: PUSH2 010d\n712: JUMPI \n713: PUSH1 20\n715: CALLDATASIZE \n716: PUSH1 03\n718: NOT \n719: ADD \n720: SLT \n721: PUSH2 010d\n724: JUMPI \n725: PUSH1 20\n727: SWAP1 \n728: PUSH1 01\n730: PUSH1 01\n732: PUSH1 a0\n734: SHL \n735: SUB \n736: PUSH2 02e7\n739: PUSH2 0740\n742: JUMP \n1856: JUMPDEST \n1857: PUSH1 04\n1859: CALLDATALOAD \n1860: SWAP1 \n1861: PUSH1 01\n1863: PUSH1 01\n1865: PUSH1 a0\n1867: SHL \n1868: SUB \n1869: DUP3 \n1870: AND \n1871: DUP3 \n1872: SUB \n1873: PUSH2 010d\n1876: JUMPI \n1877: JUMP \n743: JUMPDEST \n744: AND \n745: PUSH0 \n746: MSTORE \n747: PUSH0 \n748: DUP3 \n749: MSTORE \n750: DUP1 \n751: PUSH0 \n752: KECCAK256 \n753: SLOAD \n754: SWAP1 \n755: MLOAD \n756: SWAP1 \n757: DUP2 \n758: MSTORE \n759: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x644acd70becee8ea8f13fc6580f71759be9628c7304fbccd4e65800799863e32",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x982ba79538b51e54ee1382f57522098af0635b0f67f2574d393b29ed0958b344",
+      "contract": "0x5ce033b2bfca3af30b3e8c8457deaf776a8b695a",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "129000853911",
+        "field": "allowance",
+        "key": "0x77c98835683757c561ef508022f28cd45868f6c495022d3e2b6a1e03c38c5a80",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "129000853911",
+        "field": "allowance",
+        "key": "0x77c98835683757c561ef508022f28cd45868f6c495022d3e2b6a1e03c38c5a80",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "129000853911",
+        "field": "allowance",
+        "key": "0x77c98835683757c561ef508022f28cd45868f6c495022d3e2b6a1e03c38c5a80",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "balance_of": "129000853911",
+        "field": "totalSupply",
+        "override": "0",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "total_supply": "0"
+      },
+      {
+        "balance_of": "129000853911",
+        "field": "totalSupply",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "total_supply": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "rank": 104,
+    "runtime_sha256": "3709a8c3e9d92a0cf936b613638cdcd1bd79152337d0daab066ce94c5809eb67"
+  },
+  {
+    "allowance_sload_pc": 247,
+    "allowance_trace_sha256": "1b575bb8029e48fdadbd7c8eb7941dc4ae48584af1c5e753e5260cd9c3623683",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x1831759dc20cc290306e15b83d2d669192e3b1b5",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x1831759dc20cc290306e15b83d2d669192e3b1b5",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x1831759dc20cc290306e15b83d2d669192e3b1b5",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x1831759dc20cc290306e15b83d2d669192e3b1b5",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288008,
+    "contract": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+    "getter_path": "0: PUSH1 80\n2: DUP1 \n3: PUSH1 40\n5: MSTORE \n6: PUSH1 04\n8: CALLDATASIZE \n9: LT \n10: ISZERO \n11: PUSH2 0012\n14: JUMPI \n18: JUMPDEST \n19: PUSH0 \n20: CALLDATALOAD \n21: PUSH1 e0\n23: SHR \n24: SWAP1 \n25: DUP2 \n26: PUSH4 02d05d3f\n31: EQ \n32: PUSH2 0567\n35: JUMPI \n36: POP \n37: DUP1 \n38: PUSH4 03ee438c\n43: EQ \n44: PUSH2 0289\n47: JUMPI \n48: DUP1 \n49: PUSH4 06fdde03\n54: EQ \n55: PUSH2 0492\n58: JUMPI \n59: DUP1 \n60: PUSH4 095ea7b3\n65: EQ \n66: PUSH2 0410\n69: JUMPI \n70: DUP1 \n71: PUSH4 18160ddd\n76: EQ \n77: PUSH2 03f3\n80: JUMPI \n81: DUP1 \n82: PUSH4 23b872dd\n87: EQ \n88: PUSH2 030e\n91: JUMPI \n92: DUP1 \n93: PUSH4 2e677786\n98: EQ \n99: PUSH2 02cb\n102: JUMPI \n103: DUP1 \n104: PUSH4 313ce567\n109: EQ \n110: PUSH2 02b0\n113: JUMPI \n114: DUP1 \n115: PUSH4 3c130d90\n120: EQ \n121: PUSH2 0289\n124: JUMPI \n125: DUP1 \n126: PUSH4 70a08231\n131: EQ \n132: PUSH2 0252\n135: JUMPI \n594: JUMPDEST \n595: CALLVALUE \n596: PUSH2 00ff\n599: JUMPI \n600: PUSH1 20\n602: CALLDATASIZE \n603: PUSH1 03\n605: NOT \n606: ADD \n607: SLT \n608: PUSH2 00ff\n611: JUMPI \n612: PUSH1 01\n614: PUSH1 01\n616: PUSH1 a0\n618: SHL \n619: SUB \n620: PUSH2 0273\n623: PUSH2 06a8\n626: JUMP \n1704: JUMPDEST \n1705: PUSH1 04\n1707: CALLDATALOAD \n1708: SWAP1 \n1709: PUSH1 01\n1711: PUSH1 01\n1713: PUSH1 a0\n1715: SHL \n1716: SUB \n1717: DUP3 \n1718: AND \n1719: DUP3 \n1720: SUB \n1721: PUSH2 00ff\n1724: JUMPI \n1725: JUMP \n627: JUMPDEST \n628: AND \n629: PUSH0 \n630: MSTORE \n631: PUSH0 \n632: PUSH1 20\n634: MSTORE \n635: PUSH1 20\n637: PUSH1 40\n639: PUSH0 \n640: KECCAK256 \n641: SLOAD \n642: PUSH1 40\n644: MLOAD \n645: SWAP1 \n646: DUP2 \n647: MSTORE \n648: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x55e1f0bed43bd7fab9bb6d29ec6490cd48dcbbb214c1eb747e3333ca22e0dd93",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x596b9f44d928f4c20dadc70ce7fbb08a66b9d9fa7506fbdf2d0fb7360dd172cd",
+      "contract": "0xb3a05ac48786ab5a051f387f7e2116ab21d1b1ef",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "1164305857992642394666293",
+        "field": "allowance",
+        "key": "0xc6ed87d59d90eaeb557a90950161722bbc0a5c25d1576403eefceb4f0f16c645",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "1164305857992642394666293",
+        "field": "allowance",
+        "key": "0xc6ed87d59d90eaeb557a90950161722bbc0a5c25d1576403eefceb4f0f16c645",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "1164305857992642394666293",
+        "field": "allowance",
+        "key": "0xc6ed87d59d90eaeb557a90950161722bbc0a5c25d1576403eefceb4f0f16c645",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "rank": 107,
+    "runtime_sha256": "5d499d54918a2dc54392616a959425168741e57f749480463628ddfc50518a6e"
+  },
+  {
+    "allowance_sload_pc": 2094,
+    "allowance_trace_sha256": "733739f610947a784abfdddc81fca351e4607c5860e6a22316df5370dabbd3be",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xcbeaad783ffd2cea125e9d9b2ec21e639d20fa59",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xcbeaad783ffd2cea125e9d9b2ec21e639d20fa59",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xcbeaad783ffd2cea125e9d9b2ec21e639d20fa59",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xcbeaad783ffd2cea125e9d9b2ec21e639d20fa59",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288181,
+    "contract": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: PUSH1 04\n7: CALLDATASIZE \n8: LT \n9: PUSH2 0272\n12: JUMPI \n13: PUSH1 00\n15: CALLDATALOAD \n16: PUSH1 e0\n18: SHR \n19: DUP1 \n20: PUSH4 715018a6\n25: GT \n26: PUSH2 014f\n29: JUMPI \n335: JUMPDEST \n336: DUP1 \n337: PUSH4 313ce567\n342: GT \n343: PUSH2 01e8\n346: JUMPI \n347: DUP1 \n348: PUSH4 5535d461\n353: GT \n354: PUSH2 01ac\n357: JUMPI \n358: DUP1 \n359: PUSH4 5535d461\n364: EQ \n365: PUSH2 04aa\n368: JUMPI \n369: DUP1 \n370: PUSH4 5a0dfe4d\n375: EQ \n376: PUSH2 04ca\n379: JUMPI \n380: DUP1 \n381: PUSH4 5c975abb\n386: EQ \n387: PUSH2 0501\n390: JUMPI \n391: DUP1 \n392: PUSH4 5e280f11\n397: EQ \n398: PUSH2 0519\n401: JUMPI \n402: DUP1 \n403: PUSH4 6fc1b31e\n408: EQ \n409: PUSH2 054d\n412: JUMPI \n413: DUP1 \n414: PUSH4 70a08231\n419: EQ \n420: PUSH2 056d\n423: JUMPI \n1389: JUMPDEST \n1390: CALLVALUE \n1391: DUP1 \n1392: ISZERO \n1393: PUSH2 0579\n1396: JUMPI \n1401: JUMPDEST \n1402: POP \n1403: PUSH2 03d0\n1406: PUSH2 0588\n1409: CALLDATASIZE \n1410: PUSH1 04\n1412: PUSH2 25a1\n1415: JUMP \n9633: JUMPDEST \n9634: PUSH1 00\n9636: PUSH1 20\n9638: DUP3 \n9639: DUP5 \n9640: SUB \n9641: SLT \n9642: ISZERO \n9643: PUSH2 25b3\n9646: JUMPI \n9651: JUMPDEST \n9652: DUP2 \n9653: CALLDATALOAD \n9654: PUSH2 0acd\n9657: DUP2 \n9658: PUSH2 2251\n9661: JUMP \n8785: JUMPDEST \n8786: PUSH1 01\n8788: PUSH1 01\n8790: PUSH1 a0\n8792: SHL \n8793: SUB \n8794: DUP2 \n8795: AND \n8796: DUP2 \n8797: EQ \n8798: PUSH2 1246\n8801: JUMPI \n4678: JUMPDEST \n4679: POP \n4680: JUMP \n2765: JUMPDEST \n2766: SWAP4 \n2767: SWAP3 \n2768: POP \n2769: POP \n2770: POP \n2771: JUMP \n1416: JUMPDEST \n1417: PUSH1 01\n1419: PUSH1 01\n1421: PUSH1 a0\n1423: SHL \n1424: SUB \n1425: AND \n1426: PUSH1 00\n1428: SWAP1 \n1429: DUP2 \n1430: MSTORE \n1431: PUSH1 05\n1433: PUSH1 20\n1435: MSTORE \n1436: PUSH1 40\n1438: SWAP1 \n1439: KECCAK256 \n1440: SLOAD \n1441: SWAP1 \n1442: JUMP \n976: JUMPDEST \n977: PUSH1 40\n979: MLOAD \n980: SWAP1 \n981: DUP2 \n982: MSTORE \n983: PUSH1 20\n985: ADD \n986: PUSH2 0299\n989: JUMP \n665: JUMPDEST \n666: PUSH1 40\n668: MLOAD \n669: DUP1 \n670: SWAP2 \n671: SUB \n672: SWAP1 \n673: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0xa90080b66a5748de25b38166e595a9377d2d29cd11449635d6d0bedeb4dc5489",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xaaa3cb7a02fee4d1547f6a829057b9b4ca3494ec8db53ba8c96e405f9436bbcc",
+      "contract": "0xb0f09ea9ae0515c3551080d4a745c8115aa30e37",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "2467099420358129970821154",
+        "field": "allowance",
+        "key": "0xc5a32648d518c82c81ba6d0fb6bdafd05d831c5a85f96c4410b0bb97fc9034dc",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000006"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "2467099420358129970821154",
+        "field": "allowance",
+        "key": "0xc5a32648d518c82c81ba6d0fb6bdafd05d831c5a85f96c4410b0bb97fc9034dc",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000006"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "2467099420358129970821154",
+        "field": "allowance",
+        "key": "0xc5a32648d518c82c81ba6d0fb6bdafd05d831c5a85f96c4410b0bb97fc9034dc",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000006"
+      }
+    ],
+    "rank": 117,
+    "runtime_sha256": "4ead79b87305ed54adb82aa3c2bef212f664ebb8bb29db962ad700a5945c8280"
+  },
+  {
+    "allowance_sload_pc": 602,
+    "allowance_trace_sha256": "de005fae46d60fa4ffa6f6c4eba618963cf2271173276ceddb7c1f83fd68bfd4",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x61f38079185f62f201eed675e2eb4697dbdbcfb1",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x61f38079185f62f201eed675e2eb4697dbdbcfb1",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x61f38079185f62f201eed675e2eb4697dbdbcfb1",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x61f38079185f62f201eed675e2eb4697dbdbcfb1",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288010,
+    "contract": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 00fb\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 7ecebe00\n36: GT \n37: PUSH2 0093\n40: JUMPI \n147: JUMPDEST \n148: DUP1 \n149: PUSH4 313ce567\n154: GT \n155: PUSH2 00ce\n158: JUMPI \n159: DUP1 \n160: PUSH4 313ce567\n165: EQ \n166: PUSH2 0165\n169: JUMPI \n170: DUP1 \n171: PUSH4 3644e515\n176: EQ \n177: PUSH2 0174\n180: JUMPI \n181: DUP1 \n182: PUSH4 70a08231\n187: EQ \n188: PUSH2 017c\n191: JUMPI \n380: JUMPDEST \n381: PUSH2 0144\n384: PUSH2 018a\n387: CALLDATASIZE \n388: PUSH1 04\n390: PUSH2 0f1a\n393: JUMP \n3866: JUMPDEST \n3867: PUSH0 \n3868: PUSH1 20\n3870: DUP3 \n3871: DUP5 \n3872: SUB \n3873: SLT \n3874: ISZERO \n3875: PUSH2 0f2a\n3878: JUMPI \n3882: JUMPDEST \n3883: PUSH2 0e96\n3886: DUP3 \n3887: PUSH2 0e9d\n3890: JUMP \n3741: JUMPDEST \n3742: DUP1 \n3743: CALLDATALOAD \n3744: PUSH1 01\n3746: PUSH1 01\n3748: PUSH1 a0\n3750: SHL \n3751: SUB \n3752: DUP2 \n3753: AND \n3754: DUP2 \n3755: EQ \n3756: PUSH2 0eb3\n3759: JUMPI \n3763: JUMPDEST \n3764: SWAP2 \n3765: SWAP1 \n3766: POP \n3767: JUMP \n3734: JUMPDEST \n3735: SWAP4 \n3736: SWAP3 \n3737: POP \n3738: POP \n3739: POP \n3740: JUMP \n394: JUMPDEST \n395: PUSH1 01\n397: PUSH1 01\n399: PUSH1 a0\n401: SHL \n402: SUB \n403: AND \n404: PUSH0 \n405: SWAP1 \n406: DUP2 \n407: MSTORE \n408: PUSH1 20\n410: DUP2 \n411: SWAP1 \n412: MSTORE \n413: PUSH1 40\n415: SWAP1 \n416: KECCAK256 \n417: SLOAD \n418: SWAP1 \n419: JUMP \n324: JUMPDEST \n325: PUSH1 40\n327: MLOAD \n328: SWAP1 \n329: DUP2 \n330: MSTORE \n331: PUSH1 20\n333: ADD \n334: PUSH2 0114\n337: JUMP \n276: JUMPDEST \n277: PUSH1 40\n279: MLOAD \n280: DUP1 \n281: SWAP2 \n282: SUB \n283: SWAP1 \n284: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0xd8413a8cd0d0c1f639084745c2ee2da7b7ba1ebf5f2f7c2c2607cb18a256b974",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xaa8d9336e3d933e53260df65a0c4f3fafa175ee8d87e9106f51618e4f92547da",
+      "contract": "0xe210c0583c1071714eded2d8beeab05ab5bb7777",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "2810927558003797821942442",
+        "field": "allowance",
+        "key": "0x4541de832526b4fae541d6b6db1856aad1343bad6e65dc8305471b99469859e3",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "2810927558003797821942442",
+        "field": "allowance",
+        "key": "0x4541de832526b4fae541d6b6db1856aad1343bad6e65dc8305471b99469859e3",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "2810927558003797821942442",
+        "field": "allowance",
+        "key": "0x4541de832526b4fae541d6b6db1856aad1343bad6e65dc8305471b99469859e3",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "rank": 121,
+    "runtime_sha256": "4844f9db6a214a5fe3be11bd591ec98976931202248b58d32c6389b9c834609f"
+  },
+  {
+    "allowance_sload_pc": 387,
+    "allowance_trace_sha256": "4a0fe68343c095ff89e5dbf0a0483f234c06cbd6751869eac59ef6ca79758f39",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xdfa7a01690e33064813f2459411e08d149fde06b",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xdfa7a01690e33064813f2459411e08d149fde06b",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xdfa7a01690e33064813f2459411e08d149fde06b",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xdfa7a01690e33064813f2459411e08d149fde06b",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288016,
+    "contract": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: DUP2 \n5: DUP2 \n6: MSTORE \n7: PUSH1 04\n9: SWAP2 \n10: DUP3 \n11: CALLDATASIZE \n12: LT \n13: ISZERO \n14: PUSH2 0016\n17: JUMPI \n22: JUMPDEST \n23: PUSH1 00\n25: SWAP3 \n26: DUP4 \n27: CALLDATALOAD \n28: PUSH1 e0\n30: SHR \n31: SWAP2 \n32: DUP3 \n33: PUSH4 01ffc9a7\n38: EQ \n39: PUSH2 0e15\n42: JUMPI \n43: POP \n44: DUP2 \n45: PUSH4 06fdde03\n50: EQ \n51: PUSH2 0d3b\n54: JUMPI \n55: DUP2 \n56: PUSH4 095ea7b3\n61: EQ \n62: PUSH2 0d11\n65: JUMPI \n66: DUP2 \n67: PUSH4 18160ddd\n72: EQ \n73: PUSH2 0cf2\n76: JUMPI \n77: DUP2 \n78: PUSH4 23b872dd\n83: EQ \n84: PUSH2 0cb5\n87: JUMPI \n88: DUP2 \n89: PUSH4 248a9ca3\n94: EQ \n95: PUSH2 0c8a\n98: JUMPI \n99: DUP2 \n100: PUSH4 2f2ff15d\n105: EQ \n106: PUSH2 0bdd\n109: JUMPI \n110: DUP2 \n111: PUSH4 313ce567\n116: EQ \n117: PUSH2 0bc1\n120: JUMPI \n121: DUP2 \n122: PUSH4 3644e515\n127: EQ \n128: PUSH2 0b9d\n131: JUMPI \n132: DUP2 \n133: PUSH4 36568abe\n138: EQ \n139: PUSH2 0b0b\n142: JUMPI \n143: DUP2 \n144: PUSH4 39509351\n149: EQ \n150: PUSH2 0abb\n153: JUMPI \n154: DUP2 \n155: PUSH4 40c10f19\n160: EQ \n161: PUSH2 07c7\n164: JUMPI \n165: DUP2 \n166: PUSH4 42966c68\n171: EQ \n172: PUSH2 07a9\n175: JUMPI \n176: DUP2 \n177: PUSH4 70a08231\n182: EQ \n183: PUSH2 0772\n186: JUMPI \n1906: JUMPDEST \n1907: POP \n1908: POP \n1909: CALLVALUE \n1910: PUSH2 018a\n1913: JUMPI \n1914: PUSH1 20\n1916: CALLDATASIZE \n1917: PUSH1 03\n1919: NOT \n1920: ADD \n1921: SLT \n1922: PUSH2 018a\n1925: JUMPI \n1926: PUSH1 20\n1928: SWAP2 \n1929: DUP2 \n1930: SWAP1 \n1931: PUSH1 01\n1933: PUSH1 01\n1935: PUSH1 a0\n1937: SHL \n1938: SUB \n1939: PUSH2 079a\n1942: PUSH2 0eb0\n1945: JUMP \n3760: JUMPDEST \n3761: PUSH1 04\n3763: CALLDATALOAD \n3764: SWAP1 \n3765: PUSH1 01\n3767: PUSH1 01\n3769: PUSH1 a0\n3771: SHL \n3772: SUB \n3773: DUP3 \n3774: AND \n3775: DUP3 \n3776: SUB \n3777: PUSH2 0ec6\n3780: JUMPI \n3781: JUMP \n1946: JUMPDEST \n1947: AND \n1948: DUP2 \n1949: MSTORE \n1950: DUP1 \n1951: DUP5 \n1952: MSTORE \n1953: KECCAK256 \n1954: SLOAD \n1955: SWAP1 \n1956: MLOAD \n1957: SWAP1 \n1958: DUP2 \n1959: MSTORE \n1960: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x8faa038750a54b51bc3da78fdce1b3ed55cce13004eb509271697e28fcf1a5b9",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xb50779ed7db1b565a1e8398ef2d67c76f3506161acb6bf507089ca2d37ddcbd5",
+      "contract": "0xd09ec4e899427f5b58a7215493b7289d94590425",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "1539887844041560458524761",
+        "field": "allowance",
+        "key": "0xe753b9f0cfe1e77944570599bca95f3e884b94f270d3144c0d0a4d21215346bb",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "1539887844041560458524761",
+        "field": "allowance",
+        "key": "0xe753b9f0cfe1e77944570599bca95f3e884b94f270d3144c0d0a4d21215346bb",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "1539887844041560458524761",
+        "field": "allowance",
+        "key": "0xe753b9f0cfe1e77944570599bca95f3e884b94f270d3144c0d0a4d21215346bb",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "rank": 124,
+    "runtime_sha256": "af5324e98745d9e0957462191a750aa3f8fae553f0062451abfc64b1d0a5acbd"
+  },
+  {
+    "allowance_sload_pc": 602,
+    "allowance_trace_sha256": "ae5dee0a62e6baa9dbb0e8f9e62b3cf7ae1a8a7f7b0a1d62a7375cbb13fe3016",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xc8d2d27401f37585a95a44d11a176bd0e580cedc",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xc8d2d27401f37585a95a44d11a176bd0e580cedc",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xc8d2d27401f37585a95a44d11a176bd0e580cedc",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xc8d2d27401f37585a95a44d11a176bd0e580cedc",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288019,
+    "contract": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 00fb\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 7ecebe00\n36: GT \n37: PUSH2 0093\n40: JUMPI \n147: JUMPDEST \n148: DUP1 \n149: PUSH4 313ce567\n154: GT \n155: PUSH2 00ce\n158: JUMPI \n159: DUP1 \n160: PUSH4 313ce567\n165: EQ \n166: PUSH2 0165\n169: JUMPI \n170: DUP1 \n171: PUSH4 3644e515\n176: EQ \n177: PUSH2 0174\n180: JUMPI \n181: DUP1 \n182: PUSH4 70a08231\n187: EQ \n188: PUSH2 017c\n191: JUMPI \n380: JUMPDEST \n381: PUSH2 0144\n384: PUSH2 018a\n387: CALLDATASIZE \n388: PUSH1 04\n390: PUSH2 0ec8\n393: JUMP \n3784: JUMPDEST \n3785: PUSH0 \n3786: PUSH1 20\n3788: DUP3 \n3789: DUP5 \n3790: SUB \n3791: SLT \n3792: ISZERO \n3793: PUSH2 0ed8\n3796: JUMPI \n3800: JUMPDEST \n3801: PUSH2 0e44\n3804: DUP3 \n3805: PUSH2 0e4b\n3808: JUMP \n3659: JUMPDEST \n3660: DUP1 \n3661: CALLDATALOAD \n3662: PUSH1 01\n3664: PUSH1 01\n3666: PUSH1 a0\n3668: SHL \n3669: SUB \n3670: DUP2 \n3671: AND \n3672: DUP2 \n3673: EQ \n3674: PUSH2 0e61\n3677: JUMPI \n3681: JUMPDEST \n3682: SWAP2 \n3683: SWAP1 \n3684: POP \n3685: JUMP \n3652: JUMPDEST \n3653: SWAP4 \n3654: SWAP3 \n3655: POP \n3656: POP \n3657: POP \n3658: JUMP \n394: JUMPDEST \n395: PUSH1 01\n397: PUSH1 01\n399: PUSH1 a0\n401: SHL \n402: SUB \n403: AND \n404: PUSH0 \n405: SWAP1 \n406: DUP2 \n407: MSTORE \n408: PUSH1 20\n410: DUP2 \n411: SWAP1 \n412: MSTORE \n413: PUSH1 40\n415: SWAP1 \n416: KECCAK256 \n417: SLOAD \n418: SWAP1 \n419: JUMP \n324: JUMPDEST \n325: PUSH1 40\n327: MLOAD \n328: SWAP1 \n329: DUP2 \n330: MSTORE \n331: PUSH1 20\n333: ADD \n334: PUSH2 0114\n337: JUMP \n276: JUMPDEST \n277: PUSH1 40\n279: MLOAD \n280: DUP1 \n281: SWAP2 \n282: SUB \n283: SWAP1 \n284: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x39521816365e42e2310612c3538c5dc961d2e0cc58f89aecf3d4635658452b2e",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xd41c7a592ad8b073f182e15470bcf6c8a89373d89a13a7d4d6bf4d3c21bc5caa",
+      "contract": "0x01fbed06a70eb1b4a0b43dbc6a94f99944cd7777",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "1023428401856740777210",
+        "field": "allowance",
+        "key": "0xc5e9a3f1bb27655301d246454baf4c702105842117483359d42c561cb50c0ef4",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "1023428401856740777210",
+        "field": "allowance",
+        "key": "0xc5e9a3f1bb27655301d246454baf4c702105842117483359d42c561cb50c0ef4",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "1023428401856740777210",
+        "field": "allowance",
+        "key": "0xc5e9a3f1bb27655301d246454baf4c702105842117483359d42c561cb50c0ef4",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "rank": 140,
+    "runtime_sha256": "672ef6910865202d3b71a97ed05a6b4252bfe3d920f7217239e07ce8e830bf37"
+  },
+  {
+    "allowance_sload_pc": 482,
+    "allowance_trace_sha256": "4346023c506e3b2c6cc75d21f0572aa8e7518cfcf8df1a90b1e4bcf24d95d2af",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x48eae5acd06675856da79d1df2176f04470a9dad",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x48eae5acd06675856da79d1df2176f04470a9dad",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x48eae5acd06675856da79d1df2176f04470a9dad",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x48eae5acd06675856da79d1df2176f04470a9dad",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288043,
+    "contract": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+    "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 00a6\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 70a08231\n36: GT \n37: PUSH2 006e\n40: JUMPI \n41: DUP1 \n42: PUSH4 70a08231\n47: EQ \n48: PUSH2 014e\n51: JUMPI \n334: JUMPDEST \n335: PUSH2 00f4\n338: PUSH2 015c\n341: CALLDATASIZE \n342: PUSH1 04\n344: PUSH2 0692\n347: JUMP \n1682: JUMPDEST \n1683: PUSH0 \n1684: PUSH1 20\n1686: DUP3 \n1687: DUP5 \n1688: SUB \n1689: SLT \n1690: ISZERO \n1691: PUSH2 06a2\n1694: JUMPI \n1698: JUMPDEST \n1699: PUSH2 06ab\n1702: DUP3 \n1703: PUSH2 0615\n1706: JUMP \n1557: JUMPDEST \n1558: DUP1 \n1559: CALLDATALOAD \n1560: PUSH1 01\n1562: PUSH1 01\n1564: PUSH1 a0\n1566: SHL \n1567: SUB \n1568: DUP2 \n1569: AND \n1570: DUP2 \n1571: EQ \n1572: PUSH2 062b\n1575: JUMPI \n1579: JUMPDEST \n1580: SWAP2 \n1581: SWAP1 \n1582: POP \n1583: JUMP \n1707: JUMPDEST \n1708: SWAP4 \n1709: SWAP3 \n1710: POP \n1711: POP \n1712: POP \n1713: JUMP \n348: JUMPDEST \n349: PUSH1 04\n351: PUSH1 20\n353: MSTORE \n354: PUSH0 \n355: SWAP1 \n356: DUP2 \n357: MSTORE \n358: PUSH1 40\n360: SWAP1 \n361: KECCAK256 \n362: SLOAD \n363: DUP2 \n364: JUMP \n244: JUMPDEST \n245: PUSH1 40\n247: MLOAD \n248: SWAP1 \n249: DUP2 \n250: MSTORE \n251: PUSH1 20\n253: ADD \n254: PUSH2 00bf\n257: JUMP \n191: JUMPDEST \n192: PUSH1 40\n194: MLOAD \n195: DUP1 \n196: SWAP2 \n197: SUB \n198: SWAP1 \n199: RETURN ",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x00101f6e8f3b487573c508712b30c6b88c754bf7cf9d42cf2de29835ac04ae91",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+      "code_hash": "0xb3755bbd1976a7aace8a1b2e31c98cd01bfaf624b93778ccbe36d10dee708dfe",
+      "contract": "0x0fdbf7d2bac2010f599a5fa4d3771e573ef8ccc9",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ]
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "1960000000000000000",
+        "field": "allowance",
+        "key": "0x11da79e5baeb0891477f432c40f3842370378562fb8f5e762ac65b7be6d7998c",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000005"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "1960000000000000000",
+        "field": "allowance",
+        "key": "0x11da79e5baeb0891477f432c40f3842370378562fb8f5e762ac65b7be6d7998c",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000005"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "1960000000000000000",
+        "field": "allowance",
+        "key": "0x11da79e5baeb0891477f432c40f3842370378562fb8f5e762ac65b7be6d7998c",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000005"
+      }
+    ],
+    "rank": 146,
+    "runtime_sha256": "2b9100b907219bbd0c93be042cb47c82965900b16fa084b9ee837e8cbf545f4d"
+  },
+  {
+    "allowance_sload_pc": 1669,
+    "allowance_trace_sha256": "a30de1eb39a8635e29263143169ab694576b5965f7bea189b54db515771c5d4e",
+    "balance_controls": [
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "holder": "0xdabbd019c0174bdae6354f32b158d42e4a0e7489",
+        "raw": "0",
+        "rpc": "0"
+      },
+      {
+        "holder": "0xdabbd019c0174bdae6354f32b158d42e4a0e7489",
+        "raw": "1",
+        "rpc": "1"
+      },
+      {
+        "holder": "0xdabbd019c0174bdae6354f32b158d42e4a0e7489",
+        "raw": "123",
+        "rpc": "123"
+      },
+      {
+        "holder": "0xdabbd019c0174bdae6354f32b158d42e4a0e7489",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "block": 122288021,
+    "contract": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+    "getter_path": "0: PUSH1 80 stack=[]\n2: PUSH1 40 stack=[\"0x80\"]\n4: MSTORE  stack=[\"0x80\",\"0x40\"]\n5: CALLVALUE  stack=[]\n6: DUP1  stack=[\"0x0\"]\n7: ISZERO  stack=[\"0x0\",\"0x0\"]\n8: PUSH2 0010 stack=[\"0x0\",\"0x1\"]\n11: JUMPI  stack=[\"0x0\",\"0x1\",\"0x10\"]\n16: JUMPDEST  stack=[\"0x0\"]\n17: POP  stack=[\"0x0\"]\n18: PUSH1 04 stack=[]\n20: CALLDATASIZE  stack=[\"0x4\"]\n21: LT  stack=[\"0x4\",\"0x24\"]\n22: PUSH2 02e9 stack=[\"0x0\"]\n25: JUMPI  stack=[\"0x0\",\"0x2e9\"]\n26: PUSH1 00 stack=[]\n28: CALLDATALOAD  stack=[\"0x0\"]\n29: PUSH1 e0 stack=[\"0x70a08231000000000000000000000000dabbd019c0174bdae6354f32b158d42e\"]\n31: SHR  stack=[\"0x70a08231000000000000000000000000dabbd019c0174bdae6354f32b158d42e\",\"0xe0\"]\n32: DUP1  stack=[\"0x70a08231\"]\n33: PUSH4 7f2eecc3 stack=[\"0x70a08231\",\"0x70a08231\"]\n38: GT  stack=[\"0x70a08231\",\"0x70a08231\",\"0x7f2eecc3\"]\n39: PUSH2 0191 stack=[\"0x70a08231\",\"0x1\"]\n42: JUMPI  stack=[\"0x70a08231\",\"0x1\",\"0x191\"]\n401: JUMPDEST  stack=[\"0x70a08231\"]\n402: DUP1  stack=[\"0x70a08231\"]\n403: PUSH4 23b872dd stack=[\"0x70a08231\",\"0x70a08231\"]\n408: GT  stack=[\"0x70a08231\",\"0x70a08231\",\"0x23b872dd\"]\n409: PUSH2 024a stack=[\"0x70a08231\",\"0x0\"]\n412: JUMPI  stack=[\"0x70a08231\",\"0x0\",\"0x24a\"]\n413: DUP1  stack=[\"0x70a08231\"]\n414: PUSH4 3c7c9b90 stack=[\"0x70a08231\",\"0x70a08231\"]\n419: GT  stack=[\"0x70a08231\",\"0x70a08231\",\"0x3c7c9b90\"]\n420: PUSH2 01fe stack=[\"0x70a08231\",\"0x0\"]\n423: JUMPI  stack=[\"0x70a08231\",\"0x0\",\"0x1fe\"]\n424: DUP1  stack=[\"0x70a08231\"]\n425: PUSH4 70a08231 stack=[\"0x70a08231\",\"0x70a08231\"]\n430: GT  stack=[\"0x70a08231\",\"0x70a08231\",\"0x70a08231\"]\n431: PUSH2 01d8 stack=[\"0x70a08231\",\"0x0\"]\n434: JUMPI  stack=[\"0x70a08231\",\"0x0\",\"0x1d8\"]\n435: DUP1  stack=[\"0x70a08231\"]\n436: PUSH4 70a08231 stack=[\"0x70a08231\",\"0x70a08231\"]\n441: EQ  stack=[\"0x70a08231\",\"0x70a08231\",\"0x70a08231\"]\n442: PUSH2 0487 stack=[\"0x70a08231\",\"0x1\"]\n445: JUMPI  stack=[\"0x70a08231\",\"0x1\",\"0x487\"]\n1159: JUMPDEST  stack=[\"0x70a08231\"]\n1160: PUSH2 036a stack=[\"0x70a08231\"]\n1163: PUSH2 0495 stack=[\"0x70a08231\",\"0x36a\"]\n1166: CALLDATASIZE  stack=[\"0x70a08231\",\"0x36a\",\"0x495\"]\n1167: PUSH1 04 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\"]\n1169: PUSH2 3ec2 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\"]\n1172: JUMP  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x3ec2\"]\n16066: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\"]\n16067: PUSH1 00 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\"]\n16069: PUSH1 20 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\"]\n16071: DUP3  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x20\"]\n16072: DUP5  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x20\",\"0x4\"]\n16073: SUB  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x20\",\"0x4\",\"0x24\"]\n16074: SLT  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x20\",\"0x20\"]\n16075: ISZERO  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x0\"]\n16076: PUSH2 3ed3 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x1\"]\n16079: JUMPI  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0x1\",\"0x3ed3\"]\n16083: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\"]\n16084: PUSH2 0f92 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\"]\n16087: DUP3  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\"]\n16088: PUSH2 3d99 stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\"]\n16091: JUMP  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0x3d99\"]\n15769: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\"]\n15770: DUP1  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\"]\n15771: CALLDATALOAD  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0x4\"]\n15772: PUSH20 ffffffffffffffffffffffffffffffffffffffff stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15793: DUP2  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xffffffffffffffffffffffffffffffffffffffff\"]\n15794: AND  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xffffffffffffffffffffffffffffffffffffffff\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15795: DUP2  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15796: EQ  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15797: PUSH2 3dbd stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x1\"]\n15800: JUMPI  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x1\",\"0x3dbd\"]\n15805: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15806: SWAP2  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xf92\",\"0x4\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n15807: SWAP1  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x4\",\"0xf92\"]\n15808: POP  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xf92\",\"0x4\"]\n15809: JUMP  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xf92\"]\n3986: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n3987: SWAP4  stack=[\"0x70a08231\",\"0x36a\",\"0x495\",\"0x24\",\"0x4\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n3988: SWAP3  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x24\",\"0x4\",\"0x0\",\"0x495\"]\n3989: POP  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x495\",\"0x4\",\"0x0\",\"0x24\"]\n3990: POP  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x495\",\"0x4\",\"0x0\"]\n3991: POP  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x495\",\"0x4\"]\n3992: JUMP  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x495\"]\n1173: JUMPDEST  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n1174: PUSH20 ffffffffffffffffffffffffffffffffffffffff stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n1195: AND  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0xffffffffffffffffffffffffffffffffffffffff\"]\n1196: PUSH1 00 stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n1198: SWAP1  stack=[\"0x70a08231\",\"0x36a\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x0\"]\n1199: DUP2  stack=[\"0x70a08231\",\"0x36a\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\"]\n1200: MSTORE  stack=[\"0x70a08231\",\"0x36a\",\"0x0\",\"0xdabbd019c0174bdae6354f32b158d42e4a0e7489\",\"0x0\"]\n1201: PUSH1 33 stack=[\"0x70a08231\",\"0x36a\",\"0x0\"]\n1203: PUSH1 20 stack=[\"0x70a08231\",\"0x36a\",\"0x0\",\"0x33\"]\n1205: MSTORE  stack=[\"0x70a08231\",\"0x36a\",\"0x0\",\"0x33\",\"0x20\"]\n1206: PUSH1 40 stack=[\"0x70a08231\",\"0x36a\",\"0x0\"]\n1208: SWAP1  stack=[\"0x70a08231\",\"0x36a\",\"0x0\",\"0x40\"]\n1209: KECCAK256  stack=[\"0x70a08231\",\"0x36a\",\"0x40\",\"0x0\"]\n1210: SLOAD  stack=[\"0x70a08231\",\"0x36a\",\"0xa2edc46dc795c1eb4636b48cb74a379400bb8e05d3c49c419f9cd0bf7499f453\"]\n1211: SWAP1  stack=[\"0x70a08231\",\"0x36a\",\"0x255385e\"]\n1212: JUMP  stack=[\"0x70a08231\",\"0x255385e\",\"0x36a\"]\n874: JUMPDEST  stack=[\"0x70a08231\",\"0x255385e\"]\n875: PUSH1 40 stack=[\"0x70a08231\",\"0x255385e\"]\n877: MLOAD  stack=[\"0x70a08231\",\"0x255385e\",\"0x40\"]\n878: SWAP1  stack=[\"0x70a08231\",\"0x255385e\",\"0x80\"]\n879: DUP2  stack=[\"0x70a08231\",\"0x80\",\"0x255385e\"]\n880: MSTORE  stack=[\"0x70a08231\",\"0x80\",\"0x255385e\",\"0x80\"]\n881: PUSH1 20 stack=[\"0x70a08231\",\"0x80\"]\n883: ADD  stack=[\"0x70a08231\",\"0x80\",\"0x20\"]\n884: PUSH2 030d stack=[\"0x70a08231\",\"0xa0\"]\n887: JUMP  stack=[\"0x70a08231\",\"0xa0\",\"0x30d\"]\n781: JUMPDEST  stack=[\"0x70a08231\",\"0xa0\"]\n782: PUSH1 40 stack=[\"0x70a08231\",\"0xa0\"]\n784: MLOAD  stack=[\"0x70a08231\",\"0xa0\",\"0x40\"]\n785: DUP1  stack=[\"0x70a08231\",\"0xa0\",\"0x80\"]\n786: SWAP2  stack=[\"0x70a08231\",\"0xa0\",\"0x80\",\"0x80\"]\n787: SUB  stack=[\"0x70a08231\",\"0x80\",\"0x80\",\"0xa0\"]\n788: SWAP1  stack=[\"0x70a08231\",\"0x80\",\"0x20\"]\n789: RETURN  stack=[\"0x70a08231\",\"0x20\",\"0x80\"]",
+    "getter_review": "Complete valid balanceOf path reviewed through dispatcher, canonical address decoding, single mapping SLOAD and ABI return. Conditional branches validate selector/calldata/value; no holder-dependent balance branches, secondary reads or calls. Verified source unavailable; historical bytecode and controls used.",
+    "hash": "0x83c80eec11458071ce1a88b686c54bf4ca2c3b8dfb04b8e433026b9802527bcc",
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "code_hash": "0x4d9be648c5bf39973670d9f8b481d5d0b971e6a2db2deccc6b98cde21c5dd83e",
+      "contract": "0x21caef8a43163eea865baee23b9c2e327696a3bf",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034"
+      ],
+      "proxy": {
+        "code_hash": "0x61466328a9d17e782f4a37d32db189f981ce32e45de6a4668c3f7bb1cd8d49ae",
+        "implementation": "0x9151434b16b9763660705744891fa906f660ecc5",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "nonbalance_controls": [
+      {
+        "allowance": "0",
+        "balance_of": "39139422",
+        "field": "allowance",
+        "key": "0x1611fd069543ff602f58ef3f45471166c58098180627affe58f2a9ae09fe82fc",
+        "override": "0",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000034"
+      },
+      {
+        "allowance": "123",
+        "balance_of": "39139422",
+        "field": "allowance",
+        "key": "0x1611fd069543ff602f58ef3f45471166c58098180627affe58f2a9ae09fe82fc",
+        "override": "123",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000034"
+      },
+      {
+        "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_of": "39139422",
+        "field": "allowance",
+        "key": "0x1611fd069543ff602f58ef3f45471166c58098180627affe58f2a9ae09fe82fc",
+        "override": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "root": "0x0000000000000000000000000000000000000000000000000000000000000034"
+      }
+    ],
+    "outer_proxy_source": {
+      "chain_id": 56,
+      "runtime_match": "exact_match",
+      "semantics": "Verified TransparentUpgradeableProxy; zero-address audit caller delegates; admin storage is not ignored and changes stop processing.",
+      "source_sha256": "e8beb690740fcfba32a0297a903da478a25345bdadbb8719f6f9215a69a7f5a6",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x21caef8a43163eea865baee23b9c2e327696a3bf?fields=all"
+    },
+    "rank": 122,
+    "runtime_sha256": "26c608acdbf4a9e19fd65ab3869eb5a634b190f7b75848772b8b8d148b6e0d72"
+  }
+]
