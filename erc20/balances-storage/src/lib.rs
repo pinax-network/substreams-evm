@@ -409,3 +409,5 @@ mod tests;
 mod top50_tests;
 #[cfg(test)]
 mod voting_tests;
+#[cfg(test)]
+mod vsd_tests;

@@ -1,5 +1,8 @@
 # Nine additional direct BSC layouts
 
+The later [VSD follow-up](vsd-holder-coverage.md) expands the active fixture to
+198 profiles. This report preserves its original 197-profile snapshot.
+
 Ranks **151, 167, 168, 172, 174, 194, 196, 198 and 199** pass historical
 qualification across **122288006–122289029**, inclusive. The
 [combined fixture](../tests/fixtures/bsc-pending-direct-layouts.json) now has

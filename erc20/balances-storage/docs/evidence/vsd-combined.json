@@ -1,0 +1,27 @@
+{
+  "all_balance_event_fields_equal": true,
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 17.95676085636564,
+    "empty_output_delivery": null,
+    "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+    "seconds_including_startup": 57.025875
+  },
+  "configured_profiles": 198,
+  "elapsed_seconds": 99.419627167,
+  "events_sha256": "27ec516a65fccd685e42045661334fcc93c3fea8f44e6dfe5c4b6c817a77ba18",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "fb6e5124f876d4f32c73f11485c8a156fc982a6e1eafc63947f43f2878550c79",
+  "prior_combined_report_sha256": "d366a0bb4f8d909b058556e84236f8d9157623c473d23892f27686d76a6e2771",
+  "prior_holder_observations_with_identical_event_history": 169766,
+  "prior_initialized_carry_forward_matches": 66120,
+  "reused_verified_rpc_rows": 103647,
+  "scope": "Fresh 198-profile packaged WASM capture; full-field union of the digested 197-profile verified capture plus VSD's RPC audit. Fresh canonical headers; no repeated balance RPC calls in this combined comparison.",
+  "status": "bounded_parity",
+  "tool_language": "Rust",
+  "vsd_holder_report_sha256": "d329e3fa6ec3bc7affaac2937f4f0b3cbe0264f7fea77212d8d82f9f13d19a62",
+  "vsd_rpc_report_sha256": "d47202bd438d2d532d1837cbc760fc8ab52b5dba5c68a10c17a66c7f03956e6f",
+  "wasm_sha256": "861a879353a7fc7163a26c80f671fc3011e9ca3ee32a65dfc0badd99ac9794b6"
+}
