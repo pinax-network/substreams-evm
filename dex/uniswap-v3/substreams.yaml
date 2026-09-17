@@ -25,5 +25,11 @@ modules:
     output:
       type: proto:uniswap.v3.Events
 
+  - name: map_pool_changes
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:uniswap.v3.BlockPoolChanges
 
 network: mainnet

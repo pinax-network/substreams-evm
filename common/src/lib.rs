@@ -133,8 +133,8 @@ pub fn bigint_to_u64(bigint: &substreams::scalar::BigInt) -> Option<u64> {
 }
 
 pub fn bigint_to_i32(bigint: &substreams::scalar::BigInt) -> Option<i32> {
-    if bigint.lt(&BigInt::zero()) {
-        log::info!("bigint_to_i32: value is negative");
+    if bigint.lt(&BigInt::from(i32::MIN)) {
+        log::info!("bigint_to_i32: value is less than i32::MIN");
         return None;
     }
     if bigint.gt(&BigInt::from(i32::MAX)) {
@@ -166,4 +166,17 @@ pub fn logs_with_caller<'a>(block: &'a Block, trx: &'a TransactionTrace) -> Vec<
     }
 
     results
+}
+
+#[cfg(test)]
+mod signed_integer_tests {
+    use super::*;
+    #[test]
+    fn preserves_negative_ticks_and_rejects_both_overflow_bounds() {
+        for value in [i32::MIN, -887272, -120, -1, 0, 887272, i32::MAX] {
+            assert_eq!(bigint_to_i32(&BigInt::from(value)), Some(value));
+        }
+        assert!(bigint_to_i32(&BigInt::from(i64::from(i32::MIN) - 1)).is_none());
+        assert!(bigint_to_i32(&BigInt::from(i64::from(i32::MAX) + 1)).is_none());
+    }
 }
