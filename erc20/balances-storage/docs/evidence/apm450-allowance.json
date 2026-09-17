@@ -1,0 +1,103 @@
+{
+  "block": 122288464,
+  "call": {
+    "data": "0xdd62ed3e00000000000000000000000018868500c856c5eb263363b87b62e30ef682f4b8000000000000000000000000000000000000000000000000000000000000dead",
+    "to": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293"
+  },
+  "contract": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+  "controls": [
+    {
+      "allowance": "0",
+      "allowance_word": "0",
+      "balance_of": "7000000000",
+      "raw": "0",
+      "state_diff": {
+        "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0xad9d9b76d02a656eeaf0404bc4b710d386c7ad2e22b76f4f50b0104f6e9447c6": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "allowance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "balance_of": "7000000000",
+      "raw": "0",
+      "state_diff": {
+        "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "0xad9d9b76d02a656eeaf0404bc4b710d386c7ad2e22b76f4f50b0104f6e9447c6": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "allowance": "0",
+      "allowance_word": "0",
+      "balance_of": "123",
+      "raw": "123",
+      "state_diff": {
+        "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0xad9d9b76d02a656eeaf0404bc4b710d386c7ad2e22b76f4f50b0104f6e9447c6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      }
+    },
+    {
+      "allowance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "allowance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "balance_of": "123",
+      "raw": "123",
+      "state_diff": {
+        "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "0xad9d9b76d02a656eeaf0404bc4b710d386c7ad2e22b76f4f50b0104f6e9447c6": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      }
+    }
+  ],
+  "elapsed_seconds": 0.814462375,
+  "hash": "0x6f75c87588842466c5b64e2a0749a0a8fa3ece404cf7c6e169f1340754a92b94",
+  "invalid_call_controls": [
+    {
+      "label": "nonpayable",
+      "response": {
+        "error": {
+          "code": 3,
+          "message": "execution reverted"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      }
+    },
+    {
+      "label": "short ABI address",
+      "response": {
+        "error": {
+          "code": 3,
+          "message": "execution reverted"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      }
+    },
+    {
+      "label": "noncanonical ABI address",
+      "response": {
+        "error": {
+          "code": 3,
+          "message": "execution reverted"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      }
+    }
+  ],
+  "path_sha256": "e6b9f9100100ffc590652fe59b93e28abea9be4bc8e2644932e0f32c3c621bab",
+  "reads": [
+    {
+      "depth": 1,
+      "key": "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59",
+      "pc": 762,
+      "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "root": "0x0000000000000000000000000000000000000000000000000000000000000001",
+  "scope": "Read-only nested allowance root1 getter and independent balance-isolation controls. Does not promote a layout or qualify unrelated metadata.",
+  "source_report_sha256": "f12f9715249a80eb306b3052987a65cf04072e0f638071ca343f8a58a804d608",
+  "status": "inspected",
+  "storage_key": "0x89ff7a282a80950607e7c8f031cbb5027b5f3b83e6230b5100d5bf8d5d0dca59",
+  "tool_language": "Rust",
+  "trace_sha256": "545fc655e6857f45490bd7d92913348b0b8ecda02017e05bccbca6219575e371"
+}

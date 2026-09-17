@@ -1,0 +1,1573 @@
+[
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "13048879593281422697"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "raw_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x8cd9e8c4ea9d5f92cac58b9b0e2db2c4307e4add2c4239dfd19ced46be067062",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "13048879593281422698"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "raw_one",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x8cd9e8c4ea9d5f92cac58b9b0e2db2c4307e4add2c4239dfd19ced46be067062",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "13048879593281422820"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "raw_123",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x8cd9e8c4ea9d5f92cac58b9b0e2db2c4307e4add2c4239dfd19ced46be067062",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "raw_max_overflow",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x8cd9e8c4ea9d5f92cac58b9b0e2db2c4307e4add2c4239dfd19ced46be067062",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_reward_one",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "4526732512486539467122"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "3477201521822040839680",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_total_17",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xb1b46cca8e393c11008ed2781eeb0434eb928c733220cd902de392879a13f555",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049530990664498627442"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_user_17",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x9cb12a77cec596782820ee0e7da4549fd2df45b6de26025f0aec0c77308556d6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "day_reward_17",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "4539547215643992089039"
+        ]
+      },
+      "daily": {
+        "values": [
+          "3477201521822040839680"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "day_total_17",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7ea53af6a5f1d6779aaaddd018b1494d2d662559bc8e5e38163ac64c90919df6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "day_user_17",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_amount_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_hour_stale",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000084e"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "claimed_max",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x53b8d1e0c0d97463a63e694e274c194cae4bfcace33551ea6424f20939fe0c19",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "cap_basis_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb7335",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227056"
+        ]
+      },
+      "daily": {
+        "values": [
+          "2"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "2",
+          "2295"
+        ]
+      }
+    },
+    "name": "cap_remaining_one",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x53b8d1e0c0d97463a63e694e274c194cae4bfcace33551ea6424f20939fe0c19",
+        "value": "0x0000000000000000000000000000000000000000000000492e5d0ccfe14de85a"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "pool_a_quote_reserve_half",
+    "state_diff": [
+      {
+        "contract": "0xe82c917d216d15dd88ae65300d53c2a202dd41c6",
+        "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "value": "0x6aab000f00000002367918cb3c717004e44c0000000000273a6d7af68e383037"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "holder_hour_rate_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb7337",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "holder_day_rate_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb7338",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049530990664498627442"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "name": "hour_cursor_current",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ffd4b80bbf52d3d37e3e64317902c5f7a05a46c83f45c57c2d0da6facb9d216",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000008f7"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "day_cursor_current",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ffd4b80bbf52d3d37e3e64317902c5f7a05a46c83f45c57c2d0da6facb9d217",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000005f"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "unmodeled_daily_initial_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "explicitly_unsupported",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062450743533052430325"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12919752868553802883",
+          "2295"
+        ]
+      }
+    },
+    "name": "unmodeled_hour_reward_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "explicitly_unsupported",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062458359660946158580"
+        ]
+      },
+      "daily": {
+        "values": [
+          "112665838994909221"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "unmodeled_day_reward_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "explicitly_unsupported",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062089765518536401997"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12558774854037774555",
+          "2294"
+        ]
+      }
+    },
+    "name": "clock_minus_hour",
+    "state_diff": [],
+    "status": "match",
+    "timestamp": "0x6aaaf24f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "clock_same_period",
+    "state_diff": [],
+    "status": "match",
+    "timestamp": "0x6aab0060"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "daily_three_positive_floor_zero",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ffd4b80bbf52d3d37e3e64317902c5f7a05a46c83f45c57c2d0da6facb9d217",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000005b"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6b8dca1d7d6c676c2c8ad88fce0aa946ab82bfa2eab262fbdb26912dd082a687",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xbc00d1b4941a91daebdc3dfc04aa3eb2ae2f9854479919340a5fa9238440fd03",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x05e6c929cca60ec7c1dca808a6891762acca5121be1b11c2d79fdf7a6ab5187d",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x67e33ba616f8d6ddf8fb02eb20d207729d5ecc680dc7c74ec0ee0fbded4fe695",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7362fe0990fb5fdc32bbd707f6bfc860335ab763fb51c86c8b2b37784837dee1",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x38be67b8ec8b2f737692407b07de0e3cd79dc46625d2489167be1360e33dee09",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x82e79646bcb3789c774f4edaa2e36d722195008a3973d36046862e1afa11b544",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6f24b65b8130550d3f27c134a814eb03f075945e46a42ac378b5f45fed560acc",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x2efee322b58bb67eca06406085b652f4f1d5a46bfd951ad30e74a8474bd846bd",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7ea53af6a5f1d6779aaaddd018b1494d2d662559bc8e5e38163ac64c90919df6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000003e8"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249367"
+        ]
+      },
+      "daily": {
+        "values": [
+          "8"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "daily_three_positive_integer_rounding",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ffd4b80bbf52d3d37e3e64317902c5f7a05a46c83f45c57c2d0da6facb9d217",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000005b"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6b8dca1d7d6c676c2c8ad88fce0aa946ab82bfa2eab262fbdb26912dd082a687",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000a"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xbc00d1b4941a91daebdc3dfc04aa3eb2ae2f9854479919340a5fa9238440fd03",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000007"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x05e6c929cca60ec7c1dca808a6891762acca5121be1b11c2d79fdf7a6ab5187d",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x67e33ba616f8d6ddf8fb02eb20d207729d5ecc680dc7c74ec0ee0fbded4fe695",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000a"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7362fe0990fb5fdc32bbd707f6bfc860335ab763fb51c86c8b2b37784837dee1",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000b"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x38be67b8ec8b2f737692407b07de0e3cd79dc46625d2489167be1360e33dee09",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x82e79646bcb3789c774f4edaa2e36d722195008a3973d36046862e1afa11b544",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000a"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6f24b65b8130550d3f27c134a814eb03f075945e46a42ac378b5f45fed560acc",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000d"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x2efee322b58bb67eca06406085b652f4f1d5a46bfd951ad30e74a8474bd846bd",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7ea53af6a5f1d6779aaaddd018b1494d2d662559bc8e5e38163ac64c90919df6",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000000a"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000003e8"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062345693821951249369"
+        ]
+      },
+      "daily": {
+        "values": [
+          "10"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "daily_zero_total_reward_skip_not_counted",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ffd4b80bbf52d3d37e3e64317902c5f7a05a46c83f45c57c2d0da6facb9d217",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000005b"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6b8dca1d7d6c676c2c8ad88fce0aa946ab82bfa2eab262fbdb26912dd082a687",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xbc00d1b4941a91daebdc3dfc04aa3eb2ae2f9854479919340a5fa9238440fd03",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x05e6c929cca60ec7c1dca808a6891762acca5121be1b11c2d79fdf7a6ab5187d",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x67e33ba616f8d6ddf8fb02eb20d207729d5ecc680dc7c74ec0ee0fbded4fe695",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7362fe0990fb5fdc32bbd707f6bfc860335ab763fb51c86c8b2b37784837dee1",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x38be67b8ec8b2f737692407b07de0e3cd79dc46625d2489167be1360e33dee09",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x82e79646bcb3789c774f4edaa2e36d722195008a3973d36046862e1afa11b544",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6f24b65b8130550d3f27c134a814eb03f075945e46a42ac378b5f45fed560acc",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x2efee322b58bb67eca06406085b652f4f1d5a46bfd951ad30e74a8474bd846bd",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x7ea53af6a5f1d6779aaaddd018b1494d2d662559bc8e5e38163ac64c90919df6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000064"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000003e8"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_initial_user_zero_fallback",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x9cb12a77cec596782820ee0e7da4549fd2df45b6de26025f0aec0c77308556d6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_zero_total_reward_skip",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xb1b46cca8e393c11008ed2781eeb0434eb928c733220cd902de392879a13f555",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462902157020526237"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931911492521898795",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_total_zero_carries_prior",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x76170608ba9e5ac3e1b62f18474daf8d4983ec6ab0339bf5b5053bfbd83ed7a5",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049530990664498627442"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "hour_user_zero_carries_prior",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x9cb12a77cec596782820ee0e7da4549fd2df45b6de26025f0aec0c77308556d6",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000011"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x6ed842c59512209b4e728edebbc383ca4b603cc30da5e83cc8c11d2ccf50b00d",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_168_boundary",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000084f"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_stale_short_circuits_products",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000084e"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb733e",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_zero_holding_short_circuits_age",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000008f8"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb733e",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      }
+    },
+    "name": "weekly_future_age_underflows",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x00000000000000000000000000000000000000000000000000000000000008f8"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_equal_percent_threshold",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb733e",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000014"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "weekly_below_percent_threshold",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb733e",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000015"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      }
+    },
+    "name": "weekly_required_product_overflows",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb733e",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      }
+    },
+    "name": "weekly_provided_product_overflows",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x1f43ef4ae8dcf9487cf50384032f9d6fe53eadde401a1167739c48c9a8f7329a",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      }
+    },
+    "name": "cap_basis_product_overflows",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x4d06e2d48e794745311e0a4bf881eed1e66f05465afa09864b6dc2e4a1bb7335",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "values": [
+          "1049413902446584227052"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "0",
+          "2295"
+        ]
+      }
+    },
+    "name": "cap_exact_existing_value",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x53b8d1e0c0d97463a63e694e274c194cae4bfcace33551ea6424f20939fe0c19",
+        "value": "0x0000000000000000000000000000000000000000000000492e5d0ccfe14de85b"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  },
+  {
+    "base_case": 1,
+    "expected": {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      }
+    },
+    "name": "hour_product_overflows_before_stale_cap",
+    "state_diff": [
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309",
+        "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      {
+        "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+        "key": "0x496d9b78ecad573628d88b071c55eadb0d62ebe9efd65f7b22c65bb56b66067b",
+        "value": "0x000000000000000000000000000000000000000000000000000000000000084e"
+      }
+    ],
+    "status": "match",
+    "timestamp": "0x6aab005f"
+  }
+]

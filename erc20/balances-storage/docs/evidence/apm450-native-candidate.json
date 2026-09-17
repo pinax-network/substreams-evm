@@ -1,0 +1,178 @@
+{
+  "allowance_review_sha256": "f12f9715249a80eb306b3052987a65cf04072e0f638071ca343f8a58a804d608",
+  "boundaries": [
+    {
+      "block": 122288005,
+      "fallback": "7000000000",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+    },
+    {
+      "block": 122289029,
+      "fallback": "7000000000",
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+    }
+  ],
+  "code_sections": [
+    {
+      "bytes": "5b60006001600160a01b0382166104d25760405162461bcd60e51b815260206004820152602260248201527f62616c616e636520717565727920666f7220746865207a65726f206164647265604482015261737360f01b60648201526084015b60405180910390fd",
+      "end_exclusive": 1234,
+      "role": "Reject zero address before storage reads",
+      "start": 1130
+    },
+    {
+      "bytes": "5b6001600160a01b038216600090815260208190526040902054806104fa575050600754919050565b9291505056",
+      "end_exclusive": 1280,
+      "role": "Read mapping0; branch only on raw !=0, else return raw scalar7; no arithmetic or other dependency",
+      "start": 1234
+    },
+    {
+      "bytes": "5b60405190815260200161015c56",
+      "end_exclusive": 410,
+      "role": "Raw uint256 ABI encoding",
+      "start": 396
+    },
+    {
+      "bytes": "5b60405180910390f3",
+      "end_exclusive": 357,
+      "role": "ABI return",
+      "start": 348
+    },
+    {
+      "bytes": "5b80356001600160a01b0381168114610ea457600080fd5b91905056",
+      "end_exclusive": 3753,
+      "role": "Canonical address high bits and empty revert guard",
+      "start": 3725
+    },
+    {
+      "bytes": "5b600060208284031215610ebb57600080fd5b610cde82610e8d56",
+      "end_exclusive": 3780,
+      "role": "ABI minimum calldata length and dispatch",
+      "start": 3753
+    },
+    {
+      "bytes": "5b6001600160a01b0391821660009081526001602090815260408083209390941682529190915220549056",
+      "end_exclusive": 765,
+      "role": "Nested owner then spender allowance root1, one raw SLOAD",
+      "start": 722
+    }
+  ],
+  "corrected_original_mismatches": [
+    {
+      "block": 122288464,
+      "candidate": "7000000000",
+      "hash": "0x6f75c87588842466c5b64e2a0749a0a8fa3ece404cf7c6e169f1340754a92b94",
+      "holder": "0x18868500c856c5eb263363b87b62e30ef682f4b8",
+      "plain_mapping": "0",
+      "raw": "0",
+      "rpc": "7000000000"
+    },
+    {
+      "block": 122288602,
+      "candidate": "7000000000",
+      "hash": "0xc5ca6a5ea94dded45eab6d79e35b112646727f947d2972c5a8daf495d59d304c",
+      "holder": "0x395297f5499fc0dee834ec7b6e8033ce03aeb993",
+      "plain_mapping": "0",
+      "raw": "0",
+      "rpc": "7000000000"
+    }
+  ],
+  "diagnosis_sha256": "3f5fecc43d0bd54cd96fc83db557a61aa62595ead395e8fcf79704efa188bf37",
+  "elapsed_seconds": 40.242203084,
+  "getter_review": "Complete valid getter path reviewed: dispatcher and ABI guards lead to PC1130. Nonzero address reaches PC1234, mapping0 SLOAD1259; raw !=0 jumps to1274, raw ==0 reads scalar7 at1269. Both paths return one raw ABI word through396/348. The zero address branch reverts with its literal error before storage reads. No caller/origin/clock dependence or external call. Existing VerifiedLayout::project_amount implements the same raw==0 fallback for emitted nonzero addresses; map output filters null addresses.",
+  "layout_sha256": "87f90afb546320c62fe01acebf8582f34e45b8309918901df9092ec57d2ccf99",
+  "minimal_metadata": {
+    "basis": "All persisted token writes in the complete interval are balance mapping0 or one independently getter-reviewed nested allowance root1. No slot7 writes; it remains a protected dependency, never ignored.",
+    "fixed_slots": [],
+    "mapping_roots": [
+      1
+    ]
+  },
+  "native_scan": {
+    "active_blocks": 8,
+    "blocks": 1024,
+    "emitted_rows": 16,
+    "errors": [],
+    "reference_only_rows": [
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288056
+      },
+      {
+        "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+        "amount": "7000000000",
+        "block": 122288187
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288187
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288327
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288465
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288603
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288743
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122288880
+      },
+      {
+        "address": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "amount": "7000000000",
+        "block": 122289016
+      }
+    ],
+    "shared_reference_rows": 16,
+    "storage_only_rows": [],
+    "value_mismatches": []
+  },
+  "negative_controls": {
+    "slot7_change": "zero-balance dependency changed; requalify and rebuild dependent holder state",
+    "unreviewed_slot9": "unresolved storage for configured token 0x1d5beb0a44c4283b993665ca3f8b5d4a74088293 at key 0x0000000000000000000000000000000000000000000000000000000000000009; refusing incomplete events"
+  },
+  "original_inspection_sha256": "76ac7666199014405c167759eb3995045fd3cf2cae384b40cc085ae99d151cb3",
+  "promoted_layouts": 0,
+  "proposed_layout": {
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "code_hash": "0x07d7a76fabdd920d0c5be9ec6b2097b65792b82b89d4306f0dde14dce3634a03",
+    "contract": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+    "other_mapping_slots": [
+      "0x0000000000000000000000000000000000000000000000000000000000000001"
+    ],
+    "zero_balance": {
+      "storage_slot": "0x0000000000000000000000000000000000000000000000000000000000000007",
+      "value": "0x00000000000000000000000000000000000000000000000000000001a13b8600"
+    }
+  },
+  "qualified": false,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "remaining_gates": [
+    "Review additional ordinary metadata before broad token configuration; current minimum only covers persisted writes in this interval.",
+    "Actual production SPKG emitted-row audit against fresh canonical balanceOf for the proposed layout.",
+    "Initialize observed holders with pinned fallback-aware parent state, replay actual WASM and independently check final holders; retain cold unknown nonzero rows.",
+    "Capture independent Rust regression fixtures including zero-fallback raw transitions and protected dependency changes.",
+    "Combined-cohort replay and repository checks before promotion."
+  ],
+  "runtime_file_sha256": "ab133d11e42f74d40c5624e753915296ae9caabc3346f28ecc2766aaf86a3c8f",
+  "scope": "Unqualified out-only APM candidate. Native-only complete interval replay and getter/fallback/allowance review; no production, tracked fixture, test or documentation changes, no packaged audit. Reference-only nonzero rows remain coverage gaps until independent holder initialization is tested.",
+  "source_report_sha256": "475b9995ec1b46ec4932dfc98183c97333950616e50a27146c7f8798d67259a9",
+  "status": "inspected",
+  "tool_language": "Rust"
+}

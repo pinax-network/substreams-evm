@@ -1,0 +1,102 @@
+{
+  "canonical_boundaries": [
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+    },
+    {
+      "block": 122288006,
+      "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+    },
+    {
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+    }
+  ],
+  "completed_gates": {
+    "actual_wasm_holders": {
+      "initialized_carry_forward_matches": 9,
+      "mismatches": 0,
+      "reference_observations": 25,
+      "report_sha256": "3ad67c5a0f41bd9de2ee43ae76f94fd79bac11319f1556adb8ab7c2d5d58f4cb",
+      "snapshot_holders": 11,
+      "snapshot_sha256": "c1a31d35ea161529172214a6513f84fe2382f10e871bb19bba4a7db4180f5b7c",
+      "snapshot_zeros": 0,
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    "captured_fixtures": {
+      "cases": 4,
+      "cases_sha256": "3abe004da17a6cd8bbdd38c4483e26115d8b4de926b2c524c2f4e1cc2dce30d0",
+      "controls_sha256": "30861d85c06f2f346af44080ded933a263973184be4563316f9b3e6ec64757c8",
+      "rpc_balances": 8
+    },
+    "native": {
+      "blocks": 1024,
+      "emitted_rows": 16,
+      "errors": 0,
+      "report_sha256": "fca3a423b6af1e4cd244892468548a7b03cec26d2a4365857732e2bbc41bc989",
+      "status": "bounded_parity"
+    },
+    "native_holders": {
+      "checkpoint_holders": 11,
+      "checkpoint_rpc_reads": 22,
+      "checkpoint_sha256": "45b3a4c797b6e637e65b39c53ce60835255a224c1180b912718dc40fcb1de019",
+      "cold_unknown_nonzero_rows": 9,
+      "cold_unknown_rows": 9,
+      "report_sha256": "4848cd5a82d21c822ecd6c6997ed2066f795cdcb8241ef168ed6e7b0124eb5e7",
+      "status": "bounded_parity"
+    },
+    "rpc": {
+      "checked_blocks": 1024,
+      "checks": 16,
+      "checks_sha256": "15ef882e127dd181a67c3e70d9e6054efcea4071a657d66f8a5bb0230017106c",
+      "clocks_sha256": "d43dc99497ec4e68647f5ce14b7e9eba725511af7a70a4d7642ee9417a79a442",
+      "events_sha256": "deb402806c36ae7e0990fba6e0df3f7e5bd13576f0459eecc44d6ffd1d35c471",
+      "mismatches": 0,
+      "report_sha256": "0bba119dd3d6619e2290e91f58ce5f75efc5dc622ee862886963d08685b675eb",
+      "status": "rpc_parity"
+    }
+  },
+  "configured_profiles": 1,
+  "elapsed_seconds": 2.994510875,
+  "initial_native_qualification_sha256": "fca3a423b6af1e4cd244892468548a7b03cec26d2a4365857732e2bbc41bc989",
+  "layouts_sha256": "8cba3c750badbf286f9c7ae706802d707c0df9ba3974cd9b73a07c15be86128f",
+  "metadata_controls": 24,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "raw_controls": 36,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Completed standalone qualification of one pinned APM direct slot0 getter with protected slot7 fallback and reviewed ordinary metadata. Complete canonical production-WASM emitted RPC parity and initialized observed-holder parity passed. Original plain-mapping mismatches and strict allowance rejection remain preserved. Nine cold reference-only rows are nonzero and need an explicit checkpoint. No global-holder enumeration, deployment, dynamic long-string data, verified-source, custom-admin state or combined-cohort claim.",
+  "source_report_sha256": "253bed1eda948532902b7adde5fbd98d9a127994992a223ef65e72291ddee3f9",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "contract": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+      "fields_review_sha256": "dc585b8599237ae7ecaa600d7d0fa2a6ab1c40bcd09eac2e2089700cfa009b98",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x07d7a76fabdd920d0c5be9ec6b2097b65792b82b89d4306f0dde14dce3634a03",
+        "contract": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ],
+        "zero_balance": {
+          "storage_slot": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "value": "0x00000000000000000000000000000000000000000000000000000001a13b8600"
+        }
+      },
+      "native_candidate_sha256": "475b9995ec1b46ec4932dfc98183c97333950616e50a27146c7f8798d67259a9",
+      "rank": 447,
+      "symbol": "APM"
+    }
+  ],
+  "tool_language": "Rust"
+}

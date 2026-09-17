@@ -1,0 +1,36 @@
+{
+  "checkpoint_sha256": "45b3a4c797b6e637e65b39c53ce60835255a224c1180b912718dc40fcb1de019",
+  "checks_sha256": "c1a31d35ea161529172214a6513f84fe2382f10e871bb19bba4a7db4180f5b7c",
+  "configured_tokens": 1,
+  "deployment_initialization": [],
+  "events_sha256": "deb402806c36ae7e0990fba6e0df3f7e5bd13576f0459eecc44d6ffd1d35c471",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 9,
+  "layouts_sha256": "8cba3c750badbf286f9c7ae706802d707c0df9ba3974cd9b73a07c15be86128f",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 25,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "One bytecode-reviewed direct slot0 balance getter with pinned slot7 zero fallback, five ordinary metadata fields and allowance root1 on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 11,
+  "snapshot_zeros": 0,
+  "source_report_sha256": "3ad67c5a0f41bd9de2ee43ae76f94fd79bac11319f1556adb8ab7c2d5d58f4cb",
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x1d5beb0a44c4283b993665ca3f8b5d4a74088293",
+      "emitted_rows": 16,
+      "reference_rows": 25,
+      "seeded_matches": 25,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 9,
+      "unseeded_unknown_rows": 9,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

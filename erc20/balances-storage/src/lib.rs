@@ -374,6 +374,8 @@ mod handler {
 #[cfg(test)]
 mod address_list_tests;
 #[cfg(test)]
+mod apm450_tests;
+#[cfg(test)]
 mod beacon_admin_followup_tests;
 #[cfg(test)]
 mod checkpoint_tests;
@@ -382,6 +384,8 @@ mod clone_fallback_tests;
 #[cfg(test)]
 mod computed_tests;
 #[cfg(test)]
+mod direct450_tests;
+#[cfg(test)]
 mod direct_bytecode_tests;
 #[cfg(test)]
 mod direct_gaps_tests;
@@ -389,6 +393,8 @@ mod direct_gaps_tests;
 mod direct_source_tests;
 #[cfg(test)]
 mod divisor_tests;
+#[cfg(test)]
+mod family450_tests;
 #[cfg(test)]
 mod final_proxy_tests;
 #[cfg(test)]

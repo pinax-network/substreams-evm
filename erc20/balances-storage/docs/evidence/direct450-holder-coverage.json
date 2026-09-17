@@ -1,0 +1,122 @@
+{
+  "captured_block_count": 1024,
+  "captured_first": {
+    "block": 122288006,
+    "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+  },
+  "captured_last": {
+    "block": 122289029,
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+  },
+  "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "checkpoint_holders": 84,
+  "checkpoint_rpc_reads": 168,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "6703da904fa1caf1b3830dff54a1b169ed5558b9a669cbe1f3ce2e930785a84d",
+  "checkpoint_tokens": {
+    "0x14d6c649292c5c9790c5196d1a9ea039307947a1": {
+      "holders": 18,
+      "nonzero_holders": 16,
+      "zero_word_fallback_holders": 0
+    },
+    "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444": {
+      "holders": 14,
+      "nonzero_holders": 5,
+      "zero_word_fallback_holders": 0
+    },
+    "0x2a846aaaf896ef393ccb76398c1d96ea97374444": {
+      "holders": 16,
+      "nonzero_holders": 5,
+      "zero_word_fallback_holders": 0
+    },
+    "0x3477725399b706efabce710fcc54271db8b00c49": {
+      "holders": 19,
+      "nonzero_holders": 9,
+      "zero_word_fallback_holders": 0
+    },
+    "0x44440f83419de123d7d411187adb9962db017d03": {
+      "holders": 17,
+      "nonzero_holders": 8,
+      "zero_word_fallback_holders": 0
+    }
+  },
+  "computed_initialized_holders": {},
+  "deployment_initialized_holders": {},
+  "elapsed_seconds": 106.673675791,
+  "event_row_parity_claimed": false,
+  "holder_checks_sha256": "311199b5ad4994404b71603d17b7bd84bf88646b5aff8d25828a7406a94ca3f7",
+  "immutable_zero_initialized_holders": {},
+  "layouts_sha256": "dbede8a73db4aa9fc6b97d1ae68ea4938cdc2efa677a11fd031d8a7e8b9d05eb",
+  "processing_balance_rpc_calls": 0,
+  "processing_header_rpc_calls": 1024,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "source_report_sha256": "4812c37e3777e0dacd55af09c0e1ad16f6d99117a9a3cecf23bce4e9efb90a9c",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+      "emitted_rows": 18,
+      "reference_rows": 30,
+      "seeded_matches": 30,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 1,
+      "unseeded_unknown_rows": 12,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+      "emitted_rows": 16,
+      "reference_rows": 30,
+      "seeded_matches": 30,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 6,
+      "unseeded_unknown_rows": 14,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+      "emitted_rows": 15,
+      "reference_rows": 28,
+      "seeded_matches": 28,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 13,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x3477725399b706efabce710fcc54271db8b00c49",
+      "emitted_rows": 9,
+      "reference_rows": 27,
+      "seeded_matches": 27,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 18,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x44440f83419de123d7d411187adb9962db017d03",
+      "emitted_rows": 16,
+      "reference_rows": 28,
+      "seeded_matches": 28,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 5,
+      "unseeded_unknown_rows": 12,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust",
+  "unobserved_tokens": []
+}

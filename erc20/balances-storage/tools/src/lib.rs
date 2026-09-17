@@ -9,6 +9,7 @@ pub mod data;
 pub mod inspect;
 pub mod inspect_ranked;
 pub mod lbp_rewards;
+pub mod og_model;
 pub mod probe;
 pub mod ranking;
 pub mod recheck;

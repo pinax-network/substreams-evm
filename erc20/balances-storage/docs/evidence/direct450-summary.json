@@ -1,0 +1,18 @@
+{
+  "carry_forward": 69,
+  "checkpoint_holders": 84,
+  "checkpoint_reads": 168,
+  "cold_unknown": 69,
+  "cold_unknown_nonzero": 12,
+  "emitted_zeros": 23,
+  "final_holders": 84,
+  "final_zeros": 52,
+  "fixture_balances": 13,
+  "holder_observations": 143,
+  "metadata_controls": 66,
+  "new_profiles": 5,
+  "raw_controls": 100,
+  "rpc_checks": 74,
+  "scope": "Five historical runtime-bound direct profiles. Exact production-WASM emitted parity and independently initialized observed-holder parity. No new global holder checkpoint, deployment or all-future-path claim.",
+  "status": "bounded_parity"
+}

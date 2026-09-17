@@ -1,0 +1,35 @@
+{
+  "baseline_layouts_sha256": "f2f3690e3bc1cd1701b6aac2763c458ac34a06c198319640e2d1bc9083704b71",
+  "elapsed_seconds": 138.818037084,
+  "excluded": [
+    {
+      "contract": "0xfb6115445bff7b52feb98650c87f44907e58f802",
+      "rank": 439,
+      "reason": "unexpected getter dependency"
+    }
+  ],
+  "layouts_sha256": "a615af36deaaff1f7f9fb9125d0ed3d0a1f256dd0ee4a47e5c38d46540815028",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x3a51dae2dc3d901a2cefed3ad128116bf31c7777": 27,
+      "0x489ce5fb31523516f3fb4aacd597508c80edffff": 23,
+      "0x4f4a59ac165c6f05ed771df3530741494b1c7777": 21,
+      "0x75b364916b65f1e8959fa0210a6922c2ee237777": 23,
+      "0x78fa3e1df7c461103ff1f13d4ed6dd3e17657777": 27,
+      "0x8eaa5dd62c64212f1313717dc83ea23a32068888": 18,
+      "0xa394dcea3fd3847fd793afbfd163e2e3858b7c65": 18,
+      "0xa697e272a73744b343528c3bc4702f2565b2f422": 10,
+      "0xc6ccafa8e69a47fde69b18aa01c7324c9ada7777": 30,
+      "0xd8348b96c8f23e1e24c0f40f495823c98f8e7777": 21,
+      "0xe4bc08e213afb818a124da2240e8c9e65d9b7777": 16,
+      "0xf609e7c374ee82001c3c9834c63d8c8cc6ed7777": 21
+    },
+    "errors": []
+  },
+  "original_report_sha256": "397a525d3b76b4fa6e461878d1ba4e26f2dd894a9177d808feaab8c1038e6582",
+  "rpc_requests_sha256": "768290e54fa8e34f4e10d37cfe1074a427b1b54985a2019cbe43064f92b440c3",
+  "scope": "Independently resolved proxy candidates with exact reviewed effective bytecode and per-target controls. Native replay complete; packaged and holder gates remain required. Excluded candidates remain unqualified.",
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

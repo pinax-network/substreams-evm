@@ -346,14 +346,18 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [ten-profile follow-up](docs/tail400-coverage.md) brings the explicit
-test configuration to 393 profiles in `tests/fixtures/bsc-tail400-layouts.json`.
-The additions match 235 emitted RPC balances, 337 initialized observations and
-all 128 final holder balances. Their reviewed layouts cover packed swap/lock
-metadata and a pinned minimal proxy, using the existing production rules.
-The unchanged package matches every protobuf event field for 109,470 previously
+The latest [nineteen-profile follow-up](docs/ranks450-coverage.md) brings the explicit
+test configuration to 412 profiles among the first 450 RPC-stream candidates in
+`tests/fixtures/bsc-ranks450-layouts.json`. The additions match 360 emitted RPC
+balances, 524 initialized observations and all 262 final holder balances.
+[APM's zero-word fallback](docs/apm450-coverage.md) corrects two original value
+mismatches; direct and proxy runtime matches retain independently checked
+metadata and dispatch guards. The unchanged package matches every protobuf
+event field for 109,830 previously
 RPC-verified balances across the combined configuration. This reuses preserved
-RPC evidence and does not establish a new full-393 holder checkpoint.
+RPC evidence and does not establish a new full-412 holder checkpoint.
+The preceding [ten-profile follow-up](docs/tail400-coverage.md) retains its
+packed swap/lock metadata and minimal-proxy evidence.
 The preceding [three Cake-LP profiles](docs/lp400-coverage.md) retain their
 complete getter, fixed-field, allowance and nonce evidence.
 The [AR, ARZ and ARS follow-up](docs/sparse400-coverage.md) retains its separate
@@ -361,7 +365,8 @@ bytecode and sparse-discovery evidence. BabyDoge and 10SET from
 the [ranks 351–400 investigation](docs/ranks351-400-investigation.md) remain unqualified,
 alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The
 [ranks 401–450 diagnosis](docs/next450-mismatch-diagnosis.md) separately explains
-seven new value mismatches in APM and OG; neither is qualified by that investigation.
+seven original value mismatches in APM and OG. APM is now qualified separately;
+the [OG host model](docs/og450-host-model.md) remains outside production support.
 The [Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) and previous
 [27-profile cohort](docs/ranks400-coverage.md) retain their separate source,
 proxy-family and holder evidence. The earlier

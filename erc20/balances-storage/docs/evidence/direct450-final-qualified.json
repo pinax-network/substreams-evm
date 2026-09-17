@@ -1,0 +1,3161 @@
+{
+  "baseline_layouts_sha256": "f2f3690e3bc1cd1701b6aac2763c458ac34a06c198319640e2d1bc9083704b71",
+  "baseline_report_sha256": "d514eae3743c66e9ba6d87c47bdbc5f87c2c86e099f6788f40614d8819b0eec7",
+  "elapsed_seconds": 78.682890125,
+  "initial_control_setup_failure_sha256": "50fa0b83b6a1ab0bbbdf8be752edd41d038fd63c4af1f5ac767d525af1d5a4bd",
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "dbede8a73db4aa9fc6b97d1ae68ea4938cdc2efa677a11fd031d8a7e8b9d05eb",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x14d6c649292c5c9790c5196d1a9ea039307947a1": 18,
+      "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444": 16,
+      "0x2a846aaaf896ef393ccb76398c1d96ea97374444": 15,
+      "0x3477725399b706efabce710fcc54271db8b00c49": 9,
+      "0x44440f83419de123d7d411187adb9962db017d03": 16
+    },
+    "errors": []
+  },
+  "parent_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Five exact reviewed direct runtimes, independent candidate-specific controls and complete native replay. Packaged RPC and initialized-holder gates remain required. No global enumeration or all-future-metadata claim.",
+  "source_report_sha256": "914fbbc0e69e92340268393cbf5c3ba037fb9f1fad3941e265e19a842ef3ee59",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "block": 122288256,
+      "byte_identical_to_template_at_sample": true,
+      "contract": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+      "hash": "0xa4bd8016b5ea6eaaf8ab01d94b9c007415f5e167a0029f5c8533d9ba4d6a5574",
+      "holder": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+      "inspection": {
+        "address": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+        "balance_of": "31019220471038186864177",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "block": 122288256,
+        "contract": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+        "elapsed_seconds": 0.285654125,
+        "execution_code": [
+          {
+            "address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+            "checked_instructions": 1,
+            "runtime_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+              "depth": 1,
+              "key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28",
+              "pc": 2154,
+              "storage_address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+              "value": "0x0000000000000000000000000000000000000000000006918e28df891c2fbe31"
+            }
+          ]
+        },
+        "hash": "0xa4bd8016b5ea6eaaf8ab01d94b9c007415f5e167a0029f5c8533d9ba4d6a5574",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+        "status": "inspected",
+        "storage_key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28",
+            "pc": 2154,
+            "value": "0x0000000000000000000000000000000000000000000006918e28df891c2fbe31"
+          }
+        ],
+        "storage_word": "31019220471038186864177",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "86eaed9a5f4d9dc5a3c47f2636523235c7ca465378867dd1e458463d2f1e0992"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "code_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+        "contract": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c": "000000000000000000000000000000000000000000000000000000000000dead9fc135ea4a89681d7161e8c5b9693952303ba5e70e935c7635042ecb9923c2c3",
+            "9fc135ea4a89681d7161e8c5b9693952303ba5e70e935c7635042ecb9923c2c3": "00000000000000000000000008f7b6b72f7c4f580e9750e4c7af41ce1c9867e90000000000000000000000000000000000000000000000000000000000000005"
+          },
+          "state_diff": {
+            "0x310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c": "000000000000000000000000000000000000000000000000000000000000dead9fc135ea4a89681d7161e8c5b9693952303ba5e70e935c7635042ecb9923c2c3",
+            "9fc135ea4a89681d7161e8c5b9693952303ba5e70e935c7635042ecb9923c2c3": "00000000000000000000000008f7b6b72f7c4f580e9750e4c7af41ce1c9867e90000000000000000000000000000000000000000000000000000000000000005"
+          },
+          "state_diff": {
+            "0x310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x310eebcecc3529c94498a46a2f88233fc025a88ba7647fa1c27f5c5ecbaaeb4c"
+        }
+      ],
+      "rank": 402,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x17ef568e3e12ab5b9c7254a8d58478811de00f9e6eb34345acd53bf8fd09d3ec"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x17ef568e3e12ab5b9c7254a8d58478811de00f9e6eb34345acd53bf8fd09d3ec"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x17ef568e3e12ab5b9c7254a8d58478811de00f9e6eb34345acd53bf8fd09d3ec"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x17ef568e3e12ab5b9c7254a8d58478811de00f9e6eb34345acd53bf8fd09d3ec"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x42c63635470f1fb1d6d4b6441c413cb435b1ebb6fedd1896dd5e25d1399147dd"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x42c63635470f1fb1d6d4b6441c413cb435b1ebb6fedd1896dd5e25d1399147dd"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x42c63635470f1fb1d6d4b6441c413cb435b1ebb6fedd1896dd5e25d1399147dd"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x42c63635470f1fb1d6d4b6441c413cb435b1ebb6fedd1896dd5e25d1399147dd"
+        },
+        {
+          "address": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28"
+        },
+        {
+          "address": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28"
+        },
+        {
+          "address": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28"
+        },
+        {
+          "address": "0x08f7b6b72f7c4f580e9750e4c7af41ce1c9867e9",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xf1742bffd7d0771b1c322a94a132688af9e664dba477587e2cde042f37bc3c28"
+        },
+        {
+          "address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x3ddd255fe98c15be2f5a01762baee60b3348e2baee4125d7d52673caf1d96042"
+        },
+        {
+          "address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x3ddd255fe98c15be2f5a01762baee60b3348e2baee4125d7d52673caf1d96042"
+        },
+        {
+          "address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x3ddd255fe98c15be2f5a01762baee60b3348e2baee4125d7d52673caf1d96042"
+        },
+        {
+          "address": "0x14d6c649292c5c9790c5196d1a9ea039307947a1",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x3ddd255fe98c15be2f5a01762baee60b3348e2baee4125d7d52673caf1d96042"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x3569f564c44c2d85a381a1123e4afebef0204e2bb799b725ae533e5c15f0829d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x3569f564c44c2d85a381a1123e4afebef0204e2bb799b725ae533e5c15f0829d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x3569f564c44c2d85a381a1123e4afebef0204e2bb799b725ae533e5c15f0829d"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x3569f564c44c2d85a381a1123e4afebef0204e2bb799b725ae533e5c15f0829d"
+        }
+      ],
+      "review_basis": "Exact complete reviewed direct runtime, no inherited proxy/deployment/calculated dependencies, candidate-specific getter and raw/metadata controls. Existing metadata interpretation is preserved; unknown roots remain errors. Verified source is only claimed by the linked template evidence, not newly retrieved for this candidate.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "template_contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+      "template_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "code_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+        "contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "template_proof": {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+          },
+          {
+            "block": 122289029,
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+          }
+        ],
+        "contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+        "controls": {
+          "block": 122288031,
+          "contexts": [
+            {
+              "balance_of": 0,
+              "from": "0x1111111111111111111111111111111111111111",
+              "holder": "0x0000000000000000000000000000000000000000",
+              "word": 0
+            },
+            {
+              "balance_of": 123,
+              "from": "0x1111111111111111111111111111111111111111",
+              "holder": "0x0000000000000000000000000000000000000000",
+              "word": 123
+            },
+            {
+              "balance_of": 0,
+              "from": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+              "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+              "word": 0
+            },
+            {
+              "balance_of": 123,
+              "from": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+              "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+              "word": 123
+            }
+          ],
+          "contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+          "getters": [
+            {
+              "control": {
+                "returned": "123",
+                "word": 123
+              },
+              "getter": "allowance",
+              "hashes": [
+                {
+                  "pc": 2697,
+                  "preimage": "00000000000000000000000042ea5c4faf2c3368cbbdec243f55d10516cff5560000000000000000000000000000000000000000000000000000000000000005"
+                },
+                {
+                  "pc": 2709,
+                  "preimage": "00000000000000000000000011111111111111111111111111111111111111116c0674e7b41afcfcebce10c427294a247b9bf7470d01e3f1961685c5b1b05464"
+                }
+              ],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x8490e22c7799fa825ea8a927878fbba699e1283b3a130db38d20258bddc58533",
+                  "pc": 2717,
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "b4f1e2068ad2314cc06d56f64eba1ed9eb0dfc52040e6c93bbe6db2a23e6e71c"
+            },
+            {
+              "control": {
+                "returned": "123",
+                "word": 123
+              },
+              "getter": "totalSupply",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                  "pc": 1053,
+                  "value": "0x00000000000000000000000000000000000000000565646cc547c7935e800000"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "c0e0ea0ba0e36c2eeb5814217f8da1aeb57dbadf95dca1af76bfeb26daf8630e"
+            },
+            {
+              "control": null,
+              "getter": "name",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                  "pc": 670,
+                  "value": "0x436f64657800000000000000000000000000000000000000000000000000000a"
+                },
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                  "pc": 714,
+                  "value": "0x436f64657800000000000000000000000000000000000000000000000000000a"
+                },
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                  "pc": 743,
+                  "value": "0x436f64657800000000000000000000000000000000000000000000000000000a"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "345c0f2f5b9ebf83dbf17189dbcfaddc309d8a3b121a374b439e499daae5aab1"
+            },
+            {
+              "control": null,
+              "getter": "symbol",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                  "pc": 2161,
+                  "value": "0x4344585200000000000000000000000000000000000000000000000000000008"
+                },
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                  "pc": 2205,
+                  "value": "0x4344585200000000000000000000000000000000000000000000000000000008"
+                },
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                  "pc": 2234,
+                  "value": "0x4344585200000000000000000000000000000000000000000000000000000008"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "a94643f6eb9aa1d5edfd0642b1dd41ff02e571ed816011430e448c1f2b46c418"
+            },
+            {
+              "getter": "owner",
+              "status": "reverted"
+            },
+            {
+              "getter": "paused",
+              "status": "reverted"
+            },
+            {
+              "getter": "pendingOwner",
+              "status": "reverted"
+            }
+          ],
+          "hash": "0xa172b3ee247136f3d0930a5833bfef7c0784a70172ca11e829931c003040c5db",
+          "inspection": {
+            "address": "0x42ea5c4faf2c3368cbbdec243f55d10516cff556",
+            "balance_of": "955972948342532311122820",
+            "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+            "block": 122288031,
+            "contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+            "elapsed_seconds": 0.322284834,
+            "execution_code": [
+              {
+                "address": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+                "checked_instructions": 1,
+                "runtime_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd"
+              }
+            ],
+            "execution_contexts": {
+              "calls": [],
+              "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+              "storage_reads": [
+                {
+                  "code_address": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+                  "depth": 1,
+                  "key": "0x0afcac7497b973f563a76a5fa570c69002c65b5835726a02c9b991b78db8a120",
+                  "pc": 2154,
+                  "storage_address": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+                  "value": "0x00000000000000000000000000000000000000000000ca6f65ba23c7425c8384"
+                }
+              ]
+            },
+            "hash": "0xa172b3ee247136f3d0930a5833bfef7c0784a70172ca11e829931c003040c5db",
+            "read_only_state_overrides": [
+              {
+                "balance_of": "0",
+                "overridden_mapping_word": "0"
+              },
+              {
+                "balance_of": "1",
+                "overridden_mapping_word": "1"
+              },
+              {
+                "balance_of": "123",
+                "overridden_mapping_word": "123"
+              },
+              {
+                "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+                "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+              }
+            ],
+            "runtime_keccak256": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+            "status": "inspected",
+            "storage_key": "0x0afcac7497b973f563a76a5fa570c69002c65b5835726a02c9b991b78db8a120",
+            "storage_reads": [
+              {
+                "depth": 1,
+                "key": "0x0afcac7497b973f563a76a5fa570c69002c65b5835726a02c9b991b78db8a120",
+                "pc": 2154,
+                "value": "0x00000000000000000000000000000000000000000000ca6f65ba23c7425c8384"
+              }
+            ],
+            "storage_word": "955972948342532311122820",
+            "tool_language": "Rust",
+            "trace_config": {
+              "disableStack": false,
+              "disableStorage": false,
+              "enableMemory": true,
+              "enableReturnData": true,
+              "timeout": "10s"
+            },
+            "trace_sha256": "b3550ed71c8b4cc323103c0fa37a88791d72a9f73cd07565a6d7a4ebb237832a"
+          },
+          "rank": 300
+        },
+        "getter_bytecode": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI \n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 00cf\n25: JUMPI \n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 55cc4e57\n38: GT \n39: PUSH2 008c\n42: JUMPI \n43: DUP1 \n44: PUSH4 a9059cbb\n49: GT \n50: PUSH2 0066\n53: JUMPI \n102: JUMPDEST \n103: DUP1 \n104: PUSH4 55cc4e57\n109: EQ \n110: PUSH2 01aa\n113: JUMPI \n114: DUP1 \n115: PUSH4 70a08231\n120: EQ \n121: PUSH2 01c6\n124: JUMPI \n454: JUMPDEST \n455: PUSH2 01e0\n458: PUSH1 04\n460: DUP1 \n461: CALLDATASIZE \n462: SUB \n463: DUP2 \n464: ADD \n465: SWAP1 \n466: PUSH2 01db\n469: SWAP2 \n470: SWAP1 \n471: PUSH2 0f83\n474: JUMP \n3971: JUMPDEST \n3972: PUSH1 00\n3974: PUSH1 20\n3976: DUP3 \n3977: DUP5 \n3978: SUB \n3979: SLT \n3980: ISZERO \n3981: PUSH2 0f99\n3984: JUMPI \n3993: JUMPDEST \n3994: PUSH1 00\n3996: PUSH2 0fa7\n3999: DUP5 \n4000: DUP3 \n4001: DUP6 \n4002: ADD \n4003: PUSH2 0e0e\n4006: JUMP \n3598: JUMPDEST \n3599: PUSH1 00\n3601: DUP2 \n3602: CALLDATALOAD \n3603: SWAP1 \n3604: POP \n3605: PUSH2 0e1d\n3608: DUP2 \n3609: PUSH2 0df7\n3612: JUMP \n3575: JUMPDEST \n3576: PUSH2 0e00\n3579: DUP2 \n3580: PUSH2 0de5\n3583: JUMP \n3557: JUMPDEST \n3558: PUSH1 00\n3560: PUSH2 0df0\n3563: DUP3 \n3564: PUSH2 0dc5\n3567: JUMP \n3525: JUMPDEST \n3526: PUSH1 00\n3528: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n3549: DUP3 \n3550: AND \n3551: SWAP1 \n3552: POP \n3553: SWAP2 \n3554: SWAP1 \n3555: POP \n3556: JUMP \n3568: JUMPDEST \n3569: SWAP1 \n3570: POP \n3571: SWAP2 \n3572: SWAP1 \n3573: POP \n3574: JUMP \n3584: JUMPDEST \n3585: DUP2 \n3586: EQ \n3587: PUSH2 0e0b\n3590: JUMPI \n3595: JUMPDEST \n3596: POP \n3597: JUMP \n3613: JUMPDEST \n3614: SWAP3 \n3615: SWAP2 \n3616: POP \n3617: POP \n3618: JUMP \n4007: JUMPDEST \n4008: SWAP2 \n4009: POP \n4010: POP \n4011: SWAP3 \n4012: SWAP2 \n4013: POP \n4014: POP \n4015: JUMP \n475: JUMPDEST \n476: PUSH2 0855\n479: JUMP \n2133: JUMPDEST \n2134: PUSH1 04\n2136: PUSH1 20\n2138: MSTORE \n2139: DUP1 \n2140: PUSH1 00\n2142: MSTORE \n2143: PUSH1 40\n2145: PUSH1 00\n2147: KECCAK256 \n2148: PUSH1 00\n2150: SWAP2 \n2151: POP \n2152: SWAP1 \n2153: POP \n2154: SLOAD \n2155: DUP2 \n2156: JUMP \n480: JUMPDEST \n481: PUSH1 40\n483: MLOAD \n484: PUSH2 01ed\n487: SWAP2 \n488: SWAP1 \n489: PUSH2 0ede\n492: JUMP \n3806: JUMPDEST \n3807: PUSH1 00\n3809: PUSH1 20\n3811: DUP3 \n3812: ADD \n3813: SWAP1 \n3814: POP \n3815: PUSH2 0ef3\n3818: PUSH1 00\n3820: DUP4 \n3821: ADD \n3822: DUP5 \n3823: PUSH2 0ecf\n3826: JUMP \n3791: JUMPDEST \n3792: PUSH2 0ed8\n3795: DUP2 \n3796: PUSH2 0e23\n3799: JUMP \n3619: JUMPDEST \n3620: PUSH1 00\n3622: DUP2 \n3623: SWAP1 \n3624: POP \n3625: SWAP2 \n3626: SWAP1 \n3627: POP \n3628: JUMP \n3800: JUMPDEST \n3801: DUP3 \n3802: MSTORE \n3803: POP \n3804: POP \n3805: JUMP \n3827: JUMPDEST \n3828: SWAP3 \n3829: SWAP2 \n3830: POP \n3831: POP \n3832: JUMP \n493: JUMPDEST \n494: PUSH1 40\n496: MLOAD \n497: DUP1 \n498: SWAP2 \n499: SUB \n500: SWAP1 \n501: RETURN ",
+        "layout": {
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "code_hash": "0x401b8ccdb7a82a81aaf8e45a614e04eb172cfd4da9d586a4e6eb682876a59fcd",
+          "contract": "0x40aaf75454036bed56f3266ccf18f6b7befd6aca",
+          "other_mapping_slots": [
+            "0x0000000000000000000000000000000000000000000000000000000000000005"
+          ],
+          "other_slots": [
+            "0x0000000000000000000000000000000000000000000000000000000000000003",
+            "0x0000000000000000000000000000000000000000000000000000000000000006",
+            "0x0000000000000000000000000000000000000000000000000000000000000007"
+          ]
+        },
+        "nonbalance_controls": [
+          {
+            "balance_of": "0",
+            "other_words": "0",
+            "word": "0"
+          },
+          {
+            "balance_of": "0",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "word": "0"
+          },
+          {
+            "balance_of": "1",
+            "other_words": "0",
+            "word": "1"
+          },
+          {
+            "balance_of": "1",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "word": "1"
+          },
+          {
+            "balance_of": "123",
+            "other_words": "0",
+            "word": "123"
+          },
+          {
+            "balance_of": "123",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "other_words": "0",
+            "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "nonbalance_keys": [
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x8490e22c7799fa825ea8a927878fbba699e1283b3a130db38d20258bddc58533"
+        ],
+        "prior_native_errors": [],
+        "rank": 300,
+        "review_basis": "Historical selector dispatch, address decoding, unconditional mapping SLOAD and return path reviewed. Only explicit named scalar and allowance fields configured.",
+        "runtime": "0x608060405234801561001057600080fd5b50600436106100cf5760003560e01c806355cc4e571161008c578063a9059cbb11610066578063a9059cbb14610214578063d5d1e77014610244578063dd62ed3e1461024e578063f2fde38b1461027e576100cf565b806355cc4e57146101aa57806370a08231146101c657806395d89b41146101f6576100cf565b806306fdde03146100d4578063095ea7b3146100f257806318160ddd1461012257806323b872dd14610140578063313ce5671461017057806340c10f191461018e575b600080fd5b6100dc61029a565b6040516100e99190610d9e565b60405180910390f35b61010c60048036038101906101079190610e59565b610328565b6040516101199190610eb4565b60405180910390f35b61012a61041a565b6040516101379190610ede565b60405180910390f35b61015a60048036038101906101559190610ef9565b610420565b6040516101679190610eb4565b60405180910390f35b61017861054b565b6040516101859190610f68565b60405180910390f35b6101a860048036038101906101a39190610e59565b61056f565b005b6101c460048036038101906101bf9190610f83565b610705565b005b6101e060048036038101906101db9190610f83565b610855565b6040516101ed9190610ede565b60405180910390f35b6101fe61086d565b60405161020b9190610d9e565b60405180910390f35b61022e60048036038101906102299190610e59565b6108fb565b60405161023b9190610eb4565b60405180910390f35b61024c610912565b005b61026860048036038101906102639190610fb0565b610a7b565b6040516102759190610ede565b60405180910390f35b61029860048036038101906102939190610f83565b610aa0565b005b600680546102a79061101f565b80601f01602080910402602001604051908101604052809291908181526020018280546102d39061101f565b80156103205780601f106102f557610100808354040283529160200191610320565b820191906000526020600020905b81548152906001019060200180831161030357829003601f168201915b505050505081565b600081600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925846040516104089190610ede565b60405180910390a36001905092915050565b60035481565b600081600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410156104ab57600080fd5b6104b6848484610b85565b81600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550600190509392505050565b7f000000000000000000000000000000000000000000000000000000000000001281565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146105ca57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff160361060357600080fd5b7f0000000000000000000000000000000000000000a18f07d736b90be55000000082600354610632919061107f565b111561063d57600080fd5b8160036000828254019250508190555081600460008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040516106f89190610ede565b60405180910390a3505050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff168073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461075e57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16036107cd576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016107c4906110ff565b60405180910390fd5b81600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff167f33209da902260b15af88d27b2383f608bb1ed36eeb4ddef27866de5eafe0752260405160405180910390a25050565b60046020528060005260406000206000915090505481565b6007805461087a9061101f565b80601f01602080910402602001604051908101604052809291908181526020018280546108a69061101f565b80156108f35780601f106108c8576101008083540402835291602001916108f3565b820191906000526020600020905b8154815290600101906020018083116108d657829003601f168201915b505050505081565b6000610908338484610b85565b6001905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461096d57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506001151560008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167fcbe2aa772079086290469c944126fdc8e1438a556b92ebdb5044506435217f0460405160405180910390a350565b6005602052816000526040600020602052806000526040600020600091509150505481565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff168073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610af957600080fd5b81600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600015158273ffffffffffffffffffffffffffffffffffffffff167fcbe2aa772079086290469c944126fdc8e1438a556b92ebdb5044506435217f0460405160405180910390a35050565b600073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1603610bbe57600080fd5b80600460008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541015610c0a57600080fd5b80600460008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000828254039250508190555080600460008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508173ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef83604051610d019190610ede565b60405180910390a3505050565b600081519050919050565b600082825260208201905092915050565b60005b83811015610d48578082015181840152602081019050610d2d565b60008484015250505050565b6000601f19601f8301169050919050565b6000610d7082610d0e565b610d7a8185610d19565b9350610d8a818560208601610d2a565b610d9381610d54565b840191505092915050565b60006020820190508181036000830152610db88184610d65565b905092915050565b600080fd5b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610df082610dc5565b9050919050565b610e0081610de5565b8114610e0b57600080fd5b50565b600081359050610e1d81610df7565b92915050565b6000819050919050565b610e3681610e23565b8114610e4157600080fd5b50565b600081359050610e5381610e2d565b92915050565b60008060408385031215610e7057610e6f610dc0565b5b6000610e7e85828601610e0e565b9250506020610e8f85828601610e44565b9150509250929050565b60008115159050919050565b610eae81610e99565b82525050565b6000602082019050610ec96000830184610ea5565b92915050565b610ed881610e23565b82525050565b6000602082019050610ef36000830184610ecf565b92915050565b600080600060608486031215610f1257610f11610dc0565b5b6000610f2086828701610e0e565b9350506020610f3186828701610e0e565b9250506040610f4286828701610e44565b9150509250925092565b600060ff82169050919050565b610f6281610f4c565b82525050565b6000602082019050610f7d6000830184610f59565b92915050565b600060208284031215610f9957610f98610dc0565b5b6000610fa784828501610e0e565b91505092915050565b60008060408385031215610fc757610fc6610dc0565b5b6000610fd585828601610e0e565b9250506020610fe685828601610e0e565b9150509250929050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b6000600282049050600182168061103757607f821691505b60208210810361104a57611049610ff0565b5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b600061108a82610e23565b915061109583610e23565b92508282019050808211156110ad576110ac611050565b5b92915050565b7f496e76616c696420697373756572000000000000000000000000000000000000600082015250565b60006110e9600e83610d19565b91506110f4826110b3565b602082019050919050565b60006020820190508181036000830152611118816110dc565b905091905056fea264697066735822122042b27905e9cf1fa0ddec78c9e184a0e7ab295b261695109f1d2a8c07f01888f164736f6c63430008120033",
+        "source": null,
+        "source_verified": false
+      },
+      "template_proof_path": "docs/evidence/pending300-qualification.json",
+      "template_proof_sha256": "e79ce62c8b7bda41f33178fea7704e75ce0650a3da4a29d083ba29d612f9c3e3"
+    },
+    {
+      "block": 122288504,
+      "byte_identical_to_template_at_sample": true,
+      "contract": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+      "hash": "0x177e123d5d3660f685b305e7b0d6c0b89f1af6db7d80cebf7ddd72339b3c544b",
+      "holder": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+      "inspection": {
+        "address": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288504,
+        "contract": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+        "elapsed_seconds": 0.289555041,
+        "execution_code": [
+          {
+            "address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+            "checked_instructions": 1,
+            "runtime_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+              "depth": 1,
+              "key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06",
+              "pc": 516,
+              "storage_address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0x177e123d5d3660f685b305e7b0d6c0b89f1af6db7d80cebf7ddd72339b3c544b",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "status": "inspected",
+        "storage_key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06",
+            "pc": 516,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "797c096b2f2dd5a0ce7ef57a6c14b56243f282a6f9bd556fb0dc2f43b96ddf9c"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "729df82c5d30c3e092cb47a8e55182455f061b25aa29493bca0a0db1474f49c9": "00000000000000000000000075b4bf63fd87b7d6e3296eed256d046c90f4d8bd0000000000000000000000000000000000000000000000000000000000000001",
+            "bb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb": "000000000000000000000000000000000000000000000000000000000000dead729df82c5d30c3e092cb47a8e55182455f061b25aa29493bca0a0db1474f49c9"
+          },
+          "state_diff": {
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xbb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "storage_key": "0xbb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "729df82c5d30c3e092cb47a8e55182455f061b25aa29493bca0a0db1474f49c9": "00000000000000000000000075b4bf63fd87b7d6e3296eed256d046c90f4d8bd0000000000000000000000000000000000000000000000000000000000000001",
+            "bb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb": "000000000000000000000000000000000000000000000000000000000000dead729df82c5d30c3e092cb47a8e55182455f061b25aa29493bca0a0db1474f49c9"
+          },
+          "state_diff": {
+            "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xbb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "storage_key": "0xbb9d00938696d990559b9f1f2851196ffb47e5485c0b0f4bc7f4b436fff054bb"
+        }
+      ],
+      "rank": 403,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x333098cc5c326847665a8e7e76f7f04f5395df788c07dfa59902137dc6d2ce36"
+        },
+        {
+          "address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x333098cc5c326847665a8e7e76f7f04f5395df788c07dfa59902137dc6d2ce36"
+        },
+        {
+          "address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x333098cc5c326847665a8e7e76f7f04f5395df788c07dfa59902137dc6d2ce36"
+        },
+        {
+          "address": "0x1a1e69f1e6182e2f8b9e8987e83c016ac9444444",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x333098cc5c326847665a8e7e76f7f04f5395df788c07dfa59902137dc6d2ce36"
+        },
+        {
+          "address": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06"
+        },
+        {
+          "address": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06"
+        },
+        {
+          "address": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06"
+        },
+        {
+          "address": "0x75b4bf63fd87b7d6e3296eed256d046c90f4d8bd",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x2303a201bdba2c369d136ce4e3fe7f3ebc7644187ccff56b60ee28a82998be06"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Exact complete reviewed direct runtime, no inherited proxy/deployment/calculated dependencies, candidate-specific getter and raw/metadata controls. Existing metadata interpretation is preserved; unknown roots remain errors. Verified source is only claimed by the linked template evidence, not newly retrieved for this candidate.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "template_contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+      "template_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "template_proof": {
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "inspection": {
+          "address": "0x3dc2878f9f60476dbbb18af7531fbe1a603c8dc0",
+          "balance_of": "197962393906632319175412121",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288012,
+          "compilation": {
+            "compiler": "solc",
+            "compilerSettings": {
+              "libraries": {},
+              "optimizer": {
+                "enabled": true,
+                "runs": 200
+              }
+            },
+            "compilerVersion": "0.8.20+commit.a1b79de6",
+            "fullyQualifiedName": "Token3.sol:Token",
+            "language": "Solidity",
+            "name": "Token"
+          },
+          "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+          "elapsed_seconds": 0.694208708,
+          "hash": "0x5d8543b597573b3a7cbd8487d8ea46631ea7a1d5ed6d1f8d41f41b76069a534a",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "source_proxy_resolution": {
+            "implementations": [],
+            "isProxy": false,
+            "proxyType": null
+          },
+          "source_runtime_match": true,
+          "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43",
+          "source_storage_layout": {
+            "storage": [
+              {
+                "astId": 45,
+                "contract": "Token3.sol:Token",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 51,
+                "contract": "Token3.sol:Token",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 53,
+                "contract": "Token3.sol:Token",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 55,
+                "contract": "Token3.sol:Token",
+                "label": "_name",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 57,
+                "contract": "Token3.sol:Token",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 727,
+                "contract": "Token3.sol:Token",
+                "label": "_owner",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_address"
+              },
+              {
+                "astId": 851,
+                "contract": "Token3.sol:Token",
+                "label": "_mode",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 853,
+                "contract": "Token3.sol:Token",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "7",
+                "type": "t_bool"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => mapping(address => uint256))",
+                "numberOfBytes": "32",
+                "value": "t_mapping(t_address,t_uint256)"
+              },
+              "t_mapping(t_address,t_uint256)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => uint256)",
+                "numberOfBytes": "32",
+                "value": "t_uint256"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              }
+            }
+          },
+          "source_url": "https://sourcify.dev/server/v2/contract/56/0x7d03759e5b41e36899833cb2e008455d69a24444?fields=all",
+          "status": "inspected",
+          "storage_key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+              "pc": 516,
+              "value": "0x000000000000000000000000000000000000000000a3c02ae0902f81e11ac999"
+            }
+          ],
+          "storage_word": "197962393906632319175412121",
+          "tool_language": "Rust",
+          "trace_sha256": "6e0e3e79def6c994a2bf4fc3db506ed8c97ddd0eec44e4a909bff04ef3c5ffa0"
+        },
+        "layout_basis": "Reviewed source and compiler storage layout",
+        "name": "Token",
+        "rank": 21,
+        "source_hashes": {
+          "Context.sol": "0xa92e4fa126feb6907daa0513ddd816b2eb91f30a808de54f63c17d0e162c3439",
+          "FourERC20.sol": "0x8680b732596999a215b8741b9c8c2c2387b448cdfb321c7082b6787eff7d6c50",
+          "IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+          "IERC20Metadata.sol": "0xc9728de78b2dc3785bc6cc070e1ed8a2a855459b99f6bc1b8d17b4d2821fe36e",
+          "Ownable.sol": "0x7c03cdb0bdf0104db4f87451fc7dd8fb4f94f06dbf176dfc06fd616c1b5937e8",
+          "Token3.sol": "0x3746e7cac165f2dfd09e86527edcbc4cf4dda7d025e8f5239d8013af2063de50"
+        },
+        "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43"
+      },
+      "template_proof_path": "docs/evidence/direct-source-qualification.json",
+      "template_proof_sha256": "d695eda318cc7b10bbe89b42c1f78baeb130de556aaac92ee1fc41f2df544542"
+    },
+    {
+      "block": 122288338,
+      "byte_identical_to_template_at_sample": true,
+      "contract": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+      "hash": "0xe0441eb99fbea6cb90f7a9a98320e33a0a3815113f1208a333df84b36460ad6e",
+      "holder": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+      "inspection": {
+        "address": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+        "balance_of": "611286091930655865504036",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288338,
+        "contract": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+        "elapsed_seconds": 0.289743375,
+        "execution_code": [
+          {
+            "address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+            "checked_instructions": 1,
+            "runtime_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+              "depth": 1,
+              "key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c",
+              "pc": 516,
+              "storage_address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+              "value": "0x000000000000000000000000000000000000000000008171e2ac7669206d0124"
+            }
+          ]
+        },
+        "hash": "0xe0441eb99fbea6cb90f7a9a98320e33a0a3815113f1208a333df84b36460ad6e",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "status": "inspected",
+        "storage_key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c",
+            "pc": 516,
+            "value": "0x000000000000000000000000000000000000000000008171e2ac7669206d0124"
+          }
+        ],
+        "storage_word": "611286091930655865504036",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "d598a3a4e8ed691acf6e088e48a7ee51c775615c909c68368145cbc21df0ae1a"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "a26f25e102551003d5b69ee2960493df2c26b1091ce9946fad15935ef7e52efb": "00000000000000000000000042c8c4e373d23ec5fb74107def668da77b6dd9550000000000000000000000000000000000000000000000000000000000000001",
+            "cd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912": "000000000000000000000000000000000000000000000000000000000000deada26f25e102551003d5b69ee2960493df2c26b1091ce9946fad15935ef7e52efb"
+          },
+          "state_diff": {
+            "0xcd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0xcd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "a26f25e102551003d5b69ee2960493df2c26b1091ce9946fad15935ef7e52efb": "00000000000000000000000042c8c4e373d23ec5fb74107def668da77b6dd9550000000000000000000000000000000000000000000000000000000000000001",
+            "cd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912": "000000000000000000000000000000000000000000000000000000000000deada26f25e102551003d5b69ee2960493df2c26b1091ce9946fad15935ef7e52efb"
+          },
+          "state_diff": {
+            "0xcd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0xcd5c38cd63c38b11de234f4a74da04b0a1e7826fcd8e5111451d1624c3486912"
+        }
+      ],
+      "rank": 417,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xd4634655adf5d38744e930d62962476923026f6218c01d5228a7c89d1b92cb04"
+        },
+        {
+          "address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xd4634655adf5d38744e930d62962476923026f6218c01d5228a7c89d1b92cb04"
+        },
+        {
+          "address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xd4634655adf5d38744e930d62962476923026f6218c01d5228a7c89d1b92cb04"
+        },
+        {
+          "address": "0x2a846aaaf896ef393ccb76398c1d96ea97374444",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xd4634655adf5d38744e930d62962476923026f6218c01d5228a7c89d1b92cb04"
+        },
+        {
+          "address": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c"
+        },
+        {
+          "address": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c"
+        },
+        {
+          "address": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c"
+        },
+        {
+          "address": "0x42c8c4e373d23ec5fb74107def668da77b6dd955",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xfa0d3f4e4e223ff6ad55c2b625229ef2be72943d142793796f9eed178cb0f72c"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Exact complete reviewed direct runtime, no inherited proxy/deployment/calculated dependencies, candidate-specific getter and raw/metadata controls. Existing metadata interpretation is preserved; unknown roots remain errors. Verified source is only claimed by the linked template evidence, not newly retrieved for this candidate.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "template_contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+      "template_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "template_proof": {
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "inspection": {
+          "address": "0x3dc2878f9f60476dbbb18af7531fbe1a603c8dc0",
+          "balance_of": "197962393906632319175412121",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288012,
+          "compilation": {
+            "compiler": "solc",
+            "compilerSettings": {
+              "libraries": {},
+              "optimizer": {
+                "enabled": true,
+                "runs": 200
+              }
+            },
+            "compilerVersion": "0.8.20+commit.a1b79de6",
+            "fullyQualifiedName": "Token3.sol:Token",
+            "language": "Solidity",
+            "name": "Token"
+          },
+          "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+          "elapsed_seconds": 0.694208708,
+          "hash": "0x5d8543b597573b3a7cbd8487d8ea46631ea7a1d5ed6d1f8d41f41b76069a534a",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "source_proxy_resolution": {
+            "implementations": [],
+            "isProxy": false,
+            "proxyType": null
+          },
+          "source_runtime_match": true,
+          "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43",
+          "source_storage_layout": {
+            "storage": [
+              {
+                "astId": 45,
+                "contract": "Token3.sol:Token",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 51,
+                "contract": "Token3.sol:Token",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 53,
+                "contract": "Token3.sol:Token",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 55,
+                "contract": "Token3.sol:Token",
+                "label": "_name",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 57,
+                "contract": "Token3.sol:Token",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 727,
+                "contract": "Token3.sol:Token",
+                "label": "_owner",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_address"
+              },
+              {
+                "astId": 851,
+                "contract": "Token3.sol:Token",
+                "label": "_mode",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 853,
+                "contract": "Token3.sol:Token",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "7",
+                "type": "t_bool"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => mapping(address => uint256))",
+                "numberOfBytes": "32",
+                "value": "t_mapping(t_address,t_uint256)"
+              },
+              "t_mapping(t_address,t_uint256)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => uint256)",
+                "numberOfBytes": "32",
+                "value": "t_uint256"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              }
+            }
+          },
+          "source_url": "https://sourcify.dev/server/v2/contract/56/0x7d03759e5b41e36899833cb2e008455d69a24444?fields=all",
+          "status": "inspected",
+          "storage_key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+              "pc": 516,
+              "value": "0x000000000000000000000000000000000000000000a3c02ae0902f81e11ac999"
+            }
+          ],
+          "storage_word": "197962393906632319175412121",
+          "tool_language": "Rust",
+          "trace_sha256": "6e0e3e79def6c994a2bf4fc3db506ed8c97ddd0eec44e4a909bff04ef3c5ffa0"
+        },
+        "layout_basis": "Reviewed source and compiler storage layout",
+        "name": "Token",
+        "rank": 21,
+        "source_hashes": {
+          "Context.sol": "0xa92e4fa126feb6907daa0513ddd816b2eb91f30a808de54f63c17d0e162c3439",
+          "FourERC20.sol": "0x8680b732596999a215b8741b9c8c2c2387b448cdfb321c7082b6787eff7d6c50",
+          "IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+          "IERC20Metadata.sol": "0xc9728de78b2dc3785bc6cc070e1ed8a2a855459b99f6bc1b8d17b4d2821fe36e",
+          "Ownable.sol": "0x7c03cdb0bdf0104db4f87451fc7dd8fb4f94f06dbf176dfc06fd616c1b5937e8",
+          "Token3.sol": "0x3746e7cac165f2dfd09e86527edcbc4cf4dda7d025e8f5239d8013af2063de50"
+        },
+        "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43"
+      },
+      "template_proof_path": "docs/evidence/direct-source-qualification.json",
+      "template_proof_sha256": "d695eda318cc7b10bbe89b42c1f78baeb130de556aaac92ee1fc41f2df544542"
+    },
+    {
+      "block": 122288862,
+      "byte_identical_to_template_at_sample": true,
+      "contract": "0x44440f83419de123d7d411187adb9962db017d03",
+      "hash": "0x480ffebf54ad575029946f70eab87488ff4b18fe1f547498d95b02bebc493010",
+      "holder": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+      "inspection": {
+        "address": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288862,
+        "contract": "0x44440f83419de123d7d411187adb9962db017d03",
+        "elapsed_seconds": 0.2835515,
+        "execution_code": [
+          {
+            "address": "0x44440f83419de123d7d411187adb9962db017d03",
+            "checked_instructions": 1,
+            "runtime_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x44440f83419de123d7d411187adb9962db017d03",
+              "depth": 1,
+              "key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273",
+              "pc": 516,
+              "storage_address": "0x44440f83419de123d7d411187adb9962db017d03",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0x480ffebf54ad575029946f70eab87488ff4b18fe1f547498d95b02bebc493010",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "status": "inspected",
+        "storage_key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273",
+            "pc": 516,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "795822b0f22b31c061ee0e460bd19595f9cc4d34a04bef6784b50153523bb610"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x44440f83419de123d7d411187adb9962db017d03",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000006": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000006"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000007": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000007"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6": "000000000000000000000000000000000000000000000000000000000000dead6b6c23336c38562ea207b144dec3554273690cf0f1a829a2554060dc48ab0d46",
+            "6b6c23336c38562ea207b144dec3554273690cf0f1a829a2554060dc48ab0d46": "0000000000000000000000001986460fef3bdf999fd681886ce1771f4d8339ca0000000000000000000000000000000000000000000000000000000000000001"
+          },
+          "state_diff": {
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "storage_key": "0x61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6": "000000000000000000000000000000000000000000000000000000000000dead6b6c23336c38562ea207b144dec3554273690cf0f1a829a2554060dc48ab0d46",
+            "6b6c23336c38562ea207b144dec3554273690cf0f1a829a2554060dc48ab0d46": "0000000000000000000000001986460fef3bdf999fd681886ce1771f4d8339ca0000000000000000000000000000000000000000000000000000000000000001"
+          },
+          "state_diff": {
+            "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "storage_key": "0x61257e5c0f6dd03e2da91d36df440865c94a5811a27158eb1ff79a315da849f6"
+        }
+      ],
+      "rank": 419,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273"
+        },
+        {
+          "address": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273"
+        },
+        {
+          "address": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273"
+        },
+        {
+          "address": "0x1986460fef3bdf999fd681886ce1771f4d8339ca",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x4c174c9cbd2e098db087f3e993d1643a7823a091c9cf5dcb0d78c4cdc13a2273"
+        },
+        {
+          "address": "0x44440f83419de123d7d411187adb9962db017d03",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x8d04b63c698a59b0ada332333f4ce7ab6dd5ab6f8576a94f36d1dde3c74a6b70"
+        },
+        {
+          "address": "0x44440f83419de123d7d411187adb9962db017d03",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x8d04b63c698a59b0ada332333f4ce7ab6dd5ab6f8576a94f36d1dde3c74a6b70"
+        },
+        {
+          "address": "0x44440f83419de123d7d411187adb9962db017d03",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x8d04b63c698a59b0ada332333f4ce7ab6dd5ab6f8576a94f36d1dde3c74a6b70"
+        },
+        {
+          "address": "0x44440f83419de123d7d411187adb9962db017d03",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x8d04b63c698a59b0ada332333f4ce7ab6dd5ab6f8576a94f36d1dde3c74a6b70"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Exact complete reviewed direct runtime, no inherited proxy/deployment/calculated dependencies, candidate-specific getter and raw/metadata controls. Existing metadata interpretation is preserved; unknown roots remain errors. Verified source is only claimed by the linked template evidence, not newly retrieved for this candidate.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "template_contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+      "template_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "template_proof": {
+        "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+        "inspection": {
+          "address": "0x3dc2878f9f60476dbbb18af7531fbe1a603c8dc0",
+          "balance_of": "197962393906632319175412121",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288012,
+          "compilation": {
+            "compiler": "solc",
+            "compilerSettings": {
+              "libraries": {},
+              "optimizer": {
+                "enabled": true,
+                "runs": 200
+              }
+            },
+            "compilerVersion": "0.8.20+commit.a1b79de6",
+            "fullyQualifiedName": "Token3.sol:Token",
+            "language": "Solidity",
+            "name": "Token"
+          },
+          "contract": "0x7d03759e5b41e36899833cb2e008455d69a24444",
+          "elapsed_seconds": 0.694208708,
+          "hash": "0x5d8543b597573b3a7cbd8487d8ea46631ea7a1d5ed6d1f8d41f41b76069a534a",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+          "source_proxy_resolution": {
+            "implementations": [],
+            "isProxy": false,
+            "proxyType": null
+          },
+          "source_runtime_match": true,
+          "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43",
+          "source_storage_layout": {
+            "storage": [
+              {
+                "astId": 45,
+                "contract": "Token3.sol:Token",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 51,
+                "contract": "Token3.sol:Token",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 53,
+                "contract": "Token3.sol:Token",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 55,
+                "contract": "Token3.sol:Token",
+                "label": "_name",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 57,
+                "contract": "Token3.sol:Token",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 727,
+                "contract": "Token3.sol:Token",
+                "label": "_owner",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_address"
+              },
+              {
+                "astId": 851,
+                "contract": "Token3.sol:Token",
+                "label": "_mode",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 853,
+                "contract": "Token3.sol:Token",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "7",
+                "type": "t_bool"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => mapping(address => uint256))",
+                "numberOfBytes": "32",
+                "value": "t_mapping(t_address,t_uint256)"
+              },
+              "t_mapping(t_address,t_uint256)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => uint256)",
+                "numberOfBytes": "32",
+                "value": "t_uint256"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              }
+            }
+          },
+          "source_url": "https://sourcify.dev/server/v2/contract/56/0x7d03759e5b41e36899833cb2e008455d69a24444?fields=all",
+          "status": "inspected",
+          "storage_key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x2c9757ab2518dca32a49f90410c739906730519af73071c83a7a3b18f3c8da42",
+              "pc": 516,
+              "value": "0x000000000000000000000000000000000000000000a3c02ae0902f81e11ac999"
+            }
+          ],
+          "storage_word": "197962393906632319175412121",
+          "tool_language": "Rust",
+          "trace_sha256": "6e0e3e79def6c994a2bf4fc3db506ed8c97ddd0eec44e4a909bff04ef3c5ffa0"
+        },
+        "layout_basis": "Reviewed source and compiler storage layout",
+        "name": "Token",
+        "rank": 21,
+        "source_hashes": {
+          "Context.sol": "0xa92e4fa126feb6907daa0513ddd816b2eb91f30a808de54f63c17d0e162c3439",
+          "FourERC20.sol": "0x8680b732596999a215b8741b9c8c2c2387b448cdfb321c7082b6787eff7d6c50",
+          "IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+          "IERC20Metadata.sol": "0xc9728de78b2dc3785bc6cc070e1ed8a2a855459b99f6bc1b8d17b4d2821fe36e",
+          "Ownable.sol": "0x7c03cdb0bdf0104db4f87451fc7dd8fb4f94f06dbf176dfc06fd616c1b5937e8",
+          "Token3.sol": "0x3746e7cac165f2dfd09e86527edcbc4cf4dda7d025e8f5239d8013af2063de50"
+        },
+        "source_sha256": "ca2c8367c9061979055fd73fd91b9a71fb1eecf3369f507f88902dddc1d7bb43"
+      },
+      "template_proof_path": "docs/evidence/direct-source-qualification.json",
+      "template_proof_sha256": "d695eda318cc7b10bbe89b42c1f78baeb130de556aaac92ee1fc41f2df544542"
+    },
+    {
+      "block": 122288022,
+      "byte_identical_to_template_at_sample": true,
+      "contract": "0x3477725399b706efabce710fcc54271db8b00c49",
+      "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+      "holder": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+      "inspection": {
+        "address": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288022,
+        "contract": "0x3477725399b706efabce710fcc54271db8b00c49",
+        "elapsed_seconds": 0.286293,
+        "execution_code": [
+          {
+            "address": "0x3477725399b706efabce710fcc54271db8b00c49",
+            "checked_instructions": 1,
+            "runtime_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x3477725399b706efabce710fcc54271db8b00c49",
+              "depth": 1,
+              "key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac",
+              "pc": 2087,
+              "storage_address": "0x3477725399b706efabce710fcc54271db8b00c49",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+        "status": "inspected",
+        "storage_key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac",
+            "pc": 2087,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "3e435313dfad08c075a0f2c0b9b806624b8a63fc5379e24f1a2a890429db299a"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+        "contract": "0x3477725399b706efabce710fcc54271db8b00c49",
+        "other_mapping_slots": [],
+        "other_mapping_words": {
+          "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000005"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c15": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c15"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c15": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c15"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c16": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c16"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c16": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c16"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c17": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c17"
+        },
+        {
+          "balance_of": "123",
+          "kind": "four_word_record",
+          "preimages": {
+            "4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c14": "0000000000000000000000000000000000000000000000000000000000000000cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb",
+            "8fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698": "000000000000000000000000748617f50daa4a3b450eab913d5550ea637406fe0000000000000000000000000000000000000000000000000000000000000010",
+            "cf919ecd112ef2987abd8a2011345fc488ab12ff522d2ac88a042f3e1bfd65cb": "00000000000000000000000000000000000000000000000000000000000000018fa5e9af35eaaeb39ee44d6b1cb310e74f006c450b6ccfe531283b8697703698"
+          },
+          "state_diff": {
+            "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c17": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x4c5e13d48fd3e11d894c207b196dc7aa1e27748882b64436e536260a30585c17"
+        }
+      ],
+      "rank": 431,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x3477725399b706efabce710fcc54271db8b00c49",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x59ed873816ccf4ce8f589577730be79b81c04be45a94d48852c5f77a95ea16ed"
+        },
+        {
+          "address": "0x3477725399b706efabce710fcc54271db8b00c49",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x59ed873816ccf4ce8f589577730be79b81c04be45a94d48852c5f77a95ea16ed"
+        },
+        {
+          "address": "0x3477725399b706efabce710fcc54271db8b00c49",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x59ed873816ccf4ce8f589577730be79b81c04be45a94d48852c5f77a95ea16ed"
+        },
+        {
+          "address": "0x3477725399b706efabce710fcc54271db8b00c49",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x59ed873816ccf4ce8f589577730be79b81c04be45a94d48852c5f77a95ea16ed"
+        },
+        {
+          "address": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac"
+        },
+        {
+          "address": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac"
+        },
+        {
+          "address": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac"
+        },
+        {
+          "address": "0x748617f50daa4a3b450eab913d5550ea637406fe",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xaf13abc5d76624e93bbc7bdbda6c28bb715f99607eec947207a798d4e6e707ac"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Exact complete reviewed direct runtime, no inherited proxy/deployment/calculated dependencies, candidate-specific getter and raw/metadata controls. Existing metadata interpretation is preserved; unknown roots remain errors. Verified source is only claimed by the linked template evidence, not newly retrieved for this candidate.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "template_contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+      "template_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+        "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+        "other_mapping_slots": [],
+        "other_mapping_words": {
+          "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "template_proof": {
+        "bookkeeping": "Three nested mapping hashes rooted at 16 address a four-word record. PCs6647/6652/6658/6670 write offsets0/1/2/3; offset2 is TIMESTAMP and offset3 a low-byte flag. An alternate path updates offsets0/2 at pcs6526/6532. balanceOf only reads mapping0.",
+        "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+        "controls": {
+          "block": 122288022,
+          "contexts": [
+            {
+              "balance_of": 0,
+              "from": "0x1111111111111111111111111111111111111111",
+              "holder": "0x0000000000000000000000000000000000000000",
+              "word": 0
+            },
+            {
+              "balance_of": 123,
+              "from": "0x1111111111111111111111111111111111111111",
+              "holder": "0x0000000000000000000000000000000000000000",
+              "word": 123
+            },
+            {
+              "balance_of": 0,
+              "from": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+              "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+              "word": 0
+            },
+            {
+              "balance_of": 123,
+              "from": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+              "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+              "word": 123
+            }
+          ],
+          "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+          "getters": [
+            {
+              "getter": "allowance",
+              "status": "reverted"
+            },
+            {
+              "control": {
+                "returned": "123",
+                "word": 123
+              },
+              "getter": "totalSupply",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                  "pc": 4239,
+                  "value": "0x0000000000000000000000000000000000000000000039bb3188d2f32b500000"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "2603c1ed20c0cd55dff5133a2f7215a327804f097097c330f36ff0af50d36db2"
+            },
+            {
+              "control": null,
+              "getter": "name",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                  "pc": 4675,
+                  "value": "0x323135323039303330204e4f0000000000000000000000000000000000000018"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "4d586fa9312e053407d84103947d2db3db36f59515e66804ed63dae8b41e9c88"
+            },
+            {
+              "control": null,
+              "getter": "symbol",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                  "pc": 1329,
+                  "value": "0x3231352d4e4f000000000000000000000000000000000000000000000000000e"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "f2c91ca66ccadbd4cf9a0ba3fc48b468bf387b2b27d9a6f1753363301891975b"
+            },
+            {
+              "control": {
+                "returned": "123",
+                "word": 123
+              },
+              "getter": "owner",
+              "hashes": [],
+              "reads": [
+                {
+                  "depth": 1,
+                  "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                  "pc": 1582,
+                  "value": "0x000000000000000000000000897697cead76acf50253fe3306ba5f89ea7be85d"
+                }
+              ],
+              "status": "inspected",
+              "trace_sha256": "2e825a5f346b2f7f0048d0479e0e75308dad2d1e39d128689c1bcc125635e2f5"
+            },
+            {
+              "getter": "paused",
+              "status": "reverted"
+            },
+            {
+              "getter": "pendingOwner",
+              "status": "reverted"
+            }
+          ],
+          "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+          "inspection": {
+            "address": "0x1015c576489b3dd7bf806a0452e6d8cd16871634",
+            "balance_of": "761000000000000000000",
+            "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "block": 122288022,
+            "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+            "elapsed_seconds": 0.274639791,
+            "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+            "read_only_state_overrides": [
+              {
+                "balance_of": "0",
+                "overridden_mapping_word": "0"
+              },
+              {
+                "balance_of": "1",
+                "overridden_mapping_word": "1"
+              },
+              {
+                "balance_of": "123",
+                "overridden_mapping_word": "123"
+              },
+              {
+                "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+                "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+              }
+            ],
+            "runtime_keccak256": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+            "status": "inspected",
+            "storage_key": "0xe85f569a56ace40e3e1cf93753af73366a8a534658b34d03f713d470070d9452",
+            "storage_reads": [
+              {
+                "depth": 1,
+                "key": "0xe85f569a56ace40e3e1cf93753af73366a8a534658b34d03f713d470070d9452",
+                "pc": 2087,
+                "value": "0x00000000000000000000000000000000000000000000002940ff1c0c98440000"
+              }
+            ],
+            "storage_word": "761000000000000000000",
+            "tool_language": "Rust",
+            "trace_sha256": "5fad1e5b5fce890873dc449a541d4487f8e4c80e3de52d771764783641814cc3"
+          },
+          "rank": 196
+        },
+        "getter_bytecode": "0: PUSH1 80\n2: DUP1 \n3: PUSH1 40\n5: MSTORE \n6: PUSH1 04\n8: CALLDATASIZE \n9: LT \n10: ISZERO \n11: PUSH2 0013\n14: JUMPI \n19: JUMPDEST \n20: PUSH1 00\n22: CALLDATALOAD \n23: PUSH1 e0\n25: SHR \n26: SWAP1 \n27: DUP2 \n28: PUSH4 031bee00\n33: EQ \n34: PUSH2 12ce\n37: JUMPI \n38: POP \n39: DUP1 \n40: PUSH4 06fdde03\n45: EQ \n46: PUSH2 1229\n49: JUMPI \n50: DUP1 \n51: PUSH4 095ea7b3\n56: EQ \n57: PUSH2 1210\n60: JUMPI \n61: DUP1 \n62: PUSH4 16715ebf\n67: EQ \n68: PUSH2 114e\n71: JUMPI \n72: DUP1 \n73: PUSH4 16c19739\n78: EQ \n79: PUSH2 1097\n82: JUMPI \n83: DUP1 \n84: PUSH4 18160ddd\n89: EQ \n90: PUSH2 1079\n93: JUMPI \n94: DUP1 \n95: PUSH4 23b872dd\n100: EQ \n101: PUSH2 1057\n104: JUMPI \n105: DUP1 \n106: PUSH4 2f99525d\n111: EQ \n112: PUSH2 0e6f\n115: JUMPI \n116: DUP1 \n117: PUSH4 313ce567\n122: EQ \n123: PUSH2 0e53\n126: JUMPI \n127: DUP1 \n128: PUSH4 3c488a42\n133: EQ \n134: PUSH2 0869\n137: JUMPI \n138: DUP1 \n139: PUSH4 45c5e904\n144: EQ \n145: PUSH2 082f\n148: JUMPI \n149: DUP1 \n150: PUSH4 70a08231\n155: EQ \n156: PUSH2 07f5\n159: JUMPI \n2037: JUMPDEST \n2038: CALLVALUE \n2039: PUSH2 01ad\n2042: JUMPI \n2043: PUSH1 20\n2045: CALLDATASIZE \n2046: PUSH1 03\n2048: NOT \n2049: ADD \n2050: SLT \n2051: PUSH2 01ad\n2054: JUMPI \n2055: PUSH1 01\n2057: PUSH1 01\n2059: PUSH1 a0\n2061: SHL \n2062: SUB \n2063: PUSH2 0816\n2066: PUSH2 1608\n2069: JUMP \n5640: JUMPDEST \n5641: PUSH1 04\n5643: CALLDATALOAD \n5644: SWAP1 \n5645: PUSH1 01\n5647: PUSH1 01\n5649: PUSH1 a0\n5651: SHL \n5652: SUB \n5653: DUP3 \n5654: AND \n5655: DUP3 \n5656: SUB \n5657: PUSH2 01ad\n5660: JUMPI \n5661: JUMP \n2070: JUMPDEST \n2071: AND \n2072: PUSH1 00\n2074: MSTORE \n2075: PUSH1 00\n2077: PUSH1 20\n2079: MSTORE \n2080: PUSH1 20\n2082: PUSH1 40\n2084: PUSH1 00\n2086: KECCAK256 \n2087: SLOAD \n2088: PUSH1 40\n2090: MLOAD \n2091: SWAP1 \n2092: DUP2 \n2093: MSTORE \n2094: RETURN ",
+        "layout": {
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "code_hash": "0xec12c465b389751d2ab69ed80125436f4b5c966c5bf7a89b7ce8ca52ee8f2bb4",
+          "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+          "other_mapping_slots": [],
+          "other_mapping_words": {
+            "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+          },
+          "other_slots": [
+            "0x0000000000000000000000000000000000000000000000000000000000000002",
+            "0x0000000000000000000000000000000000000000000000000000000000000003",
+            "0x0000000000000000000000000000000000000000000000000000000000000004",
+            "0x0000000000000000000000000000000000000000000000000000000000000005"
+          ]
+        },
+        "nonbalance_control_keys": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x6ba1514873e621274d9caa45119346cdc9ba26137256c006fdf87ba3190e60a6",
+          "0x6ba1514873e621274d9caa45119346cdc9ba26137256c006fdf87ba3190e60a7",
+          "0x6ba1514873e621274d9caa45119346cdc9ba26137256c006fdf87ba3190e60a8",
+          "0x6ba1514873e621274d9caa45119346cdc9ba26137256c006fdf87ba3190e60a9"
+        ],
+        "nonbalance_controls": [
+          {
+            "balance_of": "0",
+            "balance_word": "0",
+            "other_words": "0"
+          },
+          {
+            "balance_of": "0",
+            "balance_word": "0",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          },
+          {
+            "balance_of": "1",
+            "balance_word": "1",
+            "other_words": "0"
+          },
+          {
+            "balance_of": "1",
+            "balance_word": "1",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          },
+          {
+            "balance_of": "123",
+            "balance_word": "123",
+            "other_words": "0"
+          },
+          {
+            "balance_of": "123",
+            "balance_word": "123",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "other_words": "0"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "prior_errors": [
+          {
+            "block": 122288022,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x6ba1514873e621274d9caa45119346cdc9ba26137256c006fdf87ba3190e60a6; refusing incomplete events"
+          },
+          {
+            "block": 122288076,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x648fa0a135222de81a16799052b50234fd256c7b5e9a84c67fd7ee80b9cc8a8c; refusing incomplete events"
+          },
+          {
+            "block": 122288088,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x673923e73c66637183de11dac2c80390a22af83c16f319adba731d720d2e932d; refusing incomplete events"
+          },
+          {
+            "block": 122288142,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x417918069c663be79812f741e85d30ed2f0562284f5b02fd35e06f5c263dba8c; refusing incomplete events"
+          },
+          {
+            "block": 122288155,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0xbede5be2b46d94d956c12fc147c079ae5c50ece29b4847aa800f9e5a5b922eff; refusing incomplete events"
+          },
+          {
+            "block": 122288162,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x54bcffab7d40a7c6eb88bf5eccef2ce84924b3b7366d9eab51f7643a7803f787; refusing incomplete events"
+          },
+          {
+            "block": 122288195,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0xf8cfbe4143e838ca8b04d82f55631417665b088e96aea09940d4990d6f947916; refusing incomplete events"
+          },
+          {
+            "block": 122288196,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x858d81b633cec4eacdc966179d70ba268906756c52e5be752faf411d7dd84bb2; refusing incomplete events"
+          },
+          {
+            "block": 122288202,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x8fa3939a0ae3a1fefc9995f735dd754e18614961b526c3c69846df552842a78d; refusing incomplete events"
+          },
+          {
+            "block": 122288235,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x5f5d1083fa65023655213da13d06643f8a7edbedab987013d149b29f602b0677; refusing incomplete events"
+          },
+          {
+            "block": 122288247,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x0b690f36a5c9f5e2f8e00959ae38d6cc02d636c94078be93deed7f76b74f9913; refusing incomplete events"
+          },
+          {
+            "block": 122288282,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x0df8f494ddf1213d25b4b7531b460eb9622f7a8b3393f60658e6ecef3df59b62; refusing incomplete events"
+          },
+          {
+            "block": 122288295,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x2d23175f6b4bce71ee59c15a10647fa4187a10f7689603d61d9377043461ec53; refusing incomplete events"
+          },
+          {
+            "block": 122288382,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x366e57af20669f3e950aaf01ad6d8783a82933e5640cffdab1f3eeab0d3aa050; refusing incomplete events"
+          },
+          {
+            "block": 122288422,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0xb76aad28d4ee8cfaa955e82708d4f7917b99283354b528ceacffe0958313a423; refusing incomplete events"
+          },
+          {
+            "block": 122288442,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x9d0bf6be7963764f597818373bad8cb9bee74c9e9357d95046bdffd0f9e4cd91; refusing incomplete events"
+          },
+          {
+            "block": 122288495,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x4b1b8cf9fd7fee9fae7f29d96649e731b400575fafe942b61908a8b64db3302b; refusing incomplete events"
+          },
+          {
+            "block": 122288505,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x40cf050908e01832f978e8e274bc3881d264ed1cacdd57de44cc73e77d825492; refusing incomplete events"
+          },
+          {
+            "block": 122288522,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x87cd38d44e195e59c13478f44fb865b1c75df52bd0cc32d8742fd1a3566040fb; refusing incomplete events"
+          },
+          {
+            "block": 122288582,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0xf5ed30b1b81e927f87a34baa7f90550f766b70e00117a66e14c12aa661bdb711; refusing incomplete events"
+          },
+          {
+            "block": 122288622,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x781a3995493f89caf943a60ab0367e2207f061a3170a880dc9f8d8567b7816f4; refusing incomplete events"
+          },
+          {
+            "block": 122288775,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x53e7fcd2d62795524d0e6ba026d31ecfa67f0acc4ecd017ed0d27dec78a4be79; refusing incomplete events"
+          },
+          {
+            "block": 122288815,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x0334622d646ed922959228aacde4f767c17be950bac91afb797ccb1b510722c4; refusing incomplete events"
+          },
+          {
+            "block": 122288895,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0xe810464c0fe61bb3806e84dd1f496c397ed0c98435b3d75dbb4af5a7beaf177f; refusing incomplete events"
+          },
+          {
+            "block": 122288902,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x4fbd8c1dba782b053d5a74f0914a307990bbb5f34ce91f893a2cbff87e641fdd; refusing incomplete events"
+          },
+          {
+            "block": 122288918,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x6b0c9371a25c08c03eb6dffb222b8b5b3c5569c8fd93b6038ab0a76a9e820562; refusing incomplete events"
+          },
+          {
+            "block": 122288975,
+            "error": "unresolved storage for configured token 0x47121d525ca3a8f01a524b6b834974e21ae1215f at key 0x4ac2f848a6755d62b9652989d4446c1429d44c3ef92de8dbb898c7aab7b5678b; refusing incomplete events"
+          }
+        ],
+        "rank": 196,
+        "review_basis": "Manually reviewed selector dispatch, canonical address ABI validation, direct mapping SLOAD and unchanged return path. Standard getter traces identify explicit fields. Additional mapping/record write paths are separately reviewed; no arbitrary inferred ignore list.",
+        "reviewed_bookkeeping_bytecode": "6315: JUMPDEST \n6316: PUSH1 01\n6318: DUP1 \n6319: PUSH1 a0\n6321: SHL \n6322: SUB \n6323: DUP4 \n6324: AND \n6325: SWAP1 \n6326: PUSH1 00\n6328: SWAP4 \n6329: DUP3 \n6330: DUP6 \n6331: MSTORE \n6332: PUSH1 20\n6334: SWAP4 \n6335: PUSH1 10\n6337: DUP6 \n6338: MSTORE \n6339: PUSH1 40\n6341: DUP1 \n6342: DUP8 \n6343: KECCAK256 \n6344: PUSH1 0a\n6346: SLOAD \n6347: DUP9 \n6348: MSTORE \n6349: DUP7 \n6350: MSTORE \n6351: DUP1 \n6352: DUP8 \n6353: KECCAK256 \n6354: SWAP4 \n6355: PUSH32 0000000000000000000000000000000000000000000000000000000000000000\n6388: ISZERO \n6389: ISZERO \n6390: SWAP5 \n6391: DUP6 \n6392: DUP10 \n6393: MSTORE \n6394: DUP8 \n6395: MSTORE \n6396: DUP2 \n6397: DUP9 \n6398: KECCAK256 \n6399: SWAP8 \n6400: DUP7 \n6401: DUP2 \n6402: MSTORE \n6403: DUP1 \n6404: DUP9 \n6405: MSTORE \n6406: DUP3 \n6407: DUP2 \n6408: KECCAK256 \n6409: SLOAD \n6410: SWAP5 \n6411: DUP6 \n6412: ISZERO \n6413: ISZERO \n6414: PUSH1 00\n6471: JUMPDEST \n6472: SWAP1 \n6473: DUP6 \n6474: ISZERO \n6475: PUSH2 19a8\n6478: JUMPI \n6479: POP \n6480: SWAP2 \n6481: PUSH32 4586874e33bb3035791a282ebcc91ff7ea4dd7fb17132f2960c24e1a3a5e8f1f\n6514: SWAP6 \n6515: SWAP4 \n6516: SWAP2 \n6517: DUP6 \n6518: PUSH1 c0\n6520: SWAP7 \n6521: SWAP5 \n6522: DIV \n6523: SWAP10 \n6524: DUP11 \n6525: DUP2 \n6526: SSTORE \n6527: PUSH1 02\n6529: TIMESTAMP \n6530: SWAP2 \n6531: ADD \n6532: SSTORE \n6533: PUSH1 0a\n6535: SLOAD \n6536: SWAP9 \n6537: DUP3 \n6538: MLOAD \n6539: SWAP6 \n6540: DUP7 \n6541: MSTORE \n6542: DUP6 \n6543: ADD \n6544: MSTORE \n6545: DUP4 \n6546: ADD \n6547: MSTORE \n6548: DUP7 \n6549: PUSH1 60\n6551: DUP4 \n6552: ADD \n6553: MSTORE \n6554: PUSH1 80\n6556: DUP3 \n6557: ADD \n6558: MSTORE \n6559: TIMESTAMP \n6560: PUSH1 a0\n6562: DUP3 \n6563: ADD \n6564: MSTORE \n6565: LOG3 \n6566: SWAP1 \n6567: JUMP \n6588: JUMPDEST \n6589: PUSH1 80\n6591: SWAP6 \n6592: POP \n6593: DUP5 \n6594: SWAP10 \n6595: DUP4 \n6596: SWAP3 \n6597: PUSH2 19f4\n6600: PUSH32 5cf8fa4a8e333990018876ad3a82065e68b3859d46c3198b692b77fc3043808b\n6633: SWAP10 \n6634: SWAP8 \n6635: SWAP7 \n6636: SWAP6 \n6637: PUSH1 03\n6639: SWAP5 \n6640: PUSH2 1b88\n6643: JUMP \n6644: JUMPDEST \n6645: DUP6 \n6646: DUP3 \n6647: SSTORE \n6648: PUSH1 01\n6650: DUP3 \n6651: ADD \n6652: SSTORE \n6653: TIMESTAMP \n6654: PUSH1 02\n6656: DUP3 \n6657: ADD \n6658: SSTORE \n6659: ADD \n6660: PUSH1 01\n6662: PUSH1 ff\n6664: NOT \n6665: DUP3 \n6666: SLOAD \n6667: AND \n6668: OR \n6669: SWAP1 \n6670: SSTORE \n6671: PUSH1 0a\n6673: SLOAD \n6674: SWAP8 \n6675: DUP3 \n6676: MLOAD \n6677: SWAP5 \n6678: DUP6 \n6679: MSTORE \n6680: DUP5 \n6681: ADD \n6682: MSTORE \n6683: DUP3 \n6684: ADD \n6685: MSTORE \n6686: TIMESTAMP \n6687: PUSH1 60\n6689: DUP3 \n6690: ADD \n6691: MSTORE \n6692: LOG3 \n6693: SWAP1 \n6694: JUMP ",
+        "runtime": "0x608080604052600436101561001357600080fd5b60003560e01c908163031bee00146112ce5750806306fdde0314611229578063095ea7b31461121057806316715ebf1461114e57806316c197391461109757806318160ddd1461107957806323b872dd146110575780632f99525d14610e6f578063313ce56714610e535780633c488a421461086957806345c5e9041461082f57806370a08231146107f5578063715018a6146107aa578063742fe1f8146106435780638da5cb5b1461061a57806390960d57146105fd57806395d89b4114610517578063a77df1c914610132578063a9059cbb146104f8578063aa2fe91b146104b9578063afe42f7d1461025f578063d10552ac146101da578063dd62ed3e146101b2578063f2fde38b146101375763fcab18191461013257600080fd5b6116e8565b346101ad5760203660031901126101ad57610150611608565b610158611725565b6001600160a01b0390811690811561019457600580546001600160a01b03198116841790915516600080516020611c83833981519152600080a3005b604051631e4fbdf760e01b815260006004820152602490fd5b600080fd5b346101ad5760403660031901126101ad576101cb611608565b506101d461161e565b506117ab565b346101ad5760603660031901126101ad576101f3611608565b6101fb611659565b9060018060a01b03166000526010602052604060002060243560005260205260406000209015156000526020526080604060002080549060018101549060ff6003600283015492015416916040519384526020840152604083015215156060820152f35b346101ad5761026d366116be565b90913360005260206006815261028a60ff6040600020541661180b565b610295841515611848565b821515806104ad575b156104745760018060a01b0382169384600052601082526040600020600a5460005282526040600020947f00000000000000000000000000000000000000000000000000000000000000001515958660005283526040600020958160005260008452604060002054838110610437578761031c858960409b54611bed565b976000891261040757610339866103338b82611aba565b99611ae3565b61035b86600184019461034d8c8754611ac7565b809655426002860155611aad565b90816103b75750509160809160037fe845bae9e5939dff45262c72c1672fdf5d9178f1b9559d5e200e657017cce9c5940160ff198154169055600a54958a519283528783015289820152426060820152a35b8351928352820152f35b60c093507fd07e5d1395b9545e9f93200f45b57362be9930dfd6318cf3fd3e675ea427bca5949250600a54968b51938452888401528a83015288606083015260808201524260a0820152a36103ad565b61041089611a9c565b86808210610425576103399150600099611ae3565b6104326103399282611aad565b610333565b60405162461bcd60e51b815260048101869052601560248201527424b739bab33334b1b4b2b73a103837b9b4ba34b7b760591b6044820152606490fd5b6064906040519062461bcd60e51b825260048201526012602482015271496e76616c6964206578697420707269636560701b6044820152fd5b5061271083111561029e565b346101ad5760203660031901126101ad576001600160a01b036104da611608565b166000526006602052602060ff604060002054166040519015158152f35b346101ad5760403660031901126101ad57610511611608565b50611751565b346101ad5760003660031901126101ad5760405160009060045461053a81611550565b8083526001918083169081156105d5575060011461057b575b61057783610563818703826115a5565b6040519182916020835260208301906115c8565b0390f35b6004600090815260209450917f8a35acfbc15ff81a39ae7d344fd709f28e8600b4aa8c65c6b64bfe7fe36bd19b5b8284106105c25750505081019091019061056381610553565b80548585018701529285019281016105a9565b610577955061056393506020915091849260ff191682840152151560051b8201019350610553565b346101ad5760003660031901126101ad5760206040516127108152f35b346101ad5760003660031901126101ad576005546040516001600160a01b039091168152602090f35b346101ad5760403660031901126101ad5761065c611608565b602435336000526020916006835261067b60ff6040600020541661180b565b6001600160a01b0381166000818152808552604090205490939080156107775733600052600682526106b460ff6040600020541661180b565b8315158061076b575b156107315784600052601082526040600020600a5460005282526040600020947f00000000000000000000000000000000000000000000000000000000000000001515958660005283526040600020958160005260008452604060002054838110610437578761031c858960409b54611bed565b60405162461bcd60e51b8152600481018390526012602482015271496e76616c6964206578697420707269636560701b6044820152606490fd5b506127108411156106bd565b60405162461bcd60e51b815260048101839052600b60248201526a2737903837b9b4ba34b7b760a91b6044820152606490fd5b346101ad5760003660031901126101ad576107c3611725565b600580546001600160a01b031981169091556000906001600160a01b0316600080516020611c838339815191528280a3005b346101ad5760203660031901126101ad576001600160a01b03610816611608565b1660005260006020526020604060002054604051908152f35b346101ad576020610861610842366116be565b91336000526006855261085c60ff6040600020541661180b565b611887565b604051908152f35b346101ad57610120806003193601126101ad576024356001600160401b0381116101ad5761089b903690600401611668565b906044356001600160401b0381116101ad576108bb903690600401611668565b906064356001600160401b0381116101ad576108db903690600401611668565b60c4356001600160a01b03811681036101ad5760e435916001600160a01b03831683036101ad5761010435946001600160a01b03861686036101ad5761091f611725565b6001600160a01b03861615610e1557600a54610dda5760a4356084351015610da0576040519485016001600160401b03811186821017610c0257604090815287865260208601919091528401526004356060840152608435608084015260a43560a08401526001600160a01b0390811660c084015290811660e0830152821661010082015282516001600160401b038111610c02576109bf600754611550565b601f8111610d51575b506020601f8211600114610ce75781929394600092610cdc575b50508160011b916000199060031b1c1916176007555b602081015180519092906001600160401b038111610c0257610a1b600854611550565b601f8111610c8d575b506020601f8211600114610c235781929394600092610c18575b50508160011b916000199060031b1c1916176008555b604082015180519092906001600160401b038111610c0257610a77600954611550565b601f8111610baf575b506020601f8211600114610b3c5781929394600092610b31575b50508160011b916000199060031b1c1916176009555b6060810151600a556080810151600b5560a0810151600c5560c0810151600d80546001600160a01b03199081166001600160a01b039384161790915560e0830151600e8054831691841691909117905561010090920151600f805490931690821617909155166000908152600660205260409020805460ff19166001179055005b015190508480610a9a565b60096000908152600080516020611ce38339815191529190601f198416905b818110610b9757509583600195969710610b7e575b505050811b01600955610ab0565b015160001960f88460031b161c19169055848080610b70565b9192602060018192868b015181550194019201610b5b565b6009600052600080516020611ce3833981519152601f830160051c81019160208410610bf8575b601f0160051c01905b818110610bec5750610a80565b60008155600101610bdf565b9091508190610bd6565b634e487b7160e01b600052604160045260246000fd5b015190508480610a3e565b600860005260206000209060005b601f1984168110610c755750600193949583601f19811610610c5c575b505050811b01600855610a54565b015160001960f88460031b161c19169055848080610c4e565b9091602060018192858a015181550193019101610c31565b6008600052600080516020611ca3833981519152601f830160051c810160208410610cd5575b601f830160051c82018110610cc9575050610a24565b60008155600101610cb3565b5080610cb3565b0151905084806109e2565b600760005260206000209060005b601f1984168110610d395750600193949583601f19811610610d20575b505050811b016007556109f8565b015160001960f88460031b161c19169055848080610d12565b9091602060018192858a015181550193019101610cf5565b6007600052600080516020611c63833981519152601f830160051c810160208410610d99575b601f830160051c82018110610d8d5750506109c8565b60008155600101610d77565b5080610d77565b60405162461bcd60e51b8152602060048201526012602482015271496e76616c69642074696d652072616e676560701b6044820152606490fd5b60405162461bcd60e51b8152602060048201526013602482015272105b1c9958591e481a5b9a5d1a585b1a5e9959606a1b6044820152606490fd5b60405162461bcd60e51b8152602060048201526016602482015275496e76616c6964206d61726b6574206164647265737360501b6044820152606490fd5b346101ad5760003660031901126101ad57602060405160128152f35b346101ad5760603660031901126101ad57610e88611608565b60243590811515918281036101ad57610e9f611659565b913360005260209360068552610ebc60ff6040600020541661180b565b60018060a01b0382169182600052601086526040600020600a54600052865260406000207f0000000000000000000000000000000000000000000000000000000000000000151590816000528752604060002095846000526000885260406000205495861561101c5780611014575b15610fdd575085549161271092830393838511610fc757610f6860a094610f61600080516020611d03833981519152978a611b75565b0488611aba565b97610f8e88610f77818c611aad565b9460018401610f87878254611ac7565b9055611ae3565b6003810160ff198154169055600242910155600a54966040519384528984015260408301526060820152426080820152a3604051908152f35b634e487b7160e01b600052601160045260246000fd5b600080516020611d038339815191529360a0939115611004578697610f8e88600094611ae3565b600097610f8e88610f7781611a9c565b508015610f2b565b60405162461bcd60e51b8152600481018a90526013602482015272506f736974696f6e206e6f742061637469766560681b6044820152606490fd5b346101ad5760603660031901126101ad57611070611608565b5061051161161e565b346101ad5760003660031901126101ad576020600254604051908152f35b346101ad5760203660031901126101ad576110b0611608565b6110b8611c3d565b5060018060a01b031660005260106020526040600020600a5460005260205260406000207f000000000000000000000000000000000000000000000000000000000000000015156000526020526080604060002060ff60036040519261111d8461158a565b8054845260018101546020850152600281015460408501520154161515606082015261114c6040518092611634565bf35b346101ad576020806003193601126101ad5760a09061116b611608565b611173611c3d565b50600180841b03166000526000815261114c60406000205491601081526040600020600a54600052815260406000207f00000000000000000000000000000000000000000000000000000000000000001515600052815260406000209060ff6003604051936111e18561158a565b805485526001810154848601526002810154604086015201541615156060830152604051938452830190611634565b346101ad5760403660031901126101ad576101d4611608565b346101ad5760003660031901126101ad5760405160009060035461124c81611550565b8083526001918083169081156105d557506001146112745761057783610563818703826115a5565b6003600090815260209450917fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b5b8284106112bb5750505081019091019061056381610553565b80548585018701529285019281016112a2565b346101ad5760003660031901126101ad57600754906000816112ef84611550565b91828252600194858116908160001461153157506001146114e3575b611317925003826115a5565b60405160085481600061132983611550565b808352928681169081156114c45750600114611476575b61134c925003826115a5565b6040519060009360095461135f81611550565b8085529082811690811561144e5750600114611406575b5050611387826113c69503836115a5565b600a5491600b5490600c5460018060a01b03926113e284600d5416936113d486600e541696600f5416976040519b8c9b8c6101208091528d01906115c8565b908b820360208d01526115c8565b9089820360408b01526115c8565b956060880152608087015260a086015260c085015260e08401526101008301520390f35b600960009081526020965091600080516020611ce38339815191525b82841061143b5750505082019093019261138782611376565b8054868501890152928701928101611422565b6113c6975061138793506020915091859260ff191682840152151560051b8201019550611376565b50506008600090815260209183919086600080516020611ca38339815191525b8284106114ad575050509161134c92820101611340565b805487850187015286945092850192889101611496565b6020925061134c94915060ff191682840152151560051b820101611340565b50506007600090815260209183919085600080516020611c638339815191525b82841061151a57505050916113179282010161130b565b805487850187015286945092850192879101611503565b6020925061131794915060ff191682840152151560051b82010161130b565b90600182811c92168015611580575b602083101461156a57565b634e487b7160e01b600052602260045260246000fd5b91607f169161155f565b608081019081106001600160401b03821117610c0257604052565b601f909101601f19168101906001600160401b03821190821017610c0257604052565b919082519283825260005b8481106115f4575050826000602080949584010152601f8019910116010190565b6020818301810151848301820152016115d3565b600435906001600160a01b03821682036101ad57565b602435906001600160a01b03821682036101ad57565b6060809180518452602081015160208501526040810151604085015201511515910152565b6044359081151582036101ad57565b81601f820112156101ad578035906001600160401b038211610c02576040519261169c601f8401601f1916602001856115a5565b828452602083830101116101ad57816000926020809301838601378301015290565b60609060031901126101ad576004356001600160a01b03811681036101ad57906024359060443590565b346101ad5760003660031901126101ad5760206040517f000000000000000000000000000000000000000000000000000000000000000015158152f35b6005546001600160a01b0316330361173957565b60405163118cdaa760e01b8152336004820152602490fd5b60405162461bcd60e51b815260206004820152602c60248201527f4e6f6e5472616e7366657261626c6545524332303a207472616e73666572732060448201526b185c9948191a5cd8589b195960a21b6064820152608490fd5b60405162461bcd60e51b815260206004820152603260248201527f4e6f6e5472616e7366657261626c6545524332303a20616c6c6f77616e6365206044820152711cde5cdd195b481a5cc8191a5cd8589b195960721b6064820152608490fd5b1561181257565b60405162461bcd60e51b815260206004820152600e60248201526d139bdd08185d5d1a1bdc9a5e995960921b6044820152606490fd5b1561184f57565b60405162461bcd60e51b815260206004820152601060248201526f496e76616c6964207175616e7469747960801b6044820152606490fd5b91600c54421015611a685781151580611a5c575b15611a27576118ab811515611848565b60018060a01b03831690600093828552602093601085526040808720600a5488528652808720937f000000000000000000000000000000000000000000000000000000000000000015159485895287528188209786815280885282812054948515156000146119bc578261191e91611b88565b61194761192c8a5487611b75565b956119418461193b8882611b75565b92611aba565b96611aba565b9085156119a85750917f4586874e33bb3035791a282ebcc91ff7ea4dd7fb17132f2960c24e1a3a5e8f1f9593918560c0969404998a8155600242910155600a5498825195865285015283015286606083015260808201524260a0820152a390565b634e487b7160e01b81526012600452602490fd5b60809550849983926119f47f5cf8fa4a8e333990018876ad3a82065e68b3859d46c3198b692b77fc3043808b99979695600394611b88565b858255600182015542600282015501600160ff19825416179055600a54978251948552840152820152426060820152a390565b60405162461bcd60e51b815260206004820152600d60248201526c496e76616c696420707269636560981b6044820152606490fd5b5061271082111561189b565b60405162461bcd60e51b815260206004820152600c60248201526b13585c9ad95d08195b99195960a21b6044820152606490fd5b600160ff1b8114610fc75760000390565b91908203918211610fc757565b91908201809211610fc757565b91909160008382019384129112908015821691151617610fc757565b6001600160a01b03168015611b5c57600091818352826020526040832054818110611b395781600080516020611cc3833981519152926020928587528684520360408620558060025403600255604051908152a3565b606493506040519263391434e360e21b8452600484015260248301526044820152fd5b604051634b637e8f60e11b815260006004820152602490fd5b81810292918115918404141715610fc757565b6001600160a01b0316908115611bd457600080516020611cc3833981519152602082611bb8600094600254611aba565b60025584845283825260408420818154019055604051908152a3565b60405163ec442f0560e01b815260006004820152602490fd5b9081811115611c115791611c07611c0d9261271094611aad565b90611b75565b0490565b818110611c2057505050600090565b611c3a92611c07611c349261271094611aad565b04611a9c565b90565b60405190611c4a8261158a565b6000606083828152826020820152826040820152015256fea66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c6888be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0f3f7a9fe364faab93b216da50a3214154f22a0a2b415b23a84c8169e8b636ee3ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef6e1540171b6c0c960b71a7020d9f60077f6af931a8bbf590da0223dacf75c7af9f9e0457c2a3100c02d1622bf7e00d33a154bd7048d35f843352040cf407989fa2646970667358221220b4fd48a1f130817147d84070c76475b44b06e85f2bb6b50a7bc60b22dc2cfc8264736f6c63430008140033",
+        "source_verified": false
+      },
+      "template_proof_path": "docs/evidence/pending-direct-qualification.json",
+      "template_proof_sha256": "782ec8fbf42ee9ac5333137f3e3b8ee11ab8672d9eb410b4ed5d07a9ce1c443f"
+    }
+  ],
+  "tool_language": "Rust"
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Exact previously reviewed runtime reuse plus fresh target storage/code/trace/control binding, not generic proxy-shell matching. No new claim of verified source for candidates without source. Full historical source evidence is already committed at each referenced path.",
+  "sources": [
+    {
+      "file": "docs/evidence/next-proxy-qualification.json",
+      "review": "Ranks 410,421,432,434,435,438,445,446: exact FlapTaxTokenV3 implementation. Inherited balanceOf directly reads root51; allowances52, nonces153 and pool flags263 are separate. Reviewed fixed fields and bounded metadata payload words remain distinct; extra unknown words reject.",
+      "sha256": "f1f8d3a4f9b1d0ff66e2dbbe7b0bf220cab5d3e5697e0ff3c13bbfbe2854705a"
+    },
+    {
+      "file": "docs/evidence/clone-source-layout.json",
+      "review": "Rank442: exact TokenV2 implementation and compiler layout; balance51, allowance52, nonce153. Only bounded metadata words inherited, no deployment or holder state.",
+      "sha256": "e004920a82977dd7325bdf4a9bae312259c5d7cd97ddbb59ee2035b9afcfcb40"
+    },
+    {
+      "file": "docs/evidence/clone-implementation-inspection.json",
+      "review": "Rank442: complete reviewed raw getter semantics bound to implementation runtime; canonical ERC1167 forwarding.",
+      "sha256": "8bf4b825836afc3513e96c57d96150858b73fea30d004fe46039554b43f8f36a"
+    },
+    {
+      "file": "docs/evidence/4stock-registration-qualification.json",
+      "review": "Rank420: reviewed exact implementation with balance root1, witnessed address-list35 and five-word registration mapping36. Generic layout shape only; no membership or holder values copied.",
+      "sha256": "addcae4ee8b4bb156b02c390b30271347e459511e462f7da93f1b62f65d1272c"
+    },
+    {
+      "file": "docs/evidence/core-source-qualification.json",
+      "review": "Rank439: exact transparent proxy and BEP20 implementation of reviewed USDC family, raw balance1, allowance2, supply/owner metadata3/6. Fresh AAVE admin is separately resolved and not ignored.",
+      "sha256": "994e9e74b9c07355f94b6b2c72fd6272706c07d6bb1b9ac3cb4e6f206e9a7f1f"
+    },
+    {
+      "file": "docs/evidence/securities-proxy-qualification.json",
+      "review": "Rank414: exact SecuritiesToken implementation and proxy code; namespaced raw balanceOf, distinct UI schedule. Small beacon implementation getter has reviewed straight slot1/address-mask return; source-unavailable beacon provenance retained.",
+      "sha256": "a0b07f0c11fb35bb3ceb27690d9bfcf3d91edbafdd7312d318fa99b7f8fbeefa"
+    },
+    {
+      "file": "docs/evidence/ranked-proxy-qualification.json",
+      "review": "Rank425: exact token proxy, ERC1967 beacon forwarder, BridgeImplementation resolver and BridgeToken implementation. Beacon pointer roles independently resolved; raw balance root5, metadata separate.",
+      "sha256": "fcf6d2f79fc81e5940acd3a186384ce79d3b520ec1e226f92eb828e3dd250ed2"
+    }
+  ],
+  "transparent_admin": {
+    "complete_path": "Proxy admin SLOAD PC1151, caller equality check PC976, non-admin path PC981->1036, implementation SLOAD1078, DELEGATECALL1095, implementation raw mapping SLOAD1775, returndata forwarding1111.",
+    "guard": "Admin is nonzero at parent/final; actual-admin caller and zero-admin override revert. Persisted admin writes, even with restoration and no balance writes, remain unknown storage and stop processing.",
+    "rank": 439,
+    "scope": "Fixed qualified interval and default zero RPC caller only; admin or runtime changes require requalification."
+  }
+}
