@@ -1,0 +1,38 @@
+{
+  "aggregate_emitted_zero_checks": 15140,
+  "all_balance_event_fields_equal": true,
+  "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "baseline_report_sha256": "0f970c3229827a49eca3f183f6c31dfccf004bfd03d92ce031d62e713d8a9572",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 10.693019785685117,
+    "empty_output_delivery": null,
+    "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "seconds_including_startup": 95.763406458
+  },
+  "configured_profiles": 377,
+  "elapsed_seconds": 171.780020459,
+  "events_sha256": "981b71dd1811c56d0b0eac6dbf2dbb6d63c814445522624c4501632cb8199048",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 178809,
+  "initialized_carry_forward_matches": 69683,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "62bbf204c8dc37378eb86b6afc67621e015af9de4b5f6cb185ad8498788a05af",
+  "package_change_scope": "Same packaged code; two independently qualified proxy layouts added to the previous immutable verified output",
+  "profiles_with_emitted_rows": 376,
+  "reused_verified_rpc_rows": 109127,
+  "scope": "Fresh 377-profile actual-WASM capture. Full-field comparison with the verified 375-profile capture and two newly RPC-audited proxy profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-377 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "0ca3a4d15286689faab5d9233f3e64560217ebaf69d5f69a2f888609d9d77f62",
+      "cohort": "proxy400",
+      "events_sha256": "8edc4b5fe716ce1568d1215b5adc649b93d01cfaeb891dc96f1575354f0ae64e",
+      "holder_report_sha256": "1a07a2778d3f1f4987bbf0d4e76c18a1c56621cd870f9631217396ceea8b1f7e",
+      "layouts_sha256": "800f5a96e7f516894a65a42e96315dda22f50141ab033c1a3a19853a6b11c24a",
+      "rpc_report_sha256": "72b9be5a8a448faf0661f25d0328b59bf65bc894ba04b203f33ab84e1f258746"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

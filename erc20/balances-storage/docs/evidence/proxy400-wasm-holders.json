@@ -1,0 +1,47 @@
+{
+  "checkpoint_sha256": "8ba6cc0c49c5ffd0eda3d3b29bdc35874651c4ee2c484fa3a7c733a19ac3c7a1",
+  "checks_sha256": "775a1d17d1db41088390201fed7d5609a44495a553fa90e8073071c452b2369f",
+  "configured_tokens": 2,
+  "deployment_initialization": [],
+  "events_sha256": "8edc4b5fe716ce1568d1215b5adc649b93d01cfaeb891dc96f1575354f0ae64e",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 31,
+  "layouts_sha256": "800f5a96e7f516894a65a42e96315dda22f50141ab033c1a3a19853a6b11c24a",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 64,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Two source-bound namespaced ERC20 proxy tokens on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 23,
+  "snapshot_zeros": 12,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+      "emitted_rows": 16,
+      "reference_rows": 32,
+      "seeded_matches": 32,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 8,
+      "unseeded_unknown_rows": 16,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+      "emitted_rows": 17,
+      "reference_rows": 32,
+      "seeded_matches": 32,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 7,
+      "unseeded_unknown_rows": 15,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

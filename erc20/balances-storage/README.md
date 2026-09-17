@@ -346,14 +346,16 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [direct and proxy follow-up](docs/ranks400-coverage.md) brings the
-explicit test configuration to 375 profiles in
-`tests/fixtures/bsc-ranks400-layouts.json`. The 27 additions match 533 emitted
-RPC balances, 901 initialized observations and all 402 final holder balances.
-The unchanged package preserves every protobuf event field for 109,094 previously
-RPC-verified balances across the combined configuration. Twenty candidates from
+The latest [Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) brings the
+explicit test configuration to 377 profiles in
+`tests/fixtures/bsc-proxy400-layouts.json`. These two additions match 33 emitted
+RPC balances, 64 initialized observations and all 23 final holder balances.
+The unchanged package preserves every protobuf event field for 109,127 previously
+RPC-verified balances across the combined configuration. Eighteen candidates from
 the [next-50 investigation](docs/ranks351-400-investigation.md) remain unqualified,
 alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The previous
+[27-profile cohort](docs/ranks400-coverage.md) retains its separate source,
+proxy-family and holder evidence. The earlier
 [MUSD/GAIX follow-up](docs/direct-discovery-gaps.md) retains its separate evidence.
 The [reflection host model](docs/reflection-holder-model.md) matches 329
 historical getter checks for BabyDoge and 10SET and confirms passive 10SET

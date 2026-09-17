@@ -412,6 +412,8 @@ mod pending350_tests;
 #[cfg(test)]
 mod pending_direct_tests;
 #[cfg(test)]
+mod proxy400_tests;
+#[cfg(test)]
 mod ranked_cohort_tests;
 #[cfg(test)]
 mod ranked_proxy_tests;

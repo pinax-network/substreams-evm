@@ -1,0 +1,812 @@
+{
+  "elapsed_seconds": 46.22885575,
+  "layouts_sha256": "800f5a96e7f516894a65a42e96315dda22f50141ab033c1a3a19853a6b11c24a",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9": 16,
+      "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58": 17
+    },
+    "errors": []
+  },
+  "scope": "Two source-bound namespaced ERC20 proxies with explicit reviewed metadata roots and caller/pause/ban controls. Packaged RPC and holder audits still required; unreviewed dynamic metadata and proxy administration writes remain errors.",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+      "getters": [
+        {
+          "body": "ERC20Storagestorage$=_getERC20Storage();return$._balances[account];",
+          "source": "lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0xc1d32d62a81b98410395a30e3a336f319e5e90be",
+        "balance_of": "56331272359446527242860783",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288077,
+        "compilation": {
+          "compiler": "solc",
+          "compilerSettings": {
+            "evmVersion": "paris",
+            "libraries": {},
+            "metadata": {
+              "appendCBOR": true,
+              "bytecodeHash": "ipfs",
+              "useLiteralContent": false
+            },
+            "optimizer": {
+              "enabled": true,
+              "runs": 200
+            },
+            "remappings": [
+              "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+              "@openzeppelin/contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/",
+              "erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+              "forge-std/=lib/forge-std/src/",
+              "halmos-cheatcodes/=lib/openzeppelin-contracts-upgradeable/lib/halmos-cheatcodes/src/",
+              "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+              "openzeppelin-contracts/=lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/"
+            ],
+            "viaIR": false
+          },
+          "compilerVersion": "0.8.27+commit.40a35a09",
+          "fullyQualifiedName": "lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy",
+          "language": "Solidity",
+          "name": "ERC1967Proxy"
+        },
+        "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+        "elapsed_seconds": 0.714098458,
+        "execution_code": [
+          {
+            "address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+            "checked_instructions": 2,
+            "runtime_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4"
+          },
+          {
+            "address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+            "checked_instructions": 1,
+            "runtime_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 95,
+              "storage_address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "target": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "depth": 1,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 64,
+              "storage_address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "value": "0x000000000000000000000000dc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+            },
+            {
+              "code_address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+              "depth": 2,
+              "key": "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec",
+              "pc": 763,
+              "storage_address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "value": "0x0000000000000000000000000000000000000000002e989c64bfa46a372ef8ef"
+            }
+          ]
+        },
+        "hash": "0x4ed3b525e59ead0327ecb3e51bec9e9abaa7b68ef45febfaff1ac6276c4d6d68",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+        "source_proxy_resolution": {
+          "implementations": [
+            {
+              "address": "0xdC9A9bF20F5e9D4D5EFe866Dd320a48611B37F39",
+              "name": "Dood"
+            }
+          ],
+          "isProxy": true,
+          "proxyType": "EIP1967Proxy"
+        },
+        "source_runtime_match": true,
+        "source_sha256": "b02b239e8f26cfe9251ae93691e7b691a5a582981cc7c2c42c58b72ebfa64d89",
+        "source_storage_layout": {
+          "storage": [],
+          "types": null
+        },
+        "source_url": "https://sourcify.dev/server/v2/contract/56/0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9?fields=all",
+        "status": "inspected",
+        "storage_key": "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 64,
+            "value": "0x000000000000000000000000dc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+          },
+          {
+            "depth": 2,
+            "key": "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec",
+            "pc": 763,
+            "value": "0x0000000000000000000000000000000000000000002e989c64bfa46a372ef8ef"
+          }
+        ],
+        "storage_word": "56331272359446527242860783",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "5b4f8b9500dddef4530fa206e538b844c1c7334aca9cec1d87a6029e5acf7db3"
+      },
+      "inventory": {
+        "boundaries": [
+          {
+            "admin_word": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "block": 122288005,
+            "contracts": [
+              {
+                "address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+                "historical_runtime_bound": true,
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+                "source_sha256": "b02b239e8f26cfe9251ae93691e7b691a5a582981cc7c2c42c58b72ebfa64d89",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+                "historical_runtime_bound": true,
+                "name": "Dood",
+                "runtime_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78",
+                "source_sha256": "a44f08cb913790cf264a9446944f21250bdc42ebb092ad6f67ab9429c8d9e6d7",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "implementation": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+          },
+          {
+            "admin_word": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "block": 122289029,
+            "contracts": [
+              {
+                "address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+                "historical_runtime_bound": true,
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+                "source_sha256": "b02b239e8f26cfe9251ae93691e7b691a5a582981cc7c2c42c58b72ebfa64d89",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+                "historical_runtime_bound": true,
+                "name": "Dood",
+                "runtime_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78",
+                "source_sha256": "a44f08cb913790cf264a9446944f21250bdc42ebb092ad6f67ab9429c8d9e6d7",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "implementation": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+          }
+        ],
+        "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "rank": 390
+      },
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "code_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+        "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0x9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+          "0x2a2f1b3922aeacd92bebf9d2e52c9cd971c8aced744f1413b659088c3a41f370"
+        ],
+        "proxy": {
+          "code_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78",
+          "implementation": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+          "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+        }
+      },
+      "name": "Dood",
+      "namespaces": [
+        {
+          "fields": "mapping(addressaccount=>uint256)_balances;mapping(addressaccount=>mapping(addressspender=>uint256))_allowances;uint256_totalSupply;string_name;string_symbol;",
+          "kind": "balance",
+          "namespace": "openzeppelin.storage.ERC20",
+          "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+          "struct": "ERC20Storage"
+        },
+        {
+          "fields": "address_owner;",
+          "kind": "scalar",
+          "namespace": "openzeppelin.storage.Ownable",
+          "slot": "0x9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300",
+          "struct": "OwnableStorage"
+        },
+        {
+          "fields": "uint64_initialized;bool_initializing;",
+          "kind": "scalar",
+          "namespace": "openzeppelin.storage.Initializable",
+          "slot": "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+          "struct": "InitializableStorage"
+        },
+        {
+          "derivation": "keccak256(label)-1",
+          "fields": "address _minter",
+          "kind": "scalar",
+          "namespace": "dood.minter",
+          "slot": "0x2a2f1b3922aeacd92bebf9d2e52c9cd971c8aced744f1413b659088c3a41f370"
+        }
+      ],
+      "nonbalance_controls": [
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000c1d32d62a81b98410395a30e3a336f319e5e90be",
+            "to": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9"
+          },
+          "case": "zero-caller",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000c1d32d62a81b98410395a30e3a336f319e5e90be",
+            "from": "0x0000000000000000000000000000000000000001",
+            "to": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9"
+          },
+          "case": "nonzero-caller",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000c1d32d62a81b98410395a30e3a336f319e5e90be",
+            "to": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9"
+          },
+          "case": "owner-and-minter-independent",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x10a65a399a668836f2c171ac0f8ba7fa811badb7eb17d8b2f0a8367e26aaf5ec": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x2a2f1b3922aeacd92bebf9d2e52c9cd971c8aced744f1413b659088c3a41f370": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "rank": 390,
+      "source_sha256": "a44f08cb913790cf264a9446944f21250bdc42ebb092ad6f67ab9429c8d9e6d7",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39?fields=all"
+    },
+    {
+      "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+      "getters": [
+        {
+          "body": "ERC20Storagestorage$=_getERC20Storage();return$._balances[account];",
+          "source": "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+        "balance_of": "3242534193235312021913",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288199,
+        "compilation": {
+          "compiler": "solc",
+          "compilerSettings": {
+            "evmVersion": "paris",
+            "metadata": {
+              "useLiteralContent": true
+            },
+            "optimizer": {
+              "enabled": true,
+              "runs": 200
+            }
+          },
+          "compilerVersion": "0.8.28+commit.7893614a",
+          "fullyQualifiedName": "@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:TransparentUpgradeableProxy",
+          "language": "Solidity",
+          "name": "TransparentUpgradeableProxy"
+        },
+        "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+        "elapsed_seconds": 0.370503417,
+        "execution_code": [
+          {
+            "address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+            "checked_instructions": 1,
+            "runtime_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c"
+          },
+          {
+            "address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+            "checked_instructions": 2,
+            "runtime_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 355,
+              "storage_address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "target": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "depth": 1,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 324,
+              "storage_address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "value": "0x00000000000000000000000076ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+            },
+            {
+              "code_address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+              "depth": 2,
+              "key": "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4",
+              "pc": 4403,
+              "storage_address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "value": "0x0000000000000000000000000000000000000000000000afc7339510a8989199"
+            }
+          ]
+        },
+        "hash": "0xa2f376b47258be6b50511478d577cc227f5b3e69ae191834ef89fe6e8dc919f2",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+        "source_proxy_resolution": {
+          "implementations": [
+            {
+              "address": "0x76Ec4Be0109305FB4543f1d1a8a515AC3bcAbD60",
+              "name": "DeepTokenOFT"
+            }
+          ],
+          "isProxy": true,
+          "proxyType": "EIP1967Proxy"
+        },
+        "source_runtime_match": true,
+        "source_sha256": "41fbd48e0c4d9dd498b6c3c5b6239e98caa2c9df1d1d3d575bb473f93a094c48",
+        "source_storage_layout": {
+          "storage": [],
+          "types": null
+        },
+        "source_url": "https://sourcify.dev/server/v2/contract/56/0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58?fields=all",
+        "status": "inspected",
+        "storage_key": "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 324,
+            "value": "0x00000000000000000000000076ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+          },
+          {
+            "depth": 2,
+            "key": "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4",
+            "pc": 4403,
+            "value": "0x0000000000000000000000000000000000000000000000afc7339510a8989199"
+          }
+        ],
+        "storage_word": "3242534193235312021913",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "9762cbebfd5fb4b422ed09f44ac50ec407f13eb8f681cb444c8421413f7d4c61"
+      },
+      "inventory": {
+        "boundaries": [
+          {
+            "admin_word": "0x000000000000000000000000cc1c3381fde6bc19596f7f6119fc4a44c5a3d636",
+            "block": 122288005,
+            "contracts": [
+              {
+                "address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+                "historical_runtime_bound": true,
+                "name": "TransparentUpgradeableProxy",
+                "runtime_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+                "source_sha256": "41fbd48e0c4d9dd498b6c3c5b6239e98caa2c9df1d1d3d575bb473f93a094c48",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+                "historical_runtime_bound": true,
+                "name": "DeepTokenOFT",
+                "runtime_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c",
+                "source_sha256": "3f2b8fa6fcf517c932f4793951a3aba6ff4567ef0c23c6dd989c33d0ba102a7e",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "implementation": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+          },
+          {
+            "admin_word": "0x000000000000000000000000cc1c3381fde6bc19596f7f6119fc4a44c5a3d636",
+            "block": 122289029,
+            "contracts": [
+              {
+                "address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+                "historical_runtime_bound": true,
+                "name": "TransparentUpgradeableProxy",
+                "runtime_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+                "source_sha256": "41fbd48e0c4d9dd498b6c3c5b6239e98caa2c9df1d1d3d575bb473f93a094c48",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+                "historical_runtime_bound": true,
+                "name": "DeepTokenOFT",
+                "runtime_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c",
+                "source_sha256": "3f2b8fa6fcf517c932f4793951a3aba6ff4567ef0c23c6dd989c33d0ba102a7e",
+                "source_verified": true,
+                "storage_layout": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "implementation": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+          }
+        ],
+        "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "rank": 391
+      },
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "code_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+        "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01",
+          "0x72ab1bc1039b79dc4724ffca13de82c96834302d3c7e0d4252232d4b2dd8f900",
+          "0x8d2bda5d9f6ffb5796910376005392955773acee5548d0fcdb10e7c264ea0000",
+          "0x5ab42ced628888259c08ac98db1eb0cf702fc1501344311d8b100cd1bfe4bb00",
+          "0xa8bc080dc1c6c2ea52b696d548ab948a1fe34d9e49a2359f67a3f70084522100"
+        ],
+        "other_mapping_words": {
+          "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+        },
+        "other_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0x9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+          "0xefb041d771d6daaa55702fff6eb740d63ba559a75d2d1d3e151c78ff2480b600",
+          "0x41db8a78b0206aba5c54bcbfc2bda0d84082a84eb88e680379a57b9e9f653c00",
+          "0xcd5ed15c6e187e77e9aee88184c21f4f2182ab5827cb3b7e07fbedcd63f03300",
+          "0xa16a46d94261c7517cc8ff89f61c0ce93598e3c849801011dee649a6a557d100",
+          "0xa16a46d94261c7517cc8ff89f61c0ce93598e3c849801011dee649a6a557d101",
+          "0xa16a46d94261c7517cc8ff89f61c0ce93598e3c849801011dee649a6a557d102",
+          "0xa16a46d94261c7517cc8ff89f61c0ce93598e3c849801011dee649a6a557d103"
+        ],
+        "proxy": {
+          "code_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c",
+          "implementation": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+          "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+        }
+      },
+      "name": "DeepTokenOFT",
+      "namespaces": [
+        {
+          "fields": "mapping(addressaccount=>uint256)_balances;mapping(addressaccount=>mapping(addressspender=>uint256))_allowances;uint256_totalSupply;string_name;string_symbol;",
+          "kind": "balance",
+          "namespace": "openzeppelin.storage.ERC20",
+          "slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+          "struct": "ERC20Storage"
+        },
+        {
+          "fields": "address_owner;",
+          "kind": "scalar",
+          "namespace": "openzeppelin.storage.Ownable",
+          "slot": "0x9016d09d72d40fdae2fd8ceac6b6234c7706214fd39c1cd1e609a0528c199300",
+          "struct": "OwnableStorage"
+        },
+        {
+          "fields": "uint64_initialized;bool_initializing;",
+          "kind": "scalar",
+          "namespace": "openzeppelin.storage.Initializable",
+          "slot": "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+          "struct": "InitializableStorage"
+        },
+        {
+          "fields": "mapping(uint32=>bytes32)peers;",
+          "kind": "mapping",
+          "namespace": "layerzerov2.storage.oappcore",
+          "slot": "0x72ab1bc1039b79dc4724ffca13de82c96834302d3c7e0d4252232d4b2dd8f900",
+          "struct": "OAppCoreStorage"
+        },
+        {
+          "fields": "mapping(uint32=>mapping(uint16=>bytes))enforcedOptions;",
+          "kind": "mapping",
+          "namespace": "layerzerov2.storage.oappoptionstype3",
+          "slot": "0x8d2bda5d9f6ffb5796910376005392955773acee5548d0fcdb10e7c264ea0000",
+          "struct": "OAppOptionsType3Storage"
+        },
+        {
+          "fields": "addresspreCrime;",
+          "kind": "scalar",
+          "namespace": "layerzerov2.storage.oappprecrimesimulator",
+          "slot": "0xefb041d771d6daaa55702fff6eb740d63ba559a75d2d1d3e151c78ff2480b600",
+          "struct": "OAppPreCrimeSimulatorStorage"
+        },
+        {
+          "fields": "addressmsgInspector;",
+          "kind": "scalar",
+          "namespace": "layerzerov2.storage.oftcore",
+          "slot": "0x41db8a78b0206aba5c54bcbfc2bda0d84082a84eb88e680379a57b9e9f653c00",
+          "struct": "OFTCoreStorage"
+        },
+        {
+          "fields": "mapping(bytes32role=>RoleData)_roles;",
+          "kind": "roles",
+          "namespace": "openzeppelin.storage.AccessControl",
+          "slot": "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800",
+          "struct": "AccessControlStorage"
+        },
+        {
+          "fields": "mapping(addressaccount=>uint256)_nonces;",
+          "kind": "mapping",
+          "namespace": "openzeppelin.storage.Nonces",
+          "slot": "0x5ab42ced628888259c08ac98db1eb0cf702fc1501344311d8b100cd1bfe4bb00",
+          "struct": "NoncesStorage"
+        },
+        {
+          "fields": "bool_paused;",
+          "kind": "scalar",
+          "namespace": "openzeppelin.storage.Pausable",
+          "slot": "0xcd5ed15c6e187e77e9aee88184c21f4f2182ab5827cb3b7e07fbedcd63f03300",
+          "struct": "PausableStorage"
+        },
+        {
+          "fields": "bytes32_hashedName;bytes32_hashedVersion;string_name;string_version;",
+          "kind": "four_scalars",
+          "namespace": "openzeppelin.storage.EIP712",
+          "slot": "0xa16a46d94261c7517cc8ff89f61c0ce93598e3c849801011dee649a6a557d100",
+          "struct": "EIP712Storage"
+        },
+        {
+          "fields": "mapping(address=>bool)_banlist;",
+          "kind": "mapping",
+          "namespace": "deepnode.storage.BanlistControl",
+          "slot": "0xa8bc080dc1c6c2ea52b696d548ab948a1fe34d9e49a2359f67a3f70084522100",
+          "struct": "BanlistControlStorage"
+        }
+      ],
+      "nonbalance_controls": [
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "zero-caller",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "from": "0x0000000000000000000000000000000000000001",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "nonzero-caller",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "paused",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xcd5ed15c6e187e77e9aee88184c21f4f2182ab5827cb3b7e07fbedcd63f03300": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "banned-holder",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x19784c3128a4bc8177dd8863d0a456d579456d52225cbe3cc84ffd4d3cce385a": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "paused-and-banned",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x19784c3128a4bc8177dd8863d0a456d579456d52225cbe3cc84ffd4d3cce385a": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xcd5ed15c6e187e77e9aee88184c21f4f2182ab5827cb3b7e07fbedcd63f03300": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "from": "0xcc1c3381fde6bc19596f7f6119fc4a44c5a3d636",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "immutable-admin-caller",
+          "expected_revert": true,
+          "response": {
+            "error": {
+              "code": 3,
+              "data": "0xd2b576ec",
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "state_diff": {
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d2",
+            "to": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58"
+          },
+          "case": "zero-admin-storage-mirror",
+          "expected_revert": false,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "state_diff": {
+            "0x4abb2d998e1783bed83890c614eb76746a8fe06a06beba4f437b06c68a36fbb4": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "rank": 391,
+      "source_sha256": "3f2b8fa6fcf517c932f4793951a3aba6ff4567ef0c23c6dd989c33d0ba102a7e",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60?fields=all"
+    }
+  ],
+  "tool_language": "Rust"
+}

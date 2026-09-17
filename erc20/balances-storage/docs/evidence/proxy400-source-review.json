@@ -1,0 +1,150 @@
+{
+  "elapsed_seconds": 7.932864,
+  "scope": "Fresh canonical proxy/dependency source inventory; not a qualified storage layout or holder audit.",
+  "status": "inspected",
+  "tokens": [
+    {
+      "boundaries": [
+        {
+          "admin_word": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288005,
+          "contracts": [
+            {
+              "address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "historical_runtime_bound": true,
+              "name": "ERC1967Proxy",
+              "runtime_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+              "source_sha256": "b02b239e8f26cfe9251ae93691e7b691a5a582981cc7c2c42c58b72ebfa64d89",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            },
+            {
+              "address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+              "historical_runtime_bound": true,
+              "name": "Dood",
+              "runtime_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78",
+              "source_sha256": "a44f08cb913790cf264a9446944f21250bdc42ebb092ad6f67ab9429c8d9e6d7",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "implementation": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+        },
+        {
+          "admin_word": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122289029,
+          "contracts": [
+            {
+              "address": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+              "historical_runtime_bound": true,
+              "name": "ERC1967Proxy",
+              "runtime_hash": "0xb8983730338c401202ccf2e809dab562434ff9e390936b5bc9a72cf09c0150d4",
+              "source_sha256": "b02b239e8f26cfe9251ae93691e7b691a5a582981cc7c2c42c58b72ebfa64d89",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            },
+            {
+              "address": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39",
+              "historical_runtime_bound": true,
+              "name": "Dood",
+              "runtime_hash": "0xd924e71b2656cc3d460bfeffd3887bd5a126b8f8d6fcb1acb6b48898c7bcef78",
+              "source_sha256": "a44f08cb913790cf264a9446944f21250bdc42ebb092ad6f67ab9429c8d9e6d7",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "implementation": "0xdc9a9bf20f5e9d4d5efe866dd320a48611b37f39"
+        }
+      ],
+      "contract": "0x722294f6c97102fb0ddb5b907c8d16bdeab3f6d9",
+      "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "rank": 390
+    },
+    {
+      "boundaries": [
+        {
+          "admin_word": "0x000000000000000000000000cc1c3381fde6bc19596f7f6119fc4a44c5a3d636",
+          "block": 122288005,
+          "contracts": [
+            {
+              "address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "historical_runtime_bound": true,
+              "name": "TransparentUpgradeableProxy",
+              "runtime_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+              "source_sha256": "41fbd48e0c4d9dd498b6c3c5b6239e98caa2c9df1d1d3d575bb473f93a094c48",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            },
+            {
+              "address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+              "historical_runtime_bound": true,
+              "name": "DeepTokenOFT",
+              "runtime_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c",
+              "source_sha256": "3f2b8fa6fcf517c932f4793951a3aba6ff4567ef0c23c6dd989c33d0ba102a7e",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            }
+          ],
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "implementation": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+        },
+        {
+          "admin_word": "0x000000000000000000000000cc1c3381fde6bc19596f7f6119fc4a44c5a3d636",
+          "block": 122289029,
+          "contracts": [
+            {
+              "address": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+              "historical_runtime_bound": true,
+              "name": "TransparentUpgradeableProxy",
+              "runtime_hash": "0xd880cb6fa8a18faabeb57bb1cb2b1900371f7338c8c3c3f7add63574dad08e3c",
+              "source_sha256": "41fbd48e0c4d9dd498b6c3c5b6239e98caa2c9df1d1d3d575bb473f93a094c48",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            },
+            {
+              "address": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60",
+              "historical_runtime_bound": true,
+              "name": "DeepTokenOFT",
+              "runtime_hash": "0x65a4e8836b6ad79fd414fbbfe50ce30aa221ef90703d21e19327bb0f8c78340c",
+              "source_sha256": "3f2b8fa6fcf517c932f4793951a3aba6ff4567ef0c23c6dd989c33d0ba102a7e",
+              "source_verified": true,
+              "storage_layout": {
+                "storage": [],
+                "types": null
+              }
+            }
+          ],
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "implementation": "0x76ec4be0109305fb4543f1d1a8a515ac3bcabd60"
+        }
+      ],
+      "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+      "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "rank": 391
+    }
+  ],
+  "tool_language": "Rust"
+}
