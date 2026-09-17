@@ -1,0 +1,173 @@
+{
+  "added_profiles": 13,
+  "cold_unknown_nonzero": 41,
+  "cold_unknown_observations": 206,
+  "combined": {
+    "aggregate_emitted_zero_checks": 15057,
+    "all_balance_event_fields_equal": true,
+    "baseline_report_sha256": "4a1d1e9f093780586f8846a3ea5cc979ac8b6947699b2256273efad1153f56a7",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 11.23982859826672,
+      "empty_output_delivery": null,
+      "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+      "seconds_including_startup": 91.104592125
+    },
+    "configured_profiles": 345,
+    "elapsed_seconds": 258.349244916,
+    "events_sha256": "cae06f3c82eb2a63a201de4cb24650901209f000a3deb29163a8140ecc03c015",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 177744,
+    "initialized_carry_forward_matches": 69238,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "3398bed7046bfbfed862cf593733510c00bdbf8755ebfd5186f99b4d3aa3d2c7",
+    "profiles_with_emitted_rows": 344,
+    "reused_verified_rpc_rows": 108507,
+    "scope": "Fresh 345-profile actual-WASM capture. Full-field comparison with the verified 332-profile capture and 13 newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-345 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "4d0926a34ac15249b4ba17be0a13bb1f9d4d208d5fb3f0e696871049324d9296",
+        "cohort": "pending350",
+        "events_sha256": "b44be5df4f6688554f88964cb6e6e40b835ec4949f42273ab08a26a7fe98cb79",
+        "holder_report_sha256": "42600137f213c19823380c6a19d316d96f6baf206ab3189ed499fbfc0d86dae2",
+        "layouts_sha256": "4f0e077fb9d01b6fdc7949aae7daa9aa5e84f3cb6f85a986c883642853c29496",
+        "rpc_report_sha256": "7bc5c4a572a05c3a08650a6de8322f7fd3f27bd84912082d089cc2584564700f"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "earlier_computed_pending": [
+    "LBP",
+    "TITAN",
+    "ORD",
+    "YBC"
+  ],
+  "emitted_zeros": 21,
+  "final_holders": 174,
+  "final_zeros": 77,
+  "fixture_cases": 13,
+  "fixture_rpc_balances": 29,
+  "holder_observations": 517,
+  "initialization": {
+    "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+    "checkpoint_holders": 165,
+    "deployments": [
+      {
+        "basis": "Validated first CREATE empty-storage baseline, not predeployment RPC zero",
+        "block": 122288321,
+        "block_sha256": "8c001cd8f3ec7b0f8abe556be5406770b75af0cdcc601f647a57df092b3bbb1e",
+        "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+        "hash": "0x365484c428fb584eec1dd87d8d282b99ed9a731307e87f9beabcb1a5ab778b32",
+        "holders": 9
+      }
+    ],
+    "rpc_reads": 330
+  },
+  "initialized_carry_forward": 222,
+  "pending_latest50": [
+    {
+      "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "rank": 338,
+      "reason": "balanceOf adds an external return; plain mapping is not equivalent",
+      "symbol": "钻石"
+    }
+  ],
+  "qualified_profiles": 345,
+  "rpc_checks": 295,
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+      "rank": 303,
+      "runtime_hash": "0x7d9025d421c6493af6f33b04a4014d6e42c52e29b1e29277f60ff12ee0f18be3",
+      "symbol": "SPARK"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+      "rank": 312,
+      "runtime_hash": "0xf83cdb98ba6999f4b5f2abeac07861a0fda3d420988ad5396d7720099524102e",
+      "symbol": "MOMO"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+      "rank": 319,
+      "runtime_hash": "0x1f6f5a665a533d3dee8e9b92c3bc2195a1776f1cd1a131de2affbf1603c42fbc",
+      "symbol": "金麟人生"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+      "rank": 321,
+      "runtime_hash": "0xe387ffdbf2c2b8195848711c8e681240a756a76218a24e501e3572b479cc32e5",
+      "symbol": "牛来金库"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+      "rank": 325,
+      "runtime_hash": "0x5a84a0d06d65164db8bd240dfd32ae68ee2bf0bd8addacd948ee7b278d0e7bf8",
+      "symbol": "NVB2"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+      "rank": 326,
+      "runtime_hash": "0x85783754463bb77862e22b377f7f37aee0b9337e6858564b78eacb465fd056ba",
+      "symbol": "HIGH"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+      "rank": 327,
+      "runtime_hash": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b",
+      "symbol": "Tracker"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+      "rank": 332,
+      "runtime_hash": "0x01f0430e2bbc285e7a55cc7409977eccb1b7b944068956cffcb7dac5c75b3d1f",
+      "symbol": "招财牛"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+      "rank": 333,
+      "runtime_hash": "0x79e286601b1c70913021f43a44e7aa895b5f3e4fff6debe752797d69c71e3819",
+      "symbol": "AUT"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+      "rank": 339,
+      "runtime_hash": "0x1417f34e0e4aa95e93775192a3f5d943503fd8d6dfca5da4e26eaf0954ffb001",
+      "symbol": "O"
+    },
+    {
+      "basis": "Verified historical proxy and namespaced ERC20 getter; explicit balance/allowance/supply/name roots. Other administrative and bridge fields remain strict unknowns.",
+      "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+      "rank": 341,
+      "runtime_hash": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b",
+      "symbol": "TAKE"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+      "rank": 342,
+      "runtime_hash": "0x311512ba3c3e012b395b1bd9d5e850a00f8975fb932809f5633b9651821848a2",
+      "symbol": "STBU"
+    },
+    {
+      "basis": "Verified historical proxy and namespaced ERC20 getter; explicit balance/allowance/supply/name roots. Other administrative and bridge fields remain strict unknowns.",
+      "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+      "rank": 345,
+      "runtime_hash": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba",
+      "symbol": "IRYS"
+    }
+  ]
+}

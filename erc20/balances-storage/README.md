@@ -338,14 +338,15 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [ranks 301–350 follow-up](docs/ranks301-350-coverage.md) brings the
-explicit test configuration to 332 profiles in
-`tests/fixtures/bsc-ranks301-350-layouts.json`. The new 36-token cohort matches
-935 emitted RPC balances, 1,458 initialized holder observations and all 637
-final holder balances. Fourteen candidates from the latest 50 remain pending,
-alongside LBP, TITAN, ORD and YBC. These figures do not claim global holders or
-all-token support. The original [survey](docs/ranks301-350-investigation.md)
-retains its exploratory outcomes separately from this qualification.
+The latest [top-350 follow-up](docs/pending350-coverage.md) brings the explicit
+test configuration to 345 profiles in `tests/fixtures/bsc-pending350-layouts.json`.
+The new 13-token cohort matches 295 emitted RPC balances, 517 initialized
+holder observations and all 174 final holder balances. It covers reviewed
+direct mappings, dividend bookkeeping, pinned proxies and a new deployment.
+LBP, TITAN, ORD, YBC and 钻石 remain outside production qualification. These
+figures do not claim global holders or all-token support. The original
+[survey](docs/ranks301-350-investigation.md) and earlier
+[36-token qualification](docs/ranks301-350-coverage.md) retain their separate scopes.
 
 The earlier [top-300 follow-up](docs/pending300-coverage.md) retains the previous
 296-profile scope and separate older DIA append and ETZ swap-and-pop captures.

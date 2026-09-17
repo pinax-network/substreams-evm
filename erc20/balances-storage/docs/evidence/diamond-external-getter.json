@@ -1,0 +1,982 @@
+{
+  "call_trace": {
+    "calls": [
+      {
+        "calls": [
+          {
+            "from": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "gas": "0x2e2c7ec",
+            "gasUsed": "0x5ccc",
+            "input": "0xf40f0f52000000000000000000000000000000000000000000000000000000000000dead",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "to": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "type": "DELEGATECALL",
+            "value": "0x0"
+          }
+        ],
+        "from": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "gas": "0x2ee949c",
+        "gasUsed": "0x6f96",
+        "input": "0xf40f0f52000000000000000000000000000000000000000000000000000000000000dead",
+        "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "to": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "type": "STATICCALL"
+      }
+    ],
+    "from": "0x0000000000000000000000000000000000000000",
+    "gas": "0x2faf080",
+    "gasUsed": "0xe2e3",
+    "input": "0x70a08231000000000000000000000000000000000000000000000000000000000000dead",
+    "output": "0x00000000000000000000000000000000000000000314379c99fea17a836559d5",
+    "to": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+    "type": "CALL",
+    "value": "0x0"
+  },
+  "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+  "digests": {
+    "historical_boundaries": "27ca2ad0f778e974a8784aa5bf673af8b650aeeb7393aa968785cf48c704cfb4",
+    "return_controls": "9dabcd15b4c637ac165125507c04564685421695ab5adcac0086eeac131fc859",
+    "storage_controls": "d3c4bfa11b56171b5bad729f75c3b30521296c524743f3b6f53b35d1e638256f"
+  },
+  "getter_path": "0: PUSH1 80\n2: DUP1 \n3: PUSH1 40\n5: MSTORE \n6: PUSH1 04\n8: CALLDATASIZE \n9: LT \n10: ISZERO \n11: PUSH2 0024\n14: JUMPI \n36: JUMPDEST \n37: PUSH0 \n38: CALLDATALOAD \n39: PUSH1 e0\n41: SHR \n42: SWAP1 \n43: DUP2 \n44: PUSH4 03fd2a45\n49: EQ \n50: PUSH2 1234\n53: JUMPI \n54: POP \n55: DUP1 \n56: PUSH4 06fdde03\n61: EQ \n62: PUSH2 1179\n65: JUMPI \n66: DUP1 \n67: PUSH4 070a6e76\n72: EQ \n73: PUSH2 115c\n76: JUMPI \n77: DUP1 \n78: PUSH4 08733214\n83: EQ \n84: PUSH2 10f5\n87: JUMPI \n88: DUP1 \n89: PUSH4 095ea7b3\n94: EQ \n95: PUSH2 10cf\n98: JUMPI \n99: DUP1 \n100: PUSH4 0d3be762\n105: EQ \n106: PUSH2 10ab\n109: JUMPI \n110: DUP1 \n111: PUSH4 105222f9\n116: EQ \n117: PUSH2 0fe8\n120: JUMPI \n121: DUP1 \n122: PUSH4 1694505e\n127: EQ \n128: PUSH2 0fc0\n131: JUMPI \n132: DUP1 \n133: PUSH4 18160ddd\n138: EQ \n139: PUSH2 0fa3\n142: JUMPI \n143: DUP1 \n144: PUSH4 1d60c2b0\n149: EQ \n150: PUSH2 0f47\n153: JUMPI \n154: DUP1 \n155: PUSH4 1f2d6423\n160: EQ \n161: PUSH2 0f2a\n164: JUMPI \n165: DUP1 \n166: PUSH4 1f3fed8f\n171: EQ \n172: PUSH2 0f0d\n175: JUMPI \n176: DUP1 \n177: PUSH4 20104289\n182: EQ \n183: PUSH2 0eeb\n186: JUMPI \n187: DUP1 \n188: PUSH4 23b872dd\n193: EQ \n194: PUSH2 0e0c\n197: JUMPI \n198: DUP1 \n199: PUSH4 2a379620\n204: EQ \n205: PUSH2 0def\n208: JUMPI \n209: DUP1 \n210: PUSH4 2b5b6872\n215: EQ \n216: PUSH2 0dcd\n219: JUMPI \n220: DUP1 \n221: PUSH4 2f80912d\n226: EQ \n227: PUSH2 0db2\n230: JUMPI \n231: DUP1 \n232: PUSH4 313ce567\n237: EQ \n238: PUSH2 0d97\n241: JUMPI \n242: DUP1 \n243: PUSH4 33012411\n248: EQ \n249: PUSH2 0d7a\n252: JUMPI \n253: DUP1 \n254: PUSH4 333f7f08\n259: EQ \n260: PUSH2 0d5d\n263: JUMPI \n264: DUP1 \n265: PUSH4 360b3b31\n270: EQ \n271: PUSH2 0cfb\n274: JUMPI \n275: DUP1 \n276: PUSH4 421e7646\n281: EQ \n282: PUSH2 0bc3\n285: JUMPI \n286: DUP1 \n287: PUSH4 4263ec33\n292: EQ \n293: PUSH2 0b6e\n296: JUMPI \n297: DUP1 \n298: PUSH4 44751e43\n303: EQ \n304: PUSH2 0b4d\n307: JUMPI \n308: DUP1 \n309: PUSH4 49bd5a5e\n314: EQ \n315: PUSH2 0b25\n318: JUMPI \n319: DUP1 \n320: PUSH4 4fbee193\n325: EQ \n326: PUSH2 0ae8\n329: JUMPI \n330: DUP1 \n331: PUSH4 502f00bf\n336: EQ \n337: PUSH2 0acb\n340: JUMPI \n341: DUP1 \n342: PUSH4 5883f176\n347: EQ \n348: PUSH2 0a26\n351: JUMPI \n352: DUP1 \n353: PUSH4 595252cb\n358: EQ \n359: PUSH2 0a09\n362: JUMPI \n363: DUP1 \n364: PUSH4 6c580801\n369: EQ \n370: PUSH2 09c1\n373: JUMPI \n374: DUP1 \n375: PUSH4 70a08231\n380: EQ \n381: PUSH2 0996\n384: JUMPI \n2454: JUMPDEST \n2455: CALLVALUE \n2456: PUSH2 02d6\n2459: JUMPI \n2460: PUSH1 20\n2462: CALLDATASIZE \n2463: PUSH1 03\n2465: NOT \n2466: ADD \n2467: SLT \n2468: PUSH2 02d6\n2471: JUMPI \n2472: PUSH1 20\n2474: PUSH2 09b9\n2477: PUSH2 09b4\n2480: PUSH2 1278\n2483: JUMP \n4728: JUMPDEST \n4729: PUSH1 04\n4731: CALLDATALOAD \n4732: SWAP1 \n4733: PUSH1 01\n4735: PUSH1 01\n4737: PUSH1 a0\n4739: SHL \n4740: SUB \n4741: DUP3 \n4742: AND \n4743: DUP3 \n4744: SUB \n4745: PUSH2 02d6\n4748: JUMPI \n4749: JUMP \n2484: JUMPDEST \n2485: PUSH2 1341\n2488: JUMP \n4929: JUMPDEST \n4930: PUSH1 01\n4932: PUSH1 01\n4934: PUSH1 a0\n4936: SHL \n4937: SUB \n4938: AND \n4939: PUSH0 \n4940: DUP2 \n4941: DUP2 \n4942: MSTORE \n4943: PUSH1 20\n4945: DUP2 \n4946: SWAP1 \n4947: MSTORE \n4948: PUSH1 40\n4950: SWAP1 \n4951: KECCAK256 \n4952: SLOAD \n4953: ADDRESS \n4954: DUP3 \n4955: EQ \n4956: PUSH2 1407\n4959: JUMPI \n4960: PUSH1 11\n4962: SLOAD \n4963: PUSH1 01\n4965: PUSH1 01\n4967: PUSH1 a0\n4969: SHL \n4970: SUB \n4971: AND \n4972: SWAP2 \n4973: DUP3 \n4974: ISZERO \n4975: ISZERO \n4976: DUP1 \n4977: PUSH2 13fd\n4980: JUMPI \n5117: JUMPDEST \n5118: POP \n5119: DUP3 \n5120: DUP2 \n5121: EQ \n5122: ISZERO \n5123: PUSH2 1375\n5126: JUMP \n4981: JUMPDEST \n4982: PUSH2 1380\n4985: JUMPI \n4992: JUMPDEST \n4993: PUSH1 20\n4995: SWAP1 \n4996: PUSH1 24\n4998: PUSH1 40\n5000: MLOAD \n5001: DUP1 \n5002: SWAP6 \n5003: DUP2 \n5004: SWAP4 \n5005: PUSH4 7a0787a9\n5010: PUSH1 e1\n5012: SHL \n5013: DUP4 \n5014: MSTORE \n5015: PUSH1 04\n5017: DUP4 \n5018: ADD \n5019: MSTORE \n5020: GAS \n5021: STATICCALL \nexternal depth 2 pc 0 op \"PUSH1\"\nexternal depth 2 pc 2 op \"PUSH1\"\nexternal depth 2 pc 4 op \"MSTORE\"\nexternal depth 2 pc 5 op \"PUSH32\"\nexternal depth 2 pc 38 op \"SLOAD\"\nexternal depth 2 pc 39 op \"PUSH0\"\nexternal depth 2 pc 40 op \"SWAP1\"\nexternal depth 2 pc 41 op \"DUP2\"\nexternal depth 2 pc 42 op \"SWAP1\"\nexternal depth 2 pc 43 op \"PUSH1\"\nexternal depth 2 pc 45 op \"PUSH1\"\nexternal depth 2 pc 47 op \"PUSH1\"\nexternal depth 2 pc 49 op \"SHL\"\nexternal depth 2 pc 50 op \"SUB\"\nexternal depth 2 pc 51 op \"AND\"\nexternal depth 2 pc 52 op \"CALLDATASIZE\"\nexternal depth 2 pc 53 op \"DUP3\"\nexternal depth 2 pc 54 op \"DUP1\"\nexternal depth 2 pc 55 op \"CALLDATACOPY\"\nexternal depth 2 pc 56 op \"DUP2\"\nexternal depth 2 pc 57 op \"CALLDATASIZE\"\nexternal depth 2 pc 58 op \"SWAP2\"\nexternal depth 2 pc 59 op \"GAS\"\nexternal depth 2 pc 60 op \"DELEGATECALL\"\nexternal depth 3 pc 0 op \"PUSH1\"\nexternal depth 3 pc 2 op \"PUSH1\"\nexternal depth 3 pc 4 op \"MSTORE\"\nexternal depth 3 pc 5 op \"PUSH1\"\nexternal depth 3 pc 7 op \"CALLDATASIZE\"\nexternal depth 3 pc 8 op \"LT\"\nexternal depth 3 pc 9 op \"ISZERO\"\nexternal depth 3 pc 10 op \"PUSH2\"\nexternal depth 3 pc 13 op \"JUMPI\"\nexternal depth 3 pc 34 op \"JUMPDEST\"\nexternal depth 3 pc 35 op \"PUSH0\"\nexternal depth 3 pc 36 op \"CALLDATALOAD\"\nexternal depth 3 pc 37 op \"PUSH1\"\nexternal depth 3 pc 39 op \"SHR\"\nexternal depth 3 pc 40 op \"DUP1\"\nexternal depth 3 pc 41 op \"PUSH3\"\nexternal depth 3 pc 45 op \"EQ\"\nexternal depth 3 pc 46 op \"PUSH2\"\nexternal depth 3 pc 49 op \"JUMPI\"\nexternal depth 3 pc 50 op \"DUP1\"\nexternal depth 3 pc 51 op \"PUSH4\"\nexternal depth 3 pc 56 op \"EQ\"\nexternal depth 3 pc 57 op \"PUSH2\"\nexternal depth 3 pc 60 op \"JUMPI\"\nexternal depth 3 pc 61 op \"DUP1\"\nexternal depth 3 pc 62 op \"PUSH4\"\nexternal depth 3 pc 67 op \"EQ\"\nexternal depth 3 pc 68 op \"PUSH2\"\nexternal depth 3 pc 71 op \"JUMPI\"\nexternal depth 3 pc 72 op \"DUP1\"\nexternal depth 3 pc 73 op \"PUSH4\"\nexternal depth 3 pc 78 op \"EQ\"\nexternal depth 3 pc 79 op \"PUSH2\"\nexternal depth 3 pc 82 op \"JUMPI\"\nexternal depth 3 pc 83 op \"DUP1\"\nexternal depth 3 pc 84 op \"PUSH4\"\nexternal depth 3 pc 89 op \"EQ\"\nexternal depth 3 pc 90 op \"PUSH2\"\nexternal depth 3 pc 93 op \"JUMPI\"\nexternal depth 3 pc 94 op \"DUP1\"\nexternal depth 3 pc 95 op \"PUSH4\"\nexternal depth 3 pc 100 op \"EQ\"\nexternal depth 3 pc 101 op \"PUSH2\"\nexternal depth 3 pc 104 op \"JUMPI\"\nexternal depth 3 pc 105 op \"DUP1\"\nexternal depth 3 pc 106 op \"PUSH4\"\nexternal depth 3 pc 111 op \"EQ\"\nexternal depth 3 pc 112 op \"PUSH2\"\nexternal depth 3 pc 115 op \"JUMPI\"\nexternal depth 3 pc 116 op \"DUP1\"\nexternal depth 3 pc 117 op \"PUSH4\"\nexternal depth 3 pc 122 op \"EQ\"\nexternal depth 3 pc 123 op \"PUSH2\"\nexternal depth 3 pc 126 op \"JUMPI\"\nexternal depth 3 pc 127 op \"DUP1\"\nexternal depth 3 pc 128 op \"PUSH4\"\nexternal depth 3 pc 133 op \"EQ\"\nexternal depth 3 pc 134 op \"PUSH2\"\nexternal depth 3 pc 137 op \"JUMPI\"\nexternal depth 3 pc 138 op \"DUP1\"\nexternal depth 3 pc 139 op \"PUSH4\"\nexternal depth 3 pc 144 op \"EQ\"\nexternal depth 3 pc 145 op \"PUSH2\"\nexternal depth 3 pc 148 op \"JUMPI\"\nexternal depth 3 pc 149 op \"DUP1\"\nexternal depth 3 pc 150 op \"PUSH4\"\nexternal depth 3 pc 155 op \"EQ\"\nexternal depth 3 pc 156 op \"PUSH2\"\nexternal depth 3 pc 159 op \"JUMPI\"\nexternal depth 3 pc 160 op \"DUP1\"\nexternal depth 3 pc 161 op \"PUSH4\"\nexternal depth 3 pc 166 op \"EQ\"\nexternal depth 3 pc 167 op \"PUSH2\"\nexternal depth 3 pc 170 op \"JUMPI\"\nexternal depth 3 pc 171 op \"DUP1\"\nexternal depth 3 pc 172 op \"PUSH4\"\nexternal depth 3 pc 177 op \"EQ\"\nexternal depth 3 pc 178 op \"PUSH2\"\nexternal depth 3 pc 181 op \"JUMPI\"\nexternal depth 3 pc 182 op \"DUP1\"\nexternal depth 3 pc 183 op \"PUSH4\"\nexternal depth 3 pc 188 op \"EQ\"\nexternal depth 3 pc 189 op \"PUSH2\"\nexternal depth 3 pc 192 op \"JUMPI\"\nexternal depth 3 pc 193 op \"DUP1\"\nexternal depth 3 pc 194 op \"PUSH4\"\nexternal depth 3 pc 199 op \"EQ\"\nexternal depth 3 pc 200 op \"PUSH2\"\nexternal depth 3 pc 203 op \"JUMPI\"\nexternal depth 3 pc 204 op \"DUP1\"\nexternal depth 3 pc 205 op \"PUSH4\"\nexternal depth 3 pc 210 op \"EQ\"\nexternal depth 3 pc 211 op \"PUSH2\"\nexternal depth 3 pc 214 op \"JUMPI\"\nexternal depth 3 pc 215 op \"DUP1\"\nexternal depth 3 pc 216 op \"PUSH4\"\nexternal depth 3 pc 221 op \"EQ\"\nexternal depth 3 pc 222 op \"PUSH2\"\nexternal depth 3 pc 225 op \"JUMPI\"\nexternal depth 3 pc 226 op \"DUP1\"\nexternal depth 3 pc 227 op \"PUSH4\"\nexternal depth 3 pc 232 op \"EQ\"\nexternal depth 3 pc 233 op \"PUSH2\"\nexternal depth 3 pc 236 op \"JUMPI\"\nexternal depth 3 pc 237 op \"DUP1\"\nexternal depth 3 pc 238 op \"PUSH4\"\nexternal depth 3 pc 243 op \"EQ\"\nexternal depth 3 pc 244 op \"PUSH2\"\nexternal depth 3 pc 247 op \"JUMPI\"\nexternal depth 3 pc 248 op \"DUP1\"\nexternal depth 3 pc 249 op \"PUSH4\"\nexternal depth 3 pc 254 op \"EQ\"\nexternal depth 3 pc 255 op \"PUSH2\"\nexternal depth 3 pc 258 op \"JUMPI\"\nexternal depth 3 pc 259 op \"DUP1\"\nexternal depth 3 pc 260 op \"PUSH4\"\nexternal depth 3 pc 265 op \"EQ\"\nexternal depth 3 pc 266 op \"PUSH2\"\nexternal depth 3 pc 269 op \"JUMPI\"\nexternal depth 3 pc 270 op \"DUP1\"\nexternal depth 3 pc 271 op \"PUSH4\"\nexternal depth 3 pc 276 op \"EQ\"\nexternal depth 3 pc 277 op \"PUSH2\"\nexternal depth 3 pc 280 op \"JUMPI\"\nexternal depth 3 pc 281 op \"DUP1\"\nexternal depth 3 pc 282 op \"PUSH4\"\nexternal depth 3 pc 287 op \"EQ\"\nexternal depth 3 pc 288 op \"PUSH2\"\nexternal depth 3 pc 291 op \"JUMPI\"\nexternal depth 3 pc 292 op \"DUP1\"\nexternal depth 3 pc 293 op \"PUSH4\"\nexternal depth 3 pc 298 op \"EQ\"\nexternal depth 3 pc 299 op \"PUSH2\"\nexternal depth 3 pc 302 op \"JUMPI\"\nexternal depth 3 pc 303 op \"DUP1\"\nexternal depth 3 pc 304 op \"PUSH4\"\nexternal depth 3 pc 309 op \"EQ\"\nexternal depth 3 pc 310 op \"PUSH2\"\nexternal depth 3 pc 313 op \"JUMPI\"\nexternal depth 3 pc 314 op \"DUP1\"\nexternal depth 3 pc 315 op \"PUSH4\"\nexternal depth 3 pc 320 op \"EQ\"\nexternal depth 3 pc 321 op \"PUSH2\"\nexternal depth 3 pc 324 op \"JUMPI\"\nexternal depth 3 pc 325 op \"DUP1\"\nexternal depth 3 pc 326 op \"PUSH4\"\nexternal depth 3 pc 331 op \"EQ\"\nexternal depth 3 pc 332 op \"PUSH2\"\nexternal depth 3 pc 335 op \"JUMPI\"\nexternal depth 3 pc 336 op \"DUP1\"\nexternal depth 3 pc 337 op \"PUSH4\"\nexternal depth 3 pc 342 op \"EQ\"\nexternal depth 3 pc 343 op \"PUSH2\"\nexternal depth 3 pc 346 op \"JUMPI\"\nexternal depth 3 pc 347 op \"DUP1\"\nexternal depth 3 pc 348 op \"PUSH4\"\nexternal depth 3 pc 353 op \"EQ\"\nexternal depth 3 pc 354 op \"PUSH2\"\nexternal depth 3 pc 357 op \"JUMPI\"\nexternal depth 3 pc 358 op \"DUP1\"\nexternal depth 3 pc 359 op \"PUSH4\"\nexternal depth 3 pc 364 op \"EQ\"\nexternal depth 3 pc 365 op \"PUSH2\"\nexternal depth 3 pc 368 op \"JUMPI\"\nexternal depth 3 pc 369 op \"DUP1\"\nexternal depth 3 pc 370 op \"PUSH4\"\nexternal depth 3 pc 375 op \"EQ\"\nexternal depth 3 pc 376 op \"PUSH2\"\nexternal depth 3 pc 379 op \"JUMPI\"\nexternal depth 3 pc 380 op \"DUP1\"\nexternal depth 3 pc 381 op \"PUSH4\"\nexternal depth 3 pc 386 op \"EQ\"\nexternal depth 3 pc 387 op \"PUSH2\"\nexternal depth 3 pc 390 op \"JUMPI\"\nexternal depth 3 pc 391 op \"DUP1\"\nexternal depth 3 pc 392 op \"PUSH4\"\nexternal depth 3 pc 397 op \"EQ\"\nexternal depth 3 pc 398 op \"PUSH2\"\nexternal depth 3 pc 401 op \"JUMPI\"\nexternal depth 3 pc 402 op \"DUP1\"\nexternal depth 3 pc 403 op \"PUSH4\"\nexternal depth 3 pc 408 op \"EQ\"\nexternal depth 3 pc 409 op \"PUSH2\"\nexternal depth 3 pc 412 op \"JUMPI\"\nexternal depth 3 pc 413 op \"DUP1\"\nexternal depth 3 pc 414 op \"PUSH4\"\nexternal depth 3 pc 419 op \"EQ\"\nexternal depth 3 pc 420 op \"PUSH2\"\nexternal depth 3 pc 423 op \"JUMPI\"\nexternal depth 3 pc 424 op \"DUP1\"\nexternal depth 3 pc 425 op \"PUSH4\"\nexternal depth 3 pc 430 op \"EQ\"\nexternal depth 3 pc 431 op \"PUSH2\"\nexternal depth 3 pc 434 op \"JUMPI\"\nexternal depth 3 pc 435 op \"DUP1\"\nexternal depth 3 pc 436 op \"PUSH4\"\nexternal depth 3 pc 441 op \"EQ\"\nexternal depth 3 pc 442 op \"PUSH2\"\nexternal depth 3 pc 445 op \"JUMPI\"\nexternal depth 3 pc 446 op \"DUP1\"\nexternal depth 3 pc 447 op \"PUSH4\"\nexternal depth 3 pc 452 op \"EQ\"\nexternal depth 3 pc 453 op \"PUSH2\"\nexternal depth 3 pc 456 op \"JUMPI\"\nexternal depth 3 pc 457 op \"DUP1\"\nexternal depth 3 pc 458 op \"PUSH4\"\nexternal depth 3 pc 463 op \"EQ\"\nexternal depth 3 pc 464 op \"PUSH2\"\nexternal depth 3 pc 467 op \"JUMPI\"\nexternal depth 3 pc 468 op \"DUP1\"\nexternal depth 3 pc 469 op \"PUSH4\"\nexternal depth 3 pc 474 op \"EQ\"\nexternal depth 3 pc 475 op \"PUSH2\"\nexternal depth 3 pc 478 op \"JUMPI\"\nexternal depth 3 pc 479 op \"DUP1\"\nexternal depth 3 pc 480 op \"PUSH4\"\nexternal depth 3 pc 485 op \"EQ\"\nexternal depth 3 pc 486 op \"PUSH2\"\nexternal depth 3 pc 489 op \"JUMPI\"\nexternal depth 3 pc 490 op \"DUP1\"\nexternal depth 3 pc 491 op \"PUSH4\"\nexternal depth 3 pc 496 op \"EQ\"\nexternal depth 3 pc 497 op \"PUSH2\"\nexternal depth 3 pc 500 op \"JUMPI\"\nexternal depth 3 pc 501 op \"DUP1\"\nexternal depth 3 pc 502 op \"PUSH4\"\nexternal depth 3 pc 507 op \"EQ\"\nexternal depth 3 pc 508 op \"PUSH2\"\nexternal depth 3 pc 511 op \"JUMPI\"\nexternal depth 3 pc 512 op \"DUP1\"\nexternal depth 3 pc 513 op \"PUSH4\"\nexternal depth 3 pc 518 op \"EQ\"\nexternal depth 3 pc 519 op \"PUSH2\"\nexternal depth 3 pc 522 op \"JUMPI\"\nexternal depth 3 pc 523 op \"DUP1\"\nexternal depth 3 pc 524 op \"PUSH4\"\nexternal depth 3 pc 529 op \"EQ\"\nexternal depth 3 pc 530 op \"PUSH2\"\nexternal depth 3 pc 533 op \"JUMPI\"\nexternal depth 3 pc 534 op \"DUP1\"\nexternal depth 3 pc 535 op \"PUSH4\"\nexternal depth 3 pc 540 op \"EQ\"\nexternal depth 3 pc 541 op \"PUSH2\"\nexternal depth 3 pc 544 op \"JUMPI\"\nexternal depth 3 pc 545 op \"DUP1\"\nexternal depth 3 pc 546 op \"PUSH4\"\nexternal depth 3 pc 551 op \"EQ\"\nexternal depth 3 pc 552 op \"PUSH2\"\nexternal depth 3 pc 555 op \"JUMPI\"\nexternal depth 3 pc 556 op \"DUP1\"\nexternal depth 3 pc 557 op \"PUSH4\"\nexternal depth 3 pc 562 op \"EQ\"\nexternal depth 3 pc 563 op \"PUSH2\"\nexternal depth 3 pc 566 op \"JUMPI\"\nexternal depth 3 pc 567 op \"DUP1\"\nexternal depth 3 pc 568 op \"PUSH4\"\nexternal depth 3 pc 573 op \"EQ\"\nexternal depth 3 pc 574 op \"PUSH2\"\nexternal depth 3 pc 577 op \"JUMPI\"\nexternal depth 3 pc 578 op \"DUP1\"\nexternal depth 3 pc 579 op \"PUSH4\"\nexternal depth 3 pc 584 op \"EQ\"\nexternal depth 3 pc 585 op \"PUSH2\"\nexternal depth 3 pc 588 op \"JUMPI\"\nexternal depth 3 pc 589 op \"DUP1\"\nexternal depth 3 pc 590 op \"PUSH4\"\nexternal depth 3 pc 595 op \"EQ\"\nexternal depth 3 pc 596 op \"PUSH2\"\nexternal depth 3 pc 599 op \"JUMPI\"\nexternal depth 3 pc 600 op \"DUP1\"\nexternal depth 3 pc 601 op \"PUSH4\"\nexternal depth 3 pc 606 op \"EQ\"\nexternal depth 3 pc 607 op \"PUSH2\"\nexternal depth 3 pc 610 op \"JUMPI\"\nexternal depth 3 pc 611 op \"DUP1\"\nexternal depth 3 pc 612 op \"PUSH4\"\nexternal depth 3 pc 617 op \"EQ\"\nexternal depth 3 pc 618 op \"PUSH2\"\nexternal depth 3 pc 621 op \"JUMPI\"\nexternal depth 3 pc 622 op \"DUP1\"\nexternal depth 3 pc 623 op \"PUSH4\"\nexternal depth 3 pc 628 op \"EQ\"\nexternal depth 3 pc 629 op \"PUSH2\"\nexternal depth 3 pc 632 op \"JUMPI\"\nexternal depth 3 pc 633 op \"DUP1\"\nexternal depth 3 pc 634 op \"PUSH4\"\nexternal depth 3 pc 639 op \"EQ\"\nexternal depth 3 pc 640 op \"PUSH2\"\nexternal depth 3 pc 643 op \"JUMPI\"\nexternal depth 3 pc 644 op \"DUP1\"\nexternal depth 3 pc 645 op \"PUSH4\"\nexternal depth 3 pc 650 op \"EQ\"\nexternal depth 3 pc 651 op \"PUSH2\"\nexternal depth 3 pc 654 op \"JUMPI\"\nexternal depth 3 pc 655 op \"DUP1\"\nexternal depth 3 pc 656 op \"PUSH4\"\nexternal depth 3 pc 661 op \"EQ\"\nexternal depth 3 pc 662 op \"PUSH2\"\nexternal depth 3 pc 665 op \"JUMPI\"\nexternal depth 3 pc 666 op \"DUP1\"\nexternal depth 3 pc 667 op \"PUSH4\"\nexternal depth 3 pc 672 op \"EQ\"\nexternal depth 3 pc 673 op \"PUSH2\"\nexternal depth 3 pc 676 op \"JUMPI\"\nexternal depth 3 pc 677 op \"DUP1\"\nexternal depth 3 pc 678 op \"PUSH4\"\nexternal depth 3 pc 683 op \"EQ\"\nexternal depth 3 pc 684 op \"PUSH2\"\nexternal depth 3 pc 687 op \"JUMPI\"\nexternal depth 3 pc 688 op \"DUP1\"\nexternal depth 3 pc 689 op \"PUSH4\"\nexternal depth 3 pc 694 op \"EQ\"\nexternal depth 3 pc 695 op \"PUSH2\"\nexternal depth 3 pc 698 op \"JUMPI\"\nexternal depth 3 pc 699 op \"DUP1\"\nexternal depth 3 pc 700 op \"PUSH4\"\nexternal depth 3 pc 705 op \"EQ\"\nexternal depth 3 pc 706 op \"PUSH2\"\nexternal depth 3 pc 709 op \"JUMPI\"\nexternal depth 3 pc 710 op \"DUP1\"\nexternal depth 3 pc 711 op \"PUSH4\"\nexternal depth 3 pc 716 op \"EQ\"\nexternal depth 3 pc 717 op \"PUSH2\"\nexternal depth 3 pc 720 op \"JUMPI\"\nexternal depth 3 pc 721 op \"DUP1\"\nexternal depth 3 pc 722 op \"PUSH4\"\nexternal depth 3 pc 727 op \"EQ\"\nexternal depth 3 pc 728 op \"PUSH2\"\nexternal depth 3 pc 731 op \"JUMPI\"\nexternal depth 3 pc 732 op \"DUP1\"\nexternal depth 3 pc 733 op \"PUSH4\"\nexternal depth 3 pc 738 op \"EQ\"\nexternal depth 3 pc 739 op \"PUSH2\"\nexternal depth 3 pc 742 op \"JUMPI\"\nexternal depth 3 pc 743 op \"DUP1\"\nexternal depth 3 pc 744 op \"PUSH4\"\nexternal depth 3 pc 749 op \"EQ\"\nexternal depth 3 pc 750 op \"PUSH2\"\nexternal depth 3 pc 753 op \"JUMPI\"\nexternal depth 3 pc 754 op \"DUP1\"\nexternal depth 3 pc 755 op \"PUSH4\"\nexternal depth 3 pc 760 op \"EQ\"\nexternal depth 3 pc 761 op \"PUSH2\"\nexternal depth 3 pc 764 op \"JUMPI\"\nexternal depth 3 pc 765 op \"DUP1\"\nexternal depth 3 pc 766 op \"PUSH4\"\nexternal depth 3 pc 771 op \"EQ\"\nexternal depth 3 pc 772 op \"PUSH2\"\nexternal depth 3 pc 775 op \"JUMPI\"\nexternal depth 3 pc 776 op \"DUP1\"\nexternal depth 3 pc 777 op \"PUSH4\"\nexternal depth 3 pc 782 op \"EQ\"\nexternal depth 3 pc 783 op \"PUSH2\"\nexternal depth 3 pc 786 op \"JUMPI\"\nexternal depth 3 pc 787 op \"DUP1\"\nexternal depth 3 pc 788 op \"PUSH4\"\nexternal depth 3 pc 793 op \"EQ\"\nexternal depth 3 pc 794 op \"PUSH2\"\nexternal depth 3 pc 797 op \"JUMPI\"\nexternal depth 3 pc 798 op \"DUP1\"\nexternal depth 3 pc 799 op \"PUSH4\"\nexternal depth 3 pc 804 op \"EQ\"\nexternal depth 3 pc 805 op \"PUSH2\"\nexternal depth 3 pc 808 op \"JUMPI\"\nexternal depth 3 pc 809 op \"DUP1\"\nexternal depth 3 pc 810 op \"PUSH4\"\nexternal depth 3 pc 815 op \"EQ\"\nexternal depth 3 pc 816 op \"PUSH2\"\nexternal depth 3 pc 819 op \"JUMPI\"\nexternal depth 3 pc 820 op \"DUP1\"\nexternal depth 3 pc 821 op \"PUSH4\"\nexternal depth 3 pc 826 op \"EQ\"\nexternal depth 3 pc 827 op \"PUSH2\"\nexternal depth 3 pc 830 op \"JUMPI\"\nexternal depth 3 pc 831 op \"DUP1\"\nexternal depth 3 pc 832 op \"PUSH4\"\nexternal depth 3 pc 837 op \"EQ\"\nexternal depth 3 pc 838 op \"PUSH2\"\nexternal depth 3 pc 841 op \"JUMPI\"\nexternal depth 3 pc 842 op \"DUP1\"\nexternal depth 3 pc 843 op \"PUSH4\"\nexternal depth 3 pc 848 op \"EQ\"\nexternal depth 3 pc 849 op \"PUSH2\"\nexternal depth 3 pc 852 op \"JUMPI\"\nexternal depth 3 pc 853 op \"DUP1\"\nexternal depth 3 pc 854 op \"PUSH4\"\nexternal depth 3 pc 859 op \"EQ\"\nexternal depth 3 pc 860 op \"PUSH2\"\nexternal depth 3 pc 863 op \"JUMPI\"\nexternal depth 3 pc 864 op \"DUP1\"\nexternal depth 3 pc 865 op \"PUSH4\"\nexternal depth 3 pc 870 op \"EQ\"\nexternal depth 3 pc 871 op \"PUSH2\"\nexternal depth 3 pc 874 op \"JUMPI\"\nexternal depth 3 pc 875 op \"DUP1\"\nexternal depth 3 pc 876 op \"PUSH4\"\nexternal depth 3 pc 881 op \"EQ\"\nexternal depth 3 pc 882 op \"PUSH2\"\nexternal depth 3 pc 885 op \"JUMPI\"\nexternal depth 3 pc 886 op \"DUP1\"\nexternal depth 3 pc 887 op \"PUSH4\"\nexternal depth 3 pc 892 op \"EQ\"\nexternal depth 3 pc 893 op \"PUSH2\"\nexternal depth 3 pc 896 op \"JUMPI\"\nexternal depth 3 pc 897 op \"DUP1\"\nexternal depth 3 pc 898 op \"PUSH4\"\nexternal depth 3 pc 903 op \"EQ\"\nexternal depth 3 pc 904 op \"PUSH2\"\nexternal depth 3 pc 907 op \"JUMPI\"\nexternal depth 3 pc 908 op \"DUP1\"\nexternal depth 3 pc 909 op \"PUSH4\"\nexternal depth 3 pc 914 op \"EQ\"\nexternal depth 3 pc 915 op \"PUSH2\"\nexternal depth 3 pc 918 op \"JUMPI\"\nexternal depth 3 pc 919 op \"DUP1\"\nexternal depth 3 pc 920 op \"PUSH4\"\nexternal depth 3 pc 925 op \"EQ\"\nexternal depth 3 pc 926 op \"PUSH2\"\nexternal depth 3 pc 929 op \"JUMPI\"\nexternal depth 3 pc 930 op \"DUP1\"\nexternal depth 3 pc 931 op \"PUSH4\"\nexternal depth 3 pc 936 op \"EQ\"\nexternal depth 3 pc 937 op \"PUSH2\"\nexternal depth 3 pc 940 op \"JUMPI\"\nexternal depth 3 pc 941 op \"DUP1\"\nexternal depth 3 pc 942 op \"PUSH4\"\nexternal depth 3 pc 947 op \"EQ\"\nexternal depth 3 pc 948 op \"PUSH2\"\nexternal depth 3 pc 951 op \"JUMPI\"\nexternal depth 3 pc 952 op \"DUP1\"\nexternal depth 3 pc 953 op \"PUSH4\"\nexternal depth 3 pc 958 op \"EQ\"\nexternal depth 3 pc 959 op \"PUSH2\"\nexternal depth 3 pc 962 op \"JUMPI\"\nexternal depth 3 pc 963 op \"DUP1\"\nexternal depth 3 pc 964 op \"PUSH4\"\nexternal depth 3 pc 969 op \"EQ\"\nexternal depth 3 pc 970 op \"PUSH2\"\nexternal depth 3 pc 973 op \"JUMPI\"\nexternal depth 3 pc 974 op \"DUP1\"\nexternal depth 3 pc 975 op \"PUSH4\"\nexternal depth 3 pc 980 op \"EQ\"\nexternal depth 3 pc 981 op \"PUSH2\"\nexternal depth 3 pc 984 op \"JUMPI\"\nexternal depth 3 pc 985 op \"DUP1\"\nexternal depth 3 pc 986 op \"PUSH4\"\nexternal depth 3 pc 991 op \"EQ\"\nexternal depth 3 pc 992 op \"PUSH2\"\nexternal depth 3 pc 995 op \"JUMPI\"\nexternal depth 3 pc 996 op \"DUP1\"\nexternal depth 3 pc 997 op \"PUSH4\"\nexternal depth 3 pc 1002 op \"EQ\"\nexternal depth 3 pc 1003 op \"PUSH2\"\nexternal depth 3 pc 1006 op \"JUMPI\"\nexternal depth 3 pc 1069 op \"JUMPDEST\"\nexternal depth 3 pc 1070 op \"PUSH2\"\nexternal depth 3 pc 1073 op \"JUMP\"\nexternal depth 3 pc 8579 op \"JUMPDEST\"\nexternal depth 3 pc 8580 op \"CALLVALUE\"\nexternal depth 3 pc 8581 op \"PUSH2\"\nexternal depth 3 pc 8584 op \"JUMPI\"\nexternal depth 3 pc 8585 op \"PUSH1\"\nexternal depth 3 pc 8587 op \"CALLDATASIZE\"\nexternal depth 3 pc 8588 op \"PUSH1\"\nexternal depth 3 pc 8590 op \"NOT\"\nexternal depth 3 pc 8591 op \"ADD\"\nexternal depth 3 pc 8592 op \"SLT\"\nexternal depth 3 pc 8593 op \"PUSH2\"\nexternal depth 3 pc 8596 op \"JUMPI\"\nexternal depth 3 pc 8597 op \"PUSH1\"\nexternal depth 3 pc 8599 op \"PUSH2\"\nexternal depth 3 pc 8602 op \"PUSH1\"\nexternal depth 3 pc 8604 op \"CALLDATALOAD\"\nexternal depth 3 pc 8605 op \"PUSH2\"\nexternal depth 3 pc 8608 op \"DUP2\"\nexternal depth 3 pc 8609 op \"PUSH2\"\nexternal depth 3 pc 8612 op \"JUMP\"\nexternal depth 3 pc 1727 op \"JUMPDEST\"\nexternal depth 3 pc 1728 op \"PUSH1\"\nexternal depth 3 pc 1730 op \"PUSH1\"\nexternal depth 3 pc 1732 op \"PUSH1\"\nexternal depth 3 pc 1734 op \"SHL\"\nexternal depth 3 pc 1735 op \"SUB\"\nexternal depth 3 pc 1736 op \"DUP2\"\nexternal depth 3 pc 1737 op \"AND\"\nexternal depth 3 pc 1738 op \"SUB\"\nexternal depth 3 pc 1739 op \"PUSH2\"\nexternal depth 3 pc 1742 op \"JUMPI\"\nexternal depth 3 pc 1743 op \"JUMP\"\nexternal depth 3 pc 8613 op \"JUMPDEST\"\nexternal depth 3 pc 8614 op \"PUSH2\"\nexternal depth 3 pc 8617 op \"JUMP\"\nexternal depth 3 pc 11715 op \"JUMPDEST\"\nexternal depth 3 pc 11716 op \"PUSH2\"\nexternal depth 3 pc 11719 op \"PUSH2\"\nexternal depth 3 pc 11722 op \"DUP3\"\nexternal depth 3 pc 11723 op \"PUSH2\"\nexternal depth 3 pc 11726 op \"JUMP\"\nexternal depth 3 pc 3079 op \"JUMPDEST\"\nexternal depth 3 pc 3080 op \"PUSH1\"\nexternal depth 3 pc 3082 op \"PUSH1\"\nexternal depth 3 pc 3084 op \"PUSH1\"\nexternal depth 3 pc 3086 op \"SHL\"\nexternal depth 3 pc 3087 op \"SUB\"\nexternal depth 3 pc 3088 op \"AND\"\nexternal depth 3 pc 3089 op \"PUSH0\"\nexternal depth 3 pc 3090 op \"SWAP1\"\nexternal depth 3 pc 3091 op \"DUP2\"\nexternal depth 3 pc 3092 op \"MSTORE\"\nexternal depth 3 pc 3093 op \"PUSH1\"\nexternal depth 3 pc 3095 op \"PUSH1\"\nexternal depth 3 pc 3097 op \"MSTORE\"\nexternal depth 3 pc 3098 op \"PUSH1\"\nexternal depth 3 pc 3100 op \"SWAP1\"\nexternal depth 3 pc 3101 op \"KECCAK256\"\nexternal depth 3 pc 3102 op \"SWAP1\"\nexternal depth 3 pc 3103 op \"JUMP\"\nexternal depth 3 pc 11727 op \"JUMPDEST\"\nexternal depth 3 pc 11728 op \"PUSH2\"\nexternal depth 3 pc 11731 op \"JUMP\"\nexternal depth 3 pc 9769 op \"JUMPDEST\"\nexternal depth 3 pc 9770 op \"SWAP1\"\nexternal depth 3 pc 9771 op \"PUSH2\"\nexternal depth 3 pc 9774 op \"PUSH2\"\nexternal depth 3 pc 9777 op \"PUSH1\"\nexternal depth 3 pc 9779 op \"PUSH2\"\nexternal depth 3 pc 9782 op \"PUSH2\"\nexternal depth 3 pc 9785 op \"JUMP\"\nexternal depth 3 pc 4415 op \"JUMPDEST\"\nexternal depth 3 pc 4416 op \"PUSH1\"\nexternal depth 3 pc 4418 op \"MLOAD\"\nexternal depth 3 pc 4419 op \"SWAP1\"\nexternal depth 3 pc 4420 op \"PUSH2\"\nexternal depth 3 pc 4423 op \"PUSH2\"\nexternal depth 3 pc 4426 op \"DUP4\"\nexternal depth 3 pc 4427 op \"PUSH2\"\nexternal depth 3 pc 4430 op \"JUMP\"\nexternal depth 3 pc 4375 op \"JUMPDEST\"\nexternal depth 3 pc 4376 op \"PUSH1\"\nexternal depth 3 pc 4378 op \"SWAP1\"\nexternal depth 3 pc 4379 op \"SWAP2\"\nexternal depth 3 pc 4380 op \"ADD\"\nexternal depth 3 pc 4381 op \"PUSH1\"\nexternal depth 3 pc 4383 op \"NOT\"\nexternal depth 3 pc 4384 op \"AND\"\nexternal depth 3 pc 4385 op \"DUP2\"\nexternal depth 3 pc 4386 op \"ADD\"\nexternal depth 3 pc 4387 op \"SWAP1\"\nexternal depth 3 pc 4388 op \"PUSH1\"\nexternal depth 3 pc 4390 op \"PUSH1\"\nexternal depth 3 pc 4392 op \"PUSH1\"\nexternal depth 3 pc 4394 op \"SHL\"\nexternal depth 3 pc 4395 op \"SUB\"\nexternal depth 3 pc 4396 op \"DUP3\"\nexternal depth 3 pc 4397 op \"GT\"\nexternal depth 3 pc 4398 op \"SWAP1\"\nexternal depth 3 pc 4399 op \"DUP3\"\nexternal depth 3 pc 4400 op \"LT\"\nexternal depth 3 pc 4401 op \"OR\"\nexternal depth 3 pc 4402 op \"PUSH2\"\nexternal depth 3 pc 4405 op \"JUMPI\"\nexternal depth 3 pc 4406 op \"PUSH1\"\nexternal depth 3 pc 4408 op \"MSTORE\"\nexternal depth 3 pc 4409 op \"JUMP\"\nexternal depth 3 pc 4431 op \"JUMPDEST\"\nexternal depth 3 pc 4432 op \"JUMP\"\nexternal depth 3 pc 9786 op \"JUMPDEST\"\nexternal depth 3 pc 9787 op \"SWAP5\"\nexternal depth 3 pc 9788 op \"DUP1\"\nexternal depth 3 pc 9789 op \"SLOAD\"\nexternal depth 3 pc 9790 op \"DUP7\"\nexternal depth 3 pc 9791 op \"MSTORE\"\nexternal depth 3 pc 9792 op \"PUSH1\"\nexternal depth 3 pc 9794 op \"DUP2\"\nexternal depth 3 pc 9795 op \"ADD\"\nexternal depth 3 pc 9796 op \"SLOAD\"\nexternal depth 3 pc 9797 op \"PUSH1\"\nexternal depth 3 pc 9799 op \"DUP8\"\nexternal depth 3 pc 9800 op \"ADD\"\nexternal depth 3 pc 9801 op \"MSTORE\"\nexternal depth 3 pc 9802 op \"PUSH1\"\nexternal depth 3 pc 9804 op \"DUP2\"\nexternal depth 3 pc 9805 op \"ADD\"\nexternal depth 3 pc 9806 op \"SLOAD\"\nexternal depth 3 pc 9807 op \"PUSH1\"\nexternal depth 3 pc 9809 op \"DUP8\"\nexternal depth 3 pc 9810 op \"ADD\"\nexternal depth 3 pc 9811 op \"MSTORE\"\nexternal depth 3 pc 9812 op \"PUSH1\"\nexternal depth 3 pc 9814 op \"DUP2\"\nexternal depth 3 pc 9815 op \"ADD\"\nexternal depth 3 pc 9816 op \"SLOAD\"\nexternal depth 3 pc 9817 op \"PUSH1\"\nexternal depth 3 pc 9819 op \"DUP8\"\nexternal depth 3 pc 9820 op \"ADD\"\nexternal depth 3 pc 9821 op \"MSTORE\"\nexternal depth 3 pc 9822 op \"PUSH1\"\nexternal depth 3 pc 9824 op \"DUP2\"\nexternal depth 3 pc 9825 op \"ADD\"\nexternal depth 3 pc 9826 op \"SLOAD\"\nexternal depth 3 pc 9827 op \"PUSH1\"\nexternal depth 3 pc 9829 op \"DUP8\"\nexternal depth 3 pc 9830 op \"ADD\"\nexternal depth 3 pc 9831 op \"MSTORE\"\nexternal depth 3 pc 9832 op \"PUSH1\"\nexternal depth 3 pc 9834 op \"DUP2\"\nexternal depth 3 pc 9835 op \"ADD\"\nexternal depth 3 pc 9836 op \"SLOAD\"\nexternal depth 3 pc 9837 op \"PUSH1\"\nexternal depth 3 pc 9839 op \"DUP8\"\nexternal depth 3 pc 9840 op \"ADD\"\nexternal depth 3 pc 9841 op \"MSTORE\"\nexternal depth 3 pc 9842 op \"PUSH1\"\nexternal depth 3 pc 9844 op \"DUP2\"\nexternal depth 3 pc 9845 op \"ADD\"\nexternal depth 3 pc 9846 op \"SLOAD\"\nexternal depth 3 pc 9847 op \"PUSH1\"\nexternal depth 3 pc 9849 op \"DUP8\"\nexternal depth 3 pc 9850 op \"ADD\"\nexternal depth 3 pc 9851 op \"MSTORE\"\nexternal depth 3 pc 9852 op \"PUSH1\"\nexternal depth 3 pc 9854 op \"DUP2\"\nexternal depth 3 pc 9855 op \"ADD\"\nexternal depth 3 pc 9856 op \"SLOAD\"\nexternal depth 3 pc 9857 op \"PUSH1\"\nexternal depth 3 pc 9859 op \"DUP8\"\nexternal depth 3 pc 9860 op \"ADD\"\nexternal depth 3 pc 9861 op \"MSTORE\"\nexternal depth 3 pc 9862 op \"PUSH1\"\nexternal depth 3 pc 9864 op \"DUP2\"\nexternal depth 3 pc 9865 op \"ADD\"\nexternal depth 3 pc 9866 op \"SLOAD\"\nexternal depth 3 pc 9867 op \"PUSH2\"\nexternal depth 3 pc 9870 op \"DUP8\"\nexternal depth 3 pc 9871 op \"ADD\"\nexternal depth 3 pc 9872 op \"MSTORE\"\nexternal depth 3 pc 9873 op \"ADD\"\nexternal depth 3 pc 9874 op \"SLOAD\"\nexternal depth 3 pc 9875 op \"PUSH1\"\nexternal depth 3 pc 9877 op \"AND\"\nexternal depth 3 pc 9878 op \"SWAP1\"\nexternal depth 3 pc 9879 op \"JUMP\"\nexternal depth 3 pc 9880 op \"JUMPDEST\"\nexternal depth 3 pc 9881 op \"ISZERO\"\nexternal depth 3 pc 9882 op \"ISZERO\"\nexternal depth 3 pc 9883 op \"PUSH2\"\nexternal depth 3 pc 9886 op \"DUP5\"\nexternal depth 3 pc 9887 op \"ADD\"\nexternal depth 3 pc 9888 op \"MSTORE\"\nexternal depth 3 pc 9889 op \"JUMP\"\nexternal depth 3 pc 4431 op \"JUMPDEST\"\nexternal depth 3 pc 4432 op \"JUMP\"\nexternal depth 3 pc 11732 op \"JUMPDEST\"\nexternal depth 3 pc 11733 op \"PUSH2\"\nexternal depth 3 pc 11736 op \"DUP2\"\nexternal depth 3 pc 11737 op \"ADD\"\nexternal depth 3 pc 11738 op \"MLOAD\"\nexternal depth 3 pc 11739 op \"PUSH2\"\nexternal depth 3 pc 11742 op \"JUMPI\"\nexternal depth 3 pc 10079 op \"JUMPDEST\"\nexternal depth 3 pc 10080 op \"POP\"\nexternal depth 3 pc 10081 op \"POP\"\nexternal depth 3 pc 10082 op \"PUSH0\"\nexternal depth 3 pc 10083 op \"SWAP1\"\nexternal depth 3 pc 10084 op \"JUMP\"\nexternal depth 3 pc 2541 op \"JUMPDEST\"\nexternal depth 3 pc 2542 op \"PUSH1\"\nexternal depth 3 pc 2544 op \"MLOAD\"\nexternal depth 3 pc 2545 op \"SWAP1\"\nexternal depth 3 pc 2546 op \"DUP2\"\nexternal depth 3 pc 2547 op \"MSTORE\"\nexternal depth 3 pc 2548 op \"RETURN\"\nexternal depth 2 pc 61 op \"RETURNDATASIZE\"\nexternal depth 2 pc 62 op \"PUSH0\"\nexternal depth 2 pc 63 op \"DUP1\"\nexternal depth 2 pc 64 op \"RETURNDATACOPY\"\nexternal depth 2 pc 65 op \"ISZERO\"\nexternal depth 2 pc 66 op \"PUSH1\"\nexternal depth 2 pc 68 op \"JUMPI\"\nexternal depth 2 pc 69 op \"RETURNDATASIZE\"\nexternal depth 2 pc 70 op \"PUSH0\"\nexternal depth 2 pc 71 op \"RETURN\"\n5022: SWAP1 \n5023: DUP2 \n5024: ISZERO \n5025: PUSH2 13f2\n5028: JUMPI \n5029: PUSH0 \n5030: SWAP2 \n5031: PUSH2 13bc\n5034: JUMPI \n5052: JUMPDEST \n5053: SWAP1 \n5054: POP \n5055: PUSH1 20\n5057: DUP3 \n5058: RETURNDATASIZE \n5059: PUSH1 20\n5061: GT \n5062: PUSH2 13ea\n5065: JUMPI \n5066: JUMPDEST \n5067: DUP2 \n5068: PUSH2 13d7\n5071: PUSH1 20\n5073: SWAP4 \n5074: DUP4 \n5075: PUSH2 12b3\n5078: JUMP \n4787: JUMPDEST \n4788: PUSH1 1f\n4790: SWAP1 \n4791: SWAP2 \n4792: ADD \n4793: PUSH1 1f\n4795: NOT \n4796: AND \n4797: DUP2 \n4798: ADD \n4799: SWAP1 \n4800: PUSH1 01\n4802: PUSH1 01\n4804: PUSH1 40\n4806: SHL \n4807: SUB \n4808: DUP3 \n4809: GT \n4810: SWAP1 \n4811: DUP3 \n4812: LT \n4813: OR \n4814: PUSH2 12d6\n4817: JUMPI \n4818: PUSH1 40\n4820: MSTORE \n4821: JUMP \n5079: JUMPDEST \n5080: DUP2 \n5081: ADD \n5082: SUB \n5083: SLT \n5084: PUSH2 02d6\n5087: JUMPI \n5088: PUSH2 13b5\n5091: SWAP2 \n5092: MLOAD \n5093: SWAP1 \n5094: PUSH2 13ab\n5097: JUMP \n5035: JUMPDEST \n5036: PUSH2 13b5\n5039: SWAP3 \n5040: POP \n5041: PUSH2 12ea\n5044: JUMP \n4842: JUMPDEST \n4843: SWAP2 \n4844: SWAP1 \n4845: DUP3 \n4846: ADD \n4847: DUP1 \n4848: SWAP3 \n4849: GT \n4850: PUSH2 12f7\n4853: JUMPI \n4854: JUMP \n5045: JUMPDEST \n5046: DUP1 \n5047: PUSH0 \n5048: PUSH2 137a\n5051: JUMP \n4986: JUMPDEST \n4987: POP \n4988: SWAP1 \n4989: POP \n4990: SWAP1 \n4991: JUMP \n2489: JUMPDEST \n2490: PUSH1 40\n2492: MLOAD \n2493: SWAP1 \n2494: DUP2 \n2495: MSTORE \n2496: RETURN ",
+  "historical_boundaries": {
+    "checks": [
+      {
+        "balance_of": "952895342978902425484537376",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x000000000000000000000000000000000000dead",
+        "match": true,
+        "raw": "952895342978902425484537376"
+      },
+      {
+        "balance_of": "18818413660205245731400",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x237d12f452079ee9562d7d91e8073f2b9a6bd823",
+        "match": true,
+        "raw": "18818413660205245731400"
+      },
+      {
+        "balance_of": "2640930013020415436032",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "match": true,
+        "raw": "2640930013020415436032"
+      },
+      {
+        "balance_of": "0",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x669ec2b8f7b6e2b26c0f8cc2cb6d10d2f13514f2",
+        "match": true,
+        "raw": "0"
+      },
+      {
+        "balance_of": "2621044553890250654654",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x722b3a51bddf5e7988627da87616df50886bbfd8",
+        "match": true,
+        "raw": "2621044553890250654654"
+      },
+      {
+        "balance_of": "0",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x8888888889391fa18f678256cc07da067778eb90",
+        "match": true,
+        "raw": "0"
+      },
+      {
+        "balance_of": "0",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x911a857f630630693480a9a88d63617bcb9c175a",
+        "match": true,
+        "raw": "0"
+      },
+      {
+        "balance_of": "12039854105632701436687065",
+        "block": 122288005,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0xaf14c0539809df595197bb919ce32ac3b196748b",
+        "match": true,
+        "raw": "12039854105632701436687065"
+      },
+      {
+        "balance_of": "952901918561849412449039622",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x000000000000000000000000000000000000dead",
+        "match": true,
+        "raw": "952901918561849412449039622"
+      },
+      {
+        "balance_of": "12545609106803497154267",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x237d12f452079ee9562d7d91e8073f2b9a6bd823",
+        "match": true,
+        "raw": "12545609106803497154267"
+      },
+      {
+        "balance_of": "2828914149622467893345",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "match": true,
+        "raw": "2828914149622467893345"
+      },
+      {
+        "balance_of": "100000000000000000",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x669ec2b8f7b6e2b26c0f8cc2cb6d10d2f13514f2",
+        "match": true,
+        "raw": "100000000000000000"
+      },
+      {
+        "balance_of": "2621044553890250654654",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x722b3a51bddf5e7988627da87616df50886bbfd8",
+        "match": true,
+        "raw": "2621044553890250654654"
+      },
+      {
+        "balance_of": "0",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x8888888889391fa18f678256cc07da067778eb90",
+        "match": true,
+        "raw": "0"
+      },
+      {
+        "balance_of": "100000000000000000",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0x911a857f630630693480a9a88d63617bcb9c175a",
+        "match": true,
+        "raw": "100000000000000000"
+      },
+      {
+        "balance_of": "12039363143102514168304639",
+        "block": 122289029,
+        "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+        "holder": "0xaf14c0539809df595197bb919ce32ac3b196748b",
+        "match": true,
+        "raw": "12039363143102514168304639"
+      }
+    ],
+    "elapsed_seconds": 4.841044708,
+    "holders": 8,
+    "mismatches": 0,
+    "qualified": false,
+    "reference_observations": 38,
+    "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+    "scope": "Historical raw-word versus balanceOf checks at both canonical boundaries for every holder in this token's reference stream. External return controls establish a dependency even when sampled contributions are zero; no production qualification.",
+    "status": "inspected",
+    "tool_language": "Rust"
+  },
+  "qualified": false,
+  "rank": 338,
+  "return_controls": {
+    "block": 122288048,
+    "call_trace_sha256": "d02b1b7edf8e78d3a0c0416d8c06861e43fa228f46327b9dd26d1428ab251b5f",
+    "cases": [
+      {
+        "balance": "17",
+        "bypassed": false,
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000011"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "18",
+        "bypassed": false,
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": null,
+        "bypassed": false,
+        "holder": "0x000000000000000000000000000000000000dead",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "response": {
+          "error": {
+            "code": 3,
+            "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+            "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+          },
+          "id": 1,
+          "jsonrpc": "2.0"
+        },
+        "simulated_external_return": "1"
+      },
+      {
+        "balance": "17",
+        "bypassed": false,
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000011"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "18",
+        "bypassed": false,
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": null,
+        "bypassed": false,
+        "holder": "0x0000000000000000000000000000000000000000",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "response": {
+          "error": {
+            "code": 3,
+            "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+            "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+          },
+          "id": 1,
+          "jsonrpc": "2.0"
+        },
+        "simulated_external_return": "1"
+      },
+      {
+        "balance": "0",
+        "bypassed": true,
+        "holder": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "raw": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "1",
+        "bypassed": true,
+        "holder": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "raw": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "bypassed": true,
+        "holder": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "simulated_external_return": "1"
+      },
+      {
+        "balance": "0",
+        "bypassed": true,
+        "holder": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "raw": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "1",
+        "bypassed": true,
+        "holder": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "raw": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "simulated_external_return": "17"
+      },
+      {
+        "balance": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "bypassed": true,
+        "holder": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "simulated_external_return": "1"
+      }
+    ],
+    "dependency": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+    "hash": "0xdb99d62e08c629178178d7095f705480590e8f5a45abe2e13d827979ecd8a99f",
+    "prior_storage_controls_sha256": "d3c4bfa11b56171b5bad729f75c3b30521296c524743f3b6f53b35d1e638256f",
+    "qualified": false,
+    "scope": "Read-only code overrides show conditional external contribution and checked overflow; these simulated balances are not historical holder mismatches.",
+    "status": "inspected",
+    "token": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888"
+  },
+  "scope": "A simulated nonzero external return changes balanceOf even though all sampled historical boundary contributions were zero. Failed individual storage-word activation controls are preserved. Dependency model, durable state and affected-holder output remain unqualified.",
+  "status": "inspected_not_qualified",
+  "storage_controls": {
+    "controls": [
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271d",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271d",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271e",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271e",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271f",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271f",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2720",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2720",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2721",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2721",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2722",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2722",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2723",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2723",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2724",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2724",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "0",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2725",
+        "raw_word": "0",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "balance_of": "1",
+        "dependency_word": "17",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2725",
+        "raw_word": "1",
+        "response": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      }
+    ],
+    "dependency_preimages": [
+      {
+        "hash": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+        "pc": 3101,
+        "preimage": "000000000000000000000000000000000000000000000000000000000000dead0000000000000000000000000000000000000000000000000000000000000013"
+      }
+    ],
+    "elapsed_seconds": 1.300344542,
+    "independent_storage": [
+      {
+        "account": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+        "value": "0x00000000000000000000000000000000000000000314379c99fea17a836559d5"
+      },
+      {
+        "account": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "key": "0x0000000000000000000000000000000000000000000000000000000000000011",
+        "value": "0x000000000000000000000000e41dd249488fbd9e50d8749574ee32dfc7cc273d"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "value": "0x000000000000000000000000fc261f20df9af2df4e654893ca7eea5ffbd7161a"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271d",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271e",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271f",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2720",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2721",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2722",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2723",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2724",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "account": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2725",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      }
+    ],
+    "inspection": {
+      "address": "0x000000000000000000000000000000000000dead",
+      "balance_of": "952896164801445198295292373",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288048,
+      "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "elapsed_seconds": 0.458687834,
+      "execution_code": [
+        {
+          "address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+          "checked_instructions": 3,
+          "runtime_hash": "0x625711bf573a69e53ef7137836a040d240a36fd5ded10fb02b83cbb5c66bde8b"
+        },
+        {
+          "address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+          "checked_instructions": 2,
+          "runtime_hash": "0xeb79a802694ac2f300de8d82be56144fe319e1c6ca9329feeede38cff3519a96"
+        },
+        {
+          "address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+          "checked_instructions": 10,
+          "runtime_hash": "0x7d0a069eb9f30b59428da9b5b67399ae56a899376d306aba669d7bfd8a24b4eb"
+        }
+      ],
+      "execution_contexts": {
+        "calls": [
+          {
+            "code_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "depth": 1,
+            "entered": true,
+            "opcode": "STATICCALL",
+            "pc": 5021,
+            "storage_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "target": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d"
+          },
+          {
+            "code_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "depth": 2,
+            "entered": true,
+            "opcode": "DELEGATECALL",
+            "pc": 60,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "target": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a"
+          }
+        ],
+        "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+        "storage_reads": [
+          {
+            "code_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "depth": 1,
+            "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+            "pc": 4952,
+            "storage_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "value": "0x00000000000000000000000000000000000000000314379c99fea17a836559d5"
+          },
+          {
+            "code_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "depth": 1,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000011",
+            "pc": 4962,
+            "storage_address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+            "value": "0x000000000000000000000000e41dd249488fbd9e50d8749574ee32dfc7cc273d"
+          },
+          {
+            "code_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "depth": 2,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 38,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x000000000000000000000000fc261f20df9af2df4e654893ca7eea5ffbd7161a"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+            "pc": 9789,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271d",
+            "pc": 9796,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271e",
+            "pc": 9806,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271f",
+            "pc": 9816,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2720",
+            "pc": 9826,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2721",
+            "pc": 9836,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2722",
+            "pc": 9846,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2723",
+            "pc": 9856,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2724",
+            "pc": 9866,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "code_address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+            "depth": 3,
+            "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2725",
+            "pc": 9874,
+            "storage_address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        ]
+      },
+      "hash": "0xdb99d62e08c629178178d7095f705480590e8f5a45abe2e13d827979ecd8a99f",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x625711bf573a69e53ef7137836a040d240a36fd5ded10fb02b83cbb5c66bde8b",
+      "status": "inspected",
+      "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "pc": 4952,
+          "value": "0x00000000000000000000000000000000000000000314379c99fea17a836559d5"
+        },
+        {
+          "depth": 1,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000011",
+          "pc": 4962,
+          "value": "0x000000000000000000000000e41dd249488fbd9e50d8749574ee32dfc7cc273d"
+        },
+        {
+          "depth": 2,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 38,
+          "value": "0x000000000000000000000000fc261f20df9af2df4e654893ca7eea5ffbd7161a"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271c",
+          "pc": 9789,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271d",
+          "pc": 9796,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271e",
+          "pc": 9806,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac271f",
+          "pc": 9816,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2720",
+          "pc": 9826,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2721",
+          "pc": 9836,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2722",
+          "pc": 9846,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2723",
+          "pc": 9856,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2724",
+          "pc": 9866,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "depth": 3,
+          "key": "0x2264e2d7bacabe6058f5009f42467b9be28015e7760f87409562384c94ac2725",
+          "pc": 9874,
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        }
+      ],
+      "storage_word": "952896164801445198295292373",
+      "tool_language": "Rust",
+      "trace_config": {
+        "disableStack": false,
+        "disableStorage": false,
+        "enableMemory": true,
+        "enableReturnData": true,
+        "timeout": "10s"
+      },
+      "trace_sha256": "acdcfc75cc45078711fb090479620d50165b7b5b10098fc2d450d5f167301943"
+    },
+    "inspection_sha256": "bd9ebf8b879b1066cb15078f49d9750d8e73566299bc16389df315794a29d2fa",
+    "qualified": false,
+    "runtimes": [
+      {
+        "address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+        "historical_source_bound": false,
+        "name": null,
+        "runtime_hash": "0x625711bf573a69e53ef7137836a040d240a36fd5ded10fb02b83cbb5c66bde8b",
+        "source_sha256": "489c3a56f61c2b5b9959ac47e163d1d49348fbd40a257853f9d19e0857e0fd57"
+      },
+      {
+        "address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+        "historical_source_bound": false,
+        "name": null,
+        "runtime_hash": "0xeb79a802694ac2f300de8d82be56144fe319e1c6ca9329feeede38cff3519a96",
+        "source_sha256": "7172cc474af896e1effdd1be1f8d2113753eab2583d93e5447201505307a649e"
+      },
+      {
+        "address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+        "historical_source_bound": false,
+        "name": null,
+        "runtime_hash": "0x7d0a069eb9f30b59428da9b5b67399ae56a899376d306aba669d7bfd8a24b4eb",
+        "source_sha256": "ec04104df98b2fc41c9d321a465b08269f389d17a5fd38db8003df3d63a3b03b"
+      }
+    ],
+    "scope": "Read-only external dependency controls at a canonical historical block; simulated effects are not historical holder mismatches.",
+    "status": "inspected",
+    "tool_language": "Rust"
+  },
+  "symbol": "钻石"
+}

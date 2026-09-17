@@ -1,5 +1,10 @@
 # BSC ranks 301–350: 36 more qualified profiles
 
+This report preserves the original 36-token cohort. The subsequent
+[13-token follow-up](pending350-coverage.md) brings the combined configuration
+to 345 profiles and resolves the direct/proxy candidates listed as pending here.
+钻石 remains excluded alongside the four earlier computed-balance candidates.
+
 The explicit test configuration now contains **332 qualified profiles** from the
 original top 350 RPC-stream candidates. This follow-up adds 36 profiles; 14
 from the latest 50 still need review, alongside the four earlier computed-balance

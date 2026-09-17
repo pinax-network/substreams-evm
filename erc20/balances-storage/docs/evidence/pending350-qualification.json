@@ -1,0 +1,4195 @@
+{
+  "elapsed_seconds": 148.534602417,
+  "layouts_sha256": "4f0e077fb9d01b6fdc7949aae7daa9aa5e84f3cb6f85a986c883642853c29496",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444": 26,
+      "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f": 26,
+      "0x4168253d740edfa77de31dadd8532e228de83f15": 26,
+      "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4": 19,
+      "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483": 19,
+      "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e": 25,
+      "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63": 20,
+      "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888": 30,
+      "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63": 20,
+      "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519": 25,
+      "0x91152b4ef635403efbae860edd0f8c321d7c035d": 19,
+      "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024": 21,
+      "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197": 19
+    },
+    "errors": []
+  },
+  "qualification": [
+    {
+      "basis": "Verified historical proxy and namespaced ERC20 getter; explicit balance/allowance/supply/name roots. Other administrative and bridge fields remain strict unknowns.",
+      "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+      "dependencies": {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "dependencies": [
+              {
+                "address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+                "bytes": 13315,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "TokenImpl",
+                "runtime_hash": "0x5f5b08388e6393a54c2f3666232213d298f6bee046ccf2c3631b99416bbe2f49",
+                "source_sha256": "7efd25c828749c928cfbaf8217ff07f0349e5657b8421cd5e620cafe7af0a202",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "bytes": 212,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b",
+                "source_sha256": "3da02c5b7c17e58c8ff97349692c56945bbecd1f0961058abf467844249d4d84",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "pointers": [
+              {
+                "account": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+                "role": "implementation",
+                "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+              },
+              {
+                "account": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "address": "0x0000000000000000000000000000000000000000",
+                "role": "beacon",
+                "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+              }
+            ]
+          },
+          {
+            "block": 122289029,
+            "dependencies": [
+              {
+                "address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+                "bytes": 13315,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "TokenImpl",
+                "runtime_hash": "0x5f5b08388e6393a54c2f3666232213d298f6bee046ccf2c3631b99416bbe2f49",
+                "source_sha256": "7efd25c828749c928cfbaf8217ff07f0349e5657b8421cd5e620cafe7af0a202",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              },
+              {
+                "address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "bytes": 212,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b",
+                "source_sha256": "3da02c5b7c17e58c8ff97349692c56945bbecd1f0961058abf467844249d4d84",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "pointers": [
+              {
+                "account": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+                "role": "implementation",
+                "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+              },
+              {
+                "account": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+                "address": "0x0000000000000000000000000000000000000000",
+                "role": "beacon",
+                "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+              }
+            ]
+          }
+        ],
+        "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+        "rank": 341,
+        "symbol": "TAKE"
+      },
+      "getter": [
+        {
+          "code": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+          "source": "lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0x46bb9a29bfa5397b30a96a316875496ec2556dd2",
+        "balance_of": "4842954084584721873650673",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288117,
+        "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+        "elapsed_seconds": 0.357064875,
+        "execution_code": [
+          {
+            "address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+            "checked_instructions": 1,
+            "runtime_hash": "0x5f5b08388e6393a54c2f3666232213d298f6bee046ccf2c3631b99416bbe2f49"
+          },
+          {
+            "address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+            "checked_instructions": 2,
+            "runtime_hash": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 49,
+              "storage_address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+              "target": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+              "depth": 1,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 115,
+              "storage_address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+              "value": "0x000000000000000000000000a9709c4caf6e3fb5fd62b11b53b3f8b393c8927d"
+            },
+            {
+              "code_address": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+              "depth": 2,
+              "key": "0xd0cf0f3eff75faf9303a1d6998ad6b2925dd6a6193fbe2c194fc2c755459d06e",
+              "pc": 3686,
+              "storage_address": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+              "value": "0x00000000000000000000000000000000000000000004018911261b5dc59c43f1"
+            }
+          ]
+        },
+        "hash": "0x7832bf107c74fb2b9a0fe540fe002a4eb7e9658e2dd008d27b7523f609ed6d04",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b",
+        "status": "inspected",
+        "storage_key": "0xd0cf0f3eff75faf9303a1d6998ad6b2925dd6a6193fbe2c194fc2c755459d06e",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 115,
+            "value": "0x000000000000000000000000a9709c4caf6e3fb5fd62b11b53b3f8b393c8927d"
+          },
+          {
+            "depth": 2,
+            "key": "0xd0cf0f3eff75faf9303a1d6998ad6b2925dd6a6193fbe2c194fc2c755459d06e",
+            "pc": 3686,
+            "value": "0x00000000000000000000000000000000000000000004018911261b5dc59c43f1"
+          }
+        ],
+        "storage_word": "4842954084584721873650673",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "10da1ac92b2356195f986526d5b007fa5cb1daa0ef326cebde64806d8fcb0e1d"
+      },
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "code_hash": "0x2b5c23057264b2b56cb20607c6f7e9abf8b7d659de7b4f42094ff993d421a54b",
+        "contract": "0xe747e54783ba3f77a8e5251a3cba19ebe9c0e197",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+        ],
+        "proxy": {
+          "code_hash": "0x5f5b08388e6393a54c2f3666232213d298f6bee046ccf2c3631b99416bbe2f49",
+          "implementation": "0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d",
+          "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+        }
+      },
+      "namespace": [
+        {
+          "code": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+          "source": "lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "rank": 341,
+      "source_sha256": "7efd25c828749c928cfbaf8217ff07f0349e5657b8421cd5e620cafe7af0a202",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xa9709c4caf6e3fb5fd62b11b53b3f8b393c8927d?fields=all",
+      "symbol": "TAKE"
+    },
+    {
+      "basis": "Verified historical proxy and namespaced ERC20 getter; explicit balance/allowance/supply/name roots. Other administrative and bridge fields remain strict unknowns.",
+      "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+      "dependencies": {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "dependencies": [
+              {
+                "address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+                "bytes": 19957,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "IrysOFT",
+                "runtime_hash": "0xf8898d74b6b09e1f4b390ff78b1cc764d16cedf15603f10f63886b1d10dea4a5",
+                "source_sha256": "4a1786472503797723cef12bd9f6c2caa63d1eb0369f020ec463888e7739a0f9",
+                "source_verified": true,
+                "storage": {
+                  "storage": [
+                    {
+                      "astId": 20,
+                      "contract": "contracts/IrysOFT.sol:IrysOFT",
+                      "label": "_pendingOwner",
+                      "offset": 0,
+                      "slot": "0",
+                      "type": "t_address"
+                    }
+                  ],
+                  "types": {
+                    "t_address": {
+                      "encoding": "inplace",
+                      "label": "address",
+                      "numberOfBytes": "20"
+                    }
+                  }
+                }
+              },
+              {
+                "address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "bytes": 176,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba",
+                "source_sha256": "d32cd9671b7ba8d9f3c7b41be461fdcd6356d86bbd5c81594f78817cc89747df",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "pointers": [
+              {
+                "account": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+                "role": "implementation",
+                "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+              },
+              {
+                "account": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "address": "0x0000000000000000000000000000000000000000",
+                "role": "beacon",
+                "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+              }
+            ]
+          },
+          {
+            "block": 122289029,
+            "dependencies": [
+              {
+                "address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+                "bytes": 19957,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "IrysOFT",
+                "runtime_hash": "0xf8898d74b6b09e1f4b390ff78b1cc764d16cedf15603f10f63886b1d10dea4a5",
+                "source_sha256": "4a1786472503797723cef12bd9f6c2caa63d1eb0369f020ec463888e7739a0f9",
+                "source_verified": true,
+                "storage": {
+                  "storage": [
+                    {
+                      "astId": 20,
+                      "contract": "contracts/IrysOFT.sol:IrysOFT",
+                      "label": "_pendingOwner",
+                      "offset": 0,
+                      "slot": "0",
+                      "type": "t_address"
+                    }
+                  ],
+                  "types": {
+                    "t_address": {
+                      "encoding": "inplace",
+                      "label": "address",
+                      "numberOfBytes": "20"
+                    }
+                  }
+                }
+              },
+              {
+                "address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "bytes": 176,
+                "historical_runtime_bound": true,
+                "http_status": 200,
+                "matching_profiles": [],
+                "name": "ERC1967Proxy",
+                "runtime_hash": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba",
+                "source_sha256": "d32cd9671b7ba8d9f3c7b41be461fdcd6356d86bbd5c81594f78817cc89747df",
+                "source_verified": true,
+                "storage": {
+                  "storage": [],
+                  "types": null
+                }
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "pointers": [
+              {
+                "account": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+                "role": "implementation",
+                "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+              },
+              {
+                "account": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+                "address": "0x0000000000000000000000000000000000000000",
+                "role": "beacon",
+                "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50"
+              }
+            ]
+          }
+        ],
+        "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+        "rank": 345,
+        "symbol": "IRYS"
+      },
+      "getter": [
+        {
+          "code": "function balanceOf(address account) public view virtual returns (uint256) {\n        ERC20Storage storage $ = _getERC20Storage();\n        return $._balances[account];\n    }",
+          "source": "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "inspection": {
+        "address": "0x81f8cbd3ac7f122426967edd054e41a81e701283",
+        "balance_of": "9284470765065186576526",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288070,
+        "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+        "elapsed_seconds": 0.366414584,
+        "execution_code": [
+          {
+            "address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+            "checked_instructions": 1,
+            "runtime_hash": "0xf8898d74b6b09e1f4b390ff78b1cc764d16cedf15603f10f63886b1d10dea4a5"
+          },
+          {
+            "address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+            "checked_instructions": 2,
+            "runtime_hash": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 104,
+              "storage_address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+              "target": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+              "depth": 1,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 63,
+              "storage_address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+              "value": "0x0000000000000000000000007b06b09f3482f7e0f68a1c6728bdd34f4137e880"
+            },
+            {
+              "code_address": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+              "depth": 2,
+              "key": "0x8d8943a5e0bed41bb08f493c5eeb458b62363bd07d905a0723ad47dcd1d8997b",
+              "pc": 1829,
+              "storage_address": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+              "value": "0x0000000000000000000000000000000000000000000001f74fea4997a9ac088e"
+            }
+          ]
+        },
+        "hash": "0x895e4914a4d4d8c38019d017b8ee8e4208ddc49a88006e0368a94eba30df0d9f",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba",
+        "status": "inspected",
+        "storage_key": "0x8d8943a5e0bed41bb08f493c5eeb458b62363bd07d905a0723ad47dcd1d8997b",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 63,
+            "value": "0x0000000000000000000000007b06b09f3482f7e0f68a1c6728bdd34f4137e880"
+          },
+          {
+            "depth": 2,
+            "key": "0x8d8943a5e0bed41bb08f493c5eeb458b62363bd07d905a0723ad47dcd1d8997b",
+            "pc": 1829,
+            "value": "0x0000000000000000000000000000000000000000000001f74fea4997a9ac088e"
+          }
+        ],
+        "storage_word": "9284470765065186576526",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "bbd63c51eaa2d8e1cce94e2e9c783a999978ca8021576f58174eaf8ce28ba4c6"
+      },
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "code_hash": "0x43a267bbddca7ce1cc100212d181a2256a52b08aa67be4923c3abbcac8c816ba",
+        "contract": "0x91152b4ef635403efbae860edd0f8c321d7c035d",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04"
+        ],
+        "proxy": {
+          "code_hash": "0xf8898d74b6b09e1f4b390ff78b1cc764d16cedf15603f10f63886b1d10dea4a5",
+          "implementation": "0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880",
+          "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+        }
+      },
+      "namespace": [
+        {
+          "code": "struct ERC20Storage {\n        mapping(address account => uint256) _balances;\n\n        mapping(address account => mapping(address spender => uint256)) _allowances;\n\n        uint256 _totalSupply;\n\n        string _name;\n        string _symbol;\n    }\n\n    // keccak256(abi.encode(uint256(keccak256(\"openzeppelin.storage.ERC20\")) - 1)) & ~bytes32(uint256(0xff))\n    bytes32 private constant ERC20StorageLocation = 0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00;\n\n    function _getERC20Storage() private pure returns (ERC20Storage storage $) {\n        assembly {\n            $.slot := ERC20StorageLocation\n        }\n    }\n\n    /**\n     * @dev Sets the values for {name} and {symbol}.\n     *\n     * Both values are immutable: they can only be set once during construction.\n     */\n    ",
+          "source": "node_modules/@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol"
+        }
+      ],
+      "rank": 345,
+      "source_sha256": "4a1786472503797723cef12bd9f6c2caa63d1eb0369f020ec463888e7739a0f9",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0x7b06b09f3482f7e0f68a1c6728bdd34f4137e880?fields=all",
+      "symbol": "IRYS"
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+      "controls": {
+        "block": 122288024,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 751,
+                "preimage": "0000000000000000000000008de3dd08b043e6c22364e4238e5d523e3f93a7410000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 762,
+                "preimage": "0000000000000000000000001111111111111111111111111111111111111111822b55c6e91aaf63683a82a01ca5d7a949804ea905c87db1bb6f5a1fc3507d8f"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x31238cba242a9872284d2d653c76598abee7d4040ce7ca8e796594b3d0e49394",
+                "pc": 763,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "a7cd1493bb0a44625bd44098ce6532f605e3e89ee3f52d63342bb9a3626d05ba"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 373,
+                "value": "0x000000000000000000000000000000000000000002abd5a970c8785499151400"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "c3fe1633ba58452623119e4eb6516ba5249671667bc93c3653be7e60f631b49f"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 791,
+                "value": "0x666f726d65722e6d656d65000000000000000000000000000000000000000016"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 835,
+                "value": "0x666f726d65722e6d656d65000000000000000000000000000000000000000016"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 864,
+                "value": "0x666f726d65722e6d656d65000000000000000000000000000000000000000016"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "1806f61686919d757559b343d18c1d32b77949767b0d5c57bf1809b660e8c63a"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1339,
+                "value": "0x535041524b00000000000000000000000000000000000000000000000000000a"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 835,
+                "value": "0x535041524b00000000000000000000000000000000000000000000000000000a"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 864,
+                "value": "0x535041524b00000000000000000000000000000000000000000000000000000a"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "c77990bb852d954d0ad679e700ee77084cf4ba64f0584ccfc8ed29befab408b9"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "pc": 585,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "2bcd9e7b084cec78670a70030310449d660661663ba94f9525f527a0bf7858b1"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0xd1a265775e1137c50cb01ed5636d16ea8308b7ff93b8b28da46180bfe02b7e6a",
+        "inspection": {
+          "address": "0x8de3dd08b043e6c22364e4238e5d523e3f93a741",
+          "balance_of": "2199434018886944758493",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288024,
+          "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+          "elapsed_seconds": 0.299314125,
+          "execution_code": [
+            {
+              "address": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+              "checked_instructions": 1,
+              "runtime_hash": "0x7d9025d421c6493af6f33b04a4014d6e42c52e29b1e29277f60ff12ee0f18be3"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+                "depth": 1,
+                "key": "0x2c2bf7ea54b9578bbcfdc19d6d180011f76183b276382a4e77e677e2c7824435",
+                "pc": 552,
+                "storage_address": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+                "value": "0x0000000000000000000000000000000000000000000000773b475313aa231add"
+              }
+            ]
+          },
+          "hash": "0xd1a265775e1137c50cb01ed5636d16ea8308b7ff93b8b28da46180bfe02b7e6a",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x7d9025d421c6493af6f33b04a4014d6e42c52e29b1e29277f60ff12ee0f18be3",
+          "status": "inspected",
+          "storage_key": "0x2c2bf7ea54b9578bbcfdc19d6d180011f76183b276382a4e77e677e2c7824435",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x2c2bf7ea54b9578bbcfdc19d6d180011f76183b276382a4e77e677e2c7824435",
+              "pc": 552,
+              "value": "0x0000000000000000000000000000000000000000000000773b475313aa231add"
+            }
+          ],
+          "storage_word": "2199434018886944758493",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "bb1c00d864fac5d4799d38e22c3bf16fc1c584ff9124c8af4604d497f1381639"
+        },
+        "rank": 303
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI \n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 012c\n25: JUMPI \n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 715018a6\n38: GT \n39: PUSH2 00ad\n42: JUMPI \n173: JUMPDEST \n174: DUP1 \n175: PUSH4 295a5212\n180: GT \n181: PUSH2 00f4\n184: JUMPI \n185: DUP1 \n186: PUSH4 295a5212\n191: EQ \n192: PUSH2 01ac\n195: JUMPI \n196: DUP1 \n197: PUSH4 313ce567\n202: EQ \n203: PUSH2 01cd\n206: JUMPI \n207: DUP1 \n208: PUSH4 42966c68\n213: EQ \n214: PUSH2 01dc\n217: JUMPI \n218: DUP1 \n219: PUSH4 53d6fd59\n224: EQ \n225: PUSH2 01ef\n228: JUMPI \n229: DUP1 \n230: PUSH4 70a08231\n235: EQ \n236: PUSH2 0202\n239: JUMPI \n514: JUMPDEST \n515: PUSH2 0176\n518: PUSH2 0210\n521: CALLDATASIZE \n522: PUSH1 04\n524: PUSH2 0cd4\n527: JUMP \n3284: JUMPDEST \n3285: PUSH1 00\n3287: PUSH1 20\n3289: DUP3 \n3290: DUP5 \n3291: SUB \n3292: SLT \n3293: ISZERO \n3294: PUSH2 0ce6\n3297: JUMPI \n3302: JUMPDEST \n3303: PUSH2 0bf7\n3306: DUP3 \n3307: PUSH2 0b90\n3310: JUMP \n2960: JUMPDEST \n2961: DUP1 \n2962: CALLDATALOAD \n2963: PUSH1 01\n2965: PUSH1 01\n2967: PUSH1 a0\n2969: SHL \n2970: SUB \n2971: DUP2 \n2972: AND \n2973: DUP2 \n2974: EQ \n2975: PUSH2 0ba7\n2978: JUMPI \n2983: JUMPDEST \n2984: SWAP2 \n2985: SWAP1 \n2986: POP \n2987: JUMP \n3063: JUMPDEST \n3064: SWAP4 \n3065: SWAP3 \n3066: POP \n3067: POP \n3068: POP \n3069: JUMP \n528: JUMPDEST \n529: PUSH1 01\n531: PUSH1 01\n533: PUSH1 a0\n535: SHL \n536: SUB \n537: AND \n538: PUSH1 00\n540: SWAP1 \n541: DUP2 \n542: MSTORE \n543: PUSH1 20\n545: DUP2 \n546: SWAP1 \n547: MSTORE \n548: PUSH1 40\n550: SWAP1 \n551: KECCAK256 \n552: SLOAD \n553: SWAP1 \n554: JUMP \n374: JUMPDEST \n375: PUSH1 40\n377: MLOAD \n378: SWAP1 \n379: DUP2 \n380: MSTORE \n381: PUSH1 20\n383: ADD \n384: PUSH2 0146\n387: JUMP \n326: JUMPDEST \n327: PUSH1 40\n329: MLOAD \n330: DUP1 \n331: SWAP2 \n332: SUB \n333: SWAP1 \n334: RETURN ",
+      "getter_path_sha256": "7798be87313e8914aaa215016eda89e351d7c359da8f5e3a80d042043f77a54f",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x7d9025d421c6493af6f33b04a4014d6e42c52e29b1e29277f60ff12ee0f18be3",
+        "contract": "0x67118ec0bbc3f1e743009cecaf00a9ca3d358888",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "rank": 303
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+      "controls": {
+        "block": 122288372,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 233,
+                "preimage": "000000000000000000000000c7fbef8df381e3b12c891ae185d3a3d4fa2d02760000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 246,
+                "preimage": "00000000000000000000000011111111111111111111111111111111111111115c88897d5c68ef4ec02371b1c39b4650f6e47dddd9eee8ac58055b940343f10e"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x7e8ca3a4e162a43a45edb6e0d0d57a43c7aa772f5bfc4b6fc4e32b6b60f5ae78",
+                "pc": 247,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "56fdf58d34d3de1f387f22ea0120c1a27ebb1f0146e647113a258472566c276e"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 1032,
+                "value": "0x0000000000000000000000000000000000000000033b2e3c9fd0803ce8000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "9336711bc091dd4f4dd16d77233925721c16906a2922f82da2cbab1df11ff490"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1193,
+                "value": "0x4d4f4d4f00000000000000000000000000000000000000000000000000000008"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "26313fd4ca9ef7b711deb64bca6e3d1fbd87cd5ac65b13009e7345d6aea9f602"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 331,
+                "value": "0x4d4f4d4f00000000000000000000000000000000000000000000000000000008"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "54eda97c8beb206dcd980931de6ba02506835beaa53fdaf81a26ca6f8891e08f"
+          },
+          {
+            "getter": "owner",
+            "status": "reverted"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x55356307192b4f2f21901af9bde11c74c96bf0fa16ccfaeaf74d94ce0243f869",
+        "inspection": {
+          "address": "0xc7fbef8df381e3b12c891ae185d3a3d4fa2d0276",
+          "balance_of": "19906036607200943166180",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288372,
+          "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+          "elapsed_seconds": 0.28038725,
+          "execution_code": [
+            {
+              "address": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+              "checked_instructions": 1,
+              "runtime_hash": "0xf83cdb98ba6999f4b5f2abeac07861a0fda3d420988ad5396d7720099524102e"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+                "depth": 1,
+                "key": "0x17382993b8448bbc208be8c566da14ef400909c6aa41ad56f3601df7148be070",
+                "pc": 641,
+                "storage_address": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+                "value": "0x0000000000000000000000000000000000000000000004371bc08b8c163852e4"
+              }
+            ]
+          },
+          "hash": "0x55356307192b4f2f21901af9bde11c74c96bf0fa16ccfaeaf74d94ce0243f869",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0xf83cdb98ba6999f4b5f2abeac07861a0fda3d420988ad5396d7720099524102e",
+          "status": "inspected",
+          "storage_key": "0x17382993b8448bbc208be8c566da14ef400909c6aa41ad56f3601df7148be070",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x17382993b8448bbc208be8c566da14ef400909c6aa41ad56f3601df7148be070",
+              "pc": 641,
+              "value": "0x0000000000000000000000000000000000000000000004371bc08b8c163852e4"
+            }
+          ],
+          "storage_word": "19906036607200943166180",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "d763e948e2a14b4948c9b66df645df9a61df0be41b7b669bb244373bd0aebe7d"
+        },
+        "rank": 312
+      },
+      "getter_path": "0: PUSH1 80\n2: DUP1 \n3: PUSH1 40\n5: MSTORE \n6: PUSH1 04\n8: CALLDATASIZE \n9: LT \n10: ISZERO \n11: PUSH2 0012\n14: JUMPI \n18: JUMPDEST \n19: PUSH0 \n20: CALLDATALOAD \n21: PUSH1 e0\n23: SHR \n24: SWAP1 \n25: DUP2 \n26: PUSH4 02d05d3f\n31: EQ \n32: PUSH2 0567\n35: JUMPI \n36: POP \n37: DUP1 \n38: PUSH4 03ee438c\n43: EQ \n44: PUSH2 0289\n47: JUMPI \n48: DUP1 \n49: PUSH4 06fdde03\n54: EQ \n55: PUSH2 0492\n58: JUMPI \n59: DUP1 \n60: PUSH4 095ea7b3\n65: EQ \n66: PUSH2 0410\n69: JUMPI \n70: DUP1 \n71: PUSH4 18160ddd\n76: EQ \n77: PUSH2 03f3\n80: JUMPI \n81: DUP1 \n82: PUSH4 23b872dd\n87: EQ \n88: PUSH2 030e\n91: JUMPI \n92: DUP1 \n93: PUSH4 2e677786\n98: EQ \n99: PUSH2 02cb\n102: JUMPI \n103: DUP1 \n104: PUSH4 313ce567\n109: EQ \n110: PUSH2 02b0\n113: JUMPI \n114: DUP1 \n115: PUSH4 3c130d90\n120: EQ \n121: PUSH2 0289\n124: JUMPI \n125: DUP1 \n126: PUSH4 70a08231\n131: EQ \n132: PUSH2 0252\n135: JUMPI \n594: JUMPDEST \n595: CALLVALUE \n596: PUSH2 00ff\n599: JUMPI \n600: PUSH1 20\n602: CALLDATASIZE \n603: PUSH1 03\n605: NOT \n606: ADD \n607: SLT \n608: PUSH2 00ff\n611: JUMPI \n612: PUSH1 01\n614: PUSH1 01\n616: PUSH1 a0\n618: SHL \n619: SUB \n620: PUSH2 0273\n623: PUSH2 06a8\n626: JUMP \n1704: JUMPDEST \n1705: PUSH1 04\n1707: CALLDATALOAD \n1708: SWAP1 \n1709: PUSH1 01\n1711: PUSH1 01\n1713: PUSH1 a0\n1715: SHL \n1716: SUB \n1717: DUP3 \n1718: AND \n1719: DUP3 \n1720: SUB \n1721: PUSH2 00ff\n1724: JUMPI \n1725: JUMP \n627: JUMPDEST \n628: AND \n629: PUSH0 \n630: MSTORE \n631: PUSH0 \n632: PUSH1 20\n634: MSTORE \n635: PUSH1 20\n637: PUSH1 40\n639: PUSH0 \n640: KECCAK256 \n641: SLOAD \n642: PUSH1 40\n644: MLOAD \n645: SWAP1 \n646: DUP2 \n647: MSTORE \n648: RETURN ",
+      "getter_path_sha256": "cee59784f81e896c9c864f52e096710d261cf2e669877dcca330a1d43c17fde9",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xf83cdb98ba6999f4b5f2abeac07861a0fda3d420988ad5396d7720099524102e",
+        "contract": "0xbc5ff7fe4d1b928423cf6c54bfa5f907130b4024",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ]
+      },
+      "rank": 312
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+      "controls": {
+        "block": 122288321,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 1059,
+                "preimage": "000000000000000000000000a73a98291ddbd087d0cd46f95ff83c090efbf9500000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 1118,
+                "preimage": "0000000000000000000000001111111111111111111111111111111111111111aabc138ea14132a6eb4bed86062d3323e29213729aa5063e1a763729360fb952"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xbe30c2d4113006b3b6e50889bf0c78b436d5882bd3f1a5b5bf73ecff60adbafa",
+                "pc": 1119,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "bdddc34f09b2afed4e931734db6597cbe4d66266a1ccdf33b7b9168854ba26a2"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 691,
+                "value": "0x00000000000000000000000000000000000000001e5f7f6d1174b56fb8000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "3d5e5b5d0fab1a471461d1da5afc2322dc08032fe8e06de770486e81fe646f2c"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 515,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 559,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 588,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e58611b6b169a0b92e5cc70701dcd259e89f58b5856a7232b80976db0f570d56"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 825,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 869,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 898,
+                "value": "0xe98791e9ba9fe4babae7949f0000000000000000000000000000000000000018"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "49a5b542261080c6d46ee0d77745f7b47fc378a97a245bd33eeeb7201e6abc8d"
+          },
+          {
+            "getter": "owner",
+            "status": "reverted"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x365484c428fb584eec1dd87d8d282b99ed9a731307e87f9beabcb1a5ab778b32",
+        "inspection": {
+          "address": "0xa73a98291ddbd087d0cd46f95ff83c090efbf950",
+          "balance_of": "9400000000000000000000000000",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288321,
+          "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+          "elapsed_seconds": 0.301470125,
+          "execution_code": [
+            {
+              "address": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+              "checked_instructions": 1,
+              "runtime_hash": "0x1f6f5a665a533d3dee8e9b92c3bc2195a1776f1cd1a131de2affbf1603c42fbc"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+                "depth": 1,
+                "key": "0x4885559a3f71ac740f235320fdedbfcfed89bc49625c015fce665128b04a3f29",
+                "pc": 812,
+                "storage_address": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+                "value": "0x00000000000000000000000000000000000000001e5f7f6d1174b56fb8000000"
+              }
+            ]
+          },
+          "hash": "0x365484c428fb584eec1dd87d8d282b99ed9a731307e87f9beabcb1a5ab778b32",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x1f6f5a665a533d3dee8e9b92c3bc2195a1776f1cd1a131de2affbf1603c42fbc",
+          "status": "inspected",
+          "storage_key": "0x4885559a3f71ac740f235320fdedbfcfed89bc49625c015fce665128b04a3f29",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x4885559a3f71ac740f235320fdedbfcfed89bc49625c015fce665128b04a3f29",
+              "pc": 812,
+              "value": "0x00000000000000000000000000000000000000001e5f7f6d1174b56fb8000000"
+            }
+          ],
+          "storage_word": "9400000000000000000000000000",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "b7c58cb71e2d645577d81282c53adef0e68f728527f907425f09919b3e1579c3"
+        },
+        "rank": 319
+      },
+      "deployment_scope": "Code and nonce must be absent before the qualified first CREATE; predeployment empty balanceOf is not a zero. Full CREATE/code/nonce evidence is checked during projection.",
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 0091\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 313ce567\n36: GT \n37: PUSH2 0064\n40: JUMPI \n41: DUP1 \n42: PUSH4 313ce567\n47: EQ \n48: PUSH2 0131\n51: JUMPI \n52: DUP1 \n53: PUSH4 70a08231\n58: EQ \n59: PUSH2 014f\n62: JUMPI \n335: JUMPDEST \n336: PUSH2 0169\n339: PUSH1 04\n341: DUP1 \n342: CALLDATASIZE \n343: SUB \n344: DUP2 \n345: ADD \n346: SWAP1 \n347: PUSH2 0164\n350: SWAP2 \n351: SWAP1 \n352: PUSH2 0c28\n355: JUMP \n3112: JUMPDEST \n3113: PUSH0 \n3114: PUSH1 20\n3116: DUP3 \n3117: DUP5 \n3118: SUB \n3119: SLT \n3120: ISZERO \n3121: PUSH2 0c3d\n3124: JUMPI \n3133: JUMPDEST \n3134: PUSH0 \n3135: PUSH2 0c4a\n3138: DUP5 \n3139: DUP3 \n3140: DUP6 \n3141: ADD \n3142: PUSH2 0ac4\n3145: JUMP \n2756: JUMPDEST \n2757: PUSH0 \n2758: DUP2 \n2759: CALLDATALOAD \n2760: SWAP1 \n2761: POP \n2762: PUSH2 0ad2\n2765: DUP2 \n2766: PUSH2 0aae\n2769: JUMP \n2734: JUMPDEST \n2735: PUSH2 0ab7\n2738: DUP2 \n2739: PUSH2 0a9d\n2742: JUMP \n2717: JUMPDEST \n2718: PUSH0 \n2719: PUSH2 0aa7\n2722: DUP3 \n2723: PUSH2 0a7e\n2726: JUMP \n2686: JUMPDEST \n2687: PUSH0 \n2688: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n2709: DUP3 \n2710: AND \n2711: SWAP1 \n2712: POP \n2713: SWAP2 \n2714: SWAP1 \n2715: POP \n2716: JUMP \n2727: JUMPDEST \n2728: SWAP1 \n2729: POP \n2730: SWAP2 \n2731: SWAP1 \n2732: POP \n2733: JUMP \n2743: JUMPDEST \n2744: DUP2 \n2745: EQ \n2746: PUSH2 0ac1\n2749: JUMPI \n2753: JUMPDEST \n2754: POP \n2755: JUMP \n2770: JUMPDEST \n2771: SWAP3 \n2772: SWAP2 \n2773: POP \n2774: POP \n2775: JUMP \n3146: JUMPDEST \n3147: SWAP2 \n3148: POP \n3149: POP \n3150: SWAP3 \n3151: SWAP2 \n3152: POP \n3153: POP \n3154: JUMP \n356: JUMPDEST \n357: PUSH2 02ee\n360: JUMP \n750: JUMPDEST \n751: PUSH0 \n752: DUP1 \n753: PUSH0 \n754: DUP4 \n755: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n776: AND \n777: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n798: AND \n799: DUP2 \n800: MSTORE \n801: PUSH1 20\n803: ADD \n804: SWAP1 \n805: DUP2 \n806: MSTORE \n807: PUSH1 20\n809: ADD \n810: PUSH0 \n811: KECCAK256 \n812: SLOAD \n813: SWAP1 \n814: POP \n815: SWAP2 \n816: SWAP1 \n817: POP \n818: JUMP \n361: JUMPDEST \n362: PUSH1 40\n364: MLOAD \n365: PUSH2 0176\n368: SWAP2 \n369: SWAP1 \n370: PUSH2 0b8b\n373: JUMP \n2955: JUMPDEST \n2956: PUSH0 \n2957: PUSH1 20\n2959: DUP3 \n2960: ADD \n2961: SWAP1 \n2962: POP \n2963: PUSH2 0b9e\n2966: PUSH0 \n2967: DUP4 \n2968: ADD \n2969: DUP5 \n2970: PUSH2 0b7c\n2973: JUMP \n2940: JUMPDEST \n2941: PUSH2 0b85\n2944: DUP2 \n2945: PUSH2 0ad8\n2948: JUMP \n2776: JUMPDEST \n2777: PUSH0 \n2778: DUP2 \n2779: SWAP1 \n2780: POP \n2781: SWAP2 \n2782: SWAP1 \n2783: POP \n2784: JUMP \n2949: JUMPDEST \n2950: DUP3 \n2951: MSTORE \n2952: POP \n2953: POP \n2954: JUMP \n2974: JUMPDEST \n2975: SWAP3 \n2976: SWAP2 \n2977: POP \n2978: POP \n2979: JUMP \n374: JUMPDEST \n375: PUSH1 40\n377: MLOAD \n378: DUP1 \n379: SWAP2 \n380: SUB \n381: SWAP1 \n382: RETURN ",
+      "getter_path_sha256": "b98dbed2b9c804bc184085df774e656a4ec87206f25ad2a58e56daea149fc2d5",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x1f6f5a665a533d3dee8e9b92c3bc2195a1776f1cd1a131de2affbf1603c42fbc",
+        "contract": "0x5b0b5ed3b7d29813ac0c9c4890f5bf1fc4302b0e",
+        "deployment": {
+          "block": 122288321,
+          "block_hash": "0x365484c428fb584eec1dd87d8d282b99ed9a731307e87f9beabcb1a5ab778b32"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ]
+      },
+      "rank": 319
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+      "controls": {
+        "block": 122288044,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 427,
+                "preimage": "000000000000000000000000e522806f4cfa8d7ecd3e5f97da1eacd345a481800000000000000000000000000000000000000000000000000000000000000004"
+              },
+              {
+                "pc": 438,
+                "preimage": "00000000000000000000000011111111111111111111111111111111111111119aac8594f3c20e145ac17e9ed65b9b541176f869b501f4b4d551b93fb557dc4b"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xaba9fdfe83fde0db16cf073b156b8274b7fc22d70624fa09eae79f41638f2d83",
+                "pc": 439,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "1fc86dfbdb6727e088d625dd1e5d58352701c9ce0b67297e5925cce7c01fc516"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "pc": 248,
+                "value": "0x00000000000000000000000000000000000000000052b7d2dcc80cd2e4000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "7d772e0ab82c78242cab3fbdc8745ca279a767bc055aaf0219f1761b51d3af6e"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "pc": 456,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "pc": 500,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+                "pc": 529,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "bf73760b3a132738bf845338120f4515f91130aa0b43247fe8398a818c17dfa6"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 1030,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 500,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 529,
+                "value": "0xe7899be69da5e98791e5ba930000000000000000000000000000000000000018"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e3e5cc8043bb904dc5d3317a7b2141b4373fe81de830a3e72bb5021394a8cec1"
+          },
+          {
+            "getter": "owner",
+            "status": "reverted"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0xac3440f6e9aa1d9a209755b56610e104c6e8176c9a32048fa7653a4b1c1a4dea",
+        "inspection": {
+          "address": "0xe522806f4cfa8d7ecd3e5f97da1eacd345a48180",
+          "balance_of": "1297063952631297782689608",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "block": 122288044,
+          "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+          "elapsed_seconds": 0.284864458,
+          "execution_code": [
+            {
+              "address": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+              "checked_instructions": 1,
+              "runtime_hash": "0xe387ffdbf2c2b8195848711c8e681240a756a76218a24e501e3572b479cc32e5"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+                "depth": 1,
+                "key": "0x49039ec0b275f198bcfd534c6ba693b474a000e018a34f518168fef92299e0b2",
+                "pc": 340,
+                "storage_address": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+                "value": "0x0000000000000000000000000000000000000000000112a9fa4ecad1547daf48"
+              }
+            ]
+          },
+          "hash": "0xac3440f6e9aa1d9a209755b56610e104c6e8176c9a32048fa7653a4b1c1a4dea",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0xe387ffdbf2c2b8195848711c8e681240a756a76218a24e501e3572b479cc32e5",
+          "status": "inspected",
+          "storage_key": "0x49039ec0b275f198bcfd534c6ba693b474a000e018a34f518168fef92299e0b2",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x49039ec0b275f198bcfd534c6ba693b474a000e018a34f518168fef92299e0b2",
+              "pc": 340,
+              "value": "0x0000000000000000000000000000000000000000000112a9fa4ecad1547daf48"
+            }
+          ],
+          "storage_word": "1297063952631297782689608",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "00d9651866357a3239f0c85d666b7955c24d378c1108b18bf5d71aab1806ee78"
+        },
+        "rank": 321
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 00b1\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 95d89b41\n36: GT \n37: PUSH2 006e\n40: JUMPI \n110: JUMPDEST \n111: DUP1 \n112: PUSH4 06fdde03\n117: EQ \n118: PUSH2 00b5\n121: JUMPI \n122: DUP1 \n123: PUSH4 095ea7b3\n128: EQ \n129: PUSH2 00d3\n132: JUMPI \n133: DUP1 \n134: PUSH4 18160ddd\n139: EQ \n140: PUSH2 00f6\n143: JUMPI \n144: DUP1 \n145: PUSH4 23b872dd\n150: EQ \n151: PUSH2 0107\n154: JUMPI \n155: DUP1 \n156: PUSH4 313ce567\n161: EQ \n162: PUSH2 011a\n165: JUMPI \n166: DUP1 \n167: PUSH4 70a08231\n172: EQ \n173: PUSH2 012f\n176: JUMPI \n303: JUMPDEST \n304: PUSH2 00f9\n307: PUSH2 013d\n310: CALLDATASIZE \n311: PUSH1 04\n313: PUSH2 0608\n316: JUMP \n1544: JUMPDEST \n1545: PUSH0 \n1546: PUSH1 20\n1548: DUP3 \n1549: DUP5 \n1550: SUB \n1551: SLT \n1552: ISZERO \n1553: PUSH2 0618\n1556: JUMPI \n1560: JUMPDEST \n1561: PUSH2 0621\n1564: DUP3 \n1565: PUSH2 058b\n1568: JUMP \n1419: JUMPDEST \n1420: DUP1 \n1421: CALLDATALOAD \n1422: PUSH1 01\n1424: PUSH1 01\n1426: PUSH1 a0\n1428: SHL \n1429: SUB \n1430: DUP2 \n1431: AND \n1432: DUP2 \n1433: EQ \n1434: PUSH2 05a1\n1437: JUMPI \n1441: JUMPDEST \n1442: SWAP2 \n1443: SWAP1 \n1444: POP \n1445: JUMP \n1569: JUMPDEST \n1570: SWAP4 \n1571: SWAP3 \n1572: POP \n1573: POP \n1574: POP \n1575: JUMP \n317: JUMPDEST \n318: PUSH1 01\n320: PUSH1 01\n322: PUSH1 a0\n324: SHL \n325: SUB \n326: AND \n327: PUSH0 \n328: SWAP1 \n329: DUP2 \n330: MSTORE \n331: PUSH1 03\n333: PUSH1 20\n335: MSTORE \n336: PUSH1 40\n338: SWAP1 \n339: KECCAK256 \n340: SLOAD \n341: SWAP1 \n342: JUMP \n249: JUMPDEST \n250: PUSH1 40\n252: MLOAD \n253: SWAP1 \n254: DUP2 \n255: MSTORE \n256: PUSH1 20\n258: ADD \n259: PUSH2 00ca\n262: JUMP \n202: JUMPDEST \n203: PUSH1 40\n205: MLOAD \n206: DUP1 \n207: SWAP2 \n208: SUB \n209: SWAP1 \n210: RETURN ",
+      "getter_path_sha256": "dcfb1862df2963e4ebfa19163c240d472481fea965a8cd0c2a3fdd5613c7f14d",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "code_hash": "0xe387ffdbf2c2b8195848711c8e681240a756a76218a24e501e3572b479cc32e5",
+        "contract": "0x8ed9e41e954a5c7832ee281321a3576e2ef7d519",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002"
+        ]
+      },
+      "rank": 321
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+      "controls": {
+        "block": 122288075,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x4168253d740edfa77de31dadd8532e228de83f15",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x4168253d740edfa77de31dadd8532e228de83f15",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 4108,
+                "preimage": "000000000000000000000000da9332ea1771fb7c809fef6aba3ce19a7df219cf0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 4119,
+                "preimage": "000000000000000000000000111111111111111111111111111111111111111163148d481f107748dc183d977e8479743dfc809af1c1575c21a180f8ed84140b"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0fea8a4c078b810e302de3d0db35ae81a066fe43c72ca676bee854a4265f2c37",
+                "pc": 4120,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e02e6e46cd2e1cf1fdf8c0c835084e43d74ebce63eb237af490dbdae3ca683f2"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 2036,
+                "value": "0x000000000000000000000000000000000000000000000000000756ee92e40a5e"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "a29ecf9841ff477c5713d9fc7816372d2f75ae6da5ca0d5668a35c7ad580e260"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1864,
+                "value": "0x4e6f766142616e6b320000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1943,
+                "value": "0x4e6f766142616e6b320000000000000000000000000000000000000000000012"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "dc6e56f8676eda092aba6af16d66712e40c65746f26f4d41fda0e5c2c6190706"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 3111,
+                "value": "0x4e56423200000000000000000000000000000000000000000000000000000008"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 3190,
+                "value": "0x4e56423200000000000000000000000000000000000000000000000000000008"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e7c446b9c9c05f73939d061050348d22478cd8a9e802ee8486c3bf67c3bfc55a"
+          },
+          {
+            "getter": "owner",
+            "status": "reverted"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0xc59beef1d1315955e72b33f8d2275e5f43813a9e6ee77306146c4faeb9393639",
+        "inspection": {
+          "address": "0xda9332ea1771fb7c809fef6aba3ce19a7df219cf",
+          "balance_of": "184816294603549",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288075,
+          "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+          "elapsed_seconds": 0.296184834,
+          "execution_code": [
+            {
+              "address": "0x4168253d740edfa77de31dadd8532e228de83f15",
+              "checked_instructions": 1,
+              "runtime_hash": "0x5a84a0d06d65164db8bd240dfd32ae68ee2bf0bd8addacd948ee7b278d0e7bf8"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x4168253d740edfa77de31dadd8532e228de83f15",
+                "depth": 1,
+                "key": "0x3e1d2a83924de16b380a19ea26b7630cf829b0b2f3b9f9113f19b1323b25ca19",
+                "pc": 2737,
+                "storage_address": "0x4168253d740edfa77de31dadd8532e228de83f15",
+                "value": "0x0000000000000000000000000000000000000000000000000000a816e596ab1d"
+              }
+            ]
+          },
+          "hash": "0xc59beef1d1315955e72b33f8d2275e5f43813a9e6ee77306146c4faeb9393639",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x5a84a0d06d65164db8bd240dfd32ae68ee2bf0bd8addacd948ee7b278d0e7bf8",
+          "status": "inspected",
+          "storage_key": "0x3e1d2a83924de16b380a19ea26b7630cf829b0b2f3b9f9113f19b1323b25ca19",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x3e1d2a83924de16b380a19ea26b7630cf829b0b2f3b9f9113f19b1323b25ca19",
+              "pc": 2737,
+              "value": "0x0000000000000000000000000000000000000000000000000000a816e596ab1d"
+            }
+          ],
+          "storage_word": "184816294603549",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "179456782444d954614c807d93013e4484a5dc538f0a8c495eba227015844abb"
+        },
+        "rank": 325
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI \n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 023d\n25: JUMPI \n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 79cc6790\n38: GT \n39: PUSH2 013b\n42: JUMPI \n315: JUMPDEST \n316: DUP1 \n317: PUSH4 3644e515\n322: GT \n323: PUSH2 01c9\n326: JUMPI \n327: DUP1 \n328: PUSH4 40c10f19\n333: GT \n334: PUSH2 018d\n337: JUMPI \n338: DUP1 \n339: PUSH4 40c10f19\n344: EQ \n345: PUSH2 0438\n348: JUMPI \n349: DUP1 \n350: PUSH4 42966c68\n355: EQ \n356: PUSH2 0464\n359: JUMPI \n360: DUP1 \n361: PUSH4 6d851e71\n366: EQ \n367: PUSH2 0481\n370: JUMPI \n371: DUP1 \n372: PUSH4 70a08231\n377: EQ \n378: PUSH2 0489\n381: JUMPI \n1161: JUMPDEST \n1162: PUSH2 0307\n1165: PUSH1 04\n1167: DUP1 \n1168: CALLDATASIZE \n1169: SUB \n1170: PUSH1 20\n1172: DUP2 \n1173: LT \n1174: ISZERO \n1175: PUSH2 049f\n1178: JUMPI \n1183: JUMPDEST \n1184: POP \n1185: CALLDATALOAD \n1186: PUSH1 01\n1188: PUSH1 01\n1190: PUSH1 a0\n1192: SHL \n1193: SUB \n1194: AND \n1195: PUSH2 0a99\n1198: JUMP \n2713: JUMPDEST \n2714: PUSH1 01\n2716: PUSH1 01\n2718: PUSH1 a0\n2720: SHL \n2721: SUB \n2722: AND \n2723: PUSH1 00\n2725: SWAP1 \n2726: DUP2 \n2727: MSTORE \n2728: PUSH1 20\n2730: DUP2 \n2731: SWAP1 \n2732: MSTORE \n2733: PUSH1 40\n2735: SWAP1 \n2736: KECCAK256 \n2737: SLOAD \n2738: SWAP1 \n2739: JUMP \n775: JUMPDEST \n776: PUSH1 40\n778: DUP1 \n779: MLOAD \n780: SWAP2 \n781: DUP3 \n782: MSTORE \n783: MLOAD \n784: SWAP1 \n785: DUP2 \n786: SWAP1 \n787: SUB \n788: PUSH1 20\n790: ADD \n791: SWAP1 \n792: RETURN ",
+      "getter_path_sha256": "e01dba2ccad6c9a8727b0794f8d1e31c2fe3df0b32fb80da8ffe8ac6e849d638",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x5a84a0d06d65164db8bd240dfd32ae68ee2bf0bd8addacd948ee7b278d0e7bf8",
+        "contract": "0x4168253d740edfa77de31dadd8532e228de83f15",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ]
+      },
+      "rank": 325
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+      "controls": {
+        "block": 122288720,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 3734,
+                "preimage": "000000000000000000000000278d858f05b94576c1e6f73285886876ff6ef8d20000000000000000000000000000000000000000000000000000000000000066"
+              },
+              {
+                "pc": 3745,
+                "preimage": "00000000000000000000000011111111111111111111111111111111111111110e8cd92463aa7e60ca5e6682fb0b9656f6838b0c17bbadba30cb2571ea90ee6a"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0xc48108ecb428bd2cb7a8dd47ed4e73b65bb9d9de3036b438f2a2dec86002982b",
+                "pc": 3746,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "c7ff82f43caf59db2cca2a183f84b4592096f4963473a10102721aef740a031c"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000067",
+                "pc": 2059,
+                "value": "0x0000000000000000000000000000000000000000000278a20808096fe2af1d83"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "472fc719b39a16116d59298356a63478d1f654a8cb949fcb92a1c50d930c37b7"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000068",
+                "pc": 1850,
+                "value": "0x4869676873747265657420546f6b656e00000000000000000000000000000020"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000068",
+                "pc": 1959,
+                "value": "0x4869676873747265657420546f6b656e00000000000000000000000000000020"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "7f047988a85a1055ef2ed46ef3e202ef0de8ba8f08c886b37182f830e2adfe6d"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000069",
+                "pc": 2887,
+                "value": "0x4849474800000000000000000000000000000000000000000000000000000008"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000069",
+                "pc": 2996,
+                "value": "0x4849474800000000000000000000000000000000000000000000000000000008"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e9eee83ebf4db338ea515fb52307803832ac9fe200e41d9ae3639d776c372a2f"
+          },
+          {
+            "getter": "owner",
+            "status": "reverted"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0xd793648c752b72a7c4aefd376bb5705f26da6eb6fb4160cca3b8af68f49daa5a",
+        "inspection": {
+          "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+          "balance_of": "142000000999973428103",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "block": 122288720,
+          "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+          "elapsed_seconds": 0.308308,
+          "execution_code": [
+            {
+              "address": "0x5f300aec9573bec1ed161e07bb6564e03154e68a",
+              "checked_instructions": 1,
+              "runtime_hash": "0xa01edecd10b681071edd3a865482256aa6c083e9dbe40e0c12ccf20e370efe0c"
+            },
+            {
+              "address": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+              "checked_instructions": 1,
+              "runtime_hash": "0x85783754463bb77862e22b377f7f37aee0b9337e6858564b78eacb465fd056ba"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [
+              {
+                "code_address": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+                "depth": 1,
+                "entered": true,
+                "opcode": "DELEGATECALL",
+                "pc": 31,
+                "storage_address": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+                "target": "0x5f300aec9573bec1ed161e07bb6564e03154e68a"
+              }
+            ],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x5f300aec9573bec1ed161e07bb6564e03154e68a",
+                "depth": 2,
+                "key": "0x16c68ed502bf5866773f6c68a6af7004099e0891fb80008f96d379f9db30ced3",
+                "pc": 2702,
+                "storage_address": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+                "value": "0x000000000000000000000000000000000000000000000007b2a5588fac879b87"
+              }
+            ]
+          },
+          "hash": "0xd793648c752b72a7c4aefd376bb5705f26da6eb6fb4160cca3b8af68f49daa5a",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x85783754463bb77862e22b377f7f37aee0b9337e6858564b78eacb465fd056ba",
+          "status": "inspected",
+          "storage_key": "0x16c68ed502bf5866773f6c68a6af7004099e0891fb80008f96d379f9db30ced3",
+          "storage_reads": [
+            {
+              "depth": 2,
+              "key": "0x16c68ed502bf5866773f6c68a6af7004099e0891fb80008f96d379f9db30ced3",
+              "pc": 2702,
+              "value": "0x000000000000000000000000000000000000000000000007b2a5588fac879b87"
+            }
+          ],
+          "storage_word": "142000000999973428103",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "922fbf3a13655f524d0955c1b0a54b6299df9497c3237e6c6c64d344331b8d62"
+        },
+        "rank": 326
+      },
+      "dependency": {
+        "address": "0x5f300aec9573bec1ed161e07bb6564e03154e68a",
+        "runtime_hash": "0xa01edecd10b681071edd3a865482256aa6c083e9dbe40e0c12ccf20e370efe0c",
+        "source_sha256": "618cb123340036729ca8c5eec30ebfab633cd0cfe4bacd3af9b3dba13ca9e7cd",
+        "source_verified": true
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI \n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01b9\n25: JUMPI \n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 79cc6790\n38: GT \n39: PUSH2 00f9\n42: JUMPI \n249: JUMPDEST \n250: DUP1 \n251: PUSH4 313ce567\n256: GT \n257: PUSH2 0166\n260: JUMPI \n261: DUP1 \n262: PUSH4 39509351\n267: GT \n268: PUSH2 0140\n271: JUMPI \n272: DUP1 \n273: PUSH4 39509351\n278: EQ \n279: PUSH2 0368\n282: JUMPI \n283: DUP1 \n284: PUSH4 40c10f19\n289: EQ \n290: PUSH2 0394\n293: JUMPI \n294: DUP1 \n295: PUSH4 42966c68\n300: EQ \n301: PUSH2 03c0\n304: JUMPI \n305: DUP1 \n306: PUSH4 70a08231\n311: EQ \n312: PUSH2 03dd\n315: JUMPI \n989: JUMPDEST \n990: PUSH2 0283\n993: PUSH1 04\n995: DUP1 \n996: CALLDATASIZE \n997: SUB \n998: PUSH1 20\n1000: DUP2 \n1001: LT \n1002: ISZERO \n1003: PUSH2 03f3\n1006: JUMPI \n1011: JUMPDEST \n1012: POP \n1013: CALLDATALOAD \n1014: PUSH1 01\n1016: PUSH1 01\n1018: PUSH1 a0\n1020: SHL \n1021: SUB \n1022: AND \n1023: PUSH2 0a76\n1026: JUMP \n2678: JUMPDEST \n2679: PUSH1 01\n2681: PUSH1 01\n2683: PUSH1 a0\n2685: SHL \n2686: SUB \n2687: AND \n2688: PUSH1 00\n2690: SWAP1 \n2691: DUP2 \n2692: MSTORE \n2693: PUSH1 65\n2695: PUSH1 20\n2697: MSTORE \n2698: PUSH1 40\n2700: SWAP1 \n2701: KECCAK256 \n2702: SLOAD \n2703: SWAP1 \n2704: JUMP \n643: JUMPDEST \n644: PUSH1 40\n646: DUP1 \n647: MLOAD \n648: SWAP2 \n649: DUP3 \n650: MSTORE \n651: MLOAD \n652: SWAP1 \n653: DUP2 \n654: SWAP1 \n655: SUB \n656: PUSH1 20\n658: ADD \n659: SWAP1 \n660: RETURN ",
+      "getter_path_sha256": "c7644a403f289f4bb5fde99936cfae10aa80bf117c69977459b85a28e71bd515",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000065",
+        "code_hash": "0x85783754463bb77862e22b377f7f37aee0b9337e6858564b78eacb465fd056ba",
+        "contract": "0x5f4bde007dc06b867f86ebfe4802e34a1ffeed63",
+        "minimal_proxy": {
+          "code_hash": "0xa01edecd10b681071edd3a865482256aa6c083e9dbe40e0c12ccf20e370efe0c",
+          "implementation": "0x5f300aec9573bec1ed161e07bb6564e03154e68a"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000066"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x0000000000000000000000000000000000000000000000000000000000000069"
+        ]
+      },
+      "rank": 326,
+      "source_sha256": "618cb123340036729ca8c5eec30ebfab633cd0cfe4bacd3af9b3dba13ca9e7cd",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 1155,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1158,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2194,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 43,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_roles",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)39_storage)"
+          },
+          {
+            "astId": 306,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage"
+          },
+          {
+            "astId": 1318,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 1324,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 1326,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1328,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_name",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1330,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1332,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_decimals",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 1827,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_array(t_uint256)44_storage"
+          },
+          {
+            "astId": 1297,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 431,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_HASHED_NAME",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 433,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_HASHED_VERSION",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 582,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_array(t_uint256)50_storage"
+          },
+          {
+            "astId": 607,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_nonces",
+            "offset": 0,
+            "slot": "253",
+            "type": "t_mapping(t_address,t_struct(Counter)2205_storage)"
+          },
+          {
+            "astId": 609,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "_PERMIT_TYPEHASH",
+            "offset": 0,
+            "slot": "254",
+            "type": "t_bytes32"
+          },
+          {
+            "astId": 756,
+            "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+            "label": "__gap",
+            "offset": 0,
+            "slot": "255",
+            "type": "t_array(t_uint256)49_storage"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "base": "t_bytes32",
+            "encoding": "dynamic_array",
+            "label": "bytes32[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)44_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[44]",
+            "numberOfBytes": "1408"
+          },
+          "t_array(t_uint256)49_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "base": "t_uint256",
+            "encoding": "inplace",
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "encoding": "inplace",
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_struct(Counter)2205_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct CountersUpgradeable.Counter)",
+            "numberOfBytes": "32",
+            "value": "t_struct(Counter)2205_storage"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_bytes32,t_struct(RoleData)39_storage)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+            "numberOfBytes": "32",
+            "value": "t_struct(RoleData)39_storage"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_bytes32",
+            "label": "mapping(bytes32 => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(AddressSet)2521_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableSetUpgradeable.AddressSet",
+            "members": [
+              {
+                "astId": 2520,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "_inner",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(Set)2256_storage"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(Counter)2205_storage": {
+            "encoding": "inplace",
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "astId": 2204,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "_value",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(RoleData)39_storage": {
+            "encoding": "inplace",
+            "label": "struct AccessControlUpgradeable.RoleData",
+            "members": [
+              {
+                "astId": 36,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "members",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_struct(AddressSet)2521_storage"
+              },
+              {
+                "astId": 38,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "adminRole",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_bytes32"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(Set)2256_storage": {
+            "encoding": "inplace",
+            "label": "struct EnumerableSetUpgradeable.Set",
+            "members": [
+              {
+                "astId": 2251,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "_values",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_array(t_bytes32)dyn_storage"
+              },
+              {
+                "astId": 2255,
+                "contract": "contracts/synapse/SynapseERC20.sol:SynapseERC20",
+                "label": "_indexes",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_bytes32,t_uint256)"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "bookkeeping_basis": "Dividend getters identify scalar 7/10/15 and mapping 8/9/17 reads; observed root-12 mirror is separate bookkeeping. Entire balance getter is unconditional slot 0. Array/membership writes not reviewed remain errors.",
+      "bookkeeping_getters": {
+        "block": 122288026,
+        "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+        "getters": [
+          {
+            "failed": false,
+            "proposed_signature": "allowance(address,address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xb19a572c6ecee1d328c80318eab90e312063ea129656fae551ff505a95fd38ad",
+                "pc": 938,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "selector": "dd62ed3e",
+            "trace_sha256": "d901b3ec7430ea13bb4a3e8826a3b9b23239427edd3aa651f3bdc9ec16fd1412"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "totalSupply()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 432,
+                "value": "0x000000000000000000000000000000000000000000970442b5b23f4327291027"
+              }
+            ],
+            "returned": "0x000000000000000000000000000000000000000000970442b5b23f4327291027",
+            "selector": "18160ddd",
+            "trace_sha256": "0ddb38b60bd107fc072a1d0e7b838ee9b98b587a74dddb8cf5e3824c12e89089"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "name()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1031,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1075,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1104,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000007547261636b657200000000000000000000000000000000000000000000000000",
+            "selector": "06fdde03",
+            "trace_sha256": "7747f2f2a1224d3486f4d12b45befe2ae57dd26f87e030d2477c87dbcc0c9d62"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "symbol()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1970,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1075,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1104,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000007547261636b657200000000000000000000000000000000000000000000000000",
+            "selector": "95d89b41",
+            "trace_sha256": "a5feabd6dfdb2ffa66284467fc42778f1f56dce92495dff9ce38b703c3d744d7"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "owner()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "pc": 680,
+                "value": "0x0000000000000000000000003cbd513239d9e5538a4caed8ed53ef77009df473"
+              }
+            ],
+            "returned": "0x0000000000000000000000003cbd513239d9e5538a4caed8ed53ef77009df473",
+            "selector": "8da5cb5b",
+            "trace_sha256": "c4c744678195e4bf2b2b6ee05a15d59fe574b97f02a2a2bfadb6a7c0ce2deaf5"
+          },
+          {
+            "failed": true,
+            "proposed_signature": "magnifiedDividendPerShare()",
+            "reads": [],
+            "returned": "0x",
+            "selector": "3a7960e0",
+            "trace_sha256": "f1e1572810992904d6d29809d1d4d1b243eb6f112c0b27bfaf3c6e528337afcb"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "totalDividendsDistributed()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+                "pc": 674,
+                "value": "0x00000000000000000000000000000000000000000000267ef0c3cd8b87e62666"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000267ef0c3cd8b87e62666",
+            "selector": "85a6b3ae",
+            "trace_sha256": "3f4d5752f43535fd21d97b26418183a9427bca67bec3e1f49f113ead221fba3b"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "withdrawableDividendOf(address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+                "pc": 2084,
+                "value": "0x00000000000000000000000000000000000000000000000000f53218018b3e78"
+              },
+              {
+                "depth": 1,
+                "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+                "pc": 1321,
+                "value": "0xffffffffffffffff2c2fbd4b9b2b2c4bb11575e3bc7fa089ad64b6d75a9cac4e"
+              },
+              {
+                "depth": 1,
+                "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+                "pc": 1855,
+                "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 1353,
+                "value": "0x00000000000000000000000000000000003edb953526af25d95b930fb3f6d6a2"
+              }
+            ],
+            "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "selector": "a8b9d240",
+            "trace_sha256": "285258e8600621cb60382f1cc5e73d2810613a440fb84f595c009d2d91e2fc73"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "withdrawnDividendOf(address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+                "pc": 835,
+                "value": "0x00000000000000000000000000000000000000000000000000f53218018b3e78"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000000000f53218018b3e78",
+            "selector": "aafd847a",
+            "trace_sha256": "1fd383dae7bab4d8c9a36e1e6135e6a529e0f393bad82f0ac67613ce8c9781bc"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "accumulativeDividendOf(address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+                "pc": 1321,
+                "value": "0xffffffffffffffff2c2fbd4b9b2b2c4bb11575e3bc7fa089ad64b6d75a9cac4e"
+              },
+              {
+                "depth": 1,
+                "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+                "pc": 1855,
+                "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 1353,
+                "value": "0x00000000000000000000000000000000003edb953526af25d95b930fb3f6d6a2"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000000000f53218018b3e78",
+            "selector": "27ce0147",
+            "trace_sha256": "6da683619e18f66c541d086e1d0648c320d92fd8b1a5d7ee1a407dc75d829da7"
+          },
+          {
+            "failed": true,
+            "proposed_signature": "getAccount(address)",
+            "reads": [],
+            "returned": "0x",
+            "selector": "fbcbc0f1",
+            "trace_sha256": "051b8f7bd4a0620ccac8271324f70a06b1d615c07e181aa4f8d199d9b6863b48"
+          },
+          {
+            "failed": true,
+            "proposed_signature": "getNumberOfTokenHolders()",
+            "reads": [],
+            "returned": "0x",
+            "selector": "09bbedde",
+            "trace_sha256": "538ee17ec71d07900fb342be438b507cf8dc8ed74d18f8bc3eeff0df4dcb65ea"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "lastProcessedIndex()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+                "pc": 522,
+                "value": "0x000000000000000000000000000000000000000000000000000000000000095f"
+              }
+            ],
+            "returned": "0x000000000000000000000000000000000000000000000000000000000000095f",
+            "selector": "3009a609",
+            "trace_sha256": "9e2eb57232525a35cfeb9848c08bbea5c5dec2e2c84632b653e1a0476004a13c"
+          },
+          {
+            "failed": true,
+            "proposed_signature": "claimWait()",
+            "reads": [],
+            "returned": "0x",
+            "selector": "6f2789ec",
+            "trace_sha256": "02ee9814c39befd1f14dde7c34152af19cfe393b08b6a0a98b8c27d7751b6cfd"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "minimumTokenBalanceForDividends()",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000012",
+                "pc": 882,
+                "value": "0x00000000000000000000000000000000000000000000003635c9adc5dea00000"
+              }
+            ],
+            "returned": "0x00000000000000000000000000000000000000000000003635c9adc5dea00000",
+            "selector": "be10b614",
+            "trace_sha256": "cce3b2e122f36dccf173ae05a5921d194ae23b86f616a05eb77a93fe3057c7f1"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "excludedFromDividends(address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x5e990ffee461f4ecd959b2da2b2f398a283e17edfe886d38fba323187071ad70",
+                "pc": 608,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "returned": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "selector": "4e7b827f",
+            "trace_sha256": "e202999373d489ab748257741f259d092c23730b216dd2dc00ef07d27b32fef3"
+          },
+          {
+            "failed": false,
+            "proposed_signature": "lastClaimTimes(address)",
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+                "pc": 475,
+                "value": "0x000000000000000000000000000000000000000000000000000000006aab003b"
+              }
+            ],
+            "returned": "0x000000000000000000000000000000000000000000000000000000006aab003b",
+            "selector": "226cfa3d",
+            "trace_sha256": "16453e3c4ce08b424a0a661c9aee2a798febcb583b8e392c64eadf8268322646"
+          }
+        ],
+        "hash": "0x07021cbb376354ccf6471741c25e9abcc6693169f260bbf8aa6075ec434357b3",
+        "runtime_hash": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b",
+        "status": "inspected_not_qualified"
+      },
+      "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+      "controls": {
+        "block": 122288026,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 926,
+                "preimage": "00000000000000000000000057bc1f66a3d043f83251d06e4def2a1dee44a9020000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 937,
+                "preimage": "000000000000000000000000111111111111111111111111111111111111111139dbf8d614b6662491118415b4ec935ea8bc46b111fb3625c243900665190858"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xb19a572c6ecee1d328c80318eab90e312063ea129656fae551ff505a95fd38ad",
+                "pc": 938,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "7e3e8d871aa8ef516f3b1da4b090fa014409809efcb1509c73f226e470e8dfdf"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 432,
+                "value": "0x000000000000000000000000000000000000000000970442b5b23f4327291027"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "142f96370578148803e260bf24064e1145ee92a36cff19870a98f391c5029771"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1031,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1075,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1104,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "0aaac1db175854453de05f6d69ac26ad68f7263c31f95ea49fd92e65cf0ef785"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1970,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1075,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1104,
+                "value": "0x547261636b65720000000000000000000000000000000000000000000000000e"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "41c085a83e1a0a3e3428b9a21ae6d52d18cb08897f88e18d90264eec711e6184"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "pc": 680,
+                "value": "0x0000000000000000000000003cbd513239d9e5538a4caed8ed53ef77009df473"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "bf389e98b8bfc0e33b79b054752213e3a4c4a1a008dcc2bdf020bacba061162e"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x07021cbb376354ccf6471741c25e9abcc6693169f260bbf8aa6075ec434357b3",
+        "inspection": {
+          "address": "0x57bc1f66a3d043f83251d06e4def2a1dee44a902",
+          "balance_of": "15985048644847498142949",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288026,
+          "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+          "elapsed_seconds": 0.295749417,
+          "execution_code": [
+            {
+              "address": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+              "checked_instructions": 1,
+              "runtime_hash": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+                "depth": 1,
+                "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+                "pc": 1855,
+                "storage_address": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+                "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+              }
+            ]
+          },
+          "hash": "0x07021cbb376354ccf6471741c25e9abcc6693169f260bbf8aa6075ec434357b3",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b",
+          "status": "inspected",
+          "storage_key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x608b28791e1992b7071759c81fddcdba4cec92d74c720af68a66dc17e02e87c4",
+              "pc": 1855,
+              "value": "0x0000000000000000000000000000000000000000000003628d1cfa12426ba4e5"
+            }
+          ],
+          "storage_word": "15985048644847498142949",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "67d6fd703547ad3d6a7b257c10d4b5a8e660e5175ae554f8ce1885bf75b6dd45"
+        },
+        "rank": 327
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 0168\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 06fdde03\n36: EQ \n37: PUSH2 016c\n40: JUMPI \n41: DUP1 \n42: PUSH4 095ea7b3\n47: EQ \n48: PUSH2 018a\n51: JUMPI \n52: DUP1 \n53: PUSH4 18160ddd\n58: EQ \n59: PUSH2 01ad\n62: JUMPI \n63: DUP1 \n64: PUSH4 226cfa3d\n69: EQ \n70: PUSH2 01bf\n73: JUMPI \n74: DUP1 \n75: PUSH4 23b872dd\n80: EQ \n81: PUSH2 01de\n84: JUMPI \n85: DUP1 \n86: PUSH4 27ce0147\n91: EQ \n92: PUSH2 01f1\n95: JUMPI \n96: DUP1 \n97: PUSH4 3009a609\n102: EQ \n103: PUSH2 0204\n106: JUMPI \n107: DUP1 \n108: PUSH4 313ce567\n113: EQ \n114: PUSH2 020d\n117: JUMPI \n118: DUP1 \n119: PUSH4 31e79db0\n124: EQ \n125: PUSH2 021c\n128: JUMPI \n129: DUP1 \n130: PUSH4 39509351\n135: EQ \n136: PUSH2 0231\n139: JUMPI \n140: DUP1 \n141: PUSH4 4e7b827f\n146: EQ \n147: PUSH2 0244\n150: JUMPI \n151: DUP1 \n152: PUSH4 51c2a0e3\n157: EQ \n158: PUSH2 0266\n161: JUMPI \n162: DUP1 \n163: PUSH4 6a474002\n168: EQ \n169: PUSH2 0279\n172: JUMPI \n173: DUP1 \n174: PUSH4 70a08231\n179: EQ \n180: PUSH2 0281\n183: JUMPI \n641: JUMPDEST \n642: PUSH2 01b1\n645: PUSH2 028f\n648: CALLDATASIZE \n649: PUSH1 04\n651: PUSH2 13c3\n654: JUMP \n5059: JUMPDEST \n5060: PUSH0 \n5061: PUSH1 20\n5063: DUP3 \n5064: DUP5 \n5065: SUB \n5066: SLT \n5067: ISZERO \n5068: PUSH2 13d3\n5071: JUMPI \n5075: JUMPDEST \n5076: DUP2 \n5077: CALLDATALOAD \n5078: PUSH2 0c87\n5081: DUP2 \n5082: PUSH2 1385\n5085: JUMP \n4997: JUMPDEST \n4998: PUSH1 01\n5000: PUSH1 01\n5002: PUSH1 a0\n5004: SHL \n5005: SUB \n5006: DUP2 \n5007: AND \n5008: DUP2 \n5009: EQ \n5010: PUSH2 071c\n5013: JUMPI \n1820: JUMPDEST \n1821: POP \n1822: JUMP \n3207: JUMPDEST \n3208: SWAP4 \n3209: SWAP3 \n3210: POP \n3211: POP \n3212: POP \n3213: JUMP \n655: JUMPDEST \n656: PUSH2 0728\n659: JUMP \n1832: JUMPDEST \n1833: PUSH1 01\n1835: PUSH1 01\n1837: PUSH1 a0\n1839: SHL \n1840: SUB \n1841: AND \n1842: PUSH0 \n1843: SWAP1 \n1844: DUP2 \n1845: MSTORE \n1846: PUSH1 20\n1848: DUP2 \n1849: SWAP1 \n1850: MSTORE \n1851: PUSH1 40\n1853: SWAP1 \n1854: KECCAK256 \n1855: SLOAD \n1856: SWAP1 \n1857: JUMP \n433: JUMPDEST \n434: PUSH1 40\n436: MLOAD \n437: SWAP1 \n438: DUP2 \n439: MSTORE \n440: PUSH1 20\n442: ADD \n443: PUSH2 0181\n446: JUMP \n385: JUMPDEST \n386: PUSH1 40\n388: MLOAD \n389: DUP1 \n390: SWAP2 \n391: SUB \n392: SWAP1 \n393: RETURN ",
+      "getter_path_sha256": "37324d146fefe451fe856ad4951162887b3b062499b33d9c7f03b1ab80a49315",
+      "independent_field_controls": [
+        {
+          "balance_of": 0,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 7",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 10",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 15",
+          "key": "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 8",
+          "key": "0x84db92d90e499d516b167bfb1c3090ec2e3f35743553ca692eb44fdc106d4df6",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 9",
+          "key": "0xbea9c03bbafc5905bb2c789fff5903d01240d555561e02f8ba3269dd276df56b",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 12",
+          "key": "0xf8ee87f6cb1e342d4bd4ecc129656a2ac243e5311b54a0f6cf8b00360a437997",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "mapping 17",
+          "key": "0xa1e9ba177085be9c2f962d0eee6a41c1e1d003fab588d58faf445b0aa9084ce2",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xead953d4dcfeddbe82f27997d9cd9660d5a7025f427eab2972956833a722555b",
+        "contract": "0x76096218ea7e6e1a3c6a549c88e2928c633b5f63",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x0000000000000000000000000000000000000000000000000000000000000011"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000f"
+        ]
+      },
+      "rank": 327
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "bookkeeping_basis": "Explicit scalar 8, getter 0xc5c03af3 at pc724..732, observed writes 1 to 2 and 2 to 1. No semantic field name inferred. Balance getter pc564..589 reads only mapping root 0, and independence controls follow.",
+      "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+      "controls": {
+        "block": 122288006,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 1685,
+                "preimage": "000000000000000000000000f2a1d4db5396114be0723029304b6e0dda3a49780000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 1696,
+                "preimage": "00000000000000000000000011111111111111111111111111111111111111114fd89986f790c9bca7d7a996776fb1fc4cb6afe57a9929fa3a455531b3133609"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0xa03722f964a8522ecca45f6a5747331aae32db4f77b1b7818f3e725156402d00",
+                "pc": 1697,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "5dc124d9010b925b436c5980839279a25a8995877bac21acb7d0349bc48fc934"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 450,
+                "value": "0x0000000000000000000000000000000000000000033b2e3c9fd0803ce8000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "57d83329a3fe3c2c1c4e8e3d99737c7b5a1695e5a8387ca208353195696c5c30"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                "pc": 796,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                "pc": 840,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000006",
+                "pc": 869,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "b73f276a8a6df47525a503c23fc4daa6ed5bec3a4153d5454a0b349aba246229"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 1244,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 840,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 869,
+                "value": "0xe68b9be8b4a2e7899b0000000000000000000000000000000000000000000012"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "bff595d3cdf8e219324d0ad43a30dcd632dcf04cc96f9a56547926dc0e92c384"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 2,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "pc": 601,
+                "value": "0x0000000000000000000000005c952063c7fc8610ffdb798152d69f0b9550762b"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "dfdc3fd394dff106ac2d20139b64f950e2d0a2db17f24d28db07f175469842cf"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+        "inspection": {
+          "address": "0xf2a1d4db5396114be0723029304b6e0dda3a4978",
+          "balance_of": "1019412027674192000000000",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288006,
+          "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+          "elapsed_seconds": 0.297654542,
+          "execution_code": [
+            {
+              "address": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+              "checked_instructions": 1,
+              "runtime_hash": "0x01f0430e2bbc285e7a55cc7409977eccb1b7b944068956cffcb7dac5c75b3d1f"
+            },
+            {
+              "address": "0x46862924e2a229170ebd065e24a0da72af58a986",
+              "checked_instructions": 1,
+              "runtime_hash": "0xa5529c201b5fdf90cdcddd546521c4e75374e47fdb1aa356859307a4532da97f"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [
+              {
+                "code_address": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+                "depth": 1,
+                "entered": true,
+                "opcode": "DELEGATECALL",
+                "pc": 31,
+                "storage_address": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+                "target": "0x46862924e2a229170ebd065e24a0da72af58a986"
+              }
+            ],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x46862924e2a229170ebd065e24a0da72af58a986",
+                "depth": 2,
+                "key": "0x9145f4135b1411a04e30d6d1ffee06cd38339dc1513b79b52d43947e8ebe787d",
+                "pc": 587,
+                "storage_address": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+                "value": "0x00000000000000000000000000000000000000000000d7de6fcf0d467b6b2000"
+              }
+            ]
+          },
+          "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x01f0430e2bbc285e7a55cc7409977eccb1b7b944068956cffcb7dac5c75b3d1f",
+          "status": "inspected",
+          "storage_key": "0x9145f4135b1411a04e30d6d1ffee06cd38339dc1513b79b52d43947e8ebe787d",
+          "storage_reads": [
+            {
+              "depth": 2,
+              "key": "0x9145f4135b1411a04e30d6d1ffee06cd38339dc1513b79b52d43947e8ebe787d",
+              "pc": 587,
+              "value": "0x00000000000000000000000000000000000000000000d7de6fcf0d467b6b2000"
+            }
+          ],
+          "storage_word": "1019412027674192000000000",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "1e84f46ecc2351b6e61f015b81194a453a13f37382cb8d3d32de54b09c155c7d"
+        },
+        "rank": 332
+      },
+      "dependency": {
+        "address": "0x46862924e2a229170ebd065e24a0da72af58a986",
+        "runtime_hash": "0xa5529c201b5fdf90cdcddd546521c4e75374e47fdb1aa356859307a4532da97f",
+        "source_sha256": "224ab080cdfe0f4293274cff34152e875cd5f10a4cb25e8473c01bc3e437f083",
+        "source_verified": false
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 0152\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 70a08231\n36: GT \n37: PUSH2 00bf\n40: JUMPI \n41: DUP1 \n42: PUSH4 abac0589\n47: GT \n48: PUSH2 0079\n51: JUMPI \n121: JUMPDEST \n122: DUP1 \n123: PUSH4 70a08231\n128: EQ \n129: PUSH2 0226\n132: JUMPI \n550: JUMPDEST \n551: PUSH2 015f\n554: PUSH2 0234\n557: CALLDATASIZE \n558: PUSH1 04\n560: PUSH2 108e\n563: JUMP \n4238: JUMPDEST \n4239: PUSH0 \n4240: PUSH1 20\n4242: DUP3 \n4243: DUP5 \n4244: SUB \n4245: SLT \n4246: ISZERO \n4247: PUSH2 109e\n4250: JUMPI \n4254: JUMPDEST \n4255: PUSH2 0e07\n4258: DUP3 \n4259: PUSH2 0e96\n4262: JUMP \n3734: JUMPDEST \n3735: DUP1 \n3736: CALLDATALOAD \n3737: PUSH1 01\n3739: PUSH1 01\n3741: PUSH1 a0\n3743: SHL \n3744: SUB \n3745: DUP2 \n3746: AND \n3747: DUP2 \n3748: EQ \n3749: PUSH2 0eac\n3752: JUMPI \n3756: JUMPDEST \n3757: SWAP2 \n3758: SWAP1 \n3759: POP \n3760: JUMP \n3591: JUMPDEST \n3592: SWAP4 \n3593: SWAP3 \n3594: POP \n3595: POP \n3596: POP \n3597: JUMP \n564: JUMPDEST \n565: PUSH1 01\n567: PUSH1 01\n569: PUSH1 a0\n571: SHL \n572: SUB \n573: AND \n574: PUSH0 \n575: SWAP1 \n576: DUP2 \n577: MSTORE \n578: PUSH1 20\n580: DUP2 \n581: SWAP1 \n582: MSTORE \n583: PUSH1 40\n585: SWAP1 \n586: KECCAK256 \n587: SLOAD \n588: SWAP1 \n589: JUMP \n351: JUMPDEST \n352: PUSH1 40\n354: MLOAD \n355: SWAP1 \n356: DUP2 \n357: MSTORE \n358: PUSH1 20\n360: ADD \n361: JUMPDEST \n362: PUSH1 40\n364: MLOAD \n365: DUP1 \n366: SWAP2 \n367: SUB \n368: SWAP1 \n369: RETURN ",
+      "getter_path_sha256": "77791058dfb26bea0c6d6e1c1960ec6db585d708622873f03f66e712d5e77cd8",
+      "independent_field_controls": [
+        {
+          "balance_of": 0,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 0,
+          "word": "0"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 0,
+          "word": "123"
+        },
+        {
+          "balance_of": 0,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 0,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 1,
+          "word": "0"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 1,
+          "word": "123"
+        },
+        {
+          "balance_of": 1,
+          "field": "scalar 8, getter 0xc5c03af3",
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "raw_balance": 1,
+          "word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x01f0430e2bbc285e7a55cc7409977eccb1b7b944068956cffcb7dac5c75b3d1f",
+        "contract": "0x1a21d5a58d56ba2b9e75f1213de82aaa95434444",
+        "minimal_proxy": {
+          "code_hash": "0xa5529c201b5fdf90cdcddd546521c4e75374e47fdb1aa356859307a4532da97f",
+          "implementation": "0x46862924e2a229170ebd065e24a0da72af58a986"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ]
+      },
+      "rank": 332,
+      "scalar_getter": {
+        "override": 123,
+        "reads": [
+          {
+            "depth": 2,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+            "pc": 730,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        ],
+        "return": 123,
+        "selector": "0xc5c03af3"
+      }
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+      "controls": {
+        "block": 122288007,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 972,
+                "preimage": "000000000000000000000000d405d7033ff73086fd3150e013c637518c2d3f4e0000000000000000000000000000000000000000000000000000000000000001"
+              },
+              {
+                "pc": 983,
+                "preimage": "0000000000000000000000001111111111111111111111111111111111111111c5e85348e97b369215e96f130c9fa6c7f463a8c0225f808ebbe38fa66dee0ff8"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xa611e31c5c46504311fd7c5fc1e444f863163f12b63d4047d5920ca40b41c392",
+                "pc": 984,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "e51ea286a1a471c277a598e8768a569089270fcfad170097f99beacadb7ae2a5"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "pc": 463,
+                "value": "0x0000000000000000000000000000000000000000000422cb11db9dabd8935515"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "d0b571651122c45fb0fb8081901840883dcab8b567cb4d71a6dd160970754b14"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1031,
+                "value": "0x41555420546f6b656e0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1075,
+                "value": "0x41555420546f6b656e0000000000000000000000000000000000000000000012"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000003",
+                "pc": 1104,
+                "value": "0x41555420546f6b656e0000000000000000000000000000000000000000000012"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "b7c275a7be45a3c57f42c6892b7b95c75aa9ec5a4d57fee076e1b8dd018f2aa2"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 2327,
+                "value": "0x4155540000000000000000000000000000000000000000000000000000000006"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1075,
+                "value": "0x4155540000000000000000000000000000000000000000000000000000000006"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000004",
+                "pc": 1104,
+                "value": "0x4155540000000000000000000000000000000000000000000000000000000006"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "44dcc6cfb2b4f33a2ae8e5f0ee43acefb83d0c6ab5958a282ea7bc89177459d8"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "pc": 737,
+                "value": "0x000000000000000000000000af6fa78978689c17dd0741d93b483595ea6d27af"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "d622ab164c27f113b6def5f48842787aecaa1b3cba632de494e6969c48cc63a8"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0xf2c938a57bcc37a4adbb20c7f77476f1d05e03c84d54482e193744ec49277bce",
+        "inspection": {
+          "address": "0xd405d7033ff73086fd3150e013c637518c2d3f4e",
+          "balance_of": "157150000000000000000000",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "block": 122288007,
+          "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+          "elapsed_seconds": 0.288399833,
+          "execution_code": [
+            {
+              "address": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+              "checked_instructions": 1,
+              "runtime_hash": "0x79e286601b1c70913021f43a44e7aa895b5f3e4fff6debe752797d69c71e3819"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+                "depth": 1,
+                "key": "0x0e12f5887a0da453bd3509a5ee7dd028079aad99f7f02844cad7a2b571512cc7",
+                "pc": 670,
+                "storage_address": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+                "value": "0x0000000000000000000000000000000000000000000021471e5a9f9d9cb80000"
+              }
+            ]
+          },
+          "hash": "0xf2c938a57bcc37a4adbb20c7f77476f1d05e03c84d54482e193744ec49277bce",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x79e286601b1c70913021f43a44e7aa895b5f3e4fff6debe752797d69c71e3819",
+          "status": "inspected",
+          "storage_key": "0x0e12f5887a0da453bd3509a5ee7dd028079aad99f7f02844cad7a2b571512cc7",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x0e12f5887a0da453bd3509a5ee7dd028079aad99f7f02844cad7a2b571512cc7",
+              "pc": 670,
+              "value": "0x0000000000000000000000000000000000000000000021471e5a9f9d9cb80000"
+            }
+          ],
+          "storage_word": "157150000000000000000000",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "fb350f089953fd49538dee289429b91b7e2437a5c8a44e4a6b4a06c032192a8d"
+        },
+        "rank": 333
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 000f\n11: JUMPI \n15: JUMPDEST \n16: POP \n17: PUSH1 04\n19: CALLDATASIZE \n20: LT \n21: PUSH2 0187\n24: JUMPI \n25: PUSH0 \n26: CALLDATALOAD \n27: PUSH1 e0\n29: SHR \n30: DUP1 \n31: PUSH4 7b60fa3f\n36: GT \n37: PUSH2 00d9\n40: JUMPI \n217: JUMPDEST \n218: DUP1 \n219: PUSH4 341d5bc2\n224: GT \n225: PUSH2 0144\n228: JUMPI \n229: DUP1 \n230: PUSH4 5ae0e194\n235: GT \n236: PUSH2 011f\n239: JUMPI \n240: DUP1 \n241: PUSH4 5ae0e194\n246: EQ \n247: PUSH2 0266\n250: JUMPI \n251: DUP1 \n252: PUSH4 70a08231\n257: EQ \n258: PUSH2 0279\n261: JUMPI \n633: JUMPDEST \n634: PUSH2 01d0\n637: PUSH2 0287\n640: CALLDATASIZE \n641: PUSH1 04\n643: PUSH2 1083\n646: JUMP \n4227: JUMPDEST \n4228: PUSH0 \n4229: PUSH1 20\n4231: DUP3 \n4232: DUP5 \n4233: SUB \n4234: SLT \n4235: ISZERO \n4236: PUSH2 1093\n4239: JUMPI \n4243: JUMPDEST \n4244: DUP2 \n4245: CALLDATALOAD \n4246: PUSH2 0517\n4249: DUP2 \n4250: PUSH2 0f95\n4253: JUMP \n3989: JUMPDEST \n3990: PUSH1 01\n3992: PUSH1 01\n3994: PUSH1 a0\n3996: SHL \n3997: SUB \n3998: DUP2 \n3999: AND \n4000: DUP2 \n4001: EQ \n4002: PUSH2 0701\n4005: JUMPI \n1793: JUMPDEST \n1794: POP \n1795: JUMP \n1303: JUMPDEST \n1304: SWAP4 \n1305: SWAP3 \n1306: POP \n1307: POP \n1308: POP \n1309: JUMP \n647: JUMPDEST \n648: PUSH1 01\n650: PUSH1 01\n652: PUSH1 a0\n654: SHL \n655: SUB \n656: AND \n657: PUSH0 \n658: SWAP1 \n659: DUP2 \n660: MSTORE \n661: PUSH1 20\n663: DUP2 \n664: SWAP1 \n665: MSTORE \n666: PUSH1 40\n668: SWAP1 \n669: KECCAK256 \n670: SLOAD \n671: SWAP1 \n672: JUMP \n464: JUMPDEST \n465: PUSH1 40\n467: MLOAD \n468: SWAP1 \n469: DUP2 \n470: MSTORE \n471: PUSH1 20\n473: ADD \n474: PUSH2 01a0\n477: JUMP \n416: JUMPDEST \n417: PUSH1 40\n419: MLOAD \n420: DUP1 \n421: SWAP2 \n422: SUB \n423: SWAP1 \n424: RETURN ",
+      "getter_path_sha256": "616af7ed652b42b835c240fc94fb8b36c0179d4778cca5653db971ba91207990",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x79e286601b1c70913021f43a44e7aa895b5f3e4fff6debe752797d69c71e3819",
+        "contract": "0x2eb568406ff9eb85d41d23dbe052f3d4a26b197f",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "rank": 333
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+      "controls": {
+        "block": 122288055,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 1983,
+                "preimage": "0000000000000000000000001a9b68ca1dcacb106c4b853e2d9c915f0cfe2e560000000000000000000000000000000000000000000000000000000000000006"
+              },
+              {
+                "pc": 1994,
+                "preimage": "0000000000000000000000001111111111111111111111111111111111111111ecd647777a2a3f6def62660040f709730568464dee93f7681795d80cda663b48"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xd7cf52fccee9c26f10af39d94a2e778495af0ff077a08a6feb2cc15b8f286d42",
+                "pc": 1995,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "c67d71271167321c3516fd6d95e765d377a180d8b31f09fb14a21957a12d04c4"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000007",
+                "pc": 942,
+                "value": "0x00000000000000000000000000000000000000000010945b3b38c53e43743000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "73c694e57947ef2222f9682c82f154ab34b0d50463313d17b7345b6f4fbd5f18"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+                "pc": 2068,
+                "value": "0x6f312e65786368616e6765000000000000000000000000000000000000000016"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+                "pc": 2112,
+                "value": "0x6f312e65786368616e6765000000000000000000000000000000000000000016"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000008",
+                "pc": 2141,
+                "value": "0x6f312e65786368616e6765000000000000000000000000000000000000000016"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "9b01bacff540d2e3d7759ef3dbd911a96293ed49564942dca40b97388b2aa7ef"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000009",
+                "pc": 3295,
+                "value": "0x4f00000000000000000000000000000000000000000000000000000000000002"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000009",
+                "pc": 2112,
+                "value": "0x4f00000000000000000000000000000000000000000000000000000000000002"
+              },
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000009",
+                "pc": 2141,
+                "value": "0x4f00000000000000000000000000000000000000000000000000000000000002"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "2faff495516ed809502d33b27b73b2cf48da50137cf1d523e31f6c7ac6bb1492"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "pc": 1513,
+                "value": "0x000000000000000000000000470540b07ea33fa96f5bf716b1ae6d6a1639756e"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "61d7bb8b1ac04666b428c7d1118cdecda9f2288905acde0cc3919ec39b5c050a"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x94b3166898c4627d72e5ad59ceed30dffd13f371016decf909b7f79997724741",
+        "inspection": {
+          "address": "0x1a9b68ca1dcacb106c4b853e2d9c915f0cfe2e56",
+          "balance_of": "4320738893404074837431946",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "block": 122288055,
+          "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+          "elapsed_seconds": 0.29828025,
+          "execution_code": [
+            {
+              "address": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+              "checked_instructions": 1,
+              "runtime_hash": "0x1417f34e0e4aa95e93775192a3f5d943503fd8d6dfca5da4e26eaf0954ffb001"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+                "depth": 1,
+                "key": "0x7b1156a609eba7673bc633e294ab2292034783a35c719c494d1bc28c82bf4cc5",
+                "pc": 1362,
+                "storage_address": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+                "value": "0x0000000000000000000000000000000000000000000392f3b9891f3b23da568a"
+              }
+            ]
+          },
+          "hash": "0x94b3166898c4627d72e5ad59ceed30dffd13f371016decf909b7f79997724741",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x1417f34e0e4aa95e93775192a3f5d943503fd8d6dfca5da4e26eaf0954ffb001",
+          "status": "inspected",
+          "storage_key": "0x7b1156a609eba7673bc633e294ab2292034783a35c719c494d1bc28c82bf4cc5",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x7b1156a609eba7673bc633e294ab2292034783a35c719c494d1bc28c82bf4cc5",
+              "pc": 1362,
+              "value": "0x0000000000000000000000000000000000000000000392f3b9891f3b23da568a"
+            }
+          ],
+          "storage_word": "4320738893404074837431946",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "77cc06b287415320b6878a3a3dab51326f1cb58bbc7a34dd0f893959803b1330"
+        },
+        "rank": 339
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: PUSH1 04\n7: CALLDATASIZE \n8: LT \n9: PUSH2 0251\n12: JUMPI \n13: PUSH1 00\n15: CALLDATALOAD \n16: PUSH1 e0\n18: SHR \n19: DUP1 \n20: PUSH4 7d25a05e\n25: GT \n26: PUSH2 0139\n29: JUMPI \n313: JUMPDEST \n314: DUP1 \n315: PUSH4 23b872dd\n320: GT \n321: PUSH2 01d2\n324: JUMPI \n325: DUP1 \n326: PUSH4 5535d461\n331: GT \n332: PUSH2 0196\n335: JUMPI \n336: DUP1 \n337: PUSH4 5535d461\n342: EQ \n343: PUSH2 0474\n346: JUMPI \n347: DUP1 \n348: PUSH4 5a0dfe4d\n353: EQ \n354: PUSH2 0494\n357: JUMPI \n358: DUP1 \n359: PUSH4 5e280f11\n364: EQ \n365: PUSH2 04cb\n368: JUMPI \n369: DUP1 \n370: PUSH4 6fc1b31e\n375: EQ \n376: PUSH2 04ff\n379: JUMPI \n380: DUP1 \n381: PUSH4 70a08231\n386: EQ \n387: PUSH2 051f\n390: JUMPI \n1311: JUMPDEST \n1312: CALLVALUE \n1313: DUP1 \n1314: ISZERO \n1315: PUSH2 052b\n1318: JUMPI \n1323: JUMPDEST \n1324: POP \n1325: PUSH2 03af\n1328: PUSH2 053a\n1331: CALLDATASIZE \n1332: PUSH1 04\n1334: PUSH2 252b\n1337: JUMP \n9515: JUMPDEST \n9516: PUSH1 00\n9518: PUSH1 20\n9520: DUP3 \n9521: DUP5 \n9522: SUB \n9523: SLT \n9524: ISZERO \n9525: PUSH2 253d\n9528: JUMPI \n9533: JUMPDEST \n9534: DUP2 \n9535: CALLDATALOAD \n9536: PUSH2 0b2a\n9539: DUP2 \n9540: PUSH2 21db\n9543: JUMP \n8667: JUMPDEST \n8668: PUSH1 01\n8670: PUSH1 01\n8672: PUSH1 a0\n8674: SHL \n8675: SUB \n8676: DUP2 \n8677: AND \n8678: DUP2 \n8679: EQ \n8680: PUSH2 11bc\n8683: JUMPI \n4540: JUMPDEST \n4541: POP \n4542: JUMP \n2858: JUMPDEST \n2859: SWAP4 \n2860: SWAP3 \n2861: POP \n2862: POP \n2863: POP \n2864: JUMP \n1338: JUMPDEST \n1339: PUSH1 01\n1341: PUSH1 01\n1343: PUSH1 a0\n1345: SHL \n1346: SUB \n1347: AND \n1348: PUSH1 00\n1350: SWAP1 \n1351: DUP2 \n1352: MSTORE \n1353: PUSH1 05\n1355: PUSH1 20\n1357: MSTORE \n1358: PUSH1 40\n1360: SWAP1 \n1361: KECCAK256 \n1362: SLOAD \n1363: SWAP1 \n1364: JUMP \n943: JUMPDEST \n944: PUSH1 40\n946: MLOAD \n947: SWAP1 \n948: DUP2 \n949: MSTORE \n950: PUSH1 20\n952: ADD \n953: PUSH2 0278\n956: JUMP \n632: JUMPDEST \n633: PUSH1 40\n635: MLOAD \n636: DUP1 \n637: SWAP2 \n638: SUB \n639: SWAP1 \n640: RETURN ",
+      "getter_path_sha256": "a97d355ecee961ceb09de46d8cf60ed852617aa7848db8e4961aab53d1037d6c",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0x1417f34e0e4aa95e93775192a3f5d943503fd8d6dfca5da4e26eaf0954ffb001",
+        "contract": "0x500a02a20b0b0a3f3efccfc0559543f5743bd1c4",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009"
+        ]
+      },
+      "rank": 339
+    },
+    {
+      "basis": "Manually reviewed complete selector/ABI/getter/return path: literal balance mapping root, one SLOAD and untransformed return; fresh word and account/caller controls. Explicit independent named getter fields only.",
+      "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+      "controls": {
+        "block": 122288022,
+        "contexts": [
+          {
+            "balance_of": 0,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x1111111111111111111111111111111111111111",
+            "holder": "0x0000000000000000000000000000000000000000",
+            "word": 123
+          },
+          {
+            "balance_of": 0,
+            "from": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 0
+          },
+          {
+            "balance_of": 123,
+            "from": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+            "holder": "0xffffffffffffffffffffffffffffffffffffffff",
+            "word": 123
+          }
+        ],
+        "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+        "getters": [
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "allowance",
+            "hashes": [
+              {
+                "pc": 10529,
+                "preimage": "000000000000000000000000ee14cabdfba29e1d4f989bbdca751acaf85499bf0000000000000000000000000000000000000000000000000000000000000009"
+              },
+              {
+                "pc": 10590,
+                "preimage": "00000000000000000000000011111111111111111111111111111111111111110bb6962f01451c9e15aedc34e5d1c9b0dcbe2e0dc72ca8064ac2b397898628fd"
+              }
+            ],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0xc426ed437d88f6ef6cafd8afdf73bb3618a681948cf61f6f84284e92ab690699",
+                "pc": 10591,
+                "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "075bea8829e67a6135474fd4e1f6c1261fbdf165b92993a3074deb342c2175aa"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "totalSupply",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "pc": 3066,
+                "value": "0x000000000000000000000000000000000000000000422ca8b0a00a4250000000"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "8237f6451ce81b6fe42c9d1778e9e088ec93efd038d7423b3e931710103668f1"
+          },
+          {
+            "control": null,
+            "getter": "name",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000b",
+                "pc": 2098,
+                "value": "0x53746f626f7820546f6b656e0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000b",
+                "pc": 2150,
+                "value": "0x53746f626f7820546f6b656e0000000000000000000000000000000000000018"
+              },
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000b",
+                "pc": 2187,
+                "value": "0x53746f626f7820546f6b656e0000000000000000000000000000000000000018"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "4c7f52d036180ff1149973b6ccea262bcea87a7956c12692f69d902354f0d3bd"
+          },
+          {
+            "control": null,
+            "getter": "symbol",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000c",
+                "pc": 9008,
+                "value": "0x5354425500000000000000000000000000000000000000000000000000000008"
+              },
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000c",
+                "pc": 9060,
+                "value": "0x5354425500000000000000000000000000000000000000000000000000000008"
+              },
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000c",
+                "pc": 9097,
+                "value": "0x5354425500000000000000000000000000000000000000000000000000000008"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "2c0ccbffec1cf0bab073752962a2eb171a864ff05e28504a1608808ab1d2dc77"
+          },
+          {
+            "control": {
+              "returned": "123",
+              "word": 123
+            },
+            "getter": "owner",
+            "hashes": [],
+            "reads": [
+              {
+                "depth": 1,
+                "key": "0x000000000000000000000000000000000000000000000000000000000000000a",
+                "pc": 8972,
+                "value": "0x000000000000000000000000e864a71ef7cf20e5704c10dd820444a62a3f938f"
+              }
+            ],
+            "status": "inspected",
+            "trace_sha256": "282d115df7317467225481cb4da9430bfe4ce0f79dc1c6b24642e87ccd0ff438"
+          },
+          {
+            "getter": "paused",
+            "status": "reverted"
+          },
+          {
+            "getter": "pendingOwner",
+            "status": "reverted"
+          }
+        ],
+        "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+        "inspection": {
+          "address": "0xee14cabdfba29e1d4f989bbdca751acaf85499bf",
+          "balance_of": "385464861504113734369521",
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "block": 122288022,
+          "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+          "elapsed_seconds": 0.325687916,
+          "execution_code": [
+            {
+              "address": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+              "checked_instructions": 1,
+              "runtime_hash": "0x311512ba3c3e012b395b1bd9d5e850a00f8975fb932809f5633b9651821848a2"
+            }
+          ],
+          "execution_contexts": {
+            "calls": [],
+            "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+            "storage_reads": [
+              {
+                "code_address": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+                "depth": 1,
+                "key": "0x859062076ba9c5c29e1c89c4d053e7569e65153c0def6d29048344781ceb0e35",
+                "pc": 8936,
+                "storage_address": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+                "value": "0x0000000000000000000000000000000000000000000051a0178e29a0838cc0f1"
+              }
+            ]
+          },
+          "hash": "0x3dbc97b5fc96e8f842150b00a9a7e458cee86f8569a8174b1fef834b34984d2d",
+          "read_only_state_overrides": [
+            {
+              "balance_of": "0",
+              "overridden_mapping_word": "0"
+            },
+            {
+              "balance_of": "1",
+              "overridden_mapping_word": "1"
+            },
+            {
+              "balance_of": "123",
+              "overridden_mapping_word": "123"
+            },
+            {
+              "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+              "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+            }
+          ],
+          "runtime_keccak256": "0x311512ba3c3e012b395b1bd9d5e850a00f8975fb932809f5633b9651821848a2",
+          "status": "inspected",
+          "storage_key": "0x859062076ba9c5c29e1c89c4d053e7569e65153c0def6d29048344781ceb0e35",
+          "storage_reads": [
+            {
+              "depth": 1,
+              "key": "0x859062076ba9c5c29e1c89c4d053e7569e65153c0def6d29048344781ceb0e35",
+              "pc": 8936,
+              "value": "0x0000000000000000000000000000000000000000000051a0178e29a0838cc0f1"
+            }
+          ],
+          "storage_word": "385464861504113734369521",
+          "tool_language": "Rust",
+          "trace_config": {
+            "disableStack": false,
+            "disableStorage": false,
+            "enableMemory": true,
+            "enableReturnData": true,
+            "timeout": "10s"
+          },
+          "trace_sha256": "db5d69c864a5b37019fbf62d567c7fa3edd76e4b532a2de378920858ae5de8aa"
+        },
+        "rank": 342
+      },
+      "getter_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: PUSH1 04\n7: CALLDATASIZE \n8: LT \n9: PUSH2 00f1\n12: JUMPI \n13: PUSH1 00\n15: CALLDATALOAD \n16: PUSH29 0100000000000000000000000000000000000000000000000000000000\n46: SWAP1 \n47: DIV \n48: PUSH4 ffffffff\n53: AND \n54: DUP1 \n55: PUSH4 06fdde03\n60: EQ \n61: PUSH2 0185\n64: JUMPI \n65: DUP1 \n66: PUSH4 095ea7b3\n71: EQ \n72: PUSH2 0215\n75: JUMPI \n76: DUP1 \n77: PUSH4 18160ddd\n82: EQ \n83: PUSH2 027a\n86: JUMPI \n87: DUP1 \n88: PUSH4 23b872dd\n93: EQ \n94: PUSH2 02a5\n97: JUMPI \n98: DUP1 \n99: PUSH4 289de615\n104: EQ \n105: PUSH2 032a\n108: JUMPI \n109: DUP1 \n110: PUSH4 313ce567\n115: EQ \n116: PUSH2 042d\n119: JUMPI \n120: DUP1 \n121: PUSH4 32cf261d\n126: EQ \n127: PUSH2 045e\n130: JUMPI \n131: DUP1 \n132: PUSH4 42966c68\n137: EQ \n138: PUSH2 04b5\n141: JUMPI \n142: DUP1 \n143: PUSH4 4c00edba\n148: EQ \n149: PUSH2 04e2\n152: JUMPI \n153: DUP1 \n154: PUSH4 56febaa0\n159: EQ \n160: PUSH2 04f9\n163: JUMPI \n164: DUP1 \n165: PUSH4 70a08231\n170: EQ \n171: PUSH2 05a2\n174: JUMPI \n1442: JUMPDEST \n1443: CALLVALUE \n1444: DUP1 \n1445: ISZERO \n1446: PUSH2 05ae\n1449: JUMPI \n1454: JUMPDEST \n1455: POP \n1456: PUSH2 05e3\n1459: PUSH1 04\n1461: DUP1 \n1462: CALLDATASIZE \n1463: SUB \n1464: DUP2 \n1465: ADD \n1466: SWAP1 \n1467: DUP1 \n1468: DUP1 \n1469: CALLDATALOAD \n1470: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n1491: AND \n1492: SWAP1 \n1493: PUSH1 20\n1495: ADD \n1496: SWAP1 \n1497: SWAP3 \n1498: SWAP2 \n1499: SWAP1 \n1500: POP \n1501: POP \n1502: POP \n1503: PUSH2 22a6\n1506: JUMP \n8870: JUMPDEST \n8871: PUSH1 00\n8873: PUSH1 06\n8875: PUSH1 00\n8877: DUP4 \n8878: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n8899: AND \n8900: PUSH20 ffffffffffffffffffffffffffffffffffffffff\n8921: AND \n8922: DUP2 \n8923: MSTORE \n8924: PUSH1 20\n8926: ADD \n8927: SWAP1 \n8928: DUP2 \n8929: MSTORE \n8930: PUSH1 20\n8932: ADD \n8933: PUSH1 00\n8935: KECCAK256 \n8936: SLOAD \n8937: SWAP1 \n8938: POP \n8939: SWAP2 \n8940: SWAP1 \n8941: POP \n8942: JUMP \n1507: JUMPDEST \n1508: PUSH1 40\n1510: MLOAD \n1511: DUP1 \n1512: DUP3 \n1513: DUP2 \n1514: MSTORE \n1515: PUSH1 20\n1517: ADD \n1518: SWAP2 \n1519: POP \n1520: POP \n1521: PUSH1 40\n1523: MLOAD \n1524: DUP1 \n1525: SWAP2 \n1526: SUB \n1527: SWAP1 \n1528: RETURN ",
+      "getter_path_sha256": "b0363c582abd555ca3b36c0f73d85f6b52fc813acb6f331b10682d1f89de998e",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "code_hash": "0x311512ba3c3e012b395b1bd9d5e850a00f8975fb932809f5633b9651821848a2",
+        "contract": "0x52ad4d6329ca7d4bb31ae859ede4bf60116a5483",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000009"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c"
+        ]
+      },
+      "rank": 342,
+      "source_basis": "Verified historical STBU source returns balances[_owner]; literal slot 6 independently established by bytecode and word controls. Old compiler did not emit storageLayout.",
+      "source_sha256": "53dd6afc8479bf08558c6d58567b576da193614890a5b34d4ecde74cdba47e78"
+    }
+  ],
+  "runtime_checks_sha256": "161bb1016c3676f313c9fdc81cc22939b001eaa459dcb893689c5692b8c3f817",
+  "scope": "13 explicitly reviewed profiles; full native interval scan. Packaged RPC and retained-holder audits still required.",
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}
