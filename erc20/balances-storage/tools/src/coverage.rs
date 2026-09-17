@@ -117,7 +117,7 @@ impl HolderState {
 pub fn run(args: Coverage) -> Result<bool> {
     record_run(
         &args.output,
-        json!({"status":"incomplete","scope":"Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map", "checkpoint_scope":"Only configured holders observed in the reference test range", "processing_rpc_calls":0}),
+        json!({"status":"incomplete","scope":"Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map", "checkpoint_scope":"Only configured holders observed in the reference test range", "processing_balance_rpc_calls":0, "processing_header_rpc_calls":0}),
         |report| {
             let layouts = layout::parse(&fs::read_to_string(&args.layouts)?)?;
             ensure!(!layouts.is_empty(), "layouts required");
@@ -245,6 +245,7 @@ pub fn run(args: Coverage) -> Result<bool> {
                 let digest = format!("0x{}", hex::encode(&block.hash));
                 let parent = format!("0x{}", hex::encode(&block.header.as_ref().context("missing header")?.parent_hash));
                 ensure!(*height != start || parent == initial_hash, "checkpoint is not capture parent");
+                inc(report, "processing_header_rpc_calls", 1);
                 ensure!(rpc.header(*height)?["hash"] == digest, "RPC/capture fork");
                 let events = erc20_balances_storage::project(block, &layouts)?;
                 for (contract, layout) in &configured {

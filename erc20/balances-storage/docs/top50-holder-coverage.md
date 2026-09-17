@@ -80,6 +80,35 @@ nonzero values**, with zero incorrect known values. The additions account for
 therefore distinct from complete cold-start holder coverage. A checkpoint or
 complete history is still required for stored balances predating the stream.
 
+The [full-window holder replay](evidence/top50-full-holder-coverage.json) then
+extends the same test to **all 1,024 blocks, 122288006–122289029**. All
+**142,989 reference observations across all 50 tokens** match initialized state,
+with zero initialized unknowns or mismatches. There are **3,738 carried-forward
+matches** without a new emission in that block. The eight additions contribute
+**6,074 matching observations**, including **232 carried-forward values**.
+
+The expanded checkpoint contains **47,515 existing stored holders**, verified
+with **95,030 balance/storage RPC reads**. It also includes 3,001 independently
+computed initial balances and **710/211 holders** initialized at the two pinned
+deployments. The larger deployment counts reflect holders first observed later
+in this window; earlier-deployed runtime siblings still require checkpoints.
+Processing uses no balance RPC reads or reference-value repairs.
+
+Full-window cold replay retains **51,750 unknown observations**, including
+**27,701 nonzero balances**, with zero incorrect known values. The eight additions
+account for 2,194 unknown observations, including 766 nonzero values. These are
+preserved coverage gaps, not zeros. The full-window result includes the shorter
+replay and must not be added to its counts.
+
+The [capture record](evidence/top50-full-capture.json) retains hashes for the 572
+new Extended blocks and the two capture-report digests. The 452-block prefix was
+reused. Captures check the canonical block hash and parent before/after fetching;
+replay independently checks continuity and canonical headers for the full range.
+The retained reports' legacy `processing_rpc_calls: 0` field refers only to
+balance reads during replay. It excludes RPC header verification. The tool now
+reports `processing_balance_rpc_calls` and `processing_header_rpc_calls`
+separately; this reporting correction does not alter the replay or its results.
+
 ## Regressions and limits
 
 The eight [captured cases](../tests/fixtures/top50-final/cases.json) retain actual
@@ -109,3 +138,5 @@ Reproduce the audit with the 50-token fixture and
 Substreams endpoint and a fresh output directory. Reproduce the holder replay
 with `holder-coverage`, `out/top50-1024/report.json`, its digest-matching reference
 capture and consecutive Extended blocks for the stated range.
+For the full-window replay, use blocks 122288006–122289029; the retained local
+directory is `out/top50-full-holder-blocks`.
