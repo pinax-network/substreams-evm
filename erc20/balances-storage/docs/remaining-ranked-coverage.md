@@ -1,5 +1,7 @@
 # Eight more BSC balance layouts
 
+The [next cohort](ranks151-200-coverage.md) extends this snapshot to 178 profiles.
+
 Ranks **104, 107, 117, 121, 122, 124, 140 and 146** now pass qualification,
 bringing the [combined fixture](../tests/fixtures/bsc-remaining-ranked-layouts.json)
 to **149 profiles**. The interval remains **122288006–122289029**, inclusive.

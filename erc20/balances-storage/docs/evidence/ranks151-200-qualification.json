@@ -1,0 +1,5341 @@
+[
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x10a81042268c8fd4daaf9c6cb82070b2b30d9bdc",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "contracts/2.0/WKEY2.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x448d5e151e157a0393d089edaab9d117ef61a29b",
+      "balance_of": "8550986555878103827",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288038,
+      "contract": "0x10a81042268c8fd4daaf9c6cb82070b2b30d9bdc",
+      "elapsed_seconds": 0.334112416,
+      "hash": "0x78a8196fb5eb7be1c0e5a1c10054a48cefffc89d5e0b87b3d08c7532ff4ae5cb",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xbe849145d60832ef2a20ab15d5e1e24aa34b5821b345414303c628644ce55b66",
+      "status": "inspected",
+      "storage_key": "0x15c590cc8d38ad476ca96239e1a20fb15759443b08065c754fbc5feb5bd708e1",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x15c590cc8d38ad476ca96239e1a20fb15759443b08065c754fbc5feb5bd708e1",
+          "pc": 2047,
+          "value": "0x00000000000000000000000000000000000000000000000076ab34f7ae415b13"
+        }
+      ],
+      "storage_word": "8550986555878103827",
+      "tool_language": "Rust",
+      "trace_sha256": "8e24b07539f687da835f932495a41dbf75b4eb49e8b790f475f2d57f9329892a"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xbe849145d60832ef2a20ab15d5e1e24aa34b5821b345414303c628644ce55b66",
+      "contract": "0x10a81042268c8fd4daaf9c6cb82070b2b30d9bdc",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x000000000000000000000000000000000000000000000000000000000000000e"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d"
+      ]
+    },
+    "name": "WKEY2",
+    "rank": 153,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "dde67af215f646b2ab7118508f4bf3d42ccab0e0987888314a5f0e7da9ec2019",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x10a81042268c8fd4daaf9c6cb82070b2b30d9bdc?fields=all",
+    "storage": [
+      {
+        "astId": 223,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 229,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 231,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 233,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 235,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 237,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 731,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_struct(Counter)655_storage)"
+      },
+      {
+        "astId": 736,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "DOMAIN_SEPARATOR",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 890,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "owner",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_address"
+      },
+      {
+        "astId": 892,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "mainPair",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      },
+      {
+        "astId": 894,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "feeReceiver",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 896,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "buyFeeReceiver",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_address"
+      },
+      {
+        "astId": 906,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "feeRatio",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 908,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "buyFeeRatio",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 912,
+        "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+        "label": "isExempt",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_struct(Counter)655_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct Counters.Counter)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Counter)655_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Counter)655_storage": {
+        "encoding": "inplace",
+        "label": "struct Counters.Counter",
+        "members": [
+          {
+            "astId": 654,
+            "contract": "contracts/2.0/WKEY2.sol:WKEY2",
+            "label": "_value",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) external view returns (uint256) {\r\n    return _balances[account];\r\n  }",
+        "source": "BEP20Cardano.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xeb72b0700bec22f65b8f04addb4d373981aa39cd",
+      "balance_of": "13384652992999921800",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288008,
+      "contract": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+      "elapsed_seconds": 0.291601417,
+      "hash": "0x55e1f0bed43bd7fab9bb6d29ec6490cd48dcbbb214c1eb747e3333ca22e0dd93",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xe7636837fec313f7406343b2c1eb330932f2d3707e38d0fee70e910ffe496332",
+      "status": "inspected",
+      "storage_key": "0x3d16a6171c5854b306e7fef609baff75e4cd998bf7cda797f63f9879ac378b05",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x3d16a6171c5854b306e7fef609baff75e4cd998bf7cda797f63f9879ac378b05",
+          "pc": 1481,
+          "value": "0x000000000000000000000000000000000000000000000000b9bfd6fb71a11888"
+        }
+      ],
+      "storage_word": "13384652992999921800",
+      "tool_language": "Rust",
+      "trace_sha256": "802ae312289b2bf95cca6fce7acc1b5ec951edb45aa75bddd43a6ec7d221b718"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0xe7636837fec313f7406343b2c1eb330932f2d3707e38d0fee70e910ffe496332",
+      "contract": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "BEP20Cardano",
+    "rank": 154,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "a02479a86085b42bfef67b86c7f54fa04c8dddc34412edf4ab5d62cd4ccffa44",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3ee2200efb3400fabb9aacf31297cbdd1d435d47?fields=all",
+    "storage": [
+      {
+        "astId": 302,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 417,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 423,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 425,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 427,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 429,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 431,
+        "contract": "BEP20Cardano.sol:BEP20Cardano",
+        "label": "_name",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x70f2eadf1ca1969ff42b0c78e9da519e8937cbaf",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "balance_of": "882314676647561886537708",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288070,
+      "contract": "0x70f2eadf1ca1969ff42b0c78e9da519e8937cbaf",
+      "elapsed_seconds": 0.295623375,
+      "hash": "0x895e4914a4d4d8c38019d017b8ee8e4208ddc49a88006e0368a94eba30df0d9f",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xd0506c213e9b755b7467f55218407f32bc5730bb12f4f61118f449a5a823d3df",
+      "status": "inspected",
+      "storage_key": "0x9b977f8a7f1ede483b8f51c9a6f7a3a36ba1a53074e5a72dadffbe6de9fbde92",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x9b977f8a7f1ede483b8f51c9a6f7a3a36ba1a53074e5a72dadffbe6de9fbde92",
+          "pc": 1362,
+          "value": "0x00000000000000000000000000000000000000000000bad65fdcbb73b04997ec"
+        }
+      ],
+      "storage_word": "882314676647561886537708",
+      "tool_language": "Rust",
+      "trace_sha256": "cc272664ec889c1f94f0b50623126604f78ffae85095973fffc340389f1cb63c"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xd0506c213e9b755b7467f55218407f32bc5730bb12f4f61118f449a5a823d3df",
+      "contract": "0x70f2eadf1ca1969ff42b0c78e9da519e8937cbaf",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "EdgeOFT",
+    "rank": 156,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "b84a2329d14528b4ce236ebdb027a4fa020bdfb95fa700df9e84b0e32a377baf",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x70f2eadf1ca1969ff42b0c78e9da519e8937cbaf?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "contracts/EdgeOFT.sol:EdgeOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xc9882def23bc42d53895b8361d0b1edc7570bc6a",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) external view returns (uint256) {\r\n    return _balances[account];\r\n  }",
+        "source": "FistStandard.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x198199cf9a61e12c02312e1998f54452d01c5e78",
+      "balance_of": "845441277",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288047,
+      "contract": "0xc9882def23bc42d53895b8361d0b1edc7570bc6a",
+      "elapsed_seconds": 0.2889575,
+      "hash": "0x312930b0862952e171213ef80076284d572028290d495ac010579b854448e771",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdbf91c147f1ae94e608d401ac21b86fdf166e35e7558d0b5abd6f4e6d2220ce9",
+      "status": "inspected",
+      "storage_key": "0x4cac6d8946dae27c8dd659b24ea3744517162f9baae5d77faa228ae09795257b",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x4cac6d8946dae27c8dd659b24ea3744517162f9baae5d77faa228ae09795257b",
+          "pc": 2241,
+          "value": "0x00000000000000000000000000000000000000000000000000000000326468fd"
+        }
+      ],
+      "storage_word": "845441277",
+      "tool_language": "Rust",
+      "trace_sha256": "0515cd412039d8219712f21a0951d0259a054bf717deef5b4e85111eb589aa66"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0xdbf91c147f1ae94e608d401ac21b86fdf166e35e7558d0b5abd6f4e6d2220ce9",
+      "contract": "0xc9882def23bc42d53895b8361d0b1edc7570bc6a",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "FistStandard",
+    "rank": 161,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "9c0bbcb5b5d5f8e23b100bd0de28be8bb9e04a615eb3b28e522b820367ca724d",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc9882def23bc42d53895b8361d0b1edc7570bc6a?fields=all",
+    "storage": [
+      {
+        "astId": 302,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 417,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 423,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 425,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 427,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 429,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 431,
+        "contract": "FistStandard.sol:FistStandard",
+        "label": "_name",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xd28e716fa02543962b3129f9e4d919c65f434444",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "FourERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x8a049c50ae98a0abfd206fd33283683da6b9698e",
+      "balance_of": "1261263904011104496528",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288029,
+      "contract": "0xd28e716fa02543962b3129f9e4d919c65f434444",
+      "elapsed_seconds": 0.290618834,
+      "hash": "0x644acd70becee8ea8f13fc6580f71759be9628c7304fbccd4e65800799863e32",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "status": "inspected",
+      "storage_key": "0x21dbcb05918eb3a8f8819fc1256e629716453e0d44e1b449e122234c2494c915",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x21dbcb05918eb3a8f8819fc1256e629716453e0d44e1b449e122234c2494c915",
+          "pc": 516,
+          "value": "0x0000000000000000000000000000000000000000000000445f8d863c4c432b90"
+        }
+      ],
+      "storage_word": "1261263904011104496528",
+      "tool_language": "Rust",
+      "trace_sha256": "3de471ecb4b286379cf407b558ba8dd86b85d73f0c11153924b5efe90dc65c4f"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "contract": "0xd28e716fa02543962b3129f9e4d919c65f434444",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "Token",
+    "rank": 162,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "5ba2b1375aa5d13e46722e559c7230d10d0e24804e47163433c899ce6cc1129d",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xd28e716fa02543962b3129f9e4d919c65f434444?fields=all",
+    "storage": [
+      {
+        "astId": 45,
+        "contract": "Token3.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 51,
+        "contract": "Token3.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 53,
+        "contract": "Token3.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 55,
+        "contract": "Token3.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 57,
+        "contract": "Token3.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 727,
+        "contract": "Token3.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 851,
+        "contract": "Token3.sol:Token",
+        "label": "_mode",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 853,
+        "contract": "Token3.sol:Token",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x40b8129b786d766267a7a118cf8c07e31cdb6fde",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x916f992df86795f24de6c268cfb9031fbb1155da",
+      "balance_of": "13243400632887193693733365",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288094,
+      "contract": "0x40b8129b786d766267a7a118cf8c07e31cdb6fde",
+      "elapsed_seconds": 0.308159875,
+      "hash": "0x215c72b9e1cee0864f0e4dfb9e502685f29e4e9d18e6d86c71ac78518b6a05c1",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xbe62ad8f571a14baad9a024f4ec62c41fa9b836e46fb26ecc19d2404209a3c04",
+      "status": "inspected",
+      "storage_key": "0xa352829866c439ac14ceb1a9ba6822e69068b8d7e68107b2d4b79afde1175f22",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa352829866c439ac14ceb1a9ba6822e69068b8d7e68107b2d4b79afde1175f22",
+          "pc": 1362,
+          "value": "0x0000000000000000000000000000000000000000000af4662fd64b25b62241f5"
+        }
+      ],
+      "storage_word": "13243400632887193693733365",
+      "tool_language": "Rust",
+      "trace_sha256": "f11366527cf9b7e8d5ad2720440f0601de31790c873fe472cdfc611c43450f91"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xbe62ad8f571a14baad9a024f4ec62c41fa9b836e46fb26ecc19d2404209a3c04",
+      "contract": "0x40b8129b786d766267a7a118cf8c07e31cdb6fde",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "UBOFT",
+    "rank": 163,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "ca41b11466c3615b0d8ca72852c1eb9f513ce4bf69cc89e256f421872f4c34f7",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x40b8129b786d766267a7a118cf8c07e31cdb6fde?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "contracts/UBOFT.sol:UBOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xfb5b838b6cfeedc2873ab27866079ac55363d37e",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) external view override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "contracts/Floki.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xd170b23974c0ac399fe8cd6df5f491856f807245",
+      "balance_of": "5695907917059198027",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288047,
+      "contract": "0xfb5b838b6cfeedc2873ab27866079ac55363d37e",
+      "elapsed_seconds": 0.295722,
+      "hash": "0x312930b0862952e171213ef80076284d572028290d495ac010579b854448e771",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x62f6a27beef672562e73fb0f3dcc4efb0d16b16cf4daeddb5c9cd8e17f58d6f8",
+      "status": "inspected",
+      "storage_key": "0x332cc24eb0e4307d80b4e295405e1df18f40caf274a3b931009120ba321d2dab",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x332cc24eb0e4307d80b4e295405e1df18f40caf274a3b931009120ba321d2dab",
+          "pc": 912,
+          "value": "0x0000000000000000000000000000000000000000000000004f0bee1285a60c4b"
+        }
+      ],
+      "storage_word": "5695907917059198027",
+      "tool_language": "Rust",
+      "trace_sha256": "42d044673cd0062968c1ce31f96de42916a1406f80329b3a5e36150dad23fc7f"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0x62f6a27beef672562e73fb0f3dcc4efb0d16b16cf4daeddb5c9cd8e17f58d6f8",
+      "contract": "0xfb5b838b6cfeedc2873ab27866079ac55363d37e",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "FLOKI",
+    "rank": 164,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "86c1629cb41bffa29e1cdc555f8bfb58dbf08c3eeb673266219ac43d0b55d82c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xfb5b838b6cfeedc2873ab27866079ac55363d37e?fields=all",
+    "storage": [
+      {
+        "astId": 7,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 222,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 229,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 234,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "delegates",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_address)"
+      },
+      {
+        "astId": 239,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "nonces",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 244,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "numCheckpoints",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint32)"
+      },
+      {
+        "astId": 252,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "checkpoints",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1302_storage))"
+      },
+      {
+        "astId": 268,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "taxHandler",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_contract(ITaxHandler)1347"
+      },
+      {
+        "astId": 272,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "treasuryHandler",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_contract(ITreasuryHandler)1371"
+      },
+      {
+        "astId": 289,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "_name",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 292,
+        "contract": "contracts/Floki.sol:FLOKI",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ITaxHandler)1347": {
+        "encoding": "inplace",
+        "label": "contract ITaxHandler",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ITreasuryHandler)1371": {
+        "encoding": "inplace",
+        "label": "contract ITreasuryHandler",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_address)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)1302_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint32 => struct IGovernanceToken.Checkpoint))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_struct(Checkpoint)1302_storage)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_address,t_uint32)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint32)",
+        "numberOfBytes": "32",
+        "value": "t_uint32"
+      },
+      "t_mapping(t_uint32,t_struct(Checkpoint)1302_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct IGovernanceToken.Checkpoint)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Checkpoint)1302_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Checkpoint)1302_storage": {
+        "encoding": "inplace",
+        "label": "struct IGovernanceToken.Checkpoint",
+        "members": [
+          {
+            "astId": 1299,
+            "contract": "contracts/Floki.sol:FLOKI",
+            "label": "blockNumber",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 1301,
+            "contract": "contracts/Floki.sol:FLOKI",
+            "label": "votes",
+            "offset": 4,
+            "slot": "0",
+            "type": "t_uint224"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint224": {
+        "encoding": "inplace",
+        "label": "uint224",
+        "numberOfBytes": "28"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xcf3232b85b43bca90e51d38cc06cc8bb8c8a3e36",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "contracts/helpers/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x24849508c27132d19d8ceee40605c49570bbb1c0",
+      "balance_of": "801171379222287577663",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288029,
+      "contract": "0xcf3232b85b43bca90e51d38cc06cc8bb8c8a3e36",
+      "elapsed_seconds": 0.301674791,
+      "hash": "0x644acd70becee8ea8f13fc6580f71759be9628c7304fbccd4e65800799863e32",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xf5bbb7d52ce9dc61b07e1c59c2134e1a80bed5ba36783d9de85b2a6103f92af9",
+      "status": "inspected",
+      "storage_key": "0x6ab902eea78603f8e849e51fd71b36b79df364e181c8f7bed39e88537c973a47",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x6ab902eea78603f8e849e51fd71b36b79df364e181c8f7bed39e88537c973a47",
+          "pc": 1172,
+          "value": "0x00000000000000000000000000000000000000000000002b6e7c849d6239723f"
+        }
+      ],
+      "storage_word": "801171379222287577663",
+      "tool_language": "Rust",
+      "trace_sha256": "b39a8b02261a9bc9c975c05c1476c8cca392f169e2cf8e177dd5d9e81d565229"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xf5bbb7d52ce9dc61b07e1c59c2134e1a80bed5ba36783d9de85b2a6103f92af9",
+      "contract": "0xcf3232b85b43bca90e51d38cc06cc8bb8c8a3e36",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ]
+    },
+    "name": "Beat",
+    "rank": 166,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "8d3d840f357f36c43864993d22bc312dc341c09f952015b6cf15f145c55930ac",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xcf3232b85b43bca90e51d38cc06cc8bb8c8a3e36?fields=all",
+    "storage": [
+      {
+        "astId": 98,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 104,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 106,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 108,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 110,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 636,
+        "contract": "contracts/Beat.sol:Beat",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "Token.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x3692dea4346c95eb3957d8022c40373ab2a21369",
+      "balance_of": "64826390755749052790159",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288040,
+      "contract": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+      "elapsed_seconds": 0.300095083,
+      "hash": "0x02f1a2244f434f1170794a344e2ac8c8b419ca8e9d4d895819ce2ea4dcfbc951",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x3e6b67a73f451cce26e65eae0ae3a07f9bce8542aa1fb25e95c7199f83d3579f",
+      "status": "inspected",
+      "storage_key": "0x125225f2dda40507b684ec8d8043ef56f2e25680524ff4212443d12d1225dab2",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x125225f2dda40507b684ec8d8043ef56f2e25680524ff4212443d12d1225dab2",
+          "pc": 484,
+          "value": "0x000000000000000000000000000000000000000000000dba3ee52f6a50e3b58f"
+        }
+      ],
+      "storage_word": "64826390755749052790159",
+      "tool_language": "Rust",
+      "trace_sha256": "fb983dd507f3cda71924162d03c8e79c0504552765049bc55651a5b35f8624bb"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x3e6b67a73f451cce26e65eae0ae3a07f9bce8542aa1fb25e95c7199f83d3579f",
+      "contract": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "Token",
+    "rank": 170,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "ef278ed467995893c5d9bf10fdf57287e8bc9ab1fbd5d069011c59d9525f8a89",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf?fields=all",
+    "storage": [
+      {
+        "astId": 248,
+        "contract": "Token.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 254,
+        "contract": "Token.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 256,
+        "contract": "Token.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 258,
+        "contract": "Token.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 260,
+        "contract": "Token.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 34,
+        "contract": "Token.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 834,
+        "contract": "Token.sol:Token",
+        "label": "_mode",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x97693439ea2f0ecdeb9135881e49f354656a911c",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x6245517f5403b276eab78a42a78edc9b144e2c97",
+      "balance_of": "629688333404635429088",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288055,
+      "contract": "0x97693439ea2f0ecdeb9135881e49f354656a911c",
+      "elapsed_seconds": 0.288036459,
+      "hash": "0x94b3166898c4627d72e5ad59ceed30dffd13f371016decf909b7f79997724741",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x317c9e7124586264d1d48d95d6b3b1221cf738e157cce8b7ecdee60843181973",
+      "status": "inspected",
+      "storage_key": "0x97d5006b5521ed2b6216e7adfc6252f821961385fc202aba2f9decc1c53889e9",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x97d5006b5521ed2b6216e7adfc6252f821961385fc202aba2f9decc1c53889e9",
+          "pc": 4244,
+          "value": "0x00000000000000000000000000000000000000000000002222ae5affef0878e0"
+        }
+      ],
+      "storage_word": "629688333404635429088",
+      "tool_language": "Rust",
+      "trace_sha256": "bd0d9bf74dfbffc0ecee76a19aceb0cc8ab243bce4e92277d26004d9083acbb1"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0x317c9e7124586264d1d48d95d6b3b1221cf738e157cce8b7ecdee60843181973",
+      "contract": "0x97693439ea2f0ecdeb9135881e49f354656a911c",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "RaveToken",
+    "rank": 171,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "83679ebb51de964fb42cd18e641318c84c8893cb332d88cc41c7cb1e3f951c00",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x97693439ea2f0ecdeb9135881e49f354656a911c?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "src/RaveToken.sol:RaveToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x31872b7e2b0f856035381f86c195dbef1059028c",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x30bb3b1b758627f387b65fb175751e2063ecef33",
+      "balance_of": "786650000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288014,
+      "contract": "0x31872b7e2b0f856035381f86c195dbef1059028c",
+      "elapsed_seconds": 0.280442875,
+      "hash": "0x5f907b4e9b8d8e80ca13d6fc3784ac97e4cd2520386ebd04b474a4041fe9f5b2",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x4d0cb484da65a07af77b0a3e9861e474612fdaa35238beb7190529a68c2cabae",
+      "status": "inspected",
+      "storage_key": "0x32dcc151f0d87108d5b311799edb0d29bbd169cfbe25729779a79b85e0519625",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x32dcc151f0d87108d5b311799edb0d29bbd169cfbe25729779a79b85e0519625",
+          "pc": 463,
+          "value": "0x00000000000000000000000000000000000000000000002aa4f6372651090000"
+        }
+      ],
+      "storage_word": "786650000000000000000",
+      "tool_language": "Rust",
+      "trace_sha256": "fefeba9ea1de0e538c6612e3835421e7bd804b1e78ed809f3d71c9cfa807d794"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x4d0cb484da65a07af77b0a3e9861e474612fdaa35238beb7190529a68c2cabae",
+      "contract": "0x31872b7e2b0f856035381f86c195dbef1059028c",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "BPBToken",
+    "rank": 173,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "d907d9472048689acc99071afdc32f1ad996afc12ab8594635334d2cb95201d8",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x31872b7e2b0f856035381f86c195dbef1059028c?fields=all",
+    "storage": [
+      {
+        "astId": 307,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 313,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 315,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 317,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 319,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 8,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 951,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "feeRecipient",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 955,
+        "contract": "contracts/KOToken.sol:BPBToken",
+        "label": "automatedMarketMakerPairs",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x707f0f4a39a4a26239f7d00463b15ab5656861f9",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "npm/@openzeppelin/contracts@5.4.0/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x686db8c30890d71398f645dcbbc3cef819a38e6a",
+      "balance_of": "3614646669238683120",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288017,
+      "contract": "0x707f0f4a39a4a26239f7d00463b15ab5656861f9",
+      "elapsed_seconds": 0.291898541,
+      "hash": "0xe455ed03a72b6f5fbb4c1d0aa05f2e34837357579e7797bfa8a08b2225ad6024",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x11c30576e0858e7f4246032ba233559a53e41e85a1d270b5fef9af7007fb8ae8",
+      "status": "inspected",
+      "storage_key": "0x022c8cf623e2303e61f86285a7e467e010d49544039a6937dddfde3d8e7008fc",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x022c8cf623e2303e61f86285a7e467e010d49544039a6937dddfde3d8e7008fc",
+          "pc": 481,
+          "value": "0x0000000000000000000000000000000000000000000000003229cdfe948545f0"
+        }
+      ],
+      "storage_word": "3614646669238683120",
+      "tool_language": "Rust",
+      "trace_sha256": "1d5dc591410c5208b2f0e6f6fd3e9220300b1be902727ff22a37853363bc64cf"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x11c30576e0858e7f4246032ba233559a53e41e85a1d270b5fef9af7007fb8ae8",
+      "contract": "0x707f0f4a39a4a26239f7d00463b15ab5656861f9",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "ASM",
+    "rank": 175,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "16596fd265783edba9f1412f7f900ba06f613c858ee78e5b9badaf7c55881526",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x707f0f4a39a4a26239f7d00463b15ab5656861f9?fields=all",
+    "storage": [
+      {
+        "astId": 307,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 313,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 315,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 317,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 319,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 8,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 944,
+        "contract": "project/contracts/token/ASM.sol:ASM",
+        "label": "operator",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x3b4de3c7855c03bb9f50ea252cd2c9fa1125ab07",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x4e7ed91e702ef2ff0c58e251c6e20d1dc1e31a5f",
+      "balance_of": "110200229230710803845072",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288063,
+      "contract": "0x3b4de3c7855c03bb9f50ea252cd2c9fa1125ab07",
+      "elapsed_seconds": 0.302198458,
+      "hash": "0xde1363661da421511688f9b32290ac4574ced1ea82208a4521409ec2b1dfa636",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x92609edc7d90c5ab9477eada5b63301a4abc1d227dcbeb334ba8954664e68486",
+      "status": "inspected",
+      "storage_key": "0x0ed3eacd5402500c891df320bfe12d4698ed329e43004717a2d5e147262057de",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x0ed3eacd5402500c891df320bfe12d4698ed329e43004717a2d5e147262057de",
+          "pc": 865,
+          "value": "0x000000000000000000000000000000000000000000001755f765cb7e5ff2cfd0"
+        }
+      ],
+      "storage_word": "110200229230710803845072",
+      "tool_language": "Rust",
+      "trace_sha256": "dc9f1989a1332ea46177855d1b71427aa082f96f3f3dcc25fc67d726f3cbeb36"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x92609edc7d90c5ab9477eada5b63301a4abc1d227dcbeb334ba8954664e68486",
+      "contract": "0x3b4de3c7855c03bb9f50ea252cd2c9fa1125ab07",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004"
+      ]
+    },
+    "name": "Meet",
+    "rank": 176,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "70c10ec691e48bab7e95aa5f2247e7b6014132cdcd6d307e3657138bdc858eb0",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3b4de3c7855c03bb9f50ea252cd2c9fa1125ab07?fields=all",
+    "storage": [
+      {
+        "astId": 159,
+        "contract": "contracts/Meet.sol:Meet",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 165,
+        "contract": "contracts/Meet.sol:Meet",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 167,
+        "contract": "contracts/Meet.sol:Meet",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 169,
+        "contract": "contracts/Meet.sol:Meet",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 171,
+        "contract": "contracts/Meet.sol:Meet",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x35803e77c3163fed8a942536c1c8e0d5bf90f906",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x4ba6d57c2e8d7d58d43e0fe79af8415cfa395c9e",
+      "balance_of": "210842660940070021",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "block": 122288023,
+      "contract": "0x35803e77c3163fed8a942536c1c8e0d5bf90f906",
+      "elapsed_seconds": 0.28648275,
+      "hash": "0x2f4db30d8deade58b00eb5ce585d20e29fd6014bc75358f8a62b2ee410f83e73",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1134938644214395aba790bf7d50e13027c30b74b4bd09dcbe167c0ccc2cc9e5",
+      "status": "inspected",
+      "storage_key": "0x036f30026fcd3fc5a5d0e8e2f6b6413247b9c8cf6da8d052af35aeacf6295dca",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x036f30026fcd3fc5a5d0e8e2f6b6413247b9c8cf6da8d052af35aeacf6295dca",
+          "pc": 2201,
+          "value": "0x00000000000000000000000000000000000000000000000002ed104874d4bc85"
+        }
+      ],
+      "storage_word": "210842660940070021",
+      "tool_language": "Rust",
+      "trace_sha256": "aa29fd4aef518f46dbe2c57f7ccc96bd7253ab323acfd44e4725282a2c61fa8d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "code_hash": "0x1134938644214395aba790bf7d50e13027c30b74b4bd09dcbe167c0ccc2cc9e5",
+      "contract": "0x35803e77c3163fed8a942536c1c8e0d5bf90f906",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "Mai",
+    "rank": 178,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "e5fb99260765d58a5fecdd4d2eccd61c84e6f0032821fc75402f00e93535386b",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x35803e77c3163fed8a942536c1c8e0d5bf90f906?fields=all",
+    "storage": [
+      {
+        "astId": 24,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)19_storage)"
+      },
+      {
+        "astId": 338,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_roleMembers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_bytes32,t_struct(AddressSet)1936_storage)"
+      },
+      {
+        "astId": 558,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 564,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 566,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 568,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_name",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 570,
+        "contract": "contracts/Mai.sol:Mai",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_bytes32)dyn_storage": {
+        "base": "t_bytes32",
+        "encoding": "dynamic_array",
+        "label": "bytes32[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_bytes32,t_struct(AddressSet)1936_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct EnumerableSet.AddressSet)",
+        "numberOfBytes": "32",
+        "value": "t_struct(AddressSet)1936_storage"
+      },
+      "t_mapping(t_bytes32,t_struct(RoleData)19_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct AccessControl.RoleData)",
+        "numberOfBytes": "32",
+        "value": "t_struct(RoleData)19_storage"
+      },
+      "t_mapping(t_bytes32,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(AddressSet)1936_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.AddressSet",
+        "members": [
+          {
+            "astId": 1935,
+            "contract": "contracts/Mai.sol:Mai",
+            "label": "_inner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_struct(Set)1635_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(RoleData)19_storage": {
+        "encoding": "inplace",
+        "label": "struct AccessControl.RoleData",
+        "members": [
+          {
+            "astId": 16,
+            "contract": "contracts/Mai.sol:Mai",
+            "label": "members",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 18,
+            "contract": "contracts/Mai.sol:Mai",
+            "label": "adminRole",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_bytes32"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(Set)1635_storage": {
+        "encoding": "inplace",
+        "label": "struct EnumerableSet.Set",
+        "members": [
+          {
+            "astId": 1630,
+            "contract": "contracts/Mai.sol:Mai",
+            "label": "_values",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_bytes32)dyn_storage"
+          },
+          {
+            "astId": 1634,
+            "contract": "contracts/Mai.sol:Mai",
+            "label": "_indexes",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_bytes32,t_uint256)"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x477c2c0459004e3354ba427fa285d7c053203c0e",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "LightOFT.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x4923d960f84d89e72c78daf82015b519aaafe994",
+      "balance_of": "6430966546",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288009,
+      "contract": "0x477c2c0459004e3354ba427fa285d7c053203c0e",
+      "elapsed_seconds": 0.297923,
+      "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xa6af7bc4ce65344dcf09e690e68bede57904db436cc5b3e7b9a7cb7d1a8a6bfe",
+      "status": "inspected",
+      "storage_key": "0xa8142a7436af662999fbb9605e96af850e3c7a44cb4d7c5d153d43e4c09185ac",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa8142a7436af662999fbb9605e96af850e3c7a44cb4d7c5d153d43e4c09185ac",
+          "pc": 5508,
+          "value": "0x000000000000000000000000000000000000000000000000000000017f50c312"
+        }
+      ],
+      "storage_word": "6430966546",
+      "tool_language": "Rust",
+      "trace_sha256": "059e6125ec2f1d56ca5eca7e3ebb0bd6cf03100c65f2217807746a38f18694b9"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xa6af7bc4ce65344dcf09e690e68bede57904db436cc5b3e7b9a7cb7d1a8a6bfe",
+      "contract": "0x477c2c0459004e3354ba427fa285d7c053203c0e",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "LightOFT",
+    "rank": 181,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "ffd01107fe8c9bbdc8b5002fac9d8e92f80040f104e547cb5af7e655c507ebd5",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x477c2c0459004e3354ba427fa285d7c053203c0e?fields=all",
+    "storage": [
+      {
+        "astId": 1361,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 3228,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 4002,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 1667,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 4537,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 1823,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 1829,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 1831,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1833,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1835,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1505,
+        "contract": "LightOFT.sol:LightOFT",
+        "label": "_paused",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_bool"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xc8fb80fcc03f699c70ff0cc08c09106288888888",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xf3db353552554a9392a1ed0d31a452207a0c04af",
+      "balance_of": "378495819868773165427",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288018,
+      "contract": "0xc8fb80fcc03f699c70ff0cc08c09106288888888",
+      "elapsed_seconds": 0.258417583,
+      "hash": "0xe67b66daa0fed2620c4b08babc7711a3a2a738ac24911dbeb822ec9643a44082",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xf5bf83c0e45b1c550577fde73f0c8a3d1d5b0af2a093d06a99072442b627165e",
+      "status": "inspected",
+      "storage_key": "0x0e3fa79f3b071002496d9ef4df37c2e259ff0d3405518a2d078f2e801cba091c",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x0e3fa79f3b071002496d9ef4df37c2e259ff0d3405518a2d078f2e801cba091c",
+          "pc": 1147,
+          "value": "0x00000000000000000000000000000000000000000000001484af46d058762973"
+        }
+      ],
+      "storage_word": "378495819868773165427",
+      "tool_language": "Rust",
+      "trace_sha256": "adcd1113a623b76673184dffacce206df8f571053ad435faf2afc0b39ba02b6f"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xf5bf83c0e45b1c550577fde73f0c8a3d1d5b0af2a093d06a99072442b627165e",
+      "contract": "0xc8fb80fcc03f699c70ff0cc08c09106288888888",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004"
+      ]
+    },
+    "name": "CTM",
+    "rank": 182,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "7b4605976e5a7673792f1612633fcf7e6ba36c6b50698d883adeebd202936c21",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc8fb80fcc03f699c70ff0cc08c09106288888888?fields=all",
+    "storage": [
+      {
+        "astId": 538,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 544,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 546,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 548,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 550,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 26,
+        "contract": "src/ctm.sol:CTM",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)21_storage)"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_bytes32,t_struct(RoleData)21_storage)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => struct AccessControl.RoleData)",
+        "numberOfBytes": "32",
+        "value": "t_struct(RoleData)21_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(RoleData)21_storage": {
+        "encoding": "inplace",
+        "label": "struct AccessControl.RoleData",
+        "members": [
+          {
+            "astId": 18,
+            "contract": "src/ctm.sol:CTM",
+            "label": "hasRole",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 20,
+            "contract": "src/ctm.sol:CTM",
+            "label": "adminRole",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_bytes32"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xdf002282c1474c9592780618adda7eaa99998abd",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xc02a30b6dc26c56eec618c3a78c8a608c9a1f748",
+      "balance_of": "22317614253311752626781",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288077,
+      "contract": "0xdf002282c1474c9592780618adda7eaa99998abd",
+      "elapsed_seconds": 0.268910583,
+      "hash": "0x4ed3b525e59ead0327ecb3e51bec9e9abaa7b68ef45febfaff1ac6276c4d6d68",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x81dad91f38a9a2f933fc4c05541a2259983b6b2c3a62f39cdbae0b476aedd4c3",
+      "status": "inspected",
+      "storage_key": "0x5bb253c1f68e9dae171f86c37853a6900cd8f2088856c2b84bc8f591a2b00f7e",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x5bb253c1f68e9dae171f86c37853a6900cd8f2088856c2b84bc8f591a2b00f7e",
+          "pc": 1681,
+          "value": "0x0000000000000000000000000000000000000000000004b9d71d6f9959b3625d"
+        }
+      ],
+      "storage_word": "22317614253311752626781",
+      "tool_language": "Rust",
+      "trace_sha256": "1f581a88e6601603aff1bf044537a081884395d08e642edfeae438046794c0a6"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x81dad91f38a9a2f933fc4c05541a2259983b6b2c3a62f39cdbae0b476aedd4c3",
+      "contract": "0xdf002282c1474c9592780618adda7eaa99998abd",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "Topaz",
+    "rank": 183,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "deea3fd5ad3b43e7042055628ab16c629370ddbc16e7b3beeb7d4f5021da7d6c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xdf002282c1474c9592780618adda7eaa99998abd?fields=all",
+    "storage": [
+      {
+        "astId": 40,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 46,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 48,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 50,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 52,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1980,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1982,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 712,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_struct(Counter)958_storage)"
+      },
+      {
+        "astId": 720,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 3137,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "minter",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      },
+      {
+        "astId": 3139,
+        "contract": "contracts/Topaz.sol:Topaz",
+        "label": "owner",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_struct(Counter)958_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct Counters.Counter)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Counter)958_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Counter)958_storage": {
+        "encoding": "inplace",
+        "label": "struct Counters.Counter",
+        "members": [
+          {
+            "astId": 957,
+            "contract": "contracts/Topaz.sol:Topaz",
+            "label": "_value",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x0a43fc31a73013089df59194872ecae4cae14444",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "FourERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0xf0a949d3d93b833c183a27ee067165b6f2c9625e",
+      "balance_of": "36812359391429216782920362",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288116,
+      "contract": "0x0a43fc31a73013089df59194872ecae4cae14444",
+      "elapsed_seconds": 0.27671475,
+      "hash": "0xe54112f3745353e87adfa136a5d966345b65f6447f2b1d40734a29d1d1c86555",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "status": "inspected",
+      "storage_key": "0x14869c09ab4c35105366a1623836b8f2900870be48fd2fe57ff50b238f0046ef",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x14869c09ab4c35105366a1623836b8f2900870be48fd2fe57ff50b238f0046ef",
+          "pc": 516,
+          "value": "0x0000000000000000000000000000000000000000001e73520056d9c501ca2aaa"
+        }
+      ],
+      "storage_word": "36812359391429216782920362",
+      "tool_language": "Rust",
+      "trace_sha256": "a17160eec4963a14c968416f05a0cf3ebcba412c02eebfa1dea869eeb569dc4d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "contract": "0x0a43fc31a73013089df59194872ecae4cae14444",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "Token",
+    "rank": 184,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "b8362c13475bb4271aed8443690e4255e0ddcf10701570ab7dac01d102bb3ed1",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x0a43fc31a73013089df59194872ecae4cae14444?fields=all",
+    "storage": [
+      {
+        "astId": 45,
+        "contract": "Token3.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 51,
+        "contract": "Token3.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 53,
+        "contract": "Token3.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 55,
+        "contract": "Token3.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 57,
+        "contract": "Token3.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 727,
+        "contract": "Token3.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 851,
+        "contract": "Token3.sol:Token",
+        "label": "_mode",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 853,
+        "contract": "Token3.sol:Token",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x8b9ee39195ea99d6ddd68030f44131116bc218f6",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "PeaqOFT.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "balance_of": "7151338208104554409696186",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288015,
+      "contract": "0x8b9ee39195ea99d6ddd68030f44131116bc218f6",
+      "elapsed_seconds": 0.298434917,
+      "hash": "0x03813d090496922b3836f884a41127e2d09de9918bf8a87766da36e10f327f39",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x89bfd5052d2b63af9177686a866b8256003dfef05c418cb5bb122d1176c92ba5",
+      "status": "inspected",
+      "storage_key": "0x9b977f8a7f1ede483b8f51c9a6f7a3a36ba1a53074e5a72dadffbe6de9fbde92",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x9b977f8a7f1ede483b8f51c9a6f7a3a36ba1a53074e5a72dadffbe6de9fbde92",
+          "pc": 1362,
+          "value": "0x00000000000000000000000000000000000000000005ea5ad231a96613231bba"
+        }
+      ],
+      "storage_word": "7151338208104554409696186",
+      "tool_language": "Rust",
+      "trace_sha256": "9a90dff5fdede5f52693b0c26d2666652bc4c9875b0fe0246af9ba69239cd5bb"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0x89bfd5052d2b63af9177686a866b8256003dfef05c418cb5bb122d1176c92ba5",
+      "contract": "0x8b9ee39195ea99d6ddd68030f44131116bc218f6",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "PeaqOFT",
+    "rank": 185,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "96aa2a8bf16653a1a95f7d352148740c9c7d628d3e3b2e400163f47ef5f996f2",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x8b9ee39195ea99d6ddd68030f44131116bc218f6?fields=all",
+    "storage": [
+      {
+        "astId": 35,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 2210,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 3822,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2785,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 4466,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 424,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 430,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 432,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 434,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 436,
+        "contract": "PeaqOFT.sol:PeaqOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x8ac96df1d3dbd7c99a54cb4e50599ce129015e50",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "ERC20StandardToken.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x6d7d33ab0d492acc7122e0918df54e2dcf35fb28",
+      "balance_of": "693515845486480817708878",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288031,
+      "contract": "0x8ac96df1d3dbd7c99a54cb4e50599ce129015e50",
+      "elapsed_seconds": 0.2802685,
+      "hash": "0xa172b3ee247136f3d0930a5833bfef7c0784a70172ca11e829931c003040c5db",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x660bf3603efcb1c5151465ce1cc0011730d06618482a29a8a6282f996a344adb",
+      "status": "inspected",
+      "storage_key": "0x6b4b0b2b077421980d4ff70b4f4ea3188740d6dea1f7b5e00d4e6f49f34c8b74",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x6b4b0b2b077421980d4ff70b4f4ea3188740d6dea1f7b5e00d4e6f49f34c8b74",
+          "pc": 914,
+          "value": "0x0000000000000000000000000000000000000000000092db91beb986ecd4df4e"
+        }
+      ],
+      "storage_word": "693515845486480817708878",
+      "tool_language": "Rust",
+      "trace_sha256": "88521d0d1d666767c11fe3ca0a84b1a54e94addc2fadf68f62989e866f4b2af9"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x660bf3603efcb1c5151465ce1cc0011730d06618482a29a8a6282f996a344adb",
+      "contract": "0x8ac96df1d3dbd7c99a54cb4e50599ce129015e50",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d"
+      ]
+    },
+    "name": "SLC",
+    "rank": 190,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "25ceeb2c257ad6a7246ad5578b343fb9f068f90a5e739f0b68d8065a3a1c8815",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x8ac96df1d3dbd7c99a54cb4e50599ce129015e50?fields=all",
+    "storage": [
+      {
+        "astId": 74,
+        "contract": "SLC.sol:SLC",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 80,
+        "contract": "SLC.sol:SLC",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 82,
+        "contract": "SLC.sol:SLC",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 84,
+        "contract": "SLC.sol:SLC",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 88,
+        "contract": "SLC.sol:SLC",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1145,
+        "contract": "SLC.sol:SLC",
+        "label": "owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 1181,
+        "contract": "SLC.sol:SLC",
+        "label": "admin",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 1237,
+        "contract": "SLC.sol:SLC",
+        "label": "numTokensToSell",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1245,
+        "contract": "SLC.sol:SLC",
+        "label": "buyFee",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1249,
+        "contract": "SLC.sol:SLC",
+        "label": "isExcludedFromFees",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 1251,
+        "contract": "SLC.sol:SLC",
+        "label": "minter",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 1253,
+        "contract": "SLC.sol:SLC",
+        "label": "totalBurn",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1255,
+        "contract": "SLC.sol:SLC",
+        "label": "todayBurn",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1258,
+        "contract": "SLC.sol:SLC",
+        "label": "lastTime",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_uint256"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xc07e1300dc138601fa6b0b59f8d0fa477e690589",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      },
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol"
+      },
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x8bafe0bdd3eb9ae0539f5b32e771c1a72a189b7f",
+      "balance_of": "15190206731005138161877654",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288019,
+      "contract": "0xc07e1300dc138601fa6b0b59f8d0fa477e690589",
+      "elapsed_seconds": 0.29257325,
+      "hash": "0x39521816365e42e2310612c3538c5dc961d2e0cc58f89aecf3d4635658452b2e",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xd19985f8e38814bbb3310b55487b3c2733c19ae85e7cea6f7512ce3b6f9365c9",
+      "status": "inspected",
+      "storage_key": "0x3b3fbaffcd29096ec6f6986701e07e041e427aa5a09d39b26d7221242e4b485b",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x3b3fbaffcd29096ec6f6986701e07e041e427aa5a09d39b26d7221242e4b485b",
+          "pc": 1817,
+          "value": "0x0000000000000000000000000000000000000000000c90a6c1c50ca53157c296"
+        }
+      ],
+      "storage_word": "15190206731005138161877654",
+      "tool_language": "Rust",
+      "trace_sha256": "e58c118913f2f1e248abaa2c66737dd1768c0ab97621217a9bf505384be05964"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xd19985f8e38814bbb3310b55487b3c2733c19ae85e7cea6f7512ce3b6f9365c9",
+      "contract": "0xc07e1300dc138601fa6b0b59f8d0fa477e690589",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "PeerToken",
+    "rank": 191,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "915eef9fa74bf248d99d6e69ace8438d98f2c824fc0c2e3d793ee7a8fdf2d48f",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc07e1300dc138601fa6b0b59f8d0fa477e690589?fields=all",
+    "storage": [
+      {
+        "astId": 332,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 338,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 340,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 342,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 344,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2360,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2362,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1208,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 8,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_address"
+      },
+      {
+        "astId": 6193,
+        "contract": "src/tokens/PeerToken.sol:PeerToken",
+        "label": "minter",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x99e604dc70502b982128cfc3591e757ef0069837",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "npm/@openzeppelin/contracts@5.4.0/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x214048acb86d225a1b6d9cd4755d1b27f82e4380",
+      "balance_of": "580195962450829257228",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288015,
+      "contract": "0x99e604dc70502b982128cfc3591e757ef0069837",
+      "elapsed_seconds": 0.292792541,
+      "hash": "0x03813d090496922b3836f884a41127e2d09de9918bf8a87766da36e10f327f39",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x95a0990bbd334d68f3b2acb6475ebf064f0eb14a6a965e7bbdc6e345e9dd5adb",
+      "status": "inspected",
+      "storage_key": "0x581620b37f32b5810cd87e654c909d35066d109a0fe7ecb90fbac008747a0aa7",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x581620b37f32b5810cd87e654c909d35066d109a0fe7ecb90fbac008747a0aa7",
+          "pc": 684,
+          "value": "0x00000000000000000000000000000000000000000000001f73d621d6cd8e2a0c"
+        }
+      ],
+      "storage_word": "580195962450829257228",
+      "tool_language": "Rust",
+      "trace_sha256": "24c7a06405c14d9005b98232867c2dbfbf607c8a098fd1e33a4b5fb86a04a67d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x95a0990bbd334d68f3b2acb6475ebf064f0eb14a6a965e7bbdc6e345e9dd5adb",
+      "contract": "0x99e604dc70502b982128cfc3591e757ef0069837",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "BoxToken",
+    "rank": 193,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "b93362fbc2544956230e1eafd0c41b362f053fa115544320bc2e6f8c43bcca8a",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x99e604dc70502b982128cfc3591e757ef0069837?fields=all",
+    "storage": [
+      {
+        "astId": 397,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 403,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 405,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 407,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 409,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 8,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 1998,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "marketingWallet",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 2002,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_swapPairList",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 2006,
+        "contract": "project/contracts/BoxToken.sol:BoxToken",
+        "label": "_excludeFeeList",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x6bdcce4a559076e37755a78ce0c06214e59e4444",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual override returns (uint256) {\r\n        return _balances[account];\r\n    }",
+        "source": "FourERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x0f0cf38f67ed6fb00881cdb815e25441f7f022e0",
+      "balance_of": "5951646336770100257948401",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288016,
+      "contract": "0x6bdcce4a559076e37755a78ce0c06214e59e4444",
+      "elapsed_seconds": 0.304965041,
+      "hash": "0x8faa038750a54b51bc3da78fdce1b3ed55cce13004eb509271697e28fcf1a5b9",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "status": "inspected",
+      "storage_key": "0x2a90e8eb365dcba53501b3f67d7738d16e5ff33dd799435297bdf21eaf135457",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x2a90e8eb365dcba53501b3f67d7738d16e5ff33dd799435297bdf21eaf135457",
+          "pc": 516,
+          "value": "0x00000000000000000000000000000000000000000004ec4f64f806a9c49102f1"
+        }
+      ],
+      "storage_word": "5951646336770100257948401",
+      "tool_language": "Rust",
+      "trace_sha256": "de3e1786ad5e5c4713929590633f898f7eb6b359d1607ef5b37b4507eb8f64d8"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "contract": "0x6bdcce4a559076e37755a78ce0c06214e59e4444",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "Token",
+    "rank": 197,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "8b0cd2d3676fce4fc7b5c80aca73fb2ca9eef14af36d7001fb79a5c79e510199",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x6bdcce4a559076e37755a78ce0c06214e59e4444?fields=all",
+    "storage": [
+      {
+        "astId": 45,
+        "contract": "Token3.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 51,
+        "contract": "Token3.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 53,
+        "contract": "Token3.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 55,
+        "contract": "Token3.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 57,
+        "contract": "Token3.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 727,
+        "contract": "Token3.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 851,
+        "contract": "Token3.sol:Token",
+        "label": "_mode",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 853,
+        "contract": "Token3.sol:Token",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x6ced5c6d3f913b48d59fa07abbfe9060c409087c",
+    "getter_bodies": [
+      {
+        "body": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }",
+        "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      }
+    ],
+    "inspection": {
+      "address": "0x97cc984d47344831e4991f30b52a16f857a71c28",
+      "balance_of": "12909512316882172393345",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288045,
+      "contract": "0x6ced5c6d3f913b48d59fa07abbfe9060c409087c",
+      "elapsed_seconds": 0.280213125,
+      "hash": "0xda85484aae737ab5a69249e392886836164291d4284f372ac160f8272ee311e2",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xbc4c497fbddb16e35b5599b31da79f7ddd79bedb4a124b36f1d128fff96b067f",
+      "status": "inspected",
+      "storage_key": "0x2a342f3b7e849bd484bfabf2559fa294e170e81c3746450cb90645bbec8d85ad",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x2a342f3b7e849bd484bfabf2559fa294e170e81c3746450cb90645bbec8d85ad",
+          "pc": 4787,
+          "value": "0x0000000000000000000000000000000000000000000002bbd378fead3be63781"
+        }
+      ],
+      "storage_word": "12909512316882172393345",
+      "tool_language": "Rust",
+      "trace_sha256": "d7169f466e56b0c9211f42c87a27f23312b654e9f0d04d3e9bce20bb5a0d3a6d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xbc4c497fbddb16e35b5599b31da79f7ddd79bedb4a124b36f1d128fff96b067f",
+      "contract": "0x6ced5c6d3f913b48d59fa07abbfe9060c409087c",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x000000000000000000000000000000000000000000000000000000000000000c"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b"
+      ]
+    },
+    "name": "ANTFUNOFT",
+    "rank": 200,
+    "scope": "Explicit scalar words and bounded mapping fields only; dynamic data and unreviewed writes still stop processing.",
+    "source_sha256": "dbf278ac1ce0d771471f884ef050c54620545b5ba8c311f9097c7198475fe812",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x6ced5c6d3f913b48d59fa07abbfe9060c409087c?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4275,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4281,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4283,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4285,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4287,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 7545,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 7547,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 11670,
+        "contract": "contracts/ANTFUNOFT.sol:ANTFUNOFT",
+        "label": "_authorizationStates",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_mapping(t_address,t_mapping(t_bytes32,t_bool))"
+      }
+    ],
+    "storage_types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_bytes_storage": {
+        "encoding": "bytes",
+        "label": "bytes",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_mapping(t_bytes32,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(bytes32 => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_bytes32,t_bool)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_bytes32,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_uint16,t_bytes_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint16",
+        "label": "mapping(uint16 => bytes)",
+        "numberOfBytes": "32",
+        "value": "t_bytes_storage"
+      },
+      "t_mapping(t_uint32,t_bytes32)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => bytes32)",
+        "numberOfBytes": "32",
+        "value": "t_bytes32"
+      },
+      "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => mapping(uint16 => bytes))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint16,t_bytes_storage)"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint16": {
+        "encoding": "inplace",
+        "label": "uint16",
+        "numberOfBytes": "2"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      }
+    }
+  },
+  {
+    "basis": "Exact reviewed forwarding runtime; independent historical runtime/dependency/fallback qualification at both boundaries and getter controls",
+    "contract": "0x7997a69c22fb4e0e76bffe0e809c172c32e87777",
+    "family_profile": "0x8a119a3087799041bace3d906695baddee9e7777",
+    "inspection": {
+      "address": "0x70aab920154edb7907949fbda0dd46cdf6dfd90f",
+      "balance_of": "22521659365977550808189595",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288036,
+      "contract": "0x7997a69c22fb4e0e76bffe0e809c172c32e87777",
+      "elapsed_seconds": 0.639514583,
+      "hash": "0xafb869b488efef61d20a28ed8b534fdbb51ad87320a72a398d08451222484d47",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "status": "inspected",
+      "storage_key": "0x0d932fa0469e1fb0e887afd271b796f9ac65a39ca822b39c3c847361f94b2993",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0d932fa0469e1fb0e887afd271b796f9ac65a39ca822b39c3c847361f94b2993",
+          "pc": 1509,
+          "value": "0x00000000000000000000000000000000000000000012a12599c2cb3a87bc8a9b"
+        }
+      ],
+      "storage_word": "22521659365977550808189595",
+      "tool_language": "Rust",
+      "trace_sha256": "06606169c024992e123d55aa956a9d5a1a3498481ffba7f50e7369ea8453bac0"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "contract": "0x7997a69c22fb4e0e76bffe0e809c172c32e87777",
+      "minimal_proxy": {
+        "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+        "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+      },
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x0000000000000000000000000000000000000000000000000000000000000107"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x0000000000000000000000000000000000000000000000000000000000000037",
+        "0x0000000000000000000000000000000000000000000000000000000000000065",
+        "0x0000000000000000000000000000000000000000000000000000000000000066",
+        "0x0000000000000000000000000000000000000000000000000000000000000067",
+        "0x0000000000000000000000000000000000000000000000000000000000000068",
+        "0x000000000000000000000000000000000000000000000000000000000000009a",
+        "0x00000000000000000000000000000000000000000000000000000000000000cc",
+        "0x00000000000000000000000000000000000000000000000000000000000000fe",
+        "0x00000000000000000000000000000000000000000000000000000000000000ff",
+        "0x0000000000000000000000000000000000000000000000000000000000000100",
+        "0x0000000000000000000000000000000000000000000000000000000000000101",
+        "0x0000000000000000000000000000000000000000000000000000000000000102",
+        "0x0000000000000000000000000000000000000000000000000000000000000103",
+        "0x0000000000000000000000000000000000000000000000000000000000000104",
+        "0x0000000000000000000000000000000000000000000000000000000000000105",
+        "0x0000000000000000000000000000000000000000000000000000000000000106",
+        "0x0000000000000000000000000000000000000000000000000000000000000108",
+        "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+        "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+      ]
+    },
+    "rank": 152
+  },
+  {
+    "basis": "Exact reviewed forwarding runtime; independent historical runtime/dependency/fallback qualification at both boundaries and getter controls",
+    "contract": "0xa9ee28c80f960b889dfbd1902055218cba016f75",
+    "family_profile": "0x9b8e987e6fec8cf1380c4dca7071e2c7853aeea1",
+    "inspection": {
+      "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+      "balance_of": "2690958540132337902",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288170,
+      "contract": "0xa9ee28c80f960b889dfbd1902055218cba016f75",
+      "elapsed_seconds": 0.329419667,
+      "hash": "0x339f67f7a2c8d587feb111ef20ddd1263b1dce70eab79469497538dd729d76da",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x439923c85f956f038ae77871736f789e6d08d22257b6e5fdccfdc83924ecb4d0",
+      "status": "inspected",
+      "storage_key": "0xabe1af3a520e48f53c3117405aae1bb2daabaec72c461b7d4853ae565eaf3c10",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "pc": 142,
+          "value": "0x000000000000000000000000c046b05a920e4b412815934dd8e58904dda73315"
+        },
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 116,
+          "value": "0x000000000000000000000000578f397ca4661d1db4d9a65065d6b284a1a850fd"
+        },
+        {
+          "depth": 2,
+          "key": "0xabe1af3a520e48f53c3117405aae1bb2daabaec72c461b7d4853ae565eaf3c10",
+          "pc": 947,
+          "value": "0x00000000000000000000000000000000000000000000000025583488f1e448ee"
+        }
+      ],
+      "storage_word": "2690958540132337902",
+      "tool_language": "Rust",
+      "trace_sha256": "1e6d6a2cb0df208ed9951146cd5d451ce6a6302bf6fbba6a98e9b8e20fe541a2"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "beacon_proxy": {
+        "beacon": "0xc046b05a920e4b412815934dd8e58904dda73315",
+        "beacon_code_hash": "0x90d14c8f8d7d3468b5215829b587058c5e7f78acaef6b946c20caa3de92bf410",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0x578f397ca4661d1db4d9a65065d6b284a1a850fd",
+        "implementation_code_hash": "0x85d44c72e84a34f0b4a3bceca35289b10bd0c5510c5a441466a755e903edc36a",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0x439923c85f956f038ae77871736f789e6d08d22257b6e5fdccfdc83924ecb4d0",
+      "contract": "0xa9ee28c80f960b889dfbd1902055218cba016f75",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034"
+      ],
+      "other_mapping_words": {
+        "0x00000000000000000000000000000000000000000000000000000000000000c9": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x0000000000000000000000000000000000000000000000000000000000000037",
+        "0x000000000000000000000000000000000000000000000000000000000000012d",
+        "0x000000000000000000000000000000000000000000000000000000000000015f",
+        "0x0000000000000000000000000000000000000000000000000000000000000191",
+        "0x0000000000000000000000000000000000000000000000000000000000000192",
+        "0x4a11f94e20a93c79f6ec743a1954ec4fc2c08429ae2122118bf234b2185c81b8",
+        "0x4a11f94e20a93c79f6ec743a1954ec4fc2c08429ae2122118bf234b2185c81b9",
+        "0xfb4a0ff48df6de8777afc824e4cbf267beb8602db7c5a7456c954593226c1fd5",
+        "0xfb4a0ff48df6de8777afc824e4cbf267beb8602db7c5a7456c954593226c1fd6"
+      ]
+    },
+    "rank": 155
+  },
+  {
+    "basis": "Exact reviewed forwarding runtime; independent historical runtime/dependency/fallback qualification at both boundaries and getter controls",
+    "contract": "0x32b133ca38c9b410a053f2bcfeea83831c3bcfe0",
+    "family_profile": "0xc4c5f33e3860e1ad31d52fd377cc39f74784d19f",
+    "inspection": {
+      "address": "0xa6ee430f253057aa4de8d757f6de081bdaa75e52",
+      "balance_of": "1999994789831992602907422",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288058,
+      "contract": "0x32b133ca38c9b410a053f2bcfeea83831c3bcfe0",
+      "elapsed_seconds": 0.314550791,
+      "hash": "0x42abef5b6286e9f23734b88571f0977e9a171d3de2c099a2b36bd136d565dab3",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "1000000000",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x22b230294d5c77422a3d9761529a2a89750f1ec31cb4be9d867cb6d67ee71df5",
+      "status": "inspected",
+      "storage_key": "0x838601da2698f84c84b92bf068936395d64d0fdcd517894efdc92b680765e38b",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x838601da2698f84c84b92bf068936395d64d0fdcd517894efdc92b680765e38b",
+          "pc": 4228,
+          "value": "0x00000000000000000000000000000000000000000001a783ef4f5da88cfdd31e"
+        }
+      ],
+      "storage_word": "1999994789831992602907422",
+      "tool_language": "Rust",
+      "trace_sha256": "6d826a3dc0e5b6564a23adf0a77810b59bf5117812cbfb1ca46cdf7f6eec2717"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x22b230294d5c77422a3d9761529a2a89750f1ec31cb4be9d867cb6d67ee71df5",
+      "contract": "0x32b133ca38c9b410a053f2bcfeea83831c3bcfe0",
+      "minimal_proxy": {
+        "code_hash": "0xc566e94ce5a163215929b07a34383035366b709245734097780ab18d0ed4567d",
+        "implementation": "0x75b2fd32294ec37c70e8f3b1bbce81b6cc71f0c6"
+      },
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "zero_balance": {
+        "storage_slot": "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "value": "0x000000000000000000000000000000000000000000000000000000003b9aca00"
+      }
+    },
+    "rank": 159
+  },
+  {
+    "basis": "Exact reviewed forwarding runtime; independent historical runtime/dependency/fallback qualification at both boundaries and getter controls",
+    "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+    "family_profile": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+    "inspection": {
+      "address": "0x44ea468b40ec3f9de546fd5da9c3af7a9d23833a",
+      "balance_of": "99396121055565453383",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288015,
+      "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+      "elapsed_seconds": 0.297457291,
+      "hash": "0x03813d090496922b3836f884a41127e2d09de9918bf8a87766da36e10f327f39",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "status": "inspected",
+      "storage_key": "0xafcfbf3f75c147bcff87597ec0111abaf154859c74d12eda737c5cc60344d5cb",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0xafcfbf3f75c147bcff87597ec0111abaf154859c74d12eda737c5cc60344d5cb",
+          "pc": 2317,
+          "value": "0x0000000000000000000000000000000000000000000000056365f57a10b41847"
+        }
+      ],
+      "storage_word": "99396121055565453383",
+      "tool_language": "Rust",
+      "trace_sha256": "150a3b604eca94f977e0df447575573c1ae655c2137e209606a23817fe881b64"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "beacon_proxy": {
+        "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+        "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000064",
+        "0x0000000000000000000000000000000000000000000000000000000000000096",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x0000000000000000000000000000000000000000000000000000000000000098",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+        "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+      ]
+    },
+    "rank": 187
+  },
+  {
+    "basis": "Exact reviewed forwarding runtime; independent historical runtime/dependency/fallback qualification at both boundaries and getter controls",
+    "contract": "0x301358fe371e940bf316c5cccc53a2672de97777",
+    "family_profile": "0x8a119a3087799041bace3d906695baddee9e7777",
+    "inspection": {
+      "address": "0x301358fe371e940bf316c5cccc53a2672de97777",
+      "balance_of": "249452629485903497449641",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "block": 122288086,
+      "contract": "0x301358fe371e940bf316c5cccc53a2672de97777",
+      "elapsed_seconds": 0.296773708,
+      "hash": "0x7b7e43df8651289469873e4a2e25f1a3659272c371cd7b141d1fc5e1f0be7b21",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "status": "inspected",
+      "storage_key": "0x7a7f734b62664ab028bec80cfd9ebb0cbc77e63c13093a3698e1e09cca22a506",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x7a7f734b62664ab028bec80cfd9ebb0cbc77e63c13093a3698e1e09cca22a506",
+          "pc": 1509,
+          "value": "0x0000000000000000000000000000000000000000000034d2daa8fcc12b44d0a9"
+        }
+      ],
+      "storage_word": "249452629485903497449641",
+      "tool_language": "Rust",
+      "trace_sha256": "e50dbafb4bd15dd4261c0c62906f63d6882f868db56d0c60457fd37b142dd183"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+      "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+      "contract": "0x301358fe371e940bf316c5cccc53a2672de97777",
+      "minimal_proxy": {
+        "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+        "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+      },
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000034",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x0000000000000000000000000000000000000000000000000000000000000107"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000035",
+        "0x0000000000000000000000000000000000000000000000000000000000000036",
+        "0x0000000000000000000000000000000000000000000000000000000000000037",
+        "0x0000000000000000000000000000000000000000000000000000000000000065",
+        "0x0000000000000000000000000000000000000000000000000000000000000066",
+        "0x0000000000000000000000000000000000000000000000000000000000000067",
+        "0x0000000000000000000000000000000000000000000000000000000000000068",
+        "0x000000000000000000000000000000000000000000000000000000000000009a",
+        "0x00000000000000000000000000000000000000000000000000000000000000cc",
+        "0x00000000000000000000000000000000000000000000000000000000000000fe",
+        "0x00000000000000000000000000000000000000000000000000000000000000ff",
+        "0x0000000000000000000000000000000000000000000000000000000000000100",
+        "0x0000000000000000000000000000000000000000000000000000000000000101",
+        "0x0000000000000000000000000000000000000000000000000000000000000102",
+        "0x0000000000000000000000000000000000000000000000000000000000000103",
+        "0x0000000000000000000000000000000000000000000000000000000000000104",
+        "0x0000000000000000000000000000000000000000000000000000000000000105",
+        "0x0000000000000000000000000000000000000000000000000000000000000106",
+        "0x0000000000000000000000000000000000000000000000000000000000000108",
+        "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+        "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+      ]
+    },
+    "rank": 188
+  }
+]

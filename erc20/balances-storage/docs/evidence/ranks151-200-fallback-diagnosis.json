@@ -1,0 +1,26 @@
+{
+  "boundary_semantics": "Survey block is the changed block; before uses its parent hash. Original evidence is retained verbatim.",
+  "cause": "The clone returns pinned scalar slot 8 when the raw balance mapping word is zero. The unchanged getter family is supported, but each instance needs its own runtime, implementation and fallback value qualification. Both boundaries confirm 1000000000; raw-word overrides confirm nonzero values are returned unchanged.",
+  "checkpoint_holders": 63,
+  "checkpoint_zero_word_positive_balances": 60,
+  "mismatches": [
+    {
+      "address": "0x8737a10d9c19af8bb2eae0b5e9cfe7b7276e0638",
+      "block": 122288948,
+      "boundary": "before",
+      "contract": "0x32b133ca38c9b410a053f2bcfeea83831c3bcfe0",
+      "hash": "0xaab91969e0996576e7956de25ecee3fbd02db6e40e63cfaef33c552990bbe945",
+      "holdout": true,
+      "match": false,
+      "projected": "0",
+      "rpc": "1000000000",
+      "rpc_storage_matches_firehose": true,
+      "rpc_storage_word": "0",
+      "storage": "0",
+      "storage_key": "0xe50c7f033f0adc5f936560ed2dcd417be85cc51a94ff09148039a58776137034"
+    }
+  ],
+  "original_checks_sha256": "78562c5e6187b60a42dc862ea61431f048cb2a76eb7843b98253cddfa262b064",
+  "original_survey_sha256": "928d7058266dcad1f412fb3808a20314f0c3100c89a4b6441acac34141b73dc6",
+  "scope": "BSC token symbol ARC; unrelated to Arc network qualification."
+}
