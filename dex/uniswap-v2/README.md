@@ -9,6 +9,12 @@ hash, parent hash, and timestamp with nanoseconds. It selects the last successfu
 from liquidity operations. Pools are sorted by address for deterministic output.
 Failed transactions and reverted calls cannot set a closing observation.
 
+A matching `Sync` with malformed topics/data or a noncanonical uint112 value
+produces `invalid: true` with empty reserve strings. Any such event invalidates
+that pool for the entire block, including when a later Sync is well formed.
+Consumers must discard its cached reserves. The marker does not invent zero
+liquidity or prevent unrelated pools from being extracted.
+
 Reserve values remain unsigned integer strings without floating-point conversion.
 Zero reserves are preserved: consumers must observe an emptied pool. Only pools
 that changed in this block are listed. An absent pool does not mean zero reserves
@@ -33,5 +39,5 @@ substreams pack dex/uniswap-v2/substreams.yaml
 
 The unit tests cover final-state selection after an intrablock round trip, empty
 liquidity, exact uint112 reserves, unordered input logs, reverted calls, failed
-transactions, empty blocks and missing metadata. No live-source coverage is
+transactions, malformed Sync invalidation, empty blocks and missing metadata. No live-source coverage is
 implied by these synthetic tests.
