@@ -24,7 +24,7 @@ mapping, or pinned proxy:
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
 | `voting_checkpoints` | Optional object | Reviewed OpenZeppelin `Trace208` arrays: `clock` is `block_number` or `timestamp`; `slots` lists direct array roots and `mapping_slots` lists `mapping(address => Trace208)` bases, all 32-byte hex |
-| `address_lists` | Optional array of 32-byte `0x` hex roots | Reviewed append-only `address[]` bookkeeping, with a persisted length increment and exact element witness for each append |
+| `address_lists` | Optional array of 32-byte `0x` hex roots | Reviewed `address[]` bookkeeping, with exact persisted witnesses for appends, tail pops and swap-and-pop removals |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `balance_divisor` | Optional object | Positive `value` and required `storage_slot` (both 32-byte `0x` hex). A reviewed getter returns `floor(raw / value)`; every persisted change to the divisor stops processing and invalidates retained holder balances |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
@@ -126,21 +126,28 @@ range. Block-number histories always require the append witness in the current
 block. Arbitrary arrays, different packed formats and custom clocks remain
 unsupported by this rule, and unknown writes still fail.
 
-`address_lists` supports a separately qualified append-only `address[]` whose
-pre-append length is below `2^64`. The caller must review that the array is
-independent of the balance getter. Each persisted length increment must be
-followed by exactly one write to `keccak256(root) + old_length`, modulo `2^256`,
-before the next append. That element must start empty and contain a canonical
-20-byte address. Multiple appends require continuous lengths; the final valid
-length can equal `2^64`. There are no inferred element ranges or guessed roots.
+`address_lists` supports separately qualified `address[]` bookkeeping that is
+independent of the balance getter. Each length change must add or remove exactly
+one entry. An append's length increment must precede its new element write at
+`keccak256(root) + old_length`, modulo `2^256`, before the next length change.
+That element must start empty and contain a canonical 20-byte address.
+
+A removal must clear the old final element before decrementing the length.
+Swap-and-pop may first copy that exact old tail address into one earlier element,
+within the witnessed old length. Every accepted element write needs its own
+ordinal witness; repeated writes to a slot must preserve old/new continuity.
+This permits append/pop/reappend sequences without accepting extra overwrites.
+Element indices must fit `u64`; the final valid length can equal `2^64`.
+No guessed roots or unrestricted element ranges are accepted.
 The [Solidity storage rules](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html#mappings-and-dynamic-arrays)
 place each address in a separate word. Compiler-embedded array roots do not
 require a captured Keccak preimage because the exact root is caller-qualified.
 
-A null-address append retains its zero-to-zero element write as a validation
-witness. It does not enable ordinary balance no-op output. Reverted/failed
-writes cannot authorize persisted appends. Missing elements, overwrites,
-deletions, malformed values and roots overlapping other configured fields fail.
+A null-address append or removal retains its zero-to-zero element write as a
+validation witness. It does not enable ordinary balance no-op output.
+Reverted/failed writes cannot authorize persisted list changes. Missing or
+reused witnesses, arbitrary overwrites, unmatched clears, malformed values and
+roots overlapping other configured fields fail.
 The reviewed list is bookkeeping, not a source of inferred holder balances.
 
 With `address_hash_balance`, ordinary holders return

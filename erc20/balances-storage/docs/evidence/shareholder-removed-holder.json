@@ -1,0 +1,21 @@
+{
+  "address": "0x543ab323ea485fcdb08847ec68eed5ae8352b00a",
+  "carry_forward_matches": 64,
+  "checkpoint_rpc_reads": 2,
+  "checks": 64,
+  "checks_sha256": "c586479569f701419b075c6d4a34efcdd3d66352bc06d8f7ed37e392078a1333",
+  "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+  "elapsed_seconds": 5.83940225,
+  "events_sha256": "8716766162dc855dbf09daac562397b6ba1c784b641f7ac3e2e9169782c879b2",
+  "final_balance": "3251823000000000000000",
+  "initial_balance": "3251823000000000000000",
+  "mismatches": 0,
+  "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+  "processing_balance_rpc_calls": 0,
+  "scope": "The removed shareholder, independently initialized from canonical RPC balance and storage. Retained state changes only from actual WASM events. Validation RPC never repairs state. This holder is absent from the six emitted-row reference holders.",
+  "start": 122264480,
+  "status": "removed_holder_parity",
+  "stop_exclusive": 122264544,
+  "tool_language": "Rust",
+  "validation_rpc_reads": 128
+}

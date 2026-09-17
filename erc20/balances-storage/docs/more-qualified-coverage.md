@@ -1,5 +1,11 @@
 # Ten additional BSC proxy and array layouts
 
+This report preserves the pre-removal-fix package and evidence. The subsequent
+[shareholder-removal correction](shareholder-removal-coverage.md) captures a real
+tail pop, adds validation support and checks a new combined 188-profile WASM
+run against these historical outputs. The removal limitation below describes
+the original campaign snapshot.
+
 Ranks **157, 158, 160, 165, 169, 177, 180, 186, 192 and 195** now pass the
 historical qualification campaign. The [combined fixture](../tests/fixtures/bsc-more-qualified-layouts.json)
 contains **188 profiles**. The interval is **122288006–122289029**, inclusive.

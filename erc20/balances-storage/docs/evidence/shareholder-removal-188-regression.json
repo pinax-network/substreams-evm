@@ -1,0 +1,57 @@
+{
+  "all_balance_event_fields_equal": true,
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 18.846634539690484,
+    "empty_output_delivery": null,
+    "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+    "seconds_including_startup": 54.333308042
+  },
+  "configured_profiles": 188,
+  "elapsed_seconds": 95.526001459,
+  "events_sha256": "a5588e2bcf314ac371f6316b004d3fa71a278f537483cabb5960895456548723",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "0782fcdf7a8e3279a78c8a847dba04297e5ea4f648794076cbde1f1a328ad5c1",
+  "prior_holder_observations_with_identical_event_history": 168800,
+  "prior_initialized_carry_forward_matches": 65779,
+  "prior_package_sha256": "c9aa8f3cdded9c9c93126fe5e2ec179e2a5a3198b6eb51f292c1b9be710424b0",
+  "reused_verified_rpc_rows": 103022,
+  "scope": "New combined 188-profile actual-WASM capture compared with immutable, previously RPC-audited historical outputs. Fresh canonical headers; no repeated balance RPC calls.",
+  "sources": [
+    {
+      "cohort": "ranked-proxy",
+      "events_sha256": "755c09154c909895686505d1982ea25cddf635353339f33a49674df1146ed6f8",
+      "holder_report_sha256": "cd387502ff23784e27c6b5afdb49d627f8315069adcdcc9cc4eb464654371e74",
+      "rpc_report_sha256": "cfa9a689f8795330be043397a82bd9d8a7adad720f4e6f1c56b975cf62bfef57"
+    },
+    {
+      "cohort": "rank144",
+      "events_sha256": "3a0e87c8dd82f9393ba11d8c851214f972496d3bba5ae59f08b0f8a9043fc892",
+      "holder_report_sha256": "c0f4d12b8c4035e2662f0e6eb966d83bc9dac149ed6b9120759534ef79086d64",
+      "rpc_report_sha256": "16f8a1dfb31b7b9271f30251aa74930cb3da4e8ed4f6525b3b1528ff8221d85b"
+    },
+    {
+      "cohort": "remaining-ranked",
+      "events_sha256": "a5d6068c3233608c5abebf19ed9a72dd39cddb4568b2d61c8e0257ea893c5c22",
+      "holder_report_sha256": "2a744ef9c88a904b4c57d8d5a98704859eec9a07e00e51fac5e2bce09966ace4",
+      "rpc_report_sha256": "00306b7eefdfc6550e45fccd6b10fc93971ded499e37817b05751bda99f3a12e"
+    },
+    {
+      "cohort": "ranks151-200",
+      "events_sha256": "d7a320dd2c31ba011877eb3479c91063bf31c0e04ee0e4a8a038f37009f82499",
+      "holder_report_sha256": "d6fa970761e4f270055b7e4ca28679103f5cdecaac0f727ee528d199f4ecc198",
+      "rpc_report_sha256": "a6928f7e63d3cdca94ea1d8bcaaca84623102affa937ed1f47eca1dc80b69398"
+    },
+    {
+      "cohort": "more-qualified",
+      "events_sha256": "69f650b8d6826500ea7c0e6ea5c3c43a8e895c4872d275a539414d3a2d54d72f",
+      "holder_report_sha256": "fc4657417d9fe1486e8c4fda3a108b991c437139de372b3f6bdda402bbd9aa55",
+      "rpc_report_sha256": "97f38e9fc3929985f7be74875f3ff33fd6fc5fe58d481add298576dddc7170cd"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust",
+  "wasm_sha256": "861a879353a7fc7163a26c80f671fc3011e9ca3ee32a65dfc0badd99ac9794b6"
+}

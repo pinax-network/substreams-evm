@@ -1,0 +1,71 @@
+{
+  "balance_checks": [
+    {
+      "address": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+      "new_rpc": "229310001",
+      "old_rpc": "229310000000001",
+      "storage_key": "0x580ac74dc18e0269257e88ba2f066a3dd4c0f700ed94a5994bc800b28e8d81b5"
+    },
+    {
+      "address": "0x590f03aa5af4d69a666918d13eb1322a88e63421",
+      "new_rpc": "11414707746001248609983360",
+      "old_rpc": "10348821007709063255874224",
+      "storage_key": "0x74e8cade37c2458baedf1cc226f660d0835b3d53396c34bac5253ee37592ee31"
+    },
+    {
+      "address": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+      "new_rpc": "1145561012726045665779316",
+      "old_rpc": "1145561012496735895089316",
+      "storage_key": "0x82efe9afa8eb5cf565c124802930bf2766262b2ddb7e7ea6c8f0d0fbf2e754ef"
+    },
+    {
+      "address": "0x28e69efcf168813113e039341cba335d1303167e",
+      "new_rpc": "34462709291351753598596",
+      "old_rpc": "6991401603408832100938",
+      "storage_key": "0x96836731735e39ac4968737846549fc875ab93d2f83b98b9539b784a5c885f54"
+    },
+    {
+      "address": "0x6b58829f2141747664a1deca1068533993595af9",
+      "new_rpc": "3236524275228387501373308",
+      "old_rpc": "3231030013690798917073777",
+      "storage_key": "0xe785f08e5a899cdc835d2696d847bf6376bd56ce2bd07fa0133a521786578761"
+    },
+    {
+      "address": "0xd0dd21d8dbcf95551647f15aea03e1d275a15632",
+      "new_rpc": "521720618574327284238775357",
+      "old_rpc": "522819470881845001098681682",
+      "storage_key": "0xe94accc2024559f05c31a8c90e1c3342f2ca05bab8b3f77ad8973ea8083a2211"
+    }
+  ],
+  "block": 122264505,
+  "contract": "0x28e69efcf168813113e039341cba335d1303167e",
+  "error": "address-list length must append one",
+  "fixture_sha256": "6d62faf324368427c36329adf40b36235f9818d12d1b374cce9cf73c30be8365",
+  "full_block_sha256": "9a57d319176ee1fb6bb7c0e6adbe91d3a90a84f5f699e7a69dfee41a6b4f995d",
+  "hash": "0x2f823d213de24cbb6f8068e16a806ddc75dda3ddc8f483703370963f6857d1f3",
+  "parent_hash": "0x87f1a9f3209bb354a160ce1581e86b1aa28c2be12bb2b27c6218127de566c9b6",
+  "scope": "Actual canonical removal outside the passing cohort window. Current production mapper rejects the block. Independent balance RPC checks establish the raw values; support and actual-WASM/holder replay remain required.",
+  "status": "reproduced_storage_rejection",
+  "writes": [
+    {
+      "call": 37,
+      "field": "element",
+      "index": 156,
+      "key": "0x0e4562a10381dec21b205ed72637e6b1b523bdd0e4d4d50af5cd23dd4500a2ad",
+      "new": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "old": "0x000000000000000000000000543ab323ea485fcdb08847ec68eed5ae8352b00a",
+      "ordinal": 3891,
+      "transaction": "0xb0c46f248153b1ac985b1b73a0012a2c23ec2b1953b5f20a23228e3c7be012b5"
+    },
+    {
+      "call": 37,
+      "field": "length",
+      "index": null,
+      "key": "0x000000000000000000000000000000000000000000000000000000000000001c",
+      "new": "0x000000000000000000000000000000000000000000000000000000000000009c",
+      "old": "0x000000000000000000000000000000000000000000000000000000000000009d",
+      "ordinal": 3892,
+      "transaction": "0xb0c46f248153b1ac985b1b73a0012a2c23ec2b1953b5f20a23228e3c7be012b5"
+    }
+  ]
+}

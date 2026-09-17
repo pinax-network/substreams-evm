@@ -38,9 +38,11 @@ must not silently receive weaker validation.
 
 The BSC campaign now includes 188 qualified profiles: the original top 100 plus
 49 from ranks 101–150 and 39 from ranks 151–200. The
-[current follow-up](more-qualified-coverage.md) retains 11 candidates from the
-new cohort and reward-bearing rank 143 as unqualified. Source-visible shareholder
-array removal remains unsupported. This is a bounded campaign. Completing it
+[candidate follow-up](more-qualified-coverage.md) retains 11 candidates from the
+new cohort and reward-bearing rank 143 as unqualified. The
+[removal correction](shareholder-removal-coverage.md) now passes a captured
+shareholder tail pop and preserves all 188 profiles' audited output; swap-and-pop
+has synthetic coverage but no captured swap transaction yet. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
 enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay

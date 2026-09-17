@@ -23,8 +23,8 @@ pub struct Layout {
     /// Reviewed OpenZeppelin Trace208 arrays, separate from ordinary balances.
     #[serde(default)]
     pub voting_checkpoints: Option<VotingCheckpoints>,
-    /// Reviewed append-only address[] roots, with a witnessed length increment
-    /// before every element write and a maximum pre-append length of u64::MAX.
+    /// Reviewed address[] roots with witnessed appends, tail pops or swap-and-pop
+    /// removals. Element indices must fit u64; arbitrary overwrites are rejected.
     #[serde(default)]
     pub address_lists: Vec<String>,
     /// Reviewed replacement for a zero balance word. No inferred defaults.

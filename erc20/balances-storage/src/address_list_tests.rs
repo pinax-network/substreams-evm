@@ -193,3 +193,137 @@ fn address_list_roots_cannot_overlap_configured_fields() {
         assert!(layout::parse(&p.to_string()).is_err(), "variant {variant}");
     }
 }
+
+fn removal(swap: bool) -> (eth::Block, Vec<VerifiedLayout>) {
+    let (mut block, layouts) = case();
+    let rows = &mut block.transaction_traces[0].calls[0].storage_changes;
+    let mut clear = rows[1].clone();
+    clear.old_value = vec![7; 20];
+    clear.new_value.clear();
+    clear.ordinal = 20;
+    rows[0].old_value = vec![3];
+    rows[0].new_value = vec![2];
+    rows[0].ordinal = 21;
+    rows[1] = clear.clone();
+    if swap {
+        let mut copy = clear;
+        copy.key = key(0).to_vec();
+        copy.old_value = vec![8; 20];
+        copy.new_value = vec![7; 20];
+        copy.ordinal = 19;
+        rows.push(copy);
+    }
+    (block, layouts)
+}
+
+#[test]
+fn witnessed_tail_and_swap_removals_preserve_balances() {
+    for swap in [false, true] {
+        let (block, layouts) = removal(swap);
+        let events = project(&block, &layouts).unwrap();
+        assert_eq!(events.balances.len(), 1);
+        assert_eq!(events.balances[0].amount, "9");
+    }
+}
+
+#[test]
+fn append_pop_and_reappend_can_reuse_an_element_with_distinct_witnesses() {
+    let (mut block, layouts) = case();
+    let rows = &mut block.transaction_traces[0].calls[0].storage_changes;
+    let mut clear = rows[1].clone();
+    clear.old_value = clear.new_value.clone();
+    clear.new_value.clear();
+    clear.ordinal = 40;
+    let mut pop = rows[0].clone();
+    pop.old_value = vec![3];
+    pop.new_value = vec![2];
+    pop.ordinal = 41;
+    let mut append = rows[0].clone();
+    append.ordinal = 50;
+    let mut element = rows[1].clone();
+    element.ordinal = 51;
+    rows.extend([clear, pop, append, element]);
+    assert_eq!(project(&block, &layouts).unwrap().balances[0].amount, "9");
+    // A missing zero-to-zero clear cannot reuse the append's witness.
+    let rows = &mut block.transaction_traces[0].calls[0].storage_changes;
+    rows[1].new_value.clear();
+    rows.remove(3);
+    assert!(project(&block, &layouts).is_err());
+}
+
+#[test]
+fn malformed_removals_never_authorize_other_element_writes() {
+    for variant in 0..14 {
+        let (mut block, layouts) = removal(true);
+        let rows = &mut block.transaction_traces[0].calls[0].storage_changes;
+        match variant {
+            0 => rows[0].new_value = vec![1],
+            1 => rows[1].new_value = vec![7; 20],
+            2 => rows[1].old_value = vec![7; 21],
+            3 => rows[1].ordinal = 22,
+            4 => rows[1].ordinal = 0,
+            5 => rows[3].key = key(3).to_vec(),
+            6 => rows[3].new_value = vec![8; 20],
+            7 => rows[3].old_value = vec![8; 21],
+            8 => rows[3].ordinal = 22,
+            9 => rows[3].ordinal = 20,
+            10 => {
+                rows.remove(1);
+            }
+            11 => {
+                rows.remove(0);
+            }
+            12 => {
+                let mut extra = rows[3].clone();
+                extra.key = key(1).to_vec();
+                extra.ordinal = 18;
+                rows.push(extra);
+            }
+            13 => {
+                let mut extra = rows[1].clone();
+                extra.ordinal = 25;
+                extra.old_value.clear();
+                extra.new_value = vec![9; 20];
+                rows.push(extra);
+            }
+            _ => unreachable!(),
+        }
+        assert!(project(&block, &layouts).is_err(), "variant {variant}");
+    }
+}
+
+#[test]
+fn null_tail_removal_requires_its_noop_and_failed_calls_cannot_supply_it() {
+    let (mut block, layouts) = removal(false);
+    block.transaction_traces[0].calls[0].storage_changes[1].old_value.clear();
+    assert!(project(&block, &layouts).is_ok());
+    let clear = block.transaction_traces[0].calls[0].storage_changes.remove(1);
+    block.transaction_traces[0].calls.push(eth::Call {
+        state_reverted: true,
+        storage_changes: vec![clear],
+        ..Default::default()
+    });
+    assert!(project(&block, &layouts).is_err());
+}
+
+#[test]
+fn captured_shareholder_removal_matches_all_six_historical_rpc_balances() {
+    use prost::Message;
+    let layouts = layout::parse(include_str!("../tests/fixtures/shareholder-removal/layouts.json")).unwrap();
+    let report: Value = serde_json::from_str(include_str!("../tests/fixtures/shareholder-removal/before.json")).unwrap();
+    assert_eq!(report["error"], "address-list length must append one");
+    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/fixtures/shareholder-removal/block.pb");
+    let block = eth::Block::decode(std::fs::read(path).unwrap().as_slice()).unwrap();
+    assert_eq!(block.hash, hex_bytes(report["hash"].as_str().unwrap()).unwrap());
+    assert_eq!(block.number, report["block"].as_u64().unwrap());
+    let expected = report["balance_checks"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|r| (hex_bytes(r["address"].as_str().unwrap()).unwrap(), r["new_rpc"].as_str().unwrap().to_owned()))
+        .collect::<BTreeMap<_, _>>();
+    assert_eq!(expected.len(), 6);
+    let events = project(&block, &layouts).unwrap();
+    assert!(events.balances.iter().all(|r| r.contract.as_ref() == Some(&layouts[0].contract)));
+    assert_eq!(events.balances.into_iter().map(|r| (r.address, r.amount)).collect::<BTreeMap<_, _>>(), expected);
+}
