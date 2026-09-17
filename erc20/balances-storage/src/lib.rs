@@ -368,6 +368,8 @@ mod address_list_tests;
 #[cfg(test)]
 mod checkpoint_tests;
 #[cfg(test)]
+mod clone_fallback_tests;
+#[cfg(test)]
 mod computed_tests;
 #[cfg(test)]
 mod direct_bytecode_tests;

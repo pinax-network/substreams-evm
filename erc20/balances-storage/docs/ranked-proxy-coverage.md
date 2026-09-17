@@ -1,5 +1,8 @@
 # BSC proxy qualification and upgradeable beacons
 
+The [subsequent clone qualification](clone-fallback-coverage.md) extends coverage
+to 141 profiles. This report retains the original 140-token run and evidence.
+
 Seven more candidates from ranks 101–150 are qualified in
 [the 140-token fixture](../tests/fixtures/bsc-ranked-proxy-layouts.json).
 The original 133 profiles retain identical parameters and output. Ten candidates

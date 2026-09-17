@@ -1,0 +1,34 @@
+{
+  "checkpoint_sha256": "59611f74e675b4ea9f6e8a17227b64a20e319a14a47e98a86d02e4451d759384",
+  "checks_sha256": "d1ab54a95b0cd99dd198e9b354de7c6ee6b510d12022a8937bab7d9e249c1156",
+  "contract": "0xc4c5f33e3860e1ad31d52fd377cc39f74784d19f",
+  "events_sha256": "3a0e87c8dd82f9393ba11d8c851214f972496d3bba5ae59f08b0f8a9043fc892",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 108,
+  "layouts_sha256": "8710bda33e5e56109c9baf2498e69c592cafdb8ff8f81b1c419440cb9e30fd08",
+  "mismatches": 0,
+  "package_sha256": "c9aa8f3cdded9c9c93126fe5e2ec179e2a5a3198b6eb51f292c1b9be710424b0",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 130,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Single additional token on the exact previously audited package. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all 84 initialized observed holders, not all possible addresses.",
+  "snapshot_fallback_amounts": 81,
+  "snapshot_holders": 84,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xc4c5f33e3860e1ad31d52fd377cc39f74784d19f",
+      "emitted_rows": 22,
+      "reference_rows": 130,
+      "seeded_matches": 130,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 108,
+      "unseeded_unknown_rows": 108,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}
