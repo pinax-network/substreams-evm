@@ -22,7 +22,7 @@ with a reviewed zero-word fallback, address-derived balance, or pinned proxy:
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
-| `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant |
+| `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
@@ -72,7 +72,11 @@ before deployment or treat an unavailable response as zero. This is a bounded
 test baseline, not a complete global holder enumeration.
 
 With `zero_balance`, nonzero mapping words pass through unchanged. Zero words
-emit the explicitly pinned fallback. Raw words still drive continuity checks;
+emit the explicitly pinned fallback, except for caller-qualified
+`excluded_addresses`, which retain zero. Exclusions apply only to zero words;
+nonzero balances for those holders still pass through. No burn-address exception
+is hardcoded. Only runtime-constant exceptions are supported, not mutable holder
+selectors. Raw words still drive continuity checks;
 projection happens only at output. For a storage-dependent fallback, the tools
 verify its value at both boundaries, and the mapper rejects **every persisted
 dependency-slot write**, including change-and-restore and holder-silent changes.
@@ -286,6 +290,13 @@ getters are qualified from historical bytecode, traces and controls; verified
 Solidity source was unavailable. Three share an already reviewed runtime.
 The fixture covers all 50 contracts in the original ranking, with per-token
 holder-state results and explicit cold-start gaps.
+
+The [ranks 51–100 follow-up](docs/next-candidate-holder-coverage.md) qualifies 26
+more candidates, bringing `tests/fixtures/bsc-next-candidates-layouts.json` to 76
+profiles. It also fixes holder-specific zero fallbacks found by explicit burn
+address controls, including one previously sampled token. The retained reports
+describe the exact earlier artifacts; historical fixture digests predate this
+correction. Another 24 candidates remain explicitly unqualified.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

@@ -1,5 +1,13 @@
 # All 50 ranked BSC tokens
 
+Historical sample results below remain unchanged. The
+[next-candidate review](next-candidate-holder-coverage.md) later exposed an empty
+burn-address exception in `0x98d1341b8ba3dd907d14cf2915014bc3221e80c6`, outside
+these sampled observations. Current fixtures include that correction; the
+original artifact/layout digests refer to commit `a6e006b`. Passing this bounded
+sample did not prove every holder branch. The new replay rechecks all 50 original
+tokens together with 26 additions.
+
 The [50-token fixture](../tests/fixtures/bsc-top50-layouts.json) covers every
 contract selected from the original 1,024-block RPC stream. The eight additions
 are qualified through historical bytecode review, canonical getter traces and

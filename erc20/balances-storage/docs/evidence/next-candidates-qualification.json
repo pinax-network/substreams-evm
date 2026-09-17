@@ -1,0 +1,4061 @@
+[
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xae1a3e91f6af1584f90fa0f0f07ade75f3d33471",
+    "inspection": {
+      "address": "0xae1a3e91f6af1584f90fa0f0f07ade75f3d33471",
+      "balance_of": "4917894775500000000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288007,
+      "contract": "0xae1a3e91f6af1584f90fa0f0f07ade75f3d33471",
+      "elapsed_seconds": 0.3117185,
+      "hash": "0xf2c938a57bcc37a4adbb20c7f77476f1d05e03c84d54482e193744ec49277bce",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x2f91796626912ac1bac944af74f479d5ceefee8be8adeffb52c832dff3000235",
+      "status": "inspected",
+      "storage_key": "0xa5f1cd4c266597759cc8d1d85dc784e9fc68e3ebedd24b46d612879c154f7049",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa5f1cd4c266597759cc8d1d85dc784e9fc68e3ebedd24b46d612879c154f7049",
+          "pc": 2515,
+          "value": "0x000000000000000000000000000000000000003e1293367e9c50a0942bb00000"
+        }
+      ],
+      "storage_word": "4917894775500000000000000000000",
+      "tool_language": "Rust",
+      "trace_sha256": "b9c464bf9d29b29e94586b9ab1bbb885ce907460c9d0c116bb19854df1a5a23b"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x2f91796626912ac1bac944af74f479d5ceefee8be8adeffb52c832dff3000235",
+      "contract": "0xae1a3e91f6af1584f90fa0f0f07ade75f3d33471",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "WxbToken",
+    "rank": 51,
+    "source_hashes": {
+      "https://cdn.jsdelivr.net/gh/OpenZeppelin/openzeppelin-contracts@v4.9.3/contracts/utils/Strings.sol": "0x3088eb2868e8d13d89d16670b5f8612c4ab9ff8956272837d8e90106c59c14a0",
+      "https://cdn.jsdelivr.net/gh/OpenZeppelin/openzeppelin-contracts@v4.9.3/contracts/utils/cryptography/ECDSA.sol": "0x809bc3edb4bcbef8263fa616c1b60ee0004b50a8a1bfa164d8f57fd31f520c58",
+      "https://cdn.jsdelivr.net/gh/OpenZeppelin/openzeppelin-contracts@v4.9.3/contracts/utils/math/Math.sol": "0xe4455ac1eb7fc497bb7402579e7b4d64d928b846fce7d2b6fde06d366f21c2b3",
+      "https://cdn.jsdelivr.net/gh/OpenZeppelin/openzeppelin-contracts@v4.9.3/contracts/utils/math/SignedMath.sol": "0xf92515413956f529d95977adc9b0567d583c6203fc31ab1c23824c35187e3ddc",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/access/Ownable.sol": "0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/security/Pausable.sol": "0x0849d93b16c9940beb286a7864ed02724b248b93e0d80ef6355af5ef15c64773",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/security/ReentrancyGuard.sol": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/ERC20.sol": "0xa56ca923f70c1748830700250b19c61b70db9a683516dc5e216694a50445d99c",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca",
+      "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.3/contracts/utils/Context.sol": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+      "zjwxbToken.sol": "0xdd91af5029fd8c84039f37b54fdc9a57d5a4505a1397234f80d1c83f3ba4b5ba"
+    },
+    "source_sha256": "ceebd54f138afdaffa96f94bc7c7b1af411cb69fa2bc220451aa5a9fe6a86100",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xae1a3e91f6af1584f90fa0f0f07ade75f3d33471?fields=all",
+    "storage": [
+      {
+        "astId": 1867,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 1873,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 1875,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1877,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1879,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1573,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 1696,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_paused",
+        "offset": 20,
+        "slot": "5",
+        "type": "t_bool"
+      },
+      {
+        "astId": 1797,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "_status",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2586,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "claimSigner",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_address"
+      },
+      {
+        "astId": 2590,
+        "contract": "zjwxbToken.sol:WxbToken",
+        "label": "userClaimNonce",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_uint256)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+    "inspection": {
+      "address": "0x13032e8a19bea2e13eea7994f3f28fa0533478a1",
+      "balance_of": "103456885915522780602",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288032,
+      "contract": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+      "elapsed_seconds": 0.347529708,
+      "hash": "0xdf0219f244ea83dd8f21770ff883d53b68dc24fffe70560cb4fa2f05390b286a",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x0b8bce6a1b2036a106f60b72aa0624e9d2e1f4068f586d5cb8db1fe5da632b84",
+      "status": "inspected",
+      "storage_key": "0x8018c5ff4b1fb946fd05df7a3aecfbf9abd1da1929f52febe5db50c67b68d2b0",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x8018c5ff4b1fb946fd05df7a3aecfbf9abd1da1929f52febe5db50c67b68d2b0",
+          "pc": 1362,
+          "value": "0x0000000000000000000000000000000000000000000000059bc0b19a22d94dba"
+        }
+      ],
+      "storage_word": "103456885915522780602",
+      "tool_language": "Rust",
+      "trace_sha256": "6cb6f84b380a5ba34adf4ce7ad37d18b833ce7c0d8c392d72d00bd55ddcf7fea"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0x0b8bce6a1b2036a106f60b72aa0624e9d2e1f4068f586d5cb8db1fe5da632b84",
+      "contract": "0x000008d2175f9aeaddb2430c26f8a6f73c5a0000",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "UnitasOFT",
+    "rank": 53,
+    "source_hashes": {
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol": "0xf7f941bee89ea6369950fe54e8ac476ae6478b958b20fc0e8a83e8ff1364eac3",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol": "0x9641abba8d53b08bb517d1b74801dd15ea7b84d77a6719085bd96c8ea94e3ca0",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol": "0x5cf5f24751b4e3ea1c9c5ded07cedfdfd62566b6daaffcc0144733859c9dba0c",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLibManager.sol": "0x919b37133adff4dc528e3061deb2789c3149971b530c61e556fb3d09ab315dfc",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingChannel.sol": "0x0878f64dffebf58c4165569416372f40860fab546b88cd926eba0d5cb6d8d972",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingComposer.sol": "0x85bc7090134529ec474866dc4bb1c48692d518c756eb0a961c82574829c51901",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingContext.sol": "0xff0c546c2813dae3e440882f46b377375f7461b0714efd80bd3f0c6e5cb8da4e",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ISendLib.sol": "0xf1c07bc61e7b1dce195ed12d50f87980fbf2d63cac1326fd28287f55fe0ba625",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/AddressCast.sol": "0x2ebbcaaab3554edcd41b581f1a72ac1806afbfb8047d0d47ff098f9af30d6deb",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol": "0xc84cf1bf785977fe1fbe7566eef902c2db68d0e163813ebe6c34921754802680",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol": "0xac362c4c291fad2f1511a968424b2e78a5ad502d1c867bd31da04be742aca8c5",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppCore.sol": "0x13a9c2d1d2c1f086b8624f2e84c4a4702212daae36f701d92bb915b535cbe4cc",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppReceiver.sol": "0x0174e9f1ec4cefe4b5adc26c392269c699b9ff75965364e5b7264426a462c70b",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppSender.sol": "0x518cf4adca601923ed4baa6619846a253ea32b8d8775f8bc1faa3dfac7f67c20",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppCore.sol": "0x40e49f2de74506e1da5dcaed53a39853f691647f4ceb0fccc8f49a68d3f47c58",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppMsgInspector.sol": "0x339654e699043c400cad92de209aa23855ce10211c31cf4114042cc5224d3b7c",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppOptionsType3.sol": "0x9fc08a51e9d7c9c710c4eb26f84fe77228305ad7da63fa486ff24ebf2f3bc461",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppReceiver.sol": "0xd26135185e19b3732746d4a9e2923e896f28dec8664bab161faea2ee26fcdc3d",
+      "@layerzerolabs/oapp-evm/contracts/oapp/libs/OAppOptionsType3.sol": "0x5275636cd47e660a2fdf6c7fe9d41ff3cc866b785cc8a9d88c1b8ca983509f01",
+      "@layerzerolabs/oapp-evm/contracts/precrime/OAppPreCrimeSimulator.sol": "0x205a0abfd8b3c9af2740769f251381b84999b8e9347f3cd50de3ef8290a17750",
+      "@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IOAppPreCrimeSimulator.sol": "0x5d24db150949ea8e6437178e65a942e8c8b7f332e5daf32750f56b23b35b5bb2",
+      "@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IPreCrime.sol": "0xc8d869f27ef8ceb2e13fdf6a70682fd4dee3f90c4924eb8e125bc1e66cb6af84",
+      "@layerzerolabs/oapp-evm/contracts/precrime/libs/Packet.sol": "0xcb2fb1c5b2eb3731de78b479b9c2ab3bba326fe0b0b3a008590f18e881e457a6",
+      "@layerzerolabs/oft-evm/contracts/OFT.sol": "0xdc3582e4a20e02a79050c17058a1f1f42a4335d1a70be06c0a52a3fb05d4c89a",
+      "@layerzerolabs/oft-evm/contracts/OFTCore.sol": "0xdda89798c66928bba9e0fa44b3edf4710ff15cf46edadcf3e15c92d78fcc9ca8",
+      "@layerzerolabs/oft-evm/contracts/interfaces/IOFT.sol": "0xc60c7b4374b3d89f33b8de982f463c92374a8548800c816fe776f0ec76351fb0",
+      "@layerzerolabs/oft-evm/contracts/libs/OFTComposeMsgCodec.sol": "0xaae73d6eb8b9561c43f1802f3c416c00ccd35f172b711f9781ccdf1b25a40db5",
+      "@layerzerolabs/oft-evm/contracts/libs/OFTMsgCodec.sol": "0x5358948017669c03e157f871d8c38e988f9004dbd0801ad3119d2487f0d40b0b",
+      "@openzeppelin/contracts/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "@openzeppelin/contracts/interfaces/IERC1363.sol": "0xd5ea07362ab630a6a3dee4285a74cf2377044ca2e4be472755ad64d7c5d4b69d",
+      "@openzeppelin/contracts/interfaces/IERC165.sol": "0x0afcb7e740d1537b252cb2676f600465ce6938398569f09ba1b9ca240dde2dfc",
+      "@openzeppelin/contracts/interfaces/IERC20.sol": "0x1a6221315ce0307746c2c4827c125d821ee796c74a676787762f4778671d4f44",
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": "0x982c5cb790ab941d1e04f807120a71709d4c313ba0bfc16006447ffbd27fbbd5",
+      "@openzeppelin/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "@openzeppelin/contracts/utils/introspection/IERC165.sol": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+      "contracts/UnitasOFT.sol": "0x63fbed12e26841cfe0d8e938dc5833f20fc217ec39f2c95e1340698e8532aee0"
+    },
+    "source_sha256": "4b1cc4dd13d2100848946020833259be05b61e67129c7e7fcc41b41bcfbe7e4c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x000008d2175f9aeaddb2430c26f8a6f73c5a0000?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "contracts/UnitasOFT.sol:UnitasOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x3e5d4f8aee0d9b3082d5f6da5d6e225d17ba9ea0",
+    "inspection": {
+      "address": "0x29109ec59da798a56509995d75f7b8183a4bb286",
+      "balance_of": "3645671707333714667872",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288007,
+      "contract": "0x3e5d4f8aee0d9b3082d5f6da5d6e225d17ba9ea0",
+      "elapsed_seconds": 0.397644,
+      "hash": "0xf2c938a57bcc37a4adbb20c7f77476f1d05e03c84d54482e193744ec49277bce",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xab422e4f9318b3f46322c7ae32f9c2d6714f97a4e94902033d0da73feea9d9c3",
+      "status": "inspected",
+      "storage_key": "0xca5a5b1376b60cda5ed8e5128b9755c45c90a581d7b4ece92bab24e85d6744e6",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xca5a5b1376b60cda5ed8e5128b9755c45c90a581d7b4ece92bab24e85d6744e6",
+          "pc": 369,
+          "value": "0x0000000000000000000000000000000000000000000000c5a1dbbe3935ea6960"
+        }
+      ],
+      "storage_word": "3645671707333714667872",
+      "tool_language": "Rust",
+      "trace_sha256": "ef310dcf16048af816e9ba46e6d18ac6a3d636d9c5a8edef5934d5643d5e9c36"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xab422e4f9318b3f46322c7ae32f9c2d6714f97a4e94902033d0da73feea9d9c3",
+      "contract": "0x3e5d4f8aee0d9b3082d5f6da5d6e225d17ba9ea0",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "UaiToken",
+    "rank": 58,
+    "source_hashes": {
+      "npm/@openzeppelin/contracts@5.4.0/interfaces/IERC5267.sol": "0xfb223a85dd0b2175cfbbaa325a744e2cd74ecd17c3df2b77b0722f991d2725ee",
+      "npm/@openzeppelin/contracts@5.4.0/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "npm/@openzeppelin/contracts@5.4.0/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "npm/@openzeppelin/contracts@5.4.0/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "npm/@openzeppelin/contracts@5.4.0/token/ERC20/extensions/ERC20Permit.sol": "0xecd08ad8132d88a5fcfd50f76a18583004fcdab4c33fb86343903ae420ca5a2b",
+      "npm/@openzeppelin/contracts@5.4.0/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "npm/@openzeppelin/contracts@5.4.0/token/ERC20/extensions/IERC20Permit.sol": "0x2fa0657dd7b8bc75475a47f64bc04a9adb42236b15d65e6781594ea69a46c3e4",
+      "npm/@openzeppelin/contracts@5.4.0/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "npm/@openzeppelin/contracts@5.4.0/utils/Nonces.sol": "0x0082767004fca261c332e9ad100868327a863a88ef724e844857128845ab350f",
+      "npm/@openzeppelin/contracts@5.4.0/utils/Panic.sol": "0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a",
+      "npm/@openzeppelin/contracts@5.4.0/utils/ShortStrings.sol": "0x1fcf8cceb1a67e6c8512267e780933c4a3f63ef44756e6c818fda79be51c8402",
+      "npm/@openzeppelin/contracts@5.4.0/utils/StorageSlot.sol": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+      "npm/@openzeppelin/contracts@5.4.0/utils/Strings.sol": "0xad148d59f05165f9217d0a9e1ac8f772abb02ea6aaad8a756315c532bf79f9f4",
+      "npm/@openzeppelin/contracts@5.4.0/utils/cryptography/ECDSA.sol": "0x69f54c02b7d81d505910ec198c11ed4c6a728418a868b906b4a0cf29946fda84",
+      "npm/@openzeppelin/contracts@5.4.0/utils/cryptography/EIP712.sol": "0x17fc4574e07105b0180ef61f1b3cacd1820a3d37f29a4af1018d0a253c6399b5",
+      "npm/@openzeppelin/contracts@5.4.0/utils/cryptography/MessageHashUtils.sol": "0x26670fef37d4adf55570ba78815eec5f31cb017e708f61886add4fc4da665631",
+      "npm/@openzeppelin/contracts@5.4.0/utils/math/Math.sol": "0x1225214420c83ebcca88f2ae2b50f053aaa7df7bd684c3e878d334627f2edfc6",
+      "npm/@openzeppelin/contracts@5.4.0/utils/math/SafeCast.sol": "0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54",
+      "npm/@openzeppelin/contracts@5.4.0/utils/math/SignedMath.sol": "0xb1970fac7b64e6c09611e6691791e848d5e3fe410fa5899e7df2e0afd77a99e3",
+      "project/contracts/UaiToken.sol": "0xa162f60e57607054f3be6f33538b1ce44878a458cae33dd8a42f0096e9d37ac1"
+    },
+    "source_sha256": "4b10d37e1c24a56f0c9453c12cf5ce853aceff5768dcbb04447af8babc24e5f6",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3e5d4f8aee0d9b3082d5f6da5d6e225d17ba9ea0?fields=all",
+    "storage": [
+      {
+        "astId": 184,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 190,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 192,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 194,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 196,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 3248,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 3250,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1014,
+        "contract": "project/contracts/UaiToken.sol:UaiToken",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_uint256)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+    "inspection": {
+      "address": "0x286da9568057420df90c5489e51cbb82b29f0301",
+      "balance_of": "8196655591864474477119",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288011,
+      "contract": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+      "elapsed_seconds": 0.4189935,
+      "hash": "0x8c81b179f0e181153150330c3752aed47924b19f7ebdff8129354ce2ea4648b8",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x8642eccb47fd4fe0abdc4c540f3f1a66177ab7a3c47a23109d2ec52001528bab",
+      "status": "inspected",
+      "storage_key": "0xe9f287bb627fef7ff4d343de9625f87ca75795e08844b9835c6dce2566bc062f",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xe9f287bb627fef7ff4d343de9625f87ca75795e08844b9835c6dce2566bc062f",
+          "pc": 922,
+          "value": "0x0000000000000000000000000000000000000000000001bc5772710ee533223f"
+        }
+      ],
+      "storage_word": "8196655591864474477119",
+      "tool_language": "Rust",
+      "trace_sha256": "16fe32ad95bb2d68a0df24e59a89b955d37bed106a6c4c38230b0f71707d0d92"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x8642eccb47fd4fe0abdc4c540f3f1a66177ab7a3c47a23109d2ec52001528bab",
+      "contract": "0x7ec43cf65f1663f820427c62a5780b8f2e25593a",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004"
+      ]
+    },
+    "name": "LabToken",
+    "rank": 60,
+    "source_hashes": {
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol": "0x2659248df25e34000ed214b3dc8da2160bc39874c992b477d9e2b1b3283dc073",
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "@openzeppelin/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "contracts/LabToken.sol": "0xaec6cb8799a8289115735057ffee7597b3796fc63e6713e23bfd1671dd98ddbd"
+    },
+    "source_sha256": "f43d966d7e89b81a9b82cb7efa6c350a008d03a004fbf853f8fec5d9cafc472e",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x7ec43cf65f1663f820427c62a5780b8f2e25593a?fields=all",
+    "storage": [
+      {
+        "astId": 159,
+        "contract": "contracts/LabToken.sol:LabToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 165,
+        "contract": "contracts/LabToken.sol:LabToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 167,
+        "contract": "contracts/LabToken.sol:LabToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 169,
+        "contract": "contracts/LabToken.sol:LabToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 171,
+        "contract": "contracts/LabToken.sol:LabToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x2ecaf6fb6a2c1d34602261109f48b38091bf3e59",
+    "inspection": {
+      "address": "0xb52733d7b3ad1b2fffa465de5d21d66750cd709b",
+      "balance_of": "373803229864505534884630656",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288008,
+      "contract": "0x2ecaf6fb6a2c1d34602261109f48b38091bf3e59",
+      "elapsed_seconds": 0.490055459,
+      "hash": "0x55e1f0bed43bd7fab9bb6d29ec6490cd48dcbbb214c1eb747e3333ca22e0dd93",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x6e0710295f729d059748c68bafb5e1be53b567964ff8dfc48413e03acc3dbb7b",
+      "status": "inspected",
+      "storage_key": "0x22ab6b7ad09b886c7c005f4666c3a4151cf76f38c12744389eed500494597496",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x22ab6b7ad09b886c7c005f4666c3a4151cf76f38c12744389eed500494597496",
+          "pc": 1273,
+          "value": "0x0000000000000000000000000000000000000000013533e9b1ef6fcdc27c5080"
+        }
+      ],
+      "storage_word": "373803229864505534884630656",
+      "tool_language": "Rust",
+      "trace_sha256": "7ed4ef76e1c4881bb52dec7aa7da205015fa3b251f97b9b094c89861f748fa54"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0x6e0710295f729d059748c68bafb5e1be53b567964ff8dfc48413e03acc3dbb7b",
+      "contract": "0x2ecaf6fb6a2c1d34602261109f48b38091bf3e59",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000012",
+        "0x0000000000000000000000000000000000000000000000000000000000000013",
+        "0x0000000000000000000000000000000000000000000000000000000000000014"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d",
+        "0x000000000000000000000000000000000000000000000000000000000000000e",
+        "0x000000000000000000000000000000000000000000000000000000000000000f",
+        "0x0000000000000000000000000000000000000000000000000000000000000010",
+        "0x0000000000000000000000000000000000000000000000000000000000000011"
+      ]
+    },
+    "name": "FSDToken",
+    "rank": 66,
+    "source_hashes": {
+      "FSDToken.sol": "0xaf3e22bbbb9f7788f083d6d3d92488c865523f5a5400ba32412b67a4f64b46f1"
+    },
+    "source_sha256": "4599d058e2619d7b741dc0e987681dad0a7208d8d3ea34607d92a2d15d2f7401",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x2ecaf6fb6a2c1d34602261109f48b38091bf3e59?fields=all",
+    "storage": [
+      {
+        "astId": 244,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 418,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 424,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 426,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 428,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 430,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 973,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "sellFee",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 976,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "sellEnabled",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      },
+      {
+        "astId": 979,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "buyEnabled",
+        "offset": 1,
+        "slot": "7",
+        "type": "t_bool"
+      },
+      {
+        "astId": 982,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "txOpen",
+        "offset": 2,
+        "slot": "7",
+        "type": "t_bool"
+      },
+      {
+        "astId": 985,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "swapEnabled",
+        "offset": 3,
+        "slot": "7",
+        "type": "t_bool"
+      },
+      {
+        "astId": 987,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "swapping",
+        "offset": 4,
+        "slot": "7",
+        "type": "t_bool"
+      },
+      {
+        "astId": 994,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "swapTokensAtAmount",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 997,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "swapBlocks",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1000,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "whaAuth",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 1003,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "eAuth",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_address"
+      },
+      {
+        "astId": 1006,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "emergency",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_address"
+      },
+      {
+        "astId": 1009,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "lpmined",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_address"
+      },
+      {
+        "astId": 1012,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "bnbTo",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_address"
+      },
+      {
+        "astId": 1014,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "uniswapV2Pair",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_address"
+      },
+      {
+        "astId": 1017,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "tokenB",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_address"
+      },
+      {
+        "astId": 1020,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "uniswapV2Router",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_contract(IUniswapV2Router02)959"
+      },
+      {
+        "astId": 1024,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_whitelist",
+        "offset": 0,
+        "slot": "18",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 1028,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "_marketPair",
+        "offset": 0,
+        "slot": "19",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 1032,
+        "contract": "FSDToken.sol:FSDToken",
+        "label": "lastTransactionBlock",
+        "offset": 0,
+        "slot": "20",
+        "type": "t_mapping(t_address,t_uint256)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x544028231562a43b106fbceca722b65cb5c861b0",
+    "inspection": {
+      "address": "0x6865704ff097b1105ed42b8517020e14fe9a2abd",
+      "balance_of": "3036216839432482",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288030,
+      "contract": "0x544028231562a43b106fbceca722b65cb5c861b0",
+      "elapsed_seconds": 0.497815833,
+      "hash": "0x44e274c0f3e1da376dc2079bf9d18c34944017b8551dd03f99437fdd5fb591be",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x472f1a3e9b5b4c5108afe14c75f897d92e70c3cba332b94877e8428e0f68cde7",
+      "status": "inspected",
+      "storage_key": "0x0bb89e29f967f507c636d9f65234953018a76d68ced39d014aa93892b6b0b2fe",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x0bb89e29f967f507c636d9f65234953018a76d68ced39d014aa93892b6b0b2fe",
+          "pc": 1780,
+          "value": "0x000000000000000000000000000000000000000000000000000ac96c522ce922"
+        }
+      ],
+      "storage_word": "3036216839432482",
+      "tool_language": "Rust",
+      "trace_sha256": "aa143245151b03aee5c466a0ab55901966c8d60c1843ad5ae9e5ae8c9698703e"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x472f1a3e9b5b4c5108afe14c75f897d92e70c3cba332b94877e8428e0f68cde7",
+      "contract": "0x544028231562a43b106fbceca722b65cb5c861b0",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "OLY",
+    "rank": 68,
+    "source_hashes": {
+      "lib/openzeppelin-contracts/contracts/access/AccessControl.sol": "0xb64ecf1154f183412bcde47168f3af245e4120846346a0b3872c631e361156d2",
+      "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": "0x5643a5cadd1278581308b20becb48a50946c159fc31c29fc407ea9a61fc865d1",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "0xfe37358f223eddd65d61bb62b0b7bdb69d7101b5ec8d484292b8c1583a153b8a",
+      "lib/openzeppelin-contracts/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": "0x41ddfafe0d00dc22e35119d41cb0ca93673960689d35710fd12875139e64bd9f",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "0x4ee0e04cc52827588793a141d5efb9830f179a17e80867cc332b3a30ceb30fd9",
+      "src/OHM.sol": "0x2b9580cf08bc709c902269211197068bb4f526c59764959d4f443af58b2d2a9c",
+      "src/libraries/SafeMath.sol": "0x17556173c81bf654ad14e10436334d331ba1f7bcbd653d3046f3cd99c131efee"
+    },
+    "source_sha256": "bc135f8e71a6096626f2d396fb888244bb953738b5d5e35061eafff1c45fee8f",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x544028231562a43b106fbceca722b65cb5c861b0?fields=all",
+    "storage": [
+      {
+        "astId": 540,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 546,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 548,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 550,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 552,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 554,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 27,
+        "contract": "src/OHM.sol:OLY",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)22_storage)"
+      },
+      {
+        "astId": 1131,
+        "contract": "src/OHM.sol:OLY",
+        "label": "mainPair",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_address"
+      },
+      {
+        "astId": 1133,
+        "contract": "src/OHM.sol:OLY",
+        "label": "feeReceiver",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_address"
+      },
+      {
+        "astId": 1143,
+        "contract": "src/OHM.sol:OLY",
+        "label": "feeRatio",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1145,
+        "contract": "src/OHM.sol:OLY",
+        "label": "buyFeeRatio",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_uint256"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+    "inspection": {
+      "address": "0xe6b82c6eccdfb2d6bc55bb11a61bae5ab2c3f807",
+      "balance_of": "1776253055884176256570",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288012,
+      "contract": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "elapsed_seconds": 0.469431958,
+      "hash": "0x5d8543b597573b3a7cbd8487d8ea46631ea7a1d5ed6d1f8d41f41b76069a534a",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xb80461d690791be6d0c6f369faa8fb4b11750615726f504bc223b8bc73d46256",
+      "status": "inspected",
+      "storage_key": "0x3b69f27b7de9b0c5a9d2e80080ee0e1a362bb36c7533fdc0e47320f0a5878a71",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x3b69f27b7de9b0c5a9d2e80080ee0e1a362bb36c7533fdc0e47320f0a5878a71",
+          "pc": 1481,
+          "value": "0x0000000000000000000000000000000000000000000000604a768755aa65ee3a"
+        }
+      ],
+      "storage_word": "1776253055884176256570",
+      "tool_language": "Rust",
+      "trace_sha256": "543d9802c251106db731f03d5bacbe95a94a10dde194dcbf353e1d0353983176"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0xb80461d690791be6d0c6f369faa8fb4b11750615726f504bc223b8bc73d46256",
+      "contract": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "BEP20XRP",
+    "rank": 73,
+    "source_hashes": {
+      "BEP20XRP.sol": "0xf532c16fb8e623901111bd8e1fd83f81f6f429f6ab54100cba6894bd05b121cb"
+    },
+    "source_sha256": "2c31c60a2fbfcf871b1d59b16d80b2613a49cca9b21b89a98a283a30c16714b9",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe?fields=all",
+    "storage": [
+      {
+        "astId": 302,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 417,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 423,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 425,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 427,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 429,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 431,
+        "contract": "BEP20XRP.sol:BEP20XRP",
+        "label": "_name",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x255e746abb8d9acac00d6d023e5e63e3b8dfa7cd",
+    "inspection": {
+      "address": "0xac739056e611d639abeb0b9a87da38bd297ba00e",
+      "balance_of": "38619808448303534139325",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288026,
+      "contract": "0x255e746abb8d9acac00d6d023e5e63e3b8dfa7cd",
+      "elapsed_seconds": 0.512498084,
+      "hash": "0x07021cbb376354ccf6471741c25e9abcc6693169f260bbf8aa6075ec434357b3",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1a5493662f75deca3148455d711a9364d80668b6451aec1b128d21ace43770c9",
+      "status": "inspected",
+      "storage_key": "0x315b421d94e3322b5736c364c62e26c128d0ff8e1c3e0d5db96e77623cede8e9",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x315b421d94e3322b5736c364c62e26c128d0ff8e1c3e0d5db96e77623cede8e9",
+          "pc": 1139,
+          "value": "0x00000000000000000000000000000000000000000000082d9581bf37a9f767bd"
+        }
+      ],
+      "storage_word": "38619808448303534139325",
+      "tool_language": "Rust",
+      "trace_sha256": "bd47be2d92e6dcb23be9fb11c18649ff5828e78482c9bb7993b9a93fe740903d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x1a5493662f75deca3148455d711a9364d80668b6451aec1b128d21ace43770c9",
+      "contract": "0x255e746abb8d9acac00d6d023e5e63e3b8dfa7cd",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000011",
+        "0x0000000000000000000000000000000000000000000000000000000000000012",
+        "0x0000000000000000000000000000000000000000000000000000000000000013"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d",
+        "0x000000000000000000000000000000000000000000000000000000000000000e",
+        "0x000000000000000000000000000000000000000000000000000000000000000f",
+        "0x0000000000000000000000000000000000000000000000000000000000000010"
+      ]
+    },
+    "name": "Token",
+    "rank": 81,
+    "source_hashes": {
+      "npm/@openzeppelin/contracts@5.6.1/access/AccessControl.sol": "0x4686ec784d75f95beaf2bf5b5f26e5f946d4c864aaee9c3c62bdc18381f5e017",
+      "npm/@openzeppelin/contracts@5.6.1/access/IAccessControl.sol": "0xbff9f59c84e5337689161ce7641c0ef8e872d6a7536fbc1f5133f128887aba3c",
+      "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "npm/@openzeppelin/contracts@5.6.1/access/Ownable2Step.sol": "0xdcad8898fda432696597752e8ec361b87d85c82cb258115427af006dacf7128c",
+      "npm/@openzeppelin/contracts@5.6.1/interfaces/IERC5267.sol": "0xfb223a85dd0b2175cfbbaa325a744e2cd74ecd17c3df2b77b0722f991d2725ee",
+      "npm/@openzeppelin/contracts@5.6.1/interfaces/draft-IERC6093.sol": "0x1b88b3fb3d85ba5496d7d5f396f83ee1fddcdd6762059ff65992655b67920998",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/ERC20.sol": "0x669464167428061ee0f8618b73b3ee90aff8405683e7ddde8cd77dadaa1afe29",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/extensions/ERC20Burnable.sol": "0x2659248df25e34000ed214b3dc8da2160bc39874c992b477d9e2b1b3283dc073",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/extensions/ERC20Permit.sol": "0x73d9dc25e0edb50767d29665bea0092e29b68776feb39c3f48781e4bab7cdda5",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "npm/@openzeppelin/contracts@5.6.1/token/ERC20/extensions/IERC20Permit.sol": "0x53befc41288eaa87edcd3a7be7e8475a32e44c6a29f9bf52fae789781301d9ff",
+      "npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol": "0xf80e4b96b6849936ea0fabd76cf81b13d7276295fddb1e1c07afb3ddf650b0ac",
+      "npm/@openzeppelin/contracts@5.6.1/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "npm/@openzeppelin/contracts@5.6.1/utils/Nonces.sol": "0x0082767004fca261c332e9ad100868327a863a88ef724e844857128845ab350f",
+      "npm/@openzeppelin/contracts@5.6.1/utils/Panic.sol": "0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a",
+      "npm/@openzeppelin/contracts@5.6.1/utils/ShortStrings.sol": "0x0768b3bdb701fe4994b3be932ca8635551dfebe04c645f77500322741bebf57c",
+      "npm/@openzeppelin/contracts@5.6.1/utils/StorageSlot.sol": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+      "npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol": "0x1fdc2de9585ab0f1c417f02a873a2b6343cd64bb7ffec6b00ffa11a4a158d9e8",
+      "npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol": "0xbeb5cad8aaabe0d35d2ec1a8414d91e81e5a8ca679add4cf57e2f33476861f40",
+      "npm/@openzeppelin/contracts@5.6.1/utils/cryptography/EIP712.sol": "0x8440117ea216b97a7bad690a67449fd372c840d073c8375822667e14702782b4",
+      "npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol": "0x6d8579873b9650426bfbd2a754092d1725049ca05e4e3c8c2c82dd9f3453129d",
+      "npm/@openzeppelin/contracts@5.6.1/utils/introspection/ERC165.sol": "0x2d9dc2fe26180f74c11c13663647d38e259e45f95eb88f57b61d2160b0109d3e",
+      "npm/@openzeppelin/contracts@5.6.1/utils/introspection/IERC165.sol": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+      "npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol": "0x59973a93b1f983f94e10529f46ca46544a9fec2b5f56fb1390bbe9e0dc79f857",
+      "npm/@openzeppelin/contracts@5.6.1/utils/math/SafeCast.sol": "0xc8cae21c9ae4a46e5162ff9bf5b351d6fa6a6eba72d515f3bc1bdfeda7fdf083",
+      "npm/@openzeppelin/contracts@5.6.1/utils/math/SignedMath.sol": "0xb1970fac7b64e6c09611e6691791e848d5e3fe410fa5899e7df2e0afd77a99e3",
+      "project/contracts/Token.sol": "0x7142cdd0d10af9d210591af684e70f30b05fa0c203dae9f8970f1cdeb32d3f4e"
+    },
+    "source_sha256": "29f8b4e61d5581ce398255eb390492f5f6565859c1c67cdcfa1a6de93be3d868",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x255e746abb8d9acac00d6d023e5e63e3b8dfa7cd?fields=all",
+    "storage": [
+      {
+        "astId": 797,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 803,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 805,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 807,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 809,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4927,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4929,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2474,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 26,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)21_storage)"
+      },
+      {
+        "astId": 387,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      },
+      {
+        "astId": 535,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "_pendingOwner",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 8975,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "minter",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_address"
+      },
+      {
+        "astId": 8977,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "rbs",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_address"
+      },
+      {
+        "astId": 8979,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "treasury",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_address"
+      },
+      {
+        "astId": 8981,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "taxTreasury",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_address"
+      },
+      {
+        "astId": 8983,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "longGovernanceRatio",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 8985,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "shortGovernanceRatio",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 8989,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "longGovernanceList",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 8993,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "shortGovernanceList",
+        "offset": 0,
+        "slot": "18",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 8997,
+        "contract": "project/contracts/Token.sol:Token",
+        "label": "whitelist",
+        "offset": 0,
+        "slot": "19",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xe766023f5a0fa6ce91b9f98d327771437dfca077",
+    "inspection": {
+      "address": "0xa413957f3168b78e93f6d0aa2ef9974d72d1d176",
+      "balance_of": "21058120144",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288084,
+      "contract": "0xe766023f5a0fa6ce91b9f98d327771437dfca077",
+      "elapsed_seconds": 0.522092917,
+      "hash": "0x50420e3fb1e6523e8b8511b836797f301684dd20d76958a73705978fdfbc8251",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xc34ab588330e0b219e854280770ae2b5c89a0548dee273913adfd28e88dfad64",
+      "status": "inspected",
+      "storage_key": "0x8481aab72d1af7f30b0237472010e0d5ad5c3703832bf43b2da37ee71183e353",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x8481aab72d1af7f30b0237472010e0d5ad5c3703832bf43b2da37ee71183e353",
+          "pc": 4039,
+          "value": "0x00000000000000000000000000000000000000000000000000000004e72969d0"
+        }
+      ],
+      "storage_word": "21058120144",
+      "tool_language": "Rust",
+      "trace_sha256": "38837c760019185bd58298c0f18a887245cc074d96fc20bf7786ac3908ea066d"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xc34ab588330e0b219e854280770ae2b5c89a0548dee273913adfd28e88dfad64",
+      "contract": "0xe766023f5a0fa6ce91b9f98d327771437dfca077",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d",
+        "0x000000000000000000000000000000000000000000000000000000000000000e",
+        "0x000000000000000000000000000000000000000000000000000000000000000f",
+        "0x0000000000000000000000000000000000000000000000000000000000000010",
+        "0x0000000000000000000000000000000000000000000000000000000000000011",
+        "0x0000000000000000000000000000000000000000000000000000000000000012",
+        "0x0000000000000000000000000000000000000000000000000000000000000013",
+        "0x0000000000000000000000000000000000000000000000000000000000000014",
+        "0x0000000000000000000000000000000000000000000000000000000000000015",
+        "0x0000000000000000000000000000000000000000000000000000000000000016",
+        "0x0000000000000000000000000000000000000000000000000000000000000017",
+        "0x0000000000000000000000000000000000000000000000000000000000000018",
+        "0x0000000000000000000000000000000000000000000000000000000000000019",
+        "0x000000000000000000000000000000000000000000000000000000000000001a",
+        "0x000000000000000000000000000000000000000000000000000000000000001b",
+        "0x000000000000000000000000000000000000000000000000000000000000001c",
+        "0x000000000000000000000000000000000000000000000000000000000000001d",
+        "0x000000000000000000000000000000000000000000000000000000000000001e",
+        "0x000000000000000000000000000000000000000000000000000000000000001f",
+        "0x0000000000000000000000000000000000000000000000000000000000000020",
+        "0x0000000000000000000000000000000000000000000000000000000000000021"
+      ]
+    },
+    "name": "AegisXToken",
+    "rank": 82,
+    "source_hashes": {
+      "npm/@openzeppelin/contracts@5.2.0/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "npm/@openzeppelin/contracts@5.2.0/interfaces/draft-IERC6093.sol": "0x880da465c203cec76b10d72dbd87c80f387df4102274f23eea1f9c9b0918792b",
+      "npm/@openzeppelin/contracts@5.2.0/token/ERC20/ERC20.sol": "0x6ef9389a2c07bc40d8a7ba48914724ab2c108fac391ce12314f01321813e6368",
+      "npm/@openzeppelin/contracts@5.2.0/token/ERC20/IERC20.sol": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+      "npm/@openzeppelin/contracts@5.2.0/token/ERC20/extensions/IERC20Metadata.sol": "0x70f2f713b13b7ce4610bcd0ac9fec0f3cc43693b043abcb8dc40a42a726eb330",
+      "npm/@openzeppelin/contracts@5.2.0/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "npm/@openzeppelin/contracts@5.2.0/utils/Panic.sol": "0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a",
+      "npm/@openzeppelin/contracts@5.2.0/utils/math/Math.sol": "0xa00be322d7db5786750ce0ac7e2f5b633ac30a5ed5fa1ced1e74acfc19acecea",
+      "npm/@openzeppelin/contracts@5.2.0/utils/math/SafeCast.sol": "0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54",
+      "project/src/AGX.sol": "0x0a17d480d4c8dc17d3b7d8740a5cc7b46419125027a5ab6d9aa88e5b6752a2fd"
+    },
+    "source_sha256": "22464267075cb3c9879dc0082c5c96dc1a5948aabd003dcb445e15868bba1d42",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xe766023f5a0fa6ce91b9f98d327771437dfca077?fields=all",
+    "storage": [
+      {
+        "astId": 307,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 313,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 315,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 317,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 319,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 8,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 4395,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "governance",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 4397,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "treasury",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_address"
+      },
+      {
+        "astId": 4401,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "whitelist",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 4403,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "targetPool",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_address"
+      },
+      {
+        "astId": 4405,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "quoteToken",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 4407,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "quoteTokenDecimals",
+        "offset": 20,
+        "slot": "10",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 4409,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "targetRatio",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4411,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "transferStatus",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_bool"
+      },
+      {
+        "astId": 4413,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "sellRatio",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4415,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "feeReceiver",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_address"
+      },
+      {
+        "astId": 4417,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "rbs",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_address"
+      },
+      {
+        "astId": 4431,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "lastBalanceTime",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4436,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "snapshotPrice",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4438,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "crashFuseActive",
+        "offset": 0,
+        "slot": "18",
+        "type": "t_bool"
+      },
+      {
+        "astId": 4440,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "defenseEndTime",
+        "offset": 0,
+        "slot": "19",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4442,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "crashThresholdBP",
+        "offset": 0,
+        "slot": "20",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4444,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "pendingCrashThresholdBP",
+        "offset": 0,
+        "slot": "21",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4446,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "crashThresholdEffectiveBlock",
+        "offset": 0,
+        "slot": "22",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4448,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "crashThresholdUpdatePending",
+        "offset": 0,
+        "slot": "23",
+        "type": "t_bool"
+      },
+      {
+        "astId": 4450,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "extraSellBP",
+        "offset": 0,
+        "slot": "24",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4452,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "crashFuseDurationSeconds",
+        "offset": 0,
+        "slot": "25",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4457,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "lastHighPriceUpdate",
+        "offset": 0,
+        "slot": "26",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4462,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "consecutiveDropBlocks",
+        "offset": 0,
+        "slot": "27",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4464,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "lastCheckBlock",
+        "offset": 0,
+        "slot": "28",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4466,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "blockSellQuotaBlock",
+        "offset": 0,
+        "slot": "29",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4468,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "blockStartAgxReserve",
+        "offset": 0,
+        "slot": "30",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4470,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "blockSellThresholdBP",
+        "offset": 0,
+        "slot": "31",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4472,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "blockSellLimit",
+        "offset": 0,
+        "slot": "32",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4474,
+        "contract": "project/src/AGX.sol:AegisXToken",
+        "label": "grossSoldInBlock",
+        "offset": 0,
+        "slot": "33",
+        "type": "t_uint256"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x3db1b406a4d50a841948765685ed42ed1f174444",
+    "inspection": {
+      "address": "0x13a9dafa6c65c88f53ebd561e587dea3aa09c9f8",
+      "balance_of": "268429150386772086552220112",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288013,
+      "contract": "0x3db1b406a4d50a841948765685ed42ed1f174444",
+      "elapsed_seconds": 0.480445958,
+      "hash": "0xda2fc5c24b52a09047f0acef448513a14799fa1942c473753f94616a8f3afeaf",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "status": "inspected",
+      "storage_key": "0xf2e152b32ccc9bf8ed677cdfdc915aa2972a41c93fc5532ef38a7b554c8496d1",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xf2e152b32ccc9bf8ed677cdfdc915aa2972a41c93fc5532ef38a7b554c8496d1",
+          "pc": 516,
+          "value": "0x000000000000000000000000000000000000000000de0a15667fe1c88eb351d0"
+        }
+      ],
+      "storage_word": "268429150386772086552220112",
+      "tool_language": "Rust",
+      "trace_sha256": "c7835ab27dcac51e075fef9630e01d121e425e92cda8e8a692c024690f9bfe7a"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x1210dbadb4a9a84de0a99de0b17d70f917aa61bfc53711787d0ac0bf12d716ea",
+      "contract": "0x3db1b406a4d50a841948765685ed42ed1f174444",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "Token",
+    "rank": 83,
+    "source_hashes": {
+      "Context.sol": "0xa92e4fa126feb6907daa0513ddd816b2eb91f30a808de54f63c17d0e162c3439",
+      "FourERC20.sol": "0x8680b732596999a215b8741b9c8c2c2387b448cdfb321c7082b6787eff7d6c50",
+      "IERC20.sol": "0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305",
+      "IERC20Metadata.sol": "0xc9728de78b2dc3785bc6cc070e1ed8a2a855459b99f6bc1b8d17b4d2821fe36e",
+      "Ownable.sol": "0x7c03cdb0bdf0104db4f87451fc7dd8fb4f94f06dbf176dfc06fd616c1b5937e8",
+      "Token3.sol": "0x3746e7cac165f2dfd09e86527edcbc4cf4dda7d025e8f5239d8013af2063de50"
+    },
+    "source_sha256": "0173fe13d769bbbfd41a4122fe107bd8c9c67fbeabfb086b354f02959ad84834",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x3db1b406a4d50a841948765685ed42ed1f174444?fields=all",
+    "storage": [
+      {
+        "astId": 45,
+        "contract": "Token3.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 51,
+        "contract": "Token3.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 53,
+        "contract": "Token3.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 55,
+        "contract": "Token3.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 57,
+        "contract": "Token3.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 727,
+        "contract": "Token3.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 851,
+        "contract": "Token3.sol:Token",
+        "label": "_mode",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 853,
+        "contract": "Token3.sol:Token",
+        "label": "_initialized",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x6bf62ca91e397b5a7d1d6bce97d9092065d7a510",
+    "inspection": {
+      "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+      "balance_of": "4413892797267445390408",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288012,
+      "contract": "0x6bf62ca91e397b5a7d1d6bce97d9092065d7a510",
+      "elapsed_seconds": 0.438793,
+      "hash": "0x5d8543b597573b3a7cbd8487d8ea46631ea7a1d5ed6d1f8d41f41b76069a534a",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x94153b8b4d47e9794e833801f13d52ad780ed0d18ae41a7f741b5149fa671825",
+      "status": "inspected",
+      "storage_key": "0x68a747a5bd5a1901186493b5d706d3245c48381971800ac70de0ff94e5a16ac1",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x68a747a5bd5a1901186493b5d706d3245c48381971800ac70de0ff94e5a16ac1",
+          "pc": 467,
+          "value": "0x0000000000000000000000000000000000000000000000ef4711514ef5599c48"
+        }
+      ],
+      "storage_word": "4413892797267445390408",
+      "tool_language": "Rust",
+      "trace_sha256": "25d6bfb2b59f3993521a9100064f646797b2b20b383cd3bf051e4603a6d04d2a"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x94153b8b4d47e9794e833801f13d52ad780ed0d18ae41a7f741b5149fa671825",
+      "contract": "0x6bf62ca91e397b5a7d1d6bce97d9092065d7a510",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x0000000000000000000000000000000000000000000000000000000000000008"
+      ]
+    },
+    "name": "CrossToken",
+    "rank": 87,
+    "source_hashes": {
+      "@openzeppelin/contracts/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "@openzeppelin/contracts/interfaces/IERC5267.sol": "0x92aa1df62dc3d33f1656d63bede0923e0df0b706ad4137c8b10b0a8fe549fd92",
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "0x880da465c203cec76b10d72dbd87c80f387df4102274f23eea1f9c9b0918792b",
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol": "0xbf61ab2ae1d575a17ea58fbb99ca232baddcc4e0eeea180e84cbc74b0c348b31",
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+      "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol": "0x2659248df25e34000ed214b3dc8da2160bc39874c992b477d9e2b1b3283dc073",
+      "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol": "0xaa7f0646f49ebe2606eeca169f85c56451bbaeeeb06265fa076a03369a25d1d3",
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0x70f2f713b13b7ce4610bcd0ac9fec0f3cc43693b043abcb8dc40a42a726eb330",
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol": "0x27dbc90e5136ffe46c04f7596fc2dbcc3acebd8d504da3d93fdb8496e6de04f6",
+      "@openzeppelin/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "@openzeppelin/contracts/utils/Nonces.sol": "0x0082767004fca261c332e9ad100868327a863a88ef724e844857128845ab350f",
+      "@openzeppelin/contracts/utils/Panic.sol": "0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a",
+      "@openzeppelin/contracts/utils/ShortStrings.sol": "0x7d94fa0af099a2172eb01f9c8a8a443cbe7e0e43654841563e4e09968efdb549",
+      "@openzeppelin/contracts/utils/StorageSlot.sol": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+      "@openzeppelin/contracts/utils/Strings.sol": "0x725209b582291bb83058e3078624b53d15a133f7401c30295e7f3704181d2aed",
+      "@openzeppelin/contracts/utils/cryptography/ECDSA.sol": "0x69f54c02b7d81d505910ec198c11ed4c6a728418a868b906b4a0cf29946fda84",
+      "@openzeppelin/contracts/utils/cryptography/EIP712.sol": "0x10eb97d047f8d84fe263a02bb4a656ac6674f6679d74532cc37546289e073a9d",
+      "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol": "0x4515543bc4c78561f6bea83ecfdfc3dead55bd59858287d682045b11de1ae575",
+      "@openzeppelin/contracts/utils/math/Math.sol": "0xa00be322d7db5786750ce0ac7e2f5b633ac30a5ed5fa1ced1e74acfc19acecea",
+      "@openzeppelin/contracts/utils/math/SafeCast.sol": "0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54",
+      "@openzeppelin/contracts/utils/math/SignedMath.sol": "0xb1970fac7b64e6c09611e6691791e848d5e3fe410fa5899e7df2e0afd77a99e3",
+      "contracts/CrossToken.sol": "0xfa70bd70db3f2fb23e26a550a6ca721477d2a7c32a828c07fe6dcf4351331b46"
+    },
+    "source_sha256": "c177e81eb71408dee3493d3a7a1846427b5ca1a2200ea64c238591c977638f06",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x6bf62ca91e397b5a7d1d6bce97d9092065d7a510?fields=all",
+    "storage": [
+      {
+        "astId": 332,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 338,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 340,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 342,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 344,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2360,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_nameFallback",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2362,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_versionFallback",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1208,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_nonces",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 8,
+        "contract": "contracts/CrossToken.sol:CrossToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_address"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x6907a5986c4950bdaf2f81828ec0737ce787519f",
+    "inspection": {
+      "address": "0xbcfa9087ad5904981b3587990c0e9844de49f6bf",
+      "balance_of": "2672164875860143448827",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288141,
+      "contract": "0x6907a5986c4950bdaf2f81828ec0737ce787519f",
+      "elapsed_seconds": 0.412988708,
+      "hash": "0x5dfadd0f28697d42e7d28d33b0418dd78212d5d380da3b682ea5b0d72c5904f8",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x8e5081ff493f6e54f4212f002dd0c02567b7deedd4c42f62d1c4a4b3f56d5b1a",
+      "status": "inspected",
+      "storage_key": "0x6dffc0ea538dbff23f908d7a91a36c5e56c6404aa91474af068db236bbad8965",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x6dffc0ea538dbff23f908d7a91a36c5e56c6404aa91474af068db236bbad8965",
+          "pc": 1490,
+          "value": "0x000000000000000000000000000000000000000000000090dbbcb4dbc7a322fb"
+        }
+      ],
+      "storage_word": "2672164875860143448827",
+      "tool_language": "Rust",
+      "trace_sha256": "37efe2df4b53bc73aa5007307a22695eadf8fc9369cc067a7f56e783743708ec"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0x8e5081ff493f6e54f4212f002dd0c02567b7deedd4c42f62d1c4a4b3f56d5b1a",
+      "contract": "0x6907a5986c4950bdaf2f81828ec0737ce787519f",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009"
+      ]
+    },
+    "name": "ZamaOFT",
+    "rank": 88,
+    "source_hashes": {
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol": "0xf7f941bee89ea6369950fe54e8ac476ae6478b958b20fc0e8a83e8ff1364eac3",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol": "0x9641abba8d53b08bb517d1b74801dd15ea7b84d77a6719085bd96c8ea94e3ca0",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol": "0x5cf5f24751b4e3ea1c9c5ded07cedfdfd62566b6daaffcc0144733859c9dba0c",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLibManager.sol": "0x919b37133adff4dc528e3061deb2789c3149971b530c61e556fb3d09ab315dfc",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingChannel.sol": "0x0878f64dffebf58c4165569416372f40860fab546b88cd926eba0d5cb6d8d972",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingComposer.sol": "0x85bc7090134529ec474866dc4bb1c48692d518c756eb0a961c82574829c51901",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingContext.sol": "0xff0c546c2813dae3e440882f46b377375f7461b0714efd80bd3f0c6e5cb8da4e",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ISendLib.sol": "0xf1c07bc61e7b1dce195ed12d50f87980fbf2d63cac1326fd28287f55fe0ba625",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/libs/AddressCast.sol": "0x2ebbcaaab3554edcd41b581f1a72ac1806afbfb8047d0d47ff098f9af30d6deb",
+      "@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol": "0xc84cf1bf785977fe1fbe7566eef902c2db68d0e163813ebe6c34921754802680",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol": "0xac362c4c291fad2f1511a968424b2e78a5ad502d1c867bd31da04be742aca8c5",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppCore.sol": "0x13a9c2d1d2c1f086b8624f2e84c4a4702212daae36f701d92bb915b535cbe4cc",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppReceiver.sol": "0x0174e9f1ec4cefe4b5adc26c392269c699b9ff75965364e5b7264426a462c70b",
+      "@layerzerolabs/oapp-evm/contracts/oapp/OAppSender.sol": "0x518cf4adca601923ed4baa6619846a253ea32b8d8775f8bc1faa3dfac7f67c20",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppCore.sol": "0x40e49f2de74506e1da5dcaed53a39853f691647f4ceb0fccc8f49a68d3f47c58",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppMsgInspector.sol": "0x339654e699043c400cad92de209aa23855ce10211c31cf4114042cc5224d3b7c",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppOptionsType3.sol": "0x9fc08a51e9d7c9c710c4eb26f84fe77228305ad7da63fa486ff24ebf2f3bc461",
+      "@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppReceiver.sol": "0xd26135185e19b3732746d4a9e2923e896f28dec8664bab161faea2ee26fcdc3d",
+      "@layerzerolabs/oapp-evm/contracts/oapp/libs/OAppOptionsType3.sol": "0x5275636cd47e660a2fdf6c7fe9d41ff3cc866b785cc8a9d88c1b8ca983509f01",
+      "@layerzerolabs/oapp-evm/contracts/precrime/OAppPreCrimeSimulator.sol": "0x205a0abfd8b3c9af2740769f251381b84999b8e9347f3cd50de3ef8290a17750",
+      "@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IOAppPreCrimeSimulator.sol": "0x5d24db150949ea8e6437178e65a942e8c8b7f332e5daf32750f56b23b35b5bb2",
+      "@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IPreCrime.sol": "0xc8d869f27ef8ceb2e13fdf6a70682fd4dee3f90c4924eb8e125bc1e66cb6af84",
+      "@layerzerolabs/oapp-evm/contracts/precrime/libs/Packet.sol": "0xcb2fb1c5b2eb3731de78b479b9c2ab3bba326fe0b0b3a008590f18e881e457a6",
+      "@layerzerolabs/oft-evm/contracts/OFT.sol": "0xdc3582e4a20e02a79050c17058a1f1f42a4335d1a70be06c0a52a3fb05d4c89a",
+      "@layerzerolabs/oft-evm/contracts/OFTCore.sol": "0xdda89798c66928bba9e0fa44b3edf4710ff15cf46edadcf3e15c92d78fcc9ca8",
+      "@layerzerolabs/oft-evm/contracts/interfaces/IOFT.sol": "0xc60c7b4374b3d89f33b8de982f463c92374a8548800c816fe776f0ec76351fb0",
+      "@layerzerolabs/oft-evm/contracts/libs/OFTComposeMsgCodec.sol": "0xaae73d6eb8b9561c43f1802f3c416c00ccd35f172b711f9781ccdf1b25a40db5",
+      "@layerzerolabs/oft-evm/contracts/libs/OFTMsgCodec.sol": "0x5358948017669c03e157f871d8c38e988f9004dbd0801ad3119d2487f0d40b0b",
+      "@openzeppelin/contracts/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "@openzeppelin/contracts/interfaces/IERC1363.sol": "0xd5ea07362ab630a6a3dee4285a74cf2377044ca2e4be472755ad64d7c5d4b69d",
+      "@openzeppelin/contracts/interfaces/IERC165.sol": "0x0afcb7e740d1537b252cb2676f600465ce6938398569f09ba1b9ca240dde2dfc",
+      "@openzeppelin/contracts/interfaces/IERC20.sol": "0x1a6221315ce0307746c2c4827c125d821ee796c74a676787762f4778671d4f44",
+      "@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": "0x982c5cb790ab941d1e04f807120a71709d4c313ba0bfc16006447ffbd27fbbd5",
+      "@openzeppelin/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "@openzeppelin/contracts/utils/introspection/IERC165.sol": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+      "contracts/ZamaOFT.sol": "0x0e95a6233e26f38e5442a6707e5b32508133fd2c489df7fc7be333cb6780393e"
+    },
+    "source_sha256": "efc3e476e879ee8178c900a3476a9c04cd0da68f0cf2db1ffc7671371f3c3bc4",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x6907a5986c4950bdaf2f81828ec0737ce787519f?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "contracts/ZamaOFT.sol:ZamaOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xebb38df7d2bfd901333f8b6a077d9bba552f5952",
+    "inspection": {
+      "address": "0xd31cb94b8022e5cdd9cffb04f9d04f34b2a37785",
+      "balance_of": "188299097500000000000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288008,
+      "contract": "0xebb38df7d2bfd901333f8b6a077d9bba552f5952",
+      "elapsed_seconds": 0.344850833,
+      "hash": "0x55e1f0bed43bd7fab9bb6d29ec6490cd48dcbbb214c1eb747e3333ca22e0dd93",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xa4add35e5dc7875e8ea329c0a40696b3f0e3bb19f1c8f54c8c97605252410ac3",
+      "status": "inspected",
+      "storage_key": "0xdeb356b9b70a1d147d05b589deb92c9cd10c9580fe62d4c480c72d3ce859af7e",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xdeb356b9b70a1d147d05b589deb92c9cd10c9580fe62d4c480c72d3ce859af7e",
+          "pc": 1565,
+          "value": "0x0000000000000000000000000000000000000000009bc1e287820a0981760000"
+        }
+      ],
+      "storage_word": "188299097500000000000000000",
+      "tool_language": "Rust",
+      "trace_sha256": "12e6b63236ff67b09311be7c35666afcb8ba72785e58d035f880fc9647d83bcb"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0xa4add35e5dc7875e8ea329c0a40696b3f0e3bb19f1c8f54c8c97605252410ac3",
+      "contract": "0xebb38df7d2bfd901333f8b6a077d9bba552f5952",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ]
+    },
+    "name": "Token",
+    "rank": 90,
+    "source_hashes": {
+      "Token.sol": "0x95f8afc7e990e37271bb527dc46d815db2eec679ae07be6478560c353db91ef8"
+    },
+    "source_sha256": "1966e4a0ba6fe45f36aee246e50aae2e3758b80a4ff1c6954834e35be82649ec",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xebb38df7d2bfd901333f8b6a077d9bba552f5952?fields=all",
+    "storage": [
+      {
+        "astId": 555,
+        "contract": "Token.sol:Token",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 561,
+        "contract": "Token.sol:Token",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 563,
+        "contract": "Token.sol:Token",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 565,
+        "contract": "Token.sol:Token",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 567,
+        "contract": "Token.sol:Token",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 338,
+        "contract": "Token.sol:Token",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 1136,
+        "contract": "Token.sol:Token",
+        "label": "decimal",
+        "offset": 20,
+        "slot": "5",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 1140,
+        "contract": "Token.sol:Token",
+        "label": "whiteListed",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x963556de0eb8138e97a85f0a86ee0acd159d210b",
+    "inspection": {
+      "address": "0x46a0f124c124166ec10fe81b4abc7b9569f6cdca",
+      "balance_of": "1769636310000000000",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288271,
+      "contract": "0x963556de0eb8138e97a85f0a86ee0acd159d210b",
+      "elapsed_seconds": 0.353412708,
+      "hash": "0x972348303d688792cbc55b42c6be5e694d95042f9273cf0139266bba742223ca",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xa6b89fab392f95d52d240320d922b1c93ba47c7b4a93b3c9b483d3bc08749cec",
+      "status": "inspected",
+      "storage_key": "0x3e1f4c1139c26d92cb015ca6da5509c12a8aecc9d6c062eb7ba9bee96243e95a",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x3e1f4c1139c26d92cb015ca6da5509c12a8aecc9d6c062eb7ba9bee96243e95a",
+          "pc": 1475,
+          "value": "0x000000000000000000000000000000000000000000000000188f02d9172edc00"
+        }
+      ],
+      "storage_word": "1769636310000000000",
+      "tool_language": "Rust",
+      "trace_sha256": "2a260d84761f19cd78c4c7993fb207d02f066d9f2b2d79d6e3bbbdeab10c9cae"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0xa6b89fab392f95d52d240320d922b1c93ba47c7b4a93b3c9b483d3bc08749cec",
+      "contract": "0x963556de0eb8138e97a85f0a86ee0acd159d210b",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ]
+    },
+    "name": "StandardToken",
+    "rank": 91,
+    "source_hashes": {
+      "StandardToken.sol": "0x00c160db291c4184d6249cff318218f8f9aa8e6176269b38fba63635cfa69666"
+    },
+    "source_sha256": "2269a4885c1e28aa92aedc0052fc59facaa71964beb5fe83aaa3ff8b31df423c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x963556de0eb8138e97a85f0a86ee0acd159d210b?fields=all",
+    "storage": [
+      {
+        "astId": 104,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 551,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 557,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 559,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 561,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 563,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_decimals",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 565,
+        "contract": "StandardToken.sol:StandardToken",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x0c69199c1562233640e0db5ce2c399a88eb507c7",
+    "inspection": {
+      "address": "0xfcd267264965410800ebc487c250aff45ce3c42b",
+      "balance_of": "29964019860491447506",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288032,
+      "contract": "0x0c69199c1562233640e0db5ce2c399a88eb507c7",
+      "elapsed_seconds": 0.307720875,
+      "hash": "0xdf0219f244ea83dd8f21770ff883d53b68dc24fffe70560cb4fa2f05390b286a",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x5e4b8a3cf0834753f7dd976797697e10c680c3fcb543467062982b740a7779a4",
+      "status": "inspected",
+      "storage_key": "0xfd6f862805e1e21fd9a5d6f9c2926978dff4ddeef1507c84e51b2c5b647959f3",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xfd6f862805e1e21fd9a5d6f9c2926978dff4ddeef1507c84e51b2c5b647959f3",
+          "pc": 848,
+          "value": "0x0000000000000000000000000000000000000000000000019fd5954e9357acd2"
+        }
+      ],
+      "storage_word": "29964019860491447506",
+      "tool_language": "Rust",
+      "trace_sha256": "d5d629d93553f6b20b9f0166052561ceb4c0e2ca02d3a831f9ea7b60b1d06943"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x5e4b8a3cf0834753f7dd976797697e10c680c3fcb543467062982b740a7779a4",
+      "contract": "0x0c69199c1562233640e0db5ce2c399a88eb507c7",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ]
+    },
+    "name": "CYS",
+    "rank": 94,
+    "source_hashes": {
+      "lib/openzeppelin-contracts/contracts/access/AccessControl.sol": "0x1a6b4f6b7798ab80929d491b89d5427a9b3338c0fd1acd0ba325f69c6f1646af",
+      "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": "0xbff9f59c84e5337689161ce7641c0ef8e872d6a7536fbc1f5133f128887aba3c",
+      "lib/openzeppelin-contracts/contracts/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": "0xd5ea07362ab630a6a3dee4285a74cf2377044ca2e4be472755ad64d7c5d4b69d",
+      "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": "0x0afcb7e740d1537b252cb2676f600465ce6938398569f09ba1b9ca240dde2dfc",
+      "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": "0x1a6221315ce0307746c2c4827c125d821ee796c74a676787762f4778671d4f44",
+      "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol": "0x2659248df25e34000ed214b3dc8da2160bc39874c992b477d9e2b1b3283dc073",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Pausable.sol": "0x756aee61d83960d324973de3a64920a02b480efe662b611fb05ea506d844aa55",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": "0x982c5cb790ab941d1e04f807120a71709d4c313ba0bfc16006447ffbd27fbbd5",
+      "lib/openzeppelin-contracts/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "lib/openzeppelin-contracts/contracts/utils/Pausable.sol": "0xdb484371dfbb848cb6f5d70464e9ac9b2900e4164ead76bbce4fef0b44bcc68f",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": "0x2d9dc2fe26180f74c11c13663647d38e259e45f95eb88f57b61d2160b0109d3e",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+      "src/CYS.sol": "0xca034fa14eb079b6edd958a8c4404636012336e507be336fa57fef74be8fdcc7"
+    },
+    "source_sha256": "b107abb85ccd85eee9f802e51cf4c26d947bcb34dd27541aff5452fb39a94af4",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x0c69199c1562233640e0db5ce2c399a88eb507c7?fields=all",
+    "storage": [
+      {
+        "astId": 777,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 783,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 785,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 787,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 789,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 1956,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_paused",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_bool"
+      },
+      {
+        "astId": 388,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_owner",
+        "offset": 1,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 27,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)22_storage)"
+      },
+      {
+        "astId": 2127,
+        "contract": "src/CYS.sol:CYS",
+        "label": "_blacklisted",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x65e7a112db1142eae919201b1232f7aa488ed83c",
+    "inspection": {
+      "address": "0x4ba242f5af0e096a418b98a1fb1abbea7a9e0ab4",
+      "balance_of": "330005009753",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288006,
+      "contract": "0x65e7a112db1142eae919201b1232f7aa488ed83c",
+      "elapsed_seconds": 0.317242625,
+      "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xfbae3c11556551c2449bd72725ab850d9f46b771c02ab808f1966d8f97b913cf",
+      "status": "inspected",
+      "storage_key": "0x1a9afe33031ab077bb7af1423d119a812a2dcc35e25b3f33938d1858b367463c",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x1a9afe33031ab077bb7af1423d119a812a2dcc35e25b3f33938d1858b367463c",
+          "pc": 4383,
+          "value": "0x0000000000000000000000000000000000000000000000000000004cd5d4d559"
+        }
+      ],
+      "storage_word": "330005009753",
+      "tool_language": "Rust",
+      "trace_sha256": "6c438cc61ce0b02895de990ebf9abb967e5ba1ad7d07ecbeb8d9dd53512e3f72"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0xfbae3c11556551c2449bd72725ab850d9f46b771c02ab808f1966d8f97b913cf",
+      "contract": "0x65e7a112db1142eae919201b1232f7aa488ed83c",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x000000000000000000000000000000000000000000000000000000000000000b"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "RealLink",
+    "rank": 95,
+    "source_hashes": {
+      "RealLink.sol": "0x5a3f48165311351104e700f9bc198879adf2e0202774561bbe480ecbe7d9d012"
+    },
+    "source_sha256": "85b7d423d1bb098a37348177c93309a46dca7c9ab722f049981262a54f74c4bf",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x65e7a112db1142eae919201b1232f7aa488ed83c?fields=all",
+    "storage": [
+      {
+        "astId": 858,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1166,
+        "contract": "RealLink.sol:RealLink",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 3585,
+        "contract": "RealLink.sol:RealLink",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 1025,
+        "contract": "RealLink.sol:RealLink",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 3751,
+        "contract": "RealLink.sol:RealLink",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4455,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4461,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4463,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4465,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4467,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 5076,
+        "contract": "RealLink.sol:RealLink",
+        "label": "_status",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 5150,
+        "contract": "RealLink.sol:RealLink",
+        "label": "processedGuids",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_mapping(t_bytes32,t_bool)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0x5ffd0eadc186af9512542d0d5e5eafc65d5afc5b",
+    "inspection": {
+      "address": "0x1b54cd932b6b751803c996cbef36280b53795f81",
+      "balance_of": "43075001123793690406697012",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "block": 122288032,
+      "contract": "0x5ffd0eadc186af9512542d0d5e5eafc65d5afc5b",
+      "elapsed_seconds": 0.322556125,
+      "hash": "0xdf0219f244ea83dd8f21770ff883d53b68dc24fffe70560cb4fa2f05390b286a",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x055eb103673ae8a654e7d081152749af0f31cc1fb8b975eef20c9d16df32f606",
+      "status": "inspected",
+      "storage_key": "0xa25dd53c4677594365d1cd9d8d16e8c95b283fc36427fecca23917e23019e92f",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xa25dd53c4677594365d1cd9d8d16e8c95b283fc36427fecca23917e23019e92f",
+          "pc": 1723,
+          "value": "0x00000000000000000000000000000000000000000023a17c7d6ad94a89643834"
+        }
+      ],
+      "storage_word": "43075001123793690406697012",
+      "tool_language": "Rust",
+      "trace_sha256": "7b5fb429347b6d06b5dc237f7c34ce992e033a81e49fe72076bc8862932a539a"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "code_hash": "0x055eb103673ae8a654e7d081152749af0f31cc1fb8b975eef20c9d16df32f606",
+      "contract": "0x5ffd0eadc186af9512542d0d5e5eafc65d5afc5b",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006",
+        "0x000000000000000000000000000000000000000000000000000000000000000b",
+        "0x000000000000000000000000000000000000000000000000000000000000000c",
+        "0x000000000000000000000000000000000000000000000000000000000000000d"
+      ],
+      "other_mapping_words": {},
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007",
+        "0x0000000000000000000000000000000000000000000000000000000000000008",
+        "0x0000000000000000000000000000000000000000000000000000000000000009",
+        "0x000000000000000000000000000000000000000000000000000000000000000a"
+      ]
+    },
+    "name": "BinanceHemiOFT",
+    "rank": 99,
+    "source_hashes": {
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol": "0xf7f941bee89ea6369950fe54e8ac476ae6478b958b20fc0e8a83e8ff1364eac3",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroReceiver.sol": "0x9641abba8d53b08bb517d1b74801dd15ea7b84d77a6719085bd96c8ea94e3ca0",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLib.sol": "0x5cf5f24751b4e3ea1c9c5ded07cedfdfd62566b6daaffcc0144733859c9dba0c",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessageLibManager.sol": "0x919b37133adff4dc528e3061deb2789c3149971b530c61e556fb3d09ab315dfc",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingChannel.sol": "0x0878f64dffebf58c4165569416372f40860fab546b88cd926eba0d5cb6d8d972",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingComposer.sol": "0x85bc7090134529ec474866dc4bb1c48692d518c756eb0a961c82574829c51901",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/IMessagingContext.sol": "0xff0c546c2813dae3e440882f46b377375f7461b0714efd80bd3f0c6e5cb8da4e",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ISendLib.sol": "0xf1c07bc61e7b1dce195ed12d50f87980fbf2d63cac1326fd28287f55fe0ba625",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/libs/AddressCast.sol": "0x2ebbcaaab3554edcd41b581f1a72ac1806afbfb8047d0d47ff098f9af30d6deb",
+      "node_modules/@layerzerolabs/lz-evm-protocol-v2/contracts/messagelib/libs/PacketV1Codec.sol": "0xc84cf1bf785977fe1fbe7566eef902c2db68d0e163813ebe6c34921754802680",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol": "0xac362c4c291fad2f1511a968424b2e78a5ad502d1c867bd31da04be742aca8c5",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/OAppCore.sol": "0x13a9c2d1d2c1f086b8624f2e84c4a4702212daae36f701d92bb915b535cbe4cc",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/OAppReceiver.sol": "0x0174e9f1ec4cefe4b5adc26c392269c699b9ff75965364e5b7264426a462c70b",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/OAppSender.sol": "0x518cf4adca601923ed4baa6619846a253ea32b8d8775f8bc1faa3dfac7f67c20",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppCore.sol": "0x40e49f2de74506e1da5dcaed53a39853f691647f4ceb0fccc8f49a68d3f47c58",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppMsgInspector.sol": "0x339654e699043c400cad92de209aa23855ce10211c31cf4114042cc5224d3b7c",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppOptionsType3.sol": "0x9fc08a51e9d7c9c710c4eb26f84fe77228305ad7da63fa486ff24ebf2f3bc461",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/interfaces/IOAppReceiver.sol": "0xd26135185e19b3732746d4a9e2923e896f28dec8664bab161faea2ee26fcdc3d",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/oapp/libs/OAppOptionsType3.sol": "0x5275636cd47e660a2fdf6c7fe9d41ff3cc866b785cc8a9d88c1b8ca983509f01",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/precrime/OAppPreCrimeSimulator.sol": "0x205a0abfd8b3c9af2740769f251381b84999b8e9347f3cd50de3ef8290a17750",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IOAppPreCrimeSimulator.sol": "0x5d24db150949ea8e6437178e65a942e8c8b7f332e5daf32750f56b23b35b5bb2",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/precrime/interfaces/IPreCrime.sol": "0xc8d869f27ef8ceb2e13fdf6a70682fd4dee3f90c4924eb8e125bc1e66cb6af84",
+      "node_modules/@layerzerolabs/oapp-evm/contracts/precrime/libs/Packet.sol": "0xcb2fb1c5b2eb3731de78b479b9c2ab3bba326fe0b0b3a008590f18e881e457a6",
+      "node_modules/@layerzerolabs/oft-evm/contracts/OFT.sol": "0xdc3582e4a20e02a79050c17058a1f1f42a4335d1a70be06c0a52a3fb05d4c89a",
+      "node_modules/@layerzerolabs/oft-evm/contracts/OFTCore.sol": "0xdda89798c66928bba9e0fa44b3edf4710ff15cf46edadcf3e15c92d78fcc9ca8",
+      "node_modules/@layerzerolabs/oft-evm/contracts/interfaces/IOFT.sol": "0xc60c7b4374b3d89f33b8de982f463c92374a8548800c816fe776f0ec76351fb0",
+      "node_modules/@layerzerolabs/oft-evm/contracts/libs/OFTComposeMsgCodec.sol": "0xaae73d6eb8b9561c43f1802f3c416c00ccd35f172b711f9781ccdf1b25a40db5",
+      "node_modules/@layerzerolabs/oft-evm/contracts/libs/OFTMsgCodec.sol": "0x5358948017669c03e157f871d8c38e988f9004dbd0801ad3119d2487f0d40b0b",
+      "node_modules/@openzeppelin/contracts/access/Ownable.sol": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+      "node_modules/@openzeppelin/contracts/interfaces/IERC1363.sol": "0x9b6b3e7803bc5f2f8cd7ad57db8ac1def61a9930a5a3107df4882e028a9605d7",
+      "node_modules/@openzeppelin/contracts/interfaces/IERC165.sol": "0xde7e9fd9aee8d4f40772f96bb3b58836cbc6dfc0227014a061947f8821ea9724",
+      "node_modules/@openzeppelin/contracts/interfaces/IERC20.sol": "0xce41876e78d1badc0512229b4d14e4daf83bc1003d7f83978d18e0e56f965b9c",
+      "node_modules/@openzeppelin/contracts/interfaces/draft-IERC6093.sol": "0x880da465c203cec76b10d72dbd87c80f387df4102274f23eea1f9c9b0918792b",
+      "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": "0x41f6b3b9e030561e7896dbef372b499cc8d418a80c3884a4d65a68f2fdc7493a",
+      "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": "0xe06a3f08a987af6ad2e1c1e774405d4fe08f1694b67517438b467cecf0da0ef7",
+      "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0x70f2f713b13b7ce4610bcd0ac9fec0f3cc43693b043abcb8dc40a42a726eb330",
+      "node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol": "0x982c5cb790ab941d1e04f807120a71709d4c313ba0bfc16006447ffbd27fbbd5",
+      "node_modules/@openzeppelin/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": "0x79796192ec90263f21b464d5bc90b777a525971d3de8232be80d9c4f9fb353b8",
+      "src/BinanceHemiOFT.sol": "0x1f156146053000996e08af882f62f6b94846a874f356d133e2304076c4089f03",
+      "src/HemiOFT.sol": "0x8c30dd09a36c15aab743669c0807c9d330146c6c09cb44d9355c016208d73048"
+    },
+    "source_sha256": "e7feced5ff8a4a631fbb0e5594f3c6fc4caf2c829bbd20440b772498ec0f5c4e",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0x5ffd0eadc186af9512542d0d5e5eafc65d5afc5b?fields=all",
+    "storage": [
+      {
+        "astId": 3861,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1390,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "peers",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint32,t_bytes32)"
+      },
+      {
+        "astId": 2166,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "preCrime",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 2006,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "enforcedOptions",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint32,t_mapping(t_uint16,t_bytes_storage))"
+      },
+      {
+        "astId": 2786,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "msgInspector",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 4250,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 4256,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 4258,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 4260,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_name",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 4262,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 5361,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "isTransferEnabled",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_bool"
+      },
+      {
+        "astId": 5363,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "manager",
+        "offset": 1,
+        "slot": "10",
+        "type": "t_address"
+      },
+      {
+        "astId": 5367,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "canSendToAnyone",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 5371,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "canSendToWhitelisted",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 5375,
+        "contract": "src/BinanceHemiOFT.sol:BinanceHemiOFT",
+        "label": "canReceive",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_mapping(t_address,t_bool)"
+      }
+    ]
+  },
+  {
+    "basis": "Verified source bound to historical runtime; direct mapping getter and independent state overrides",
+    "contract": "0xc63961bf9a7d6bb5844524851d04fbd76dbe915b",
+    "inspection": {
+      "address": "0x3e7fa0d430b9735ccc94a35b6e0b1b4ee401f539",
+      "balance_of": "777630292434185981000278",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "block": 122288025,
+      "contract": "0xc63961bf9a7d6bb5844524851d04fbd76dbe915b",
+      "elapsed_seconds": 0.328910667,
+      "hash": "0x14212680f4deb781060960959a0e91c298f10dfd6034c4cf764a5014688c960e",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x60f53552d1ab18923098e47b0d7952ae7a4a48d8bece60b20d3d41734832c15c",
+      "status": "inspected",
+      "storage_key": "0x6d8dfffc1dabf0d81bd918bdb12576324d53d35e40fdef4133c8734c6a368e99",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0x6d8dfffc1dabf0d81bd918bdb12576324d53d35e40fdef4133c8734c6a368e99",
+          "pc": 736,
+          "value": "0x00000000000000000000000000000000000000000000a4ab6c30fb06634bfa56"
+        }
+      ],
+      "storage_word": "777630292434185981000278",
+      "tool_language": "Rust",
+      "trace_sha256": "d9573329d07a6d2fb3b67d7a004ffca98dee9e088ed19e9ca22420d18050874c"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "code_hash": "0x60f53552d1ab18923098e47b0d7952ae7a4a48d8bece60b20d3d41734832c15c",
+      "contract": "0xc63961bf9a7d6bb5844524851d04fbd76dbe915b",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001"
+      ],
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000005": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000004",
+        "0x0000000000000000000000000000000000000000000000000000000000000007"
+      ]
+    },
+    "name": "PTokenV2",
+    "rank": 100,
+    "source_hashes": {
+      "lib/openzeppelin-contracts/contracts/access/AccessControl.sol": "0x1a6b4f6b7798ab80929d491b89d5427a9b3338c0fd1acd0ba325f69c6f1646af",
+      "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": "0xbff9f59c84e5337689161ce7641c0ef8e872d6a7536fbc1f5133f128887aba3c",
+      "lib/openzeppelin-contracts/contracts/access/extensions/AccessControlEnumerable.sol": "0xebbd708d0f1d7d4f7393d28ef08188a4bbdaf8fb0dcc26a7cf6033092186b021",
+      "lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlEnumerable.sol": "0xbc97d8c0d67d4d7eba1e662f0a8671712ace9e060ab03af547c4bb321aec1d8c",
+      "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": "0x86b7b71a6aedefdad89b607378eeab1dcc5389b9ea7d17346d08af01d7190994",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
+      "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0xd6fa4088198f04eef10c5bce8a2f4d60554b7ec4b987f684393c01bf79b94d9f",
+      "lib/openzeppelin-contracts/contracts/utils/Arrays.sol": "0xa4b9958797e0e9cde82a090525e90f80d5745ba1c67ee72b488bd3087498a17e",
+      "lib/openzeppelin-contracts/contracts/utils/Comparators.sol": "0x302eecd8cf323b4690e3494a7d960b3cbce077032ab8ef655b323cdd136cec58",
+      "lib/openzeppelin-contracts/contracts/utils/Context.sol": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+      "lib/openzeppelin-contracts/contracts/utils/Panic.sol": "0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a",
+      "lib/openzeppelin-contracts/contracts/utils/Pausable.sol": "0xdb484371dfbb848cb6f5d70464e9ac9b2900e4164ead76bbce4fef0b44bcc68f",
+      "lib/openzeppelin-contracts/contracts/utils/SlotDerivation.sol": "0x67672e4ca1dafdcc661d4eba8475cfac631fa0933309258e3af7644b92e1fb26",
+      "lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": "0x2d9dc2fe26180f74c11c13663647d38e259e45f95eb88f57b61d2160b0109d3e",
+      "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "0x8891738ffe910f0cf2da09566928589bf5d63f4524dd734fd9cedbac3274dd5c",
+      "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": "0x1225214420c83ebcca88f2ae2b50f053aaa7df7bd684c3e878d334627f2edfc6",
+      "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": "0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54",
+      "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol": "0x1fc283df727585919c3db301b948a3e827aee16917457ad7f916db9da2228e77",
+      "src/v2/PToken.sol": "0x8b97a9bdb80e484364ca9ec7e927f11cdd5740b0aa404095218e964028335e6c"
+    },
+    "source_sha256": "14d5dcc50d8dd1b04fc6283e0d1fafad66fd7fe0bfafdff224a9ba6eda203f9c",
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xc63961bf9a7d6bb5844524851d04fbd76dbe915b?fields=all",
+    "storage": [
+      {
+        "astId": 725,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_balances",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 731,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 733,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_totalSupply",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 735,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_name",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 737,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 27,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_roles",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_bytes32,t_struct(RoleData)22_storage)"
+      },
+      {
+        "astId": 403,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_roleMembers",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_bytes32,t_struct(AddressSet)6698_storage)"
+      },
+      {
+        "astId": 2422,
+        "contract": "src/v2/PToken.sol:PTokenV2",
+        "label": "_paused",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_bool"
+      }
+    ]
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+    "family_profile": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+    "inspection": {
+      "address": "0x0d268e5abac7a2b4d3ae86670b4c6511955e6af9",
+      "balance_of": "18999737242281495377",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288029,
+      "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+      "elapsed_seconds": 0.361797542,
+      "hash": "0x644acd70becee8ea8f13fc6580f71759be9628c7304fbccd4e65800799863e32",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "status": "inspected",
+      "storage_key": "0x8332789b6260705c1c99d61bec2e5a50b153a1ba7ee460841d36cb54c562e49e",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0x8332789b6260705c1c99d61bec2e5a50b153a1ba7ee460841d36cb54c562e49e",
+          "pc": 2317,
+          "value": "0x00000000000000000000000000000000000000000000000107aca05b5ff2cb51"
+        }
+      ],
+      "storage_word": "18999737242281495377",
+      "tool_language": "Rust",
+      "trace_sha256": "0562a10b521c9a8dea50ec0efc0e7297e632a45c272b326c215ea0199c6a5241"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "beacon_proxy": {
+        "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+        "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000064",
+        "0x0000000000000000000000000000000000000000000000000000000000000096",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x0000000000000000000000000000000000000000000000000000000000000098",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+        "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+      ]
+    },
+    "rank": 52
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+    "family_profile": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "inspection": {
+      "address": "0xe6b82c6eccdfb2d6bc55bb11a61bae5ab2c3f807",
+      "balance_of": "1418902858188234659393",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288136,
+      "contract": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+      "elapsed_seconds": 0.404372541,
+      "hash": "0xa99d03401823f5cc8a5eba6de6f71dcc3e7952cce0cbbbefcda1800bebab7f5b",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "status": "inspected",
+      "storage_key": "0x3b69f27b7de9b0c5a9d2e80080ee0e1a362bb36c7533fdc0e47320f0a5878a71",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 1151,
+          "value": "0x000000000000000000000000d2f93484f2d319194cba95c5171b18c1d8cfd6c4"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1078,
+          "value": "0x000000000000000000000000ba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+        },
+        {
+          "depth": 2,
+          "key": "0x3b69f27b7de9b0c5a9d2e80080ee0e1a362bb36c7533fdc0e47320f0a5878a71",
+          "pc": 1775,
+          "value": "0x00000000000000000000000000000000000000000000004ceb3b97da482f9641"
+        }
+      ],
+      "storage_word": "1418902858188234659393",
+      "tool_language": "Rust",
+      "trace_sha256": "4da0f6ad4ab2e50919d707dc990858bf80d6525f3070db8b5f2d899a7b00e2c6"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "contract": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "proxy": {
+        "code_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+        "implementation": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "rank": 54
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+    "family_profile": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+    "inspection": {
+      "address": "0x32c51041f3d7a66ac14aba7485444efb6e15efe1",
+      "balance_of": "58123603791653243783902",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288042,
+      "contract": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+      "elapsed_seconds": 0.515172666,
+      "hash": "0x29cf4dd44516b96c5002725664d25e04eec819bd192d00fc345315cd75e20361",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "status": "inspected",
+      "storage_key": "0xb27a4251d35db64b057b9b7e1b6d0f993bfd9d97fae12f90144176cede5038a0",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0xb27a4251d35db64b057b9b7e1b6d0f993bfd9d97fae12f90144176cede5038a0",
+          "pc": 2317,
+          "value": "0x000000000000000000000000000000000000000000000c4ee30a40751f3d0ade"
+        }
+      ],
+      "storage_word": "58123603791653243783902",
+      "tool_language": "Rust",
+      "trace_sha256": "a4d8605aba1f887520d499b411a18d930a2a3527b28430b992ed2b1316a9023e"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "beacon_proxy": {
+        "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+        "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "contract": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000064",
+        "0x0000000000000000000000000000000000000000000000000000000000000096",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x0000000000000000000000000000000000000000000000000000000000000098",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+        "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+      ]
+    },
+    "rank": 75
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+    "family_profile": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+    "inspection": {
+      "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+      "balance_of": "1788951801071158678788",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288009,
+      "contract": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+      "elapsed_seconds": 0.503708084,
+      "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "status": "inspected",
+      "storage_key": "0x7a8b496dc220357301278a8d1a5caf4e090d70c4924712d5b2992b89c8550576",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0x7a8b496dc220357301278a8d1a5caf4e090d70c4924712d5b2992b89c8550576",
+          "pc": 2317,
+          "value": "0x000000000000000000000000000000000000000000000060fab188cd25afd504"
+        }
+      ],
+      "storage_word": "1788951801071158678788",
+      "tool_language": "Rust",
+      "trace_sha256": "a2c5e4e68da0291f7bbeb709bfd173ef428d5112a0b4ecb195d94084f103fc3c"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "beacon_proxy": {
+        "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+        "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "contract": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000064",
+        "0x0000000000000000000000000000000000000000000000000000000000000096",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x0000000000000000000000000000000000000000000000000000000000000098",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+        "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+      ]
+    },
+    "rank": 76
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+    "family_profile": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+    "inspection": {
+      "address": "0xd4ae7dd719ec71594f13d0e3b17e65e9085f1ca1",
+      "balance_of": "869273229775222054340",
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "block": 122288019,
+      "contract": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+      "elapsed_seconds": 0.542755209,
+      "hash": "0x39521816365e42e2310612c3538c5dc961d2e0cc58f89aecf3d4635658452b2e",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "status": "inspected",
+      "storage_key": "0xa4a4daaf6bfa2482199e46b20d45aea84ee0205a8f4b9cce1fc823577408a8ab",
+      "storage_reads": [
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "pc": 113,
+          "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+        },
+        {
+          "depth": 2,
+          "key": "0xa4a4daaf6bfa2482199e46b20d45aea84ee0205a8f4b9cce1fc823577408a8ab",
+          "pc": 2317,
+          "value": "0x00000000000000000000000000000000000000000000002f1f96e4dfa49f9dc4"
+        }
+      ],
+      "storage_word": "869273229775222054340",
+      "tool_language": "Rust",
+      "trace_sha256": "35be90ab66710bf9715507f6dea7ba1c38f2f8ca4a65cadac5cb34830da71a90"
+    },
+    "layout": {
+      "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+      "beacon_proxy": {
+        "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+        "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+        "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+        "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+        "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+      "contract": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+      "other_mapping_slots": [
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+      ],
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      },
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "0x0000000000000000000000000000000000000000000000000000000000000032",
+        "0x0000000000000000000000000000000000000000000000000000000000000064",
+        "0x0000000000000000000000000000000000000000000000000000000000000096",
+        "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "0x0000000000000000000000000000000000000000000000000000000000000098",
+        "0x0000000000000000000000000000000000000000000000000000000000000099",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+        "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+        "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+      ]
+    },
+    "rank": 78
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+    "family_profile": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "inspection": {
+      "address": "0xc3d233f1f9942bb19ba2b7ee49abcb5efca5d970",
+      "balance_of": "235965410775534358269",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288014,
+      "contract": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+      "elapsed_seconds": 0.493875834,
+      "hash": "0x5f907b4e9b8d8e80ca13d6fc3784ac97e4cd2520386ebd04b474a4041fe9f5b2",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "status": "inspected",
+      "storage_key": "0x775025ec813314a507333ccca90542a22a451d355f453f336050034ab79fefac",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 1151,
+          "value": "0x000000000000000000000000d2f93484f2d319194cba95c5171b18c1d8cfd6c4"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1078,
+          "value": "0x000000000000000000000000ba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+        },
+        {
+          "depth": 2,
+          "key": "0x775025ec813314a507333ccca90542a22a451d355f453f336050034ab79fefac",
+          "pc": 1775,
+          "value": "0x00000000000000000000000000000000000000000000000ccaad8ae6eadb4efd"
+        }
+      ],
+      "storage_word": "235965410775534358269",
+      "tool_language": "Rust",
+      "trace_sha256": "b52c6ebd66b7ff4cf53f3afdd8ad5e3855afae2aeead0d0e6401a7661fa7569e"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "contract": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "proxy": {
+        "code_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+        "implementation": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "rank": 80
+  },
+  {
+    "basis": "Exact previously reviewed forwarding runtime; independently verified historical dependency pointers and code at both boundaries",
+    "contract": "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153",
+    "family_profile": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "inspection": {
+      "address": "0x04fcab9bfb49585ecb63d462d4f51bb390159524",
+      "balance_of": "2201048879270837693403",
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "block": 122288011,
+      "contract": "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153",
+      "elapsed_seconds": 0.324393334,
+      "hash": "0x8c81b179f0e181153150330c3752aed47924b19f7ebdff8129354ce2ea4648b8",
+      "read_only_state_overrides": [
+        {
+          "balance_of": "0",
+          "overridden_mapping_word": "0"
+        },
+        {
+          "balance_of": "1",
+          "overridden_mapping_word": "1"
+        },
+        {
+          "balance_of": "123",
+          "overridden_mapping_word": "123"
+        },
+        {
+          "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      ],
+      "runtime_keccak256": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "status": "inspected",
+      "storage_key": "0x440177b58709b4a4d25d4610c601640ce177682cf2aabd4db5daa51f80c68b28",
+      "storage_reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 1151,
+          "value": "0x000000000000000000000000d2f93484f2d319194cba95c5171b18c1d8cfd6c4"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 1078,
+          "value": "0x000000000000000000000000ba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c"
+        },
+        {
+          "depth": 2,
+          "key": "0x440177b58709b4a4d25d4610c601640ce177682cf2aabd4db5daa51f80c68b28",
+          "pc": 1775,
+          "value": "0x00000000000000000000000000000000000000000000007751b0760a41ed2bdb"
+        }
+      ],
+      "storage_word": "2201048879270837693403",
+      "tool_language": "Rust",
+      "trace_sha256": "5dddf06fd9867df631944041fa3df1056ef62faeac7789d4fe39aa5f17b3841a"
+    },
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+      "code_hash": "0x56069ff2fd59ae482f7984aa894b6d3bc84cb910354dcda9cd6c828d61526914",
+      "contract": "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ],
+      "other_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000003",
+        "0x0000000000000000000000000000000000000000000000000000000000000006"
+      ],
+      "proxy": {
+        "code_hash": "0xd2d7cf7504e1cb572af28476d45907fc30bee1297917bed153e6fbba125821a3",
+        "implementation": "0xba5fe23f8a3a24bed3236f05f2fcf35fd0bf0b5c",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "rank": 98
+  },
+  {
+    "allowance_key": "0xc96456ce834b6529dce91df9351452f956d10efb9c25c388a6ebf96f71229604",
+    "allowance_override_word": "123",
+    "allowance_rpc": "123",
+    "allowance_trace_sha256": "14dc2b646423bbc65e9d1173940131df66798ef87698e9fdbcedc98a1246579c",
+    "basis": "Reviewed forwarding source and implementation bytecode: getter loads mapping 2, returns nonzero words, excludes zero/dead for zero words, otherwise returns PUSH10 constant; allowance mapping 3 independently controlled",
+    "contract": "0x30f0bd9d666ceeb419c882452f546e5694d5d79a",
+    "dependency": {
+      "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "implementation": "0xb722b14a9c4ee7e4cad29e6dd4460698130ce6c5",
+      "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "name": null,
+      "runtime_bytes": 23501,
+      "runtime_hash": "0xa5db25e7694654a15856cec86b87a3333ca495bd431641cf3fb5d63bcfc77a5d",
+      "source_bound": false,
+      "storage": null,
+      "tokens": [
+        {
+          "contract": "0x30f0bd9d666ceeb419c882452f546e5694d5d79a",
+          "kind": "eip1967",
+          "rank": 63
+        }
+      ]
+    },
+    "inspections": [
+      {
+        "address": "0x1111111111111111111111111111111111111111",
+        "balance_of": "18752320000000000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "block": 122288020,
+        "contract": "0x30f0bd9d666ceeb419c882452f546e5694d5d79a",
+        "elapsed_seconds": 0.396796375,
+        "hash": "0xc779062aa3cba00b82faab1d7d37443a73c583f57f869f7fe334afe21c5cc3ac",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "18752320000000000000000",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x5abc98a2471301cc186c8eee70da3d9a57a7ec787508a18c624c2c5e76021e8c",
+        "status": "inspected",
+        "storage_key": "0x06bb1b9bc4293ba066a12274418b7ea4df183c2e4e6b39591987369520ca3956",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 272,
+            "value": "0x000000000000000000000000b722b14a9c4ee7e4cad29e6dd4460698130ce6c5"
+          },
+          {
+            "depth": 2,
+            "key": "0x06bb1b9bc4293ba066a12274418b7ea4df183c2e4e6b39591987369520ca3956",
+            "pc": 6526,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_sha256": "db0349051c1bafcbd8d3f8d34be02d4900ec34b1348027a34c034763d7e84028"
+      },
+      {
+        "address": "0x000000000000000000000000000000000000dead",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+        "block": 122288020,
+        "contract": "0x30f0bd9d666ceeb419c882452f546e5694d5d79a",
+        "elapsed_seconds": 0.538917708,
+        "hash": "0xc779062aa3cba00b82faab1d7d37443a73c583f57f869f7fe334afe21c5cc3ac",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x5abc98a2471301cc186c8eee70da3d9a57a7ec787508a18c624c2c5e76021e8c",
+        "status": "inspected",
+        "storage_key": "0x6a9609baa168169acaea398c4407efea4be641bb08e21e88806d9836fd9333cc",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 272,
+            "value": "0x000000000000000000000000b722b14a9c4ee7e4cad29e6dd4460698130ce6c5"
+          },
+          {
+            "depth": 2,
+            "key": "0x6a9609baa168169acaea398c4407efea4be641bb08e21e88806d9836fd9333cc",
+            "pc": 6526,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_sha256": "4f54f026f8d51dec19d237154f71e6bb3851e10eea6dfbd1803f33ff54e2049d"
+      }
+    ],
+    "layout": {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+      "code_hash": "0x5abc98a2471301cc186c8eee70da3d9a57a7ec787508a18c624c2c5e76021e8c",
+      "contract": "0x30f0bd9d666ceeb419c882452f546e5694d5d79a",
+      "other_mapping_slots": [
+        "0x0000000000000000000000000000000000000000000000000000000000000003"
+      ],
+      "proxy": {
+        "code_hash": "0xa5db25e7694654a15856cec86b87a3333ca495bd431641cf3fb5d63bcfc77a5d",
+        "implementation": "0xb722b14a9c4ee7e4cad29e6dd4460698130ce6c5",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      },
+      "zero_balance": {
+        "excluded_addresses": [
+          "0x0000000000000000000000000000000000000000",
+          "0x000000000000000000000000000000000000dead"
+        ],
+        "value": "0x0000000000000000000000000000000000000000000003f890b7c5f355200000"
+      }
+    },
+    "rank": 63
+  }
+]

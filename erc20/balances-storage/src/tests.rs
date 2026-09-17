@@ -417,6 +417,7 @@ fn fallback_changes_public_values_without_weakening_raw_continuity() {
     l[0].zero_balance = Some(layout::VerifiedZeroBalance {
         value: slot(8),
         storage_slot: Some(slot(4)),
+        excluded_addresses: BTreeSet::new(),
     });
     let mut b = block();
     let mut c = token_call(&l[0], &[6; 20], 3, 0);
@@ -457,6 +458,7 @@ fn constant_fallback_preserves_uint256_max_without_rewriting_nonzero_words() {
     l[0].zero_balance = Some(layout::VerifiedZeroBalance {
         value: [255; 32],
         storage_slot: None,
+        excluded_addresses: BTreeSet::new(),
     });
     let mut b = block();
     b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 1, 0))];
@@ -466,6 +468,84 @@ fn constant_fallback_preserves_uint256_max_without_rewriting_nonzero_words() {
     );
     b.transaction_traces = vec![tx(token_call(&l[0], &[6; 20], 0, 1))];
     assert_eq!(project(&b, &l).unwrap().balances[0].amount, "1");
+}
+
+#[test]
+fn fallback_holder_exceptions_match_all_recorded_rpc_controls() {
+    let layouts = layout::parse(include_str!("../tests/fixtures/bsc-next-candidates-layouts.json")).unwrap();
+    let evidence: Vec<serde_json::Value> = serde_json::from_str(include_str!("../docs/evidence/holder-fallback-controls.json")).unwrap();
+    assert_eq!(evidence.len(), 9);
+    let mut checked = 0;
+    for token in evidence {
+        let contract = hex_bytes(token["contract"].as_str().unwrap()).unwrap();
+        let l = layouts.iter().find(|l| l.contract == contract).unwrap();
+        for check in token["checks"].as_array().unwrap() {
+            let holder = hex_bytes(check["address"].as_str().unwrap()).unwrap();
+            if check["rpc"].is_null() {
+                // These getters reject the null address. Like erc20/balances,
+                // the production mapper excludes it before emitting events.
+                assert!(holder.iter().all(|b| *b == 0));
+                assert!(!check["rpc_error"].is_null());
+                continue;
+            }
+            assert_eq!(
+                l.project_amount(&holder, check["storage_word"].as_str().unwrap()),
+                check["rpc"].as_str().unwrap()
+            );
+            checked += 1;
+        }
+    }
+    assert_eq!(checked, 88);
+}
+
+#[test]
+fn excluded_burn_holders_keep_zero_and_nonzero_storage_values() {
+    let layouts = layout::parse(include_str!("../tests/fixtures/bsc-next-candidates-layouts.json")).unwrap();
+    let dead = hex_bytes("0x000000000000000000000000000000000000dead").unwrap();
+    let mut tested = 0;
+    for l in layouts
+        .iter()
+        .filter(|l| l.zero_balance.as_ref().is_some_and(|z| !z.excluded_addresses.is_empty()))
+    {
+        let mut b = block();
+        b.transaction_traces = vec![tx(token_call(l, &dead, 1, 0))];
+        let events = project(&b, std::slice::from_ref(l)).unwrap();
+        assert_eq!(events.balances.len(), 1);
+        assert_eq!(events.balances[0].address, dead);
+        assert_eq!(events.balances[0].amount, "0");
+        b.transaction_traces = vec![tx(token_call(l, &dead, 0, 123))];
+        assert_eq!(project(&b, std::slice::from_ref(l)).unwrap().balances[0].amount, "123");
+        b.transaction_traces = vec![tx(token_call(l, &[0x11; 20], 1, 0))];
+        assert_ne!(project(&b, std::slice::from_ref(l)).unwrap().balances[0].amount, "0");
+        // Removing the verified exclusion reproduces the previously missed
+        // burn-address mismatch; it must remain caller supplied, not hardcoded.
+        let mut old = l.clone();
+        old.zero_balance.as_mut().unwrap().excluded_addresses.clear();
+        assert_ne!(old.project_amount(&dead, "0"), "0");
+        tested += 1;
+    }
+    assert_eq!(tested, 2);
+}
+
+#[test]
+fn fallback_exclusions_require_unique_full_addresses_and_support_arbitrary_holders() {
+    let mut params: serde_json::Value = serde_json::from_str(include_str!("../tests/fixtures/bsc-fallback-layouts.json")).unwrap();
+    params.as_array_mut().unwrap().retain(|l| !l["zero_balance"].is_null());
+    let address = format!("0x{}", "42".repeat(20));
+    params[0]["zero_balance"]["excluded_addresses"] = json!([address]);
+    let parsed = layout::parse(&params.to_string()).unwrap();
+    assert_eq!(parsed[0].project_amount(&[0x42; 20], "0"), "0");
+    assert_ne!(parsed[0].project_amount(&[0x43; 20], "0"), "0");
+    assert_eq!(parsed[0].project_amount(&[0x42; 20], "123"), "123");
+    for invalid in [
+        json!([address, address]),
+        json!(["0x42"]),
+        json!(["42".repeat(20)]),
+        json!([format!("0x{}", "zz".repeat(20))]),
+    ] {
+        params[0]["zero_balance"]["excluded_addresses"] = invalid;
+        assert!(layout::parse(&params.to_string()).is_err());
+    }
 }
 #[test]
 fn newly_discovered_zero_holders_match_captured_rpc_with_twenty_token_fixture() {
@@ -489,6 +569,7 @@ fn fallback_dependency_changes_fail_even_if_restored_or_holder_silent() {
     l[0].zero_balance = Some(layout::VerifiedZeroBalance {
         value: slot(8),
         storage_slot: Some(slot(4)),
+        excluded_addresses: BTreeSet::new(),
     });
     let mut b = block();
     let mut c = eth::Call {

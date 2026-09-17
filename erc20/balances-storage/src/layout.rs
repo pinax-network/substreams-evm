@@ -120,11 +120,15 @@ pub struct ZeroBalance {
     /// Omit only when the value is an immutable runtime constant.
     #[serde(default)]
     pub storage_slot: Option<String>,
+    /// Runtime-qualified holders that keep a zero word instead of the fallback.
+    #[serde(default)]
+    pub excluded_addresses: Vec<String>,
 }
 #[derive(Clone, Debug)]
 pub struct VerifiedZeroBalance {
     pub value: [u8; 32],
     pub storage_slot: Option<[u8; 32]>,
+    pub excluded_addresses: BTreeSet<Vec<u8>>,
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -164,7 +168,9 @@ impl VerifiedLayout {
         }
         if raw == "0" {
             if let Some(rule) = &self.zero_balance {
-                return substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value).to_string();
+                if !rule.excluded_addresses.contains(address) {
+                    return substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value).to_string();
+                }
             }
         }
         raw.to_owned()
@@ -264,6 +270,10 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
             let zero_balance = layout
                 .zero_balance
                 .map(|rule| -> Result<VerifiedZeroBalance, Error> {
+                    let mut excluded_addresses = BTreeSet::new();
+                    for address in &rule.excluded_addresses {
+                        require(excluded_addresses.insert(fixed(address, 20)?), "duplicate zero-balance excluded address")?;
+                    }
                     let storage_slot = rule.storage_slot.as_deref().map(word).transpose()?;
                     if let Some(slot) = storage_slot {
                         require(
@@ -279,6 +289,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     Ok(VerifiedZeroBalance {
                         value: word(&rule.value)?,
                         storage_slot,
+                        excluded_addresses,
                     })
                 })
                 .transpose()?;
