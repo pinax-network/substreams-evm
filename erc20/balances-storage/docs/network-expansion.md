@@ -36,12 +36,13 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 188 qualified profiles: the original top 100 plus
-49 from ranks 101–150 and 39 from ranks 151–200. The
-[candidate follow-up](more-qualified-coverage.md) retains 11 candidates from the
-new cohort and reward-bearing rank 143 as unqualified. The
+The BSC campaign now includes 197 qualified profiles: the original top 100 plus
+49 from ranks 101–150 and 48 from ranks 151–200. The
+[latest candidate follow-up](pending-direct-coverage.md) retains only LBP (143),
+VSD (179) and hLBP (189) outside the active fixture. The
 [removal correction](shareholder-removal-coverage.md) now passes a captured
-shareholder tail pop and preserves all 188 profiles' audited output; swap-and-pop
+shareholder tail pop; the latest combined capture preserves all 197 profiles'
+audited output. Swap-and-pop
 has synthetic coverage but no captured swap transaction yet. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
 enumeration. Broader EVM coverage will similarly be reported per network,
@@ -50,5 +51,5 @@ required for holders whose prior balances cannot be derived from the window.
 
 [hLBP's separate quiet-holder audit](hlbp-quiet-holder-coverage.md) now confirms
 88 initialized observations and four final holder balances from actual WASM.
-It remains outside the 188 active profiles until a changed-balance case is
+It remains outside the 197 active profiles until a changed-balance case is
 captured and audited. Empty output alone cannot establish a holder's balance.

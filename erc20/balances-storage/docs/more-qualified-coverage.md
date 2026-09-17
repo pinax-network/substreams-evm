@@ -1,5 +1,9 @@
 # Ten additional BSC proxy and array layouts
 
+The subsequent [nine-token follow-up](pending-direct-coverage.md) expands the
+active fixture to 197 profiles. Counts and outstanding candidates below retain
+this report's original 188-profile snapshot.
+
 This report preserves the pre-removal-fix package and evidence. The subsequent
 [shareholder-removal correction](shareholder-removal-coverage.md) captures a real
 tail pop, adds validation support and checks a new combined 188-profile WASM
