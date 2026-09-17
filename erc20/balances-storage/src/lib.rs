@@ -421,6 +421,8 @@ mod ranks151_200_tests;
 mod ranks201_250_tests;
 #[cfg(test)]
 mod ranks251_300_tests;
+#[cfg(test)]
+mod ranks400_tests;
 
 #[cfg(test)]
 mod ranks301_350_tests;

@@ -1,0 +1,2089 @@
+{
+  "baseline_layouts_sha256": "8cf13cfd95995055d699552b50ddf58be4f62ae7b37d8265c416b67e1a1b34ff",
+  "elapsed_seconds": 120.597007917,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "7cc6ba46e983c14c829400cdf72672bb618bacc992b69fbf8d0aeaafebf0cc32",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x1bca65f5d4422e48a1ba923cd19028a5d6267777": 23,
+      "0x2ab8a4dd2191989ac2898006df350b236d2b7777": 19,
+      "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb": 19,
+      "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e": 20,
+      "0x5b1910eaad6450e50f816082aa078c41f10c292f": 17,
+      "0x848e2b1cb00dc439a15b03b8c3194e7d08917777": 33,
+      "0x93f9388979267fbf13dd7859f000d249f4cf7777": 24,
+      "0xa7440029eca41deabd8775ef1d6086b37d4df8d6": 18,
+      "0xc9d825e83aada475bd4d38c8ca984ed746277777": 18,
+      "0xd7b0bffa3bfaea34421d3df19896add7d1887777": 19,
+      "0xf756c6e7d137a68d6d649254f7d4da74fd487777": 19
+    },
+    "errors": []
+  },
+  "parent_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "qualification": [
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+      "inspection": {
+        "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+        "balance_of": "6692000001000004103607",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "block": 122288219,
+        "contract": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+        "elapsed_seconds": 0.427247916,
+        "execution_code": [
+          {
+            "address": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+            "checked_instructions": 1,
+            "runtime_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e"
+          },
+          {
+            "address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+            "checked_instructions": 4,
+            "runtime_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986"
+          },
+          {
+            "address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+            "checked_instructions": 3,
+            "runtime_hash": "0x84349216dc0a5a2012f495edc84f27c6213e979165572c0ae4b5bf7309911a5c"
+          },
+          {
+            "address": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b",
+            "checked_instructions": 1,
+            "runtime_hash": "0xa7315ee0da640da4a3b1c98f72cac91ee24cd53c3731e4ae2dc7cee52b17b564"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "depth": 1,
+              "entered": true,
+              "opcode": "STATICCALL",
+              "pc": 204,
+              "storage_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "target": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464"
+            },
+            {
+              "code_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "depth": 2,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 867,
+              "storage_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "target": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491"
+            },
+            {
+              "code_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 276,
+              "storage_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "target": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "depth": 1,
+              "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+              "pc": 133,
+              "storage_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "value": "0x0000000000000000000000008244d6ffe0695b30b2bad424683ee3bc534ea464"
+            },
+            {
+              "code_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "depth": 2,
+              "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+              "pc": 926,
+              "storage_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+            },
+            {
+              "code_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "depth": 2,
+              "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+              "pc": 926,
+              "storage_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+            },
+            {
+              "code_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "depth": 2,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 926,
+              "storage_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "value": "0x0000000000000000000000004c7ca8fcffe77281a8b81d4580cff8257d785491"
+            },
+            {
+              "code_address": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+              "depth": 3,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000097",
+              "pc": 684,
+              "storage_address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+              "value": "0x000000000000000000000000cacebe8c354b70fa6e3107f3f6f699e4fbb3a98b"
+            },
+            {
+              "code_address": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b",
+              "depth": 2,
+              "key": "0x13c2418ecfce1f8218547ceda298973a5ddfab0629db78b9fbd88590bec58927",
+              "pc": 905,
+              "storage_address": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+              "value": "0x00000000000000000000000000000000000000000000016ac627f12c86f3adb7"
+            }
+          ]
+        },
+        "hash": "0x0a37dcef739ef0c5aa1176146afc595cb845f83c4b83eb4fbeaf6754dd6be9c7",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x84349216dc0a5a2012f495edc84f27c6213e979165572c0ae4b5bf7309911a5c",
+        "status": "inspected",
+        "storage_key": "0x13c2418ecfce1f8218547ceda298973a5ddfab0629db78b9fbd88590bec58927",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+            "pc": 133,
+            "value": "0x0000000000000000000000008244d6ffe0695b30b2bad424683ee3bc534ea464"
+          },
+          {
+            "depth": 2,
+            "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+            "pc": 926,
+            "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+          },
+          {
+            "depth": 2,
+            "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+            "pc": 926,
+            "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+          },
+          {
+            "depth": 2,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 926,
+            "value": "0x0000000000000000000000004c7ca8fcffe77281a8b81d4580cff8257d785491"
+          },
+          {
+            "depth": 3,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000097",
+            "pc": 684,
+            "value": "0x000000000000000000000000cacebe8c354b70fa6e3107f3f6f699e4fbb3a98b"
+          },
+          {
+            "depth": 2,
+            "key": "0x13c2418ecfce1f8218547ceda298973a5ddfab0629db78b9fbd88590bec58927",
+            "pc": 905,
+            "value": "0x00000000000000000000000000000000000000000000016ac627f12c86f3adb7"
+          }
+        ],
+        "storage_word": "6692000001000004103607",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "342e33109a3f696144d4647e514f97402c12168ea4d7e3a2db187b6a2a656384"
+      },
+      "kind": "beacon",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "beacon_proxy": {
+          "beacon": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+          "beacon_code_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b",
+          "implementation_code_hash": "0xa7315ee0da640da4a3b1c98f72cac91ee24cd53c3731e4ae2dc7cee52b17b564",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "proxy": {
+            "code_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e",
+            "implementation": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+            "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          },
+          "proxy_admin": {
+            "address": "0xe4427af3555cd9303d728c491364fadfdd7494fe",
+            "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          }
+        },
+        "code_hash": "0x84349216dc0a5a2012f495edc84f27c6213e979165572c0ae4b5bf7309911a5c",
+        "contract": "0xa7440029eca41deabd8775ef1d6086b37d4df8d6",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x000000000000000000000000000000000000000000000000000000000000012e"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x000000000000000000000000000000000000000000000000000000000000009b",
+          "0x00000000000000000000000000000000000000000000000000000000000000c9",
+          "0x000000000000000000000000000000000000000000000000000000000000012d",
+          "0x000000000000000000000000000000000000000000000000000000000000012f"
+        ]
+      },
+      "rank": 360,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+        "beacon_proxy": {
+          "beacon": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+          "beacon_code_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b",
+          "implementation_code_hash": "0xa7315ee0da640da4a3b1c98f72cac91ee24cd53c3731e4ae2dc7cee52b17b564",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "proxy": {
+            "code_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e",
+            "implementation": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+            "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          },
+          "proxy_admin": {
+            "address": "0xe4427af3555cd9303d728c491364fadfdd7494fe",
+            "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"
+          }
+        },
+        "code_hash": "0x84349216dc0a5a2012f495edc84f27c6213e979165572c0ae4b5bf7309911a5c",
+        "contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x000000000000000000000000000000000000000000000000000000000000012e"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x000000000000000000000000000000000000000000000000000000000000009b",
+          "0x00000000000000000000000000000000000000000000000000000000000000c9",
+          "0x000000000000000000000000000000000000000000000000000000000000012d",
+          "0x000000000000000000000000000000000000000000000000000000000000012f"
+        ]
+      },
+      "template_contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+      "inspection": {
+        "address": "0xa8e74ee09d1a4693ec9e043cea5892117c7d718d",
+        "balance_of": "8409350232763683754776",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288172,
+        "contract": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+        "elapsed_seconds": 0.32578475,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0x1ea68c95c85a2f6f80568c1e81e889a3231f11b3eec09f391af1e621f1f3b07e",
+              "pc": 1509,
+              "storage_address": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+              "value": "0x0000000000000000000000000000000000000000000001c7df2d9a0d2fd6d318"
+            }
+          ]
+        },
+        "hash": "0x6fe169bf551adb2ff4bcc52872d7fdd3df8d7fe2bb8faf5c5a8525099098a6b2",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0x1ea68c95c85a2f6f80568c1e81e889a3231f11b3eec09f391af1e621f1f3b07e",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x1ea68c95c85a2f6f80568c1e81e889a3231f11b3eec09f391af1e621f1f3b07e",
+            "pc": 1509,
+            "value": "0x0000000000000000000000000000000000000000000001c7df2d9a0d2fd6d318"
+          }
+        ],
+        "storage_word": "8409350232763683754776",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "5083ffd441aa4e19b99b448ec7af6a331af024ef93b2904de12885d89782dfeb"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0xf756c6e7d137a68d6d649254f7d4da74fd487777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 368,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+      "inspection": {
+        "address": "0x8894e0a0c962cb723c1976a4421c95949be2d4e3",
+        "balance_of": "17281675997598566281989",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288480,
+        "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+        "elapsed_seconds": 0.347707834,
+        "execution_code": [
+          {
+            "address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+            "checked_instructions": 1,
+            "runtime_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711"
+          },
+          {
+            "address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+            "checked_instructions": 2,
+            "runtime_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9"
+          },
+          {
+            "address": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+            "checked_instructions": 1,
+            "runtime_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+              "depth": 1,
+              "entered": true,
+              "opcode": "STATICCALL",
+              "pc": 104,
+              "storage_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+              "target": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3"
+            },
+            {
+              "code_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 168,
+              "storage_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+              "target": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+              "depth": 2,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+              "pc": 113,
+              "storage_address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+              "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+            },
+            {
+              "code_address": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+              "depth": 2,
+              "key": "0x6b51828640fbd0d545b574b1764b49c8ceb7b4e0e59f094796fefd7b65913b9c",
+              "pc": 2317,
+              "storage_address": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+              "value": "0x0000000000000000000000000000000000000000000003a8d76eb59280f37305"
+            }
+          ]
+        },
+        "hash": "0xcf364eb57daf5d20f8ff4b8fd94f3a0d6ecfc6344708bf3623e601a502838bdc",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "status": "inspected",
+        "storage_key": "0x6b51828640fbd0d545b574b1764b49c8ceb7b4e0e59f094796fefd7b65913b9c",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "pc": 113,
+            "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+          },
+          {
+            "depth": 2,
+            "key": "0x6b51828640fbd0d545b574b1764b49c8ceb7b4e0e59f094796fefd7b65913b9c",
+            "pc": 2317,
+            "value": "0x0000000000000000000000000000000000000000000003a8d76eb59280f37305"
+          }
+        ],
+        "storage_word": "17281675997598566281989",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "2ea3c4fc1be3146c974bedecd45db5b61d6f81ffa41173130fd6b2142bd8da58"
+      },
+      "kind": "beacon",
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "beacon_proxy": {
+          "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+          "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+          "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_mapping_words": {
+          "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000032",
+          "0x0000000000000000000000000000000000000000000000000000000000000064",
+          "0x0000000000000000000000000000000000000000000000000000000000000096",
+          "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+        ]
+      },
+      "rank": 378,
+      "template": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "beacon_proxy": {
+          "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+          "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+          "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "contract": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_mapping_words": {
+          "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000032",
+          "0x0000000000000000000000000000000000000000000000000000000000000064",
+          "0x0000000000000000000000000000000000000000000000000000000000000096",
+          "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+        ]
+      },
+      "template_contract": "0x205812cdbed920aff76c6580abd681a46d11efc7"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+      "inspection": {
+        "address": "0xc7a398a7f9c4d8181fd847a2062360f9247a5e59",
+        "balance_of": "12593673121258374291349265",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288341,
+        "contract": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+        "elapsed_seconds": 0.315900958,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0x372d68b97578abaeb0791e02a9e4b5b3459baf89fb5f6be0ac4931feced20c99",
+              "pc": 1509,
+              "storage_address": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+              "value": "0x0000000000000000000000000000000000000000000a6ad0634c3ca0a0315f11"
+            }
+          ]
+        },
+        "hash": "0x12a51209328fab7000bce71e71b8c75e5b5fb27bf609983e6957bf28b1fc1471",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0x372d68b97578abaeb0791e02a9e4b5b3459baf89fb5f6be0ac4931feced20c99",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x372d68b97578abaeb0791e02a9e4b5b3459baf89fb5f6be0ac4931feced20c99",
+            "pc": 1509,
+            "value": "0x0000000000000000000000000000000000000000000a6ad0634c3ca0a0315f11"
+          }
+        ],
+        "storage_word": "12593673121258374291349265",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "741409c21702d7088b735da8f0c27ac93cda6660b39a7865612f9acca515122c"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x848e2b1cb00dc439a15b03b8c3194e7d08917777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 380,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+      "inspection": {
+        "address": "0xa23eb3b6bb7f5ffeac33c05b1b7f2b2a70e9d840",
+        "balance_of": "1000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288241,
+        "contract": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+        "elapsed_seconds": 0.304053625,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0x768d30ed7de344a28ed7a283bef4dbc9392f71f119bd7cca3fd2f7b88a11f184",
+              "pc": 1509,
+              "storage_address": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+              "value": "0x000000000000000000000000000000000000000000000000000000003b9aca00"
+            }
+          ]
+        },
+        "hash": "0xeb7b25d69c2de195ec986112f8976b1f18b5aa02be23063ae6a9424413513fea",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0x768d30ed7de344a28ed7a283bef4dbc9392f71f119bd7cca3fd2f7b88a11f184",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x768d30ed7de344a28ed7a283bef4dbc9392f71f119bd7cca3fd2f7b88a11f184",
+            "pc": 1509,
+            "value": "0x000000000000000000000000000000000000000000000000000000003b9aca00"
+          }
+        ],
+        "storage_word": "1000000000",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "d6a2b6f96e1617131beef55f19040b24cf674af829ffdf555435257ec8066525"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x93f9388979267fbf13dd7859f000d249f4cf7777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 381,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+      "inspection": {
+        "address": "0x15d41fd68d94c8727b4758ae90921ca2bb5903f9",
+        "balance_of": "231752100020809357923818909",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288065,
+        "contract": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+        "elapsed_seconds": 0.332736666,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0x3bdb6025984987ceabf1b0f1644d27299a0f94829546df02e45265dd1f5ec1ac",
+              "pc": 1509,
+              "storage_address": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+              "value": "0x000000000000000000000000000000000000000000bfb36a841aabd7d31d9d9d"
+            }
+          ]
+        },
+        "hash": "0xc35712743adaa73cf9ad179fffc7bdf9c2c5bb200cdbdecbccf370eb081c930b",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0x3bdb6025984987ceabf1b0f1644d27299a0f94829546df02e45265dd1f5ec1ac",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x3bdb6025984987ceabf1b0f1644d27299a0f94829546df02e45265dd1f5ec1ac",
+            "pc": 1509,
+            "value": "0x000000000000000000000000000000000000000000bfb36a841aabd7d31d9d9d"
+          }
+        ],
+        "storage_word": "231752100020809357923818909",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "b51e2d5095c048113aaaaadfd21e8adae9f6ebc18a163ebd9f5fbe23cdf18ed8"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x1bca65f5d4422e48a1ba923cd19028a5d6267777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 385,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+      "inspection": {
+        "address": "0x2cc808648b96ff3657d6c1611042339c6f35b36c",
+        "balance_of": "65065545582187261872195",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "block": 122288111,
+        "contract": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+        "elapsed_seconds": 0.415967084,
+        "execution_code": [
+          {
+            "address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+            "checked_instructions": 3,
+            "runtime_hash": "0x1f4392999150360e28e4a0a83cbcb8d02f37368f79fd9d2d234d2e4c79fc91d4"
+          },
+          {
+            "address": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3",
+            "checked_instructions": 1,
+            "runtime_hash": "0x7b5dbbb9333e8973eb3e6ed329cf1505c087d69c4d7bfd3cf76a48a09c445ffc"
+          },
+          {
+            "address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+            "checked_instructions": 1,
+            "runtime_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf"
+          },
+          {
+            "address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+            "checked_instructions": 2,
+            "runtime_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "depth": 1,
+              "entered": true,
+              "opcode": "STATICCALL",
+              "pc": 204,
+              "storage_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "target": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+            },
+            {
+              "code_address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+              "depth": 2,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 177,
+              "storage_address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+              "target": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3"
+            },
+            {
+              "code_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 276,
+              "storage_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "target": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "depth": 1,
+              "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+              "pc": 133,
+              "storage_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "value": "0x000000000000000000000000b6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+            },
+            {
+              "code_address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+              "depth": 2,
+              "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+              "pc": 133,
+              "storage_address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+              "value": "0x000000000000000000000000621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3"
+            },
+            {
+              "code_address": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3",
+              "depth": 3,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+              "pc": 4702,
+              "storage_address": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+              "value": "0x0000000000000000000000007f8c5e730121657e17e452c5a1ba3fa1ef96f22a"
+            },
+            {
+              "code_address": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+              "depth": 2,
+              "key": "0x5b3f77311b08a02f326ec1f4bbd8bc54254ecbad3ce8fc3bcfff48ea97983f81",
+              "pc": 544,
+              "storage_address": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+              "value": "0x000000000000000000000000000000000000000000000dc735d5cef6da8a4843"
+            }
+          ]
+        },
+        "hash": "0x7e4a5088b43f3795330eaccc067491c6fd61e5c04ad8a62449e90de8d656f98f",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x1f4392999150360e28e4a0a83cbcb8d02f37368f79fd9d2d234d2e4c79fc91d4",
+        "status": "inspected",
+        "storage_key": "0x5b3f77311b08a02f326ec1f4bbd8bc54254ecbad3ce8fc3bcfff48ea97983f81",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+            "pc": 133,
+            "value": "0x000000000000000000000000b6f6d86a8f9879a9c87f643768d9efc38c1da6e7"
+          },
+          {
+            "depth": 2,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 133,
+            "value": "0x000000000000000000000000621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3"
+          },
+          {
+            "depth": 3,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "pc": 4702,
+            "value": "0x0000000000000000000000007f8c5e730121657e17e452c5a1ba3fa1ef96f22a"
+          },
+          {
+            "depth": 2,
+            "key": "0x5b3f77311b08a02f326ec1f4bbd8bc54254ecbad3ce8fc3bcfff48ea97983f81",
+            "pc": 544,
+            "value": "0x000000000000000000000000000000000000000000000dc735d5cef6da8a4843"
+          }
+        ],
+        "storage_word": "65065545582187261872195",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "4a8bdbe98a623c251c9169f65dd0e4d51caf6718619805e59602d92068cd3232"
+      },
+      "kind": "beacon",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "beacon_proxy": {
+          "beacon": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+          "beacon_code_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+          "implementation_code_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "proxy": {
+            "code_hash": "0x7b5dbbb9333e8973eb3e6ed329cf1505c087d69c4d7bfd3cf76a48a09c445ffc",
+            "implementation": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3",
+            "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          }
+        },
+        "code_hash": "0x1f4392999150360e28e4a0a83cbcb8d02f37368f79fd9d2d234d2e4c79fc91d4",
+        "contract": "0x4c067de26475e1cefee8b8d1f6e2266b33a2372e",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x000000000000000000000000000000000000000000000000000000000000000e"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d"
+        ]
+      },
+      "rank": 387,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "beacon_proxy": {
+          "beacon": "0xb6f6d86a8f9879a9c87f643768d9efc38c1da6e7",
+          "beacon_code_hash": "0xd8ccd7012259b37b43dcdfc8ea203829658466d518193be0356ac60594296abd",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0x7f8c5e730121657e17e452c5a1ba3fa1ef96f22a",
+          "implementation_code_hash": "0xd71fb245ca071d285cbe654dbae3b9c488c640fb0ca5232f2622c07dccd62ccf",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "proxy": {
+            "code_hash": "0x7b5dbbb9333e8973eb3e6ed329cf1505c087d69c4d7bfd3cf76a48a09c445ffc",
+            "implementation": "0x621199f6beb2ba6fbd962e8a52a320ea4f6d4aa3",
+            "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+          }
+        },
+        "code_hash": "0x1f4392999150360e28e4a0a83cbcb8d02f37368f79fd9d2d234d2e4c79fc91d4",
+        "contract": "0x30117e4bc17d7b044194b76a38365c53b72f7d49",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x000000000000000000000000000000000000000000000000000000000000000e"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d"
+        ]
+      },
+      "template_contract": "0x30117e4bc17d7b044194b76a38365c53b72f7d49"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+      "inspection": {
+        "address": "0x8f10b468b06c6fd214b65f87778827f7d113f996",
+        "balance_of": "1",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288143,
+        "contract": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+        "elapsed_seconds": 0.358124417,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0x31de140ce8c44e419afd383bd70abda04401ad393c6f299f40deb850d71dd710",
+              "pc": 1509,
+              "storage_address": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+            }
+          ]
+        },
+        "hash": "0x5366f9072fe75f526b48ab8dda80877cbf8e1781c1b7996e8d438456ee06178e",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0x31de140ce8c44e419afd383bd70abda04401ad393c6f299f40deb850d71dd710",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x31de140ce8c44e419afd383bd70abda04401ad393c6f299f40deb850d71dd710",
+            "pc": 1509,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        ],
+        "storage_word": "1",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "c3ff75a0e5517ea93cef012ace1eb3286fe1127062904aa99ec095105cef9b7b"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x2ab8a4dd2191989ac2898006df350b236d2b7777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 396,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "inspection": {
+        "address": "0x89ac810eb13338587b560945ed8ad7712b0617c0",
+        "balance_of": "4004083133166001940",
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "block": 122288035,
+        "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+        "elapsed_seconds": 0.385338375,
+        "execution_code": [
+          {
+            "address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+            "checked_instructions": 1,
+            "runtime_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711"
+          },
+          {
+            "address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+            "checked_instructions": 2,
+            "runtime_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9"
+          },
+          {
+            "address": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+            "checked_instructions": 1,
+            "runtime_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+              "depth": 1,
+              "entered": true,
+              "opcode": "STATICCALL",
+              "pc": 104,
+              "storage_address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+              "target": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3"
+            },
+            {
+              "code_address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 168,
+              "storage_address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+              "target": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+              "depth": 2,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+              "pc": 113,
+              "storage_address": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+              "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+            },
+            {
+              "code_address": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+              "depth": 2,
+              "key": "0x246c55544dd7e8618e6f291d03506a2eaae3b3c26289b17cd26d9717347bb1a8",
+              "pc": 2317,
+              "storage_address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+              "value": "0x00000000000000000000000000000000000000000000000037915c65237e1f14"
+            }
+          ]
+        },
+        "hash": "0x35678ad4f89c7f35e53df4e3f7fa8a05fbef3792309b0ce457f59d1dcd850e21",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "status": "inspected",
+        "storage_key": "0x246c55544dd7e8618e6f291d03506a2eaae3b3c26289b17cd26d9717347bb1a8",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "pc": 113,
+            "value": "0x000000000000000000000000cfed6c4679297ea4889f8183bc057b4a86c64e46"
+          },
+          {
+            "depth": 2,
+            "key": "0x246c55544dd7e8618e6f291d03506a2eaae3b3c26289b17cd26d9717347bb1a8",
+            "pc": 2317,
+            "value": "0x00000000000000000000000000000000000000000000000037915c65237e1f14"
+          }
+        ],
+        "storage_word": "4004083133166001940",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "3a9f1075ff39ebd1a709aadf8d849852796975132cfed7f6dd0d7227f0c6d419"
+      },
+      "kind": "beacon",
+      "layout": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "beacon_proxy": {
+          "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+          "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+          "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_mapping_words": {
+          "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000032",
+          "0x0000000000000000000000000000000000000000000000000000000000000064",
+          "0x0000000000000000000000000000000000000000000000000000000000000096",
+          "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+        ]
+      },
+      "rank": 397,
+      "template": {
+        "balance_slot": "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace00",
+        "beacon_proxy": {
+          "beacon": "0x156d6dce9a4f6139a3406f1f021f1a4880de93a3",
+          "beacon_code_hash": "0x80fbad22136c0abdce6e0f3cc46cd0572318e01b92dbd5b4d5795ef6e8808711",
+          "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "implementation": "0xcfed6c4679297ea4889f8183bc057b4a86c64e46",
+          "implementation_code_hash": "0x060dc28d4dd8d9bb8a381d4009bccbac129ce743a10b3d8aa0ffef5034b50544",
+          "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "code_hash": "0xdf946913977a2ed76735b4b2e66f2272d1a76af911c4e520655888c9e32269f9",
+        "contract": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+        "other_mapping_slots": [
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace01"
+        ],
+        "other_mapping_words": {
+          "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+        },
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000032",
+          "0x0000000000000000000000000000000000000000000000000000000000000064",
+          "0x0000000000000000000000000000000000000000000000000000000000000096",
+          "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "0x0000000000000000000000000000000000000000000000000000000000000098",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace02",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace03",
+          "0x52c63247e1f47db19d5ce0460030c497f067ca4cebf71ba98eeadabe20bace04",
+          "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00"
+        ]
+      },
+      "template_contract": "0x205812cdbed920aff76c6580abd681a46d11efc7"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+      "inspection": {
+        "address": "0x4982085c9e2f89f2ecb8131eca71afad896e89cb",
+        "balance_of": "45669505653338732521850650",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288072,
+        "contract": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+        "elapsed_seconds": 0.340416791,
+        "execution_code": [
+          {
+            "address": "0x024f18294970b5c76c0691b87f138a0317156422",
+            "checked_instructions": 1,
+            "runtime_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a"
+          },
+          {
+            "address": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+            "checked_instructions": 1,
+            "runtime_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+              "target": "0x024f18294970b5c76c0691b87f138a0317156422"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x024f18294970b5c76c0691b87f138a0317156422",
+              "depth": 2,
+              "key": "0xc91ff92b0c86d8def7cb96b8959eede1c5aa2d54fc40be7b6b22c62596a5e7bd",
+              "pc": 1509,
+              "storage_address": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+              "value": "0x00000000000000000000000000000000000000000025c6e4dcbeac5ee75c071a"
+            }
+          ]
+        },
+        "hash": "0xdc317e2f56b1a97fefe63243f835b742222d5fbef012f707cf5fb618f0395197",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "status": "inspected",
+        "storage_key": "0xc91ff92b0c86d8def7cb96b8959eede1c5aa2d54fc40be7b6b22c62596a5e7bd",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0xc91ff92b0c86d8def7cb96b8959eede1c5aa2d54fc40be7b6b22c62596a5e7bd",
+            "pc": 1509,
+            "value": "0x00000000000000000000000000000000000000000025c6e4dcbeac5ee75c071a"
+          }
+        ],
+        "storage_word": "45669505653338732521850650",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "7c9b5da6bc89830dfd3b73aa74b9eab5204cc06e6ef25689faf2014dbadc1ea5"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0xc9d825e83aada475bd4d38c8ca984ed746277777",
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "rank": 399,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0x9a16180e23f97dd8df627d48402f11d69169798b0470c1d975bf3d846a38e365",
+        "contract": "0x8a119a3087799041bace3d906695baddee9e7777",
+        "deployment": {
+          "block": 122288475,
+          "block_hash": "0x5bbe70cca11bbbadc2cb24f2d884dbb28e5f82398bdcac1018d4018f3775e52d"
+        },
+        "minimal_proxy": {
+          "code_hash": "0xb530a7e0ff0d6ab435a5ec71f2b04092937735e23a0fb3a0746724ce9b875b4a",
+          "implementation": "0x024f18294970b5c76c0691b87f138a0317156422"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099",
+          "0x0000000000000000000000000000000000000000000000000000000000000107"
+        ],
+        "other_mapping_words": {},
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0x0000000000000000000000000000000000000000000000000000000000000102",
+          "0x0000000000000000000000000000000000000000000000000000000000000103",
+          "0x0000000000000000000000000000000000000000000000000000000000000104",
+          "0x0000000000000000000000000000000000000000000000000000000000000105",
+          "0x0000000000000000000000000000000000000000000000000000000000000106",
+          "0x0000000000000000000000000000000000000000000000000000000000000108",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364dd",
+          "0x8543e9adbfbe1f62b7411fdf032fcfea758a7d6b332f64d971a1334c2ff364de"
+        ]
+      },
+      "template_contract": "0x8a119a3087799041bace3d906695baddee9e7777"
+    },
+    {
+      "basis": "Exact previously reviewed forwarding and implementation runtimes with fresh candidate-specific dependency pointers, getter controls and observed storage/call paths. Deployment evidence is not inherited.",
+      "contract": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+      "inspection": {
+        "address": "0x10381d48d840f560785b276decf816fcd3ea011d",
+        "balance_of": "82348371167103895235168268",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "block": 122288009,
+        "contract": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+        "elapsed_seconds": 0.336009375,
+        "execution_code": [
+          {
+            "address": "0x8b4329947e34b6d56d71a3385cac122bade7d78d",
+            "checked_instructions": 1,
+            "runtime_hash": "0x852cb4241a5b2210d523900e6a0af0a52c5c5bccbf4fbb236cd2cf068b8b3ab8"
+          },
+          {
+            "address": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+            "checked_instructions": 1,
+            "runtime_hash": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [
+            {
+              "code_address": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+              "depth": 1,
+              "entered": true,
+              "opcode": "DELEGATECALL",
+              "pc": 31,
+              "storage_address": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+              "target": "0x8b4329947e34b6d56d71a3385cac122bade7d78d"
+            }
+          ],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x8b4329947e34b6d56d71a3385cac122bade7d78d",
+              "depth": 2,
+              "key": "0x4481b31bb4da75d5e28530d505593f5b8f7706eada695a186b1f987fd1c3cfab",
+              "pc": 616,
+              "storage_address": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+              "value": "0x000000000000000000000000000000000000000000441df225604f8f457f880c"
+            }
+          ]
+        },
+        "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "status": "inspected",
+        "storage_key": "0x4481b31bb4da75d5e28530d505593f5b8f7706eada695a186b1f987fd1c3cfab",
+        "storage_reads": [
+          {
+            "depth": 2,
+            "key": "0x4481b31bb4da75d5e28530d505593f5b8f7706eada695a186b1f987fd1c3cfab",
+            "pc": 616,
+            "value": "0x000000000000000000000000000000000000000000441df225604f8f457f880c"
+          }
+        ],
+        "storage_word": "82348371167103895235168268",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "9fe9b6578dda914b212a6df7400131b946a2eec1749c2a3a9711feaa7d49ef43"
+      },
+      "kind": "minimal",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "contract": "0xd7b0bffa3bfaea34421d3df19896add7d1887777",
+        "minimal_proxy": {
+          "code_hash": "0x852cb4241a5b2210d523900e6a0af0a52c5c5bccbf4fbb236cd2cf068b8b3ab8",
+          "implementation": "0x8b4329947e34b6d56d71a3385cac122bade7d78d"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0xe08ec2af2cfc251225e1968fd6ca21e4044f129bffa95bac3503be8bdb30a367",
+          "0xe08ec2af2cfc251225e1968fd6ca21e4044f129bffa95bac3503be8bdb30a368"
+        ]
+      },
+      "rank": 400,
+      "template": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000033",
+        "code_hash": "0xa5541d9f45d6c04ba0111363e5d8bcf65eb2de9b037fd9b1d6cb0fc733b63b8f",
+        "contract": "0xcccbd077b612a42f896b53e24a11c36d32117777",
+        "deployment": {
+          "block": 122288172,
+          "block_hash": "0x6fe169bf551adb2ff4bcc52872d7fdd3df8d7fe2bb8faf5c5a8525099098a6b2"
+        },
+        "minimal_proxy": {
+          "code_hash": "0x852cb4241a5b2210d523900e6a0af0a52c5c5bccbf4fbb236cd2cf068b8b3ab8",
+          "implementation": "0x8b4329947e34b6d56d71a3385cac122bade7d78d"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000034",
+          "0x0000000000000000000000000000000000000000000000000000000000000099"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000035",
+          "0x0000000000000000000000000000000000000000000000000000000000000036",
+          "0x0000000000000000000000000000000000000000000000000000000000000037",
+          "0x0000000000000000000000000000000000000000000000000000000000000065",
+          "0x0000000000000000000000000000000000000000000000000000000000000066",
+          "0x0000000000000000000000000000000000000000000000000000000000000067",
+          "0x0000000000000000000000000000000000000000000000000000000000000068",
+          "0x000000000000000000000000000000000000000000000000000000000000009a",
+          "0x00000000000000000000000000000000000000000000000000000000000000cc",
+          "0x00000000000000000000000000000000000000000000000000000000000000fe",
+          "0x00000000000000000000000000000000000000000000000000000000000000ff",
+          "0x0000000000000000000000000000000000000000000000000000000000000100",
+          "0x0000000000000000000000000000000000000000000000000000000000000101",
+          "0xe08ec2af2cfc251225e1968fd6ca21e4044f129bffa95bac3503be8bdb30a367",
+          "0xe08ec2af2cfc251225e1968fd6ca21e4044f129bffa95bac3503be8bdb30a368"
+        ]
+      },
+      "template_contract": "0xcccbd077b612a42f896b53e24a11c36d32117777"
+    }
+  ],
+  "runtime_checks_sha256": "0e9daf47c4e4a1fbab1a67146267354f38b1275084afbf73319281ce6d689498",
+  "scope": "Eleven exact reviewed runtime families. Complete native interval and fresh getter/dependency binding; packaged RPC and holder audits still required.",
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

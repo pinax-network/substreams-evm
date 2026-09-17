@@ -1,0 +1,46 @@
+{
+  "aggregate_emitted_zero_checks": 15137,
+  "all_balance_event_fields_equal": true,
+  "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "baseline_report_sha256": "dacb46f5a033804c9d798e58134b93ba09517f5a57e594a14715d175956cd6eb",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 10.554032737522196,
+    "empty_output_delivery": null,
+    "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "seconds_including_startup": 97.02452375
+  },
+  "configured_profiles": 375,
+  "elapsed_seconds": 176.664829666,
+  "events_sha256": "6e7259b5046d4bae451b3743a9e1eff3a163ba77f8b9048430b3b08217eab79f",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 178745,
+  "initialized_carry_forward_matches": 69652,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "d9bd3134a94e24ddc03686dc42e997242ea91c158d647847448f3f132f58ddfe",
+  "package_change_scope": "Same packaged code; twenty-seven independently qualified direct and proxy layouts added to the previous immutable verified output",
+  "profiles_with_emitted_rows": 374,
+  "reused_verified_rpc_rows": 109094,
+  "scope": "Fresh 375-profile actual-WASM capture. Full-field comparison with the verified 348-profile capture and twenty-seven newly RPC-audited direct and proxy profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-375 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "69bf3fe6e9a1784e6464d84c7ba8a7f8bfd5547f5f843129ea3d2407bebd283f",
+      "cohort": "direct400",
+      "events_sha256": "d06f7da19e0684d0854e3de22d569b89963216e3df2525bec8aaaf25b29e130c",
+      "holder_report_sha256": "32796f2037c521cd675c1667e07c770aec8901f17d23b28c9baa0c4f6e9f6d54",
+      "layouts_sha256": "e9ab0082cc2abe206a1e9462ae50b930c44a0e7207af0d677c87c69b8da76d98",
+      "rpc_report_sha256": "2377041ceb147931a43f89aeea48a59ec0978001a9e96279f89d9138ad6e3fb3"
+    },
+    {
+      "checks_sha256": "1051739b85fb5565aa633c5805e2adf9434dae525fc6381782ae135fd865bdfb",
+      "cohort": "family400",
+      "events_sha256": "ff5115a0280e9b1d6a001f65722de2089878818c5eacc0056e5f0a89a852a663",
+      "holder_report_sha256": "32a323b6380deb71a0b31c908ae3b6d538dee422ffe0c1a2b9e8374671f51a73",
+      "layouts_sha256": "7cc6ba46e983c14c829400cdf72672bb618bacc992b69fbf8d0aeaafebf0cc32",
+      "rpc_report_sha256": "6cc3a6ff18a5daf3cd07c267f8ad418be0003beda810fb1e9feffb4ae130d976"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

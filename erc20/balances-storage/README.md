@@ -346,14 +346,15 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [source-led follow-up](docs/direct-discovery-gaps.md) brings the
-explicit test configuration to 348 profiles in
-`tests/fixtures/bsc-direct-gaps-layouts.json`. MUSD and GAIX match 35 emitted
-RPC balances, 64 initialized observations and all 18 final holder balances.
-The unchanged package also preserves every protobuf event field for 108,561 previously RPC-verified
-balances across the combined configuration. The
-[next-50 investigation](docs/ranks351-400-investigation.md) leaves 47 candidates
-unqualified, alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks.
+The latest [direct and proxy follow-up](docs/ranks400-coverage.md) brings the
+explicit test configuration to 375 profiles in
+`tests/fixtures/bsc-ranks400-layouts.json`. The 27 additions match 533 emitted
+RPC balances, 901 initialized observations and all 402 final holder balances.
+The unchanged package preserves every protobuf event field for 109,094 previously
+RPC-verified balances across the combined configuration. Twenty candidates from
+the [next-50 investigation](docs/ranks351-400-investigation.md) remain unqualified,
+alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The previous
+[MUSD/GAIX follow-up](docs/direct-discovery-gaps.md) retains its separate evidence.
 The [reflection host model](docs/reflection-holder-model.md) matches 329
 historical getter checks for BabyDoge and 10SET and confirms passive 10SET
 holder changes, but does not add production reflection support. The

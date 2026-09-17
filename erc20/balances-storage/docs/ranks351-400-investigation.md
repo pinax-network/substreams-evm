@@ -14,12 +14,14 @@ one nonzero-word transformation: XVS's `uint96` getter. Its separately verified
 [width correction and holder audit](xvs-uint96.md) add one qualified profile.
 That follow-up left 49 candidates outside its combined configuration. The
 subsequent [MUSD/GAIX source-led qualification](direct-discovery-gaps.md) adds
-two profiles, leaving **47** from this group still unqualified.
+two profiles, leaving 47. The later [direct and proxy qualification](ranks400-coverage.md)
+adds 27 more, leaving **20** from this group unqualified and **25** among the
+first 400 overall.
 
-Eleven historical runtime hashes match an already reviewed family. Each still
-needs its own source/getter/dependency binding, explicit storage rules and
-complete interval checks; matching a shell or a sampled value does not promote
-a profile.
+Eleven historical runtime hashes matched an already reviewed family. Their
+later qualification independently checks each candidate's code, pointers,
+getter and storage dependencies, followed by complete packaged RPC and holder
+replay. Matching a shell or a sampled value alone does not promote a profile.
 
 The six candidates below the direct-mapping discovery threshold are AR (351), ARZ (354),
 ARS (364), 10SET (377), MUSD (386) and GAIX (394). That status is a discovery
