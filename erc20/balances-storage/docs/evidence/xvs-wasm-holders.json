@@ -1,0 +1,35 @@
+{
+  "checkpoint_sha256": "af99250e40ce7a16a93a77aaf09a574c012c0fa60c09a5da081e322615239954",
+  "checks_sha256": "83986cbad8a7a04c3cccfb25f5d2c8dd949a4d345a488a554ada0773415cfcff",
+  "configured_tokens": 1,
+  "deployment_initialization": [],
+  "events_sha256": "fedcae51f7cb2ed3d5d798d0a0446f63732c0fbc7aeb3115c78746c16f601668",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 17,
+  "layouts_sha256": "e16dfb5dd6b53ea14db9764022e7e85026065c322590082e4d4485ceb50e232b",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 36,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "One source-bound uint96 token on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 21,
+  "snapshot_zeros": 6,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+      "emitted_rows": 19,
+      "reference_rows": 36,
+      "seeded_matches": 36,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 12,
+      "unseeded_unknown_rows": 17,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

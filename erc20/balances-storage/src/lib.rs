@@ -440,3 +440,5 @@ mod voting_proxy_followup_tests;
 mod voting_tests;
 #[cfg(test)]
 mod vsd_tests;
+#[cfg(test)]
+mod xvs_tests;

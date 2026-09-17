@@ -304,6 +304,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     contract: hex::decode(&contract[2..])?,
                     balance_slot: hex::decode(&slot[2..])?.try_into().unwrap(),
                     code_hash: hex::decode(&codes[0][2..])?.try_into().unwrap(),
+                    balance_bits: None,
                     deployment: None,
                     other_slots: BTreeSet::new(),
                     other_mapping_slots: BTreeSet::new(),

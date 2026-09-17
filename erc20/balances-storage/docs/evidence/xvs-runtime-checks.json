@@ -1,0 +1,30 @@
+{
+  "chain_id": 56,
+  "checks": [
+    {
+      "block": 122288005,
+      "bytes": 12781,
+      "contract": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "runtime_hash": "0x27d40afa4bd607ec4235e05bff971472c1d9effd4d4757a9da3b3daa735a3eb3"
+    },
+    {
+      "block": 122288254,
+      "bytes": 12781,
+      "contract": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+      "hash": "0x0c08accc94da365e38afcb1a6a88b9b947d86c4b9584ea2c1cc8d1372c9876a9",
+      "runtime_hash": "0x27d40afa4bd607ec4235e05bff971472c1d9effd4d4757a9da3b3daa735a3eb3"
+    },
+    {
+      "block": 122289029,
+      "bytes": 12781,
+      "contract": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "runtime_hash": "0x27d40afa4bd607ec4235e05bff971472c1d9effd4d4757a9da3b3daa735a3eb3"
+    }
+  ],
+  "getter_qualification_sha256": "1b6a601ff852bb7d8cfd80ecfcde992750555c8778e9761253f4f803d0aa16f0",
+  "scope": "Fresh canonical runtime binding at the parent boundary, controlled getter block and final boundary",
+  "source_sha256": "7615d0db5e859cda67f39fdbe9ba21cee072379d8fd05efc1e668ca971b95111",
+  "status": "inspected"
+}

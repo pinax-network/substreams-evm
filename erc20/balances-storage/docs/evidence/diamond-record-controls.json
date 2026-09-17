@@ -1,0 +1,453 @@
+{
+  "block": 122288048,
+  "cases": [
+    {
+      "globals": null,
+      "name": "enabled_pending",
+      "outcomes": [
+        {
+          "balance_of": "17",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000011"
+          }
+        },
+        {
+          "balance_of": "18",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+          }
+        }
+      ],
+      "record": [
+        "1000",
+        "0",
+        "0",
+        "0",
+        "17",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "f964c58427ca686cae5e7c2c0b22f79b55b9e121a4b3659415a7cb3230920bc4"
+    },
+    {
+      "globals": null,
+      "name": "disabled_pending",
+      "outcomes": [
+        {
+          "balance_of": "0",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "1",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        }
+      ],
+      "record": [
+        "1000",
+        "0",
+        "0",
+        "0",
+        "17",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      "trace_sha256": "8ec0374f9d31c6868fb906fd02e2102f274f98743a8baea505ac7fd495a35730"
+    },
+    {
+      "globals": null,
+      "name": "small_cap",
+      "outcomes": [
+        {
+          "balance_of": "0",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "1",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        }
+      ],
+      "record": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "17",
+        "100",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "2d72fa9415d2904c5a97bcecb46e3f0cf29f8b5f1931c2ab4e822302b5b60ba9"
+    },
+    {
+      "globals": null,
+      "name": "proportional_cap",
+      "outcomes": [
+        {
+          "balance_of": "15",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000f"
+          }
+        },
+        {
+          "balance_of": "16",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000010"
+          }
+        }
+      ],
+      "record": [
+        "10",
+        "0",
+        "0",
+        "0",
+        "100",
+        "100",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "eeaae72c53f643ec5594b58442eef3cafa8ce5a58e459e2012690b8b350703f6"
+    },
+    {
+      "globals": null,
+      "name": "claimed_capacity",
+      "outcomes": [
+        {
+          "balance_of": "10",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000a"
+          }
+        },
+        {
+          "balance_of": "11",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000b"
+          }
+        }
+      ],
+      "record": [
+        "10",
+        "0",
+        "0",
+        "0",
+        "100",
+        "100",
+        "0",
+        "5",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "18c5a3d936dcdf274153c208d74ec30e6ce936e8cd9e1a4923d59750a02a60d2"
+    },
+    {
+      "globals": null,
+      "name": "explicit_multiplier",
+      "outcomes": [
+        {
+          "balance_of": "20",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000014"
+          }
+        },
+        {
+          "balance_of": "21",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000015"
+          }
+        }
+      ],
+      "record": [
+        "10",
+        "0",
+        "0",
+        "0",
+        "100",
+        "100",
+        "0",
+        "0",
+        "20",
+        "0"
+      ],
+      "trace_sha256": "624f3d4d0fdb63d51491669a67bc4aeca849c951c4792ad32f629c15ce82f1aa"
+    },
+    {
+      "globals": null,
+      "name": "no_capacity",
+      "outcomes": [
+        {
+          "balance_of": "0",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "1",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        }
+      ],
+      "record": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "a9a439e414cd6dbac425b90c27b37f7d8786e56010ca75c48f2bad8656119bb6"
+    },
+    {
+      "globals": null,
+      "name": "exhausted_capacity",
+      "outcomes": [
+        {
+          "balance_of": "0",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "1",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000001"
+          }
+        }
+      ],
+      "record": [
+        "1000",
+        "0",
+        "0",
+        "0",
+        "17",
+        "0",
+        "0",
+        "1500",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "f34413b89d4100faf6e7d7c68ed7fc10168b826030e8ee04a8a6200abec97425"
+    },
+    {
+      "globals": [
+        17,
+        100
+      ],
+      "name": "new_accrual",
+      "outcomes": [
+        {
+          "balance_of": "17",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000011"
+          }
+        },
+        {
+          "balance_of": "18",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000012"
+          }
+        }
+      ],
+      "record": [
+        "1000",
+        "0",
+        "1000000000000000000",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "1c812ae1d3ce206f4c0867c1ebd0824c9d38a90644da1ed1670ed44c24f04868"
+    },
+    {
+      "globals": [
+        17,
+        100
+      ],
+      "name": "debt_subtraction",
+      "outcomes": [
+        {
+          "balance_of": "12",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000c"
+          }
+        },
+        {
+          "balance_of": "13",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000000d"
+          }
+        }
+      ],
+      "record": [
+        "1000",
+        "0",
+        "1000000000000000000",
+        "5",
+        "0",
+        "0",
+        "20",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "3d200f698b7b52cff6fa56b98db1a1f653e4cae7f0ae5686187e932ff74c5324"
+    },
+    {
+      "globals": [
+        17,
+        100
+      ],
+      "name": "accrual_capped",
+      "outcomes": [
+        {
+          "balance_of": "2",
+          "raw": 0,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000002"
+          }
+        },
+        {
+          "balance_of": "3",
+          "raw": 1,
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x0000000000000000000000000000000000000000000000000000000000000003"
+          }
+        }
+      ],
+      "record": [
+        "10",
+        "0",
+        "1000000000000000000",
+        "5",
+        "0",
+        "0",
+        "20",
+        "0",
+        "0",
+        "0"
+      ],
+      "trace_sha256": "0570c92fac24307c193194e3006ce230685fc215474f08b8268dc552214d48ec"
+    }
+  ],
+  "elapsed_seconds": 1.407944708,
+  "hash": "0xdb99d62e08c629178178d7095f705480590e8f5a45abe2e13d827979ecd8a99f",
+  "holder": "0x000000000000000000000000000000000000dead",
+  "interpretation": "The low byte at mapping(address => record) root 19, offset 9, bypasses the external calculation when nonzero. Storage-only enabled-path controls expose accumulated values, capacity and proportional rounding without replacing deployed code. These are simulated states, not historical mismatches or production support.",
+  "prior_external_dependency_evidence_sha256": "fcf6771ba0e23342e94b2fac4555791793138e560f777d1a61036c6ab36fded9",
+  "qualified": false,
+  "runtime_binding": [
+    {
+      "address": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "historical_source_bound": false,
+      "name": null,
+      "runtime_hash": "0x625711bf573a69e53ef7137836a040d240a36fd5ded10fb02b83cbb5c66bde8b",
+      "source_sha256": "489c3a56f61c2b5b9959ac47e163d1d49348fbd40a257853f9d19e0857e0fd57"
+    },
+    {
+      "address": "0xe41dd249488fbd9e50d8749574ee32dfc7cc273d",
+      "historical_source_bound": false,
+      "name": null,
+      "runtime_hash": "0xeb79a802694ac2f300de8d82be56144fe319e1c6ca9329feeede38cff3519a96",
+      "source_sha256": "7172cc474af896e1effdd1be1f8d2113753eab2583d93e5447201505307a649e"
+    },
+    {
+      "address": "0xfc261f20df9af2df4e654893ca7eea5ffbd7161a",
+      "historical_source_bound": false,
+      "name": null,
+      "runtime_hash": "0x7d0a069eb9f30b59428da9b5b67399ae56a899376d306aba669d7bfd8a24b4eb",
+      "source_sha256": "ec04104df98b2fc41c9d321a465b08269f389d17a5fd38db8003df3d63a3b03b"
+    }
+  ],
+  "scope": "Coupled storage-only overrides of the original deployed dependency and token, without replacing code. Outcomes are diagnostic until a separately derived model is tested.",
+  "status": "inspected",
+  "tool_language": "Rust"
+}

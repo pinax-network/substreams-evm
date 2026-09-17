@@ -36,8 +36,16 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes **345 qualified profiles**. The latest
-[13-token follow-up](pending350-coverage.md) adds reviewed direct mappings,
+The BSC campaign now includes **346 qualified profiles**. The latest
+[XVS follow-up](xvs-uint96.md) adds an explicitly reviewed `uint96` balance
+getter, 19 emitted RPC checks, 36 initialized observations and 21 final holder
+balances. The rebuilt package preserves every protobuf field for 108,526
+previously RPC-verified emitted balances. The
+[ranks 351–400 investigation](ranks351-400-investigation.md) leaves 49 candidates
+outside qualification, including reflection getters that cannot be promoted
+from a sample on one account's direct-mapping branch.
+
+The prior [13-token follow-up](pending350-coverage.md) adds reviewed direct mappings,
 dividend bookkeeping, pinned proxy implementations and a first deployment.
 All 295 new emitted balances, 517 initialized observations and 174 final
 balances match RPC. Only 钻石 remains excluded from ranks 301–350; its getter
@@ -49,8 +57,8 @@ The earlier 296-profile qualification comprised the original top 100 plus
 from ranks 251–300. That [earlier follow-up](pending300-coverage.md)
 left LBP (143), TITAN (203), ORD (209) and YBC (238) outside the qualified
 fixture; they remain excluded. hLBP has a captured mint in a separate older
-interval. The latest combined capture preserves all 345 profiles' audited
-output, with 344 emitting in the original 1,024-block interval. Captured DIA append and ETZ
+interval. The latest combined capture preserves all 346 profiles' audited
+output, with 345 emitting in the original 1,024-block interval. Captured DIA append and ETZ
 swap-and-pop transactions now pass packaged RPC and initialized-holder checks,
 in addition to the earlier captured shareholder tail pop. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
@@ -77,7 +85,10 @@ unqualified. The [next 50 BSC candidates](ranks301-350-investigation.md) origina
 had 2,106 successful exploratory RPC checks and no value mismatches. The later
 36-token and 13-token qualifications add the required mapper and holder evidence
 for 49 of those candidates. 钻石 remains excluded; its boundary matches alone
-cannot establish a plain mapping getter.
+cannot establish a plain mapping getter. Subsequent
+[coupled storage controls](xvs-uint96.md#other-bsc-findings) activate that
+contribution and expose account-level capacity, accrual and rounding behavior;
+its full retained-state computation remains unqualified.
 
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted

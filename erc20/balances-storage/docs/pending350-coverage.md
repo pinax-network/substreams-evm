@@ -5,6 +5,10 @@ candidates, bringing the explicit test configuration to **345 profiles** in
 [`bsc-pending350-layouts.json`](../tests/fixtures/bsc-pending350-layouts.json).
 LBP, TITAN, ORD, YBC and 钻石 remain outside production qualification.
 
+The subsequent [XVS width follow-up](xvs-uint96.md) adds a 346th profile and a
+new audited package. The measurements and artifact statements below retain
+this 13-token cohort's original scope.
+
 The production interface stays one RPC-free `map_events`, the shared
 `evm.balances.v1.Events` protobuf, explicit caller-qualified layouts and default
 parameters `[]`. These profiles require no production mapper change. All

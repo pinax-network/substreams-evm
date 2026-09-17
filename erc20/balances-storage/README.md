@@ -17,8 +17,9 @@ mapping, or pinned proxy:
 | Field | Format | Meaning |
 | --- | --- | --- |
 | `contract` | 20-byte `0x` hex | Token contract |
-| `balance_slot` | 32-byte `0x` hex | Mapping base for `mapping(address => uint256)` balances |
+| `balance_slot` | 32-byte `0x` hex | Mapping base for reviewed unsigned balances |
 | `code_hash` | 32-byte `0x` hex | Qualified runtime Keccak-256, checked by the Rust audit tools |
+| `balance_bits` | Optional integer, 8–256 in whole bytes | Explicitly reviewed unsigned getter width at byte offset zero; omission retains all 256 bits. Cannot combine with other balance formulas or an immutable-empty mapping |
 | `deployment` | Optional object | `block` and 32-byte `block_hash` pin first CREATE for a direct mapping or minimal proxy, without a zero-word fallback |
 | `other_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance scalar slots |
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
@@ -96,6 +97,13 @@ change-and-restore and blocks without holder writes. The admin slot must differ
 from both beacon implementation pointers, and the admin must differ from the
 token. This rule requires the optional beacon `proxy` layer; other caller-based
 resolver behavior still requires separate review.
+
+With `balance_bits`, the public amount uses only the lower configured bits.
+Raw 256-bit words remain intact through continuity checks, so equal public
+balances cannot conceal inconsistent storage history. This supports reviewed
+`uintN` getters such as XVS's `uint96`; it does not infer widths, signed values
+or arbitrary struct offsets from samples. Existing layouts retain full-word
+behavior when the field is absent. See the [XVS qualification](docs/xvs-uint96.md).
 
 With `balance_divisor`, raw storage words remain intact through continuity checks,
 then unsigned floor division produces the public amount. Checkpoint values use
@@ -338,12 +346,16 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [top-350 follow-up](docs/pending350-coverage.md) brings the explicit
-test configuration to 345 profiles in `tests/fixtures/bsc-pending350-layouts.json`.
-The new 13-token cohort matches 295 emitted RPC balances, 517 initialized
-holder observations and all 174 final holder balances. It covers reviewed
-direct mappings, dividend bookkeeping, pinned proxies and a new deployment.
-LBP, TITAN, ORD, YBC and 钻石 remain outside production qualification. These
+The latest [XVS width follow-up](docs/xvs-uint96.md) brings the explicit test
+configuration to 346 profiles in `tests/fixtures/bsc-xvs-layouts.json`.
+Its reviewed `uint96` getter matches 19 emitted RPC balances, 36 initialized
+holder observations and all 21 final holder balances. The rebuilt package also
+preserves every protobuf event field for 108,526 previously RPC-verified
+balances across the combined configuration. The
+[next-50 investigation](docs/ranks351-400-investigation.md) leaves 49 candidates
+unqualified, alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks.
+The prior [13-token cohort](docs/pending350-coverage.md) retains its separate
+direct-mapping, dividend-bookkeeping, proxy and deployment evidence. These
 figures do not claim global holders or all-token support. The original
 [survey](docs/ranks301-350-investigation.md) and earlier
 [36-token qualification](docs/ranks301-350-coverage.md) retain their separate scopes.

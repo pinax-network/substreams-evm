@@ -1,0 +1,441 @@
+{
+  "elapsed_seconds": 42.707167542,
+  "inspection": {
+    "address": "0x753c734dfe05af28a732c033e26ea6d369e07662",
+    "balance_of": "2988626481557816792428",
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000002",
+    "block": 122288254,
+    "compilation": {
+      "compiler": "solc",
+      "compilerSettings": {
+        "evmVersion": "istanbul",
+        "libraries": {},
+        "optimizer": {
+          "enabled": false,
+          "runs": 200
+        },
+        "remappings": []
+      },
+      "compilerVersion": "0.5.17+commit.d19bba13",
+      "fullyQualifiedName": "XVS.sol:XVS",
+      "language": "Solidity",
+      "name": "XVS"
+    },
+    "contract": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+    "elapsed_seconds": 0.462952708,
+    "execution_code": [
+      {
+        "address": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+        "checked_instructions": 1,
+        "runtime_hash": "0x27d40afa4bd607ec4235e05bff971472c1d9effd4d4757a9da3b3daa735a3eb3"
+      }
+    ],
+    "execution_contexts": {
+      "calls": [],
+      "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+      "storage_reads": [
+        {
+          "code_address": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+          "depth": 1,
+          "key": "0x863db9279bb7e45f2524476be34fb900076e0b98ec63340b4d585dee60dd4e9e",
+          "pc": 4642,
+          "storage_address": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+          "value": "0x0000000000000000000000000000000000000000000000a203862e8e1b30d56c"
+        }
+      ]
+    },
+    "hash": "0x0c08accc94da365e38afcb1a6a88b9b947d86c4b9584ea2c1cc8d1372c9876a9",
+    "read_only_state_overrides": [
+      {
+        "balance_of": "0",
+        "overridden_mapping_word": "0"
+      },
+      {
+        "balance_of": "1",
+        "overridden_mapping_word": "1"
+      },
+      {
+        "balance_of": "123",
+        "overridden_mapping_word": "123"
+      },
+      {
+        "balance_of": "79228162514264337593543950335",
+        "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "runtime_keccak256": "0x27d40afa4bd607ec4235e05bff971472c1d9effd4d4757a9da3b3daa735a3eb3",
+    "source_proxy_resolution": {
+      "implementations": [],
+      "isProxy": false,
+      "proxyType": null
+    },
+    "source_runtime_match": true,
+    "source_sha256": "7615d0db5e859cda67f39fdbe9ba21cee072379d8fd05efc1e668ca971b95111",
+    "source_storage_layout": {
+      "storage": [
+        {
+          "astId": 3,
+          "contract": "XVS.sol:XVS",
+          "label": "owner",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 53,
+          "contract": "XVS.sol:XVS",
+          "label": "isLocked",
+          "offset": 20,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 115,
+          "contract": "XVS.sol:XVS",
+          "label": "allowances",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_mapping(t_address,t_mapping(t_address,t_uint96))"
+        },
+        {
+          "astId": 119,
+          "contract": "XVS.sol:XVS",
+          "label": "balances",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_mapping(t_address,t_uint96)"
+        },
+        {
+          "astId": 123,
+          "contract": "XVS.sol:XVS",
+          "label": "delegates",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_mapping(t_address,t_address)"
+        },
+        {
+          "astId": 134,
+          "contract": "XVS.sol:XVS",
+          "label": "checkpoints",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)128_storage))"
+        },
+        {
+          "astId": 138,
+          "contract": "XVS.sol:XVS",
+          "label": "numCheckpoints",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_mapping(t_address,t_uint32)"
+        },
+        {
+          "astId": 152,
+          "contract": "XVS.sol:XVS",
+          "label": "nonces",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_mapping(t_address,t_uint256)"
+        }
+      ],
+      "types": {
+        "t_address": {
+          "encoding": "inplace",
+          "label": "address",
+          "numberOfBytes": "20"
+        },
+        "t_mapping(t_address,t_address)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => address)",
+          "numberOfBytes": "32",
+          "value": "t_address"
+        },
+        "t_mapping(t_address,t_mapping(t_address,t_uint96))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(address => uint96))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_address,t_uint96)"
+        },
+        "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)128_storage))": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => mapping(uint32 => struct XVS.Checkpoint))",
+          "numberOfBytes": "32",
+          "value": "t_mapping(t_uint32,t_struct(Checkpoint)128_storage)"
+        },
+        "t_mapping(t_address,t_uint256)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint256)",
+          "numberOfBytes": "32",
+          "value": "t_uint256"
+        },
+        "t_mapping(t_address,t_uint32)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint32)",
+          "numberOfBytes": "32",
+          "value": "t_uint32"
+        },
+        "t_mapping(t_address,t_uint96)": {
+          "encoding": "mapping",
+          "key": "t_address",
+          "label": "mapping(address => uint96)",
+          "numberOfBytes": "32",
+          "value": "t_uint96"
+        },
+        "t_mapping(t_uint32,t_struct(Checkpoint)128_storage)": {
+          "encoding": "mapping",
+          "key": "t_uint32",
+          "label": "mapping(uint32 => struct XVS.Checkpoint)",
+          "numberOfBytes": "32",
+          "value": "t_struct(Checkpoint)128_storage"
+        },
+        "t_struct(Checkpoint)128_storage": {
+          "encoding": "inplace",
+          "label": "struct XVS.Checkpoint",
+          "members": [
+            {
+              "astId": 125,
+              "contract": "XVS.sol:XVS",
+              "label": "fromBlock",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint32"
+            },
+            {
+              "astId": 127,
+              "contract": "XVS.sol:XVS",
+              "label": "votes",
+              "offset": 4,
+              "slot": "0",
+              "type": "t_uint96"
+            }
+          ],
+          "numberOfBytes": "32"
+        },
+        "t_uint256": {
+          "encoding": "inplace",
+          "label": "uint256",
+          "numberOfBytes": "32"
+        },
+        "t_uint32": {
+          "encoding": "inplace",
+          "label": "uint32",
+          "numberOfBytes": "4"
+        },
+        "t_uint8": {
+          "encoding": "inplace",
+          "label": "uint8",
+          "numberOfBytes": "1"
+        },
+        "t_uint96": {
+          "encoding": "inplace",
+          "label": "uint96",
+          "numberOfBytes": "12"
+        }
+      }
+    },
+    "source_url": "https://sourcify.dev/server/v2/contract/56/0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63?fields=all",
+    "status": "inspected",
+    "storage_key": "0x863db9279bb7e45f2524476be34fb900076e0b98ec63340b4d585dee60dd4e9e",
+    "storage_reads": [
+      {
+        "depth": 1,
+        "key": "0x863db9279bb7e45f2524476be34fb900076e0b98ec63340b4d585dee60dd4e9e",
+        "pc": 4642,
+        "value": "0x0000000000000000000000000000000000000000000000a203862e8e1b30d56c"
+      }
+    ],
+    "storage_word": "2988626481557816792428",
+    "tool_language": "Rust",
+    "trace_config": {
+      "disableStack": false,
+      "disableStorage": false,
+      "enableMemory": true,
+      "enableReturnData": true,
+      "timeout": "10s"
+    },
+    "trace_sha256": "c72b385e91ee3bfcc3e5ad11f3c8c3b4716d9875d05617de137a7909fc44a34d"
+  },
+  "layouts_sha256": "e16dfb5dd6b53ea14db9764022e7e85026065c322590082e4d4485ceb50e232b",
+  "native_scan": {
+    "blocks": 1024,
+    "errors": [],
+    "rows": 19
+  },
+  "scope": "Historical source-bound XVS uint96 getter and single-word voting metadata, controlled upper-bit counterexample fixed. Full native interval passed; packaged and holder audits still required.",
+  "simulated_full_word_mismatches": 1,
+  "source_sha256": "7615d0db5e859cda67f39fdbe9ba21cee072379d8fd05efc1e668ca971b95111",
+  "status": "bounded_parity",
+  "storage_layout": {
+    "storage": [
+      {
+        "astId": 3,
+        "contract": "XVS.sol:XVS",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 53,
+        "contract": "XVS.sol:XVS",
+        "label": "isLocked",
+        "offset": 20,
+        "slot": "0",
+        "type": "t_uint8"
+      },
+      {
+        "astId": 115,
+        "contract": "XVS.sol:XVS",
+        "label": "allowances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint96))"
+      },
+      {
+        "astId": 119,
+        "contract": "XVS.sol:XVS",
+        "label": "balances",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_uint96)"
+      },
+      {
+        "astId": 123,
+        "contract": "XVS.sol:XVS",
+        "label": "delegates",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_address)"
+      },
+      {
+        "astId": 134,
+        "contract": "XVS.sol:XVS",
+        "label": "checkpoints",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)128_storage))"
+      },
+      {
+        "astId": 138,
+        "contract": "XVS.sol:XVS",
+        "label": "numCheckpoints",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint32)"
+      },
+      {
+        "astId": 152,
+        "contract": "XVS.sol:XVS",
+        "label": "nonces",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_address)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint96))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint96))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint96)"
+      },
+      "t_mapping(t_address,t_mapping(t_uint32,t_struct(Checkpoint)128_storage))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(uint32 => struct XVS.Checkpoint))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint32,t_struct(Checkpoint)128_storage)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_address,t_uint32)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint32)",
+        "numberOfBytes": "32",
+        "value": "t_uint32"
+      },
+      "t_mapping(t_address,t_uint96)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint96)",
+        "numberOfBytes": "32",
+        "value": "t_uint96"
+      },
+      "t_mapping(t_uint32,t_struct(Checkpoint)128_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint32",
+        "label": "mapping(uint32 => struct XVS.Checkpoint)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Checkpoint)128_storage"
+      },
+      "t_struct(Checkpoint)128_storage": {
+        "encoding": "inplace",
+        "label": "struct XVS.Checkpoint",
+        "members": [
+          {
+            "astId": 125,
+            "contract": "XVS.sol:XVS",
+            "label": "fromBlock",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 127,
+            "contract": "XVS.sol:XVS",
+            "label": "votes",
+            "offset": 4,
+            "slot": "0",
+            "type": "t_uint96"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint32": {
+        "encoding": "inplace",
+        "label": "uint32",
+        "numberOfBytes": "4"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      },
+      "t_uint96": {
+        "encoding": "inplace",
+        "label": "uint96",
+        "numberOfBytes": "12"
+      }
+    }
+  },
+  "tool_language": "Rust"
+}

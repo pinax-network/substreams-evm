@@ -10,6 +10,10 @@ pub struct Layout {
     pub contract: String,
     pub balance_slot: String,
     pub code_hash: String,
+    /// Reviewed unsigned mapping value width, at byte offset zero. Omission
+    /// preserves the complete uint256 word; this is never inferred from samples.
+    #[serde(default)]
+    pub balance_bits: Option<u16>,
     /// Explicitly qualified first deployment of a direct mapping or minimal proxy.
     #[serde(default)]
     pub deployment: Option<Deployment>,
@@ -213,6 +217,7 @@ pub struct VerifiedLayout {
     pub contract: Vec<u8>,
     pub balance_slot: [u8; 32],
     pub code_hash: [u8; 32],
+    pub balance_bits: Option<u16>,
     pub deployment: Option<VerifiedDeployment>,
     pub other_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
@@ -241,6 +246,10 @@ impl VerifiedLayout {
     /// Apply only after raw-word continuity checks; zero and the fallback value
     /// can represent different storage states with the same public balance.
     pub fn project_amount(&self, address: &[u8], raw: &str) -> String {
+        if let Some(bits) = self.balance_bits {
+            use substreams::scalar::BigInt;
+            return (raw.parse::<BigInt>().expect("canonical unsigned balance") % (BigInt::from(1) << bits)).to_string();
+        }
         if let Some(rule) = &self.balance_divisor {
             return (raw.parse::<substreams::scalar::BigInt>().expect("canonical unsigned balance")
                 / substreams::scalar::BigInt::from_unsigned_bytes_be(&rule.value))
@@ -566,10 +575,21 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                         && address_hash_balance.is_none()),
                 "immutable-zero mapping requires a qualified direct deployment without another balance rule",
             )?;
+            if let Some(bits) = layout.balance_bits {
+                require(
+                    (8..=256).contains(&bits) && bits % 8 == 0,
+                    "unsigned balance width must be 8..=256 bits in whole bytes",
+                )?;
+                require(
+                    zero_balance.is_none() && balance_divisor.is_none() && address_hash_balance.is_none() && !layout.immutable_zero_mapping,
+                    "unsigned balance width cannot combine with another balance rule",
+                )?;
+            }
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
                 code_hash,
+                balance_bits: layout.balance_bits,
                 deployment,
                 other_slots,
                 other_mapping_slots,

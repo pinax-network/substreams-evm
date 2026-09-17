@@ -204,6 +204,87 @@ fn layouts() -> Vec<VerifiedLayout> {
     )
     .unwrap()
 }
+
+#[test]
+fn unsigned_mapping_width_preserves_raw_continuity_and_masks_only_output() {
+    let mut ls = layouts();
+    ls.truncate(1);
+    ls[0].balance_bits = Some(96);
+    let mut b = block();
+    let mut c = token_call(&ls[0], &[6; 20], 0, 0);
+    c.storage_changes[0].new_value = vec![255; 32];
+    let mut later = c.storage_changes[0].clone();
+    later.old_value = vec![255; 32];
+    later.new_value = vec![0; 32];
+    later.new_value[0] = 1;
+    later.ordinal = 20;
+    b.transaction_traces = vec![tx(c)];
+    assert_eq!(project(&b, &ls).unwrap().balances[0].amount, "79228162514264337593543950335");
+    b.transaction_traces[0].calls[0].storage_changes.push(later);
+    assert_eq!(project(&b, &ls).unwrap().balances[0].amount, "0");
+    // Equal public balances cannot hide a discontinuity in the full word.
+    b.transaction_traces[0].calls[0].storage_changes[1].old_value[0] = 0;
+    assert!(project(&b, &ls).unwrap_err().to_string().contains("discontinuous balance"));
+}
+
+#[test]
+fn captured_xvs_word_controls_match_uint96_and_retain_full_word_counterexample() {
+    let ls = layout::parse(include_str!("../tests/fixtures/xvs/layouts.json")).unwrap();
+    assert_eq!(ls.len(), 1);
+    assert_eq!(ls[0].balance_bits, Some(96));
+    let controls: Vec<serde_json::Value> = serde_json::from_str(include_str!("../tests/fixtures/xvs/word-controls.json")).unwrap();
+    assert_eq!(controls.len(), 4);
+    let mut plain = ls[0].clone();
+    plain.balance_bits = None;
+    let mut old_mismatches = 0;
+    for c in controls {
+        let raw = c["overridden_mapping_word"].as_str().unwrap();
+        let expected = c["balance_of"].as_str().unwrap();
+        assert_eq!(ls[0].project_amount(&[6; 20], raw), expected);
+        old_mismatches += usize::from(plain.project_amount(&[6; 20], raw) != expected);
+    }
+    assert_eq!(old_mismatches, 1);
+}
+
+#[test]
+fn unsigned_mapping_width_is_explicit_and_rejects_ambiguous_rules() {
+    let mut params =
+        json!([{"contract":format!("0x{}", "aa".repeat(20)),"balance_slot":format!("0x{}", "00".repeat(32)),"code_hash":format!("0x{}", "11".repeat(32))}]);
+    let max = BigInt::from_unsigned_bytes_be(&[255; 32]).to_string();
+    assert_eq!(layout::parse(&params.to_string()).unwrap()[0].project_amount(&[6; 20], &max), max);
+    for bits in [8u16, 96, 128, 248, 256] {
+        params[0]["balance_bits"] = json!(bits);
+        let l = layout::parse(&params.to_string()).unwrap();
+        assert_eq!(l[0].project_amount(&[6; 20], &max), ((BigInt::from(1) << bits) - BigInt::from(1)).to_string());
+    }
+    for bits in [0, 1, 7, 9, 255, 257, 65535] {
+        params[0]["balance_bits"] = json!(bits);
+        assert!(layout::parse(&params.to_string()).is_err());
+    }
+    let mut rejected_rules = BTreeSet::new();
+    for fixture in [
+        include_str!("../tests/fixtures/bsc-expanded-layouts.json"),
+        include_str!("../tests/fixtures/bsc-pending350-layouts.json"),
+    ] {
+        let profiles: serde_json::Value = serde_json::from_str(fixture).unwrap();
+        for p in profiles.as_array().unwrap().iter().filter(|p| {
+            !p["zero_balance"].is_null() || !p["balance_divisor"].is_null() || !p["address_hash_balance"].is_null() || p["immutable_zero_mapping"] == true
+        }) {
+            for rule in ["zero_balance", "balance_divisor", "address_hash_balance", "immutable_zero_mapping"] {
+                if p[rule].is_object() || p[rule] == true {
+                    rejected_rules.insert(rule);
+                }
+            }
+            let mut p = p.clone();
+            p["balance_bits"] = json!(96);
+            assert!(layout::parse(&json!([p]).to_string()).is_err());
+        }
+    }
+    assert_eq!(
+        rejected_rules,
+        BTreeSet::from(["zero_balance", "balance_divisor", "address_hash_balance", "immutable_zero_mapping"])
+    );
+}
 fn block() -> eth::Block {
     eth::Block {
         ver: 5,

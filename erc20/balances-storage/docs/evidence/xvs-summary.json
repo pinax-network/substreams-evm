@@ -1,0 +1,53 @@
+{
+  "carry_forward": 17,
+  "checkpoint_holders": 21,
+  "checkpoint_reads": 42,
+  "cold_unknown": 17,
+  "cold_unknown_nonzero": 12,
+  "combined": {
+    "aggregate_emitted_zero_checks": 15059,
+    "all_balance_event_fields_equal": true,
+    "baseline_package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+    "baseline_report_sha256": "81f0e59d2af1be750229dc170499c5999e8909ededc53d22f6141fbda6415b9c",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 11.113935214628096,
+      "empty_output_delivery": null,
+      "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+      "seconds_including_startup": 92.136581708
+    },
+    "configured_profiles": 346,
+    "elapsed_seconds": 156.953237167,
+    "events_sha256": "0b28252770da8c97e8c197060dedb812e7c11c766c9f1431879f12ba0e73a336",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 177780,
+    "initialized_carry_forward_matches": 69255,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "7b294ce20ed5b068b8cf6657c6cf599eb15e6ca7f26805391816e45d2437305e",
+    "package_change_scope": "New uint-width support; every historical protobuf event field is compared with the old package's immutable verified output",
+    "profiles_with_emitted_rows": 345,
+    "reused_verified_rpc_rows": 108526,
+    "scope": "Fresh 346-profile actual-WASM capture. Full-field comparison with the verified 345-profile capture and one newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-346 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "83d070c2fcce989373ca0cc3e71d4530723da88cb646a093736e68f38fc86fa1",
+        "cohort": "xvs",
+        "events_sha256": "fedcae51f7cb2ed3d5d798d0a0446f63732c0fbc7aeb3115c78746c16f601668",
+        "holder_report_sha256": "ce1ec0809056924fc93167379cae581ae37cfcc81876a60d236efa3b0cbdb22d",
+        "layouts_sha256": "e16dfb5dd6b53ea14db9764022e7e85026065c322590082e4d4485ceb50e232b",
+        "rpc_report_sha256": "ac0406a1a467d61b52f4eb6c76edfacb633a17433c77acb881e61c0a1551c0f7"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "emitted_zeros": 2,
+  "final_holders": 21,
+  "final_zeros": 6,
+  "fixture_balances": 2,
+  "holder_observations": 36,
+  "qualified_profiles": 346,
+  "rpc_checks": 19,
+  "status": "bounded_parity"
+}
