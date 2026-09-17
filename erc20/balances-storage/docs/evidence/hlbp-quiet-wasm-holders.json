@@ -1,0 +1,47 @@
+{
+  "capture": {
+    "blocks_per_second_including_startup": 21.925941376811984,
+    "empty_output_delivery": {
+      "clock_capture_sha256": "ae3285b5f337f2f0657cd04c89cf1448fca564425d5c145993f0ebc62920c531",
+      "empty_blocks": 1024,
+      "method": "Complete finalized BlockScopedData clock capture, all IDs matched to consecutive canonical RPC headers",
+      "normalized_events_sha256": "35d1d6e271bd0a1ec4ebc6ded54b6dd026fbfeeecd95b28bcc754e67e8400525",
+      "sparse_events_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+    "seconds_including_startup": 46.702669792
+  },
+  "checkpoint_sha256": "43fb0ab9681e0007252db4b537c1627acd5c7c1d03c493fa977874e21f90bc29",
+  "configured_tokens": 1,
+  "elapsed_seconds": 92.382631833,
+  "emitted_rows": 0,
+  "events_sha256": "35d1d6e271bd0a1ec4ebc6ded54b6dd026fbfeeecd95b28bcc754e67e8400525",
+  "initialized_carry_forward_matches": 88,
+  "layouts_sha256": "76e003e4bd540d351228c9d26d8b27f6a5e8d1a8bf9586e9bba6a37de597a12c",
+  "mismatches": 0,
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 88,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Actual-WASM carry-forward parity for four explicitly initialized hLBP holders. No balance changes or emitted-row RPC qualification in this interval. Historical getter qualification does not add this candidate to the 188 active qualified profiles. Reference values never repair state.",
+  "snapshot_holders": 4,
+  "snapshot_sha256": "63c95c58dd5de110402fb74e90cfcf3bcafcba356aad452960f075dceeb6231d",
+  "snapshot_zeros": 3,
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "emitted_rows": 0,
+      "reference_rows": 88,
+      "seeded_matches": 88,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 22,
+      "unseeded_unknown_rows": 88,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust"
+}

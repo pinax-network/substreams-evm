@@ -1,0 +1,68 @@
+{
+  "block": 122288019,
+  "checkpoint": [
+    {
+      "address": "0x000000000000000000000000000000000000dead",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "projected": "0",
+      "rpc": "0",
+      "storage": "0",
+      "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+    },
+    {
+      "address": "0x00e3ea08fd8cbad955ec5d2292ad637670c31524",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "projected": "10737390507980558866879696",
+      "rpc": "10737390507980558866879696",
+      "storage": "10737390507980558866879696",
+      "storage_key": "0x1a60ff7a2eac70db8d801260461ca75ce89e5b11bb27969844036020a23041db"
+    },
+    {
+      "address": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "projected": "0",
+      "rpc": "0",
+      "storage": "0",
+      "storage_key": "0xe4157f78d91fa4485ebf23d5081b06c2b02ec747c691b03255a6288e40efb7f2"
+    },
+    {
+      "address": "0x60ef1e74f3fae5b2b2860abd139372f32b51ac07",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "projected": "0",
+      "rpc": "0",
+      "storage": "0",
+      "storage_key": "0x3fd662eb9313c7691c8a09c5a69ab0dd0bcdab59da5446ed74407dd6b451f102"
+    }
+  ],
+  "fixture_sha256": "3196754410fc58dbe3a87395c3a5caaeaf913363274db5ab97499556bfccb137",
+  "hash": "0x39521816365e42e2310612c3538c5dc961d2e0cc58f89aecf3d4635658452b2e",
+  "missing_nonbalance_fields_error": "unresolved storage for configured token 0x5e3cbc82d020be91a989eb747934104e9ab585fe at key 0x15a421866c4394d735354e181060df0acbcb0299d76e4984a857a47e7a3bc9bb; refusing incomplete events",
+  "parent_hash": "0xe67b66daa0fed2620c4b08babc7711a3a2a738ac24911dbeb822ec9643a44082",
+  "reference": [
+    {
+      "address": "0x000000000000000000000000000000000000dead",
+      "amount": "0",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe"
+    },
+    {
+      "address": "0x00e3ea08fd8cbad955ec5d2292ad637670c31524",
+      "amount": "10737390507980558866879696",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe"
+    },
+    {
+      "address": "0x5e3cbc82d020be91a989eb747934104e9ab585fe",
+      "amount": "0",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe"
+    },
+    {
+      "address": "0x60ef1e74f3fae5b2b2860abd139372f32b51ac07",
+      "amount": "0",
+      "contract": "0x5e3cbc82d020be91a989eb747934104e9ab585fe"
+    }
+  ],
+  "scope": "Filtered complete transactions from a canonical Extended block. hLBP bookkeeping changes but balances do not. Parent campaign checkpoint is at 122288005; complete native and actual-WASM audits independently verify the intervening blocks."
+}

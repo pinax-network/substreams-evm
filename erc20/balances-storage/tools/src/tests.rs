@@ -9,6 +9,60 @@ use std::{fs, sync::Mutex};
 const TOKEN: &str = "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 #[test]
+fn captured_hlbp_bookkeeping_needs_a_holder_checkpoint_without_balance_events() {
+    use crate::coverage::HolderState;
+    use prost::Message;
+    use substreams_ethereum::pb::eth::v2 as eth;
+    let mut params: Value = serde_json::from_str(include_str!("../../tests/fixtures/hlbp-quiet/layouts.json")).unwrap();
+    let layouts = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    let expected: Value = serde_json::from_str(include_str!("../../tests/fixtures/hlbp-quiet/expected.json")).unwrap();
+    let bytes = include_bytes!("../../tests/fixtures/hlbp-quiet/block.pb");
+    let block = eth::Block::decode(bytes.as_slice()).unwrap();
+    assert_eq!(block.number, expected["block"].as_u64().unwrap());
+    assert_eq!(format!("0x{}", hex::encode(&block.hash)), expected["hash"]);
+    let events = erc20_balances_storage::project(&block, &layouts).unwrap();
+    assert!(events.balances.is_empty());
+    // Silence is valid only after all persisted bookkeeping writes are qualified.
+    params[0]["other_mapping_slots"] = json!([]);
+    let missing = erc20_balances_storage::layout::parse(&params.to_string()).unwrap();
+    assert_eq!(
+        erc20_balances_storage::project(&block, &missing).unwrap_err().to_string(),
+        expected["missing_nonbalance_fields_error"]
+    );
+    let checkpoint = items(&expected, "checkpoint")
+        .unwrap()
+        .iter()
+        .map(|row| {
+            assert_eq!(row["rpc"], row["projected"]);
+            (
+                (text(&row["contract"]).unwrap().into(), text(&row["address"]).unwrap().into()),
+                uint(&row["projected"]).unwrap(),
+            )
+        })
+        .collect();
+    let reference = candidate_rows(&json!({"balances":expected["reference"]})).unwrap();
+    assert_eq!(reference.len(), 4);
+    let mut state = HolderState::new(checkpoint);
+    state
+        .apply(
+            block.number,
+            text(&expected["hash"]).unwrap(),
+            text(&expected["parent_hash"]).unwrap(),
+            &Balances::new(),
+            &reference,
+        )
+        .unwrap();
+    let stats = state.tokens.values().next().unwrap();
+    assert_eq!(stats["seeded_matches"], 4);
+    assert_eq!(stats["seeded_unknown_rows"], 0);
+    assert_eq!(stats["seeded_value_mismatches"], 0);
+    assert_eq!(stats["unseeded_unknown_rows"], 4);
+    assert_eq!(stats["unseeded_unknown_nonzero_rows"], 1);
+    assert!(state.observed.is_empty(), "reference must not repair the cold state");
+    assert!(reference.iter().all(|(key, value)| state.seeded.get(key) == Some(value)));
+}
+
+#[test]
 fn computed_runtime_qualification_binds_masked_selectors_at_both_boundaries() {
     let mut params: Value = serde_json::from_str(include_str!("../../tests/fixtures/bsc-computed-layout.json")).unwrap();
     params[0]["code_hash"] = json!(format!("0x{}", hex::encode(erc20_balances_storage::hash(&[0xaa]))));

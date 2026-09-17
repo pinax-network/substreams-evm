@@ -47,3 +47,8 @@ does not establish support for every BSC token or complete global holder
 enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay
 required for holders whose prior balances cannot be derived from the window.
+
+[hLBP's separate quiet-holder audit](hlbp-quiet-holder-coverage.md) now confirms
+88 initialized observations and four final holder balances from actual WASM.
+It remains outside the 188 active profiles until a changed-balance case is
+captured and audited. Empty output alone cannot establish a holder's balance.
