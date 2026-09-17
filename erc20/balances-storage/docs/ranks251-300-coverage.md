@@ -1,5 +1,9 @@
 # BSC ranks 251–300: 33 more qualified layouts
 
+The subsequent [17-candidate follow-up](pending300-coverage.md) completes this
+cohort's bounded qualification and adds captured DIA/ETZ holder-list activity.
+This report retains the original 33-token measurements and pending status.
+
 The explicit test set now contains **279 qualified profiles**, with 278 emitting
 in the original 1,024-block window. This adds 33 contracts from ranks 251–300;
 17 in this cohort still need review. The production interface remains one

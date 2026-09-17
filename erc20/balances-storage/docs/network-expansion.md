@@ -36,16 +36,15 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 279 qualified profiles: the original top 100 plus
-49 from ranks 101–150, all 50 from ranks 151–200, 47 from ranks 201–250 and 33
-from ranks 251–300. The [latest candidate follow-up](ranks251-300-coverage.md)
-leaves 17 candidates from ranks 251–300, three from ranks 201–250 and LBP (143)
-outside the qualified fixture. hLBP has a captured
-mint in a separate older interval; 278 profiles emit in the original 1,024-block
-interval. The [removal correction](shareholder-removal-coverage.md) passes a captured
-shareholder tail pop; the latest combined capture preserves all 279 profiles'
-audited output. Swap-and-pop has synthetic coverage but no captured swap
-transaction yet. This is a bounded campaign. Completing it
+The BSC campaign now includes 296 qualified profiles: the original top 100 plus
+49 from ranks 101–150, all 50 from ranks 151–200, 47 from ranks 201–250 and all 50
+from ranks 251–300. The [latest candidate follow-up](pending300-coverage.md)
+leaves LBP (143), TITAN (203), ORD (209) and YBC (238) outside the qualified
+fixture. hLBP has a captured mint in a separate older interval; 295 profiles
+emit in the original 1,024-block interval. The latest combined capture
+preserves all 296 profiles' audited output. Captured DIA append and ETZ
+swap-and-pop transactions now pass packaged RPC and initialized-holder checks,
+in addition to the earlier captured shareholder tail pop. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder
 enumeration. Broader EVM coverage will similarly be reported per network,
 qualified runtime and tested interval, with checkpoints or full-history replay

@@ -1,0 +1,43 @@
+{
+  "array_members_after": 229,
+  "array_members_before": 228,
+  "block": 122037457,
+  "carry_forward_matches": 228,
+  "checks_sha256": "8fa01f72eef7ffdc93700fed4e9dcc2ad185889d5b1ae744eec6d2550a57aac6",
+  "contract": "0x8247e82aa4c113e5d49abcdd4dda8b7d54579c24",
+  "emitted_balances": 2,
+  "events_sha256": "c989bf58e9c1d5990bfc60e48aaefcebb3dadf1117df338d2d42495aaddba470",
+  "final_balance_rpc_reads": 230,
+  "hash": "0xae124f7bc8288e81c4464d07f53986cbeb89ecf9e8adaf0cfe1399b9e6400ab9",
+  "initialization_balance_rpc_reads": 230,
+  "initialized_holders": 230,
+  "layouts_sha256": "a3f8640b7aabf60ddfd74ef562771550e0cb4ca81277fd741a4fa9002bb0da33",
+  "mismatches": 0,
+  "moved_member": null,
+  "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+  "parent_hash": "0xa497573b83528a5c874e3885ea7816c0db7ea6a50f01ed2891dafc1a6b7f75aa",
+  "processing_balance_rpc_calls": 0,
+  "removed_member": null,
+  "scope": "Separate older one-block audit. Holder set is the array members at the canonical parent plus emitted addresses, not a global token-holder enumeration. All retained values independently checked at the canonical final block.",
+  "status": "actual_wasm_retained_holder_parity",
+  "writes": [
+    {
+      "call": 5,
+      "index": "length",
+      "key": "0000000000000000000000000000000000000000000000000000000000000018",
+      "new": "00000000000000000000000000000000000000000000000000000000000000e5",
+      "old": "00000000000000000000000000000000000000000000000000000000000000e4",
+      "ordinal": 8112,
+      "transaction": "bfc6268596e96f997004c551866e6dabd603575b1f7917d9eaf69eb9586a7420"
+    },
+    {
+      "call": 5,
+      "index": "228",
+      "key": "b13d2d76d1f4b7be834882e410b3e3a8afaf69f83600ae24db354391d2378e12",
+      "new": "0000000000000000000000009f8a50075fe494e39098a46556107fbc9a6e048e",
+      "old": "0000000000000000000000000000000000000000000000000000000000000000",
+      "ordinal": 8113,
+      "transaction": "bfc6268596e96f997004c551866e6dabd603575b1f7917d9eaf69eb9586a7420"
+    }
+  ]
+}
