@@ -1,0 +1,935 @@
+{
+  "captured_sha256": "c9e2354983ffeac41ed7777e7e02ac765368d1b0eb893f4b64e5b7ae8f2ab5ce",
+  "elapsed_seconds": 16.669780917,
+  "qualified": false,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded diagnosis of observed reference holders. YBC raw root is source-bound; swkeyDAO2 root 10 is only a candidate, not a qualified balance layout.",
+  "status": "inspected",
+  "tokens": [
+    {
+      "candidate_mapping_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "checks": [
+        {
+          "balance": "322374394416956181048437706",
+          "block": 122288005,
+          "candidate_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "candidate_word": "322374394416956181048437706",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x000000000000000000000000000000000000dead",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "1000000000",
+          "block": 122288005,
+          "candidate_key": "0x29dbe2bdcfb21b2f610fafcd320d1f404bd0084a35d481a7aa1bdd8d9c59124c",
+          "candidate_word": "1000000000",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x07964f135f276412b3182a3b2407b8dd45000000",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "12056986387307456933174",
+          "block": 122288005,
+          "candidate_key": "0xd1d308387773d92593b44e5165220d9496c77993c9ec03fbb82f1ea8c5cf1f70",
+          "candidate_word": "12056986387307456933174",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "12059327966975017973509",
+          "block": 122288005,
+          "candidate_key": "0x3bfca691119a7c5e279a4e72384101c22bd3d839ece1740d5b0776750526ef74",
+          "candidate_word": "1000000000",
+          "direct_word_match": false,
+          "dynamic_reward": "1935",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+          "reward_attributed": true,
+          "static_reward": "12059327966974017973509"
+        },
+        {
+          "balance": "10966237593610454011852931",
+          "block": 122288005,
+          "candidate_key": "0xd4b4a3df5acb494c33d4b93906c4a92b1d013d03f8528fa9283be81c9bad07ad",
+          "candidate_word": "10966237593610454011852931",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "1000000000",
+          "block": 122288005,
+          "candidate_key": "0x069d2505b55d8254765f2fa4b1ecdecfb577afee00a33ec61d6854a15a66f426",
+          "candidate_word": "1000000000",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "1111241123578888916974",
+          "block": 122288005,
+          "candidate_key": "0x5a20b8a05daf102cb8b1ba43951a2a94c5df2397695192ac6720b82a2ad29828",
+          "candidate_word": "786037863140785147916",
+          "direct_word_match": false,
+          "dynamic_reward": "4473",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x7e617482ca59fa977926e2930bc598ff1f969394",
+          "reward_attributed": true,
+          "static_reward": "325203260438103769058"
+        },
+        {
+          "balance": "1017205416618942253436",
+          "block": 122288005,
+          "candidate_key": "0xcf9357a52811b7cbde67af858bb2c38144ca0bfd3f2ec65b52c7ecefb8297807",
+          "candidate_word": "692002156180838484378",
+          "direct_word_match": false,
+          "dynamic_reward": "4473",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x836110414c4c5ef3405498cc470dfa672bb63225",
+          "reward_attributed": true,
+          "static_reward": "325203260438103769058"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x42cf663358db7a7ece40055d35c592c287d25e32bdd7d3f8d7f490a1a8821d69",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x88df55cb2ab40260da7beaae21d5d5e9af4a4427",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "2943539561865330352006",
+          "block": 122288005,
+          "candidate_key": "0x1f727629cb970192ed451a8a832cd213c6a7ac02f2e3e58114e109566cc7f1ba",
+          "candidate_word": "2943539561865330352006",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "23237997572272938536305138",
+          "block": 122288005,
+          "candidate_key": "0x68ecbbfd5fb367c0bd57a82d88ed29d22db325c92902803895a839e81f30b5bf",
+          "candidate_word": "23237997572272938536305138",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "322404460810095498720766414",
+          "block": 122289029,
+          "candidate_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "candidate_word": "322404460810095498720766414",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x000000000000000000000000000000000000dead",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "1000000000",
+          "block": 122289029,
+          "candidate_key": "0x29dbe2bdcfb21b2f610fafcd320d1f404bd0084a35d481a7aa1bdd8d9c59124c",
+          "candidate_word": "1000000000",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x07964f135f276412b3182a3b2407b8dd45000000",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "12241179116355898503492",
+          "block": 122289029,
+          "candidate_key": "0xd1d308387773d92593b44e5165220d9496c77993c9ec03fbb82f1ea8c5cf1f70",
+          "candidate_word": "12241179116355898503492",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "8071375754606938065052",
+          "block": 122289029,
+          "candidate_key": "0x3bfca691119a7c5e279a4e72384101c22bd3d839ece1740d5b0776750526ef74",
+          "candidate_word": "1000000000",
+          "direct_word_match": false,
+          "dynamic_reward": "3375",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+          "reward_attributed": true,
+          "static_reward": "8071375754605938065052"
+        },
+        {
+          "balance": "11021329638870637485535908",
+          "block": 122289029,
+          "candidate_key": "0xd4b4a3df5acb494c33d4b93906c4a92b1d013d03f8528fa9283be81c9bad07ad",
+          "candidate_word": "11021329638870637485535908",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "1000000000",
+          "block": 122289029,
+          "candidate_key": "0x069d2505b55d8254765f2fa4b1ecdecfb577afee00a33ec61d6854a15a66f426",
+          "candidate_word": "1000000000",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "4795095704667360323389",
+          "block": 122289029,
+          "candidate_key": "0x5a20b8a05daf102cb8b1ba43951a2a94c5df2397695192ac6720b82a2ad29828",
+          "candidate_word": "4469892444229256554331",
+          "direct_word_match": false,
+          "dynamic_reward": "4473",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x7e617482ca59fa977926e2930bc598ff1f969394",
+          "reward_attributed": true,
+          "static_reward": "325203260438103769058"
+        },
+        {
+          "balance": "4087084234192668425448",
+          "block": 122289029,
+          "candidate_key": "0xcf9357a52811b7cbde67af858bb2c38144ca0bfd3f2ec65b52c7ecefb8297807",
+          "candidate_word": "3761880973754564656390",
+          "direct_word_match": false,
+          "dynamic_reward": "4473",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x836110414c4c5ef3405498cc470dfa672bb63225",
+          "reward_attributed": true,
+          "static_reward": "325203260438103769058"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x42cf663358db7a7ece40055d35c592c287d25e32bdd7d3f8d7f490a1a8821d69",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x88df55cb2ab40260da7beaae21d5d5e9af4a4427",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "2943539561865330352006",
+          "block": 122289029,
+          "candidate_key": "0x1f727629cb970192ed451a8a832cd213c6a7ac02f2e3e58114e109566cc7f1ba",
+          "candidate_word": "2943539561865330352006",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+          "reward_attributed": true,
+          "static_reward": "0"
+        },
+        {
+          "balance": "23145901207745726751144708",
+          "block": 122289029,
+          "candidate_key": "0x68ecbbfd5fb367c0bd57a82d88ed29d22db325c92902803895a839e81f30b5bf",
+          "candidate_word": "23145901207745726751144708",
+          "direct_word_match": true,
+          "dynamic_reward": "0",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+          "reward_attributed": true,
+          "static_reward": "0"
+        }
+      ],
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "dependency": {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "dependencies": [
+              {
+                "address": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+                "bytes": 12731,
+                "historical_runtime_bound": false,
+                "name": null,
+                "runtime_hash": "0xb3d6938e8c9477247d16e146b97c511d1c0c232b3b76394f204a31d239b38c1f",
+                "source_verified": false,
+                "storage": null
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "target": "0xe8058da568eb94194588bc9bae53a5e584fe7471"
+          },
+          {
+            "block": 122289029,
+            "dependencies": [
+              {
+                "address": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+                "bytes": 12731,
+                "historical_runtime_bound": false,
+                "name": null,
+                "runtime_hash": "0xb3d6938e8c9477247d16e146b97c511d1c0c232b3b76394f204a31d239b38c1f",
+                "source_verified": false,
+                "storage": null
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "target": "0xe8058da568eb94194588bc9bae53a5e584fe7471"
+          }
+        ],
+        "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+        "kind": "implementation_probe",
+        "qualified": false,
+        "rank": 238,
+        "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+        "slot": "0x0000000000000000000000000000000000000000000000000000000000000007"
+      },
+      "holders": 12,
+      "mismatched_boundary_observations": 6,
+      "rank": 238,
+      "retained_holders": [
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "322404460810095498720766414",
+          "final_word": "322404460810095498720766414",
+          "holder": "0x000000000000000000000000000000000000dead",
+          "initial_balance": "322374394416956181048437706",
+          "initial_word": "322374394416956181048437706",
+          "persisted_word_updates": 12
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "1000000000",
+          "final_word": "1000000000",
+          "holder": "0x07964f135f276412b3182a3b2407b8dd45000000",
+          "initial_balance": "1000000000",
+          "initial_word": "1000000000",
+          "persisted_word_updates": 18
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "12241179116355898503492",
+          "final_word": "12241179116355898503492",
+          "holder": "0x088f68926e788d7f3f9ec400d4f327439181bb83",
+          "initial_balance": "12056986387307456933174",
+          "initial_word": "12056986387307456933174",
+          "persisted_word_updates": 6
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "8071375754606938065052",
+          "final_word": "1000000000",
+          "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+          "initial_balance": "12059327966975017973509",
+          "initial_word": "1000000000",
+          "persisted_word_updates": 12
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "11021329638870637485535908",
+          "final_word": "11021329638870637485535908",
+          "holder": "0x5473f664eaa1c6fea8306133241000b758cb326a",
+          "initial_balance": "10966237593610454011852931",
+          "initial_word": "10966237593610454011852931",
+          "persisted_word_updates": 9
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "1000000000",
+          "final_word": "1000000000",
+          "holder": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+          "initial_balance": "1000000000",
+          "initial_word": "1000000000",
+          "persisted_word_updates": 24
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "4795095704667360323389",
+          "final_word": "4469892444229256554331",
+          "holder": "0x7e617482ca59fa977926e2930bc598ff1f969394",
+          "initial_balance": "1111241123578888916974",
+          "initial_word": "786037863140785147916",
+          "persisted_word_updates": 6
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "4087084234192668425448",
+          "final_word": "3761880973754564656390",
+          "holder": "0x836110414c4c5ef3405498cc470dfa672bb63225",
+          "initial_balance": "1017205416618942253436",
+          "initial_word": "692002156180838484378",
+          "persisted_word_updates": 6
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x88df55cb2ab40260da7beaae21d5d5e9af4a4427",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 9
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "2943539561865330352006",
+          "final_word": "2943539561865330352006",
+          "holder": "0xe8058da568eb94194588bc9bae53a5e584fe7471",
+          "initial_balance": "2943539561865330352006",
+          "initial_word": "2943539561865330352006",
+          "persisted_word_updates": 6
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "23145901207745726751144708",
+          "final_word": "23145901207745726751144708",
+          "holder": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+          "initial_balance": "23237997572272938536305138",
+          "initial_word": "23237997572272938536305138",
+          "persisted_word_updates": 24
+        }
+      ],
+      "trace": {
+        "block": 122288005,
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x2aafce28b5552e216811fb5a1cb015178a29b461",
+        "rpc_error": {
+          "code": -32008,
+          "data": "Exceeded max limit of 167772160",
+          "message": "Response is too big"
+        },
+        "status": "unavailable"
+      }
+    },
+    {
+      "candidate_mapping_slot": "0x000000000000000000000000000000000000000000000000000000000000000a",
+      "checks": [
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x255592e3e3c05bc7848091080ac9059cbdf6989f267d35051054470b2f625f85",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x009b797edf9acc666a36020c4509c6095de51408"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x049502c7eeac71881f42060e807d7f3a058727763a3ff9b209992e0a99c5ca34",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x0dbd635e1c0d31cd15e8882f29220db14898ea7a"
+        },
+        {
+          "balance": "100736701226292376",
+          "block": 122288005,
+          "candidate_key": "0x616086ba8722d63a113e253bfc414264c1c1a9cd2c116e82911c08ccf968046f",
+          "candidate_word": "21866433874190392251570809700755167808344226008734491572399455801909401933200",
+          "direct_word_match": false,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x124763985d17ce87d1791015f632dc04fd5bc30f"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x46a2a1e653a88dfaa6e2bdad92c4d1dfe6fad4d9b8aa0472a4f14e3ee7a16c4c",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x20ece49d67474646128e9d951a71702024c4dd43"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x02fc2050da660ea0ab616356a572fbbeea21c454f25a288f518e1039445d3f3b",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x5f078753cfd03d7832a380eac6867c9cb9eb4faa"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x467c2446d3388a942ae25aa399947da8ffd76be3c435dc22bad51444e1346c52",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x63e86948d8676a37a89cabcd26a6ba2323ee1ee2"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x37a58f41dcf5e28e27745e72dd255d0695a0386fa804456c2036932d26675447",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x679bdd3e8c74a0704e977a845bc0560929b56299"
+        },
+        {
+          "balance": "301636630683190437",
+          "block": 122288005,
+          "candidate_key": "0x2667f3e0a128024826e5d80ee843ff5850840f217045c78708f9191df024e116",
+          "candidate_word": "65474820582531481515624295868978447840364481733266080794294526552960821548839",
+          "direct_word_match": false,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0x92c5ff8f197f668ba44ecbf4bd16a66853c2ea4e"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x25de7a25893db3dd8d20526a48e28b2c98bb3a3a082ebdd2e2cceaca1648b020",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xb3292fbd8433726a08940d50bf091a5db4d49d58"
+        },
+        {
+          "balance": "23824469251494304",
+          "block": 122288005,
+          "candidate_key": "0xdb02b8fdcf0f8df81ae3e4d786541d6f92c6ec785633003bf795d4567e35161b",
+          "candidate_word": "5171463579149963454898753869894132506440130282843687397212459410358693826755",
+          "direct_word_match": false,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xb94a905e759b430707635a560b86fa425494d8b1"
+        },
+        {
+          "balance": "1137292387140791",
+          "block": 122288005,
+          "candidate_key": "0xaf2919526e2e5d72dd3d05937522510b8f0920fae2eb716ea5e1a763f71a8af9",
+          "candidate_word": "246866618385390950125160798329806798104870710263836898915617606010474728178",
+          "direct_word_match": false,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xc7c9ca38ca9dd14cf9c2f3f8ec1a8b45a8afa132"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0xe076734c1cd6e0166f031f1341a9b4b9c706a2ce33e227bbf3bf74117a2ad441",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xdd301ce9c103d8b9dd4340df4c3bac29b2b54183"
+        },
+        {
+          "balance": "0",
+          "block": 122288005,
+          "candidate_key": "0x8b7a0f3b00e029de616d3bc9c94bb18df3bd5046db4515d9e7594313828ef3d6",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xff158c59817222d123ec2a85e4757f51a5ae1ceb"
+        },
+        {
+          "balance": "87091824658236933",
+          "block": 122288005,
+          "candidate_key": "0xb24f14309907b627590befa06a2074bbfb11ca0d8e2d2764e03f59c0f13a4614",
+          "candidate_word": "18904605786067522628875009943887159734854474374475081506157500652736588807417",
+          "direct_word_match": false,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "holder": "0xffca9396dccb8d6288e770d4e9e211e722f479a4"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x255592e3e3c05bc7848091080ac9059cbdf6989f267d35051054470b2f625f85",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x009b797edf9acc666a36020c4509c6095de51408"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x049502c7eeac71881f42060e807d7f3a058727763a3ff9b209992e0a99c5ca34",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x0dbd635e1c0d31cd15e8882f29220db14898ea7a"
+        },
+        {
+          "balance": "100736698267377554",
+          "block": 122289029,
+          "candidate_key": "0x616086ba8722d63a113e253bfc414264c1c1a9cd2c116e82911c08ccf968046f",
+          "candidate_word": "21866433231912905426959229899527318022291399974304386917859229002061188744370",
+          "direct_word_match": false,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x124763985d17ce87d1791015f632dc04fd5bc30f"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x46a2a1e653a88dfaa6e2bdad92c4d1dfe6fad4d9b8aa0472a4f14e3ee7a16c4c",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x20ece49d67474646128e9d951a71702024c4dd43"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x02fc2050da660ea0ab616356a572fbbeea21c454f25a288f518e1039445d3f3b",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x5f078753cfd03d7832a380eac6867c9cb9eb4faa"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x467c2446d3388a942ae25aa399947da8ffd76be3c435dc22bad51444e1346c52",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x63e86948d8676a37a89cabcd26a6ba2323ee1ee2"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x37a58f41dcf5e28e27745e72dd255d0695a0386fa804456c2036932d26675447",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x679bdd3e8c74a0704e977a845bc0560929b56299"
+        },
+        {
+          "balance": "301636879557554788",
+          "block": 122289029,
+          "candidate_key": "0x2667f3e0a128024826e5d80ee843ff5850840f217045c78708f9191df024e116",
+          "candidate_word": "65474874604499292805659580806454774025197261832123666778939471148665361452354",
+          "direct_word_match": false,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0x92c5ff8f197f668ba44ecbf4bd16a66853c2ea4e"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x25de7a25893db3dd8d20526a48e28b2c98bb3a3a082ebdd2e2cceaca1648b020",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xb3292fbd8433726a08940d50bf091a5db4d49d58"
+        },
+        {
+          "balance": "23824261913777112",
+          "block": 122289029,
+          "candidate_key": "0xdb02b8fdcf0f8df81ae3e4d786541d6f92c6ec785633003bf795d4567e35161b",
+          "candidate_word": "5171418573343465781468316041860063705902501863392046367843076970437949574875",
+          "direct_word_match": false,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xb94a905e759b430707635a560b86fa425494d8b1"
+        },
+        {
+          "balance": "1137292376504950",
+          "block": 122289029,
+          "candidate_key": "0xaf2919526e2e5d72dd3d05937522510b8f0920fae2eb716ea5e1a763f71a8af9",
+          "candidate_word": "246866616076719819427041753413051497503540363721384411001773298549323884813",
+          "direct_word_match": false,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xc7c9ca38ca9dd14cf9c2f3f8ec1a8b45a8afa132"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0xe076734c1cd6e0166f031f1341a9b4b9c706a2ce33e227bbf3bf74117a2ad441",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xdd301ce9c103d8b9dd4340df4c3bac29b2b54183"
+        },
+        {
+          "balance": "0",
+          "block": 122289029,
+          "candidate_key": "0x8b7a0f3b00e029de616d3bc9c94bb18df3bd5046db4515d9e7594313828ef3d6",
+          "candidate_word": "0",
+          "direct_word_match": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xff158c59817222d123ec2a85e4757f51a5ae1ceb"
+        },
+        {
+          "balance": "87091786091140437",
+          "block": 122289029,
+          "candidate_key": "0xb24f14309907b627590befa06a2074bbfb11ca0d8e2d2764e03f59c0f13a4614",
+          "candidate_word": "18904597414492366967579861680589507437213479076041693693336009604262157187977",
+          "direct_word_match": false,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "holder": "0xffca9396dccb8d6288e770d4e9e211e722f479a4"
+        }
+      ],
+      "contract": "0x009b797edf9acc666a36020c4509c6095de51408",
+      "dependency": {
+        "boundaries": [
+          {
+            "block": 122288005,
+            "dependencies": [
+              {
+                "address": "0x7589b8d477961e9a0995688c18a4974a254dd08e",
+                "bytes": 6485,
+                "historical_runtime_bound": false,
+                "name": null,
+                "runtime_hash": "0x4c6326bbd14525a76a0a2c22d5df9836398d830197b180c8924154dcf3b97cca",
+                "source_verified": false,
+                "storage": null
+              }
+            ],
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "target": "0x7589b8d477961e9a0995688c18a4974a254dd08e"
+          },
+          {
+            "block": 122289029,
+            "dependencies": [
+              {
+                "address": "0x7589b8d477961e9a0995688c18a4974a254dd08e",
+                "bytes": 6485,
+                "historical_runtime_bound": false,
+                "name": null,
+                "runtime_hash": "0x4c6326bbd14525a76a0a2c22d5df9836398d830197b180c8924154dcf3b97cca",
+                "source_verified": false,
+                "storage": null
+              }
+            ],
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "target": "0x7589b8d477961e9a0995688c18a4974a254dd08e"
+          }
+        ],
+        "contract": "0x009b797edf9acc666a36020c4509c6095de51408",
+        "kind": "implementation_probe",
+        "qualified": false,
+        "rank": 241,
+        "scope": "Dependency inventory only; full getters, storage rules and proxy paths still require review",
+        "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      },
+      "holders": 14,
+      "mismatched_boundary_observations": 10,
+      "rank": 241,
+      "retained_holders": [
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x009b797edf9acc666a36020c4509c6095de51408",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x0dbd635e1c0d31cd15e8882f29220db14898ea7a",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "100736698267377554",
+          "final_word": "21866433231912905426959229899527318022291399974304386917859229002061188744370",
+          "holder": "0x124763985d17ce87d1791015f632dc04fd5bc30f",
+          "initial_balance": "100736701226292376",
+          "initial_word": "21866433874190392251570809700755167808344226008734491572399455801909401933200",
+          "persisted_word_updates": 6
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x20ece49d67474646128e9d951a71702024c4dd43",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x5f078753cfd03d7832a380eac6867c9cb9eb4faa",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x63e86948d8676a37a89cabcd26a6ba2323ee1ee2",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0x679bdd3e8c74a0704e977a845bc0560929b56299",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "301636879557554788",
+          "final_word": "65474874604499292805659580806454774025197261832123666778939471148665361452354",
+          "holder": "0x92c5ff8f197f668ba44ecbf4bd16a66853c2ea4e",
+          "initial_balance": "301636630683190437",
+          "initial_word": "65474820582531481515624295868978447840364481733266080794294526552960821548839",
+          "persisted_word_updates": 16
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0xb3292fbd8433726a08940d50bf091a5db4d49d58",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "23824261913777112",
+          "final_word": "5171418573343465781468316041860063705902501863392046367843076970437949574875",
+          "holder": "0xb94a905e759b430707635a560b86fa425494d8b1",
+          "initial_balance": "23824469251494304",
+          "initial_word": "5171463579149963454898753869894132506440130282843687397212459410358693826755",
+          "persisted_word_updates": 3
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "1137292376504950",
+          "final_word": "246866616076719819427041753413051497503540363721384411001773298549323884813",
+          "holder": "0xc7c9ca38ca9dd14cf9c2f3f8ec1a8b45a8afa132",
+          "initial_balance": "1137292387140791",
+          "initial_word": "246866618385390950125160798329806798104870710263836898915617606010474728178",
+          "persisted_word_updates": 1
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0xdd301ce9c103d8b9dd4340df4c3bac29b2b54183",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "0",
+          "final_word": "0",
+          "holder": "0xff158c59817222d123ec2a85e4757f51a5ae1ceb",
+          "initial_balance": "0",
+          "initial_word": "0",
+          "persisted_word_updates": 0
+        },
+        {
+          "balance_changed_without_candidate_write": false,
+          "final_balance": "87091786091140437",
+          "final_word": "18904597414492366967579861680589507437213479076041693693336009604262157187977",
+          "holder": "0xffca9396dccb8d6288e770d4e9e211e722f479a4",
+          "initial_balance": "87091824658236933",
+          "initial_word": "18904605786067522628875009943887159734854474374475081506157500652736588807417",
+          "persisted_word_updates": 6
+        }
+      ],
+      "trace": {
+        "block": 122288005,
+        "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+        "holder": "0x124763985d17ce87d1791015f632dc04fd5bc30f",
+        "status": "traced",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+            "pc": 476,
+            "value": "0x0000000000000000000000009c9f7c6526146a6fba69e5451b9e9f47783c3155"
+          },
+          {
+            "depth": 1,
+            "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+            "pc": 476,
+            "value": "0x0000000000000000000000007589b8d477961e9a0995688c18a4974a254dd08e"
+          },
+          {
+            "depth": 2,
+            "key": "0x0000000000000000000000000000000000000000000000000000000000000009",
+            "pc": 3056,
+            "value": "0x0000000000000022949a9acb7df2b9391ee530aebeec2edade4485aa8a3846a5"
+          },
+          {
+            "depth": 2,
+            "key": "0x616086ba8722d63a113e253bfc414264c1c1a9cd2c116e82911c08ccf968046f",
+            "pc": 3081,
+            "value": "0x3057f686328d4084b408278a729b1aaacd41fe8ff9145e8e521943963f34d590"
+          }
+        ],
+        "trace_sha256": "0eacb67a1134fc039c0cbe90172a71e1e2b936dec337f8afb39182d62503f819"
+      }
+    }
+  ],
+  "tool_language": "Rust"
+}

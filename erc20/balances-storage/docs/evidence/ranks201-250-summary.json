@@ -1,0 +1,458 @@
+{
+  "artifacts": [
+    {
+      "file": "ranks201-250-survey.json",
+      "sha256": "2bfb93c3885d8d5fad0700c27c0758d50e5bf976964c3eb8bbe54ca978029b47",
+      "status": "coverage_gap"
+    },
+    {
+      "file": "ranks201-250-qualification-initial.json",
+      "sha256": "4d2a6a99025e4a490341a2911d0d64500a6049af76a155efb1e49091823c009f",
+      "status": "incomplete"
+    },
+    {
+      "file": "ranks201-250-qualification.json",
+      "sha256": "a18746f281b5495ce0b486308427ad775b987bca873402dab5a365f34956d515",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "ranks201-250-rpc.json",
+      "sha256": "4a2f316de796c907d375a02df4e15e43055dffe4cf9c466c5cac3912221176e6",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "ranks201-250-holder-coverage.json",
+      "sha256": "960641f2e57546014000fcbf378617be08ad6c59c75c0431f63e3d40e003bc7b",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "ranks201-250-wasm-holders.json",
+      "sha256": "edc473f479197e54a680059d54141a4887f9241f5d96143172a2fd5ba30c33a7",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "ranks201-250-mismatch-initial.json",
+      "sha256": "5b696138c4f638bf0d6a70377fbb38642a042210bdbe2aca7f2ccbd478fbacdd",
+      "status": "incomplete"
+    },
+    {
+      "file": "ranks201-250-mismatches.json",
+      "sha256": "e909f09e51ce218aa41e3089ef1c16767dc3deb8473a97de7a201e0149b3eec4",
+      "status": "inspected"
+    },
+    {
+      "file": "swkey-divisor-review.json",
+      "sha256": "726c2245c21aeeb4898e671c2407d59c76d7a879c245c4207bfacbe28e98cc15",
+      "status": "inspected"
+    },
+    {
+      "file": "swkey-qualification.json",
+      "sha256": "ec0909a15be3e534c45fe43f085b5573aed5fb564f8c91bb8cff816fe0abf6af",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "swkey-rpc.json",
+      "sha256": "ac5a653cf548b65d7f15d93ee07aef36fd71932ebe7a0b7e477311d57f272ece",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "swkey-holder-coverage.json",
+      "sha256": "f220fa7bfc6d27224d315ef23ca7f283706c8ca57ca824b2ed7e0e16e578a8cb",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "swkey-wasm-holders.json",
+      "sha256": "b120a56b754a13f125c64ae1ff92e73a8cc0c1f058604900fbf6f40b143fa80a",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "ranks201-250-combined.json",
+      "sha256": "9da548408e43d0be4f20197246b72eee254ba6df679ef398bf4f83559e78c690",
+      "status": "bounded_parity"
+    }
+  ],
+  "candidates": [
+    {
+      "contract": "0x4a11ba40d7ca4f8c34a8a7bea53269c179999999",
+      "qualified": true,
+      "rank": 201,
+      "reference_rows": 81
+    },
+    {
+      "contract": "0x783c3f003f172c6ac5ac700218a357d2d66ee2a2",
+      "qualified": true,
+      "rank": 202,
+      "reference_rows": 81
+    },
+    {
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "qualified": false,
+      "rank": 203,
+      "reference_rows": 81
+    },
+    {
+      "contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+      "qualified": false,
+      "rank": 204,
+      "reference_rows": 80
+    },
+    {
+      "contract": "0x9b0cb617503a1b7484089125dd2c2fe6bcb37777",
+      "qualified": true,
+      "rank": 205,
+      "reference_rows": 80
+    },
+    {
+      "contract": "0xe50e3d1a46070444f44df911359033f2937fcc13",
+      "qualified": true,
+      "rank": 206,
+      "reference_rows": 80
+    },
+    {
+      "contract": "0x06f7aeabc9c37d457922a9368f291c5d57c07777",
+      "qualified": true,
+      "rank": 207,
+      "reference_rows": 79
+    },
+    {
+      "contract": "0x5d7909f951436d4e6974d841316057df3a622962",
+      "qualified": false,
+      "rank": 208,
+      "reference_rows": 79
+    },
+    {
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "qualified": false,
+      "rank": 209,
+      "reference_rows": 79
+    },
+    {
+      "contract": "0xf69baf63d210d74c915338f7d033228890db324f",
+      "qualified": false,
+      "rank": 210,
+      "reference_rows": 79
+    },
+    {
+      "contract": "0x043ef81a999af3112f09401874ebd46ef183ac8a",
+      "qualified": true,
+      "rank": 211,
+      "reference_rows": 78
+    },
+    {
+      "contract": "0xb305e6954e4e0cd021c06ec355681abc8a00dbd7",
+      "qualified": false,
+      "rank": 212,
+      "reference_rows": 77
+    },
+    {
+      "contract": "0xa227cc36938f0c9e09ce0e64dfab226cad739447",
+      "qualified": true,
+      "rank": 213,
+      "reference_rows": 76
+    },
+    {
+      "contract": "0xc23db46993f643f1fa0494cd30f9f43505885d84",
+      "qualified": false,
+      "rank": 214,
+      "reference_rows": 76
+    },
+    {
+      "contract": "0xc61eb549acf4a05ed6e3fe0966f5e213b23541ce",
+      "qualified": true,
+      "rank": 215,
+      "reference_rows": 76
+    },
+    {
+      "contract": "0xf9ef878545214f0e2907b978318f4228515c27af",
+      "qualified": true,
+      "rank": 216,
+      "reference_rows": 75
+    },
+    {
+      "contract": "0xb0c2ab5af4028461ace3f6e1c33a4ee1404e7777",
+      "qualified": true,
+      "rank": 217,
+      "reference_rows": 74
+    },
+    {
+      "contract": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+      "qualified": true,
+      "rank": 218,
+      "reference_rows": 74
+    },
+    {
+      "contract": "0xfb50c8871472d7eb7ed4513f99c0f165a6c67777",
+      "qualified": true,
+      "rank": 219,
+      "reference_rows": 74
+    },
+    {
+      "contract": "0x4bafbe9f5fdf15b4bd6210e55e100d2266b169e3",
+      "qualified": false,
+      "rank": 220,
+      "reference_rows": 72
+    },
+    {
+      "contract": "0xac23b90a79504865d52b49b327328411a23d4db2",
+      "qualified": true,
+      "rank": 221,
+      "reference_rows": 72
+    },
+    {
+      "contract": "0x1f8955e640cbd9abc3c3bb408c9e2e1f5f20dfe6",
+      "qualified": false,
+      "rank": 222,
+      "reference_rows": 71
+    },
+    {
+      "contract": "0xd41fdb03ba84762dd66a0af1a6c8540ff1ba5dfb",
+      "qualified": true,
+      "rank": 223,
+      "reference_rows": 71
+    },
+    {
+      "contract": "0x3cbd513239d9e5538a4caed8ed53ef77009df473",
+      "qualified": false,
+      "rank": 224,
+      "reference_rows": 70
+    },
+    {
+      "contract": "0xb0ad9c2313b9719ea0ccd43d7e7e1fd07e7cbd90",
+      "qualified": true,
+      "rank": 225,
+      "reference_rows": 70
+    },
+    {
+      "contract": "0xeb2b7d5691878627eff20492ca7c9a71228d931d",
+      "qualified": true,
+      "rank": 226,
+      "reference_rows": 70
+    },
+    {
+      "contract": "0x0ae9db80b34a310e01aa9f16843236b9837c7777",
+      "qualified": true,
+      "rank": 227,
+      "reference_rows": 69
+    },
+    {
+      "contract": "0x4ef9d3062c7f6eba4aae4990c5036598c6eff4ec",
+      "qualified": true,
+      "rank": 228,
+      "reference_rows": 69
+    },
+    {
+      "contract": "0xfc27580f7e395b1bc7ae0ac336f8277078077777",
+      "qualified": true,
+      "rank": 229,
+      "reference_rows": 69
+    },
+    {
+      "contract": "0x208bf3e7da9639f1eaefa2de78c23396b0682025",
+      "qualified": true,
+      "rank": 230,
+      "reference_rows": 68
+    },
+    {
+      "contract": "0x6ef2ffb38d64afe18ce782da280b300e358cfeaf",
+      "qualified": true,
+      "rank": 231,
+      "reference_rows": 68
+    },
+    {
+      "contract": "0x9be61a38725b265bc3eb7bfdf17afdfc9d26c130",
+      "qualified": true,
+      "rank": 232,
+      "reference_rows": 68
+    },
+    {
+      "contract": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
+      "qualified": true,
+      "rank": 233,
+      "reference_rows": 67
+    },
+    {
+      "contract": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+      "qualified": true,
+      "rank": 234,
+      "reference_rows": 67
+    },
+    {
+      "contract": "0xb0b92de23baa85fb06208277e925ced53edab482",
+      "qualified": true,
+      "rank": 235,
+      "reference_rows": 66
+    },
+    {
+      "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+      "qualified": false,
+      "rank": 236,
+      "reference_rows": 66
+    },
+    {
+      "contract": "0xda033999bb6165e64db01bd9be14b40f5653092e",
+      "qualified": true,
+      "rank": 237,
+      "reference_rows": 66
+    },
+    {
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "qualified": false,
+      "rank": 238,
+      "reference_rows": 66
+    },
+    {
+      "contract": "0xb90b7c68ffd41ec3493ca7b6fd71d451cbcc47e8",
+      "qualified": false,
+      "rank": 239,
+      "reference_rows": 65
+    },
+    {
+      "contract": "0xd5f6ef5deabe61e6d5cdb49bfb6f156f2c1ca715",
+      "qualified": false,
+      "rank": 240,
+      "reference_rows": 65
+    },
+    {
+      "contract": "0x009b797edf9acc666a36020c4509c6095de51408",
+      "qualified": true,
+      "rank": 241,
+      "reference_rows": 64
+    },
+    {
+      "contract": "0x365ddef35668dfeb7a5f6b2fe53ed71bda147777",
+      "qualified": true,
+      "rank": 242,
+      "reference_rows": 64
+    },
+    {
+      "contract": "0x65b98b81f2525efd6c3f49c44de56db7ea662551",
+      "qualified": true,
+      "rank": 243,
+      "reference_rows": 64
+    },
+    {
+      "contract": "0x9123400446a56176eb1b6be9ee5cf703e409f492",
+      "qualified": true,
+      "rank": 244,
+      "reference_rows": 64
+    },
+    {
+      "contract": "0xf2ec508422174ee564de98187db9359d318afb6b",
+      "qualified": true,
+      "rank": 245,
+      "reference_rows": 64
+    },
+    {
+      "contract": "0x565d40e2ef60f0b4e5bd0136bb2c58ace83fdaa5",
+      "qualified": false,
+      "rank": 246,
+      "reference_rows": 63
+    },
+    {
+      "contract": "0x95669a6589a81a6704bab1020722d0c405841885",
+      "qualified": true,
+      "rank": 247,
+      "reference_rows": 63
+    },
+    {
+      "contract": "0xac4beaa86f8596675a92b2ffd3312f49d4e45406",
+      "qualified": false,
+      "rank": 248,
+      "reference_rows": 63
+    },
+    {
+      "contract": "0xb10cc888cb2cce7036f4c7ecad8a57da16161338",
+      "qualified": true,
+      "rank": 249,
+      "reference_rows": 63
+    },
+    {
+      "contract": "0x4be35ec329343d7d9f548d42b0f8c17fffe07db4",
+      "qualified": true,
+      "rank": 250,
+      "reference_rows": 62
+    }
+  ],
+  "cohorts": [
+    {
+      "checkpoint_holders": 863,
+      "checkpoint_rpc_reads": 1726,
+      "cohort": "ranks201-250",
+      "cold_unknown_nonzero_observations": 252,
+      "cold_unknown_observations": 865,
+      "emitted_rpc_checks": 1427,
+      "initialized_carry_forward_matches": 905,
+      "reference_observations": 2332,
+      "snapshot_holders": 863,
+      "snapshot_zeros": 345,
+      "zero_checks": 138
+    },
+    {
+      "checkpoint_holders": 14,
+      "checkpoint_rpc_reads": 28,
+      "cohort": "swkey",
+      "cold_unknown_nonzero_observations": 0,
+      "cold_unknown_observations": 32,
+      "emitted_rpc_checks": 32,
+      "initialized_carry_forward_matches": 32,
+      "reference_observations": 64,
+      "snapshot_holders": 14,
+      "snapshot_zeros": 9,
+      "zero_checks": 0
+    }
+  ],
+  "combined": {
+    "aggregate_emitted_zero_checks": 14711,
+    "all_balance_event_fields_equal": true,
+    "baseline_report_sha256": "74fa85a64295e81e04b1bb3fbd95a97c8059897f249aa40798686ca54b6e4b0e",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 16.103034870319235,
+      "empty_output_delivery": null,
+      "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+      "seconds_including_startup": 63.590497583
+    },
+    "configured_profiles": 233,
+    "elapsed_seconds": 168.670277041,
+    "events_sha256": "34d261b3a403f21ee2ecddb6eb91c6ea8b3e049ab5e77ade2dc44ce4f7a38145",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 172250,
+    "initialized_carry_forward_matches": 67145,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "d876fef61106d77811ca16e6f263e510b5f8233c7bbe486ff7589902caffe6ea",
+    "profiles_with_emitted_rows": 232,
+    "reused_verified_rpc_rows": 105106,
+    "scope": "Fresh 233-profile actual-WASM capture. Full-field comparison with the verified 199-profile capture and 34 newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-233 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "a850343e3cae1136210aa6db0b59eff3d7a36c13d5a7a2a4e21f48a91ca08735",
+        "cohort": "ranks201-250",
+        "events_sha256": "d592d2e7a39f923dabb79646dd8288f1cfeef11b0c002239eecd83659ab7eda4",
+        "holder_report_sha256": "edc473f479197e54a680059d54141a4887f9241f5d96143172a2fd5ba30c33a7",
+        "layouts_sha256": "f3d2c37edc50c1f12a797f1390bb7ce521dbec68e825e34b6ba567d6bfc3eb1e",
+        "rpc_report_sha256": "4a2f316de796c907d375a02df4e15e43055dffe4cf9c466c5cac3912221176e6"
+      },
+      {
+        "checks_sha256": "056d61028a47b589a80169366f7ed39a95b9f3975bc666794b2984be22d8efe9",
+        "cohort": "swkey",
+        "events_sha256": "b9be275ffc82475ffc34bba12e889497291afe80730b038c285f195f7767daf1",
+        "holder_report_sha256": "b120a56b754a13f125c64ae1ff92e73a8cc0c1f058604900fbf6f40b143fa80a",
+        "layouts_sha256": "67f860903cdd2264d019259747660a2cec7b5546bf3b5dedfb1807c4e4ae55c0",
+        "rpc_report_sha256": "ac5a653cf548b65d7f15d93ee07aef36fd71932ebe7a0b7e477311d57f272ece"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "configured_profiles": 233,
+  "newly_qualified_profiles": 34,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "34 newly qualified profiles out of immutable ranks 201-250. Initial failures and YBC remain separate. Holder observations require explicit checkpoints; not global holder enumeration.",
+  "source_ranking_sha256": "be1c62a18ee750c2f2f824272566bca9d69942c67f794e88e80f57b34df892c5",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tool_language": "Rust",
+  "unqualified_in_ranks201_250": 16
+}

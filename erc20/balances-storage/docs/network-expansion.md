@@ -36,13 +36,14 @@ capture, audit and holder replay. Preserve wrong-chain rejection, canonical
 block binding and finality checks. A provider that lacks a required feature
 must not silently receive weaker validation.
 
-The BSC campaign now includes 199 qualified profiles: the original top 100 plus
-49 from ranks 101–150 and all 50 from ranks 151–200. The
-[latest candidate follow-up](hlbp-active-holder-coverage.md) retains only LBP
-(143) outside the qualified fixture. hLBP has a captured mint in a separate
-older interval; 198 profiles emit in the original 1,024-block interval. The
+The BSC campaign now includes 233 qualified profiles: the original top 100 plus
+49 from ranks 101–150, all 50 from ranks 151–200 and 34 from ranks 201–250. The
+[latest candidate follow-up](ranks201-250-coverage.md) leaves 16 candidates from
+ranks 201–250 and LBP (143) outside the qualified fixture. hLBP has a captured
+mint in a separate older interval; 232 profiles emit in the original 1,024-block
+interval. The
 [removal correction](shareholder-removal-coverage.md) now passes a captured
-shareholder tail pop; the latest combined capture preserves all 199 profiles'
+shareholder tail pop; the latest combined capture preserves all 233 profiles'
 audited output. Swap-and-pop
 has synthetic coverage but no captured swap transaction yet. This is a bounded campaign. Completing it
 does not establish support for every BSC token or complete global holder

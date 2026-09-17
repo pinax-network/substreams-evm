@@ -402,9 +402,13 @@ mod ranked_proxy_tests;
 #[cfg(test)]
 mod ranks151_200_tests;
 #[cfg(test)]
+mod ranks201_250_tests;
+#[cfg(test)]
 mod remaining_ranked_tests;
 #[cfg(test)]
 mod securities_proxy_tests;
+#[cfg(test)]
+mod swkey_tests;
 #[cfg(test)]
 mod tests;
 #[cfg(test)]
