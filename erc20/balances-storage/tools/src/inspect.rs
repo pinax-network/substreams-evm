@@ -138,6 +138,8 @@ pub fn run(args: Inspect) -> Result<bool> {
                 "trace disagrees with balanceOf"
             );
             report["storage_reads"] = json!(storage_reads(&trace)?);
+            report["execution_contexts"] = crate::trace_context::inspect(&trace, &contract)?;
+            report["execution_code"] = json!(crate::trace_context::validate_code(&rpc, &reference, &report["execution_contexts"])?);
             report["trace_sha256"] = json!(sha256(&args.output.join("trace.json"))?);
             // State overrides simulate a call only; they never send a transaction.
             let mut overrides = Vec::new();

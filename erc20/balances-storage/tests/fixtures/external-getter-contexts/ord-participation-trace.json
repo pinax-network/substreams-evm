@@ -1,0 +1,1128 @@
+{
+  "failed": false,
+  "returnValue": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+  "structLogs": [
+    {
+      "depth": 1,
+      "op": "PUSH1",
+      "pc": 0,
+      "stack": []
+    },
+    {
+      "depth": 1,
+      "op": "SLOAD",
+      "pc": 6238,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x7f1",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x3"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "PUSH0",
+      "pc": 6239,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x7f1",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x885584e6ee2f8bdcdd7be5898da49f63050e8899"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "SLOAD",
+      "pc": 6495,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0xc3cb511e4ac649ae57618f64b1ef3b9e6c0e4df29da9b8e7bbb1c5fcc8af5b97"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "ISZERO",
+      "pc": 6496,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x1"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "SLOAD",
+      "pc": 7891,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x188b",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x1f7e",
+        "0x3"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "PUSH1",
+      "pc": 7892,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x188b",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x1f7e",
+        "0x885584e6ee2f8bdcdd7be5898da49f63050e8899"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "STATICCALL",
+      "pc": 7937,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x188b",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0x2a0",
+        "0x1f7e",
+        "0x240",
+        "0x240",
+        "0x2a0",
+        "0x24",
+        "0x2a0",
+        "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+        "0x2fa872d"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 0,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 12342,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0xb4d",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0xc"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 12343,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0xb4d",
+        "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+        "0xca8bf23801341c3ba2e696d06e9679647f5b0f9b"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "STATICCALL",
+      "pc": 12387,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0xb4d",
+        "0x2a0",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x20",
+        "0x2a0",
+        "0x24",
+        "0x2a0",
+        "0xca8bf23801341c3ba2e696d06e9679647f5b0f9b",
+        "0x2ee900e"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "PUSH1",
+      "pc": 0,
+      "stack": []
+    },
+    {
+      "depth": 3,
+      "op": "SLOAD",
+      "pc": 405,
+      "stack": [
+        "0x3b0f0f2f",
+        "0x199",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x4e28994e94a5931efa6b94bad03c48a7c5c1697b15bc8f9e60362668336383c2"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "AND",
+      "pc": 406,
+      "stack": [
+        "0x3b0f0f2f",
+        "0x199",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "RETURN",
+      "pc": 365,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "SWAP2",
+      "pc": 12388,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2898,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xff",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "AND",
+      "pc": 2899,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xff",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2911,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b76"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "DUP7",
+      "pc": 2912,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x21d841e7cbd6cbc00"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2920,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b77"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2921,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x16345785d8a0000"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2929,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b78"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2930,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x31cd7310aed2a498a"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2939,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b79"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2940,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0xd"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2949,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7a"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2950,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x3ec04e6c0f7a0cd4c"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2959,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7b"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2960,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2969,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7c"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 2970,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x969c74e30593cfbfb5"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2979,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7d"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 2980,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 2990,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7e"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 2991,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3001,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b7f"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3002,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3012,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b80"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3013,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xc",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b75",
+        "0x0"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3020,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x5aff8289e706180519b9a3e94279c2d705ba10e4ab847a3606d63cc248988b81"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3021,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x60fa44b98de51a0c"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3028,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3029,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0xa6e"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3039,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f3"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3040,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x138"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3050,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f4"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3051,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x3",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f2",
+        "0x138"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "SLOAD",
+      "pc": 3058,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x86919f1f3ecbca028c6a14e76ea35f2b26aa93e05ff1f5afd2c783cec7c77f5"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH2",
+      "pc": 3059,
+      "stack": [
+        "0x0",
+        "0x93e4ca3c",
+        "0x80",
+        "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+        "0x1",
+        "0x20",
+        "0xffffffffffffffffffffffffffffffffffffffff",
+        "0x138"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "RETURN",
+      "pc": 3092,
+      "stack": []
+    },
+    {
+      "depth": 1,
+      "op": "SWAP3",
+      "pc": 7938,
+      "stack": []
+    },
+    {
+      "depth": 1,
+      "op": "SLOAD",
+      "pc": 8110,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x31cd7310aed2a498a",
+        "0x956859320c77edc9e",
+        "0x60fa44b98de51a0c",
+        "0x60fa44b98de51a0c",
+        "0x188b",
+        "0x31cd7310aed2a498a",
+        "0x956859320c77edc9e",
+        "0xc3cb511e4ac649ae57618f64b1ef3b9e6c0e4df29da9b8e7bbb1c5fcc8af5b97"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "SWAP5",
+      "pc": 8111,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x0",
+        "0x31cd7310aed2a498a",
+        "0x956859320c77edc9e",
+        "0x60fa44b98de51a0c",
+        "0x60fa44b98de51a0c",
+        "0x188b",
+        "0x31cd7310aed2a498a",
+        "0x956859320c77edc9e",
+        "0x1"
+      ]
+    },
+    {
+      "depth": 1,
+      "op": "STATICCALL",
+      "pc": 9305,
+      "stack": [
+        "0x40",
+        "0x4",
+        "0x93da14f9",
+        "0x3a4",
+        "0x40",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x7f1",
+        "0x1914",
+        "0x760",
+        "0x0",
+        "0x760",
+        "0xa4",
+        "0x760",
+        "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+        "0x2f9c583"
+      ]
+    },
+    {
+      "depth": 2,
+      "op": "PUSH1",
+      "pc": 0,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "STATICCALL",
+      "pc": 21342,
+      "stack": [
+        "0x1f00ca74",
+        "0x340",
+        "0x1",
+        "0x80",
+        "0x60",
+        "0x1391",
+        "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+        "0x1",
+        "0x80",
+        "0xe0",
+        "0x1",
+        "0x0",
+        "0x0",
+        "0x4730",
+        "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "0x55d398326f99059ff775485246999027b3197955",
+        "0x0",
+        "0x0",
+        "0x55d398326f99059ff775485246999027b3197955",
+        "0x0",
+        "0x0",
+        "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+        "0x902f1ac",
+        "0x2be",
+        "0x60",
+        "0x2ba",
+        "0x4",
+        "0x2ba",
+        "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+        "0x2edc00c"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "PUSH1",
+      "pc": 0,
+      "stack": []
+    },
+    {
+      "depth": 3,
+      "op": "SLOAD",
+      "pc": 4728,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x8"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "SWAP1",
+      "pc": 4729,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x6aab0031000000000b3e60ab27d8073cf4810000001fa1fd07a5a08f50257696"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "SLOAD",
+      "pc": 4759,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x1fa1fd07a5a08f50257696",
+        "0x0",
+        "0x0",
+        "0xe",
+        "0x8"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "SWAP1",
+      "pc": 4760,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x1fa1fd07a5a08f50257696",
+        "0x0",
+        "0x0",
+        "0xe",
+        "0x6aab0031000000000b3e60ab27d8073cf4810000001fa1fd07a5a08f50257696"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "SLOAD",
+      "pc": 4790,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x1fa1fd07a5a08f50257696",
+        "0xb3e60ab27d8073cf481",
+        "0x0",
+        "0x1c",
+        "0x8"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "SWAP1",
+      "pc": 4791,
+      "stack": [
+        "0x902f1ac",
+        "0x2e6",
+        "0x1fa1fd07a5a08f50257696",
+        "0xb3e60ab27d8073cf481",
+        "0x0",
+        "0x1c",
+        "0x6aab0031000000000b3e60ab27d8073cf4810000001fa1fd07a5a08f50257696"
+      ]
+    },
+    {
+      "depth": 3,
+      "op": "RETURN",
+      "pc": 853,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "ISZERO",
+      "pc": 21343,
+      "stack": []
+    },
+    {
+      "depth": 2,
+      "op": "RETURN",
+      "pc": 911,
+      "stack": []
+    },
+    {
+      "depth": 1,
+      "op": "DUP1",
+      "pc": 9306,
+      "stack": []
+    },
+    {
+      "depth": 1,
+      "op": "RETURN",
+      "pc": 935,
+      "stack": []
+    }
+  ]
+}

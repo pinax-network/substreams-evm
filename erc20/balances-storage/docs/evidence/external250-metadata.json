@@ -1,0 +1,29 @@
+{
+  "contracts": [
+    {
+      "address": "0x0541727a60316913f78eb7fd5524700acf89264c",
+      "metadata_cbor": "a2646970667358221220269a2d28ab857a35c74709968a53ca03a77875b983b906ffcfa6c4b13222627464736f6c634300081c",
+      "metadata_cid": "QmQwLZE8a3g7FPtS6jpzEdDcEp42HTA7rpcKdEeFP12Po9",
+      "response": {
+        "error": "https://ipfs.io/ipfs/QmQwLZE8a3g7FPtS6jpzEdDcEp42HTA7rpcKdEeFP12Po9: status code 429",
+        "received": false
+      },
+      "source_url": "https://ipfs.io/ipfs/QmQwLZE8a3g7FPtS6jpzEdDcEp42HTA7rpcKdEeFP12Po9"
+    },
+    {
+      "address": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+      "metadata_cbor": "a264697066735822122080076a7935f2197cfa8f6fb5737f3e45cb6b338d5daf2f1a996d89ff0d9f304964736f6c6343000818",
+      "metadata_cid": "QmWxRTFu8K3zSLa4bjxjU6pMkSeHHdFgQcmHZoC3SFApk8",
+      "response": {
+        "error": "https://ipfs.io/ipfs/QmWxRTFu8K3zSLa4bjxjU6pMkSeHHdFgQcmHZoC3SFApk8: status code 429",
+        "received": false
+      },
+      "source_url": "https://ipfs.io/ipfs/QmWxRTFu8K3zSLa4bjxjU6pMkSeHHdFgQcmHZoC3SFApk8"
+    }
+  ],
+  "elapsed_seconds": 0.106171167,
+  "qualified": false,
+  "scope": "Metadata source discovery from historical runtime CBOR. Retrieved content is not source-qualified until content and historical runtime are independently bound.",
+  "status": "inspected",
+  "tool_language": "Rust"
+}

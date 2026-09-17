@@ -14,6 +14,7 @@ pub mod ranking;
 pub mod recheck;
 pub mod rpc;
 pub mod survey;
+pub mod trace_context;
 
 #[cfg(test)]
 mod tests;

@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "block": 122288048,
+      "hash": "0xdb99d62e08c629178178d7095f705480590e8f5a45abe2e13d827979ecd8a99f",
+      "name": "titan",
+      "runtime_checks": [
+        {
+          "address": "0x0541727a60316913f78eb7fd5524700acf89264c",
+          "checked_instructions": 25,
+          "runtime_hash": "0x379a32fe8987330da76619b551a01befaf78ccd8a428e5f48c5365cd117d7ce4"
+        },
+        {
+          "address": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+          "checked_instructions": 4,
+          "runtime_hash": "0x0437c957fd70a064e451ef322108a476e6dd3962c57f5de7d9882edabf724428"
+        },
+        {
+          "address": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+          "checked_instructions": 4,
+          "runtime_hash": "0x890175e878312ef76618a100a6c974f85b42b6f4639d57986b5608656c3cd122"
+        }
+      ]
+    },
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "name": "ord-participation",
+      "runtime_checks": [
+        {
+          "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+          "checked_instructions": 1,
+          "runtime_hash": "0x69aef35de7236f9ae83edadff736f01ea40edd8919b2e73d87dea5d3255b8c3e"
+        },
+        {
+          "address": "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+          "checked_instructions": 3,
+          "runtime_hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8"
+        },
+        {
+          "address": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+          "checked_instructions": 6,
+          "runtime_hash": "0xd52f60779e140539fc9eb5eb265e5034c62ebd6c1e0e5f69ab7caee3979437c1"
+        },
+        {
+          "address": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+          "checked_instructions": 19,
+          "runtime_hash": "0xb474ba9b52639c08559deee53c8ff77df482e50f0690d9d76de95a16126cc7e0"
+        },
+        {
+          "address": "0xca8bf23801341c3ba2e696d06e9679647f5b0f9b",
+          "checked_instructions": 1,
+          "runtime_hash": "0x0367e75b6b740186b1a45ab936c16af5275b1b683b3f90b8d09a62130b695834"
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 0.470271209,
+  "fixture_cases_sha256": "1e5855c08c2cc462e004103127a1668515818f12004c74707267da2de09cce23",
+  "qualified": false,
+  "scope": "Fresh canonical code reads bind every attributed SLOAD and call instruction to its runtime instruction boundary. Does not qualify unexecuted branches or reward arithmetic.",
+  "status": "inspected",
+  "tool_language": "Rust"
+}

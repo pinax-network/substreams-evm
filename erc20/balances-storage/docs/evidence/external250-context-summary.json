@@ -1,0 +1,78 @@
+{
+  "artifacts": [
+    {
+      "file": "external250-dependencies.json",
+      "sha256": "4578fc9f3efa5fe93890ff062c89ba6be7199074493b1d781b86a3d1d96e6456"
+    },
+    {
+      "file": "external250-holder-candidates.json",
+      "sha256": "162bfc66d1e610041be8bd7b2c7f33cb3f5839942f32a1b89e4fea751007e7c7"
+    },
+    {
+      "file": "external250-candidate-audit.json",
+      "sha256": "98156abfd7713dc3460281b01f182c9d96e9988568ff5b88c109e278633aa8fa"
+    },
+    {
+      "file": "ord-participation-probe.json",
+      "sha256": "43fab05193b06931e21b87dc099e295be411c857127ecdc7393ddf4ae8557a8c"
+    },
+    {
+      "file": "external250-metadata.json",
+      "sha256": "edc1a9ccdb469381b3caba4453af2977c10f73fc7610dda19fc402ccc1f76d07"
+    },
+    {
+      "file": "titan-context-inspection.json",
+      "sha256": "f1facfb12cd9ffb07c1d06d239f27c6aac1630961969de06d815b3064f47a3b7"
+    }
+  ],
+  "configured_profiles_unchanged": 246,
+  "contexts": [
+    {
+      "block": 122288048,
+      "calls": 4,
+      "fixture_sha256": "ebb05a0c7eb5cbad7724aa50601ea1e26273ae0babe279fe4f55b681ad45287e",
+      "full_trace_sha256": "ba8b6029003deedd25889844654c853f1d8526d36dc0272ff38abda3c31001f4",
+      "hash": "0xdb99d62e08c629178178d7095f705480590e8f5a45abe2e13d827979ecd8a99f",
+      "historical_code_accounts_with_reads": 3,
+      "independent_storage_words": 16,
+      "name": "titan",
+      "reads": 29,
+      "state_simulated": false
+    },
+    {
+      "block": 122288005,
+      "calls": 4,
+      "fixture_sha256": "f916b3deca33fe3c81c98044f15284bedb6227dc49cd59556613bc524cb956f4",
+      "full_trace_sha256": "88d0bf59a2695796f377b54aa216220480253ed8d0cc3b6014adac4908c56d8b",
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "historical_code_accounts_with_reads": 4,
+      "independent_storage_words": 22,
+      "name": "ord-participation",
+      "reads": 26,
+      "state_simulated": true
+    }
+  ],
+  "fixture_cases_sha256": "1e5855c08c2cc462e004103127a1668515818f12004c74707267da2de09cce23",
+  "holder_audit": [
+    {
+      "boundary_observations": 50,
+      "candidate_holders": 25,
+      "candidate_sum_mismatches": 0,
+      "new_candidates": 0,
+      "rank": 203,
+      "raw_rpc_mismatches": 0
+    },
+    {
+      "boundary_observations": 252,
+      "candidate_holders": 126,
+      "candidate_sum_mismatches": 0,
+      "new_candidates": 96,
+      "rank": 209,
+      "raw_rpc_mismatches": 0
+    }
+  ],
+  "qualified": false,
+  "scope": "Expanded historical candidate sampling and verified trace-account attribution. No production reward qualification, global holder enumeration or additional combined-profile totals.",
+  "status": "inspected",
+  "tool_language": "Rust"
+}

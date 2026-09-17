@@ -55,6 +55,11 @@ The remaining [LBP reward-state diagnostic](lbp-reward-model.md) now matches
 production LBP support: durable holder and reward state still requires a design
 decision. The other networks remain at preliminary RPC prerequisite probes.
 
+The [TITAN/ORD follow-up](external-getter-contexts.md) checks 96 additional ORD
+candidate addresses and independently validates account attribution through
+external proxies and nested callbacks. Both tokens remain unqualified; observed
+zero rewards do not establish general raw-storage parity.
+
 [hLBP's quiet-holder audit](hlbp-quiet-holder-coverage.md) confirms 88 initialized
 observations and four final balances. Its new mint audit checks one emitted
 balance, four observations and four final holders in a distinct older 64-block

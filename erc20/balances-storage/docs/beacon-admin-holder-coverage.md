@@ -1,5 +1,9 @@
 # BSC beacon admin correction and five more profiles
 
+The later [external-getter follow-up](external-getter-contexts.md) expands TITAN
+and ORD sampling and adds account-aware trace inspection. The 246-profile
+production qualification and package hashes in this report remain unchanged.
+
 The qualified BSC fixture now contains **246 of the original top 250 profiles**.
 This follow-up adds BLESS (204), SAI (210), ALD (224), BY (239) and 金色派对
 (248), and fixes a missing beacon admin dependency. LBP (143), TITAN (203), ORD
