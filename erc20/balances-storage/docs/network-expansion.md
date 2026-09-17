@@ -4,6 +4,13 @@ After the BSC candidate review, repeat the same qualification on **Ethereum,
 Base, HyperEVM and Arc**, in that order. These networks are requested work;
 they are not yet qualified by the BSC evidence.
 
+[Preparatory RPC probes](evidence/network-rpc-prerequisites.json) now pass on all
+four requested networks: live chain identity matches the configured registry,
+the finalized head is available with a matching canonical parent, and canonical
+block-hash code/storage/call requests succeed. These probes use the empty
+address in a recent finalized block. They do not establish historical ERC-20
+correctness, Extended-block/preimage availability or token/holder coverage.
+
 The production interface stays one RPC-free `map_events` with shared
 `evm.balances.v1.Events`, explicit verified layouts and default parameters `[]`.
 All executable validation tooling and regressions stay in Rust.

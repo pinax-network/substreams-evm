@@ -339,6 +339,10 @@ mod direct_bytecode_tests;
 #[cfg(test)]
 mod direct_source_tests;
 #[cfg(test)]
+mod final_proxy_tests;
+#[cfg(test)]
+mod log_only_tests;
+#[cfg(test)]
 mod next_candidate_tests;
 #[cfg(test)]
 mod next_proxy_tests;

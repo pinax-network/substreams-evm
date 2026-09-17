@@ -342,8 +342,16 @@ bringing the configured test set to 97. Qualification uses reviewed historical
 getter bytecode, independent storage overrides and captured writes, including
 SAC's burn counter and 79AU's block tracking and packed temporary flag. It does
 not claim verified source. Three of the original top 100 candidates remain
-unqualified. See the [network expansion sequence](docs/network-expansion.md) for
-the planned Ethereum, Base, HyperEVM and Arc qualification after BSC.
+unqualified in that batch.
+
+The [final proxy review](docs/final-proxy-holder-coverage.md) adds 4Stock and CAP
+in `tests/fixtures/bsc-final-proxy-layouts.json`, bringing the test set to 99.
+4Stock's reward accounting is separate from its raw balance mapping; only the
+reviewed fields are configured, and untested membership/list writes still fail.
+The remaining candidate emits transfer logs without updating balances. Its
+captured creation and getter review are recorded separately; log amounts do not
+become inferred holder balances. See the [network expansion sequence](docs/network-expansion.md)
+for Ethereum, Base, HyperEVM and Arc qualification after BSC.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

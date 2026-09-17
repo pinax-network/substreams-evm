@@ -1,0 +1,42 @@
+{
+  "networks": [
+    {
+      "canonical_call": "supported_for_probe",
+      "canonical_code": "supported_for_probe",
+      "canonical_storage": "supported_for_probe",
+      "chain_identity": "matched expected configured registry identity",
+      "finalized_header": "available, parent matched canonical historical header",
+      "network": "eth",
+      "status": "rpc_prerequisites_probed"
+    },
+    {
+      "canonical_call": "supported_for_probe",
+      "canonical_code": "supported_for_probe",
+      "canonical_storage": "supported_for_probe",
+      "chain_identity": "matched expected configured registry identity",
+      "finalized_header": "available, parent matched canonical historical header",
+      "network": "base",
+      "status": "rpc_prerequisites_probed"
+    },
+    {
+      "canonical_call": "supported_for_probe",
+      "canonical_code": "supported_for_probe",
+      "canonical_storage": "supported_for_probe",
+      "chain_identity": "matched expected configured registry identity",
+      "finalized_header": "available, parent matched canonical historical header",
+      "network": "hyperevm",
+      "status": "rpc_prerequisites_probed"
+    },
+    {
+      "canonical_call": "supported_for_probe",
+      "canonical_code": "supported_for_probe",
+      "canonical_storage": "supported_for_probe",
+      "chain_identity": "matched expected configured registry identity",
+      "finalized_header": "available, parent matched canonical historical header",
+      "network": "arc",
+      "status": "rpc_prerequisites_probed"
+    }
+  ],
+  "raw_report_sha256": "779deb52a8c1314fd27ff0007a3fae77a866396eb546a7bd78669ad5ec2422c1",
+  "scope": "Preparatory RPC probes against the empty address in the block before the observed finalized head. This verifies request support only, not historical ERC20 values, trace/preimage availability or token/holder qualification. Connection details remain local."
+}
