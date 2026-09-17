@@ -266,6 +266,13 @@ test layouts). Its 3,000 Transfer logs have no balance writes, so a pure storage
 delta stream cannot discover their public balances. The qualified getter rule
 covers ordinary participants while preserving the special stored-holder gap.
 
+The [source-verified direct-token follow-up](docs/direct-source-holder-coverage.md)
+adds 13 profiles in `tests/fixtures/bsc-direct-source-layouts.json` (39 explicit
+test layouts): POWER, two FourERC20 tokens, AKE, ZEC, MMPRO, ASTER, a fee-bearing
+ProToken, AIN, SKYAI, PIEVERSE, BULLA and ARK. Their getters read direct balance
+mappings; transfer fees, permit nonces and minting roles are reviewed separately
+from those mappings. Unknown non-balance writes still fail.
+
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
   --survey erc20/balances-storage/out/ranked-parity/report.json \
