@@ -247,11 +247,15 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         .collect();
     let mut rows = BTreeMap::new();
     let mut beacon_slots = BTreeMap::<Vec<u8>, BTreeSet<[u8; 32]>>::new();
+    let mut beacon_admin_slots = BTreeMap::<Vec<u8>, BTreeSet<[u8; 32]>>::new();
     for beacon in layouts.iter().filter_map(|l| l.beacon_proxy.as_ref()) {
         let slots = beacon_slots.entry(beacon.beacon.clone()).or_default();
         slots.insert(beacon.implementation_slot);
         if let Some(delegate) = &beacon.proxy {
             slots.insert(delegate.implementation_slot);
+        }
+        if let Some(admin) = &beacon.proxy_admin {
+            beacon_admin_slots.entry(beacon.beacon.clone()).or_default().insert(admin.slot);
         }
     }
     raw.storage.sort_by_key(|c| c.ordinal);
@@ -263,6 +267,10 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             continue;
         }
         let key = word(&c.key)?;
+        require(
+            !beacon_admin_slots.get(&c.address).is_some_and(|slots| slots.contains(&key)),
+            "beacon proxy admin changed; requalify layout",
+        )?;
         require(
             !beacon_slots.get(&c.address).is_some_and(|slots| slots.contains(&key)),
             "beacon implementation changed; requalify layout",
@@ -365,6 +373,8 @@ mod handler {
 }
 #[cfg(test)]
 mod address_list_tests;
+#[cfg(test)]
+mod beacon_admin_followup_tests;
 #[cfg(test)]
 mod checkpoint_tests;
 #[cfg(test)]

@@ -143,6 +143,15 @@ pub struct BeaconProxyLayout {
     /// getter. Its pointer lives in beacon storage, not token storage.
     #[serde(default)]
     pub proxy: Option<ProxyLayout>,
+    /// Pinned transparent-proxy admin in beacon storage. The token calls the
+    /// beacon getter, so making the token its admin changes the forwarding path.
+    #[serde(default)]
+    pub proxy_admin: Option<StoredAddress>,
+}
+#[derive(Clone, Debug)]
+pub struct VerifiedStoredAddress {
+    pub slot: [u8; 32],
+    pub address: Vec<u8>,
 }
 #[derive(Clone, Debug)]
 pub struct VerifiedBeaconProxy {
@@ -153,6 +162,7 @@ pub struct VerifiedBeaconProxy {
     pub implementation: Vec<u8>,
     pub implementation_code_hash: [u8; 32],
     pub proxy: Option<VerifiedProxy>,
+    pub proxy_admin: Option<VerifiedStoredAddress>,
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -348,6 +358,22 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                             })
                         })
                         .transpose()?;
+                    let proxy_admin = p
+                        .proxy_admin
+                        .map(|admin| -> Result<VerifiedStoredAddress, Error> {
+                            let delegate = beacon_delegate
+                                .as_ref()
+                                .ok_or_else(|| Error::msg("beacon admin requires a proxy forwarding layer"))?;
+                            let slot = word(&admin.slot)?;
+                            let address = fixed(&admin.address, 20)?;
+                            require(address != contract, "token cannot be its beacon proxy admin")?;
+                            require(
+                                slot != implementation_slot && slot != delegate.implementation_slot,
+                                "beacon admin slot overlaps an implementation pointer",
+                            )?;
+                            Ok(VerifiedStoredAddress { slot, address })
+                        })
+                        .transpose()?;
                     Ok(VerifiedBeaconProxy {
                         beacon_slot,
                         beacon,
@@ -356,6 +382,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                         implementation,
                         implementation_code_hash: word(&p.implementation_code_hash)?,
                         proxy: beacon_delegate,
+                        proxy_admin,
                     })
                 })
                 .transpose()?;

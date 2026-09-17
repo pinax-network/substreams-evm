@@ -1,0 +1,193 @@
+{
+  "block": 122288005,
+  "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+  "dependency": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+  "elapsed_seconds": 0.299953833,
+  "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "qualified": false,
+  "scope": "Read-only ABI-shaped code simulations; not actual production rewards or a complete formula qualification",
+  "status": "inspected",
+  "tool_language": "Rust",
+  "trials": [
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "holder": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x00000000000000000000000000000000000000000000000000000000000000ae"
+      },
+      "simulated_external_tuple": [
+        17,
+        17,
+        17,
+        17
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007c"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      },
+      "simulated_external_tuple": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "holder": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+      "raw_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x00000000000000000000000000000000000000000000000000000000000000ae"
+      },
+      "simulated_external_tuple": [
+        17,
+        17,
+        17,
+        17
+      ]
+    }
+  ]
+}

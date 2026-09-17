@@ -351,11 +351,12 @@ fn beacon_runtime_qualification_checks_both_pointers_code_and_getter() {
 }
 
 #[test]
-fn proxied_beacon_qualification_pins_its_delegate_at_both_boundaries() {
+fn proxied_beacon_qualification_pins_delegate_and_admin_at_both_boundaries() {
     struct DelegateRpc {
         bad: &'static str,
         at_read: usize,
         reads: std::sync::atomic::AtomicUsize,
+        admin_reads: std::sync::atomic::AtomicUsize,
     }
     impl Rpc for DelegateRpc {
         fn request(&self, p: Value) -> Result<Value> {
@@ -366,6 +367,14 @@ fn proxied_beacon_qualification_pins_its_delegate_at_both_boundaries() {
             let address = p["params"][0].as_str().unwrap_or("");
             let n = self.reads.load(std::sync::atomic::Ordering::SeqCst);
             let result = match p["method"].as_str().unwrap() {
+                "eth_getStorageAt" if address == beacon && p["params"][1] == hash(97) => {
+                    let read = self.admin_reads.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                    assert_eq!(p["params"][2]["requireCanonical"], true);
+                    json!(word(&format!(
+                        "0x{}",
+                        if self.bad == "admin" && read == self.at_read { "ef" } else { "ee" }.repeat(20)
+                    )))
+                }
                 "eth_getStorageAt" if address == beacon && p["params"][1] == hash(98) => {
                     let read = self.reads.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
                     assert_eq!(p["params"][2]["requireCanonical"], true);
@@ -387,24 +396,37 @@ fn proxied_beacon_qualification_pins_its_delegate_at_both_boundaries() {
                 } else {
                     "0xdd"
                 }),
-                "eth_call" => json!(word(&implementation)),
+                "eth_call" => {
+                    assert_eq!(p["params"][0]["from"], TOKEN);
+                    json!(word(&implementation))
+                }
                 _ => return FakeRpc::default().request(p),
             };
             Ok(json!({"id":1,"result":result}))
         }
     }
     let code = |b| format!("0x{}", hex::encode(erc20_balances_storage::hash(&[b])));
-    let p = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":code(0xaa),"beacon_proxy":{"beacon_slot":hash(99),"beacon":format!("0x{}","bb".repeat(20)),"beacon_code_hash":code(0xbb),"implementation_slot":hash(1),"implementation":format!("0x{}","cc".repeat(20)),"implementation_code_hash":code(0xcc),"proxy":{"implementation_slot":hash(98),"implementation":format!("0x{}","dd".repeat(20)),"code_hash":code(0xdd)}}}]);
+    let p = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":code(0xaa),"beacon_proxy":{"beacon_slot":hash(99),"beacon":format!("0x{}","bb".repeat(20)),"beacon_code_hash":code(0xbb),"implementation_slot":hash(1),"implementation":format!("0x{}","cc".repeat(20)),"implementation_code_hash":code(0xcc),"proxy":{"implementation_slot":hash(98),"implementation":format!("0x{}","dd".repeat(20)),"code_hash":code(0xdd)},"proxy_admin":{"slot":hash(97),"address":format!("0x{}","ee".repeat(20))}}}]);
     let layouts = erc20_balances_storage::layout::parse(&p.to_string()).unwrap();
     for at_read in [0, 1] {
-        for bad in ["pointer", "code", ""] {
-            let rpc = DelegateRpc { bad, at_read, reads: 0.into() };
+        for bad in ["pointer", "code", "admin", ""] {
+            let rpc = DelegateRpc {
+                bad,
+                at_read,
+                reads: 0.into(),
+                admin_reads: 0.into(),
+            };
             let result = qualify_runtime(&rpc, 1, 3, &layouts);
             if bad.is_empty() {
                 result.unwrap();
                 assert_eq!(rpc.reads.load(std::sync::atomic::Ordering::SeqCst), 2);
+                assert_eq!(rpc.admin_reads.load(std::sync::atomic::Ordering::SeqCst), 2);
             } else {
-                assert!(result.unwrap_err().to_string().contains("beacon proxy implementation"));
+                assert!(result.unwrap_err().to_string().contains(if bad == "admin" {
+                    "beacon proxy admin"
+                } else {
+                    "beacon proxy implementation"
+                }));
             }
         }
     }

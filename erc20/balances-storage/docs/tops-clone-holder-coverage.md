@@ -1,5 +1,9 @@
 # BSC TOPS and StandardToken clone holder coverage
 
+The later [beacon admin follow-up](beacon-admin-holder-coverage.md) qualifies
+BLESS and four more profiles, bringing coverage to 246. This report retains its
+original 241-profile scope and artifact hashes.
+
 Two more profiles from the immutable top-250 ranking are qualified: **TOPS
 (236)** and the **StandardToken clone (220)** at
 `0x4bafbe9f5fdf15b4bd6210e55e100d2266b169e3`. The

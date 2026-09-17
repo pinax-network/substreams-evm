@@ -1,0 +1,1084 @@
+{
+  "elapsed_seconds": 1.379341416,
+  "qualified": false,
+  "status": "inspected",
+  "tokens": [
+    {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependency": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0x0437c957fd70a064e451ef322108a476e6dd3962c57f5de7d9882edabf724428",
+          "slot": 17
+        },
+        {
+          "block": 122289029,
+          "dependency": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0x0437c957fd70a064e451ef322108a476e6dd3962c57f5de7d9882edabf724428",
+          "slot": 17
+        }
+      ],
+      "checks": [
+        {
+          "address": "0x07964f135f276412b3182a3b2407b8dd45000000",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "39592666901071190846950",
+          "rpc": "39592666901071190846950"
+        },
+        {
+          "address": "0x1514058c547cdc4f8ac61e7e918f9fba2b2d8b34",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x188a06b08b4dbe7af47e6d3e69b38c48510942e6",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x1d48556838ca49d56e2d9cddb4d12c22caf46ad9",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x1f26f066053a82e084c5f146018f082e68fc4caa",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x321fce459ad07cefc9567e0b9f1bac593a327f4e",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2123563969271795030862",
+          "rpc": "2123563969271795030862"
+        },
+        {
+          "address": "0x3580f6616716cab2660c7a408917fcb7c863b878",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x42ee4189b71b8023686efdf333db9290d0a1a603",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x4667a1536c6185e376de29deceabc71384e94d5c",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x47b15c61e941aacbd33467fb687cbdac421ccfca",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "6005950171621513702931071",
+          "rpc": "6005950171621513702931071"
+        },
+        {
+          "address": "0x5392df877ff6b6a81299fc1859913625d672202d",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x60c9c9b595b7ada9e8f04df9b518d0dae061c436",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "173999523227498314700441",
+          "rpc": "173999523227498314700441"
+        },
+        {
+          "address": "0x69753c933c6885338d7472b3b8eef7cbc98779cd",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xaaf242b1ac505c8e9b436b78fb4d537716e0502b",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xb2983132d09367c6e25e1c98dda4a3f2de1e7bea",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xb5fbc8fb5ec426cce9b23c3535b32ab2f8d0fd58",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xc277e1af1c9cd52ccfb09d5d61c82ebb82338277",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "6514487017549758139910737",
+          "rpc": "6514487017549758139910737"
+        },
+        {
+          "address": "0xc890bf698cba860dbb249ed79229a7c582d8db66",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xcc271d186c85f686da96870058c7b9a92411d5b7",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xd8f8d6d1f91fdc9fc3958fd7776b0ae723ad67c2",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xd9fd4c5330527dc2792e96348b98d17fb3e661ff",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xdf334eff4a0899a38d82e497b17517dc68587132",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "487260000000000000000",
+          "rpc": "487260000000000000000"
+        },
+        {
+          "address": "0x07964f135f276412b3182a3b2407b8dd45000000",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "39682666901071190846950",
+          "rpc": "39682666901071190846950"
+        },
+        {
+          "address": "0x1514058c547cdc4f8ac61e7e918f9fba2b2d8b34",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x188a06b08b4dbe7af47e6d3e69b38c48510942e6",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x1d48556838ca49d56e2d9cddb4d12c22caf46ad9",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x1f26f066053a82e084c5f146018f082e68fc4caa",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x321fce459ad07cefc9567e0b9f1bac593a327f4e",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2123563969271795030862",
+          "rpc": "2123563969271795030862"
+        },
+        {
+          "address": "0x3580f6616716cab2660c7a408917fcb7c863b878",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x42ee4189b71b8023686efdf333db9290d0a1a603",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x4667a1536c6185e376de29deceabc71384e94d5c",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x47b15c61e941aacbd33467fb687cbdac421ccfca",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "6010784339598552963589173",
+          "rpc": "6010784339598552963589173"
+        },
+        {
+          "address": "0x5392df877ff6b6a81299fc1859913625d672202d",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x60c9c9b595b7ada9e8f04df9b518d0dae061c436",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "143999523227498314700441",
+          "rpc": "143999523227498314700441"
+        },
+        {
+          "address": "0x69753c933c6885338d7472b3b8eef7cbc98779cd",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0x70398354b91bb2a537ad6eebe8718c4a9ab628fe",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "0",
+          "rpc": "0"
+        },
+        {
+          "address": "0xaaf242b1ac505c8e9b436b78fb4d537716e0502b",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xb2983132d09367c6e25e1c98dda4a3f2de1e7bea",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xb5fbc8fb5ec426cce9b23c3535b32ab2f8d0fd58",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xc277e1af1c9cd52ccfb09d5d61c82ebb82338277",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "6537795168572718879252635",
+          "rpc": "6537795168572718879252635"
+        },
+        {
+          "address": "0xc890bf698cba860dbb249ed79229a7c582d8db66",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xcc271d186c85f686da96870058c7b9a92411d5b7",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xd8f8d6d1f91fdc9fc3958fd7776b0ae723ad67c2",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xd9fd4c5330527dc2792e96348b98d17fb3e661ff",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xdf334eff4a0899a38d82e497b17517dc68587132",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "100000000000000000",
+          "rpc": "100000000000000000"
+        },
+        {
+          "address": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2253141000000000000000",
+          "rpc": "2253141000000000000000"
+        }
+      ],
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "getter_calls": {
+        "calls": [
+          {
+            "calls": [
+              {
+                "from": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+                "gas": "0x2e2c695",
+                "gasUsed": "0x776c",
+                "input": "0xf40f0f52000000000000000000000000321fce459ad07cefc9567e0b9f1bac593a327f4e",
+                "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "to": "0x0541727a60316913f78eb7fd5524700acf89264c",
+                "type": "DELEGATECALL",
+                "value": "0x0"
+              }
+            ],
+            "from": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+            "gas": "0x2ee9340",
+            "gasUsed": "0x8a36",
+            "input": "0xf40f0f52000000000000000000000000321fce459ad07cefc9567e0b9f1bac593a327f4e",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "to": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+            "type": "STATICCALL"
+          },
+          {
+            "calls": [
+              {
+                "from": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+                "gas": "0x2e25046",
+                "gasUsed": "0x1133",
+                "input": "0xaf47f464000000000000000000000000321fce459ad07cefc9567e0b9f1bac593a327f4e",
+                "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "to": "0x0541727a60316913f78eb7fd5524700acf89264c",
+                "type": "DELEGATECALL",
+                "value": "0x0"
+              }
+            ],
+            "from": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+            "gas": "0x2ee097c",
+            "gasUsed": "0x1269",
+            "input": "0xaf47f464000000000000000000000000321fce459ad07cefc9567e0b9f1bac593a327f4e",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "to": "0x4dd028f2cddeb2e3da83efce41703844dfdb4b64",
+            "type": "STATICCALL"
+          }
+        ],
+        "from": "0x0000000000000000000000000000000000000000",
+        "gas": "0x2faf080",
+        "gasUsed": "0x112e4",
+        "input": "0x70a08231000000000000000000000000321fce459ad07cefc9567e0b9f1bac593a327f4e",
+        "output": "0x000000000000000000000000000000000000000000000093d0a913d67c9caac5",
+        "to": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+        "type": "CALL",
+        "value": "0x0"
+      },
+      "holders": 25,
+      "qualified": false,
+      "rank": 203,
+      "raw_rpc_mismatches": 0,
+      "read_only_simulated_dependency_controls": [
+        {
+          "raw_word": "123",
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "simulated_external_return_word": 0
+        },
+        {
+          "raw_word": "123",
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000007d"
+          },
+          "simulated_external_return_word": 1
+        },
+        {
+          "raw_word": "123",
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": "0x000000000000000000000000000000000000000000000000000000000000009d"
+          },
+          "simulated_external_return_word": 17
+        }
+      ],
+      "scope": "All observed reference holders at two canonical boundaries; simulated external code is diagnostic only, not a valid production state or complete reward model"
+    },
+    {
+      "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "boundaries": [
+        {
+          "block": 122288005,
+          "dependency": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0xd52f60779e140539fc9eb5eb265e5034c62ebd6c1e0e5f69ab7caee3979437c1",
+          "slot": 4
+        },
+        {
+          "block": 122289029,
+          "dependency": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0xd52f60779e140539fc9eb5eb265e5034c62ebd6c1e0e5f69ab7caee3979437c1",
+          "slot": 4
+        }
+      ],
+      "checks": [
+        {
+          "address": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2763295496436742143925",
+          "rpc": "2763295496436742143925"
+        },
+        {
+          "address": "0x1128b90354bc09ba8d5ac7729af7547cf1df208c",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357670613701146773867",
+          "rpc": "357670613701146773867"
+        },
+        {
+          "address": "0x271ab78298866b09633edde70ecc45ee17b3b512",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2167764880931357087884",
+          "rpc": "2167764880931357087884"
+        },
+        {
+          "address": "0x28d4683359550efca4f5333306e61fc7b9624031",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129825325417277432183",
+          "rpc": "129825325417277432183"
+        },
+        {
+          "address": "0x29eb31c00a0cbc843bef9ba663cdafbb3878a3eb",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129824545841595379705",
+          "rpc": "129824545841595379705"
+        },
+        {
+          "address": "0x375138dfb959e09184fb6875b203bfe921b49430",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357588716181633043062",
+          "rpc": "357588716181633043062"
+        },
+        {
+          "address": "0x445b950fd83ba0bb3863b62ee3b08aa8a2889a59",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129824545841595379705",
+          "rpc": "129824545841595379705"
+        },
+        {
+          "address": "0x6187bed394d463d9928e4695b8d9e83839095ad7",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2372553270791728296210",
+          "rpc": "2372553270791728296210"
+        },
+        {
+          "address": "0x664d3efc531c49b2264f0645b2304adf02934192",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129825325417277432183",
+          "rpc": "129825325417277432183"
+        },
+        {
+          "address": "0x68dcbbb8ae0e4cef7f53077bebd19aa07dd970d5",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "100024444533961915097",
+          "rpc": "100024444533961915097"
+        },
+        {
+          "address": "0x7d222e223c35f80aa56e94d6e19903e800ade0a7",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129825325417277432183",
+          "rpc": "129825325417277432183"
+        },
+        {
+          "address": "0x854379559e74c543a687d9b3aaaefdab3fa7b8c0",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2377553270791728296210",
+          "rpc": "2377553270791728296210"
+        },
+        {
+          "address": "0x85db3e55b2143a4a8acca54c9377a22baf83d377",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357111508388045629025",
+          "rpc": "357111508388045629025"
+        },
+        {
+          "address": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "14968401848622208693315509",
+          "rpc": "14968401848622208693315509"
+        },
+        {
+          "address": "0x89b01d3e61f656399c5a807d6c496ebdc9217ae8",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357141227856045636230",
+          "rpc": "357141227856045636230"
+        },
+        {
+          "address": "0x8ccea034cbc98c148f1fc6295c73264770b1c08e",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129824545841595379705",
+          "rpc": "129824545841595379705"
+        },
+        {
+          "address": "0x8d3f3cdfc646e70664953630987726d221d0fdc4",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "155126882011323343466",
+          "rpc": "155126882011323343466"
+        },
+        {
+          "address": "0x90e98c100f34566eea49ca56b22614e0a0c4778b",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357694273739232622999",
+          "rpc": "357694273739232622999"
+        },
+        {
+          "address": "0x98594e2e1d5cc8a424d929fd3fc72a3698a49f90",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "357643895984292736121",
+          "rpc": "357643895984292736121"
+        },
+        {
+          "address": "0x991247a0a96fd0bfb187664340f7790a28cb1737",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "3465823054533398029854",
+          "rpc": "3465823054533398029854"
+        },
+        {
+          "address": "0x9abde3b47922e9d4a9ac877413972cecaafe79dd",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129824545841595379705",
+          "rpc": "129824545841595379705"
+        },
+        {
+          "address": "0x9bb9b3ec6b70299f4df32274a8288590052c692e",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "1607657596610235351454",
+          "rpc": "1607657596610235351454"
+        },
+        {
+          "address": "0x9caab0d3eef7b39e2838aa8bd6091830cfbed0b9",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "129825325417277432183",
+          "rpc": "129825325417277432183"
+        },
+        {
+          "address": "0x9ea5b519adbfa9bf6fcea5416448ecebb2ed0aa3",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "111300772052466893568",
+          "rpc": "111300772052466893568"
+        },
+        {
+          "address": "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "5817705661444290668649",
+          "rpc": "5817705661444290668649"
+        },
+        {
+          "address": "0xb67f0340ce1c0fb7627e8f6359e152c5b36350fe",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2375553270791728296210",
+          "rpc": "2375553270791728296210"
+        },
+        {
+          "address": "0xbf05eb5fee3cb14a9225cded9c4ffdd2709715e8",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2601489516137134974456",
+          "rpc": "2601489516137134974456"
+        },
+        {
+          "address": "0xca1376b0c7e5e15d8d3e706513be7726903508ed",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "4969826262634957142269",
+          "rpc": "4969826262634957142269"
+        },
+        {
+          "address": "0xca7040d23355d2db09ac1b0bb31e0f8d9855cdef",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "3004199528638887915981",
+          "rpc": "3004199528638887915981"
+        },
+        {
+          "address": "0xd74bccc71c93abe5716f9208179a5753e6686f05",
+          "block": 122288005,
+          "equal": true,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "raw": "2165820078266294865368",
+          "rpc": "2165820078266294865368"
+        },
+        {
+          "address": "0x10dab0919c6ef92113ae23fee7da58af95a1eaac",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2787924308551471271436",
+          "rpc": "2787924308551471271436"
+        },
+        {
+          "address": "0x1128b90354bc09ba8d5ac7729af7547cf1df208c",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "419433934437429290132",
+          "rpc": "419433934437429290132"
+        },
+        {
+          "address": "0x271ab78298866b09633edde70ecc45ee17b3b512",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2197282888553685361531",
+          "rpc": "2197282888553685361531"
+        },
+        {
+          "address": "0x28d4683359550efca4f5333306e61fc7b9624031",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152224158792639663196",
+          "rpc": "152224158792639663196"
+        },
+        {
+          "address": "0x29eb31c00a0cbc843bef9ba663cdafbb3878a3eb",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152223244530840929641",
+          "rpc": "152223244530840929641"
+        },
+        {
+          "address": "0x375138dfb959e09184fb6875b203bfe921b49430",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "419337887606792774890",
+          "rpc": "419337887606792774890"
+        },
+        {
+          "address": "0x445b950fd83ba0bb3863b62ee3b08aa8a2889a59",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152223244530840929641",
+          "rpc": "152223244530840929641"
+        },
+        {
+          "address": "0x6187bed394d463d9928e4695b8d9e83839095ad7",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2401851168895922115183",
+          "rpc": "2401851168895922115183"
+        },
+        {
+          "address": "0x664d3efc531c49b2264f0645b2304adf02934192",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152224158792639663196",
+          "rpc": "152224158792639663196"
+        },
+        {
+          "address": "0x68dcbbb8ae0e4cef7f53077bebd19aa07dd970d5",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "116017194449794608538",
+          "rpc": "116017194449794608538"
+        },
+        {
+          "address": "0x7d222e223c35f80aa56e94d6e19903e800ade0a7",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152224158792639663196",
+          "rpc": "152224158792639663196"
+        },
+        {
+          "address": "0x854379559e74c543a687d9b3aaaefdab3fa7b8c0",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2407851168895922115183",
+          "rpc": "2407851168895922115183"
+        },
+        {
+          "address": "0x85db3e55b2143a4a8acca54c9377a22baf83d377",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "418778233341300265363",
+          "rpc": "418778233341300265363"
+        },
+        {
+          "address": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "14967522957365064079491927",
+          "rpc": "14967522957365064079491927"
+        },
+        {
+          "address": "0x89b01d3e61f656399c5a807d6c496ebdc9217ae8",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "418813087397034217742",
+          "rpc": "418813087397034217742"
+        },
+        {
+          "address": "0x8ccea034cbc98c148f1fc6295c73264770b1c08e",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152223244530840929641",
+          "rpc": "152223244530840929641"
+        },
+        {
+          "address": "0x8d3f3cdfc646e70664953630987726d221d0fdc4",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "181897027219638855319",
+          "rpc": "181897027219638855319"
+        },
+        {
+          "address": "0x90e98c100f34566eea49ca56b22614e0a0c4778b",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "419461682184667276417",
+          "rpc": "419461682184667276417"
+        },
+        {
+          "address": "0x98594e2e1d5cc8a424d929fd3fc72a3698a49f90",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "419402600740866674516",
+          "rpc": "419402600740866674516"
+        },
+        {
+          "address": "0x991247a0a96fd0bfb187664340f7790a28cb1737",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "3466723054533398029854",
+          "rpc": "3466723054533398029854"
+        },
+        {
+          "address": "0x9abde3b47922e9d4a9ac877413972cecaafe79dd",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152223244530840929641",
+          "rpc": "152223244530840929641"
+        },
+        {
+          "address": "0x9bb9b3ec6b70299f4df32274a8288590052c692e",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "1608257596610235351454",
+          "rpc": "1608257596610235351454"
+        },
+        {
+          "address": "0x9caab0d3eef7b39e2838aa8bd6091830cfbed0b9",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "152224158792639663196",
+          "rpc": "152224158792639663196"
+        },
+        {
+          "address": "0x9ea5b519adbfa9bf6fcea5416448ecebb2ed0aa3",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "118405184825027737350",
+          "rpc": "118405184825027737350"
+        },
+        {
+          "address": "0xa8237af05418a73c91ecd5e0daddaedc91f280ec",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "5827705661444290668649",
+          "rpc": "5827705661444290668649"
+        },
+        {
+          "address": "0xb67f0340ce1c0fb7627e8f6359e152c5b36350fe",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2405851168895922115183",
+          "rpc": "2405851168895922115183"
+        },
+        {
+          "address": "0xbf05eb5fee3cb14a9225cded9c4ffdd2709715e8",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2630166097731032102336",
+          "rpc": "2630166097731032102336"
+        },
+        {
+          "address": "0xca1376b0c7e5e15d8d3e706513be7726903508ed",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "5010527346240460296884",
+          "rpc": "5010527346240460296884"
+        },
+        {
+          "address": "0xca7040d23355d2db09ac1b0bb31e0f8d9855cdef",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "3029289044961681274661",
+          "rpc": "3029289044961681274661"
+        },
+        {
+          "address": "0xd74bccc71c93abe5716f9208179a5753e6686f05",
+          "block": 122289029,
+          "equal": true,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "raw": "2195269013826241959070",
+          "rpc": "2195269013826241959070"
+        }
+      ],
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "getter_calls": {
+        "calls": [
+          {
+            "from": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+            "gas": "0x2ee95a5",
+            "gasUsed": "0x1484",
+            "input": "0x93da14f9000000000000000000000000885584e6ee2f8bdcdd7be5898da49f63050e8899",
+            "output": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "to": "0x1ed4fd5ca00d302e038920119ebfbef90b052ce6",
+            "type": "STATICCALL"
+          }
+        ],
+        "from": "0x0000000000000000000000000000000000000000",
+        "gas": "0x2faf080",
+        "gasUsed": "0x8790",
+        "input": "0x70a08231000000000000000000000000885584e6ee2f8bdcdd7be5898da49f63050e8899",
+        "output": "0x0000000000000000000000000000000000000000000c61ac6df55f67f16e8dfe",
+        "to": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+        "type": "CALL",
+        "value": "0x0"
+      },
+      "holders": 30,
+      "qualified": false,
+      "rank": 209,
+      "raw_rpc_mismatches": 0,
+      "read_only_simulated_dependency_controls": [
+        {
+          "raw_word": "123",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "simulated_external_return_word": 0
+        },
+        {
+          "raw_word": "123",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "simulated_external_return_word": 1
+        },
+        {
+          "raw_word": "123",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          },
+          "simulated_external_return_word": 17
+        }
+      ],
+      "scope": "All observed reference holders at two canonical boundaries; simulated external code is diagnostic only, not a valid production state or complete reward model"
+    }
+  ],
+  "tool_language": "Rust"
+}

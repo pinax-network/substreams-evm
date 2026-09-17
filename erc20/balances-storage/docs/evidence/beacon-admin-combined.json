@@ -1,0 +1,45 @@
+{
+  "aggregate_emitted_zero_checks": 14746,
+  "all_balance_event_fields_equal": true,
+  "baseline_package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+  "baseline_report_sha256": "aed71d66944374b8c48516daa4da1df597db7947bf7a3c9089834c8c9e8cad3c",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 15.364426558587718,
+    "empty_output_delivery": null,
+    "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+    "seconds_including_startup": 66.647459708
+  },
+  "configured_profiles": 246,
+  "elapsed_seconds": 181.589686666,
+  "events_sha256": "6ddbdcd85d80c1452ba73344acb362661e139be9569d21a8c06187bcd9553bfb",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 173176,
+  "initialized_carry_forward_matches": 67556,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "9e537c5bd48dd668aa50a48e9f65c650c375f599387d9ddc3f37d1fb3227004e",
+  "profiles_with_emitted_rows": 245,
+  "reused_verified_rpc_rows": 105621,
+  "scope": "Fresh 246-profile actual-WASM capture. Full-field comparison with the verified 241-profile capture and five newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-246 holder checkpoint.",
+  "sources": [
+    {
+      "checks_sha256": "328d7d93d1010002ea2f04fd43336099a4323f37e1e1b5cc26555fe4df2b01b4",
+      "cohort": "remaining250",
+      "events_sha256": "4a6500438dd94db2027325038bab611cfe441c254316f39863471a19d55c9be4",
+      "holder_report_sha256": "0cc687257284bbd705c06bf52338136164d28feac70461a4dbfa5da45db5fee6",
+      "layouts_sha256": "61b6a6f38c40dcc4a3b6fff9202f53187dbc16d0c87bd8ab490d4f2bee4e96c5",
+      "rpc_report_sha256": "97e4fb62d02c90bdf037236bb442e9bd1831cab1dd17e897a38497928e73e51d"
+    },
+    {
+      "checks_sha256": "e47091a572925be5ca968e1dd7ab896eb85308ee0cbf7e48aab1b832da744c64",
+      "cohort": "bless",
+      "events_sha256": "da1ca2240df73447e747eac28a581671dfbe79931eb8a9550f0711e9eca96ce9",
+      "holder_report_sha256": "ab49430ce94ea790ee22162dbb04148f082cc96bcc63e4e2f6612b629ec58773",
+      "layouts_sha256": "91fe3a95bff0d6cae16c107f4987b8e87e814afd27bf1cb960058e00ef6d4e26",
+      "rpc_report_sha256": "a46d2af34d7d2826ec4816c71052c4f6ae67b51bb7d9cf7b5a922a3c04e9a0b9"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

@@ -237,6 +237,13 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                     json!([contract, format!("0x{}", hex::encode(proxy.beacon_slot)), block_ref(text(&h["hash"])?)]),
                 )?;
                 ensure!(binary(&pointer, 32)? == address_word(&proxy.beacon), "unqualified proxy beacon");
+                if let Some(admin) = &proxy.proxy_admin {
+                    let pointer = rpc.call(
+                        "eth_getStorageAt",
+                        json!([beacon, format!("0x{}", hex::encode(admin.slot)), block_ref(text(&h["hash"])?)]),
+                    )?;
+                    ensure!(binary(&pointer, 32)? == address_word(&admin.address), "unqualified beacon proxy admin");
+                }
                 if let Some(delegate) = &proxy.proxy {
                     let pointer = rpc.call(
                         "eth_getStorageAt",

@@ -1,0 +1,59 @@
+{
+  "block": 122288047,
+  "elapsed_seconds": 0.17975825,
+  "hash": "0x312930b0862952e171213ef80076284d572028290d495ac010579b854448e771",
+  "layout_without_admin_pin": {
+    "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+    "beacon_proxy": {
+      "beacon": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+      "beacon_code_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986",
+      "beacon_slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+      "implementation": "0xcacebe8c354b70fa6e3107f3f6f699e4fbb3a98b",
+      "implementation_code_hash": "0xa7315ee0da640da4a3b1c98f72cac91ee24cd53c3731e4ae2dc7cee52b17b564",
+      "implementation_slot": "0x0000000000000000000000000000000000000000000000000000000000000097",
+      "proxy": {
+        "code_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e",
+        "implementation": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+        "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
+      }
+    },
+    "code_hash": "0x84349216dc0a5a2012f495edc84f27c6213e979165572c0ae4b5bf7309911a5c",
+    "contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f"
+  },
+  "probes": [
+    {
+      "admin_word": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe",
+      "raw_balance_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      }
+    },
+    {
+      "admin_word": "0x0000000000000000000000007c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+      "raw_balance_word": "123",
+      "response": {
+        "error": {
+          "code": 3,
+          "message": "execution reverted"
+        },
+        "id": 1,
+        "jsonrpc": "2.0"
+      }
+    },
+    {
+      "admin_word": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "raw_balance_word": "123",
+      "response": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": "0x000000000000000000000000000000000000000000000000000000000000007b"
+      }
+    }
+  ],
+  "qualified": false,
+  "status": "inspected",
+  "tool_language": "Rust",
+  "unprotected_write_accepted": true
+}

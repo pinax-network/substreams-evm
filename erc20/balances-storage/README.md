@@ -28,7 +28,7 @@ mapping, or pinned proxy:
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `balance_divisor` | Optional object | Positive `value` and required `storage_slot` (both 32-byte `0x` hex). A reviewed getter returns `floor(raw / value)`; every persisted change to the divisor stops processing and invalidates retained holder balances |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
-| `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; optional `proxy` pins one forwarding layer of the beacon getter. Addresses are 20 bytes, slots/hashes 32 bytes |
+| `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; optional `proxy` pins one forwarding layer and `proxy_admin` pins its reviewed admin `{slot,address}`. Addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
 | `address_hash_balance` | Optional object | Full 32-byte `modulus`, `offset`, `multiplier` constants and `stored_addresses` entries with a 32-byte `slot` and 20-byte `address`; all `0x` hex |
 | `immutable_zero_mapping` | Optional boolean, default `false` | Caller-proven empty balance mapping that the pinned direct runtime cannot write; requires `deployment` and cannot combine with proxies or other balance rules |
@@ -86,6 +86,16 @@ runtime, stops processing even if no token holder changes and even if restored
 in the same block. One reviewed forwarding layer is supported; additional
 getter dependencies still need explicit qualification. See the
 [BSC proxy follow-up](docs/ranked-proxy-coverage.md).
+
+For a transparent proxy used as the beacon, configure `beacon_proxy.proxy_admin`
+with its reviewed admin slot and address. The slot belongs to beacon storage.
+Making the token its beacon's admin changes the `implementation()` dispatch and
+can make `balanceOf` revert despite unchanged balance words. Qualification pins
+the admin at both boundaries; the mapper rejects any persisted change, including
+change-and-restore and blocks without holder writes. The admin slot must differ
+from both beacon implementation pointers, and the admin must differ from the
+token. This rule requires the optional beacon `proxy` layer; other caller-based
+resolver behavior still requires separate review.
 
 With `balance_divisor`, raw storage words remain intact through continuity checks,
 then unsigned floor division produces the public amount. Checkpoint values use

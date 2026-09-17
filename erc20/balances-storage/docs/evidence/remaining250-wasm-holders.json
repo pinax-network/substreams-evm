@@ -1,0 +1,70 @@
+{
+  "checkpoint_sha256": "d14a73ee95c6fc0ddc8f0ba3f959e4fdf44f0f10e3917c544c0aca8fe88229da",
+  "checks_sha256": "895c32dae718e03bd88f20ac08c8eda1e70e5dfbefe88646345f15dd8e88f8f9",
+  "configured_tokens": 4,
+  "events_sha256": "4a6500438dd94db2027325038bab611cfe441c254316f39863471a19d55c9be4",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 115,
+  "layouts_sha256": "61b6a6f38c40dcc4a3b6fff9202f53187dbc16d0c87bd8ab490d4f2bee4e96c5",
+  "mismatches": 0,
+  "package_sha256": "f13ce00a08e3610ed607a168c1f2afac6fb92ac63561f945e97a55d7b4801503",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 277,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Reviewed BSC candidate cohort on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 56,
+  "snapshot_zeros": 14,
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x3cbd513239d9e5538a4caed8ed53ef77009df473",
+      "emitted_rows": 60,
+      "reference_rows": 70,
+      "seeded_matches": 70,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 10,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 2,
+      "contract": "0xac4beaa86f8596675a92b2ffd3312f49d4e45406",
+      "emitted_rows": 34,
+      "reference_rows": 63,
+      "seeded_matches": 63,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 2,
+      "unseeded_unknown_rows": 27,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xb90b7c68ffd41ec3493ca7b6fd71d451cbcc47e8",
+      "emitted_rows": 26,
+      "reference_rows": 65,
+      "seeded_matches": 65,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 39,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 1,
+      "contract": "0xf69baf63d210d74c915338f7d033228890db324f",
+      "emitted_rows": 42,
+      "reference_rows": 79,
+      "seeded_matches": 79,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 3,
+      "unseeded_unknown_rows": 36,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}
