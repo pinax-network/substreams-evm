@@ -237,6 +237,25 @@ pub fn qualify_runtime(rpc: &dyn Rpc, start: u64, stop: u64, layouts: &[erc20_ba
                     json!([contract, format!("0x{}", hex::encode(proxy.beacon_slot)), block_ref(text(&h["hash"])?)]),
                 )?;
                 ensure!(binary(&pointer, 32)? == address_word(&proxy.beacon), "unqualified proxy beacon");
+                if let Some(delegate) = &proxy.proxy {
+                    let pointer = rpc.call(
+                        "eth_getStorageAt",
+                        json!([beacon, format!("0x{}", hex::encode(delegate.implementation_slot)), block_ref(text(&h["hash"])?)]),
+                    )?;
+                    ensure!(
+                        binary(&pointer, 32)? == address_word(&delegate.implementation),
+                        "unqualified beacon proxy implementation pointer"
+                    );
+                    let code = rpc.call(
+                        "eth_getCode",
+                        json!([format!("0x{}", hex::encode(&delegate.implementation)), block_ref(text(&h["hash"])?)]),
+                    )?;
+                    let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid beacon proxy implementation code")?)?;
+                    ensure!(
+                        !bytes.is_empty() && erc20_balances_storage::hash(&bytes) == delegate.code_hash,
+                        "unqualified beacon proxy implementation runtime"
+                    );
+                }
                 for (address, expected_hash) in [(&beacon, &proxy.beacon_code_hash), (&implementation, &proxy.implementation_code_hash)] {
                     let code = rpc.call("eth_getCode", json!([address, block_ref(text(&h["hash"])?)]))?;
                     let bytes = hex::decode(text(&code)?.strip_prefix("0x").context("invalid beacon dependency code")?)?;

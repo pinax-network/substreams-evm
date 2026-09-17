@@ -197,7 +197,11 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
                 || layouts.iter().any(|l| {
                     l.proxy.as_ref().is_some_and(|p| p.implementation == c.address)
                         || l.minimal_proxy.as_ref().is_some_and(|p| p.implementation == c.address)
-                        || l.beacon_proxy.as_ref().is_some_and(|p| p.beacon == c.address || p.implementation == c.address)
+                        || l.beacon_proxy.as_ref().is_some_and(|p| {
+                            p.beacon == c.address
+                                || p.implementation == c.address
+                                || p.proxy.as_ref().is_some_and(|delegate| delegate.implementation == c.address)
+                        })
                 })
         }),
         "configured token, beacon or implementation code changed; requalify layout",
@@ -244,7 +248,11 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     let mut rows = BTreeMap::new();
     let mut beacon_slots = BTreeMap::<Vec<u8>, BTreeSet<[u8; 32]>>::new();
     for beacon in layouts.iter().filter_map(|l| l.beacon_proxy.as_ref()) {
-        beacon_slots.entry(beacon.beacon.clone()).or_default().insert(beacon.implementation_slot);
+        let slots = beacon_slots.entry(beacon.beacon.clone()).or_default();
+        slots.insert(beacon.implementation_slot);
+        if let Some(delegate) = &beacon.proxy {
+            slots.insert(delegate.implementation_slot);
+        }
     }
     raw.storage.sort_by_key(|c| c.ordinal);
     let checkpoint_keys = checkpoints::validate(block, layouts, &raw.storage, &preimages)?;
@@ -381,6 +389,8 @@ mod next_candidate_tests;
 mod next_proxy_tests;
 #[cfg(test)]
 mod ranked_cohort_tests;
+#[cfg(test)]
+mod ranked_proxy_tests;
 #[cfg(test)]
 mod securities_proxy_tests;
 #[cfg(test)]

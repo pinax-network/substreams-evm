@@ -28,7 +28,7 @@ mapping, or pinned proxy:
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `balance_divisor` | Optional object | Positive `value` and required `storage_slot` (both 32-byte `0x` hex). A reviewed getter returns `floor(raw / value)`; every persisted change to the divisor stops processing and invalidates retained holder balances |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
-| `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
+| `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; optional `proxy` pins one forwarding layer of the beacon getter. Addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
 | `address_hash_balance` | Optional object | Full 32-byte `modulus`, `offset`, `multiplier` constants and `stored_addresses` entries with a 32-byte `slot` and 20-byte `address`; all `0x` hex |
 | `immutable_zero_mapping` | Optional boolean, default `false` | Caller-proven empty balance mapping that the pinned direct runtime cannot write; requires `deployment` and cannot combine with proxies or other balance rules |
@@ -50,8 +50,9 @@ For a reviewed beacon proxy, `beacon_slot` belongs to the token and
 both pointers, both dependency runtimes, and the beacon's `implementation()`
 return value. The mapper rejects changes to either pointer or dependency code,
 including a beacon upgrade with no token writes and an upgrade followed by a
-restore. The caller must review that the beacon getter reads this scalar directly;
-arbitrary computed or nested beacon resolvers are unsupported. Diamond proxies,
+restore. The caller must review that the beacon getter reads this scalar directly
+or through the single explicitly pinned forwarding layer described below.
+Arbitrary computed beacon resolvers remain unsupported. Diamond proxies,
 rebasing balances and computed balances outside the explicit rule below remain
 unsupported.
 
@@ -75,6 +76,16 @@ The native holder replay initializes the observed holder set to zero **at the
 validated CREATE**, then applies that block's writes. It does not call `balanceOf`
 before deployment or treat an unavailable response as zero. This is a bounded
 test baseline, not a complete global holder enumeration.
+
+When a beacon's `implementation()` getter itself uses a proxy, configure
+`beacon_proxy.proxy` with that forwarding layer's `implementation_slot`,
+`implementation` and `code_hash` (the same hex formats as `proxy`). The slot
+lives at the beacon address. Qualification pins it and its runtime at both
+boundaries. Every persisted change to either beacon pointer, or to the delegate
+runtime, stops processing even if no token holder changes and even if restored
+in the same block. One reviewed forwarding layer is supported; additional
+getter dependencies still need explicit qualification. See the
+[BSC proxy follow-up](docs/ranked-proxy-coverage.md).
 
 With `balance_divisor`, raw storage words remain intact through continuity checks,
 then unsigned floor division produces the public amount. Checkpoint values use

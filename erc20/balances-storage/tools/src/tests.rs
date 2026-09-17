@@ -297,6 +297,65 @@ fn beacon_runtime_qualification_checks_both_pointers_code_and_getter() {
 }
 
 #[test]
+fn proxied_beacon_qualification_pins_its_delegate_at_both_boundaries() {
+    struct DelegateRpc {
+        bad: &'static str,
+        at_read: usize,
+        reads: std::sync::atomic::AtomicUsize,
+    }
+    impl Rpc for DelegateRpc {
+        fn request(&self, p: Value) -> Result<Value> {
+            let beacon = format!("0x{}", "bb".repeat(20));
+            let implementation = format!("0x{}", "cc".repeat(20));
+            let delegate = format!("0x{}", "dd".repeat(20));
+            let word = |a: &str| format!("0x{}{}", "00".repeat(12), &a[2..]);
+            let address = p["params"][0].as_str().unwrap_or("");
+            let n = self.reads.load(std::sync::atomic::Ordering::SeqCst);
+            let result = match p["method"].as_str().unwrap() {
+                "eth_getStorageAt" if address == beacon && p["params"][1] == hash(98) => {
+                    let read = self.reads.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                    assert_eq!(p["params"][2]["requireCanonical"], true);
+                    json!(if self.bad == "pointer" && read == self.at_read {
+                        hash(0)
+                    } else {
+                        word(&delegate)
+                    })
+                }
+                "eth_getStorageAt" => json!(word(if address == TOKEN { &beacon } else { &implementation })),
+                "eth_getCode" => json!(if address == TOKEN {
+                    "0xaa"
+                } else if address == beacon {
+                    "0xbb"
+                } else if address == implementation {
+                    "0xcc"
+                } else if self.bad == "code" && n == self.at_read + 1 {
+                    "0xee"
+                } else {
+                    "0xdd"
+                }),
+                "eth_call" => json!(word(&implementation)),
+                _ => return FakeRpc::default().request(p),
+            };
+            Ok(json!({"id":1,"result":result}))
+        }
+    }
+    let code = |b| format!("0x{}", hex::encode(erc20_balances_storage::hash(&[b])));
+    let p = json!([{"contract":TOKEN,"balance_slot":hash(7),"code_hash":code(0xaa),"beacon_proxy":{"beacon_slot":hash(99),"beacon":format!("0x{}","bb".repeat(20)),"beacon_code_hash":code(0xbb),"implementation_slot":hash(1),"implementation":format!("0x{}","cc".repeat(20)),"implementation_code_hash":code(0xcc),"proxy":{"implementation_slot":hash(98),"implementation":format!("0x{}","dd".repeat(20)),"code_hash":code(0xdd)}}}]);
+    let layouts = erc20_balances_storage::layout::parse(&p.to_string()).unwrap();
+    for at_read in [0, 1] {
+        for bad in ["pointer", "code", ""] {
+            let rpc = DelegateRpc { bad, at_read, reads: 0.into() };
+            let result = qualify_runtime(&rpc, 1, 3, &layouts);
+            if bad.is_empty() {
+                result.unwrap();
+                assert_eq!(rpc.reads.load(std::sync::atomic::Ordering::SeqCst), 2);
+            } else {
+                assert!(result.unwrap_err().to_string().contains("beacon proxy implementation"));
+            }
+        }
+    }
+}
+#[test]
 fn targeted_survey_preserves_rank_order_and_rejects_unranked_contracts() {
     let ranked = vec![json!({"contract":TOKEN,"rank":1}), json!({"contract":address(),"rank":2})];
     assert_eq!(crate::survey::select_tokens(&ranked, &[]).unwrap().len(), 2);

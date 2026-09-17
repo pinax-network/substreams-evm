@@ -1,5 +1,9 @@
 # BSC candidates 101–150 and stored-share balances
 
+The subsequent [proxy follow-up](ranked-proxy-coverage.md) adds seven more
+profiles, bringing the total to 140 with ten candidates still under review.
+The results below retain this cohort's original 133-token package and scope.
+
 The next 50 contracts from the immutable RPC reference ranking add **33 qualified
 profiles**, bringing the combined fixture to **133 tokens**. Seventeen candidates
 remain under review. This is evidence for the tested historical runtimes and

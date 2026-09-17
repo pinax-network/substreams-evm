@@ -1,0 +1,147 @@
+{
+  "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "checkpoint_holders": 315,
+  "checkpoint_rpc_reads": 630,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "18198d8d0aa0af6a0cc38f59d08c872ac9993d4c6cd4005496573823531af81c",
+  "checkpoint_tokens": {
+    "0x0a8d6c86e1bce73fe4d0bd531e1a567306836ea5": {
+      "holders": 40,
+      "nonzero_holders": 13,
+      "zero_word_fallback_holders": 0
+    },
+    "0x2859e4544c4bb03966803b044a93563bd2d0dd4d": {
+      "holders": 70,
+      "nonzero_holders": 51,
+      "zero_word_fallback_holders": 0
+    },
+    "0x30117e4bc17d7b044194b76a38365c53b72f7d49": {
+      "holders": 32,
+      "nonzero_holders": 11,
+      "zero_word_fallback_holders": 0
+    },
+    "0x570a5d26f7765ecb712c0924e4de545b89fd43df": {
+      "holders": 59,
+      "nonzero_holders": 22,
+      "zero_word_fallback_holders": 0
+    },
+    "0x595deaad1eb5476ff1e649fdb7efc36f1e4679cc": {
+      "holders": 24,
+      "nonzero_holders": 6,
+      "zero_word_fallback_holders": 0
+    },
+    "0xba2ae424d960c26247dd6c32edc70b295c744c43": {
+      "holders": 66,
+      "nonzero_holders": 39,
+      "zero_word_fallback_holders": 0
+    },
+    "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707": {
+      "holders": 24,
+      "nonzero_holders": 9,
+      "zero_word_fallback_holders": 0
+    }
+  },
+  "computed_initialized_holders": {},
+  "deployment_initialized_holders": {},
+  "elapsed_seconds": 86.258473375,
+  "event_row_parity_claimed": false,
+  "holder_checks_sha256": "ef4c0a3ce2391e633bbea3cfabc55cece7a07c2a59a3d2390f37165add7c3918",
+  "immutable_zero_initialized_holders": {},
+  "layouts_sha256": "cdad938c6d7ed1ce19abfc3662c6a0b4f733ac92d7a6c1e790e70932c80a05aa",
+  "processing_balance_rpc_calls": 0,
+  "processing_header_rpc_calls": 1024,
+  "raw_report_sha256": "1a6555dcdc647524cc8d55032a52d23dcef8ef3d6a5bad4ed929d2004324858b",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x0a8d6c86e1bce73fe4d0bd531e1a567306836ea5",
+      "emitted_rows": 70,
+      "reference_rows": 129,
+      "seeded_matches": 129,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 28,
+      "unseeded_unknown_rows": 59,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x2859e4544c4bb03966803b044a93563bd2d0dd4d",
+      "emitted_rows": 84,
+      "reference_rows": 143,
+      "seeded_matches": 143,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 40,
+      "unseeded_unknown_rows": 59,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x30117e4bc17d7b044194b76a38365c53b72f7d49",
+      "emitted_rows": 67,
+      "reference_rows": 132,
+      "seeded_matches": 132,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 29,
+      "unseeded_unknown_rows": 65,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+      "emitted_rows": 91,
+      "reference_rows": 179,
+      "seeded_matches": 179,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 33,
+      "unseeded_unknown_rows": 88,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x595deaad1eb5476ff1e649fdb7efc36f1e4679cc",
+      "emitted_rows": 64,
+      "reference_rows": 125,
+      "seeded_matches": 125,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 28,
+      "unseeded_unknown_rows": 61,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 1,
+      "contract": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+      "emitted_rows": 72,
+      "reference_rows": 137,
+      "seeded_matches": 137,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 40,
+      "unseeded_unknown_rows": 64,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xea37a8de1de2d9d10772eeb569e28bfa5cb17707",
+      "emitted_rows": 76,
+      "reference_rows": 144,
+      "seeded_matches": 144,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 68,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust",
+  "unobserved_tokens": []
+}

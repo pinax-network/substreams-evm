@@ -139,6 +139,10 @@ pub struct BeaconProxyLayout {
     pub implementation_slot: String,
     pub implementation: String,
     pub implementation_code_hash: String,
+    /// Optional single forwarding layer used by the beacon's implementation()
+    /// getter. Its pointer lives in beacon storage, not token storage.
+    #[serde(default)]
+    pub proxy: Option<ProxyLayout>,
 }
 #[derive(Clone, Debug)]
 pub struct VerifiedBeaconProxy {
@@ -148,6 +152,7 @@ pub struct VerifiedBeaconProxy {
     pub implementation_slot: [u8; 32],
     pub implementation: Vec<u8>,
     pub implementation_code_hash: [u8; 32],
+    pub proxy: Option<VerifiedProxy>,
 }
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
@@ -325,13 +330,32 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                             && !other_mapping_words.contains_key(&beacon_slot),
                         "beacon slot cannot be ignored or used for balances",
                     )?;
+                    let implementation_slot = word(&p.implementation_slot)?;
+                    let beacon_delegate = p
+                        .proxy
+                        .map(|delegate| -> Result<VerifiedProxy, Error> {
+                            let address = fixed(&delegate.implementation, 20)?;
+                            require(
+                                address.iter().any(|b| *b != 0) && address != beacon && address != contract && address != implementation,
+                                "invalid beacon proxy implementation",
+                            )?;
+                            let slot = word(&delegate.implementation_slot)?;
+                            require(slot != implementation_slot, "beacon proxy pointer overlaps token implementation pointer")?;
+                            Ok(VerifiedProxy {
+                                implementation_slot: slot,
+                                implementation: address,
+                                code_hash: word(&delegate.code_hash)?,
+                            })
+                        })
+                        .transpose()?;
                     Ok(VerifiedBeaconProxy {
                         beacon_slot,
                         beacon,
                         beacon_code_hash: word(&p.beacon_code_hash)?,
-                        implementation_slot: word(&p.implementation_slot)?,
+                        implementation_slot,
                         implementation,
                         implementation_code_hash: word(&p.implementation_code_hash)?,
+                        proxy: beacon_delegate,
                     })
                 })
                 .transpose()?;
