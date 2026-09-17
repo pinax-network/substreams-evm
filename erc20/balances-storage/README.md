@@ -336,6 +336,15 @@ It includes older deployment/mint captures that exercise voting checkpoint
 arrays, beyond ordinary transfers in the ranked window. Eleven of the original
 top 100 candidates remain unqualified.
 
+The [direct-bytecode follow-up](docs/direct-bytecode-holder-coverage.md) adds
+eight source-unavailable contracts in `tests/fixtures/bsc-direct-bytecode-layouts.json`,
+bringing the configured test set to 97. Qualification uses reviewed historical
+getter bytecode, independent storage overrides and captured writes, including
+SAC's burn counter and 79AU's block tracking and packed temporary flag. It does
+not claim verified source. Three of the original top 100 candidates remain
+unqualified. See the [network expansion sequence](docs/network-expansion.md) for
+the planned Ethereum, Base, HyperEVM and Arc qualification after BSC.
+
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
   --survey erc20/balances-storage/out/ranked-parity/report.json \

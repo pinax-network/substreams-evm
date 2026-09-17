@@ -1,0 +1,194 @@
+[
+  {
+    "contract": "0x7cc151c2ee1016d7b586fb818759b6ae07719999",
+    "controls": [
+      {
+        "balance_of": "0",
+        "balance_word": "0",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "0",
+        "balance_word": "0",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "1",
+        "balance_word": "1",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "1",
+        "balance_word": "1",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "123",
+        "balance_word": "123",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "123",
+        "balance_word": "123",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "fields": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "meaning": "Scalar slot 0 increases by the burned amount while total supply slot 3 and the holder mapping decrease. The balance getter reads only mapping 1.",
+    "prior_errors": [
+      {
+        "block": 122288579,
+        "error": "unresolved storage for configured token 0x7cc151c2ee1016d7b586fb818759b6ae07719999 at key 0x0000000000000000000000000000000000000000000000000000000000000000; refusing incomplete events"
+      }
+    ],
+    "rank": 55,
+    "reviewed_bytecode": "5711: JUMPDEST \n5712: PUSH1 00\n5714: DUP3 \n5715: DUP3 \n5716: ADD \n5717: DUP4 \n5718: DUP2 \n5719: LT \n5720: ISZERO \n5721: PUSH2 0bb4\n5724: JUMPI \n6080: PUSH1 40\n6082: ADD \n6083: SWAP2 \n6084: POP \n6085: POP \n6086: PUSH1 40\n6088: MLOAD \n6089: DUP1 \n6090: SWAP2 \n6091: SUB \n6092: SWAP1 \n6093: REVERT \n6094: JUMPDEST \n6095: PUSH2 17da\n6098: DUP3 \n6099: PUSH1 00\n6101: DUP4 \n6102: PUSH2 0c86\n6105: JUMP \n6106: JUMPDEST \n6107: PUSH2 1817\n6110: DUP2 \n6111: PUSH1 40\n6113: MLOAD \n6114: DUP1 \n6115: PUSH1 60\n6117: ADD \n6118: PUSH1 40\n6120: MSTORE \n6121: DUP1 \n6122: PUSH1 22\n6124: DUP2 \n6125: MSTORE \n6126: PUSH1 20\n6128: ADD \n6129: PUSH2 1cab\n6132: PUSH1 22\n6134: SWAP2 \n6135: CODECOPY \n6136: PUSH1 01\n6138: PUSH1 01\n6140: PUSH1 a0\n6142: SHL \n6143: SUB \n6144: DUP6 \n6145: AND \n6146: PUSH1 00\n6148: SWAP1 \n6149: DUP2 \n6150: MSTORE \n6151: PUSH1 01\n6153: PUSH1 20\n6155: MSTORE \n6156: PUSH1 40\n6158: SWAP1 \n6159: KECCAK256 \n6160: SLOAD \n6161: SWAP2 \n6162: SWAP1 \n6163: PUSH2 14e2\n6166: JUMP \n6167: JUMPDEST \n6168: PUSH1 01\n6170: PUSH1 01\n6172: PUSH1 a0\n6174: SHL \n6175: SUB \n6176: DUP4 \n6177: AND \n6178: PUSH1 00\n6180: SWAP1 \n6181: DUP2 \n6182: MSTORE \n6183: PUSH1 01\n6185: PUSH1 20\n6187: MSTORE \n6188: PUSH1 40\n6190: SWAP1 \n6191: KECCAK256 \n6192: SSTORE \n6193: PUSH1 03\n6195: SLOAD \n6196: PUSH2 183d\n6199: SWAP1 \n6200: DUP3 \n6201: PUSH2 1a4d\n6204: JUMP \n6205: JUMPDEST \n6206: PUSH1 03\n6208: SSTORE \n6209: PUSH1 00\n6211: SLOAD \n6212: PUSH2 184d\n6215: SWAP1 \n6216: DUP3 \n6217: PUSH2 164f\n6220: JUMP \n6221: JUMPDEST \n6222: PUSH1 00\n6224: SWAP1 \n6225: DUP2 \n6226: SSTORE \n6733: JUMPDEST \n6734: PUSH1 00\n6736: PUSH2 0bb4\n6739: DUP4 \n6740: DUP4 \n6741: PUSH1 40\n6743: MLOAD \n6744: DUP1 \n6745: PUSH1 40\n6747: ADD \n6748: PUSH1 40\n6750: MSTORE \n6751: DUP1 \n6752: PUSH1 1e\n6754: DUP2 \n6755: MSTORE \n6756: PUSH1 20\n6758: ADD \n6759: PUSH32 536166654d6174683a207375627472616374696f6e206f766572666c6f770000",
+    "transactions": [
+      {
+        "trace_sha256": "41e8173e512deb66fe448da3c207d53f644e429f6b5c3a4a62c74d2d3bb7e886",
+        "tx": "0x1d78cccc7122e077efa397dca3b398547a35f00bfd3fd70223510e16652e2b74",
+        "writes_at_reviewed_pcs": [
+          {
+            "depth": 7,
+            "key": "0x3",
+            "pc": 6208,
+            "value": "0x1e45fcefe3caff"
+          },
+          {
+            "depth": 7,
+            "key": "0x0",
+            "pc": 6226,
+            "value": "0x46c326e9f7ec"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "contract": "0xc35ef0564751a27b468f791113c686c8eebaa9ca",
+    "controls": [
+      {
+        "balance_of": "0",
+        "balance_word": "0",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "0",
+        "balance_word": "0",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "1",
+        "balance_word": "1",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "1",
+        "balance_word": "1",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "123",
+        "balance_word": "123",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "123",
+        "balance_word": "123",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "other_words": "0"
+      },
+      {
+        "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "balance_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "other_words": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+      }
+    ],
+    "fields": [
+      "0x0000000000000000000000000000000000000000000000000000000000000013",
+      "0x7bde496d6e5bd68a4786a03027637427cd7867dc7180c245a5128ea7fed665b9",
+      "0x818a66063ece31578903d869e2b6c2e262541ff6eb43f916b337c7d3a1658997"
+    ],
+    "meaning": "Mapping 15 records a block number using NUMBER/SSTORE at pc 8355 and is consulted by transfer restrictions. Slot 19 packs an address in low 160 bits and a temporary byte flag, set at pc 3869 and cleared at pc 3893 in the captured transaction. An additional path sets/clears the same byte at pc 5776/5804. Neither enters the raw mapping-0 balance getter.",
+    "prior_errors": [
+      {
+        "block": 122288270,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x818a66063ece31578903d869e2b6c2e262541ff6eb43f916b337c7d3a1658997; refusing incomplete events"
+      },
+      {
+        "block": 122288404,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      },
+      {
+        "block": 122288520,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      },
+      {
+        "block": 122288670,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      },
+      {
+        "block": 122288768,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      },
+      {
+        "block": 122288839,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      },
+      {
+        "block": 122288973,
+        "error": "unresolved storage for configured token 0xc35ef0564751a27b468f791113c686c8eebaa9ca at key 0x0000000000000000000000000000000000000000000000000000000000000013; refusing incomplete events"
+      }
+    ],
+    "rank": 62,
+    "reviewed_bytecode": "3847: JUMPDEST \n3848: PUSH1 13\n3850: DUP1 \n3851: SLOAD \n3852: PUSH1 ff\n3854: PUSH1 a0\n3856: SHL \n3857: NOT \n3858: SWAP1 \n3859: DUP2 \n3860: AND \n3861: PUSH1 01\n3863: PUSH1 a0\n3865: SHL \n3866: OR \n3867: SWAP1 \n3868: SWAP2 \n3869: SSTORE \n3870: SWAP4 \n3871: DUP2 \n3872: AND \n3873: PUSH2 0f97\n3876: JUMPI \n3877: POP \n3878: PUSH2 0f2e\n3881: SWAP2 \n3882: PUSH2 2161\n3885: JUMP \n3886: JUMPDEST \n3887: PUSH1 13\n3889: SLOAD \n3890: AND \n3891: PUSH1 13\n3893: SSTORE \n5733: JUMPDEST \n5734: PUSH1 01\n5736: PUSH1 01\n5738: PUSH1 a0\n5740: SHL \n5741: SUB \n5742: DUP2 \n5743: DUP2 \n5744: AND \n5745: SWAP3 \n5746: SWAP1 \n5747: SWAP2 \n5748: SWAP1 \n5749: DUP4 \n5750: ISZERO \n5751: PUSH2 1706\n5754: JUMPI \n5755: PUSH1 13\n5757: DUP1 \n5758: SLOAD \n5759: PUSH1 ff\n5761: PUSH1 a0\n5763: SHL \n5764: NOT \n5765: SWAP1 \n5766: DUP2 \n5767: AND \n5768: PUSH1 01\n5770: PUSH1 a0\n5772: SHL \n5773: OR \n5774: SWAP1 \n5775: SWAP2 \n5776: SSTORE \n5777: SWAP7 \n5778: SWAP8 \n5779: DUP9 \n5780: SWAP8 \n5781: SWAP4 \n5782: DUP2 \n5783: AND \n5784: PUSH2 16f8\n5787: JUMPI \n5788: POP \n5789: PUSH2 16a5\n5792: SWAP2 \n5793: PUSH2 2161\n5796: JUMP \n5797: JUMPDEST \n5798: PUSH1 13\n5800: SLOAD \n5801: AND \n5802: PUSH1 13\n5804: SSTORE \n7995: JUMPDEST \n7996: DUP1 \n7997: DUP13 \n7998: MSTORE \n7999: PUSH1 0f\n8001: DUP4 \n8002: MSTORE \n8003: PUSH2 1f52\n8006: DUP5 \n8007: DUP14 \n8008: KECCAK256 \n8009: SLOAD \n8010: PUSH1 0c\n8012: SLOAD \n8013: SWAP1 \n8014: PUSH2 19b1\n8017: JUMP \n8018: JUMPDEST \n8019: NUMBER \n8020: LT \n8173: JUMPDEST \n8174: POP \n8175: DUP1 \n8176: DUP13 \n8177: MSTORE \n8178: PUSH1 0f\n8180: DUP4 \n8181: MSTORE \n8182: DUP4 \n8183: DUP13 \n8184: KECCAK256 \n8185: SLOAD \n8186: NUMBER \n8187: EQ \n8188: PUSH2 1e6b\n8343: JUMPDEST \n8344: DUP7 \n8345: DUP2 \n8346: MSTORE \n8347: PUSH1 0f\n8349: DUP9 \n8350: MSTORE \n8351: NUMBER \n8352: DUP3 \n8353: DUP3 \n8354: KECCAK256 \n8355: SSTORE ",
+    "transactions": [
+      {
+        "trace_sha256": "85fc2df408389c41a1eb66c9f3bb49f449a33d26fd3c6583a5927629b9e21eda",
+        "tx": "0x8b185633fc5f795d91952ec24a92bde2528bd8a664903404cddf156785cb2d9d",
+        "writes_at_reviewed_pcs": [
+          {
+            "depth": 3,
+            "key": "0x818a66063ece31578903d869e2b6c2e262541ff6eb43f916b337c7d3a1658997",
+            "pc": 8355,
+            "value": "0x749f88e"
+          }
+        ]
+      },
+      {
+        "trace_sha256": "1c85c625131d9ec811745d2c8978a97e5b31cee8054050ea90ec5bafde3bca03",
+        "tx": "0x54873b6a91404f12528578af2a96f8bf568191f176c53b080b76358281dab39e",
+        "writes_at_reviewed_pcs": [
+          {
+            "depth": 1,
+            "key": "0x13",
+            "pc": 3869,
+            "value": "0x1caeeffe98d269621f18dc42e398da4b6f4051dc6"
+          },
+          {
+            "depth": 1,
+            "key": "0x13",
+            "pc": 3893,
+            "value": "0xcaeeffe98d269621f18dc42e398da4b6f4051dc6"
+          }
+        ]
+      }
+    ]
+  }
+]

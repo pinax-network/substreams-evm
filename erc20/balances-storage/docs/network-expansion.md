@@ -1,0 +1,36 @@
+# Network qualification sequence
+
+After the BSC candidate review, repeat the same qualification on **Ethereum,
+Base, HyperEVM and Arc**, in that order. These networks are requested work;
+they are not yet qualified by the BSC evidence.
+
+The production interface stays one RPC-free `map_events` with shared
+`evm.balances.v1.Events`, explicit verified layouts and default parameters `[]`.
+All executable validation tooling and regressions stay in Rust.
+
+For each network:
+
+1. Verify the RPC chain identity, finalized-range support, canonical historical
+   balance/storage reads, and availability of complete Extended blocks with
+   storage writes and Keccak preimages. Record unsupported provider capabilities.
+2. Capture the RPC reference stream and rank its active contracts. Keep the
+   immutable capture, range, block hashes and ranking separate from other chains.
+3. Qualify each token's getter and dependencies against its historical runtime.
+   A shared address, symbol or implementation family is not a cross-chain proof.
+4. Audit the actual packaged WASM against historical RPC, then replay retained
+   holder state across consecutive blocks. Count initialized parity, cold-start
+   unknowns, unchanged holders and any mismatches separately.
+5. Add captured Rust regressions for new storage/getter behavior, and repeat the
+   affected network's audits after each correction. Preserve incomplete runs.
+
+Before those runs, replace the Rust tools' BSC-specific chain-ID and source
+checks with an explicit network selection shared by ranking, inspection,
+capture, audit and holder replay. Preserve wrong-chain rejection, canonical
+block binding and finality checks. A provider that lacks a required feature
+must not silently receive weaker validation.
+
+The current BSC top-100 review is a bounded candidate campaign. Completing it
+does not establish support for every BSC token or complete global holder
+enumeration. Broader EVM coverage will similarly be reported per network,
+qualified runtime and tested interval, with checkpoints or full-history replay
+required for holders whose prior balances cannot be derived from the window.

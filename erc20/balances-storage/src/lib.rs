@@ -335,6 +335,8 @@ mod checkpoint_tests;
 #[cfg(test)]
 mod computed_tests;
 #[cfg(test)]
+mod direct_bytecode_tests;
+#[cfg(test)]
 mod direct_source_tests;
 #[cfg(test)]
 mod next_candidate_tests;
