@@ -1,0 +1,603 @@
+{
+  "elapsed_seconds": 52.320192917,
+  "native_scan": {
+    "blocks": 1024,
+    "emitted_rows": {
+      "0x19943c027d8deb171e91315cfcb446b9dcc16d25": 18,
+      "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7": 18,
+      "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51": 18
+    },
+    "errors": {}
+  },
+  "qualified": false,
+  "scope": "Three unqualified sparse-discovery candidates. Reviewed rejection edges and multi-address raw getter controls; full native replay uses only the balance root with no ignored metadata. Unknown writes remain errors. Source qualification, metadata review, packaged RPC parity and holder coverage remain required. Discovery threshold unchanged.",
+  "status": "inspected",
+  "tokens": [
+    {
+      "block": 122288114,
+      "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+      "diagnostic_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d",
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+      },
+      "guard_edges": [
+        {
+          "bytes": "600080fd",
+          "case": "nonpayable",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 12
+        },
+        {
+          "bytes": "600080fd",
+          "case": "short-address-argument",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 11668
+        },
+        {
+          "bytes": "600080fd",
+          "case": "noncanonical-address",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 11603
+        }
+      ],
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "qualified": false,
+      "rank": 351,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+        },
+        {
+          "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+        },
+        {
+          "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+        },
+        {
+          "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        }
+      ],
+      "rejected_calls": [
+        {
+          "call": {
+            "data": "0x70a0823100000000000000000000000019943c027d8deb171e91315cfcb446b9dcc16d25",
+            "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "value": "0x1"
+          },
+          "case": "nonpayable",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231",
+            "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+          },
+          "case": "short-address-argument",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+          },
+          "case": "noncanonical-address",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        }
+      ],
+      "runtime_sha256": "9f57955cc394039b71bcfe50440765ddd11d4bee9e7c858b83df2dd549d8c007"
+    },
+    {
+      "block": 122288114,
+      "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+      "diagnostic_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424",
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+      },
+      "guard_edges": [
+        {
+          "bytes": "600080fd",
+          "case": "nonpayable",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 12
+        },
+        {
+          "bytes": "600080fd",
+          "case": "short-address-argument",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 8908
+        },
+        {
+          "bytes": "600080fd",
+          "case": "noncanonical-address",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 8843
+        }
+      ],
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "qualified": false,
+      "rank": 354,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+        },
+        {
+          "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+        },
+        {
+          "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+        },
+        {
+          "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+        },
+        {
+          "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        }
+      ],
+      "rejected_calls": [
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000b72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+            "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "value": "0x1"
+          },
+          "case": "nonpayable",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231",
+            "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+          },
+          "case": "short-address-argument",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+          },
+          "case": "noncanonical-address",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        }
+      ],
+      "runtime_sha256": "ffe6448651c28eb05de0314feebef88e76881309b2c9461f06747c3549f0a681"
+    },
+    {
+      "block": 122288114,
+      "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+      "diagnostic_layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50",
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+      },
+      "guard_edges": [
+        {
+          "bytes": "600080fd",
+          "case": "nonpayable",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 12
+        },
+        {
+          "bytes": "600080fd",
+          "case": "short-address-argument",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 17593
+        },
+        {
+          "bytes": "600080fd",
+          "case": "noncanonical-address",
+          "instructions": "PUSH1 0; DUP1; REVERT",
+          "pc": 17463
+        }
+      ],
+      "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+      "qualified": false,
+      "rank": 364,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+        },
+        {
+          "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+        },
+        {
+          "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+        },
+        {
+          "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+        },
+        {
+          "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+        },
+        {
+          "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+        }
+      ],
+      "rejected_calls": [
+        {
+          "call": {
+            "data": "0x70a0823100000000000000000000000029e8f7b1195cae4f761815bdec29200e15566983",
+            "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "value": "0x1"
+          },
+          "case": "nonpayable",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231",
+            "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+          },
+          "case": "short-address-argument",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+          },
+          "case": "noncanonical-address",
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        }
+      ],
+      "runtime_sha256": "3445d86055303bf81c366b306ff7c6ba5b24d69fe0d2dab54bf9196e5f5fe8e3"
+    }
+  ],
+  "tool_language": "Rust"
+}

@@ -1,0 +1,35 @@
+{
+  "explanation": "The first helper expected error.data to be 0x. The endpoint omits that field for this empty revert. The corrected check requires error code 3, a revert message, and absent or empty data, bound to the independently reviewed PUSH1 0; DUP1; REVERT edge. No balance mismatch was discarded.",
+  "first": {
+    "elapsed_seconds": 0.662232458,
+    "failure": "expected empty revert",
+    "qualified": false,
+    "status": "incomplete",
+    "tokens": [],
+    "tool_language": "Rust"
+  },
+  "observed_response": {
+    "call": {
+      "data": "0x70a0823100000000000000000000000019943c027d8deb171e91315cfcb446b9dcc16d25",
+      "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+      "value": "0x1"
+    },
+    "case": "nonpayable",
+    "response": {
+      "error": {
+        "code": 3,
+        "message": "execution reverted"
+      },
+      "id": 1,
+      "jsonrpc": "2.0"
+    }
+  },
+  "second": {
+    "elapsed_seconds": 0.443310625,
+    "failure": "expected empty revert",
+    "qualified": false,
+    "status": "incomplete",
+    "tokens": [],
+    "tool_language": "Rust"
+  }
+}

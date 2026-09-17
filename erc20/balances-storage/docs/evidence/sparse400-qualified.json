@@ -1,0 +1,1399 @@
+{
+  "audit_input_sha256": "a72e785517881632e2587d08a4574423eb8a67c60bfa03a1c01644f13a53e424",
+  "controls_sha256": "9f814d6e0da16130e120db983f1ad41e27923d210e4481c8c586ba27ce1968d1",
+  "layouts_sha256": "0b589288e1a4308c07db4bffa1614466e7e05acd43682f553bf04bfb143046d9",
+  "native_scan": {
+    "blocks": 1024,
+    "emitted_rows": {
+      "0x19943c027d8deb171e91315cfcb446b9dcc16d25": 18,
+      "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7": 18,
+      "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51": 18
+    },
+    "errors": {}
+  },
+  "phase": "getter_and_native_review",
+  "scope": "Three bytecode-reviewed sparse discovery candidates. Two-nonzero-holder discovery threshold remains unchanged; independent getter review is the qualification basis. Packaged emitted and holder audits remain separate gates. No all-holder or future metadata-path claim.",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "bytecode_review": {
+        "body_bytes": "5b73ffffffffffffffffffffffffffffffffffffffff166000908152600560205260409020549056",
+        "body_pc": 1087,
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "controls_sha256": "9f814d6e0da16130e120db983f1ad41e27923d210e4481c8c586ba27ce1968d1",
+        "executed_getter_path": [
+          "0: PUSH1 80",
+          "2: PUSH1 40",
+          "4: MSTORE ",
+          "5: CALLVALUE ",
+          "6: DUP1 ",
+          "7: ISZERO ",
+          "8: PUSH2 0010",
+          "11: JUMPI  target=0x10 condition=0x1",
+          "16: JUMPDEST ",
+          "17: POP ",
+          "18: PUSH1 04",
+          "20: CALLDATASIZE ",
+          "21: LT ",
+          "22: PUSH2 02d3",
+          "25: JUMPI  target=0x2d3 condition=0x0",
+          "26: PUSH1 00",
+          "28: CALLDATALOAD ",
+          "29: PUSH1 e0",
+          "31: SHR ",
+          "32: DUP1 ",
+          "33: PUSH4 8da5cb5b",
+          "38: GT ",
+          "39: PUSH2 0186",
+          "42: JUMPI  target=0x186 condition=0x1",
+          "390: JUMPDEST ",
+          "391: DUP1 ",
+          "392: PUSH4 440a5101",
+          "397: GT ",
+          "398: PUSH2 0234",
+          "401: JUMPI  target=0x234 condition=0x0",
+          "402: DUP1 ",
+          "403: PUSH4 65e12db3",
+          "408: GT ",
+          "409: PUSH2 01e8",
+          "412: JUMPI  target=0x1e8 condition=0x0",
+          "413: DUP1 ",
+          "414: PUSH4 70a08231",
+          "419: GT ",
+          "420: PUSH2 01cd",
+          "423: JUMPI  target=0x1cd condition=0x0",
+          "424: DUP1 ",
+          "425: PUSH4 70a08231",
+          "430: EQ ",
+          "431: PUSH2 0431",
+          "434: JUMPI  target=0x431 condition=0x1",
+          "1073: JUMPDEST ",
+          "1074: PUSH2 0321",
+          "1077: PUSH2 043f",
+          "1080: CALLDATASIZE ",
+          "1081: PUSH1 04",
+          "1083: PUSH2 2d86",
+          "1086: JUMP  target=0x2d86",
+          "11654: JUMPDEST ",
+          "11655: PUSH1 00",
+          "11657: PUSH1 20",
+          "11659: DUP3 ",
+          "11660: DUP5 ",
+          "11661: SUB ",
+          "11662: SLT ",
+          "11663: ISZERO ",
+          "11664: PUSH2 2d98",
+          "11667: JUMPI  target=0x2d98 condition=0x1",
+          "11672: JUMPDEST ",
+          "11673: DUP2 ",
+          "11674: CALLDATALOAD ",
+          "11675: PUSH2 2da3",
+          "11678: DUP2 ",
+          "11679: PUSH2 2d35",
+          "11682: JUMP  target=0x2d35",
+          "11573: JUMPDEST ",
+          "11574: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "11595: DUP2 ",
+          "11596: AND ",
+          "11597: DUP2 ",
+          "11598: EQ ",
+          "11599: PUSH2 2d57",
+          "11602: JUMPI  target=0x2d57 condition=0x1",
+          "11607: JUMPDEST ",
+          "11608: POP ",
+          "11609: JUMP  target=0x2da3",
+          "11683: JUMPDEST ",
+          "11684: SWAP4 ",
+          "11685: SWAP3 ",
+          "11686: POP ",
+          "11687: POP ",
+          "11688: POP ",
+          "11689: JUMP  target=0x43f",
+          "1087: JUMPDEST ",
+          "1088: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "1109: AND ",
+          "1110: PUSH1 00",
+          "1112: SWAP1 ",
+          "1113: DUP2 ",
+          "1114: MSTORE ",
+          "1115: PUSH1 05",
+          "1117: PUSH1 20",
+          "1119: MSTORE ",
+          "1120: PUSH1 40",
+          "1122: SWAP1 ",
+          "1123: KECCAK256 ",
+          "1124: SLOAD ",
+          "1125: SWAP1 ",
+          "1126: JUMP  target=0x321",
+          "801: JUMPDEST ",
+          "802: PUSH1 40",
+          "804: MLOAD ",
+          "805: SWAP1 ",
+          "806: DUP2 ",
+          "807: MSTORE ",
+          "808: PUSH1 20",
+          "810: ADD ",
+          "811: PUSH2 02ed",
+          "814: JUMP  target=0x2ed",
+          "749: JUMPDEST ",
+          "750: PUSH1 40",
+          "752: MLOAD ",
+          "753: DUP1 ",
+          "754: SWAP2 ",
+          "755: SUB ",
+          "756: SWAP1 ",
+          "757: RETURN "
+        ],
+        "manual_review": "Valid balanceOf path has nonpayable and calldata/canonical-address guards, selector-only dispatch, address masking, one slot-5 mapping SLOAD and raw ABI return. Invalid guard edges revert; no holder-dependent value branch or other state/call dependency. No verified source is claimed. No metadata slots are ignored.",
+        "qualified": false,
+        "rank": 351,
+        "revert_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 11668
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 11603
+          }
+        ],
+        "runtime_hash": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d"
+      },
+      "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+      "controls": {
+        "block": 122288114,
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "diagnostic_layout": {
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "code_hash": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d",
+          "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+        },
+        "guard_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 11668
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 11603
+          }
+        ],
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "qualified": false,
+        "rank": 351,
+        "raw_controls": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+          },
+          {
+            "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+          },
+          {
+            "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+          },
+          {
+            "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          }
+        ],
+        "rejected_calls": [
+          {
+            "call": {
+              "data": "0x70a0823100000000000000000000000019943c027d8deb171e91315cfcb446b9dcc16d25",
+              "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+              "value": "0x1"
+            },
+            "case": "nonpayable",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231",
+              "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+            },
+            "case": "short-address-argument",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "to": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+            },
+            "case": "noncanonical-address",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          }
+        ],
+        "runtime_sha256": "9f57955cc394039b71bcfe50440765ddd11d4bee9e7c858b83df2dd549d8c007"
+      },
+      "inspection": {
+        "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "balance_of": "8899128641664374613",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "block": 122288114,
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "elapsed_seconds": 0.34180125,
+        "execution_code": [
+          {
+            "address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+            "checked_instructions": 1,
+            "runtime_hash": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+              "depth": 1,
+              "key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a",
+              "pc": 1124,
+              "storage_address": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+              "value": "0x0000000000000000000000000000000000000000000000007b800e5998e8d755"
+            }
+          ]
+        },
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d",
+        "status": "inspected",
+        "storage_key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xb527dfcb9629b35a28049c6acc3bb97e1a26f7abbd38a6a6d4a19d5dae79068a",
+            "pc": 1124,
+            "value": "0x0000000000000000000000000000000000000000000000007b800e5998e8d755"
+          }
+        ],
+        "storage_word": "8899128641664374613",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "217a6621efa7d0c1237c9f7b0c12b838606f64f927a50a1b4f9271eec8dbac02"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d",
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25"
+      },
+      "original_discovery": {
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "exact_mapper_parity": false,
+        "holdout_start": 122288627,
+        "hypotheses": [
+          {
+            "matched": 8,
+            "mismatched": 0,
+            "nonzero_holders": 1,
+            "slot": "0x0000000000000000000000000000000000000000000000000000000000000005"
+          }
+        ],
+        "rank": 351,
+        "ranked_reference_rows": 36,
+        "runtime_hashes": [
+          "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d",
+          "0xa03c715211a6c6a9aebc93083001facf51ed55ec527ff2b6285bed1facd0127d"
+        ],
+        "runtime_stable_at_boundaries": true,
+        "sampled_active_blocks": 8,
+        "sampled_reference_rows": 32,
+        "status": "no_direct_mapping_evidence",
+        "symbol": "AR"
+      },
+      "qualification_basis": "Manually reviewed complete valid getter path in historical runtime, exact raw slot-5 getter body and raw ABI return, guard rejection edges, multi-address controls and strict full native replay. Verified source unavailable in the source inventory. No metadata is ignored; unknown writes fail.",
+      "rank": 351,
+      "source_inventory": {
+        "contract": "0x19943c027d8deb171e91315cfcb446b9dcc16d25",
+        "historical_runtime_bound": false,
+        "name": null,
+        "proxy": null,
+        "rank": 351,
+        "rows": 36,
+        "storage": null,
+        "verified": false
+      }
+    },
+    {
+      "bytecode_review": {
+        "body_bytes": "5b73ffffffffffffffffffffffffffffffffffffffff166000908152600560205260409020549056",
+        "body_pc": 681,
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+        "controls_sha256": "9f814d6e0da16130e120db983f1ad41e27923d210e4481c8c586ba27ce1968d1",
+        "executed_getter_path": [
+          "0: PUSH1 80",
+          "2: PUSH1 40",
+          "4: MSTORE ",
+          "5: CALLVALUE ",
+          "6: DUP1 ",
+          "7: ISZERO ",
+          "8: PUSH2 0010",
+          "11: JUMPI  target=0x10 condition=0x1",
+          "16: JUMPDEST ",
+          "17: POP ",
+          "18: PUSH1 04",
+          "20: CALLDATASIZE ",
+          "21: LT ",
+          "22: PUSH2 01ae",
+          "25: JUMPI  target=0x1ae condition=0x0",
+          "26: PUSH1 00",
+          "28: CALLDATALOAD ",
+          "29: PUSH1 e0",
+          "31: SHR ",
+          "32: DUP1 ",
+          "33: PUSH4 95d89b41",
+          "38: GT ",
+          "39: PUSH2 00ee",
+          "42: JUMPI  target=0xee condition=0x1",
+          "238: JUMPDEST ",
+          "239: DUP1 ",
+          "240: PUSH4 3af32abf",
+          "245: GT ",
+          "246: PUSH2 015b",
+          "249: JUMPI  target=0x15b condition=0x0",
+          "250: DUP1 ",
+          "251: PUSH4 70a08231",
+          "256: GT ",
+          "257: PUSH2 0135",
+          "260: JUMPI  target=0x135 condition=0x0",
+          "261: DUP1 ",
+          "262: PUSH4 70a08231",
+          "267: EQ ",
+          "268: PUSH2 029b",
+          "271: JUMPI  target=0x29b condition=0x1",
+          "667: JUMPDEST ",
+          "668: PUSH2 0212",
+          "671: PUSH2 02a9",
+          "674: CALLDATASIZE ",
+          "675: PUSH1 04",
+          "677: PUSH2 22be",
+          "680: JUMP  target=0x22be",
+          "8894: JUMPDEST ",
+          "8895: PUSH1 00",
+          "8897: PUSH1 20",
+          "8899: DUP3 ",
+          "8900: DUP5 ",
+          "8901: SUB ",
+          "8902: SLT ",
+          "8903: ISZERO ",
+          "8904: PUSH2 22d0",
+          "8907: JUMPI  target=0x22d0 condition=0x1",
+          "8912: JUMPDEST ",
+          "8913: DUP2 ",
+          "8914: CALLDATALOAD ",
+          "8915: PUSH2 22db",
+          "8918: DUP2 ",
+          "8919: PUSH2 226d",
+          "8922: JUMP  target=0x226d",
+          "8813: JUMPDEST ",
+          "8814: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "8835: DUP2 ",
+          "8836: AND ",
+          "8837: DUP2 ",
+          "8838: EQ ",
+          "8839: PUSH2 228f",
+          "8842: JUMPI  target=0x228f condition=0x1",
+          "8847: JUMPDEST ",
+          "8848: POP ",
+          "8849: JUMP  target=0x22db",
+          "8923: JUMPDEST ",
+          "8924: SWAP4 ",
+          "8925: SWAP3 ",
+          "8926: POP ",
+          "8927: POP ",
+          "8928: POP ",
+          "8929: JUMP  target=0x2a9",
+          "681: JUMPDEST ",
+          "682: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "703: AND ",
+          "704: PUSH1 00",
+          "706: SWAP1 ",
+          "707: DUP2 ",
+          "708: MSTORE ",
+          "709: PUSH1 05",
+          "711: PUSH1 20",
+          "713: MSTORE ",
+          "714: PUSH1 40",
+          "716: SWAP1 ",
+          "717: KECCAK256 ",
+          "718: SLOAD ",
+          "719: SWAP1 ",
+          "720: JUMP  target=0x212",
+          "530: JUMPDEST ",
+          "531: PUSH1 40",
+          "533: MLOAD ",
+          "534: SWAP1 ",
+          "535: DUP2 ",
+          "536: MSTORE ",
+          "537: PUSH1 20",
+          "539: ADD ",
+          "540: PUSH2 01c8",
+          "543: JUMP  target=0x1c8",
+          "456: JUMPDEST ",
+          "457: PUSH1 40",
+          "459: MLOAD ",
+          "460: DUP1 ",
+          "461: SWAP2 ",
+          "462: SUB ",
+          "463: SWAP1 ",
+          "464: RETURN "
+        ],
+        "manual_review": "Valid balanceOf path has nonpayable and calldata/canonical-address guards, selector-only dispatch, address masking, one slot-5 mapping SLOAD and raw ABI return. Invalid guard edges revert; no holder-dependent value branch or other state/call dependency. No verified source is claimed. No metadata slots are ignored.",
+        "qualified": false,
+        "rank": 354,
+        "revert_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 8908
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 8843
+          }
+        ],
+        "runtime_hash": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424"
+      },
+      "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+      "controls": {
+        "block": 122288114,
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+        "diagnostic_layout": {
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "code_hash": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424",
+          "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+        },
+        "guard_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 8908
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 8843
+          }
+        ],
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "qualified": false,
+        "rank": 354,
+        "raw_controls": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+          },
+          {
+            "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+          },
+          {
+            "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+          },
+          {
+            "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x31580aeeb39d208d3b3c287dea3e74253bf8bc81d022cad9db2d3f173b6b2c14"
+          },
+          {
+            "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+          },
+          {
+            "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+          },
+          {
+            "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+          },
+          {
+            "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          }
+        ],
+        "rejected_calls": [
+          {
+            "call": {
+              "data": "0x70a08231000000000000000000000000b72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+              "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+              "value": "0x1"
+            },
+            "case": "nonpayable",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231",
+              "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+            },
+            "case": "short-address-argument",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "to": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+            },
+            "case": "noncanonical-address",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          }
+        ],
+        "runtime_sha256": "ffe6448651c28eb05de0314feebef88e76881309b2c9461f06747c3549f0a681"
+      },
+      "inspection": {
+        "address": "0xb72973bdf9abf343be53ff9ac47c3a8305a5c8ee",
+        "balance_of": "100000000000000000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "block": 122288114,
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+        "elapsed_seconds": 0.30777175,
+        "execution_code": [
+          {
+            "address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+            "checked_instructions": 1,
+            "runtime_hash": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+              "depth": 1,
+              "key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f",
+              "pc": 718,
+              "storage_address": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+              "value": "0x00000000000000000000000000000000000000000000152d02c7e14af6800000"
+            }
+          ]
+        },
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424",
+        "status": "inspected",
+        "storage_key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xea9cf050dc43a06da50b91ed8ade4533fefaa2d22debf7f38ef5e847f8bbe27f",
+            "pc": 718,
+            "value": "0x00000000000000000000000000000000000000000000152d02c7e14af6800000"
+          }
+        ],
+        "storage_word": "100000000000000000000000",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "b0e07a186ed47dd8da45b99bc4ec53a5d51a2fa1107a305978f95303a72b54df"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424",
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7"
+      },
+      "original_discovery": {
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+        "exact_mapper_parity": false,
+        "holdout_start": 122288627,
+        "hypotheses": [
+          {
+            "matched": 8,
+            "mismatched": 0,
+            "nonzero_holders": 1,
+            "slot": "0x0000000000000000000000000000000000000000000000000000000000000005"
+          }
+        ],
+        "rank": 354,
+        "ranked_reference_rows": 36,
+        "runtime_hashes": [
+          "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424",
+          "0x7dbd9c73e2bb791e6f76d848a266bc2da56465b0ee82d610bd29a12becefa424"
+        ],
+        "runtime_stable_at_boundaries": true,
+        "sampled_active_blocks": 8,
+        "sampled_reference_rows": 32,
+        "status": "no_direct_mapping_evidence",
+        "symbol": "ARZ"
+      },
+      "qualification_basis": "Manually reviewed complete valid getter path in historical runtime, exact raw slot-5 getter body and raw ABI return, guard rejection edges, multi-address controls and strict full native replay. Verified source unavailable in the source inventory. No metadata is ignored; unknown writes fail.",
+      "rank": 354,
+      "source_inventory": {
+        "contract": "0x403d4d10b6de8d0cc9429ff17b689ea1b0c770b7",
+        "historical_runtime_bound": false,
+        "name": null,
+        "proxy": null,
+        "rank": 354,
+        "rows": 36,
+        "storage": null,
+        "verified": false
+      }
+    },
+    {
+      "bytecode_review": {
+        "body_bytes": "5b73ffffffffffffffffffffffffffffffffffffffff166000908152600560205260409020549056",
+        "body_pc": 1458,
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "controls_sha256": "9f814d6e0da16130e120db983f1ad41e27923d210e4481c8c586ba27ce1968d1",
+        "executed_getter_path": [
+          "0: PUSH1 80",
+          "2: PUSH1 40",
+          "4: MSTORE ",
+          "5: CALLVALUE ",
+          "6: DUP1 ",
+          "7: ISZERO ",
+          "8: PUSH2 0010",
+          "11: JUMPI  target=0x10 condition=0x1",
+          "16: JUMPDEST ",
+          "17: POP ",
+          "18: PUSH1 04",
+          "20: CALLDATASIZE ",
+          "21: LT ",
+          "22: PUSH2 0340",
+          "25: JUMPI  target=0x340 condition=0x0",
+          "26: PUSH1 00",
+          "28: CALLDATALOAD ",
+          "29: PUSH1 e0",
+          "31: SHR ",
+          "32: DUP1 ",
+          "33: PUSH4 93291e0e",
+          "38: GT ",
+          "39: PUSH2 01bd",
+          "42: JUMPI  target=0x1bd condition=0x1",
+          "445: JUMPDEST ",
+          "446: DUP1 ",
+          "447: PUSH4 3be82229",
+          "452: GT ",
+          "453: PUSH2 028c",
+          "456: JUMPI  target=0x28c condition=0x0",
+          "457: DUP1 ",
+          "458: PUSH4 70a08231",
+          "463: GT ",
+          "464: PUSH2 0235",
+          "467: JUMPI  target=0x235 condition=0x0",
+          "468: DUP1 ",
+          "469: PUSH4 7fe5cf9f",
+          "474: GT ",
+          "475: PUSH2 020f",
+          "478: JUMPI  target=0x20f condition=0x1",
+          "527: JUMPDEST ",
+          "528: DUP1 ",
+          "529: PUSH4 70a08231",
+          "534: EQ ",
+          "535: PUSH2 05a4",
+          "538: JUMPI  target=0x5a4 condition=0x1",
+          "1444: JUMPDEST ",
+          "1445: PUSH2 0398",
+          "1448: PUSH2 05b2",
+          "1451: CALLDATASIZE ",
+          "1452: PUSH1 04",
+          "1454: PUSH2 44ab",
+          "1457: JUMP  target=0x44ab",
+          "17579: JUMPDEST ",
+          "17580: PUSH1 00",
+          "17582: PUSH1 20",
+          "17584: DUP3 ",
+          "17585: DUP5 ",
+          "17586: SUB ",
+          "17587: SLT ",
+          "17588: ISZERO ",
+          "17589: PUSH2 44bd",
+          "17592: JUMPI  target=0x44bd condition=0x1",
+          "17597: JUMPDEST ",
+          "17598: DUP2 ",
+          "17599: CALLDATALOAD ",
+          "17600: PUSH2 44c8",
+          "17603: DUP2 ",
+          "17604: PUSH2 4419",
+          "17607: JUMP  target=0x4419",
+          "17433: JUMPDEST ",
+          "17434: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "17455: DUP2 ",
+          "17456: AND ",
+          "17457: DUP2 ",
+          "17458: EQ ",
+          "17459: PUSH2 443b",
+          "17462: JUMPI  target=0x443b condition=0x1",
+          "17467: JUMPDEST ",
+          "17468: POP ",
+          "17469: JUMP  target=0x44c8",
+          "17608: JUMPDEST ",
+          "17609: SWAP4 ",
+          "17610: SWAP3 ",
+          "17611: POP ",
+          "17612: POP ",
+          "17613: POP ",
+          "17614: JUMP  target=0x5b2",
+          "1458: JUMPDEST ",
+          "1459: PUSH20 ffffffffffffffffffffffffffffffffffffffff",
+          "1480: AND ",
+          "1481: PUSH1 00",
+          "1483: SWAP1 ",
+          "1484: DUP2 ",
+          "1485: MSTORE ",
+          "1486: PUSH1 05",
+          "1488: PUSH1 20",
+          "1490: MSTORE ",
+          "1491: PUSH1 40",
+          "1493: SWAP1 ",
+          "1494: KECCAK256 ",
+          "1495: SLOAD ",
+          "1496: SWAP1 ",
+          "1497: JUMP  target=0x398",
+          "920: JUMPDEST ",
+          "921: PUSH1 40",
+          "923: MLOAD ",
+          "924: SWAP1 ",
+          "925: DUP2 ",
+          "926: MSTORE ",
+          "927: PUSH1 20",
+          "929: ADD ",
+          "930: PUSH2 038b",
+          "933: JUMP  target=0x38b",
+          "907: JUMPDEST ",
+          "908: PUSH1 40",
+          "910: MLOAD ",
+          "911: DUP1 ",
+          "912: SWAP2 ",
+          "913: SUB ",
+          "914: SWAP1 ",
+          "915: RETURN "
+        ],
+        "manual_review": "Valid balanceOf path has nonpayable and calldata/canonical-address guards, selector-only dispatch, address masking, one slot-5 mapping SLOAD and raw ABI return. Invalid guard edges revert; no holder-dependent value branch or other state/call dependency. No verified source is claimed. No metadata slots are ignored.",
+        "qualified": false,
+        "rank": 364,
+        "revert_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 17593
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 17463
+          }
+        ],
+        "runtime_hash": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50"
+      },
+      "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+      "controls": {
+        "block": 122288114,
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "diagnostic_layout": {
+          "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "code_hash": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50",
+          "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+        },
+        "guard_edges": [
+          {
+            "bytes": "600080fd",
+            "case": "nonpayable",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 12
+          },
+          {
+            "bytes": "600080fd",
+            "case": "short-address-argument",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 17593
+          },
+          {
+            "bytes": "600080fd",
+            "case": "noncanonical-address",
+            "instructions": "PUSH1 0; DUP1; REVERT",
+            "pc": 17463
+          }
+        ],
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "qualified": false,
+        "rank": 364,
+        "raw_controls": [
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x0000000000000000000000000000000000000000",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x05b8ccbb9d4d8fb16ea74ce3c29a41f1b461fbdaff4714a0d9a8eb05499746bc"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x000000000000000000000000000000000000dead",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x7d509c07f0d4edcc2dd1b53aae68677132eb562dcba78e36381b63ccaf66e6ba"
+          },
+          {
+            "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+          },
+          {
+            "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+          },
+          {
+            "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+          },
+          {
+            "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce"
+          },
+          {
+            "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+          },
+          {
+            "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+          },
+          {
+            "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+          },
+          {
+            "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x5b4b3f7b9f740130dcee9fef27e9efd80f17807377e6dd2cea395eaccee219d8"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "0",
+            "rpc": "0",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "1",
+            "rpc": "1",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "123",
+            "rpc": "123",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          },
+          {
+            "address": "0xffffffffffffffffffffffffffffffffffffffff",
+            "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "storage_key": "0x06ee3275e97ec101949878dd2c0e363424634c69fd1a9b093dd1b3fd17741834"
+          }
+        ],
+        "rejected_calls": [
+          {
+            "call": {
+              "data": "0x70a0823100000000000000000000000029e8f7b1195cae4f761815bdec29200e15566983",
+              "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+              "value": "0x1"
+            },
+            "case": "nonpayable",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231",
+              "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+            },
+            "case": "short-address-argument",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          },
+          {
+            "call": {
+              "data": "0x70a08231ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "to": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+            },
+            "case": "noncanonical-address",
+            "response": {
+              "error": {
+                "code": 3,
+                "message": "execution reverted"
+              },
+              "id": 1,
+              "jsonrpc": "2.0"
+            }
+          }
+        ],
+        "runtime_sha256": "3445d86055303bf81c366b306ff7c6ba5b24d69fe0d2dab54bf9196e5f5fe8e3"
+      },
+      "inspection": {
+        "address": "0x29e8f7b1195cae4f761815bdec29200e15566983",
+        "balance_of": "5722353761150676732928",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "block": 122288114,
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "elapsed_seconds": 0.344129333,
+        "execution_code": [
+          {
+            "address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+            "checked_instructions": 1,
+            "runtime_hash": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+              "depth": 1,
+              "key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce",
+              "pc": 1495,
+              "storage_address": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+              "value": "0x000000000000000000000000000000000000000000000136359c7b6fda938c00"
+            }
+          ]
+        },
+        "hash": "0x9af7168181e0164c40b9eeb10857274c949978af24fe368546d52e73f1868654",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50",
+        "status": "inspected",
+        "storage_key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x813d88b652ecac4998e2f122c7be3b5401402cce9b85d9a2fb0233d2a7da58ce",
+            "pc": 1495,
+            "value": "0x000000000000000000000000000000000000000000000136359c7b6fda938c00"
+          }
+        ],
+        "storage_word": "5722353761150676732928",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "f8f7fd4da6ea1a53d408a21da3f97e57612f1aad69ce79b2a948e928f7106ba8"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50",
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51"
+      },
+      "original_discovery": {
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "exact_mapper_parity": false,
+        "holdout_start": 122288627,
+        "hypotheses": [
+          {
+            "matched": 8,
+            "mismatched": 0,
+            "nonzero_holders": 1,
+            "slot": "0x0000000000000000000000000000000000000000000000000000000000000005"
+          }
+        ],
+        "rank": 364,
+        "ranked_reference_rows": 36,
+        "runtime_hashes": [
+          "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50",
+          "0xdc0bd3a2924c4c93849ff9d7ce5f9447328f45cf74c35c5d169d2f8d0bd9ee50"
+        ],
+        "runtime_stable_at_boundaries": true,
+        "sampled_active_blocks": 8,
+        "sampled_reference_rows": 32,
+        "status": "no_direct_mapping_evidence",
+        "symbol": "ARS"
+      },
+      "qualification_basis": "Manually reviewed complete valid getter path in historical runtime, exact raw slot-5 getter body and raw ABI return, guard rejection edges, multi-address controls and strict full native replay. Verified source unavailable in the source inventory. No metadata is ignored; unknown writes fail.",
+      "rank": 364,
+      "source_inventory": {
+        "contract": "0xe9e6c90c5b4d94b12e3ffff7b0b74de7b177fb51",
+        "historical_runtime_bound": false,
+        "name": null,
+        "proxy": null,
+        "rank": 364,
+        "rows": 36,
+        "storage": null,
+        "verified": false
+      }
+    }
+  ],
+  "tool_language": "Rust"
+}

@@ -346,14 +346,17 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) brings the
-explicit test configuration to 377 profiles in
-`tests/fixtures/bsc-proxy400-layouts.json`. These two additions match 33 emitted
-RPC balances, 64 initialized observations and all 23 final holder balances.
-The unchanged package preserves every protobuf event field for 109,127 previously
-RPC-verified balances across the combined configuration. Eighteen candidates from
+The latest [AR, ARZ and ARS follow-up](docs/sparse400-coverage.md) brings the
+explicit test configuration to 380 profiles in
+`tests/fixtures/bsc-sparse400-layouts.json`. These three additions match 54 emitted
+RPC balances, 108 initialized observations and all 36 final holder balances.
+Their complete valid getter paths were reviewed in bytecode; no metadata slots
+are ignored. The unchanged package preserves every protobuf event field for
+109,181 previously RPC-verified balances across the combined configuration.
+Fifteen candidates from
 the [next-50 investigation](docs/ranks351-400-investigation.md) remain unqualified,
-alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The previous
+alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The
+[Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) and previous
 [27-profile cohort](docs/ranks400-coverage.md) retains its separate source,
 proxy-family and holder evidence. The earlier
 [MUSD/GAIX follow-up](docs/direct-discovery-gaps.md) retains its separate evidence.
