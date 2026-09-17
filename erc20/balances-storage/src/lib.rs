@@ -1,4 +1,5 @@
 //! A single RPC-free map with the shared ERC-20 Events output.
+mod address_lists;
 mod checkpoints;
 mod computed;
 mod deployment;
@@ -53,6 +54,8 @@ struct Changes {
     storage: Vec<eth::StorageChange>,
     codes: Vec<CodeRecord>,
     immutable_zero_contracts: BTreeSet<Vec<u8>>,
+    address_list_contracts: BTreeSet<Vec<u8>>,
+    address_list_noops: Vec<eth::StorageChange>,
 }
 struct CodeRecord {
     change: eth::CodeChange,
@@ -70,6 +73,10 @@ impl persist::Sink for Changes {
         // Ordinary layouts retain the existing no-op filtering behavior.
         if self.immutable_zero_contracts.contains(&c.address) {
             self.storage.push(c.clone());
+        } else if self.address_list_contracts.contains(&c.address) {
+            // A zero address append can write an unchanged, empty array word.
+            // Keep that witness separate so ordinary balance no-ops stay filtered.
+            self.address_list_noops.push(c.clone());
         }
     }
     fn code(&mut self, c: &eth::CodeChange, ctx: persist::Ctx) {
@@ -176,6 +183,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.clone(), l)).collect();
     let mut raw = Changes {
         immutable_zero_contracts: layouts.iter().filter(|l| l.immutable_zero_mapping).map(|l| l.contract.clone()).collect(),
+        address_list_contracts: layouts.iter().filter(|l| !l.address_lists.is_empty()).map(|l| l.contract.clone()).collect(),
         ..Default::default()
     };
     persist::collect_block(block, &mut raw)?;
@@ -240,6 +248,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
     }
     raw.storage.sort_by_key(|c| c.ordinal);
     let checkpoint_keys = checkpoints::validate(block, layouts, &raw.storage, &preimages)?;
+    let address_list_keys = address_lists::validate(layouts, &raw.storage, &raw.address_list_noops)?;
     let mut deployment_keys = BTreeSet::new();
     for c in raw.storage {
         if !configured.contains_key(&c.address) && !beacon_slots.contains_key(&c.address) {
@@ -285,7 +294,11 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
         if let Some(owner) = owner {
             require(!layout.immutable_zero_mapping, "immutable-zero balance mapping was written; requalify layout")?;
             insert(&mut rows, &c.address, &owner, &c.old_value, &c.new_value, c.ordinal)?;
-        } else if !layout.other_slots.contains(&key) && !ignored_mapping(key, &preimages, layout) && !checkpoint_keys.contains(&(c.address.clone(), key)) {
+        } else if !layout.other_slots.contains(&key)
+            && !ignored_mapping(key, &preimages, layout)
+            && !checkpoint_keys.contains(&(c.address.clone(), key))
+            && !address_list_keys.contains(&(c.address.clone(), key))
+        {
             return Err(Error::msg(format!(
                 "unresolved storage for configured token 0x{} at key 0x{}; refusing incomplete events",
                 hex::encode(&c.address),
@@ -339,6 +352,8 @@ mod handler {
     }
 }
 #[cfg(test)]
+mod address_list_tests;
+#[cfg(test)]
 mod checkpoint_tests;
 #[cfg(test)]
 mod computed_tests;
@@ -348,6 +363,8 @@ mod direct_bytecode_tests;
 mod direct_source_tests;
 #[cfg(test)]
 mod final_proxy_tests;
+#[cfg(test)]
+mod holder_registration_tests;
 #[cfg(test)]
 mod immutable_zero_tests;
 #[cfg(test)]

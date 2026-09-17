@@ -107,13 +107,15 @@ parity for every token.
 
 ## Remaining scope
 
-All original top-100 candidates now have reviewed layout semantics for this
-bounded campaign. This does not prove every code path or all BSC tokens. In
-particular, 4Stock membership-list writes remain rejected pending their own
-qualification. Its [first registration is now captured](evidence/4stock-membership-follow-up.json)
+All original top-100 candidates have reviewed layout semantics for this
+bounded campaign. This does not prove every code path or all BSC tokens. This
+batch still rejected 4Stock membership-list writes pending their own
+qualification. Its [first registration was captured](evidence/4stock-membership-follow-up.json)
 at block **120607788**, call 193: slot 35 grows from zero to one, its first
 address element is written, and mapping-36 field 4 is set. The initialization
-fields and deployment also need review before that earlier block can pass.
+fields and deployment also required review before that earlier block could pass.
+The subsequent [holder-registration extension](holder-registration-coverage.md)
+qualifies those paths in a separate fixture and audits the launch interval.
 Cold stored holders still need a verified checkpoint or full
 history, and the other layouts retain their documented row and dependency limits.
 Overlapping prior BSC reports must not be summed as independent history.

@@ -23,6 +23,10 @@ pub struct Layout {
     /// Reviewed OpenZeppelin Trace208 arrays, separate from ordinary balances.
     #[serde(default)]
     pub voting_checkpoints: Option<VotingCheckpoints>,
+    /// Reviewed append-only address[] roots, with a witnessed length increment
+    /// before every element write and a maximum pre-append length of u64::MAX.
+    #[serde(default)]
+    pub address_lists: Vec<String>,
     /// Reviewed replacement for a zero balance word. No inferred defaults.
     #[serde(default)]
     pub zero_balance: Option<ZeroBalance>,
@@ -183,6 +187,7 @@ pub struct VerifiedLayout {
     pub other_mapping_slots: BTreeSet<[u8; 32]>,
     pub other_mapping_words: BTreeMap<[u8; 32], u8>,
     pub voting_checkpoints: Option<VerifiedVotingCheckpoints>,
+    pub address_lists: BTreeSet<[u8; 32]>,
     pub zero_balance: Option<VerifiedZeroBalance>,
     pub proxy: Option<VerifiedProxy>,
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
@@ -435,6 +440,25 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            let mut address_lists = BTreeSet::new();
+            for value in &layout.address_lists {
+                let slot = word(value)?;
+                require(address_lists.insert(slot), "duplicate address-list root")?;
+                require(
+                    slot != balance_slot
+                        && !other_slots.contains(&slot)
+                        && !other_mapping_slots.contains(&slot)
+                        && !other_mapping_words.contains_key(&slot)
+                        && proxy.as_ref().is_none_or(|p| p.implementation_slot != slot)
+                        && beacon_proxy.as_ref().is_none_or(|p| p.beacon_slot != slot)
+                        && zero_balance.as_ref().is_none_or(|p| p.storage_slot != Some(slot))
+                        && address_hash_balance.as_ref().is_none_or(|p| !p.stored_addresses.contains_key(&slot))
+                        && voting_checkpoints
+                            .as_ref()
+                            .is_none_or(|p| !p.slots.contains(&slot) && !p.mapping_slots.contains(&slot)),
+                    "address-list root overlaps another configured field",
+                )?;
+            }
             require(
                 !layout.immutable_zero_mapping
                     || (deployment.is_some()
@@ -454,6 +478,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 other_mapping_slots,
                 other_mapping_words,
                 voting_checkpoints,
+                address_lists,
                 zero_balance,
                 proxy,
                 beacon_proxy,

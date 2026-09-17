@@ -1,0 +1,10 @@
+{
+  "balances": 96269,
+  "blocks": 1024,
+  "new_events_sha256": "3a4810c51ab18776eb07b5ac763dac2ca7bd2162cbbce496f85bd3569ca8fd03",
+  "new_layouts_sha256": "77223b1e9e15ed05c48e466882341e1cf755e4d6e5f23d8ecfc540c25d37e7da",
+  "new_package_sha256": "dbd3bd5942e7ba89f8014f373e24d22ee9a4267db1e3c8530e31fa94dfa059e3",
+  "old_events_sha256": "3a4810c51ab18776eb07b5ac763dac2ca7bd2162cbbce496f85bd3569ca8fd03",
+  "scope": "Every block's complete emitted balance row/value set equals the previous top100 storage package; this is not a claim of raw row parity with the RPC reference.",
+  "status": "exact_top100_output_regression_parity"
+}

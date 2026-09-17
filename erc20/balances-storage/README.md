@@ -24,6 +24,7 @@ mapping, or pinned proxy:
 | `other_mapping_slots` | Optional array of 32-byte `0x` hex | Explicitly qualified non-balance mapping bases, including nested mappings |
 | `other_mapping_words` | Optional object mapping 32-byte `0x` bases to counts 1–32 | Reviewed non-balance mappings with multiword values, such as governance checkpoint structs |
 | `voting_checkpoints` | Optional object | Reviewed OpenZeppelin `Trace208` arrays: `clock` is `block_number` or `timestamp`; `slots` lists direct array roots and `mapping_slots` lists `mapping(address => Trace208)` bases, all 32-byte hex |
+| `address_lists` | Optional array of 32-byte `0x` hex roots | Reviewed append-only `address[]` bookkeeping, with a persisted length increment and exact element witness for each append |
 | `zero_balance` | Optional object | `value` (32-byte `0x` hex uint256) replaces a zero mapping word; `storage_slot` (32 bytes) identifies its scalar dependency, omitted only for a runtime constant. Optional `excluded_addresses` lists verified runtime-constant holders (20-byte hex) whose zero words remain zero |
 | `proxy` | Optional object | `implementation_slot` (32 bytes), `implementation` (20 bytes), and implementation `code_hash` (32 bytes), all `0x` hex |
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
@@ -101,7 +102,24 @@ one entry for each distinct nonnegative clock value. This bound follows from
 the reviewed contract semantics; it is not a configurable arbitrary ignore
 range. Block-number histories always require the append witness in the current
 block. Arbitrary arrays, different packed formats and custom clocks remain
-unsupported, and unknown writes still fail.
+unsupported by this rule, and unknown writes still fail.
+
+`address_lists` supports a separately qualified append-only `address[]` whose
+pre-append length is below `2^64`. The caller must review that the array is
+independent of the balance getter. Each persisted length increment must be
+followed by exactly one write to `keccak256(root) + old_length`, modulo `2^256`,
+before the next append. That element must start empty and contain a canonical
+20-byte address. Multiple appends require continuous lengths; the final valid
+length can equal `2^64`. There are no inferred element ranges or guessed roots.
+The [Solidity storage rules](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html#mappings-and-dynamic-arrays)
+place each address in a separate word. Compiler-embedded array roots do not
+require a captured Keccak preimage because the exact root is caller-qualified.
+
+A null-address append retains its zero-to-zero element write as a validation
+witness. It does not enable ordinary balance no-op output. Reverted/failed
+writes cannot authorize persisted appends. Missing elements, overwrites,
+deletions, malformed values and roots overlapping other configured fields fail.
+The reviewed list is bookkeeping, not a source of inferred holder balances.
 
 With `address_hash_balance`, ordinary holders return
 `(uint256(keccak256(packed_20_byte_address)) % modulus + offset) * multiplier`.
@@ -366,8 +384,8 @@ unqualified in that batch.
 
 The [final proxy review](docs/final-proxy-holder-coverage.md) adds 4Stock and CAP
 in `tests/fixtures/bsc-final-proxy-layouts.json`, bringing the test set to 99.
-4Stock's reward accounting is separate from its raw balance mapping; only the
-reviewed fields are configured, and untested membership/list writes still fail.
+4Stock's reward accounting is separate from its raw balance mapping; that
+bounded fixture permits only its reviewed reward fields.
 That batch left one log-only candidate outside its coverage claim.
 
 The [immutable-zero follow-up](docs/immutable-zero-holder-coverage.md) closes that
@@ -379,6 +397,13 @@ original top 100, subject to each profile's documented path and holder limits;
 it does not establish support for every BSC token. See the
 [network expansion sequence](docs/network-expansion.md) for Ethereum, Base,
 HyperEVM and Arc qualification after BSC.
+
+The [holder-registration follow-up](docs/holder-registration-coverage.md) extends
+4Stock in `tests/fixtures/bsc-holder-registration-layouts.json` with its pinned
+first deployment, initialization fields, membership flag and witnessed address
+list. The original campaign fixtures and reports retain their original scope.
+This extension accepts qualified list appends without using membership to infer
+balances, and keeps the same one-map interface and empty production defaults.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
