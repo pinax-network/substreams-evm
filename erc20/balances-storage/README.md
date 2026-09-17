@@ -280,6 +280,13 @@ Namespaced balances remain raw even when a scheduled UI multiplier changes.
 Pause and freeze flags likewise do not transform the stablecoin's balance getter.
 Proxy, beacon and implementation identities are checked separately.
 
+The [top-50 follow-up](docs/top50-holder-coverage.md) adds the remaining eight
+ranked contracts in `tests/fixtures/bsc-top50-layouts.json`. Their direct mapping
+getters are qualified from historical bytecode, traces and controls; verified
+Solidity source was unavailable. Three share an already reviewed runtime.
+The fixture covers all 50 contracts in the original ranking, with per-token
+holder-state results and explicit cold-start gaps.
+
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \
   --survey erc20/balances-storage/out/ranked-parity/report.json \

@@ -1,0 +1,62 @@
+[
+  {
+    "address_returned": "123",
+    "address_shift_bits": 0,
+    "balance_of": "456",
+    "block": 122288009,
+    "contract": "0xc69b16cf18cea1e5d0bb6a1a9db802097790ddd2",
+    "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+    "holder": "0x491c3e907cf37cf83bc6fcdfcd195f47ac05da52",
+    "packed_slot": 6,
+    "packed_word": "0x000000000000000000000000000000000000000000000000000000000000007b",
+    "pause_shift_bits": 160,
+    "paused": false,
+    "rank": 19,
+    "raw_mapping_word": "456"
+  },
+  {
+    "address_returned": "123",
+    "address_shift_bits": 0,
+    "balance_of": "456",
+    "block": 122288009,
+    "contract": "0xc69b16cf18cea1e5d0bb6a1a9db802097790ddd2",
+    "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+    "holder": "0x491c3e907cf37cf83bc6fcdfcd195f47ac05da52",
+    "packed_slot": 6,
+    "packed_word": "0x000000000000000000000001000000000000000000000000000000000000007b",
+    "pause_shift_bits": 160,
+    "paused": true,
+    "rank": 19,
+    "raw_mapping_word": "456"
+  },
+  {
+    "address_returned": "123",
+    "address_shift_bits": 8,
+    "balance_of": "456",
+    "block": 122288006,
+    "contract": "0xe27023ef180541ce8dce4f507c7914b1f59fd96c",
+    "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "holder": "0xa710e7e87efc10dc4d9d22dc6446c66f0897d868",
+    "packed_slot": 5,
+    "packed_word": "0x0000000000000000000000000000000000000000000000000000000000007b00",
+    "pause_shift_bits": 0,
+    "paused": false,
+    "rank": 46,
+    "raw_mapping_word": "456"
+  },
+  {
+    "address_returned": "123",
+    "address_shift_bits": 8,
+    "balance_of": "456",
+    "block": 122288006,
+    "contract": "0xe27023ef180541ce8dce4f507c7914b1f59fd96c",
+    "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "holder": "0xa710e7e87efc10dc4d9d22dc6446c66f0897d868",
+    "packed_slot": 5,
+    "packed_word": "0x0000000000000000000000000000000000000000000000000000000000007b01",
+    "pause_shift_bits": 0,
+    "paused": true,
+    "rank": 46,
+    "raw_mapping_word": "456"
+  }
+]
