@@ -1,5 +1,8 @@
 # BSC voting, burn-participant and proxy follow-up
 
+The [subsequent TOPS and clone follow-up](tops-clone-holder-coverage.md) extends
+the qualified fixture to 241 profiles. This report retains its original scope.
+
 Six more candidates from the immutable top-250 ranking now have qualified
 layouts: **GOATED (208), TAC (212), TCOM (214), USDon (222), ARX (240), and
 S315 (246)**. The [combined fixture](../tests/fixtures/bsc-voting-proxy-layouts.json)

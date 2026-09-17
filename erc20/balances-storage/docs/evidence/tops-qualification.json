@@ -1,0 +1,728 @@
+{
+  "elapsed_seconds": 14.736134625,
+  "layouts_sha256": "8a93782c11ef4ba972b02e9e5f33dbd6d0b575e67d5b909d0533b7714bcacada",
+  "native_scan": {
+    "address_list_witnesses": [],
+    "balances": 34,
+    "blocks": 1024,
+    "captured_sha256": "c9e2354983ffeac41ed7777e7e02ac765368d1b0eb893f4b64e5b7ae8f2ab5ce",
+    "errors": []
+  },
+  "qualification": [
+    {
+      "boundaries": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+      "getter": {
+        "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+        "getters": [
+          {
+            "code": "function balanceOf(address account) public view override returns (uint256) {\n        uint256 balance = _balances[account];\n        return balance;\n    }",
+            "source": "contracts/v1/token.sol"
+          }
+        ],
+        "name": "Token",
+        "public_mapping": [],
+        "rank": 236
+      },
+      "inspection": {
+        "address": "0x632cf397fa20e635e9d54bddd3a89d07ab2b7965",
+        "balance_of": "6710298821456639724",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "block": 122288055,
+        "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+        "elapsed_seconds": 0.290373458,
+        "hash": "0x94b3166898c4627d72e5ad59ceed30dffd13f371016decf909b7f79997724741",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xf4dc8abcac62d4707f5a839731c0e2b3dde17c643accf43299541c421ba0050b",
+        "status": "inspected",
+        "storage_key": "0x01993a3507aed6fc8e57b73d524ef715bc083a9985a7d6cb61f3b77937c114e0",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x01993a3507aed6fc8e57b73d524ef715bc083a9985a7d6cb61f3b77937c114e0",
+            "pc": 4129,
+            "value": "0x0000000000000000000000000000000000000000000000005d1fc539b5a536ec"
+          }
+        ],
+        "storage_word": "6710298821456639724",
+        "tool_language": "Rust",
+        "trace_sha256": "993d2643894050dab871d9ea6e38d7d531ae71497f43cc0c54cdf65e1b1fe2c8"
+      },
+      "layout": {
+        "address_lists": [
+          "0x000000000000000000000000000000000000000000000000000000000000001c"
+        ],
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xf4dc8abcac62d4707f5a839731c0e2b3dde17c643accf43299541c421ba0050b",
+        "contract": "0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000011",
+          "0x0000000000000000000000000000000000000000000000000000000000000012",
+          "0x0000000000000000000000000000000000000000000000000000000000000013",
+          "0x000000000000000000000000000000000000000000000000000000000000001a",
+          "0x000000000000000000000000000000000000000000000000000000000000001b",
+          "0x000000000000000000000000000000000000000000000000000000000000001d",
+          "0x000000000000000000000000000000000000000000000000000000000000001e",
+          "0x0000000000000000000000000000000000000000000000000000000000000020"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000009",
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000b",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x000000000000000000000000000000000000000000000000000000000000000d",
+          "0x000000000000000000000000000000000000000000000000000000000000000e",
+          "0x000000000000000000000000000000000000000000000000000000000000000f",
+          "0x0000000000000000000000000000000000000000000000000000000000000010",
+          "0x0000000000000000000000000000000000000000000000000000000000000014",
+          "0x0000000000000000000000000000000000000000000000000000000000000015",
+          "0x0000000000000000000000000000000000000000000000000000000000000016",
+          "0x0000000000000000000000000000000000000000000000000000000000000017",
+          "0x0000000000000000000000000000000000000000000000000000000000000018",
+          "0x0000000000000000000000000000000000000000000000000000000000000019",
+          "0x0000000000000000000000000000000000000000000000000000000000000021",
+          "0x0000000000000000000000000000000000000000000000000000000000000022"
+        ]
+      },
+      "rank": 236,
+      "source_sha256": "bed5d7155189f849140fce44c4971a526a139b40b1ac4cc7d83db48b057a4c1a",
+      "source_url": "https://sourcify.dev/server/v2/contract/56/0xcdf52c0b13c24f32f1d8d4ec6356203a1ef0826a?fields=all",
+      "storage_layout": {
+        "storage": [
+          {
+            "astId": 8,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_owner",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 4218,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "rewardGasLimit",
+            "offset": 20,
+            "slot": "0",
+            "type": "t_uint32"
+          },
+          {
+            "astId": 4220,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_name",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 4222,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 4224,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_decimals",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint8"
+          },
+          {
+            "astId": 4226,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_tTotal",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4230,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 4236,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 4238,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "tradeController",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_address"
+          },
+          {
+            "astId": 4249,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "swapRouters",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 4251,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "inSwap",
+            "offset": 0,
+            "slot": "9",
+            "type": "t_bool"
+          },
+          {
+            "astId": 4253,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "inDEXOperation",
+            "offset": 1,
+            "slot": "9",
+            "type": "t_bool"
+          },
+          {
+            "astId": 4256,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "strictCheck",
+            "offset": 2,
+            "slot": "9",
+            "type": "t_bool"
+          },
+          {
+            "astId": 4259,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "releaseRate",
+            "offset": 0,
+            "slot": "10",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 4262,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "miner",
+            "offset": 0,
+            "slot": "11",
+            "type": "t_contract(IMiner)4167"
+          },
+          {
+            "astId": 4265,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "node",
+            "offset": 0,
+            "slot": "12",
+            "type": "t_contract(INode)4176"
+          },
+          {
+            "astId": 4273,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "blockConfig",
+            "offset": 0,
+            "slot": "13",
+            "type": "t_struct(BlockConfig)4270_storage"
+          },
+          {
+            "astId": 4275,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "marketingAddress",
+            "offset": 0,
+            "slot": "14",
+            "type": "t_address"
+          },
+          {
+            "astId": 4277,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "treasuryAddress",
+            "offset": 0,
+            "slot": "15",
+            "type": "t_address"
+          },
+          {
+            "astId": 4279,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "liquidityRemover",
+            "offset": 0,
+            "slot": "16",
+            "type": "t_address"
+          },
+          {
+            "astId": 4283,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "feeWhiteList",
+            "offset": 0,
+            "slot": "17",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 4287,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "swapPairList",
+            "offset": 0,
+            "slot": "18",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 4291,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "buyUsdtAmount",
+            "offset": 0,
+            "slot": "19",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 4321,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "feeConfig",
+            "offset": 0,
+            "slot": "20",
+            "type": "t_struct(FeeConfig)4308_storage"
+          },
+          {
+            "astId": 4373,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "lpConfig",
+            "offset": 0,
+            "slot": "21",
+            "type": "t_struct(LPConfig)4360_storage"
+          },
+          {
+            "astId": 4390,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "tokenLPConfig",
+            "offset": 0,
+            "slot": "23",
+            "type": "t_struct(LPConfig)4360_storage"
+          },
+          {
+            "astId": 4393,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "nodeRewardCondition",
+            "offset": 0,
+            "slot": "25",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 4397,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "progressNodeRewardBlock",
+            "offset": 0,
+            "slot": "26",
+            "type": "t_mapping(t_uint256,t_uint256)"
+          },
+          {
+            "astId": 4401,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "currentNodeIndex",
+            "offset": 0,
+            "slot": "27",
+            "type": "t_mapping(t_uint256,t_uint256)"
+          },
+          {
+            "astId": 4404,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "lpProviders",
+            "offset": 0,
+            "slot": "28",
+            "type": "t_array(t_address)dyn_storage"
+          },
+          {
+            "astId": 4408,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "lpProviderIndex",
+            "offset": 0,
+            "slot": "29",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 4412,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "excludeLpProvider",
+            "offset": 0,
+            "slot": "30",
+            "type": "t_mapping(t_address,t_bool)"
+          },
+          {
+            "astId": 4425,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "lpInfos",
+            "offset": 0,
+            "slot": "31",
+            "type": "t_mapping(t_address,t_array(t_struct(LPInfo)4419_storage)dyn_storage)"
+          },
+          {
+            "astId": 4429,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "lpAmount",
+            "offset": 0,
+            "slot": "32",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 5832,
+            "contract": "contracts/v1/token.sol:Token",
+            "label": "priceTracker",
+            "offset": 0,
+            "slot": "33",
+            "type": "t_struct(PriceTracker)5819_storage"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "base": "t_address",
+            "encoding": "dynamic_array",
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_struct(LPInfo)4419_storage)dyn_storage": {
+            "base": "t_struct(LPInfo)4419_storage",
+            "encoding": "dynamic_array",
+            "label": "struct AbsToken.LPInfo[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "encoding": "inplace",
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IMiner)4167": {
+            "encoding": "inplace",
+            "label": "contract IMiner",
+            "numberOfBytes": "20"
+          },
+          "t_contract(INode)4176": {
+            "encoding": "inplace",
+            "label": "contract INode",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_array(t_struct(LPInfo)4419_storage)dyn_storage)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => struct AbsToken.LPInfo[])",
+            "numberOfBytes": "32",
+            "value": "t_array(t_struct(LPInfo)4419_storage)dyn_storage"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32",
+            "value": "t_bool"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_mapping(t_uint256,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_uint256",
+            "label": "mapping(uint256 => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(BlockConfig)4270_storage": {
+            "encoding": "inplace",
+            "label": "struct AbsToken.BlockConfig",
+            "members": [
+              {
+                "astId": 4267,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "buyEnabled",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 4269,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "sellEnabled",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(FeeConfig)4308_storage": {
+            "encoding": "inplace",
+            "label": "struct AbsToken.FeeConfig",
+            "members": [
+              {
+                "astId": 4293,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "buyLPFee",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4295,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "buyNodeFee",
+                "offset": 2,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4297,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "buyMarketFee",
+                "offset": 4,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4299,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "buyTreasuryFee",
+                "offset": 6,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4301,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "sellLPFee",
+                "offset": 8,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4303,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "sellNodeFee",
+                "offset": 10,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4305,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "sellMarketFee",
+                "offset": 12,
+                "slot": "0",
+                "type": "t_uint16"
+              },
+              {
+                "astId": 4307,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "sellLevelFee",
+                "offset": 14,
+                "slot": "0",
+                "type": "t_uint16"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(LPConfig)4360_storage": {
+            "encoding": "inplace",
+            "label": "struct AbsToken.LPConfig",
+            "members": [
+              {
+                "astId": 4353,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "rewardCondition",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint128"
+              },
+              {
+                "astId": 4355,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "minCondition",
+                "offset": 16,
+                "slot": "0",
+                "type": "t_uint128"
+              },
+              {
+                "astId": 4357,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "progressBlock",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint64"
+              },
+              {
+                "astId": 4359,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "currentIndex",
+                "offset": 8,
+                "slot": "1",
+                "type": "t_uint32"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(LPInfo)4419_storage": {
+            "encoding": "inplace",
+            "label": "struct AbsToken.LPInfo",
+            "members": [
+              {
+                "astId": 4414,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "lpAmount",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 4416,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "createdAt",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 4418,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "expireAt",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_uint256"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_struct(PriceTracker)5819_storage": {
+            "encoding": "inplace",
+            "label": "struct AbsToken.PriceTracker",
+            "members": [
+              {
+                "astId": 5810,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "currentPrice",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint128"
+              },
+              {
+                "astId": 5812,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "historicalHighPrice",
+                "offset": 16,
+                "slot": "0",
+                "type": "t_uint128"
+              },
+              {
+                "astId": 5814,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "lastDay",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_uint32"
+              },
+              {
+                "astId": 5816,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "offset",
+                "offset": 4,
+                "slot": "1",
+                "type": "t_uint32"
+              },
+              {
+                "astId": 5818,
+                "contract": "contracts/v1/token.sol:Token",
+                "label": "lastUpdateBlock",
+                "offset": 8,
+                "slot": "1",
+                "type": "t_uint64"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint128": {
+            "encoding": "inplace",
+            "label": "uint128",
+            "numberOfBytes": "16"
+          },
+          "t_uint16": {
+            "encoding": "inplace",
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint32": {
+            "encoding": "inplace",
+            "label": "uint32",
+            "numberOfBytes": "4"
+          },
+          "t_uint64": {
+            "encoding": "inplace",
+            "label": "uint64",
+            "numberOfBytes": "8"
+          },
+          "t_uint8": {
+            "encoding": "inplace",
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "TOPS source-qualified direct getter and witnessed address list; LPInfo[] remains unconfigured and must fail on writes",
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

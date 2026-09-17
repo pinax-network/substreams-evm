@@ -1,0 +1,191 @@
+{
+  "activity": {
+    "blocks": 1,
+    "checks": 2,
+    "rank": 236,
+    "scope": "Separate single-block activity audit excluded from baseline aggregate",
+    "start": 119571736
+  },
+  "artifacts": [
+    {
+      "file": "tops-qualification.json",
+      "sha256": "9f5cc8ee8d8465eb90d6ef8086f87d75e3cf3bc38c98415dd45379fd66c74d26",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "tops-rpc.json",
+      "sha256": "4a2255dfd96f7d2e6ec0dc773c8b7332e1bdc03df37dc432f41091a2c01debc2",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "tops-holder-coverage.json",
+      "sha256": "1034c99eb6ee575bc73e46dc63ba45fc8ef78ae870e8a96aa7c55e8be0f80a53",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "tops-wasm-holders.json",
+      "sha256": "80b8453cc41c7fdd735d7f31d326d81d63d28439b580d73f7266a4e6d37f4ade",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "tops-list-activity.json",
+      "sha256": "888c4d5913e6f3cf92dc106c2f532fabe19554c7d4b65be2d883a8baf08f2dc7",
+      "status": "inspected"
+    },
+    {
+      "file": "tops-list-activity-rpc.json",
+      "sha256": "9fbc5e7de9ac673b6e64dc081dc04e69f3daf24bf43f1042492e43f37add594b",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "standard-clone-qualification.json",
+      "sha256": "d033af5f1cec72ecda1511e8810626d8ae5b030553d7fefdd8a2e3752c881062",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "standard-clone-rpc.json",
+      "sha256": "6b5ebf0b0867e0ab55214b0a102091fa662fad51403a945c49da3e747a5bca20",
+      "status": "rpc_parity"
+    },
+    {
+      "file": "standard-clone-holder-coverage.json",
+      "sha256": "4e19a57234e3ae1bd023e58f59448b443181fe75271a60d4009466e6bd0ab6b6",
+      "status": "bounded_parity"
+    },
+    {
+      "file": "standard-clone-wasm-holders.json",
+      "sha256": "c286b94b7aff70e4d985df83cf6ac82a5fbc34c8714befbedc0c7daec149b912",
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    {
+      "file": "bless-clone-dependencies.json",
+      "sha256": "da944927128a669d5b0a24e3421485cdd7d48d790c5ccf51f38fdd7eed90e34d",
+      "status": "inspected"
+    },
+    {
+      "file": "tops-clone-combined.json",
+      "sha256": "aed71d66944374b8c48516daa4da1df597db7947bf7a3c9089834c8c9e8cad3c",
+      "status": "bounded_parity"
+    }
+  ],
+  "cohorts": [
+    {
+      "checkpoint_holders": 7,
+      "checkpoint_rpc_reads": 14,
+      "cohort": "tops",
+      "cold_unknown_nonzero_observations": 20,
+      "cold_unknown_observations": 29,
+      "emitted_rpc_checks": 34,
+      "initialized_carry_forward_matches": 32,
+      "reference_observations": 66,
+      "snapshot_holders": 7,
+      "snapshot_zeros": 4,
+      "zero_checks": 6
+    },
+    {
+      "checkpoint_holders": 26,
+      "checkpoint_rpc_reads": 52,
+      "cohort": "standard-clone",
+      "cold_unknown_nonzero_observations": 24,
+      "cold_unknown_observations": 24,
+      "emitted_rpc_checks": 48,
+      "initialized_carry_forward_matches": 24,
+      "reference_observations": 72,
+      "snapshot_holders": 26,
+      "snapshot_zeros": 0,
+      "zero_checks": 0
+    }
+  ],
+  "combined": {
+    "aggregate_emitted_zero_checks": 14745,
+    "all_balance_event_fields_equal": true,
+    "baseline_report_sha256": "61b5f7ee968177109cfcdf4b9bb88c9296b078b44918c6477e2f58bbff40dd5b",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 15.57236644407564,
+      "empty_output_delivery": null,
+      "package_sha256": "d5dbc5922fd01a7337d03f2ca827fd06b810e3e3a311bc2545494a5fb12ace40",
+      "seconds_including_startup": 65.757507292
+    },
+    "configured_profiles": 241,
+    "elapsed_seconds": 207.796101459,
+    "events_sha256": "174aa92fddf0e0ae1f26331ee0901be94cac5b0e40036edbedcc4ff84021c7dd",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 172819,
+    "initialized_carry_forward_matches": 67401,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "58d44dc133183e3d2c823bb88ab0a2d99338ba2312f5d5f8766ae738ae0aa67a",
+    "profiles_with_emitted_rows": 240,
+    "reused_verified_rpc_rows": 105419,
+    "scope": "Fresh 241-profile actual-WASM capture. Full-field comparison with the verified 239-profile capture and two newly RPC-audited profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-241 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "2d55e77ae74ab2a9a4f6529a608756da28586dce219ccd226503b64d8a01d1e2",
+        "cohort": "tops",
+        "events_sha256": "321f0983de46289889a8eb3e56bba9518efd43c1fa6e788303b4168fd6ea3871",
+        "holder_report_sha256": "80b8453cc41c7fdd735d7f31d326d81d63d28439b580d73f7266a4e6d37f4ade",
+        "layouts_sha256": "8a93782c11ef4ba972b02e9e5f33dbd6d0b575e67d5b909d0533b7714bcacada",
+        "rpc_report_sha256": "4a2255dfd96f7d2e6ec0dc773c8b7332e1bdc03df37dc432f41091a2c01debc2"
+      },
+      {
+        "checks_sha256": "1d3487db67240f3faa3d026f051b451d84a1ec401c117e5f22252655fb9b2b61",
+        "cohort": "standard-clone",
+        "events_sha256": "8dd99e92515a29fa12fd95eb079ea06f3b71f0bd874ba8b497961b82a7c3fe93",
+        "holder_report_sha256": "c286b94b7aff70e4d985df83cf6ac82a5fbc34c8714befbedc0c7daec149b912",
+        "layouts_sha256": "78fb3caeb7a40af1b23381611f11af7a99ab726685bbdfd5825e809aae1687a6",
+        "rpc_report_sha256": "6b5ebf0b0867e0ab55214b0a102091fa662fad51403a945c49da3e747a5bca20"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "configured_profiles": 241,
+  "newly_qualified_ranks": [
+    220,
+    236
+  ],
+  "scope": "Two newly qualified BSC profiles with observed-holder coverage and separate LP-provider-list activity; TOPS LPInfo arrays and BLESS beacon remain unqualified, not global enumeration",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tool_language": "Rust",
+  "unqualified_top250": [
+    {
+      "contract": "0x88886f0fd371dff856291badced45922bc888888",
+      "rank": 143
+    },
+    {
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "rank": 203
+    },
+    {
+      "contract": "0x7c8217517ed4711fe2deccdfeffe8d906b9ae11f",
+      "rank": 204
+    },
+    {
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "rank": 209
+    },
+    {
+      "contract": "0xf69baf63d210d74c915338f7d033228890db324f",
+      "rank": 210
+    },
+    {
+      "contract": "0x3cbd513239d9e5538a4caed8ed53ef77009df473",
+      "rank": 224
+    },
+    {
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "rank": 238
+    },
+    {
+      "contract": "0xb90b7c68ffd41ec3493ca7b6fd71d451cbcc47e8",
+      "rank": 239
+    },
+    {
+      "contract": "0xac4beaa86f8596675a92b2ffd3312f49d4e45406",
+      "rank": 248
+    }
+  ]
+}

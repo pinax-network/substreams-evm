@@ -1,0 +1,792 @@
+{
+  "boundaries": [
+    {
+      "beacon_delegate": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+      "block": 122288005,
+      "dependencies": [
+        {
+          "address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+          "bytes": 2141,
+          "historical_runtime_bound": false,
+          "name": null,
+          "runtime_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986",
+          "source_sha256": "52fefc4314850272f57c9d7f521d0333de35470ccf0028cbb6a9f3b602cb51e7",
+          "source_verified": false,
+          "storage": null
+        },
+        {
+          "address": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+          "bytes": 8823,
+          "historical_runtime_bound": true,
+          "name": "DeBridgeTokenDeployer",
+          "runtime_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e",
+          "source_sha256": "151b3b514c155438bc01a9941e495bc266e7dfd83e56e3c71a7b64903937542d",
+          "source_verified": true,
+          "storage": {
+            "storage": [
+              {
+                "astId": 413,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 416,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 1172,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 1421,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "51",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 48,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_roles",
+                "offset": 0,
+                "slot": "101",
+                "type": "t_mapping(t_bytes32,t_struct(RoleData)43_storage)"
+              },
+              {
+                "astId": 333,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "102",
+                "type": "t_array(t_uint256)49_storage"
+              },
+              {
+                "astId": 2671,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "tokenImplementation",
+                "offset": 0,
+                "slot": "151",
+                "type": "t_address"
+              },
+              {
+                "astId": 2674,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "deBridgeTokenAdmin",
+                "offset": 0,
+                "slot": "152",
+                "type": "t_address"
+              },
+              {
+                "astId": 2677,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "debridgeAddress",
+                "offset": 0,
+                "slot": "153",
+                "type": "t_address"
+              },
+              {
+                "astId": 2682,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "getDeployedAssetAddress",
+                "offset": 0,
+                "slot": "154",
+                "type": "t_mapping(t_bytes32,t_address)"
+              },
+              {
+                "astId": 2688,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "overridedTokens",
+                "offset": 0,
+                "slot": "155",
+                "type": "t_mapping(t_bytes32,t_struct(OverridedTokenInfo)2695_storage)"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_array(t_uint256)49_storage": {
+                "base": "t_uint256",
+                "encoding": "inplace",
+                "label": "uint256[49]",
+                "numberOfBytes": "1568"
+              },
+              "t_array(t_uint256)50_storage": {
+                "base": "t_uint256",
+                "encoding": "inplace",
+                "label": "uint256[50]",
+                "numberOfBytes": "1600"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_bytes32": {
+                "encoding": "inplace",
+                "label": "bytes32",
+                "numberOfBytes": "32"
+              },
+              "t_mapping(t_address,t_bool)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => bool)",
+                "numberOfBytes": "32",
+                "value": "t_bool"
+              },
+              "t_mapping(t_bytes32,t_address)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => address)",
+                "numberOfBytes": "32",
+                "value": "t_address"
+              },
+              "t_mapping(t_bytes32,t_struct(OverridedTokenInfo)2695_storage)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => struct DeBridgeTokenDeployer.OverridedTokenInfo)",
+                "numberOfBytes": "32",
+                "value": "t_struct(OverridedTokenInfo)2695_storage"
+              },
+              "t_mapping(t_bytes32,t_struct(RoleData)43_storage)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+                "numberOfBytes": "32",
+                "value": "t_struct(RoleData)43_storage"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_struct(OverridedTokenInfo)2695_storage": {
+                "encoding": "inplace",
+                "label": "struct DeBridgeTokenDeployer.OverridedTokenInfo",
+                "members": [
+                  {
+                    "astId": 2690,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "accept",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_bool"
+                  },
+                  {
+                    "astId": 2692,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "name",
+                    "offset": 0,
+                    "slot": "1",
+                    "type": "t_string_storage"
+                  },
+                  {
+                    "astId": 2694,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "symbol",
+                    "offset": 0,
+                    "slot": "2",
+                    "type": "t_string_storage"
+                  }
+                ],
+                "numberOfBytes": "96"
+              },
+              "t_struct(RoleData)43_storage": {
+                "encoding": "inplace",
+                "label": "struct AccessControlUpgradeable.RoleData",
+                "members": [
+                  {
+                    "astId": 40,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "members",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_mapping(t_address,t_bool)"
+                  },
+                  {
+                    "astId": 42,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "adminRole",
+                    "offset": 0,
+                    "slot": "1",
+                    "type": "t_bytes32"
+                  }
+                ],
+                "numberOfBytes": "64"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              }
+            }
+          }
+        },
+        {
+          "address": "0x336b3d23809d754f2b40af53703626bdf87166f0",
+          "bytes": 4265,
+          "historical_runtime_bound": true,
+          "name": "StandardToken",
+          "runtime_hash": "0xecc5446f1fe975b76083e71a967fd4ab62256b825bd3e8eed25140ea2409471f",
+          "source_sha256": "8de71affffc2aebd154ca0c31b7f9875b6da203fe160ce2155c2d1c3eaeee9fa",
+          "source_verified": true,
+          "storage": {
+            "storage": [
+              {
+                "astId": 6,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 9,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 668,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 674,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 676,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 678,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_maxSupply",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 680,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_name",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 682,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 684,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "7",
+                "type": "t_uint8"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => mapping(address => uint256))",
+                "numberOfBytes": "32",
+                "value": "t_mapping(t_address,t_uint256)"
+              },
+              "t_mapping(t_address,t_uint256)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => uint256)",
+                "numberOfBytes": "32",
+                "value": "t_uint256"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              },
+              "t_uint8": {
+                "encoding": "inplace",
+                "label": "uint8",
+                "numberOfBytes": "1"
+              }
+            }
+          }
+        }
+      ],
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 926,
+          "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+        },
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 926,
+          "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 926,
+          "value": "0x0000000000000000000000004c7ca8fcffe77281a8b81d4580cff8257d785491"
+        },
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "pc": 684,
+          "value": "0x000000000000000000000000cacebe8c354b70fa6e3107f3f6f699e4fbb3a98b"
+        }
+      ],
+      "trace_sha256": "65e7d7df27bccad5452cb8c231d865d7b68065b86055b6c24a95a1a14795a4a6"
+    },
+    {
+      "beacon_delegate": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+      "block": 122289029,
+      "dependencies": [
+        {
+          "address": "0x8244d6ffe0695b30b2bad424683ee3bc534ea464",
+          "bytes": 2141,
+          "historical_runtime_bound": false,
+          "name": null,
+          "runtime_hash": "0xfc1ea81db44e2de921b958dc92da921a18968ff3f3465bd475fb86dd1af03986",
+          "source_sha256": "52fefc4314850272f57c9d7f521d0333de35470ccf0028cbb6a9f3b602cb51e7",
+          "source_verified": false,
+          "storage": null
+        },
+        {
+          "address": "0x4c7ca8fcffe77281a8b81d4580cff8257d785491",
+          "bytes": 8823,
+          "historical_runtime_bound": true,
+          "name": "DeBridgeTokenDeployer",
+          "runtime_hash": "0x949967da6eb2d3e7fa5611dfbcf4476ff7ce8c2ad6260570f721f37e5ea5e55e",
+          "source_sha256": "151b3b514c155438bc01a9941e495bc266e7dfd83e56e3c71a7b64903937542d",
+          "source_verified": true,
+          "storage": {
+            "storage": [
+              {
+                "astId": 413,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 416,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 1172,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 1421,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "51",
+                "type": "t_array(t_uint256)50_storage"
+              },
+              {
+                "astId": 48,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "_roles",
+                "offset": 0,
+                "slot": "101",
+                "type": "t_mapping(t_bytes32,t_struct(RoleData)43_storage)"
+              },
+              {
+                "astId": 333,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "__gap",
+                "offset": 0,
+                "slot": "102",
+                "type": "t_array(t_uint256)49_storage"
+              },
+              {
+                "astId": 2671,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "tokenImplementation",
+                "offset": 0,
+                "slot": "151",
+                "type": "t_address"
+              },
+              {
+                "astId": 2674,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "deBridgeTokenAdmin",
+                "offset": 0,
+                "slot": "152",
+                "type": "t_address"
+              },
+              {
+                "astId": 2677,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "debridgeAddress",
+                "offset": 0,
+                "slot": "153",
+                "type": "t_address"
+              },
+              {
+                "astId": 2682,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "getDeployedAssetAddress",
+                "offset": 0,
+                "slot": "154",
+                "type": "t_mapping(t_bytes32,t_address)"
+              },
+              {
+                "astId": 2688,
+                "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                "label": "overridedTokens",
+                "offset": 0,
+                "slot": "155",
+                "type": "t_mapping(t_bytes32,t_struct(OverridedTokenInfo)2695_storage)"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_array(t_uint256)49_storage": {
+                "base": "t_uint256",
+                "encoding": "inplace",
+                "label": "uint256[49]",
+                "numberOfBytes": "1568"
+              },
+              "t_array(t_uint256)50_storage": {
+                "base": "t_uint256",
+                "encoding": "inplace",
+                "label": "uint256[50]",
+                "numberOfBytes": "1600"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_bytes32": {
+                "encoding": "inplace",
+                "label": "bytes32",
+                "numberOfBytes": "32"
+              },
+              "t_mapping(t_address,t_bool)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => bool)",
+                "numberOfBytes": "32",
+                "value": "t_bool"
+              },
+              "t_mapping(t_bytes32,t_address)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => address)",
+                "numberOfBytes": "32",
+                "value": "t_address"
+              },
+              "t_mapping(t_bytes32,t_struct(OverridedTokenInfo)2695_storage)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => struct DeBridgeTokenDeployer.OverridedTokenInfo)",
+                "numberOfBytes": "32",
+                "value": "t_struct(OverridedTokenInfo)2695_storage"
+              },
+              "t_mapping(t_bytes32,t_struct(RoleData)43_storage)": {
+                "encoding": "mapping",
+                "key": "t_bytes32",
+                "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+                "numberOfBytes": "32",
+                "value": "t_struct(RoleData)43_storage"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_struct(OverridedTokenInfo)2695_storage": {
+                "encoding": "inplace",
+                "label": "struct DeBridgeTokenDeployer.OverridedTokenInfo",
+                "members": [
+                  {
+                    "astId": 2690,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "accept",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_bool"
+                  },
+                  {
+                    "astId": 2692,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "name",
+                    "offset": 0,
+                    "slot": "1",
+                    "type": "t_string_storage"
+                  },
+                  {
+                    "astId": 2694,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "symbol",
+                    "offset": 0,
+                    "slot": "2",
+                    "type": "t_string_storage"
+                  }
+                ],
+                "numberOfBytes": "96"
+              },
+              "t_struct(RoleData)43_storage": {
+                "encoding": "inplace",
+                "label": "struct AccessControlUpgradeable.RoleData",
+                "members": [
+                  {
+                    "astId": 40,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "members",
+                    "offset": 0,
+                    "slot": "0",
+                    "type": "t_mapping(t_address,t_bool)"
+                  },
+                  {
+                    "astId": 42,
+                    "contract": "contracts/transfers/DeBridgeTokenDeployer.sol:DeBridgeTokenDeployer",
+                    "label": "adminRole",
+                    "offset": 0,
+                    "slot": "1",
+                    "type": "t_bytes32"
+                  }
+                ],
+                "numberOfBytes": "64"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              }
+            }
+          }
+        },
+        {
+          "address": "0x336b3d23809d754f2b40af53703626bdf87166f0",
+          "bytes": 4265,
+          "historical_runtime_bound": true,
+          "name": "StandardToken",
+          "runtime_hash": "0xecc5446f1fe975b76083e71a967fd4ab62256b825bd3e8eed25140ea2409471f",
+          "source_sha256": "8de71affffc2aebd154ca0c31b7f9875b6da203fe160ce2155c2d1c3eaeee9fa",
+          "source_verified": true,
+          "storage": {
+            "storage": [
+              {
+                "astId": 6,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_initialized",
+                "offset": 0,
+                "slot": "0",
+                "type": "t_uint8"
+              },
+              {
+                "astId": 9,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_initializing",
+                "offset": 1,
+                "slot": "0",
+                "type": "t_bool"
+              },
+              {
+                "astId": 668,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_balances",
+                "offset": 0,
+                "slot": "1",
+                "type": "t_mapping(t_address,t_uint256)"
+              },
+              {
+                "astId": 674,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_allowances",
+                "offset": 0,
+                "slot": "2",
+                "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+              },
+              {
+                "astId": 676,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_totalSupply",
+                "offset": 0,
+                "slot": "3",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 678,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_maxSupply",
+                "offset": 0,
+                "slot": "4",
+                "type": "t_uint256"
+              },
+              {
+                "astId": 680,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_name",
+                "offset": 0,
+                "slot": "5",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 682,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_symbol",
+                "offset": 0,
+                "slot": "6",
+                "type": "t_string_storage"
+              },
+              {
+                "astId": 684,
+                "contract": "contracts/StandardToken.sol:StandardToken",
+                "label": "_decimals",
+                "offset": 0,
+                "slot": "7",
+                "type": "t_uint8"
+              }
+            ],
+            "types": {
+              "t_address": {
+                "encoding": "inplace",
+                "label": "address",
+                "numberOfBytes": "20"
+              },
+              "t_bool": {
+                "encoding": "inplace",
+                "label": "bool",
+                "numberOfBytes": "1"
+              },
+              "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => mapping(address => uint256))",
+                "numberOfBytes": "32",
+                "value": "t_mapping(t_address,t_uint256)"
+              },
+              "t_mapping(t_address,t_uint256)": {
+                "encoding": "mapping",
+                "key": "t_address",
+                "label": "mapping(address => uint256)",
+                "numberOfBytes": "32",
+                "value": "t_uint256"
+              },
+              "t_string_storage": {
+                "encoding": "bytes",
+                "label": "string",
+                "numberOfBytes": "32"
+              },
+              "t_uint256": {
+                "encoding": "inplace",
+                "label": "uint256",
+                "numberOfBytes": "32"
+              },
+              "t_uint8": {
+                "encoding": "inplace",
+                "label": "uint8",
+                "numberOfBytes": "1"
+              }
+            }
+          }
+        }
+      ],
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+      "reads": [
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 926,
+          "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+        },
+        {
+          "depth": 1,
+          "key": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "pc": 926,
+          "value": "0x000000000000000000000000e4427af3555cd9303d728c491364fadfdd7494fe"
+        },
+        {
+          "depth": 1,
+          "key": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "pc": 926,
+          "value": "0x0000000000000000000000004c7ca8fcffe77281a8b81d4580cff8257d785491"
+        },
+        {
+          "depth": 2,
+          "key": "0x0000000000000000000000000000000000000000000000000000000000000097",
+          "pc": 684,
+          "value": "0x000000000000000000000000cacebe8c354b70fa6e3107f3f6f699e4fbb3a98b"
+        }
+      ],
+      "trace_sha256": "65e7d7df27bccad5452cb8c231d865d7b68065b86055b6c24a95a1a14795a4a6"
+    }
+  ],
+  "elapsed_seconds": 2.00233025,
+  "qualified": false,
+  "status": "inspected",
+  "tool_language": "Rust"
+}
