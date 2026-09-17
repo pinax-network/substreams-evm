@@ -1,0 +1,1227 @@
+{
+  "controls_sha256": "e66d47078069aae95a7d5477c5ddc96ea0614d3bb1f1b7a0fd2079d795f6991a",
+  "scope": "Independent historical RPC controls. Synthetic blocks reproduce metadata stateDiff and raw word controls; EVM dispatch proof remains separate.",
+  "tokens": [
+    {
+      "block": 122288065,
+      "boundary_runtimes": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_keccak256": "0x488559bbd542fb3a1eb4f806c79ee8da902745a90f09649f89150f8c2cc5467f"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_keccak256": "0x488559bbd542fb3a1eb4f806c79ee8da902745a90f09649f89150f8c2cc5467f"
+        }
+      ],
+      "contract": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+      "getter_path": [
+        "0: PUSH1 80",
+        "2: PUSH1 40",
+        "4: MSTORE ",
+        "5: CALLVALUE ",
+        "6: DUP1 ",
+        "7: ISZERO ",
+        "8: PUSH2 0010",
+        "11: JUMPI  target=0x10 condition=0x1",
+        "16: JUMPDEST ",
+        "17: POP ",
+        "18: PUSH1 04",
+        "20: CALLDATASIZE ",
+        "21: LT ",
+        "22: PUSH2 0428",
+        "25: JUMPI  target=0x428 condition=0x0",
+        "26: PUSH1 00",
+        "28: CALLDATALOAD ",
+        "29: PUSH1 e0",
+        "31: SHR ",
+        "32: DUP1 ",
+        "33: PUSH4 89e750ec",
+        "38: GT ",
+        "39: PUSH2 022b",
+        "42: JUMPI  target=0x22b condition=0x1",
+        "555: JUMPDEST ",
+        "556: DUP1 ",
+        "557: PUSH4 41131da3",
+        "562: GT ",
+        "563: PUSH2 0331",
+        "566: JUMPI  target=0x331 condition=0x0",
+        "567: DUP1 ",
+        "568: PUSH4 70a08231",
+        "573: GT ",
+        "574: PUSH2 02b9",
+        "577: JUMPI  target=0x2b9 condition=0x0",
+        "578: DUP1 ",
+        "579: PUSH4 75f0a874",
+        "584: GT ",
+        "585: PUSH2 0288",
+        "588: JUMPI  target=0x288 condition=0x1",
+        "648: JUMPDEST ",
+        "649: DUP1 ",
+        "650: PUSH4 70a08231",
+        "655: EQ ",
+        "656: PUSH2 0660",
+        "659: JUMPI  target=0x660 condition=0x1",
+        "1632: JUMPDEST ",
+        "1633: PUSH2 044d",
+        "1636: PUSH2 066e",
+        "1639: CALLDATASIZE ",
+        "1640: PUSH1 04",
+        "1642: PUSH2 2eb8",
+        "1645: JUMP  target=0x2eb8",
+        "11960: JUMPDEST ",
+        "11961: PUSH1 00",
+        "11963: PUSH1 20",
+        "11965: DUP3 ",
+        "11966: DUP5 ",
+        "11967: SUB ",
+        "11968: SLT ",
+        "11969: ISZERO ",
+        "11970: PUSH2 2eca",
+        "11973: JUMPI  target=0x2eca condition=0x1",
+        "11978: JUMPDEST ",
+        "11979: PUSH2 2909",
+        "11982: DUP3 ",
+        "11983: PUSH2 2e9c",
+        "11986: JUMP  target=0x2e9c",
+        "11932: JUMPDEST ",
+        "11933: DUP1 ",
+        "11934: CALLDATALOAD ",
+        "11935: PUSH1 01",
+        "11937: PUSH1 01",
+        "11939: PUSH1 a0",
+        "11941: SHL ",
+        "11942: SUB ",
+        "11943: DUP2 ",
+        "11944: AND ",
+        "11945: DUP2 ",
+        "11946: EQ ",
+        "11947: PUSH2 2eb3",
+        "11950: JUMPI  target=0x2eb3 condition=0x1",
+        "11955: JUMPDEST ",
+        "11956: SWAP2 ",
+        "11957: SWAP1 ",
+        "11958: POP ",
+        "11959: JUMP  target=0x2909",
+        "10505: JUMPDEST ",
+        "10506: SWAP4 ",
+        "10507: SWAP3 ",
+        "10508: POP ",
+        "10509: POP ",
+        "10510: POP ",
+        "10511: JUMP  target=0x66e",
+        "1646: JUMPDEST ",
+        "1647: PUSH1 01",
+        "1649: PUSH1 01",
+        "1651: PUSH1 a0",
+        "1653: SHL ",
+        "1654: SUB ",
+        "1655: AND ",
+        "1656: PUSH1 00",
+        "1658: SWAP1 ",
+        "1659: DUP2 ",
+        "1660: MSTORE ",
+        "1661: PUSH1 20",
+        "1663: DUP2 ",
+        "1664: SWAP1 ",
+        "1665: MSTORE ",
+        "1666: PUSH1 40",
+        "1668: SWAP1 ",
+        "1669: KECCAK256 ",
+        "1670: SLOAD ",
+        "1671: SWAP1 ",
+        "1672: JUMP  target=0x44d",
+        "1101: JUMPDEST ",
+        "1102: PUSH1 40",
+        "1104: MLOAD ",
+        "1105: SWAP1 ",
+        "1106: DUP2 ",
+        "1107: MSTORE ",
+        "1108: PUSH1 20",
+        "1110: ADD ",
+        "1111: JUMPDEST ",
+        "1112: PUSH1 40",
+        "1114: MLOAD ",
+        "1115: DUP1 ",
+        "1116: SWAP2 ",
+        "1117: SUB ",
+        "1118: SWAP1 ",
+        "1119: RETURN "
+      ],
+      "getter_reviews": [
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 0428\n25: JUMPI  target=0x428 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 89e750ec\n38: GT \n39: PUSH2 022b\n42: JUMPI  target=0x22b condition=0x1\n555: JUMPDEST \n556: DUP1 \n557: PUSH4 41131da3\n562: GT \n563: PUSH2 0331\n566: JUMPI  target=0x331 condition=0x1\n817: JUMPDEST \n818: DUP1 \n819: PUSH4 208d20e8\n824: GT \n825: PUSH2 03b4\n828: JUMPI  target=0x3b4 condition=0x1\n948: JUMPDEST \n949: DUP1 \n950: PUSH4 0f9f1730\n955: GT \n956: PUSH2 03fb\n959: JUMPI  target=0x3fb condition=0x0\n960: DUP1 \n961: PUSH4 0f9f1730\n966: EQ \n967: PUSH2 04c3\n970: JUMPI  target=0x4c3 condition=0x0\n971: DUP1 \n972: PUSH4 18160ddd\n977: EQ \n978: PUSH2 04d8\n981: JUMPI  target=0x4d8 condition=0x1\n1240: JUMPDEST \n1241: PUSH1 02\n1243: SLOAD \n1244: PUSH2 044d\n1247: JUMP  target=0x44d\n1101: JUMPDEST \n1102: PUSH1 40\n1104: MLOAD \n1105: SWAP1 \n1106: DUP2 \n1107: MSTORE \n1108: PUSH1 20\n1110: ADD \n1111: JUMPDEST \n1112: PUSH1 40\n1114: MLOAD \n1115: DUP1 \n1116: SWAP2 \n1117: SUB \n1118: SWAP1 \n1119: RETURN ",
+          "field": {
+            "call": {
+              "data": "0x18160ddd",
+              "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "totalSupply()",
+            "path_file": "rank382-18160ddd.txt",
+            "reads": [
+              {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "mapping_root_candidates": [],
+                "pc": 1243
+              }
+            ],
+            "return_value": "0x000000000000000000000000000000000000000000adb53acfa41aee12000000",
+            "shape": "scalar",
+            "trace_sha256": "9aedae41ec64c6a5932cc12b1b1da8ea2ec7c6e6aa366ea18d3b5c2da9e30fbf"
+          },
+          "path_sha256": "6e01a12bb4e89e492786e18a742288c077be5c993675c38d30a327f520b08a24"
+        },
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 0428\n25: JUMPI  target=0x428 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 89e750ec\n38: GT \n39: PUSH2 022b\n42: JUMPI  target=0x22b condition=0x0\n43: DUP1 \n44: PUSH4 bcd14597\n49: GT \n50: PUSH2 0130\n53: JUMPI  target=0x130 condition=0x0\n54: DUP1 \n55: PUSH4 e09e4c02\n60: GT \n61: PUSH2 00b8\n64: JUMPI  target=0xb8 condition=0x1\n184: JUMPDEST \n185: DUP1 \n186: PUSH4 d60bad0c\n191: GT \n192: PUSH2 00ff\n195: JUMPI  target=0xff condition=0x0\n196: DUP1 \n197: PUSH4 d60bad0c\n202: EQ \n203: PUSH2 0950\n206: JUMPI  target=0x950 condition=0x0\n207: DUP1 \n208: PUSH4 da1f9888\n213: EQ \n214: PUSH2 0970\n217: JUMPI  target=0x970 condition=0x0\n218: DUP1 \n219: PUSH4 da95bbeb\n224: EQ \n225: PUSH2 0999\n228: JUMPI  target=0x999 condition=0x0\n229: DUP1 \n230: PUSH4 dd62ed3e\n235: EQ \n236: PUSH2 09a2\n239: JUMPI  target=0x9a2 condition=0x1\n2466: JUMPDEST \n2467: PUSH2 044d\n2470: PUSH2 09b0\n2473: CALLDATASIZE \n2474: PUSH1 04\n2476: PUSH2 3128\n2479: JUMP  target=0x3128\n12584: JUMPDEST \n12585: PUSH1 00\n12587: DUP1 \n12588: PUSH1 40\n12590: DUP4 \n12591: DUP6 \n12592: SUB \n12593: SLT \n12594: ISZERO \n12595: PUSH2 313b\n12598: JUMPI  target=0x313b condition=0x1\n12603: JUMPDEST \n12604: PUSH2 3144\n12607: DUP4 \n12608: PUSH2 2e9c\n12611: JUMP  target=0x2e9c\n11932: JUMPDEST \n11933: DUP1 \n11934: CALLDATALOAD \n11935: PUSH1 01\n11937: PUSH1 01\n11939: PUSH1 a0\n11941: SHL \n11942: SUB \n11943: DUP2 \n11944: AND \n11945: DUP2 \n11946: EQ \n11947: PUSH2 2eb3\n11950: JUMPI  target=0x2eb3 condition=0x1\n11955: JUMPDEST \n11956: SWAP2 \n11957: SWAP1 \n11958: POP \n11959: JUMP  target=0x3144\n12612: JUMPDEST \n12613: SWAP2 \n12614: POP \n12615: PUSH2 3152\n12618: PUSH1 20\n12620: DUP5 \n12621: ADD \n12622: PUSH2 2e9c\n12625: JUMP  target=0x2e9c\n11932: JUMPDEST \n11933: DUP1 \n11934: CALLDATALOAD \n11935: PUSH1 01\n11937: PUSH1 01\n11939: PUSH1 a0\n11941: SHL \n11942: SUB \n11943: DUP2 \n11944: AND \n11945: DUP2 \n11946: EQ \n11947: PUSH2 2eb3\n11950: JUMPI  target=0x2eb3 condition=0x1\n11955: JUMPDEST \n11956: SWAP2 \n11957: SWAP1 \n11958: POP \n11959: JUMP  target=0x3152\n12626: JUMPDEST \n12627: SWAP1 \n12628: POP \n12629: SWAP3 \n12630: POP \n12631: SWAP3 \n12632: SWAP1 \n12633: POP \n12634: JUMP  target=0x9b0\n2480: JUMPDEST \n2481: PUSH1 01\n2483: PUSH1 01\n2485: PUSH1 a0\n2487: SHL \n2488: SUB \n2489: SWAP2 \n2490: DUP3 \n2491: AND \n2492: PUSH1 00\n2494: SWAP1 \n2495: DUP2 \n2496: MSTORE \n2497: PUSH1 01\n2499: PUSH1 20\n2501: SWAP1 \n2502: DUP2 \n2503: MSTORE \n2504: PUSH1 40\n2506: DUP1 \n2507: DUP4 \n2508: KECCAK256 \n2509: SWAP4 \n2510: SWAP1 \n2511: SWAP5 \n2512: AND \n2513: DUP3 \n2514: MSTORE \n2515: SWAP2 \n2516: SWAP1 \n2517: SWAP2 \n2518: MSTORE \n2519: KECCAK256 \n2520: SLOAD \n2521: SWAP1 \n2522: JUMP  target=0x44d\n1101: JUMPDEST \n1102: PUSH1 40\n1104: MLOAD \n1105: SWAP1 \n1106: DUP2 \n1107: MSTORE \n1108: PUSH1 20\n1110: ADD \n1111: JUMPDEST \n1112: PUSH1 40\n1114: MLOAD \n1115: DUP1 \n1116: SWAP2 \n1117: SUB \n1118: SWAP1 \n1119: RETURN ",
+          "field": {
+            "call": {
+              "data": "0xdd62ed3e000000000000000000000000a55374e0fc90a37b69db8b64986c1e2d1561cbb0000000000000000000000000000000000000000000000000000000000000dead",
+              "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "allowance(address,address)",
+            "path_file": "rank382-dd62ed3e.txt",
+            "reads": [
+              {
+                "key": "0x4b27f684366e6523a21979e49141b24c7fa877b21bdf3cd56d91a5ce71965ce8",
+                "mapping_root_candidates": [
+                  1
+                ],
+                "pc": 2520
+              }
+            ],
+            "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "shape": "allowance",
+            "trace_sha256": "d3f3a97bdcbafc51b52a44b03e8c84ddfec9a9f2c6842849d8dbb049c6544824"
+          },
+          "path_sha256": "e5a4618d1baa4008fd8cd0087531424a4f5f3dda691c841573bebed99ab27279"
+        },
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 0428\n25: JUMPI  target=0x428 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 89e750ec\n38: GT \n39: PUSH2 022b\n42: JUMPI  target=0x22b condition=0x0\n43: DUP1 \n44: PUSH4 bcd14597\n49: GT \n50: PUSH2 0130\n53: JUMPI  target=0x130 condition=0x1\n304: JUMPDEST \n305: DUP1 \n306: PUSH4 a9059cbb\n311: GT \n312: PUSH2 01b3\n315: JUMPI  target=0x1b3 condition=0x1\n435: JUMPDEST \n436: DUP1 \n437: PUSH4 95ddbe89\n442: GT \n443: PUSH2 01fa\n446: JUMPI  target=0x1fa condition=0x1\n506: JUMPDEST \n507: DUP1 \n508: PUSH4 89e750ec\n513: EQ \n514: PUSH2 0770\n517: JUMPI  target=0x770 condition=0x0\n518: DUP1 \n519: PUSH4 8da5cb5b\n524: EQ \n525: PUSH2 0783\n528: JUMPI  target=0x783 condition=0x1\n1923: JUMPDEST \n1924: PUSH1 05\n1926: SLOAD \n1927: PUSH1 01\n1929: PUSH1 01\n1931: PUSH1 a0\n1933: SHL \n1934: SUB \n1935: AND \n1936: PUSH2 04ab\n1939: JUMP  target=0x4ab\n1195: JUMPDEST \n1196: PUSH1 40\n1198: MLOAD \n1199: PUSH1 01\n1201: PUSH1 01\n1203: PUSH1 a0\n1205: SHL \n1206: SUB \n1207: SWAP1 \n1208: SWAP2 \n1209: AND \n1210: DUP2 \n1211: MSTORE \n1212: PUSH1 20\n1214: ADD \n1215: PUSH2 0457\n1218: JUMP  target=0x457\n1111: JUMPDEST \n1112: PUSH1 40\n1114: MLOAD \n1115: DUP1 \n1116: SWAP2 \n1117: SUB \n1118: SWAP1 \n1119: RETURN ",
+          "field": {
+            "call": {
+              "data": "0x8da5cb5b",
+              "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "owner()",
+            "path_file": "rank382-8da5cb5b.txt",
+            "reads": [
+              {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "mapping_root_candidates": [],
+                "pc": 1926
+              }
+            ],
+            "return_value": "0x0000000000000000000000005bb4095f735bb7f5b911b325e4000ebbeae253a6",
+            "shape": "scalar",
+            "trace_sha256": "355c901d8974b1f6daf48ddf65c121f161db70cc099f8e75d4c53a38b4975f03"
+          },
+          "path_sha256": "24567c339fbe2cffd5bf8180241b44a3c449ca4c5b44270733cd67713fe58526"
+        },
+        {
+          "call": {
+            "data": "0x53895a9f",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "reads": [
+            {
+              "depth": 1,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000020",
+              "pc": 1549,
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ],
+          "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "slot": 32,
+          "trace_file": "rank382-slot32-trace.json"
+        },
+        {
+          "call": {
+            "data": "0x2552317c",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "reads": [
+            {
+              "depth": 1,
+              "key": "0x0000000000000000000000000000000000000000000000000000000000000021",
+              "pc": 1414,
+              "value": "0x000000000000000000000000000000000000000000000000000000000749f7c1"
+            }
+          ],
+          "return_value": "0x000000000000000000000000000000000000000000000000000000000749f7c1",
+          "slot": 33,
+          "trace_file": "rank382-slot33-trace.json"
+        }
+      ],
+      "hash": "0xc35712743adaa73cf9ad179fffc7bdf9c2c5bb200cdbdecbccf370eb081c930b",
+      "holder": "0xa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+      "invalid_input_controls": [
+        {
+          "call": {
+            "data": "0x70a08231",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231ffffffffffffffffffffffffa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231000000000000000000000000a55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+            "value": "0x1"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        }
+      ],
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "shape": "scalar",
+          "slot": 2,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "shape": "scalar",
+          "slot": 2,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e000000000000000000000000a55374e0fc90a37b69db8b64986c1e2d1561cbb0000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "shape": "allowance",
+          "slot": 1,
+          "state_diff": {
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x4b27f684366e6523a21979e49141b24c7fa877b21bdf3cd56d91a5ce71965ce8": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e000000000000000000000000a55374e0fc90a37b69db8b64986c1e2d1561cbb0000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "shape": "allowance",
+          "slot": 1,
+          "state_diff": {
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x4b27f684366e6523a21979e49141b24c7fa877b21bdf3cd56d91a5ce71965ce8": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x8da5cb5b",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "address",
+          "name": "owner()",
+          "shape": "address",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x8da5cb5b",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff",
+          "kind": "address",
+          "name": "owner()",
+          "shape": "address",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x53895a9f",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "scalar",
+          "shape": "scalar",
+          "slot": 32,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000020": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x53895a9f",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "scalar",
+          "shape": "scalar",
+          "slot": 32,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000020": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x2552317c",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "scalar",
+          "shape": "scalar",
+          "slot": 33,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000021": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x2552317c",
+            "to": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "scalar",
+          "shape": "scalar",
+          "slot": 33,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000021": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        }
+      ],
+      "rank": 382,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0xa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+          "key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e"
+        },
+        {
+          "address": "0xa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+          "key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e"
+        },
+        {
+          "address": "0xa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+          "key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e"
+        },
+        {
+          "address": "0xa55374e0fc90a37b69db8b64986c1e2d1561cbb0",
+          "key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x033cc570091a3f2080b58ac5d81140f6007cbc349fd01b1bd2d15fbc32c8610e"
+        },
+        {
+          "address": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+          "key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab"
+        },
+        {
+          "address": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+          "key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab"
+        },
+        {
+          "address": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+          "key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab"
+        },
+        {
+          "address": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+          "key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x8d47f3631f8e688a8a7a46ea7f6a8b14eb124abd29cd6a9d261248872b94aeab"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "runtime_keccak256": "0x488559bbd542fb3a1eb4f806c79ee8da902745a90f09649f89150f8c2cc5467f"
+    },
+    {
+      "block": 122288282,
+      "boundary_runtimes": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_keccak256": "0x2df25d44665cf01d2a92538a964eea8791b01713c5c229dc59d16c7ca8bfe868"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_keccak256": "0x2df25d44665cf01d2a92538a964eea8791b01713c5c229dc59d16c7ca8bfe868"
+        }
+      ],
+      "contract": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+      "getter_path": [
+        "0: PUSH1 80",
+        "2: PUSH1 40",
+        "4: MSTORE ",
+        "5: CALLVALUE ",
+        "6: DUP1 ",
+        "7: ISZERO ",
+        "8: PUSH2 0010",
+        "11: JUMPI  target=0x10 condition=0x1",
+        "16: JUMPDEST ",
+        "17: POP ",
+        "18: PUSH1 04",
+        "20: CALLDATASIZE ",
+        "21: LT ",
+        "22: PUSH2 01e5",
+        "25: JUMPI  target=0x1e5 condition=0x0",
+        "26: PUSH1 00",
+        "28: CALLDATALOAD ",
+        "29: PUSH1 e0",
+        "31: SHR ",
+        "32: DUP1 ",
+        "33: PUSH4 8da5cb5b",
+        "38: GT ",
+        "39: PUSH2 010f",
+        "42: JUMPI  target=0x10f condition=0x1",
+        "271: JUMPDEST ",
+        "272: DUP1 ",
+        "273: PUSH4 39509351",
+        "278: GT ",
+        "279: PUSH2 0187",
+        "282: JUMPI  target=0x187 condition=0x0",
+        "283: DUP1 ",
+        "284: PUSH4 658d4b7f",
+        "289: GT ",
+        "290: PUSH2 0156",
+        "293: JUMPI  target=0x156 condition=0x0",
+        "294: DUP1 ",
+        "295: PUSH4 658d4b7f",
+        "300: EQ ",
+        "301: PUSH2 02f0",
+        "304: JUMPI  target=0x2f0 condition=0x0",
+        "305: DUP1 ",
+        "306: PUSH4 70a08231",
+        "311: EQ ",
+        "312: PUSH2 0303",
+        "315: JUMPI  target=0x303 condition=0x1",
+        "771: JUMPDEST ",
+        "772: PUSH2 0244",
+        "775: PUSH2 0311",
+        "778: CALLDATASIZE ",
+        "779: PUSH1 04",
+        "781: PUSH2 2a06",
+        "784: JUMP  target=0x2a06",
+        "10758: JUMPDEST ",
+        "10759: PUSH1 00",
+        "10761: PUSH1 20",
+        "10763: DUP3 ",
+        "10764: DUP5 ",
+        "10765: SUB ",
+        "10766: SLT ",
+        "10767: ISZERO ",
+        "10768: PUSH2 2a18",
+        "10771: JUMPI  target=0x2a18 condition=0x1",
+        "10776: JUMPDEST ",
+        "10777: DUP2 ",
+        "10778: CALLDATALOAD ",
+        "10779: PUSH2 06cc",
+        "10782: DUP2 ",
+        "10783: PUSH2 2949",
+        "10786: JUMP  target=0x2949",
+        "10569: JUMPDEST ",
+        "10570: PUSH1 01",
+        "10572: PUSH1 01",
+        "10574: PUSH1 a0",
+        "10576: SHL ",
+        "10577: SUB ",
+        "10578: DUP2 ",
+        "10579: AND ",
+        "10580: DUP2 ",
+        "10581: EQ ",
+        "10582: PUSH2 071c",
+        "10585: JUMPI  target=0x71c condition=0x1",
+        "1820: JUMPDEST ",
+        "1821: POP ",
+        "1822: JUMP  target=0x6cc",
+        "1740: JUMPDEST ",
+        "1741: SWAP4 ",
+        "1742: SWAP3 ",
+        "1743: POP ",
+        "1744: POP ",
+        "1745: POP ",
+        "1746: JUMP  target=0x311",
+        "785: JUMPDEST ",
+        "786: PUSH1 01",
+        "788: PUSH1 01",
+        "790: PUSH1 a0",
+        "792: SHL ",
+        "793: SUB ",
+        "794: AND ",
+        "795: PUSH1 00",
+        "797: SWAP1 ",
+        "798: DUP2 ",
+        "799: MSTORE ",
+        "800: PUSH1 20",
+        "802: DUP2 ",
+        "803: SWAP1 ",
+        "804: MSTORE ",
+        "805: PUSH1 40",
+        "807: SWAP1 ",
+        "808: KECCAK256 ",
+        "809: SLOAD ",
+        "810: SWAP1 ",
+        "811: JUMP  target=0x244",
+        "580: JUMPDEST ",
+        "581: PUSH1 40",
+        "583: MLOAD ",
+        "584: SWAP1 ",
+        "585: DUP2 ",
+        "586: MSTORE ",
+        "587: PUSH1 20",
+        "589: ADD ",
+        "590: PUSH2 01ff",
+        "593: JUMP  target=0x1ff",
+        "511: JUMPDEST ",
+        "512: PUSH1 40",
+        "514: MLOAD ",
+        "515: DUP1 ",
+        "516: SWAP2 ",
+        "517: SUB ",
+        "518: SWAP1 ",
+        "519: RETURN "
+      ],
+      "getter_reviews": [
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01e5\n25: JUMPI  target=0x1e5 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 8da5cb5b\n38: GT \n39: PUSH2 010f\n42: JUMPI  target=0x10f condition=0x1\n271: JUMPDEST \n272: DUP1 \n273: PUSH4 39509351\n278: GT \n279: PUSH2 0187\n282: JUMPI  target=0x187 condition=0x1\n391: JUMPDEST \n392: DUP1 \n393: PUSH4 18160ddd\n398: GT \n399: PUSH2 01c3\n402: JUMPI  target=0x1c3 condition=0x0\n403: DUP1 \n404: PUSH4 18160ddd\n409: EQ \n410: PUSH2 0240\n413: JUMPI  target=0x240 condition=0x1\n576: JUMPDEST \n577: PUSH1 02\n579: SLOAD \n580: JUMPDEST \n581: PUSH1 40\n583: MLOAD \n584: SWAP1 \n585: DUP2 \n586: MSTORE \n587: PUSH1 20\n589: ADD \n590: PUSH2 01ff\n593: JUMP  target=0x1ff\n511: JUMPDEST \n512: PUSH1 40\n514: MLOAD \n515: DUP1 \n516: SWAP2 \n517: SUB \n518: SWAP1 \n519: RETURN ",
+          "field": {
+            "call": {
+              "data": "0x18160ddd",
+              "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "totalSupply()",
+            "path_file": "rank392-18160ddd.txt",
+            "reads": [
+              {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000002",
+                "mapping_root_candidates": [],
+                "pc": 579
+              }
+            ],
+            "return_value": "0x000000000000000000000000000000000000000001743b34e18439b502000000",
+            "shape": "scalar",
+            "trace_sha256": "5c9195a40cc8b56d8d3c6c5e1477db6d894df03847d8a01b03452574c48e25ca"
+          },
+          "path_sha256": "0a7c0c2f5decb50827d6ad310ba6945d22b2addb7b077bcd2081802bb73e86c3"
+        },
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01e5\n25: JUMPI  target=0x1e5 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 8da5cb5b\n38: GT \n39: PUSH2 010f\n42: JUMPI  target=0x10f condition=0x0\n43: DUP1 \n44: PUSH4 bc31c1c1\n49: GT \n50: PUSH2 00a2\n53: JUMPI  target=0xa2 condition=0x0\n54: DUP1 \n55: PUSH4 d8cf24fd\n60: GT \n61: PUSH2 0071\n64: JUMPI  target=0x71 condition=0x0\n65: DUP1 \n66: PUSH4 d8cf24fd\n71: EQ \n72: PUSH2 040c\n75: JUMPI  target=0x40c condition=0x0\n76: DUP1 \n77: PUSH4 dd62ed3e\n82: EQ \n83: PUSH2 0414\n86: JUMPI  target=0x414 condition=0x1\n1044: JUMPDEST \n1045: PUSH2 0244\n1048: PUSH2 0422\n1051: CALLDATASIZE \n1052: PUSH1 04\n1054: PUSH2 2c0e\n1057: JUMP  target=0x2c0e\n11278: JUMPDEST \n11279: PUSH1 00\n11281: DUP1 \n11282: PUSH1 40\n11284: DUP4 \n11285: DUP6 \n11286: SUB \n11287: SLT \n11288: ISZERO \n11289: PUSH2 2c21\n11292: JUMPI  target=0x2c21 condition=0x1\n11297: JUMPDEST \n11298: DUP3 \n11299: CALLDATALOAD \n11300: PUSH2 2c2c\n11303: DUP2 \n11304: PUSH2 2949\n11307: JUMP  target=0x2949\n10569: JUMPDEST \n10570: PUSH1 01\n10572: PUSH1 01\n10574: PUSH1 a0\n10576: SHL \n10577: SUB \n10578: DUP2 \n10579: AND \n10580: DUP2 \n10581: EQ \n10582: PUSH2 071c\n10585: JUMPI  target=0x71c condition=0x1\n1820: JUMPDEST \n1821: POP \n1822: JUMP  target=0x2c2c\n11308: JUMPDEST \n11309: SWAP2 \n11310: POP \n11311: PUSH1 20\n11313: DUP4 \n11314: ADD \n11315: CALLDATALOAD \n11316: PUSH2 2a5f\n11319: DUP2 \n11320: PUSH2 2949\n11323: JUMP  target=0x2949\n10569: JUMPDEST \n10570: PUSH1 01\n10572: PUSH1 01\n10574: PUSH1 a0\n10576: SHL \n10577: SUB \n10578: DUP2 \n10579: AND \n10580: DUP2 \n10581: EQ \n10582: PUSH2 071c\n10585: JUMPI  target=0x71c condition=0x1\n1820: JUMPDEST \n1821: POP \n1822: JUMP  target=0x2a5f\n10847: JUMPDEST \n10848: DUP1 \n10849: SWAP2 \n10850: POP \n10851: POP \n10852: SWAP3 \n10853: POP \n10854: SWAP3 \n10855: SWAP1 \n10856: POP \n10857: JUMP  target=0x422\n1058: JUMPDEST \n1059: PUSH1 01\n1061: PUSH1 01\n1063: PUSH1 a0\n1065: SHL \n1066: SUB \n1067: SWAP2 \n1068: DUP3 \n1069: AND \n1070: PUSH1 00\n1072: SWAP1 \n1073: DUP2 \n1074: MSTORE \n1075: PUSH1 01\n1077: PUSH1 20\n1079: SWAP1 \n1080: DUP2 \n1081: MSTORE \n1082: PUSH1 40\n1084: DUP1 \n1085: DUP4 \n1086: KECCAK256 \n1087: SWAP4 \n1088: SWAP1 \n1089: SWAP5 \n1090: AND \n1091: DUP3 \n1092: MSTORE \n1093: SWAP2 \n1094: SWAP1 \n1095: SWAP2 \n1096: MSTORE \n1097: KECCAK256 \n1098: SLOAD \n1099: SWAP1 \n1100: JUMP  target=0x244\n580: JUMPDEST \n581: PUSH1 40\n583: MLOAD \n584: SWAP1 \n585: DUP2 \n586: MSTORE \n587: PUSH1 20\n589: ADD \n590: PUSH2 01ff\n593: JUMP  target=0x1ff\n511: JUMPDEST \n512: PUSH1 40\n514: MLOAD \n515: DUP1 \n516: SWAP2 \n517: SUB \n518: SWAP1 \n519: RETURN ",
+          "field": {
+            "call": {
+              "data": "0xdd62ed3e0000000000000000000000009cff8aa53c8ed6a586598dda06bcc24214d24b16000000000000000000000000000000000000000000000000000000000000dead",
+              "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "allowance(address,address)",
+            "path_file": "rank392-dd62ed3e.txt",
+            "reads": [
+              {
+                "key": "0x0aadbdfb841d14083f183688858a1ebeef79694e526e621746a71da8bcc7949c",
+                "mapping_root_candidates": [
+                  1
+                ],
+                "pc": 1098
+              }
+            ],
+            "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "shape": "allowance",
+            "trace_sha256": "351a3db15d5b2fd0392c05dd48ae989ee7535744f497aeb47b3b0d074eae209e"
+          },
+          "path_sha256": "e12045524fc30b581f538186e12c8199e8a07b89e1604b022c0ea31580b20ce8"
+        },
+        {
+          "executed_path": "0: PUSH1 80\n2: PUSH1 40\n4: MSTORE \n5: CALLVALUE \n6: DUP1 \n7: ISZERO \n8: PUSH2 0010\n11: JUMPI  target=0x10 condition=0x1\n16: JUMPDEST \n17: POP \n18: PUSH1 04\n20: CALLDATASIZE \n21: LT \n22: PUSH2 01e5\n25: JUMPI  target=0x1e5 condition=0x0\n26: PUSH1 00\n28: CALLDATALOAD \n29: PUSH1 e0\n31: SHR \n32: DUP1 \n33: PUSH4 8da5cb5b\n38: GT \n39: PUSH2 010f\n42: JUMPI  target=0x10f condition=0x0\n43: DUP1 \n44: PUSH4 bc31c1c1\n49: GT \n50: PUSH2 00a2\n53: JUMPI  target=0xa2 condition=0x1\n162: JUMPDEST \n163: DUP1 \n164: PUSH4 9fd1bb67\n169: GT \n170: PUSH2 00de\n173: JUMPI  target=0xde condition=0x1\n222: JUMPDEST \n223: DUP1 \n224: PUSH4 8da5cb5b\n229: EQ \n230: PUSH2 033c\n233: JUMPI  target=0x33c condition=0x1\n828: JUMPDEST \n829: PUSH1 05\n831: SLOAD \n832: PUSH1 40\n834: MLOAD \n835: PUSH1 01\n837: PUSH1 01\n839: PUSH1 a0\n841: SHL \n842: SUB \n843: SWAP1 \n844: SWAP2 \n845: AND \n846: DUP2 \n847: MSTORE \n848: PUSH1 20\n850: ADD \n851: PUSH2 01ff\n854: JUMP  target=0x1ff\n511: JUMPDEST \n512: PUSH1 40\n514: MLOAD \n515: DUP1 \n516: SWAP2 \n517: SUB \n518: SWAP1 \n519: RETURN ",
+          "field": {
+            "call": {
+              "data": "0x8da5cb5b",
+              "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+            },
+            "calls": [],
+            "failed": false,
+            "name": "owner()",
+            "path_file": "rank392-8da5cb5b.txt",
+            "reads": [
+              {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000005",
+                "mapping_root_candidates": [],
+                "pc": 831
+              }
+            ],
+            "return_value": "0x000000000000000000000000000000000000000000000000000000000000dead",
+            "shape": "scalar",
+            "trace_sha256": "68c7407d91a88db3d1dd3ac37464135696624eb5bebd496aa9a1430869265ca9"
+          },
+          "path_sha256": "c00d076059f84d6e9332a7d1ef6a2d27b281ab0728dae92f64865a6843ff8cbf"
+        }
+      ],
+      "hash": "0xeeb2d2e8fa61eefb739766cee54d79c03b97cf2d6f803163300b49bee7a63647",
+      "holder": "0x9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+      "invalid_input_controls": [
+        {
+          "call": {
+            "data": "0x70a08231",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a08231ffffffffffffffffffffffff9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        },
+        {
+          "call": {
+            "data": "0x70a082310000000000000000000000009cff8aa53c8ed6a586598dda06bcc24214d24b16",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+            "value": "0x1"
+          },
+          "response": {
+            "error": {
+              "code": 3,
+              "message": "execution reverted"
+            },
+            "id": 1,
+            "jsonrpc": "2.0"
+          }
+        }
+      ],
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "shape": "scalar",
+          "slot": 2,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x18160ddd",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "scalar",
+          "name": "totalSupply()",
+          "shape": "scalar",
+          "slot": 2,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e0000000000000000000000009cff8aa53c8ed6a586598dda06bcc24214d24b16000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "shape": "allowance",
+          "slot": 1,
+          "state_diff": {
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x0aadbdfb841d14083f183688858a1ebeef79694e526e621746a71da8bcc7949c": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0xdd62ed3e0000000000000000000000009cff8aa53c8ed6a586598dda06bcc24214d24b16000000000000000000000000000000000000000000000000000000000000dead",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "kind": "allowance",
+          "name": "allowance(address,address)",
+          "shape": "allowance",
+          "slot": 1,
+          "state_diff": {
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x0aadbdfb841d14083f183688858a1ebeef79694e526e621746a71da8bcc7949c": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x8da5cb5b",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "kind": "address",
+          "name": "owner()",
+          "shape": "address",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "123",
+          "field_call": {
+            "data": "0x8da5cb5b",
+            "to": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26"
+          },
+          "field_response": "0x000000000000000000000000ffffffffffffffffffffffffffffffffffffffff",
+          "kind": "address",
+          "name": "owner()",
+          "shape": "address",
+          "slot": 5,
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000005": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "0",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "0",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x000000000000000000000000000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x000000000000000000000000000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "0",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x000000000000000000000001000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x000000000000000000000001000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "0",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x0000000000000000000000ff000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0x0000000000000000000000ff000000000000000000000000000000000000dead",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        },
+        {
+          "balance_of": "0",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "balance_of": "123",
+          "kind": "packed_address_and_lock",
+          "shape": "packed_address_and_lock",
+          "slot": 29,
+          "state_diff": {
+            "0x000000000000000000000000000000000000000000000000000000000000001d": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          }
+        }
+      ],
+      "rank": 392,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+          "key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a"
+        },
+        {
+          "address": "0x9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+          "key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a"
+        },
+        {
+          "address": "0x9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+          "key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a"
+        },
+        {
+          "address": "0x9cff8aa53c8ed6a586598dda06bcc24214d24b16",
+          "key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x0465fae60f330de2d2ace0a0e14098433d27e1681b7fbef89d0e4ef1069fd99a"
+        },
+        {
+          "address": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+          "key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10"
+        },
+        {
+          "address": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+          "key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10"
+        },
+        {
+          "address": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+          "key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10"
+        },
+        {
+          "address": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+          "key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xfe09fdc7f8b3bf35b6991f03639b9295b4be8af0c4a41aff6aba0c78dff74e10"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "runtime_keccak256": "0x2df25d44665cf01d2a92538a964eea8791b01713c5c229dc59d16c7ca8bfe868"
+    }
+  ]
+}

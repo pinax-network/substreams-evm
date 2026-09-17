@@ -1,0 +1,31 @@
+{
+  "carry_forward": 15,
+  "checkpoint_holders": 24,
+  "checkpoint_reads": 48,
+  "cold_unknown": 15,
+  "cold_unknown_nonzero": 11,
+  "emitted_zeros": 0,
+  "final_holders": 24,
+  "final_zeros": 1,
+  "fixture_balances": 9,
+  "fixture_cases": 2,
+  "holder_observations": 65,
+  "invalid_input_controls": 6,
+  "layouts_sha256": "83e084f8638d8e1bcf9c7995dde10c4b728f4ee9cf10bbc728e4987cb306728b",
+  "metadata_controls": 26,
+  "new_profiles": 2,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "raw_controls": 40,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "rpc_checks": 50,
+  "scope": "Two runtime-bound direct token balance getters. Explicit scalar and allowance fields only; other writes remain errors. Emitted equality and initialized observed-holder replay are distinct from cold unknown state and global holder enumeration. Parent must wire regression tests and combined package replay before publication.",
+  "sources_sha256": {
+    "packed400_capture": "83ca3b6b3ec9326d3f6ae151caaec3e4cf8be7fed806f6bdbeecc8fcad24de93",
+    "packed400_check_holders": "a680cf6e2ae0e04e1421b61b7820649e3e9ace45ff94b02f9b4663b4f58713a1",
+    "packed400_controls": "a64c5e08e49f31500a55de20cc0d8f6a1c26cf5b56048957d83c59da665e0f70",
+    "packed400_export": "2d46240833b4a5c5d76670fbae6bbdc4bf552122df329f7d21c8592e2f60f75f",
+    "packed400_scan": "9588d8d06365171e9ae47cf9e9a1b5345873bb9af305b38448d832ecb2bce18d",
+    "packed400_transactions": "409cfaf3299a9f0763569e5ac029877a06eebdf3bbef5a29ca97836678037e37"
+  },
+  "status": "bounded_parity"
+}

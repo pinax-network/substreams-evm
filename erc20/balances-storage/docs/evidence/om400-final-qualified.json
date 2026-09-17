@@ -1,0 +1,95 @@
+{
+  "canonical_boundaries": [
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+    },
+    {
+      "block": 122288006,
+      "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+    },
+    {
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+    }
+  ],
+  "completed_gates": {
+    "actual_wasm_holders": {
+      "initialized_carry_forward_matches": 11,
+      "mismatches": 0,
+      "reference_observations": 33,
+      "report_sha256": "67f15e33b1a6c9c12349c544b45423216ba71b5543ff3ee1dd298ad847a61332",
+      "snapshot_holders": 13,
+      "snapshot_sha256": "c3b0d90a9bb6abc5ebfd8f1230ecf9ee97c3d2aee4e17f625b9458b1c8ec3277",
+      "snapshot_zeros": 1,
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    "captured_fixture": {
+      "cases": 1,
+      "cases_sha256": "f86a918126f4ee60a619ffb5f1e266a4a9620eeb8eab7dab89beb71ca7cd0d05",
+      "controls_sha256": "a854ba377b1ec293958905a2513f3e4b8861f26c05f4c0ac6caebde92c780286",
+      "rpc_balances": 2
+    },
+    "native_holders": {
+      "checkpoint_holders": 13,
+      "checkpoint_rpc_reads": 26,
+      "checkpoint_sha256": "4ad755b2166399eda8c176eb50876d4ed1b1d55b3369b3713e94e77321e8f0b9",
+      "report_sha256": "422f89b8ee97c3b600ca97887db2cac925713505cfcffaaf1d190cf0a9336dac",
+      "status": "bounded_parity"
+    },
+    "rpc": {
+      "checked_blocks": 1024,
+      "checks": 22,
+      "checks_sha256": "86e34da506040829ec22b5f62de6adb398ec3eb28cb52eca9bb25cfe05a91963",
+      "clocks_sha256": "f5b71e2d5b8a0d44bc29949f8009514dd95183e7c12fc15b2586f574838e4ff0",
+      "events_sha256": "e70c3fd7cbeba6334bd990e6dc433a45f83e208d3218c2259db77be8dc2bd1ef",
+      "mismatches": 0,
+      "report_sha256": "9091ee5853a52c8ceb251532835462eef94b5b9efa00824c2ff34723fd9a8b8b",
+      "status": "rpc_parity"
+    }
+  },
+  "configured_profiles": 1,
+  "elapsed_seconds": 2.494345209,
+  "initial_failed_audit_sha256": "bc4a6ba75ba8226aa8f48f93c9c3e83f4ac67874e7473c3b7033b2f925b1a22b",
+  "initial_inspected_report_sha256": "6b1743c2fff74f6243cd885cfb0fc26ef3b8805fb74445b1d0b7af3a2a028573",
+  "invalid_call_controls": 3,
+  "layouts_sha256": "00657af006bdfab6f77d1cd3083bbd513e103b1c218f1e6c732cefe8e3f0c74d",
+  "metadata_controls": 12,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "raw_controls": 20,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Completed standalone qualification of one pinned OM minimal proxy: reviewed direct slot-0 getter, ordinary metadata rules, complete canonical production-WASM emitted RPC parity and initialized observed-holder parity. Initial inspected qualification and incomplete RPC audit remain immutable provenance. No global holder enumeration, deployment, dynamic long-string data, verified-source, general proxy-family or combined-cohort claim.",
+  "source_report_sha256": "eb71de5a241be5c47e4a450e9410e2e4190526525b181ca482017bd45ca5a97e",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "inspection_sha256": "2a7819b9d11f68486436d870ee6065958b2138ff8f87443c5a7f81f7b91fe758",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x13011641e5cc88d2dd61d0ff78e17336dc814d9902f17dce5df9ea19ce872566",
+        "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+        "minimal_proxy": {
+          "code_hash": "0xd920fe1542f4f82dce3114a0401a86b664ca62a74be87fd9b067356695d95e58",
+          "implementation": "0xa98315cb8a3b48ffb940c2402e13c0d04f543dfa"
+        },
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ]
+      },
+      "rank": 376,
+      "review_sha256": "6a866ba45c1f93eef7e16b367489a62b0b67b84e4a6216f8f3a0d037383a3540",
+      "symbol": "OM"
+    }
+  ],
+  "tool_language": "Rust"
+}

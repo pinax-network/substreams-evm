@@ -1,0 +1,121 @@
+{
+  "carry_forward": 76,
+  "checkpoint_holders": 91,
+  "checkpoint_reads": 182,
+  "cold_unknown": 74,
+  "cold_unknown_nonzero": 29,
+  "combined": {
+    "aggregate_emitted_zero_checks": 15182,
+    "all_balance_event_fields_equal": true,
+    "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "baseline_report_sha256": "7483f2d064cbb2b66770fa73b7ff91f412ee53e4b8c5b4f85a9b960c4cf2303b",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 9.49983931992648,
+      "empty_output_delivery": null,
+      "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+      "seconds_including_startup": 107.791296833
+    },
+    "configured_profiles": 393,
+    "elapsed_seconds": 185.77050625,
+    "events_sha256": "3c166fe101fa5032f152a3dd07457761e454daf4994c55ec689df166cfe11040",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 179362,
+    "initialized_carry_forward_matches": 69893,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "f2f3690e3bc1cd1701b6aac2763c458ac34a06c198319640e2d1bc9083704b71",
+    "package_change_scope": "Same packaged code; ten independently qualified direct and proxy layouts added to the previous immutable verified output",
+    "profiles_with_emitted_rows": 392,
+    "reused_verified_rpc_rows": 109470,
+    "scope": "Fresh 393-profile actual-WASM capture. Full-field comparison with the verified 383-profile capture and ten newly RPC-audited direct and proxy profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-393 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "ea4d8ffdd6e6afb06d67633dfa4e75970db2157c18347e177326cc8e795b403b",
+        "cohort": "seven400",
+        "events_sha256": "d73bac8d1cdded7b34dc1d4b243a65d71061e5475b2d83991e67ef79fae11436",
+        "holder_report_sha256": "987a2166edfbefbbe606e9eae9660e78696d280df9bca2cb772529e5fba8780b",
+        "layouts_sha256": "5de32076a01a31798e9c34a6cd9247d27eee908ec9020026bec52ee14922ec15",
+        "rpc_report_sha256": "fbd1eebe427b13eb7dc6bd15669f2f85cf6c5eef949885d9a272e2b32bda4eda"
+      },
+      {
+        "checks_sha256": "86e34da506040829ec22b5f62de6adb398ec3eb28cb52eca9bb25cfe05a91963",
+        "cohort": "om400",
+        "events_sha256": "e70c3fd7cbeba6334bd990e6dc433a45f83e208d3218c2259db77be8dc2bd1ef",
+        "holder_report_sha256": "67f15e33b1a6c9c12349c544b45423216ba71b5543ff3ee1dd298ad847a61332",
+        "layouts_sha256": "00657af006bdfab6f77d1cd3083bbd513e103b1c218f1e6c732cefe8e3f0c74d",
+        "rpc_report_sha256": "9091ee5853a52c8ceb251532835462eef94b5b9efa00824c2ff34723fd9a8b8b"
+      },
+      {
+        "checks_sha256": "f8547581cbe4965f81a0dc95e29951bc1189a581649d84d5f6bf50180a05cc31",
+        "cohort": "packed400",
+        "events_sha256": "18d943af01a116f79850629d2fa717c46d2279c1e6c2367915e4c71edfc24f7e",
+        "holder_report_sha256": "03d5caa71f951fe06e62b1b6207a2add982d7bf624961f4371515d684a9e7236",
+        "layouts_sha256": "83e084f8638d8e1bcf9c7995dde10c4b728f4ee9cf10bbc728e4987cb306728b",
+        "rpc_report_sha256": "5c8f4b8d6aff7a0fae158f49f5f890a44db59279d3c335e64128c684be09acb5"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "combined_includes_other_cohorts": [
+    "om400",
+    "packed400"
+  ],
+  "emitted_zeros": 15,
+  "final_holders": 91,
+  "final_zeros": 26,
+  "fixture_balances": 29,
+  "holder_observations": 239,
+  "metadata_controls": 50,
+  "new_profiles": 7,
+  "qualified_profiles": 393,
+  "raw_controls": 140,
+  "remaining_top400": [
+    {
+      "contract": "0x88886f0fd371dff856291badced45922bc888888",
+      "rank": 143,
+      "reference_rows": 132,
+      "unique_holders": 6
+    },
+    {
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "rank": 203,
+      "reference_rows": 81,
+      "unique_holders": 25
+    },
+    {
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "rank": 209,
+      "reference_rows": 79,
+      "unique_holders": 30
+    },
+    {
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "rank": 238,
+      "reference_rows": 66,
+      "unique_holders": 12
+    },
+    {
+      "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "rank": 338,
+      "reference_rows": 38,
+      "unique_holders": 8
+    },
+    {
+      "contract": "0xc748673057861a797275cd8a068abb95a902e8de",
+      "rank": 372,
+      "reference_rows": 34,
+      "unique_holders": 19
+    },
+    {
+      "contract": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+      "rank": 377,
+      "reference_rows": 33,
+      "unique_holders": 12
+    }
+  ],
+  "rpc_checks": 163,
+  "scope": "Seven bytecode-reviewed direct getters with independent metadata controls, actual packaged emitted parity and initialized observed-holder replay. No global holder or all-future-path claim.",
+  "status": "bounded_parity"
+}

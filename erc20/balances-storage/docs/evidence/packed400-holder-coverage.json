@@ -1,0 +1,63 @@
+{
+  "captured_complete_blocks": 1024,
+  "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "checkpoint_holders": 24,
+  "checkpoint_rpc_reads": 48,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "403bcfd4158dacfe23ef503c93d5847795a1e4497f5e6562f936340249a460f7",
+  "checkpoint_tokens": {
+    "0xb2a16cd87de7c214231d8b1a38392b4b85178d26": {
+      "holders": 11,
+      "nonzero_holders": 10,
+      "zero_word_fallback_holders": 0
+    },
+    "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c": {
+      "holders": 13,
+      "nonzero_holders": 2,
+      "zero_word_fallback_holders": 0
+    }
+  },
+  "computed_initialized_holders": {},
+  "deployment_initialized_holders": {},
+  "elapsed_seconds": 65.999419417,
+  "event_row_parity_claimed": false,
+  "full_report_sha256": "8494b4aff0c989ed68199e74316aad39156ef8be985ea76084e230e3d97d6dab",
+  "holder_checks_sha256": "966253d4d86940aee33b2cc9313f12a671739a9a8718eddab801d8f76203649d",
+  "immutable_zero_initialized_holders": {},
+  "layouts_sha256": "83e084f8638d8e1bcf9c7995dde10c4b728f4ee9cf10bbc728e4987cb306728b",
+  "processing_balance_rpc_calls": 0,
+  "processing_header_rpc_calls": 1024,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xb2a16cd87de7c214231d8b1a38392b4b85178d26",
+      "emitted_rows": 28,
+      "reference_rows": 32,
+      "seeded_matches": 32,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 4,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xb8c472cf9e8b1b7b497df3a52cd5cea70b8a402c",
+      "emitted_rows": 22,
+      "reference_rows": 33,
+      "seeded_matches": 33,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 11,
+      "unseeded_unknown_rows": 11,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust",
+  "unobserved_tokens": []
+}

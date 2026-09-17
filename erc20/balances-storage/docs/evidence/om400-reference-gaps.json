@@ -1,0 +1,74 @@
+{
+  "events_sha256": "e70c3fd7cbeba6334bd990e6dc433a45f83e208d3218c2259db77be8dc2bd1ef",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "rows": [
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288113,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288172,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288332,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288489,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288535,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288614,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288647,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288702,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288812,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122288990,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    },
+    {
+      "address": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "block": 122289025,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "reference_amount": "0"
+    }
+  ],
+  "scope": "Every one of the 11 reference-only rows is the token contract's zero balance. The independently RPC-checked parent checkpoint supplies that initialized balance; the map does not emit an unchanged storage word or infer the zero.",
+  "status": "inspected"
+}

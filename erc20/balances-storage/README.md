@@ -346,18 +346,23 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [three Cake-LP profiles](docs/lp400-coverage.md) bring the explicit
-test configuration to 383 profiles in `tests/fixtures/bsc-lp400-full-layouts.json`.
-The additions match 54 emitted RPC balances, 108 initialized observations and
-all 36 final holder balances. Their complete valid getter paths and ten fixed
-metadata fields plus allowance/nonce mappings were reviewed independently.
-The unchanged package preserves every protobuf event field for 109,235
-previously RPC-verified balances across the combined configuration.
+The latest [ten-profile follow-up](docs/tail400-coverage.md) brings the explicit
+test configuration to 393 profiles in `tests/fixtures/bsc-tail400-layouts.json`.
+The additions match 235 emitted RPC balances, 337 initialized observations and
+all 128 final holder balances. Their reviewed layouts cover packed swap/lock
+metadata and a pinned minimal proxy, using the existing production rules.
+The unchanged package matches every protobuf event field for 109,470 previously
+RPC-verified balances across the combined configuration. This reuses preserved
+RPC evidence and does not establish a new full-393 holder checkpoint.
+The preceding [three Cake-LP profiles](docs/lp400-coverage.md) retain their
+complete getter, fixed-field, allowance and nonce evidence.
 The [AR, ARZ and ARS follow-up](docs/sparse400-coverage.md) retains its separate
-bytecode and sparse-discovery evidence. Twelve candidates from
-the [next-50 investigation](docs/ranks351-400-investigation.md) remain unqualified,
+bytecode and sparse-discovery evidence. BabyDoge and 10SET from
+the [ranks 351–400 investigation](docs/ranks351-400-investigation.md) remain unqualified,
 alongside LBP, TITAN, ORD, YBC and 钻石 from earlier ranks. The
-[Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) and previous
+[ranks 401–450 diagnosis](docs/next450-mismatch-diagnosis.md) separately explains
+seven new value mismatches in APM and OG; neither is qualified by that investigation.
+The [Dood and DeepTokenOFT follow-up](docs/proxy400-coverage.md) and previous
 [27-profile cohort](docs/ranks400-coverage.md) retain their separate source,
 proxy-family and holder evidence. The earlier
 [MUSD/GAIX follow-up](docs/direct-discovery-gaps.md) retains its separate evidence.

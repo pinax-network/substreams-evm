@@ -408,6 +408,10 @@ mod next_candidate_tests;
 #[cfg(test)]
 mod next_proxy_tests;
 #[cfg(test)]
+mod om400_tests;
+#[cfg(test)]
+mod packed400_tests;
+#[cfg(test)]
 mod pending300_tests;
 #[cfg(test)]
 mod pending350_tests;
@@ -434,6 +438,8 @@ mod ranks301_350_tests;
 mod remaining_ranked_tests;
 #[cfg(test)]
 mod securities_proxy_tests;
+#[cfg(test)]
+mod seven400_tests;
 #[cfg(test)]
 mod sparse400_tests;
 #[cfg(test)]

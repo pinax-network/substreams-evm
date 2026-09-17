@@ -1,0 +1,36 @@
+{
+  "checkpoint_sha256": "4ad755b2166399eda8c176eb50876d4ed1b1d55b3369b3713e94e77321e8f0b9",
+  "checks_sha256": "c3b0d90a9bb6abc5ebfd8f1230ecf9ee97c3d2aee4e17f625b9458b1c8ec3277",
+  "configured_tokens": 1,
+  "deployment_initialization": [],
+  "events_sha256": "e70c3fd7cbeba6334bd990e6dc433a45f83e208d3218c2259db77be8dc2bd1ef",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 11,
+  "layouts_sha256": "00657af006bdfab6f77d1cd3083bbd513e103b1c218f1e6c732cefe8e3f0c74d",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 33,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "One bytecode-reviewed minimal proxy with a raw slot-0 balance mapping, five fixed metadata fields and allowance mapping on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 13,
+  "snapshot_zeros": 1,
+  "source_report_sha256": "67f15e33b1a6c9c12349c544b45423216ba71b5543ff3ee1dd298ad847a61332",
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x1abe0ec4829f606c392327fb7dc9c9a5733dd9f4",
+      "emitted_rows": 22,
+      "reference_rows": 33,
+      "seeded_matches": 33,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 11,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}
