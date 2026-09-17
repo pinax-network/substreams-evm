@@ -1094,3 +1094,16 @@ fn runtime_qualification_rejects_changed_proxy_target_or_implementation_code() {
     .to_string()
     .contains("implementation runtime"));
 }
+
+#[test]
+fn immutable_zero_checkpoint_starts_only_after_qualified_creation() {
+    use crate::coverage::known_checkpoint_amount;
+    let mut layouts = erc20_balances_storage::layout::parse(include_str!("../../tests/fixtures/immutable-zero-layout.json")).unwrap();
+    let birth = layouts[0].deployment.as_ref().unwrap().block;
+    for start in [birth - 1, birth] {
+        assert_eq!(known_checkpoint_amount(&layouts[0], start, &[7; 20]), None);
+    }
+    assert_eq!(known_checkpoint_amount(&layouts[0], birth + 1, &[7; 20]), Some("0".into()));
+    layouts[0].immutable_zero_mapping = false;
+    assert_eq!(known_checkpoint_amount(&layouts[0], birth + 1, &[7; 20]), None);
+}

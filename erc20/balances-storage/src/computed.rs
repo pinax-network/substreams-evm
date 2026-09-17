@@ -1,4 +1,4 @@
-//! Observed holders for reviewed address-derived getters, without storage writes.
+//! Observed holders with qualified known balances, without storage writes.
 use crate::{eth, layout::VerifiedLayout, require};
 use std::collections::BTreeSet;
 use substreams::errors::Error;
@@ -10,7 +10,7 @@ type TokenHolder = (Vec<u8>, Vec<u8>);
 pub(super) fn holders(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<BTreeSet<TokenHolder>, Error> {
     let configured = layouts
         .iter()
-        .filter(|l| l.address_hash_balance.is_some())
+        .filter(|l| l.address_hash_balance.is_some() || l.immutable_zero_mapping)
         .map(|l| l.contract.as_slice())
         .collect::<BTreeSet<_>>();
     let mut holders = BTreeSet::new();
@@ -31,7 +31,7 @@ pub(super) fn holders(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<
             } else if let Some(e) = OwnershipTransferred::match_and_decode(log) {
                 vec![e.previous_owner, e.new_owner]
             } else {
-                return Err(Error::msg("unreviewed or malformed event for address-hash balance layout"));
+                return Err(Error::msg("unreviewed or malformed event for known-balance layout"));
             };
             for address in participants.iter().chain([&tx.from, &log.address]) {
                 require(address.len() == 20, "invalid computed holder address")?;

@@ -314,6 +314,7 @@ pub fn run(args: Survey) -> Result<bool> {
                     beacon_proxy: None,
                     minimal_proxy: None,
                     address_hash_balance: None,
+                    immutable_zero_mapping: false,
                 };
                 result["mapper_configuration"] = json!("unqualified balance-slot hypothesis; empty ignore lists");
                 if let Some(known) = known {

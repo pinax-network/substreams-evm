@@ -1,0 +1,51 @@
+{
+  "block": 120607788,
+  "call": 193,
+  "contract": "0xd270d4e1ec6e6e0d28c0ecb8be966ec75997ffff",
+  "current_full_block_projection": {
+    "error": "configured token, beacon or implementation code changed; requalify layout"
+  },
+  "full_block_sha256": "230fccd9f5ab65eebfeada26d3b1dcd0955eb262f4bbab31889846cd0986c86e",
+  "hash": "0x321db532bb8b02f762789bd75969fe4600ae668dfebc669aea6e745a10eda61c",
+  "remaining_review": "The existing bounded profile has no qualified deployment and does not cover initialization fields, mapping-36 membership field 4 or the slot-35 address list. The captured first registration supplies a concrete follow-up case; no new fields or array ranges are automatically ignored.",
+  "selector": "a9059cbb",
+  "status": "captured_for_follow_up_not_yet_qualified",
+  "tx": "0x4a22f947a674de2aca1f438b47184739d59ac38de6e8b69343d95315a52f571c",
+  "writes": [
+    {
+      "classification": {
+        "kind": "scalar",
+        "slot": 35
+      },
+      "key": "0x0000000000000000000000000000000000000000000000000000000000000023",
+      "new": "0000000000000000000000000000000000000000000000000000000000000001",
+      "old": "0000000000000000000000000000000000000000000000000000000000000000",
+      "ordinal": 5673
+    },
+    {
+      "classification": {
+        "index": 0,
+        "kind": "array35_candidate",
+        "root_preimage_present": false
+      },
+      "key": "0xd57b2b5166478fd4318d2acc6cc2c704584312bdd8781b32d5d06abda57f4230",
+      "new": "0000000000000000000000009b4746701e77ebe11073f8cb6f3fc61606cbfb3f",
+      "old": "0000000000000000000000000000000000000000000000000000000000000000",
+      "ordinal": 5674
+    },
+    {
+      "classification": {
+        "base": "0x0000000000000000000000000000000000000000000000000000000000000024",
+        "chain": [
+          "0000000000000000000000009b4746701e77ebe11073f8cb6f3fc61606cbfb3f0000000000000000000000000000000000000000000000000000000000000024"
+        ],
+        "kind": "mapping",
+        "offset": 4
+      },
+      "key": "0xf2dd8c69ceab874535e844af3082d4fd5422fb9296958db5eebb0bddd067d1da",
+      "new": "0000000000000000000000000000000000000000000000000000000000000001",
+      "old": "0000000000000000000000000000000000000000000000000000000000000000",
+      "ordinal": 5675
+    }
+  ]
+}

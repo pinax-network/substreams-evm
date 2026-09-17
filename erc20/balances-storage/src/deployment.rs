@@ -10,8 +10,18 @@ pub(super) fn validate(block: &eth::Block, layouts: &[VerifiedLayout], raw: &Cha
         }
         let codes = raw.codes.iter().filter(|r| r.change.address == layout.contract).collect::<Vec<_>>();
         let storage = raw.storage.iter().filter(|c| c.address == layout.contract).collect::<Vec<_>>();
+        let logs = if layout.immutable_zero_mapping {
+            block
+                .transactions()
+                .flat_map(|tx| tx.logs_with_calls().map(|(log, _)| log))
+                .filter(|log| log.address == layout.contract)
+                .collect::<Vec<_>>()
+        } else {
+            vec![]
+        };
         if block.number < deployment.block {
             require(codes.is_empty() && storage.is_empty(), "configured token changed before its deployment")?;
+            require(logs.is_empty(), "immutable-zero token emitted before its deployment")?;
             continue;
         }
         require(block.hash == deployment.block_hash, "deployment block hash differs")?;
@@ -47,6 +57,10 @@ pub(super) fn validate(block: &eth::Block, layouts: &[VerifiedLayout], raw: &Cha
         // Constructor writes precede the code-change ordinal. Later calls in the
         // same block are valid; writes before CREATE are not.
         require(storage.iter().all(|s| s.ordinal > call.begin_ordinal), "token storage changed before CREATE")?;
+        require(
+            logs.iter().all(|log| log.ordinal > call.begin_ordinal),
+            "immutable-zero token emitted before CREATE",
+        )?;
     }
     Ok(())
 }

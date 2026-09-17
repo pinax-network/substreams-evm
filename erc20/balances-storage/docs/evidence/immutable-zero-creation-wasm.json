@@ -1,0 +1,20 @@
+{
+  "block": 121118665,
+  "capture": {
+    "blocks_per_second_including_startup": 0.42508363254793113,
+    "empty_output_delivery": {
+      "clock_capture_sha256": "c5a1f2340c725de8fa4e9a1cfd24d4e67667df037194b895a094eabfd327c799",
+      "empty_blocks": 1,
+      "method": "Complete finalized BlockScopedData clock capture, all IDs matched to consecutive canonical RPC headers",
+      "normalized_events_sha256": "c721d36b2c91bff5b12868835198941c5c0383db05c7cb071df6fc9d61a15529",
+      "sparse_events_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "package_sha256": "b9dc9d1a10c2a563d0c1488d2ecc00e1a007bcb71ede8f0f9cb893629a7b041b",
+    "seconds_including_startup": 2.35247825
+  },
+  "events_sha256": "c721d36b2c91bff5b12868835198941c5c0383db05c7cb071df6fc9d61a15529",
+  "hash": "0x13d4de360a1310420ba1653e4031691a077222790c2721b864f93191e6746625",
+  "layouts_sha256": "ea7617c4a5414c191a581b798cbbe5588a9634e8dde49db3d0708e39a93a452d",
+  "scope": "Actual packaged map validates the pinned first CREATE and returns no balances; this is an empty-output validation, not a nonempty RPC value-parity claim.",
+  "status": "canonical_empty_creation_verified"
+}

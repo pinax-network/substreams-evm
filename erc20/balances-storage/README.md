@@ -11,7 +11,8 @@ or generated bindings in this package. Only `map_events` creates an output cache
 No token address, balance slot or runtime is built into the mapper. Supply a JSON
 array in the `map_events` parameter. The default is `[]`, which emits no balances.
 Each entry describes a **previously qualified balance mapping**, optionally
-with a reviewed zero-word fallback, address-derived balance, or pinned proxy:
+with a reviewed zero-word fallback, address-derived balance, immutable empty
+mapping, or pinned proxy:
 
 | Field | Format | Meaning |
 | --- | --- | --- |
@@ -28,6 +29,7 @@ with a reviewed zero-word fallback, address-derived balance, or pinned proxy:
 | `beacon_proxy` | Optional object, mutually exclusive with `proxy` | `beacon_slot`, `beacon`, `beacon_code_hash`, `implementation_slot`, `implementation`, `implementation_code_hash`; addresses are 20 bytes, slots/hashes 32 bytes |
 | `minimal_proxy` | Optional object, mutually exclusive with other proxy kinds | `implementation` (20 bytes) and its `code_hash` (32 bytes); the token runtime hash must bind the exact standard 45-byte ERC-1167 forwarder |
 | `address_hash_balance` | Optional object | Full 32-byte `modulus`, `offset`, `multiplier` constants and `stored_addresses` entries with a 32-byte `slot` and 20-byte `address`; all `0x` hex |
+| `immutable_zero_mapping` | Optional boolean, default `false` | Caller-proven empty balance mapping that the pinned direct runtime cannot write; requires `deployment` and cannot combine with proxies or other balance rules |
 
 The caller must establish that the configured projection equals `balanceOf` for the
 pinned runtime. Matching a few samples or finding a mapping-shaped write alone
@@ -120,6 +122,24 @@ holders' initial values independently and reports them separately from measured
 RPC checkpoint reads. This narrow rule requires a runtime/getter review and
 does not infer balance semantics from event amounts.
 
+With `immutable_zero_mapping`, the caller must prove that the first CREATE leaves
+the balance mapping empty and the complete pinned direct runtime cannot write it.
+The getter must read that mapping directly. An empty capture or sampled zero RPC
+responses are insufficient. The qualified invariant supplies zero for observed
+Transfer/Approval/OwnershipTransferred participants, senders and token contracts,
+using the same reference ABI decoders and null-address exclusion. Unknown or
+malformed events still fail. This preserves the reference's rows for reviewed
+log-only contracts without inferring values from the logged amounts.
+
+The mapper validates the pinned first CREATE when processing its block, rejects
+events before deployment/CREATE, and rejects every persisted balance-mapping
+write, including zero-to-zero and other no-op records. Code changes and unknown
+storage writes also fail. Reverted execution cannot trigger output or these
+persisted-write checks. Ordinary layouts keep their existing no-op filtering.
+The native replay records this zero baseline separately from RPC checkpoints and
+address formulas, and never initializes it before the qualified deployment.
+Raw-word diagnostics still expose a nonzero word instead of masking it as zero.
+
 Verified Keccak preimages identify holder keys. Transaction/call/log addresses
 are fallback candidates, accepted only when their mapping hash matches exactly.
 Persisted writes are ordered by execution ordinal; reverted execution cannot
@@ -131,8 +151,8 @@ configured other slot/mapping. Unconfigured contracts emit no rows.
 
 Identical protobuf format does not mean complete ERC-20 coverage: unchanged
 stored-balance participants and holders with no observed write remain unknown.
-Explicit address-derived layouts cover their observed ordinary holders without
-writes, but do not enumerate every possible address. The reference
+Explicit address-derived and immutable-zero layouts cover their qualified
+observed holders without writes, but do not enumerate every possible address. The reference
 also queries approval participants, senders, token contracts and special events.
 Missing data never becomes zero. A full holder dataset still needs a verified
 bootstrap and additional qualified token semantics.
@@ -348,10 +368,17 @@ The [final proxy review](docs/final-proxy-holder-coverage.md) adds 4Stock and CA
 in `tests/fixtures/bsc-final-proxy-layouts.json`, bringing the test set to 99.
 4Stock's reward accounting is separate from its raw balance mapping; only the
 reviewed fields are configured, and untested membership/list writes still fail.
-The remaining candidate emits transfer logs without updating balances. Its
-captured creation and getter review are recorded separately; log amounts do not
-become inferred holder balances. See the [network expansion sequence](docs/network-expansion.md)
-for Ethereum, Base, HyperEVM and Arc qualification after BSC.
+That batch left one log-only candidate outside its coverage claim.
+
+The [immutable-zero follow-up](docs/immutable-zero-holder-coverage.md) closes that
+candidate's gap in `tests/fixtures/bsc-top100-layouts.json`. Its captured CREATE
+leaves the balance mapping empty, and the reviewed runtime's only storage write
+updates allowances. The explicit rule produces all 298 independently checked
+reference rows from its captured activity. This completes layout review of the
+original top 100, subject to each profile's documented path and holder limits;
+it does not establish support for every BSC token. See the
+[network expansion sequence](docs/network-expansion.md) for Ethereum, Base,
+HyperEVM and Arc qualification after BSC.
 
 ```sh
 cargo run --locked -p erc20-balances-storage-tools -- inspect-ranked \

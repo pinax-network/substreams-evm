@@ -13,7 +13,8 @@
 //!   the tx fails. Reverted execution can change the same authority again.
 //! * `Block.system_calls`: calls with `state_reverted == false`.
 //! * `Block.balance_changes`, `Block.code_changes`: always.
-//! * No-op records (`old == new`) are dropped everywhere.
+//! * No-op records (`old == new`) are dropped from changes. Storage no-ops have
+//!   a separate optional validation hook for invariants that forbid any write.
 
 use std::collections::HashSet;
 use substreams::errors::Error;
@@ -57,6 +58,7 @@ impl Ctx<'_> {
 /// Receives persisted records. Implemented by the map module.
 pub trait Sink {
     fn storage(&mut self, c: &StorageChange, ctx: Ctx);
+    fn storage_noop(&mut self, _: &StorageChange, _: Ctx) {}
     fn balance(&mut self, c: &BalanceChange, ctx: Ctx);
     fn nonce(&mut self, c: &NonceChange, ctx: Ctx);
     fn code(&mut self, c: &CodeChange, ctx: Ctx);
@@ -105,6 +107,8 @@ fn emit_call_all(call: &Call, ctx: Ctx, out: &mut impl Sink) {
     for c in &call.storage_changes {
         if !storage_is_noop(c) {
             out.storage(c, ctx);
+        } else {
+            out.storage_noop(c, ctx);
         }
     }
     for c in &call.balance_changes {

@@ -28,6 +28,16 @@ pub struct Coverage {
     pub output: PathBuf,
 }
 
+pub(crate) fn known_checkpoint_amount(layout: &layout::VerifiedLayout, start: u64, address: &[u8]) -> Option<String> {
+    // The checkpoint is at start - 1. Never initialize a token that will only
+    // exist later in the replay; that baseline is applied at validated CREATE.
+    if layout.deployment.as_ref().is_some_and(|d| d.block >= start) {
+        None
+    } else {
+        layout.known_amount(address)
+    }
+}
+
 #[derive(Default)]
 pub struct HolderState {
     pub observed: Balances,
@@ -172,13 +182,7 @@ pub fn run(args: Coverage) -> Result<bool> {
             let existing_holders = holders
                 .iter()
                 .filter(|key| configured[&key.0].deployment.as_ref().is_none_or(|d| d.block < start))
-                .filter(|key| {
-                    configured[&key.0]
-                        .address_hash_balance
-                        .as_ref()
-                        .and_then(|rule| rule.amount(&hex::decode(&key.1[2..]).unwrap()))
-                        .is_none()
-                })
+                .filter(|key| known_checkpoint_amount(configured[&key.0], start, &hex::decode(&key.1[2..]).unwrap()).is_none())
                 .collect::<Vec<_>>();
             report["checkpoint_holders"] = json!(existing_holders.len());
             report["deployment_initialized_holders"] = json!({});
@@ -188,22 +192,27 @@ pub fn run(args: Coverage) -> Result<bool> {
             let mut file = File::create(args.output.join("checkpoint.jsonl"))?;
             let mut per_token = BTreeMap::<String, Value>::new();
             let mut computed_holders = BTreeMap::<String, u64>::new();
+            let mut immutable_zero_holders = BTreeMap::<String, u64>::new();
             for key in &holders {
-                if let Some(value) = configured[&key.0]
-                    .address_hash_balance
-                    .as_ref()
-                    .and_then(|rule| rule.amount(&hex::decode(&key.1[2..]).unwrap()))
-                {
+                let layout = configured[&key.0];
+                if let Some(value) = known_checkpoint_amount(layout, start, &hex::decode(&key.1[2..]).unwrap()) {
                     checkpoint.insert(key.clone(), uint(&json!(value))?);
-                    *computed_holders.entry(key.0.clone()).or_default() += 1;
+                    let source = if layout.immutable_zero_mapping {
+                        *immutable_zero_holders.entry(key.0.clone()).or_default() += 1;
+                        "qualified_immutable_zero_mapping"
+                    } else {
+                        *computed_holders.entry(key.0.clone()).or_default() += 1;
+                        "qualified_address_hash_formula"
+                    };
                     writeln!(
                         file,
                         "{}",
-                        json!({"contract":key.0,"address":key.1,"hash":initial_hash,"source":"qualified_address_hash_formula","projected":value,"storage":null,"rpc":null})
+                        json!({"contract":key.0,"address":key.1,"hash":initial_hash,"source":source,"projected":value,"storage":null,"rpc":null})
                     )?;
                 }
             }
             report["computed_initialized_holders"] = json!(computed_holders);
+            report["immutable_zero_initialized_holders"] = json!(immutable_zero_holders);
             for chunk in existing_holders.chunks(25) {
                 let mut calls = Vec::new();
                 let mut keys = Vec::new();

@@ -34,6 +34,10 @@ pub struct Layout {
     pub minimal_proxy: Option<MinimalProxyLayout>,
     #[serde(default)]
     pub address_hash_balance: Option<AddressHashBalance>,
+    /// Caller-proven empty-at-CREATE mapping that the pinned direct runtime
+    /// cannot write. This is not inferred from absent writes or RPC samples.
+    #[serde(default)]
+    pub immutable_zero_mapping: bool,
 }
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -184,8 +188,18 @@ pub struct VerifiedLayout {
     pub beacon_proxy: Option<VerifiedBeaconProxy>,
     pub minimal_proxy: Option<VerifiedMinimalProxy>,
     pub address_hash_balance: Option<VerifiedAddressHashBalance>,
+    pub immutable_zero_mapping: bool,
 }
 impl VerifiedLayout {
+    /// A qualified value available without reading prior holder state.
+    /// Call only at/after deployment for an immutable-zero mapping.
+    pub fn known_amount(&self, address: &[u8]) -> Option<String> {
+        if self.immutable_zero_mapping {
+            Some("0".into())
+        } else {
+            self.address_hash_balance.as_ref().and_then(|rule| rule.amount(address))
+        }
+    }
     /// Input is the canonical decimal uint256 decoded from the raw storage word.
     /// Apply only after raw-word continuity checks; zero and the fallback value
     /// can represent different storage states with the same public balance.
@@ -421,6 +435,16 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                     })
                 })
                 .transpose()?;
+            require(
+                !layout.immutable_zero_mapping
+                    || (deployment.is_some()
+                        && proxy.is_none()
+                        && beacon_proxy.is_none()
+                        && minimal_proxy.is_none()
+                        && zero_balance.is_none()
+                        && address_hash_balance.is_none()),
+                "immutable-zero mapping requires a qualified direct deployment without another balance rule",
+            )?;
             Ok(VerifiedLayout {
                 contract,
                 balance_slot,
@@ -435,6 +459,7 @@ pub fn parse(params: &str) -> Result<Vec<VerifiedLayout>, Error> {
                 beacon_proxy,
                 minimal_proxy,
                 address_hash_balance,
+                immutable_zero_mapping: layout.immutable_zero_mapping,
             })
         })
         .collect()

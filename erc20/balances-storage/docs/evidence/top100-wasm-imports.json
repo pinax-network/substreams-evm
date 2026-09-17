@@ -1,0 +1,22 @@
+{
+  "imports": [
+    {
+      "function": "output",
+      "module": "env"
+    },
+    {
+      "function": "println",
+      "module": "logger"
+    },
+    {
+      "function": "register_panic",
+      "module": "env"
+    },
+    {
+      "function": "skip_empty_output",
+      "module": "env"
+    }
+  ],
+  "rpc_imports": 0,
+  "wasm_sha256": "8492a0722e53c0b6999b05b4587eafc0b6c1c292f444313fc11a589d6c1c456b"
+}

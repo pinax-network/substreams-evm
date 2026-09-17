@@ -52,6 +52,7 @@ fn hex_bytes(s: &str) -> Result<Vec<u8>, Error> {
 struct Changes {
     storage: Vec<eth::StorageChange>,
     codes: Vec<CodeRecord>,
+    immutable_zero_contracts: BTreeSet<Vec<u8>>,
 }
 struct CodeRecord {
     change: eth::CodeChange,
@@ -63,6 +64,13 @@ impl persist::Sink for Changes {
     fn balance(&mut self, _: &eth::BalanceChange, _: persist::Ctx) {}
     fn storage(&mut self, c: &eth::StorageChange, _: persist::Ctx) {
         self.storage.push(c.clone());
+    }
+    fn storage_noop(&mut self, c: &eth::StorageChange, _: persist::Ctx) {
+        // Even a no-op can contradict the reviewed no-balance-write invariant.
+        // Ordinary layouts retain the existing no-op filtering behavior.
+        if self.immutable_zero_contracts.contains(&c.address) {
+            self.storage.push(c.clone());
+        }
     }
     fn code(&mut self, c: &eth::CodeChange, ctx: persist::Ctx) {
         self.codes.push(CodeRecord {
@@ -166,7 +174,10 @@ fn ignored_mapping(key: [u8; 32], preimages: &BTreeMap<[u8; 32], Vec<u8>>, layou
 pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Change>, Error> {
     validate_block(block)?;
     let configured: BTreeMap<_, _> = layouts.iter().map(|l| (l.contract.clone(), l)).collect();
-    let mut raw = Changes::default();
+    let mut raw = Changes {
+        immutable_zero_contracts: layouts.iter().filter(|l| l.immutable_zero_mapping).map(|l| l.contract.clone()).collect(),
+        ..Default::default()
+    };
     persist::collect_block(block, &mut raw)?;
     deployment::validate(block, layouts, &raw)?;
     require(
@@ -272,6 +283,7 @@ pub fn changes(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<Vec<Cha
             .map(|p| p[12..32].to_vec())
             .or_else(|| candidates[&layout.balance_slot].get(&key).cloned());
         if let Some(owner) = owner {
+            require(!layout.immutable_zero_mapping, "immutable-zero balance mapping was written; requalify layout")?;
             insert(&mut rows, &c.address, &owner, &c.old_value, &c.new_value, c.ordinal)?;
         } else if !layout.other_slots.contains(&key) && !ignored_mapping(key, &preimages, layout) && !checkpoint_keys.contains(&(c.address.clone(), key)) {
             return Err(Error::msg(format!(
@@ -301,11 +313,7 @@ pub fn project(block: &eth::Block, layouts: &[VerifiedLayout]) -> Result<balance
         })
         .collect::<BTreeMap<_, _>>();
     for (contract, address) in computed::holders(block, layouts)? {
-        if let Some(amount) = configured[contract.as_slice()]
-            .address_hash_balance
-            .as_ref()
-            .and_then(|rule| rule.amount(&address))
-        {
+        if let Some(amount) = configured[contract.as_slice()].known_amount(&address) {
             balances.insert(
                 (contract.clone(), address.clone()),
                 balances_pb::Balance {
@@ -340,6 +348,8 @@ mod direct_bytecode_tests;
 mod direct_source_tests;
 #[cfg(test)]
 mod final_proxy_tests;
+#[cfg(test)]
+mod immutable_zero_tests;
 #[cfg(test)]
 mod log_only_tests;
 #[cfg(test)]
