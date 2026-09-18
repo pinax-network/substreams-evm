@@ -1,0 +1,39 @@
+{
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 19.230590686537138,
+    "empty_output_delivery": {
+      "clock_capture_sha256": "53c267896ba7e08c41ed5b99ddbc2a5bb77c33442a49e5d08442ab1aba329916",
+      "empty_blocks": 1009,
+      "method": "Complete finalized BlockScopedData clock capture, all IDs matched to consecutive canonical RPC headers",
+      "normalized_events_sha256": "a6d7c15b1514388b07766c20cda602e826e720ae990bb7c8de75eb72ca07e5ad",
+      "sparse_events_sha256": "136b47231a2966eba5bac351932ffc8cc891d11030157be993cecdc2c2c0f006"
+    },
+    "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "seconds_including_startup": 53.248494375
+  },
+  "checked_blocks": 1024,
+  "checks": 30,
+  "checks_sha256": "d12826e1d0a149ff7b997678cba64af763249ca6c6e61b56b84b017acc8538cb",
+  "configured_tokens": 2,
+  "elapsed_seconds": 69.33120475,
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "c27f8c98b09ef63be471619d2cd886616a222d9c24e71f22cf05ed3211dd3812",
+  "mismatches": 0,
+  "prior_incomplete_run": {
+    "checked_blocks": 62,
+    "checks": 2,
+    "failure": "RPC transport failed",
+    "scope": "Original failed audit preserved. This run independently re-audits all rows from the exact same captured production WASM output.",
+    "source_report_sha256": "3bb8c317f4874eb053784b2204b8c489a48151a6b765f7d72873a9b3f2541c40"
+  },
+  "rpc_block_binding": "EIP-1898 blockHash, requireCanonical=true",
+  "scope": "Fresh full canonical RPC audit of the exact pinned packaged WASM capture after a preserved transport failure; all 1,024 headers and emitted balances rechecked.",
+  "source_report_sha256": "7ed57e6ab31ff543d986681ed04d060a28f5261d14c48d2c8513374793c04bf2",
+  "start": 122288006,
+  "status": "rpc_parity",
+  "token_checks": 30,
+  "tool_language": "Rust",
+  "zero_checks": 0
+}

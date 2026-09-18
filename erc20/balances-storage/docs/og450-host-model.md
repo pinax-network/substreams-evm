@@ -7,6 +7,11 @@ branches rejected by the initial model are now decoded; their original fixture
 status and evidence remain unchanged. **OG remains unqualified for the
 production storage module.**
 
+A further 19 pool-gate controls distinguish ten finite numeric matches, six
+recursive paths explicitly rejected by the host model, and three clock
+underflow cases. The six recursive paths revert in RPC at both tested gas
+budgets; they are not treated as zero balances.
+
 The token is rank 411, `0xe18102869d32181aea317a40c5c4ce90ca591913`.
 Its `balanceOf` adds pending hourly and daily rewards to the holder's raw root-0
 balance. The helper is `0x1430c0bd0d023690f7aee3666daf265c498cc6a5`, with
@@ -88,6 +93,7 @@ Implementation and captured regressions:
 - [Historical snapshots](../tests/fixtures/og-model/historical.json) and [RPC controls](../tests/fixtures/og-model/controls.json)
 - [Preview snapshots and controls](../tests/fixtures/og-model/preview.json)
 - [Initial evidence](evidence/og450-host-model.json) and [preview evidence and bytecode excerpts](evidence/og450-preview-model.json)
+- [Pool-gate controls](../tests/fixtures/og-model/recursive.json), [1024-block pool scan](../tests/fixtures/og-model/pool-range.json), and [pool-gate evidence](evidence/og450-recursive-model.json)
 
 Run the focused checks with:
 
@@ -102,7 +108,36 @@ initialized snapshot and limits its daily horizon to 1000 periods. Numeric
 overflow rejection is tested; arbitrary router revert ABI parity is outside
 this model's scope.
 
-The pool's own nonzero hourly reward rate remains an explicit error because it
-requires recursive modeling. A next bounded step is to determine whether that
-branch is reachable for the reviewed pool and how to guard it from raw state.
-Production state retention and qualification remain separate work.
+The pool's nonzero hourly rate can still return its raw balance when both
+helper entry gates exit. Hourly exits for a zero hourly rate, current hour zero,
+or an hourly cursor at or beyond the current hour. Daily exits for either zero
+rate, current day zero, or a daily cursor at or beyond the current day. A
+nonzero hourly rate therefore requires all four raw pool cursor words. The
+successful zero-time traces call the cursor getters before their zero-time
+exits. For an underflowing clock, requiring those words is conservative: the
+clock getter reverts before the cursor call. The fixture decoder preserves the
+original time inputs while planning an empty period horizon, allowing the
+model to apply early exits before checked subtraction.
+
+If either pool helper proceeds beyond those gates, it calls the same token's
+`balanceOf(pool)` before entering its period loop. That call sees unchanged
+state and repeats. Zero period totals, user rates, and rewards do not avoid the
+call. Bounded traces show repeated pool-balance calls followed by out-of-gas
+propagation; RPC calls at 1 million and 2 million gas revert. The host model
+continues to reject these paths explicitly rather than simulate a gas budget.
+
+The actual pool record and all four cursors were unchanged throughout the
+original ranking window, blocks 122288006–122289029 inclusive. Both reward
+rates were zero, and canonical RPC `balanceOf(pool)` equaled the independently
+captured raw balance in all 1024 blocks. State, stored dependency addresses,
+and balances were read at each canonical hash; token/helper runtime checks
+were performed at the window boundaries. This establishes the sampled window,
+not a permanent invariant.
+
+Two investigation failures remain recorded. The first recursive call-trace
+attempt returned an RPC JSON decoding error; its cause was not established.
+Later bounded traces succeeded. The first error comparator then incorrectly
+required `error.data` to be `0x`; the provider returned code 3, `execution
+reverted`, with that field omitted. The corrected evidence preserves the
+omission and classifies these as guarded reverts, without inventing a numeric
+result. Production state retention and qualification remain separate work.

@@ -424,6 +424,8 @@ mod pending350_tests;
 #[cfg(test)]
 mod pending_direct_tests;
 #[cfg(test)]
+mod permit450_tests;
+#[cfg(test)]
 mod proxy400_tests;
 #[cfg(test)]
 mod public450_tests;
@@ -445,9 +447,13 @@ mod ranks301_350_tests;
 #[cfg(test)]
 mod remaining_ranked_tests;
 #[cfg(test)]
+mod roles450_tests;
+#[cfg(test)]
 mod securities_proxy_tests;
 #[cfg(test)]
 mod seven400_tests;
+#[cfg(test)]
+mod short450_tests;
 #[cfg(test)]
 mod simple450_tests;
 #[cfg(test)]

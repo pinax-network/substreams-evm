@@ -86,11 +86,24 @@ pub fn decode(v: &Value) -> Result<State> {
         token(pool_base + U256::from(offset))?;
     }
     let pool_balance = token(key(&[pool_holder], 0))?;
+    let pool_hour_rate = token(pool_base + U256::from(4))?;
+    let pool_cursors = if pool_hour_rate.is_zero() {
+        None
+    } else {
+        let base = key(&[pool_holder], 11);
+        Some([
+            token(base)?,
+            token(base + U256::one())?,
+            token(base + U256::from(2))?,
+            token(base + U256::from(3))?,
+        ])
+    };
     let now = quantity(&v["timestamp"])?;
     let epoch = token(29.into())?;
-    let elapsed = now.checked_sub(epoch).context("uint256 subtraction underflow")?;
-    let current_hour = elapsed / 3600;
-    let current_day = elapsed / 86400;
+    // This only plans period reads. Preserve the original time inputs so the
+    // model evaluates early exits before the deployed checked subtraction. An
+    // underflowing clock cannot reach any period read, so initialize no periods.
+    let (current_hour, current_day) = now.checked_sub(epoch).map(|elapsed| (elapsed / 3600, elapsed / 86400)).unwrap_or_default();
     let last_hour = token(key(&[holder], 11))?;
     let last_day = token(key(&[holder], 11) + U256::one())?;
     let hour_count = if user[5].is_zero() || last_hour >= current_hour {
@@ -135,8 +148,9 @@ pub fn decode(v: &Value) -> Result<State> {
         reserve1_a: (p1 >> 112) & mask,
         reserve0_b: p2 & mask,
         reserve1_b: (p2 >> 112) & mask,
-        pool_hour_rate: token(pool_base + U256::from(4))?,
+        pool_hour_rate,
         pool_day_rate: token(pool_base + U256::from(5))?,
+        pool_cursors,
         pool_balance,
         hours: periods(hour_count, last_hour, 23, 12, 24)?,
         days: periods(day_count, last_day, 25, 13, 27)?,

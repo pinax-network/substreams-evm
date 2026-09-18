@@ -1,0 +1,45 @@
+[
+  {
+    "balances": [
+      {
+        "address": "0x3add9ce08f3ec254289744bc69e18393257a9627",
+        "rpc": "360124333889191539664479"
+      },
+      {
+        "address": "0x4d9541bcfc450b15c458877c97848c7a96898f6c",
+        "rpc": "293201447111386011038150697"
+      }
+    ],
+    "block": 122288013,
+    "contract": "0x8a063a9ff4de28dcb87117cc759be6ce70e09f81",
+    "fixture": "8a063a9ff4de28dcb87117cc759be6ce70e09f81-122288013.pb",
+    "fixture_sha256": "a9674d77369402720be0f6332a8ee576be100a0d87c1498c44a8a636a2f1c268",
+    "full_block_sha256": "1de726cdde5021ab0b8b54c35194a11b099887a730a1f347c8681863a2b7ba7a",
+    "hash": "0xda2fc5c24b52a09047f0acef448513a14799fa1942c473753f94616a8f3afeaf",
+    "scope": "All token-writing transactions from the audited complete Extended block"
+  },
+  {
+    "balances": [
+      {
+        "address": "0x788183eed81153d4180c712fcb4684e4eec85b30",
+        "rpc": "30276510668291959712370"
+      },
+      {
+        "address": "0xb3a0b79c1aecc937c6e1bf4775698659e44e0b87",
+        "rpc": "43678450000000000"
+      }
+    ],
+    "block": 122288204,
+    "contract": "0xb86126b872e3f23bc62d6a4a3152ec65202a2073",
+    "excluded_null": {
+      "canonical_reference_has_null_holder": false,
+      "raw_storage_event": "113119930682987880420421",
+      "rpc": "113119930682987880420421"
+    },
+    "fixture": "b86126b872e3f23bc62d6a4a3152ec65202a2073-122288204.pb",
+    "fixture_sha256": "a43ae5d53d2f435f68dc5df7dd3ab2e2f7c99f1730f1a73c5d26ddf1868ca836",
+    "full_block_sha256": "a21a8c6178e75e6eda416fd1c0abfc826df53e9aecac2895163b56369ca93faa",
+    "hash": "0xfe20be1d0c51cd70069b455e73d90bf7cdf4c5bbbc7c5d0a416c87c2fdddce32",
+    "scope": "All token-writing transactions from the audited complete Extended block"
+  }
+]

@@ -14,6 +14,9 @@ fn controls() -> Vec<Value> {
 fn preview() -> Value {
     serde_json::from_str(include_str!("../../../tests/fixtures/og-model/preview.json")).unwrap()
 }
+fn recursive() -> Value {
+    serde_json::from_str(include_str!("../../../tests/fixtures/og-model/recursive.json")).unwrap()
+}
 fn replace(v: &mut Value, contract: &str, slot: U256, value: U256) {
     let row = v["raw_state"]
         .as_array_mut()
@@ -137,6 +140,119 @@ fn trace_returns_bind_internal_preview_reward_and_remaining_pool() {
 }
 
 #[test]
+fn pool_entry_gates_match_finite_values_and_reject_captured_recursive_paths() {
+    let fixture = recursive();
+    let rows = fixture["controls"].as_array().unwrap();
+    assert_eq!(rows.len(), 19);
+    let mut counts = [0; 3];
+    for row in rows {
+        let mut snapshot = fixture["base"].clone();
+        snapshot["timestamp"] = row["timestamp"].clone();
+        for change in row["state_diff"].as_array().unwrap() {
+            replace(
+                &mut snapshot,
+                change["contract"].as_str().unwrap(),
+                quantity(&change["key"]).unwrap(),
+                quantity(&change["value"]).unwrap(),
+            );
+        }
+        let state = fixture::decode(&snapshot).unwrap();
+        let name = row["name"].as_str().unwrap();
+        let is_recursive = row["classification"] == "guarded_recursive_revert";
+        counts[if is_recursive {
+            1
+        } else if row["classification"] == "checked_underflow_match" {
+            2
+        } else {
+            0
+        }] += 1;
+        let validate = |expected: &Value| {
+            for (field, result) in [
+                ("holder_balance", state.evaluate().map(|v| vec![v.balance])),
+                ("holder_hourly", state.hourly().map(|(v, stop)| vec![v, stop])),
+                ("holder_daily", state.daily().map(|v| vec![v])),
+                ("pool_balance", state.pool_balance_if_terminal().map(|v| vec![v])),
+            ] {
+                if is_recursive {
+                    assert!(result.unwrap_err().to_string().starts_with("unmodeled recursive pool"), "{name}");
+                    assert_eq!(expected[field]["rpc_error"]["code"], 3);
+                    assert_eq!(expected[field]["rpc_error"]["message"], "execution reverted");
+                    // Preserve the provider's omitted data field; it was the
+                    // initial comparator's false mismatch, not a balance value.
+                    assert!(expected[field]["rpc_error"].get("data").is_none());
+                } else {
+                    check(result, &expected[field], name);
+                }
+            }
+        };
+        validate(&row["expected"]);
+        if is_recursive {
+            assert_eq!(row["gas"], 2_000_000);
+            let extra = row["extra_gas_controls"].as_array().unwrap();
+            assert_eq!(extra.len(), 1);
+            assert_eq!(extra[0]["gas"], 1_000_000);
+            validate(&extra[0]["expected"]);
+        }
+    }
+    assert_eq!(counts, [10, 6, 3]);
+}
+
+#[test]
+fn actual_pool_record_is_terminal_and_matches_raw_balance_across_1024_blocks() {
+    let range: Value = serde_json::from_str(include_str!("../../../tests/fixtures/og-model/pool-range.json")).unwrap();
+    let record = range["record_and_cursors"].as_array().unwrap();
+    assert_eq!(record.len(), 16);
+    assert!(record.iter().skip(1).all(|v| quantity(v).unwrap().is_zero()));
+    let rows = range["rows"].as_array().unwrap();
+    assert_eq!(rows.len(), 1024);
+    assert_eq!(rows[0]["hash"], range["first_hash"]);
+    assert_eq!(rows.last().unwrap()["hash"], range["last_hash"]);
+    for pair in rows.windows(2) {
+        assert_eq!(pair[1]["parent_hash"], pair[0]["hash"]);
+    }
+    let mut state = fixture::decode(&historical()[0]).unwrap();
+    state.pool_hour_rate = quantity(&record[4]).unwrap();
+    state.pool_day_rate = quantity(&record[5]).unwrap();
+    state.pool_cursors = Some(std::array::from_fn(|i| quantity(&record[12 + i]).unwrap()));
+    state.epoch = quantity(&range["epoch_and_dependency_addresses"][0]).unwrap();
+    for (offset, row) in rows.iter().enumerate() {
+        assert_eq!(row["block"].as_u64().unwrap(), range["start"].as_u64().unwrap() + offset as u64);
+        state.now = quantity(&row["timestamp"]).unwrap();
+        state.pool_balance = quantity(&row["raw_pool_balance"]).unwrap();
+        assert_eq!(state.pool_balance_if_terminal().unwrap(), uint(&row["expected_pool_balance"]).unwrap());
+    }
+    assert_eq!(range["stop_exclusive"].as_u64().unwrap() - range["start"].as_u64().unwrap(), 1024);
+}
+
+#[test]
+fn active_pool_rate_requires_all_cursor_words_and_preserves_underflow_order() {
+    let mut snapshot = recursive()["base"].clone();
+    let pool = quantity(&json!(POOL_A)).unwrap();
+    replace(&mut snapshot, TOKEN, key(&[pool], 9) + U256::from(4), U256::one());
+    for offset in 0..4 {
+        let mut missing = snapshot.clone();
+        let slot = key(&[pool], 11) + U256::from(offset);
+        missing["raw_state"]
+            .as_array_mut()
+            .unwrap()
+            .retain(|r| !(r["contract"] == TOKEN && r["key"] == word(slot)));
+        assert!(fixture::decode(&missing).unwrap_err().to_string().starts_with("missing raw word"));
+    }
+    let mut state = fixture::decode(&snapshot).unwrap();
+    state.pool_cursors = None;
+    assert!(state
+        .pool_balance_if_terminal()
+        .unwrap_err()
+        .to_string()
+        .contains("missing initialized pool cursors"));
+    state.now = state.epoch - U256::one();
+    assert!(state.pool_balance_if_terminal().unwrap_err().to_string().contains("subtraction underflow"));
+    state.pool_hour_rate = U256::zero();
+    state.pool_day_rate = U256::MAX;
+    assert_eq!(state.pool_balance_if_terminal().unwrap(), state.pool_balance);
+}
+
+#[test]
 fn missing_words_runtimes_addresses_and_unmodeled_recursion_fail_closed() {
     let row = historical().remove(0);
     let state = fixture::decode(&row).unwrap();
@@ -173,7 +289,9 @@ fn missing_words_runtimes_addresses_and_unmodeled_recursion_fail_closed() {
     assert!(nonconsecutive.hourly().unwrap_err().to_string().contains("nonconsecutive"));
     let mut recursive = state;
     recursive.pool_hour_rate = U256::one();
-    assert!(recursive.evaluate().unwrap_err().to_string().contains("unmodeled recursive pool reward"));
+    assert!(recursive.evaluate().unwrap_err().to_string().contains("missing initialized pool cursors"));
+    recursive.pool_cursors = Some([U256::zero(); 4]);
+    assert!(recursive.evaluate().unwrap_err().to_string().contains("unmodeled recursive pool hourly reward"));
     // Field 1 is a packed uint8, not a proven Solidity bool. It is unused by
     // these paths, so decoding must preserve values above one without guessing.
     let mut packed = row;

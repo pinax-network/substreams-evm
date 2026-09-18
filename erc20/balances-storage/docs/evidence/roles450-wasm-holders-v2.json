@@ -1,0 +1,36 @@
+{
+  "checkpoint_sha256": "6dec4a8738306a2b56f9336e17e64d28d21c8df39f320393d2146d2eaaa8aa3d",
+  "checks_sha256": "af98c2093db0aad39fb884a788fa51d90ce762169e83b59113685f3382c053d2",
+  "configured_tokens": 1,
+  "deployment_initialization": [],
+  "events_sha256": "cd8f0b7dc45b22faaab621dcfe44721d01a55f7be66babe0d4b699bb59269b13",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 14,
+  "layouts_sha256": "805b3e47a92e408f02ab82d9243cee818b4e84c72d9f76dc665304f181b5c22a",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 28,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "One source-bound NXT direct getter with reviewed fixed/packed metadata, allowances, blacklist and reachable role membership; adminRole writes remain rejected on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 4,
+  "snapshot_zeros": 1,
+  "source_report_sha256": "df42c8ccb738dd91d8a0b5951be2adb6e8e91bb07d89770f3e3df2d1134e9ef6",
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0xae7484d162ba80b340eba7769a7a67838b1c16c1",
+      "emitted_rows": 14,
+      "reference_rows": 28,
+      "seeded_matches": 28,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 7,
+      "unseeded_unknown_rows": 14,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

@@ -34,11 +34,14 @@ pub struct State {
     pub reserve1_a: U256,
     pub reserve0_b: U256,
     pub reserve1_b: U256,
-    /// The nested pool balanceOf must take both helper early exits. A pool with
-    /// its own reward rate requires a recursive model and is unsupported.
+    /// The nested pool balanceOf must take both helper early exits.
     pub pool_hour_rate: U256,
     pub pool_day_rate: U256,
-    /// Raw root-0 pool balance. Its reward paths must take pool_early_exit.
+    /// Required when pool_hour_rate is nonzero. All four words are returned by
+    /// the cursor getter, even when only the hour/day words drive these gates.
+    pub pool_cursors: Option<[U256; 4]>,
+    /// Raw root-0 pool balance. Both pool reward helpers must take an entry
+    /// early exit, as checked by pool_balance_if_terminal.
     pub pool_balance: U256,
     pub hours: Vec<Period>,
     pub days: Vec<Period>,
@@ -84,11 +87,19 @@ impl State {
         Ok(sub(self.now, self.epoch)? / 3600)
     }
 
-    fn pool_early_exit(&self) -> Result<()> {
-        // Hourly requires field 5 == 0. That also takes the daily early exit;
-        // retaining field 6 makes the captured dependency explicit.
-        ensure!(self.pool_hour_rate.is_zero(), "unmodeled recursive pool reward");
-        Ok(())
+    pub fn pool_balance_if_terminal(&self) -> Result<U256> {
+        if self.pool_hour_rate.is_zero() {
+            return Ok(self.pool_balance);
+        }
+        let elapsed = sub(self.now, self.epoch)?;
+        let cursors = self.pool_cursors.context("missing initialized pool cursors")?;
+        let hour = elapsed / 3600;
+        ensure!(hour.is_zero() || cursors[0] >= hour, "unmodeled recursive pool hourly reward");
+        if !self.pool_day_rate.is_zero() {
+            let day = elapsed / 86400;
+            ensure!(day.is_zero() || cursors[1] >= day, "unmodeled recursive pool daily reward");
+        }
+        Ok(self.pool_balance)
     }
 
     fn preview_rate(&self) -> Result<U256> {
@@ -169,10 +180,9 @@ impl State {
         let stop = current.min(add(self.last_hour, 168.into())?);
         let count = (stop - self.last_hour).low_u64() as usize;
         ensure!(self.hours.len() >= count, "missing initialized hourly state");
-        self.pool_early_exit()?;
+        let mut pool = self.pool_balance_if_terminal()?;
         let mut total = self.hours[0].total;
         let mut user = if self.hours[0].user.is_zero() { self.user[5] } else { self.hours[0].user };
-        let mut pool = self.pool_balance;
         let mut sum = U256::zero();
         for (offset, p) in self.hours.iter().take(count).enumerate() {
             ensure!(p.index == add(self.last_hour, offset.into())?, "nonconsecutive hourly state");
@@ -208,8 +218,7 @@ impl State {
         if user.is_zero() && !self.user[8].is_zero() {
             user = self.user[6];
         }
-        self.pool_early_exit()?;
-        let mut pool = self.pool_balance;
+        let mut pool = self.pool_balance_if_terminal()?;
         let mut sum = U256::zero();
         let mut positive = 0;
         let mut index = self.last_day;

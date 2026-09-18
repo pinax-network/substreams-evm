@@ -1,0 +1,120 @@
+{
+  "canonical_boundaries": [
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+    },
+    {
+      "block": 122288006,
+      "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+    },
+    {
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+    }
+  ],
+  "completed_gates": {
+    "actual_wasm_holders": {
+      "initialized_carry_forward_matches": 14,
+      "mismatches": 0,
+      "observations": 28,
+      "report_sha256": "df42c8ccb738dd91d8a0b5951be2adb6e8e91bb07d89770f3e3df2d1134e9ef6",
+      "snapshot_holders": 4,
+      "snapshot_sha256": "af98c2093db0aad39fb884a788fa51d90ce762169e83b59113685f3382c053d2",
+      "snapshot_zeros": 1,
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    "fixtures": {
+      "cases": 1,
+      "cases_sha256": "29b4d0ceb4f661b3ac80775ca10e4c36b020fafbda67bedb20419fef410b7297",
+      "controls_sha256": "c58d95c10f02755bca974fb0bcf40e8380fede8a48d0fade7eead01e941358e2",
+      "rpc_balances": 2
+    },
+    "native": {
+      "blocks": 1024,
+      "emitted_rows": 14,
+      "errors": 0,
+      "report_sha256": "d94b07803ffc56dbe3c7a8141a7d82eaa3bf73c92aa1592e7a6fd4bff5235189",
+      "status": "bounded_parity"
+    },
+    "native_holders": {
+      "checkpoint_holders": 4,
+      "checkpoint_reads": 8,
+      "checkpoint_sha256": "6dec4a8738306a2b56f9336e17e64d28d21c8df39f320393d2146d2eaaa8aa3d",
+      "report_sha256": "3a4f95c03baf6fe478b41060f5f642487e7cd29ca43f6ad3eeadcc378a8f37bd",
+      "status": "bounded_parity"
+    },
+    "rpc": {
+      "checked_blocks": 1024,
+      "checks": 14,
+      "checks_sha256": "68c8f0c2d301c1e619d017c33a603f6f04c2b5f09db8df45185978ef60ecf360",
+      "clocks_sha256": "6a6343402f09ff17ce21121fb85c85facc0f11c69ae609796ea4d1221f0836a2",
+      "events_sha256": "cd8f0b7dc45b22faaab621dcfe44721d01a55f7be66babe0d4b699bb59269b13",
+      "mismatches": 0,
+      "report_sha256": "a8afe712b5ed315b47056298ea18e0cf03eb501ce7a35deb278a756321df7585",
+      "status": "rpc_parity",
+      "zeros": 0
+    }
+  },
+  "configured_profiles": 1,
+  "elapsed_seconds": 4.757685458,
+  "focused_tests": {
+    "failed": 0,
+    "log_sha256": "b078ee1c222f49ce2eb19098d1ece6fb08e026572a27a5758f8407d71a4a93a0",
+    "passed": 7,
+    "source_sha256": "bd0ed2f0859ce7b314c035a44903806ba57f7f8f91fa8ca537a21fe7e3d59321"
+  },
+  "guard_review_sha256": "80381350587bc66597fbc672dfa5d5a631acd491674239d01d452e1e387c525f",
+  "independent_controls": {
+    "configured_metadata_cases": 40,
+    "invalid_call": 3,
+    "metadata": 52,
+    "packed_field": 9,
+    "raw": 20,
+    "requests_sha256": "25297f376f8811c3f39c8ad17ade35b23dc680b6de9e3f53de76786f79a50d0a",
+    "role_field": 18,
+    "unreachable_admin_write_rejections": 12
+  },
+  "layouts_sha256": "805b3e47a92e408f02ab82d9243cee818b4e84c72d9f76dc665304f181b5c22a",
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "preserved_attempts": [
+    "out/roles450-qualify.log: scratch helper missing map key type annotation, fixed before execution",
+    "out/roles450-qualified/report.json: baseline preflight rejected old 412 fixture",
+    "out/roles450-export-preflight.log: controls export attempted before initial capture completed; no controls written",
+    "out/roles450-final-qualified/report.json and prior qualified-v2/rpc/holder/wasm directories: passing broader root-width proposal superseded after synthetic nested-member guard gap review",
+    "out/roles450-capture-v2.log: fresh audit report was not yet present; original immutable RPC fixture expectations restored and explicitly rebound to successful fresh narrow audit by this finalizer"
+  ],
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Completed standalone qualification of pinned NXT427 direct getter with source-bound immutable cap, packed pause/owner, blacklist, allowances and reachable AccessControl membership only; genuine adminRole writes and nested membership offsets deliberately rejected. Full canonical production-WASM emitted parity and initialized observed-holder parity passed. No global-holder enumeration, deployment, dynamic long-string payload, future-code or aggregate-cohort claim.",
+  "source_native_qualification_sha256": "d94b07803ffc56dbe3c7a8141a7d82eaa3bf73c92aa1592e7a6fd4bff5235189",
+  "source_report_sha256": "f1e00595e3f545a0e112797694b3c8ecd7324b60ad35b6307a5ebd103bc45709",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "contract": "0xae7484d162ba80b340eba7769a7a67838b1c16c1",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x2850838afaa15abc656ef46f778f13d11a6ba1fd7ffbeaf89017076407dcb5b1",
+        "contract": "0xae7484d162ba80b340eba7769a7a67838b1c16c1",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "rank": 427,
+      "source_sha256": "25f055ed8a1ebbc2776d10c4616c19853e261ba3f363537527fa864bdd9d0b87",
+      "symbol": "NXT"
+    }
+  ],
+  "tool_language": "Rust"
+}

@@ -1,0 +1,453 @@
+{
+  "baseline_sha256": "b31c701e1c8b41b0c1adb046ddb2a33b921b45044352c2fcc49233c73d8e6c24",
+  "confirmed_additional_guard_boundaries": [
+    {
+      "accepted_as_metadata": true,
+      "configured_role_root": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "contract": "0x22a2c54b15287472f4adbe7587226e3c998cdd96",
+      "emitted_balances": 0,
+      "kind": "nested membership_hash + 1 outside bool value",
+      "scope": "Synthetic guard-boundary reproduction with existing profile; not a historical balance mismatch or a real reachable write.",
+      "source_layout_evidence": "docs/evidence/direct-gaps-qualified.json",
+      "source_layout_evidence_sha256": "0c2dbba921ca3a9f1f025abc80d584497e2a954b65320b466ee88f95195dc640",
+      "symbol": "MUSD",
+      "synthetic_key": "0x5fe3005d4f6cb61e0a2e7f38cb391f89c4e9bef145687efb4d1819de19472e6c"
+    },
+    {
+      "accepted_as_metadata": true,
+      "configured_role_root": "0x0000000000000000000000000000000000000000000000000000000000000006",
+      "contract": "0x544028231562a43b106fbceca722b65cb5c861b0",
+      "emitted_balances": 0,
+      "kind": "nested membership_hash + 1 outside bool value",
+      "scope": "Synthetic guard-boundary reproduction with existing profile; not a historical balance mismatch or a real reachable write.",
+      "source_layout_evidence": "docs/evidence/next-candidates-qualification.json",
+      "source_layout_evidence_sha256": "3bd83b9cfb7d21427f57a66156874179acf61bee1a1c6f3b02e52c9b48876771",
+      "symbol": "OLY",
+      "synthetic_key": "0xbc4be49a2d9e9ad28570bd17b958042943ac24033f9e68dc56ee38087672c526"
+    }
+  ],
+  "finding": "Generic recursive mapping-word widths also accept one word past nested boolean memberships in existing MUSD and OLY configurations. This is a stricter unknown-write guard follow-up, not demonstrated balance parity failure. NXT uses the narrow reachable-membership configuration; existing profiles and production remain unchanged.",
+  "nxt_original_layout_sha256": "32f32ac7c8068e4880a05a8b8d30f3eb7cf5563de97edf69e2ab2344254a2b60",
+  "nxt_synthetic_checks": [
+    {
+      "key": "0x914422e5ac60f6a69c4f96e9109ab68fc768e41617ac47bfc93b83ed470be96d",
+      "kind": "membership",
+      "narrow_accepts": true,
+      "narrow_error": null,
+      "original_accepts": true,
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "key": "0x54cdd369e4e8a8515e52ca72ec816c2101831ad1f18bf44102ed171459c9b4f9",
+      "kind": "genuine_admin",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x54cdd369e4e8a8515e52ca72ec816c2101831ad1f18bf44102ed171459c9b4f9; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "key": "0x914422e5ac60f6a69c4f96e9109ab68fc768e41617ac47bfc93b83ed470be96e",
+      "kind": "outside_membership",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x914422e5ac60f6a69c4f96e9109ab68fc768e41617ac47bfc93b83ed470be96e; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "key": "0x54cdd369e4e8a8515e52ca72ec816c2101831ad1f18bf44102ed171459c9b4fa",
+      "kind": "outside_outer_record",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x54cdd369e4e8a8515e52ca72ec816c2101831ad1f18bf44102ed171459c9b4fa; refusing incomplete events",
+      "original_accepts": false,
+      "role": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "key": "0xe38e875f09ec5f57e2c3c4f8b95a217db670e9c4bb057c6c27fc07c4cfe4d7f4",
+      "kind": "membership",
+      "narrow_accepts": true,
+      "narrow_error": null,
+      "original_accepts": true,
+      "role": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6"
+    },
+    {
+      "key": "0x3195c024b2ddd6d9b8f6c836aa52f67fe69376c8903d009b80229b3ce4425f52",
+      "kind": "genuine_admin",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x3195c024b2ddd6d9b8f6c836aa52f67fe69376c8903d009b80229b3ce4425f52; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6"
+    },
+    {
+      "key": "0xe38e875f09ec5f57e2c3c4f8b95a217db670e9c4bb057c6c27fc07c4cfe4d7f5",
+      "kind": "outside_membership",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0xe38e875f09ec5f57e2c3c4f8b95a217db670e9c4bb057c6c27fc07c4cfe4d7f5; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6"
+    },
+    {
+      "key": "0x3195c024b2ddd6d9b8f6c836aa52f67fe69376c8903d009b80229b3ce4425f53",
+      "kind": "outside_outer_record",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x3195c024b2ddd6d9b8f6c836aa52f67fe69376c8903d009b80229b3ce4425f53; refusing incomplete events",
+      "original_accepts": false,
+      "role": "0x9f2df0fed2c77648de5860a4cc508cd0818c85b8b8a1ab4ceeef8d981c8956a6"
+    },
+    {
+      "key": "0x685fc6cf9cd6de18844b9efd9e776705a607827a79b99f59d66ac47784d4e7a1",
+      "kind": "membership",
+      "narrow_accepts": true,
+      "narrow_error": null,
+      "original_accepts": true,
+      "role": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "key": "0x63187d71e139eee983a88d0737447c7451979b3dbb75903c76b5fe430d36588f",
+      "kind": "genuine_admin",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x63187d71e139eee983a88d0737447c7451979b3dbb75903c76b5fe430d36588f; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "key": "0x685fc6cf9cd6de18844b9efd9e776705a607827a79b99f59d66ac47784d4e7a2",
+      "kind": "outside_membership",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x685fc6cf9cd6de18844b9efd9e776705a607827a79b99f59d66ac47784d4e7a2; refusing incomplete events",
+      "original_accepts": true,
+      "role": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "key": "0x63187d71e139eee983a88d0737447c7451979b3dbb75903c76b5fe430d365890",
+      "kind": "outside_outer_record",
+      "narrow_accepts": false,
+      "narrow_error": "unresolved storage for configured token 0xae7484d162ba80b340eba7769a7a67838b1c16c1 at key 0x63187d71e139eee983a88d0737447c7451979b3dbb75903c76b5fe430d365890; refusing incomplete events",
+      "original_accepts": false,
+      "role": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+  ],
+  "other_profiles_with_width_above_one": [
+    {
+      "contract": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 2
+      }
+    },
+    {
+      "contract": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000010": 2
+      }
+    },
+    {
+      "contract": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x544028231562a43b106fbceca722b65cb5c861b0",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      }
+    },
+    {
+      "contract": "0x255e746abb8d9acac00d6d023e5e63e3b8dfa7cd",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 2
+      }
+    },
+    {
+      "contract": "0x0c69199c1562233640e0db5ce2c399a88eb507c7",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      }
+    },
+    {
+      "contract": "0xc63961bf9a7d6bb5844524851d04fbd76dbe915b",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000005": 2
+      }
+    },
+    {
+      "contract": "0x3f53de71c126bdabae20f9cd64848d317f6c3238",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x4902c5ebc598265ed2212b559b042de8a5eeec3f",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x46ceefda28dd7207059ed19b0acdc026955bb15c",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x9b8e987e6fec8cf1380c4dca7071e2c7853aeea1",
+      "other_mapping_words": {
+        "0x00000000000000000000000000000000000000000000000000000000000000c9": 2
+      }
+    },
+    {
+      "contract": "0xfed13d0c40790220fbde712987079eda1ed75c51",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000065": 2
+      }
+    },
+    {
+      "contract": "0xd270d4e1ec6e6e0d28c0ecb8be966ec75997ffff",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000024": 5
+      }
+    },
+    {
+      "contract": "0x0f0df6cb17ee5e883eddfef9153fc6036bdb4e37",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      }
+    },
+    {
+      "contract": "0xe0a281deff5c9d8d67af09d39340e134ac81b82e",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 2
+      }
+    },
+    {
+      "contract": "0xf3d5b4c34ed623478cc5141861776e6cf7ae3a1e",
+      "other_mapping_words": {
+        "0x000000000000000000000000000000000000000000000000000000000000000a": 2
+      }
+    },
+    {
+      "contract": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x4af1d41cd9dd950dca43984b43aaa2a8702714ac",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x35803e77c3163fed8a942536c1c8e0d5bf90f906",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000001": 2
+      }
+    },
+    {
+      "contract": "0xa9ee28c80f960b889dfbd1902055218cba016f75",
+      "other_mapping_words": {
+        "0x00000000000000000000000000000000000000000000000000000000000000c9": 2
+      }
+    },
+    {
+      "contract": "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x8105743e8a19c915a604d7d9e7aa3a060a4c2c32",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000097": 2
+      }
+    },
+    {
+      "contract": "0x47121d525ca3a8f01a524b6b834974e21ae1215f",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+      }
+    },
+    {
+      "contract": "0x1e8341f392fecf9133048e6c786885af55441bcf",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+      }
+    },
+    {
+      "contract": "0x4a11ba40d7ca4f8c34a8a7bea53269c179999999",
+      "other_mapping_words": {
+        "0x000000000000000000000000000000000000000000000000000000000000000e": 6,
+        "0x000000000000000000000000000000000000000000000000000000000000000f": 6
+      }
+    },
+    {
+      "contract": "0x783c3f003f172c6ac5ac700218a357d2d66ee2a2",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000009": 2
+      }
+    },
+    {
+      "contract": "0xac23b90a79504865d52b49b327328411a23d4db2",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000005": 2
+      }
+    },
+    {
+      "contract": "0x208bf3e7da9639f1eaefa2de78c23396b0682025",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 2
+      }
+    },
+    {
+      "contract": "0xda033999bb6165e64db01bd9be14b40f5653092e",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 3
+      }
+    },
+    {
+      "contract": "0xd97d097a89113fa59b76c572e5b2eb647e8eefaf",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x4ef9d3062c7f6eba4aae4990c5036598c6eff4ec",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0xca750ef65f295bbecd685abf54e82caf297bdb61",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0xf2ec508422174ee564de98187db9359d318afb6b",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x08332a515cb2a57884176e887b682e7da2eb114e",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 3
+      }
+    },
+    {
+      "contract": "0xff7d6a96ae471bbcd7713af9cb1feeb16cf56b41",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000005": 2
+      }
+    },
+    {
+      "contract": "0x194b302a4b0a79795fb68e2adf1b8c9ec5ff8d1f",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000009": 3
+      }
+    },
+    {
+      "contract": "0x826923122a8521be36358bdc53d3b4362b6f46e5",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000000": 2
+      }
+    },
+    {
+      "contract": "0xce7de646e7208a4ef112cb6ed5038fa6cc6b12e3",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000006": 3
+      }
+    },
+    {
+      "contract": "0xa71add46ea4fbf0058b36e6baa39530f8e48b103",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 3
+      }
+    },
+    {
+      "contract": "0xe28cd11c99af2df76bb8ada4cd0ef3904378280f",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x5c999e15b71de2bb8e651f0f999fb0bc321a0dfe",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 2
+      }
+    },
+    {
+      "contract": "0x086f405146ce90135750bbec9a063a8b20a8bffb",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000007": 2
+      }
+    },
+    {
+      "contract": "0x22a2c54b15287472f4adbe7587226e3c998cdd96",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000000": 2
+      }
+    },
+    {
+      "contract": "0xd55c9fb62e176a8eb6968f32958fefdd0962727e",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000005": 2
+      }
+    },
+    {
+      "contract": "0x701add4311e85c1f9c1549319fe2c476bc8a1b8b",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000008": 3
+      }
+    },
+    {
+      "contract": "0x3ee4df61bd4f867e349beae8bfe07bc31b4850fb",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x9b6a1d4fa5d90e5f2d34130053978d14cd301d58",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x3477725399b706efabce710fcc54271db8b00c49",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000010": 4
+      }
+    },
+    {
+      "contract": "0xa394dcea3fd3847fd793afbfd163e2e3858b7c65",
+      "other_mapping_words": {
+        "0x02dd7bc7dec4dceedda775e58dd541e08a116c6c53815c0bd028192f7b626800": 2
+      }
+    },
+    {
+      "contract": "0x489ce5fb31523516f3fb4aacd597508c80edffff",
+      "other_mapping_words": {
+        "0x0000000000000000000000000000000000000000000000000000000000000024": 5
+      }
+    }
+  ],
+  "remaining_scope": "Other width profiles are inventoried, not fully requalified. Each requires source-specific review of record nesting and reachable writes before narrowing; terminal multiword records legitimately need offsets.",
+  "source_report_sha256": "80381350587bc66597fbc672dfa5d5a631acd491674239d01d452e1e387c525f",
+  "status": "inspected"
+}

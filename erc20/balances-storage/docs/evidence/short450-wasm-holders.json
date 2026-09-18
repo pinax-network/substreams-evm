@@ -1,0 +1,48 @@
+{
+  "checkpoint_sha256": "b7659da88c50b7f604a72d725a9a736d1b100c3fc22f58432611897d9f0ecd09",
+  "checks_sha256": "195270fc67e3ff1681548d38754a737745f6ee4b4c2eec32f148ea3fdc853662",
+  "configured_tokens": 2,
+  "deployment_initialization": [],
+  "events_sha256": "66b646f842de80b91a93b98a0c650c4ce37244f4f6617b690ba27f14bd6bd513",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 24,
+  "layouts_sha256": "2be4fea9c5ad7520a9df482377d5ffa74f992375e00a5425f0b55d0ed3fe4078",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 58,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Two bytecode-reviewed EIP1967 forwarders with pinned effective implementations and exact raw, allowance and packed metadata controls on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 10,
+  "snapshot_zeros": 2,
+  "source_report_sha256": "97257e332b5b1e371567184585979ce18cc1888210ad6ef950c7a9456b9c5a85",
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5591a8e9a5001f6052d9d749518ae1e6287b7955",
+      "emitted_rows": 20,
+      "reference_rows": 30,
+      "seeded_matches": 30,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 10,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5b0c8df579af6f32f8c6d2b0d908d68c54acac39",
+      "emitted_rows": 14,
+      "reference_rows": 28,
+      "seeded_matches": 28,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 7,
+      "unseeded_unknown_rows": 14,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "captured_block_count": 1024,
+  "captured_first": {
+    "block": 122288006,
+    "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+  },
+  "captured_last": {
+    "block": 122289029,
+    "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+  },
+  "checkpoint_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "checkpoint_holders": 10,
+  "checkpoint_rpc_reads": 20,
+  "checkpoint_scope": "Only configured holders observed in the reference test range",
+  "checkpoint_sha256": "b7659da88c50b7f604a72d725a9a736d1b100c3fc22f58432611897d9f0ecd09",
+  "checkpoint_tokens": {
+    "0x5591a8e9a5001f6052d9d749518ae1e6287b7955": {
+      "holders": 6,
+      "nonzero_holders": 5,
+      "zero_word_fallback_holders": 0
+    },
+    "0x5b0c8df579af6f32f8c6d2b0d908d68c54acac39": {
+      "holders": 4,
+      "nonzero_holders": 3,
+      "zero_word_fallback_holders": 0
+    }
+  },
+  "computed_initialized_holders": {},
+  "deployment_initialized_holders": {},
+  "elapsed_seconds": 73.959070417,
+  "event_row_parity_claimed": false,
+  "holder_checks_sha256": "1f790180aeab400a1a496121dc624e3dc0ea45af976745671a8f833635e0cd96",
+  "immutable_zero_initialized_holders": {},
+  "layouts_sha256": "2be4fea9c5ad7520a9df482377d5ffa74f992375e00a5425f0b55d0ed3fe4078",
+  "processing_balance_rpc_calls": 0,
+  "processing_header_rpc_calls": 1024,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Bounded off-chain holder-state replay; explicit RPC checkpoint, no production bootstrap or additional map",
+  "source_report_sha256": "cbeec793bbff9b80140c45f730d03be1fd1a7ffd794b655d1d5db8af382f3bd6",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5591a8e9a5001f6052d9d749518ae1e6287b7955",
+      "emitted_rows": 20,
+      "reference_rows": 30,
+      "seeded_matches": 30,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 0,
+      "unseeded_unknown_rows": 10,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x5b0c8df579af6f32f8c6d2b0d908d68c54acac39",
+      "emitted_rows": 14,
+      "reference_rows": 28,
+      "seeded_matches": 28,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 7,
+      "unseeded_unknown_rows": 14,
+      "unseeded_value_mismatches": 0
+    }
+  ],
+  "tool_language": "Rust",
+  "unobserved_tokens": []
+}
