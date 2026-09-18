@@ -1,0 +1,18 @@
+syntax = "proto3";
+package dex.pool_state.v1;
+
+import "uniswap-v2.proto";
+import "uniswap-v3.proto";
+
+// Both protocol outputs belong to the same complete block. V2 supplies closing
+// reserves; V3 supplies ordered changes requiring a verified starting state.
+// Neither output establishes pool authenticity or token/price interpretation.
+message BlockPoolState {
+  uint64 block_number = 1;
+  bytes block_hash = 2;
+  bytes parent_hash = 3;
+  int64 timestamp_seconds = 4;
+  int32 timestamp_nanos = 5;
+  repeated uniswap.v2.PoolClose v2_pools = 6;
+  repeated uniswap.v3.PoolChanges v3_pools = 7;
+}

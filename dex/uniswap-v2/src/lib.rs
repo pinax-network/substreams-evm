@@ -1,8 +1,15 @@
+mod closes;
+
 use common::create::{CreateLog, CreateTransaction};
 use proto::pb::uniswap::v2 as pb;
 use substreams_abis::dex::uniswap::v2 as uniswap;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
+
+#[substreams::handlers::map]
+fn map_pool_closes(block: Block) -> Result<pb::BlockPoolCloses, substreams::errors::Error> {
+    closes::extract(&block)
+}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {

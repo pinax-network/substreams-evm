@@ -42,6 +42,13 @@ pub mod curvefi {
     }
 }
 pub mod dex {
+    pub mod pool_state {
+        // @@protoc_insertion_point(attribute:dex.pool_state.v1)
+        pub mod v1 {
+            include!("dex.pool_state.v1.rs");
+            // @@protoc_insertion_point(dex.pool_state.v1)
+        }
+    }
     pub mod foundational_store {
         // @@protoc_insertion_point(attribute:dex.foundational_store.v1)
         pub mod v1 {
