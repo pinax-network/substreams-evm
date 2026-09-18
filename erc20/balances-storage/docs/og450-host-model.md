@@ -1,10 +1,11 @@
 # OG host model: five storage mismatches explained
 
 The host-only Rust model reproduces all five sampled OG mismatches, including
-both helper return values and the hourly stopping cursor. It also matches 40
-read-only RPC controls. Three controls exercise branches that the model
-explicitly rejects because their arithmetic has not been decoded. **OG remains
-unqualified for the production storage module.**
+both helper return values and the hourly stopping cursor. It now matches all
+43 original read-only RPC controls and 49 fresh preview controls. The three
+branches rejected by the initial model are now decoded; their original fixture
+status and evidence remain unchanged. **OG remains unqualified for the
+production storage module.**
 
 The token is rank 411, `0xe18102869d32181aea317a40c5c4ce90ca591913`.
 Its `balanceOf` adds pending hourly and daily rewards to the holder's raw root-0
@@ -40,14 +41,38 @@ trace operands confirm the 9975/10000 fee constants and reserve1-to-reserve0
 direction in both pools. All arithmetic preserves checked uint256 operations
 and division rounding at the deployed steps.
 
-The 40 matching controls cover raw balance changes and overflow, reward/rate
+The original controls cover raw balance changes and overflow, reward/rate
 changes, initial and carried rates, zero-total skips, the three-period daily
 limit, floor-to-zero contributions, weekly 168/169-hour boundaries, percentage
 threshold equality, short-circuited and active overflows, cap clipping, reserve
-changes, early exits, and clock changes. The fixtures also preserve the three
-unsupported controls: hourly or daily zero reward with a positive total, and
-an initial zero daily user rate. The pool's own nonzero hourly reward rate is
-another explicit unsupported dependency because it requires recursion.
+changes, early exits, and clock changes. The original fixtures preserve the
+three formerly unsupported controls: hourly or daily zero reward with a
+positive total, and an initial zero daily user rate. Regression assertions now
+require their captured outputs to match the extended model.
+
+When a period's stored reward is zero and its carried total rate is positive,
+the helper calculates a preview from the pool's raw balance. Its rate is
+`min(1200 + 240 * floor(currentDay / 10), 3600) / 24`, with integer division.
+The current day comes from the block timestamp and token epoch, even when
+previewing an older period. The hourly preview burns
+`floor(pool * rate / 100000)` and allocates 30% of that burn. The daily preview
+repeats up to 24 hourly burns, allocating 15% per iteration. Each multiplication,
+division, accumulation, and pool update preserves the deployed order.
+
+Zero burn leaves the pool unchanged. A nonzero stored reward or zero carried
+total skips preview without consuming the simulated pool. A zero user rate
+does not skip preview, though it prevents that period's reward allocation.
+Hourly and daily helpers each start from the original pool balance. The daily
+initial rate falls back to holder field 6 only when its stored rate is zero
+and holder field 8 is positive; otherwise zero carries until a later nonzero
+user rate arrives.
+
+The 49 fresh controls test all three resolved branches, tiny pool rounding,
+pool multiplication overflow, repeated previews, mixed stored and previewed
+rewards, zero-total skips, zero-user preview followed by recovery, three-day
+stopping, and clock boundaries at days 0, 9, 10, 99, 100, 109, 110, and 365.
+Eleven fresh traces also provide ten internal preview returns, binding both
+the reward and remaining pool rather than only the final holder balance.
 
 The strict fixture decoder rejects missing words, unreviewed runtime hashes,
 and changed stored dependency addresses. Holder-record byte 20 is a uint8
@@ -61,7 +86,8 @@ Implementation and captured regressions:
 - [Host arithmetic](../tools/src/og_model.rs) and [raw-state decoder](../tools/src/og_model/fixture.rs)
 - [Rust regressions](../tools/src/og_model/tests.rs)
 - [Historical snapshots](../tests/fixtures/og-model/historical.json) and [RPC controls](../tests/fixtures/og-model/controls.json)
-- [Compact evidence and bytecode excerpts](evidence/og450-host-model.json)
+- [Preview snapshots and controls](../tests/fixtures/og-model/preview.json)
+- [Initial evidence](evidence/og450-host-model.json) and [preview evidence and bytecode excerpts](evidence/og450-preview-model.json)
 
 Run the focused checks with:
 
@@ -76,7 +102,7 @@ initialized snapshot and limits its daily horizon to 1000 periods. Numeric
 overflow rejection is tested; arbitrary router revert ABI parity is outside
 this model's scope.
 
-The next bounded step is to decode the hourly and daily zero-reward preview
-bodies at helper PCs 11119 and 6559, and the initial daily rate branch at
-3852–3881, then add raw-state and clock controls. Production state retention
-and qualification remain separate work.
+The pool's own nonzero hourly reward rate remains an explicit error because it
+requires recursive modeling. A next bounded step is to determine whether that
+branch is reachable for the reviewed pool and how to guard it from raw state.
+Production state retention and qualification remain separate work.

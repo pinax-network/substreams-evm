@@ -426,6 +426,8 @@ mod pending_direct_tests;
 #[cfg(test)]
 mod proxy400_tests;
 #[cfg(test)]
+mod public450_tests;
+#[cfg(test)]
 mod ranked_cohort_tests;
 #[cfg(test)]
 mod ranked_proxy_tests;
@@ -447,7 +449,11 @@ mod securities_proxy_tests;
 #[cfg(test)]
 mod seven400_tests;
 #[cfg(test)]
+mod simple450_tests;
+#[cfg(test)]
 mod sparse400_tests;
+#[cfg(test)]
+mod standard450_tests;
 #[cfg(test)]
 mod swkey_tests;
 #[cfg(test)]

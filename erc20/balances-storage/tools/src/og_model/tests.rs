@@ -1,4 +1,4 @@
-use super::fixture::{self, key, word, HELPER, TOKEN};
+use super::fixture::{self, key, word, HELPER, POOL_A, TOKEN};
 use crate::data::uint;
 use crate::rpc::quantity;
 use anyhow::Result;
@@ -11,6 +11,9 @@ fn historical() -> Vec<Value> {
 fn controls() -> Vec<Value> {
     serde_json::from_str(include_str!("../../../tests/fixtures/og-model/controls.json")).unwrap()
 }
+fn preview() -> Value {
+    serde_json::from_str(include_str!("../../../tests/fixtures/og-model/preview.json")).unwrap()
+}
 fn replace(v: &mut Value, contract: &str, slot: U256, value: U256) {
     let row = v["raw_state"]
         .as_array_mut()
@@ -20,7 +23,7 @@ fn replace(v: &mut Value, contract: &str, slot: U256, value: U256) {
         .unwrap();
     row["value"] = json!(word(value));
 }
-fn check(actual: Result<Vec<U256>>, expected: &Value, label: &str, unsupported: bool) -> bool {
+fn check(actual: Result<Vec<U256>>, expected: &Value, label: &str) {
     match actual {
         Ok(values) => {
             assert_eq!(
@@ -33,19 +36,11 @@ fn check(actual: Result<Vec<U256>>, expected: &Value, label: &str, unsupported: 
                     .collect::<Vec<_>>(),
                 "{label}"
             );
-            false
         }
         Err(error) => {
             let message = error.to_string();
-            if unsupported && message.starts_with("unmodeled ") {
-                // The deployed branch succeeds, but no inferred value is returned
-                // by the host model for behavior it has not decoded.
-                assert!(expected["values"].is_array(), "{label}");
-                return true;
-            }
             assert!(message.starts_with("uint256 "), "unexpected rejection {label}: {message}");
             assert_eq!(expected["rpc_error"]["data"], format!("0x4e487b71{:064x}", 0x11), "{label}");
-            false
         }
     }
 }
@@ -71,8 +66,7 @@ fn rpc_controls_bind_rounding_three_positive_days_caps_carry_and_reverts() {
     let rows = historical();
     let controls = controls();
     assert_eq!(controls.len(), 43);
-    let mut matched = 0;
-    let mut refused = 0;
+    let mut previously_unsupported = 0;
     for row in controls {
         let mut snapshot = rows[row["base_case"].as_u64().unwrap() as usize - 1].clone();
         snapshot["timestamp"] = row["timestamp"].clone();
@@ -86,28 +80,60 @@ fn rpc_controls_bind_rounding_three_positive_days_caps_carry_and_reverts() {
         }
         let state = fixture::decode(&snapshot).unwrap();
         let name = row["name"].as_str().unwrap();
-        let unsupported = row["status"] == "explicitly_unsupported";
-        let mut rejected = check(
-            state.hourly().map(|(reward, stop)| vec![reward, stop]),
-            &row["expected"]["hourly"],
-            name,
-            unsupported,
-        );
-        rejected |= check(state.daily().map(|reward| vec![reward]), &row["expected"]["daily"], name, unsupported);
-        rejected |= check(
-            state.evaluate().map(|value| vec![value.balance]),
-            &row["expected"]["balance"],
-            name,
-            unsupported,
-        );
-        assert_eq!(rejected, unsupported, "{name}");
-        if rejected {
-            refused += 1;
-        } else {
-            matched += 1;
-        }
+        check(state.hourly().map(|(reward, stop)| vec![reward, stop]), &row["expected"]["hourly"], name);
+        check(state.daily().map(|reward| vec![reward]), &row["expected"]["daily"], name);
+        check(state.evaluate().map(|value| vec![value.balance]), &row["expected"]["balance"], name);
+        previously_unsupported += usize::from(row["status"] == "explicitly_unsupported");
     }
-    assert_eq!((matched, refused), (40, 3));
+    // Preserve original evidence status: these captures were refused by the
+    // initial model and their outputs are now independently modeled.
+    assert_eq!(previously_unsupported, 3);
+}
+
+#[test]
+fn fresh_preview_controls_bind_pool_decay_daily_fallback_rate_clock_and_overflow() {
+    let fixture = preview();
+    let rows = fixture["controls"].as_array().unwrap();
+    assert_eq!(rows.len(), 49);
+    for row in rows {
+        let mut snapshot = fixture["base"].clone();
+        snapshot["timestamp"] = row["timestamp"].clone();
+        for change in row["state_diff"].as_array().unwrap() {
+            replace(
+                &mut snapshot,
+                change["contract"].as_str().unwrap(),
+                quantity(&change["key"]).unwrap(),
+                quantity(&change["value"]).unwrap(),
+            );
+        }
+        let state = fixture::decode(&snapshot).unwrap();
+        let name = row["name"].as_str().unwrap();
+        check(state.hourly().map(|(reward, stop)| vec![reward, stop]), &row["expected"]["hourly"], name);
+        check(state.daily().map(|reward| vec![reward]), &row["expected"]["daily"], name);
+        check(state.evaluate().map(|value| vec![value.balance]), &row["expected"]["balance"], name);
+    }
+}
+
+#[test]
+fn trace_returns_bind_internal_preview_reward_and_remaining_pool() {
+    let fixture = preview();
+    let state = fixture::decode(&fixture["base"]).unwrap();
+    let rows = fixture["internal_preview_returns"].as_array().unwrap();
+    assert_eq!(rows.len(), 10);
+    for row in rows {
+        let pool = uint(&row["input_pool"]).unwrap();
+        let result = if row["daily"] == true {
+            state.daily_preview(pool)
+        } else {
+            state.hourly_preview(pool)
+        };
+        assert_eq!(
+            result.unwrap(),
+            (uint(&row["expected_reward"]).unwrap(), uint(&row["expected_remaining_pool"]).unwrap()),
+            "{}",
+            row["name"]
+        );
+    }
 }
 
 #[test]
@@ -115,7 +141,11 @@ fn missing_words_runtimes_addresses_and_unmodeled_recursion_fail_closed() {
     let row = historical().remove(0);
     let state = fixture::decode(&row).unwrap();
     let holder = quantity(&row["holder"]).unwrap();
-    for (contract, slot) in [(TOKEN, key(&[state.last_hour], 24)), (HELPER, U256::one())] {
+    for (contract, slot) in [
+        (TOKEN, key(&[state.last_hour], 24)),
+        (TOKEN, key(&[quantity(&json!(POOL_A)).unwrap()], 0)),
+        (HELPER, U256::one()),
+    ] {
         let mut missing = row.clone();
         missing["raw_state"]
             .as_array_mut()

@@ -85,7 +85,7 @@ pub fn decode(v: &Value) -> Result<State> {
     for offset in 1..12 {
         token(pool_base + U256::from(offset))?;
     }
-    token(key(&[pool_holder], 0))?;
+    let pool_balance = token(key(&[pool_holder], 0))?;
     let now = quantity(&v["timestamp"])?;
     let epoch = token(29.into())?;
     let elapsed = now.checked_sub(epoch).context("uint256 subtraction underflow")?;
@@ -137,6 +137,7 @@ pub fn decode(v: &Value) -> Result<State> {
         reserve1_b: (p2 >> 112) & mask,
         pool_hour_rate: token(pool_base + U256::from(4))?,
         pool_day_rate: token(pool_base + U256::from(5))?,
+        pool_balance,
         hours: periods(hour_count, last_hour, 23, 12, 24)?,
         days: periods(day_count, last_day, 25, 13, 27)?,
     })

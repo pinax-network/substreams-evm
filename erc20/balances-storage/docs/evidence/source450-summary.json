@@ -1,0 +1,303 @@
+{
+  "cohorts": [
+    {
+      "carry_forward": 19,
+      "checkpoint_holders": 20,
+      "checkpoint_reads": 40,
+      "checkpoint_report_sha256": "01672ca0919bf2914d508be8959b473c3792e69a4c0605a2721381b595a51a7a",
+      "cohort": "simple450",
+      "cold_unknown": 17,
+      "cold_unknown_nonzero": 8,
+      "emitted_zeros": 0,
+      "final_holders": 20,
+      "final_zeros": 1,
+      "holder_observations": 56,
+      "holder_report_sha256": "e7a1f5056fe70b6e6f4f925f0b005117d9b0a87baeb8b88709241e1d758676cd",
+      "profiles": 2,
+      "rpc_checks": 37,
+      "rpc_report_sha256": "6b423ef824a7419ea0c01b54725c8b799e37891c332400322a366e1f9b480814"
+    },
+    {
+      "carry_forward": 21,
+      "checkpoint_holders": 32,
+      "checkpoint_reads": 64,
+      "checkpoint_report_sha256": "3f1c33755563a5bc768889dc968491b63dfa4e4cc1c0063857c7fe5ee579304c",
+      "cohort": "public450",
+      "cold_unknown": 20,
+      "cold_unknown_nonzero": 8,
+      "emitted_zeros": 2,
+      "final_holders": 32,
+      "final_zeros": 5,
+      "holder_observations": 58,
+      "holder_report_sha256": "974cf98412a677bf8504f7419b8e986b17304a469daf3ebc5c8de98a410f202c",
+      "profiles": 2,
+      "rpc_checks": 37,
+      "rpc_report_sha256": "defd8b0a57f8d58b6a94b2e4143f583446549ae6b53f99f44ca9f8bfd328e8b6"
+    },
+    {
+      "carry_forward": 63,
+      "checkpoint_holders": 61,
+      "checkpoint_reads": 122,
+      "checkpoint_report_sha256": "5db60ae2a41931584e35fc29a2f18fae48cdc1ad5c73527af872c9a84656f320",
+      "cohort": "standard450",
+      "cold_unknown": 59,
+      "cold_unknown_nonzero": 26,
+      "emitted_zeros": 9,
+      "final_holders": 61,
+      "final_zeros": 25,
+      "holder_observations": 135,
+      "holder_report_sha256": "1e963d90697b281769ebf626c26eff79319044f56c2ee205cf3bc6be0e5027e2",
+      "profiles": 5,
+      "rpc_checks": 72,
+      "rpc_report_sha256": "86e9e8acb68fec00a177904ef7614fd353e4ad9717eb4a329e07180ceb883c49"
+    }
+  ],
+  "combined": {
+    "aggregate_emitted_zero_checks": 15247,
+    "all_balance_event_fields_equal": true,
+    "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "baseline_report_sha256": "e575cf51bf04ece85eb3b1edb8b983627e42d812a9935e6228b4bfac30816b5c",
+    "blocks": 1024,
+    "capture": {
+      "blocks_per_second_including_startup": 9.240484414500294,
+      "empty_output_delivery": null,
+      "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+      "seconds_including_startup": 110.816701167
+    },
+    "configured_profiles": 421,
+    "elapsed_seconds": 187.997247,
+    "events_sha256": "1e8f3ad22612345418d0a0ab61e09245276dcc5be5eb85cb4cd1c15351801e9f",
+    "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+    "fresh_balance_rpc_calls": 0,
+    "holder_observations_with_identical_event_history": 180135,
+    "initialized_carry_forward_matches": 70160,
+    "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+    "layouts_sha256": "b31c701e1c8b41b0c1adb046ddb2a33b921b45044352c2fcc49233c73d8e6c24",
+    "package_change_scope": "Same packaged code; nine independently qualified source-bound direct layouts added to the previous immutable verified output",
+    "profiles_with_emitted_rows": 420,
+    "reused_verified_rpc_rows": 109976,
+    "scope": "Fresh 421-profile actual-WASM capture. Full-field comparison with the verified 412-profile capture and nine newly RPC-audited source-bound direct profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-421 holder checkpoint.",
+    "sources": [
+      {
+        "checks_sha256": "897c7f58d1b16844b930923c342077adad153c234b3a285353504814fb89a5e9",
+        "cohort": "simple450",
+        "events_sha256": "f8c0f6e3e95012fcdd01604d12b1f93b0cf0265eac79d1d5966fd88138575a92",
+        "holder_report_sha256": "e7a1f5056fe70b6e6f4f925f0b005117d9b0a87baeb8b88709241e1d758676cd",
+        "layouts_sha256": "5dc397fc6d13e00349985ae29032c7dbc3c26c86087b35b0cc08ec62d4531636",
+        "rpc_report_sha256": "6b423ef824a7419ea0c01b54725c8b799e37891c332400322a366e1f9b480814"
+      },
+      {
+        "checks_sha256": "f763cfc5bf0c194b194731b2b04f3faa79429b725e55ad69cdbaba3fbedd4302",
+        "cohort": "public450",
+        "events_sha256": "8926840394c7b496f45c8a21a0b327ec1b316de1bf780194ab5c7702abbb539d",
+        "holder_report_sha256": "974cf98412a677bf8504f7419b8e986b17304a469daf3ebc5c8de98a410f202c",
+        "layouts_sha256": "ebd3b0dc4303ea5c5f5efcdc0a11db561b6c5e048fe50bc6a96734d1a093ac77",
+        "rpc_report_sha256": "defd8b0a57f8d58b6a94b2e4143f583446549ae6b53f99f44ca9f8bfd328e8b6"
+      },
+      {
+        "checks_sha256": "770f639dbafef44e38862f93bfa8c1ac2a7cff3ee21124773933b0f54f1b0988",
+        "cohort": "standard450",
+        "events_sha256": "f148b7fc2c8b7998b5c881068fbc3220f3cfa9086f93fbf42e82e616b8f2dbfd",
+        "holder_report_sha256": "1e963d90697b281769ebf626c26eff79319044f56c2ee205cf3bc6be0e5027e2",
+        "layouts_sha256": "0ec11af1fdc23a7f0d405ddbe0355627aafbfb8cc3b3c5e9cdb9fd3b5acea40f",
+        "rpc_report_sha256": "86e9e8acb68fec00a177904ef7614fd353e4ad9717eb4a329e07180ceb883c49"
+      }
+    ],
+    "status": "bounded_parity",
+    "tool_language": "Rust"
+  },
+  "new_cohort_totals": {
+    "carry_forward": 103,
+    "checkpoint_holders": 113,
+    "checkpoint_reads": 226,
+    "cold_unknown": 96,
+    "cold_unknown_nonzero": 42,
+    "emitted_zeros": 11,
+    "final_holders": 113,
+    "final_zeros": 31,
+    "holder_observations": 249,
+    "profiles": 9,
+    "rpc_checks": 146
+  },
+  "new_profiles": 9,
+  "qualified_profiles": 421,
+  "ranking_scope": 450,
+  "remaining_top450": [
+    {
+      "contract": "0x88886f0fd371dff856291badced45922bc888888",
+      "rank": 143,
+      "reference_rows": 132,
+      "unique_holders": 6
+    },
+    {
+      "contract": "0xe0ab66985c8d18fba4cbc080024341750e997777",
+      "rank": 203,
+      "reference_rows": 81,
+      "unique_holders": 25
+    },
+    {
+      "contract": "0x885584e6ee2f8bdcdd7be5898da49f63050e8899",
+      "rank": 209,
+      "reference_rows": 79,
+      "unique_holders": 30
+    },
+    {
+      "contract": "0xebc2d768147f2d058f4266bb57e34ca1b6ef1319",
+      "rank": 238,
+      "reference_rows": 66,
+      "unique_holders": 12
+    },
+    {
+      "contract": "0x26bfefbad1bc1f6979ad92e544171f0b600c8888",
+      "rank": 338,
+      "reference_rows": 38,
+      "unique_holders": 8
+    },
+    {
+      "contract": "0xc748673057861a797275cd8a068abb95a902e8de",
+      "rank": 372,
+      "reference_rows": 34,
+      "unique_holders": 19
+    },
+    {
+      "contract": "0x1f64fdad335ed784898effb5ce22d54d8f432523",
+      "rank": 377,
+      "reference_rows": 33,
+      "unique_holders": 12
+    },
+    {
+      "contract": "0x001208f7f53f78db2b32e1c68198d3e8f320aa23",
+      "rank": 401,
+      "reference_rows": 30,
+      "unique_holders": 14
+    },
+    {
+      "contract": "0x20d6015660b3fe52e6690a889b5c51f69902ce0e",
+      "rank": 404,
+      "reference_rows": 30,
+      "unique_holders": 11
+    },
+    {
+      "contract": "0x3494dfe19b721dac6c5c8d7470c8f89548177777",
+      "rank": 405,
+      "reference_rows": 30,
+      "unique_holders": 14
+    },
+    {
+      "contract": "0x5591a8e9a5001f6052d9d749518ae1e6287b7955",
+      "rank": 406,
+      "reference_rows": 30,
+      "unique_holders": 6
+    },
+    {
+      "contract": "0x608171b27c0c2a48accb5581c0cae5c611328f7f",
+      "rank": 407,
+      "reference_rows": 30,
+      "unique_holders": 5
+    },
+    {
+      "contract": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+      "rank": 411,
+      "reference_rows": 30,
+      "unique_holders": 10
+    },
+    {
+      "contract": "0x0ae7cd10f94fd16a6f9a29a372708718144c46f8",
+      "rank": 412,
+      "reference_rows": 29,
+      "unique_holders": 9
+    },
+    {
+      "contract": "0xc2400658ba8911f535300c626e3168060c871666",
+      "rank": 415,
+      "reference_rows": 29,
+      "unique_holders": 14
+    },
+    {
+      "contract": "0x3a090ac70c4f453838c34490e3b1cf925c03fc71",
+      "rank": 418,
+      "reference_rows": 28,
+      "unique_holders": 9
+    },
+    {
+      "contract": "0x5b0c8df579af6f32f8c6d2b0d908d68c54acac39",
+      "rank": 422,
+      "reference_rows": 28,
+      "unique_holders": 4
+    },
+    {
+      "contract": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+      "rank": 423,
+      "reference_rows": 28,
+      "unique_holders": 14
+    },
+    {
+      "contract": "0x6e2fb83ff0c7f38eb0b84a66b63a481ceeb102f7",
+      "rank": 424,
+      "reference_rows": 28,
+      "unique_holders": 11
+    },
+    {
+      "contract": "0xac68931b666e086e9de380cfdb0fb5704a35dc2d",
+      "rank": 426,
+      "reference_rows": 28,
+      "unique_holders": 9
+    },
+    {
+      "contract": "0xae7484d162ba80b340eba7769a7a67838b1c16c1",
+      "rank": 427,
+      "reference_rows": 28,
+      "unique_holders": 4
+    },
+    {
+      "contract": "0xfbee27c1ba3724bc1b8acb140f7138e8cf45812f",
+      "rank": 429,
+      "reference_rows": 28,
+      "unique_holders": 20
+    },
+    {
+      "contract": "0x6cd3025f851f36e74937d4e652f6ae9d4b2e88cf",
+      "rank": 433,
+      "reference_rows": 27,
+      "unique_holders": 10
+    },
+    {
+      "contract": "0x8a063a9ff4de28dcb87117cc759be6ce70e09f81",
+      "rank": 436,
+      "reference_rows": 27,
+      "unique_holders": 3
+    },
+    {
+      "contract": "0x97c1c04bbd7dbfa3d139a13dc6ac2678162d95e4",
+      "rank": 437,
+      "reference_rows": 27,
+      "unique_holders": 10
+    },
+    {
+      "contract": "0x40af8fd127dcd302d7ffa6f37cf5a002e54ac68c",
+      "rank": 440,
+      "reference_rows": 26,
+      "unique_holders": 10
+    },
+    {
+      "contract": "0xb86126b872e3f23bc62d6a4a3152ec65202a2073",
+      "rank": 444,
+      "reference_rows": 26,
+      "unique_holders": 9
+    },
+    {
+      "contract": "0x3505bee89d3b4e351dbd4849241a6b0716ea407f",
+      "rank": 448,
+      "reference_rows": 25,
+      "unique_holders": 7
+    },
+    {
+      "contract": "0x37e94fc028903e74275478b65160d6d2c0e8880b",
+      "rank": 449,
+      "reference_rows": 25,
+      "unique_holders": 11
+    }
+  ],
+  "scope": "Nine new independent packaged/initialized-holder qualifications, combined with412 prior profiles under unchanged production WASM. Full-field equality reuses immutable RPC evidence and does not establish a new full421 holder checkpoint, global enumeration or production support for OG/reflection models.",
+  "status": "bounded_parity"
+}

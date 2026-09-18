@@ -1,0 +1,616 @@
+{
+  "baseline_layouts_sha256": "0edfaa96073e29ebe7db313e85e304951fcc4229b752fde67e7d88f797eaba18",
+  "controls_fixture": "tests/fixtures/standard450/controls.json",
+  "elapsed_seconds": 78.28735225,
+  "excluded": [],
+  "layouts_sha256": "0ec11af1fdc23a7f0d405ddbe0355627aafbfb8cc3b3c5e9cdb9fd3b5acea40f",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x0510101ec6c49d24ed911f0011e22a0d697ee776": 16,
+      "0x4338665cbb7b2485a8855a139b75d5e34ab0db94": 16,
+      "0x4b0f1812e5df2a09796481ff14017e6005508003": 10,
+      "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957": 15,
+      "0x96dd399f9c3afda1f194182f71600f1b65946501": 15
+    },
+    "errors": []
+  },
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "rpc_requests_sha256": "493a38dd772b5e84c34827ac993d4133c61c0f740fbb9320f49c52aaac360cd1",
+  "scope": "Five complete source-reviewed direct getters; full strict native replay and fresh controls. Packaged RPC and initialized-holder gates remain required. No future-path or global-holder claim.",
+  "source_report_sha256": "082e2c1d4b83a1ff32f7b5733dc703b6d31477baf593a04aacde9add3b9bfd0d",
+  "source_review_artifact": "standard450-source-review.json",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "block": 122288009,
+      "contract": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+      "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+      "holder": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "inspection": {
+        "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288009,
+        "contract": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+        "elapsed_seconds": 0.315311292,
+        "execution_code": [
+          {
+            "address": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+            "checked_instructions": 1,
+            "runtime_hash": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+              "depth": 1,
+              "key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+              "pc": 1816,
+              "storage_address": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4",
+        "status": "inspected",
+        "storage_key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x1b1faec781886d259ce641a47bfe77cb0c9d76fc47a2b5fb5fe6922a1820905d",
+            "pc": 1816,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "4d528cba1e3a4825e430d50946d3b5a601ea98ca6aeefa56a118c87e0a314694"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4",
+        "contract": "0x78a5e9dde0e1c411251abf2ee6728aace1e1f957",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007"
+        ]
+      },
+      "rank": 408,
+      "review_basis": "Complete source balanceOf returns exactly _balances[account]; no override in derived contract, scaling, fallback, caller/time dependency or external call. Compiler layout binds declared fields; fixed metadata and reviewed allowance/allowlist roots are separate. Historical bytes equal reconstructed compiler runtime; replacements confined to declared CBOR suffix. TWT owner is packed at byte1 with uint8 decimals at byte0; FRT treasury/pair/allowlist only govern writes, not balanceOf.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4"
+        },
+        {
+          "block": 122288009,
+          "hash": "0x9650ae00b034649848fff778adf36eb1c0de60cf41b435e16d33ceac022de1bc",
+          "runtime_hash": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0xe3b471bd950fa9b4ffdcec93586a49f7bdcb3e3113cf160645fc91e07095a6f4"
+        }
+      ],
+      "runtime_reconstruction": [],
+      "source_file_sha256": "62db20f108fcdaa5be2bf3d70d04a3bdf498d6ebb5e56fd10dc80e37aaaeef21",
+      "source_response_sha256": "dff4bdcc60a9194f747fbc7600d5f80da796eceaf66191feb4a8c699da66e049",
+      "symbol": "FRT"
+    },
+    {
+      "block": 122288036,
+      "contract": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+      "hash": "0xafb869b488efef61d20a28ed8b534fdbb51ad87320a72a398d08451222484d47",
+      "holder": "0x22313ace9911b91a0bc6eab0189b99e78c28c699",
+      "inspection": {
+        "address": "0x22313ace9911b91a0bc6eab0189b99e78c28c699",
+        "balance_of": "16718037367179141814074190",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288036,
+        "contract": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+        "elapsed_seconds": 0.306879583,
+        "execution_code": [
+          {
+            "address": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+            "checked_instructions": 1,
+            "runtime_hash": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+              "depth": 1,
+              "key": "0xccc8931c53dbf35bc1caff412ff1d1133633893308f0a3d22b6b5aac2576652d",
+              "pc": 1552,
+              "storage_address": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+              "value": "0x0000000000000000000000000000000000000000000dd42e9f25134392f6bb4e"
+            }
+          ]
+        },
+        "hash": "0xafb869b488efef61d20a28ed8b534fdbb51ad87320a72a398d08451222484d47",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046",
+        "status": "inspected",
+        "storage_key": "0xccc8931c53dbf35bc1caff412ff1d1133633893308f0a3d22b6b5aac2576652d",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xccc8931c53dbf35bc1caff412ff1d1133633893308f0a3d22b6b5aac2576652d",
+            "pc": 1552,
+            "value": "0x0000000000000000000000000000000000000000000dd42e9f25134392f6bb4e"
+          }
+        ],
+        "storage_word": "16718037367179141814074190",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "2b0f8b1283ee35520bc3091c9a42aa607fd7499d14b5c55ea8c6961cf0680b10"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046",
+        "contract": "0x0510101ec6c49d24ed911f0011e22a0d697ee776",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "rank": 416,
+      "review_basis": "Complete source balanceOf returns exactly _balances[account]; no override in derived contract, scaling, fallback, caller/time dependency or external call. Compiler layout binds declared fields; fixed metadata and reviewed allowance/allowlist roots are separate. Historical bytes equal reconstructed compiler runtime; replacements confined to declared CBOR suffix. TWT owner is packed at byte1 with uint8 decimals at byte0; FRT treasury/pair/allowlist only govern writes, not balanceOf.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046"
+        },
+        {
+          "block": 122288036,
+          "hash": "0xafb869b488efef61d20a28ed8b534fdbb51ad87320a72a398d08451222484d47",
+          "runtime_hash": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0x30e7d8278ca8759793860defd3568ae066374b266de9c1cecfbce3fa61634046"
+        }
+      ],
+      "runtime_reconstruction": [
+        {
+          "length": 53,
+          "offset": 6318,
+          "reason": "cborAuxdata suffix only"
+        }
+      ],
+      "source_file_sha256": "9c0597c9fbc84dc7f44b2e6230720856a8c6cb228abcc0d59c85f7e213bdb150",
+      "source_response_sha256": "9106ac0e9624a1af97fa0afd88b5ce05ddf0b9499cc7bae200fb39577a49ad4f",
+      "symbol": "X"
+    },
+    {
+      "block": 122288103,
+      "contract": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+      "hash": "0xa7581dfde1b7d2a453858245092ebb9f766504abfc6531c44591a61768e776e1",
+      "holder": "0x3edb9e4b77c0f7a053387fd49c031d41d45d27eb",
+      "inspection": {
+        "address": "0x3edb9e4b77c0f7a053387fd49c031d41d45d27eb",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "block": 122288103,
+        "contract": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+        "elapsed_seconds": 0.279578417,
+        "execution_code": [
+          {
+            "address": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+            "checked_instructions": 1,
+            "runtime_hash": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+              "depth": 1,
+              "key": "0xc0103ae0585cdb6791bfa6dbdbb0fb2df22adf9cf4d26883ec641faf449438dc",
+              "pc": 1481,
+              "storage_address": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0xa7581dfde1b7d2a453858245092ebb9f766504abfc6531c44591a61768e776e1",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc",
+        "status": "inspected",
+        "storage_key": "0xc0103ae0585cdb6791bfa6dbdbb0fb2df22adf9cf4d26883ec641faf449438dc",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xc0103ae0585cdb6791bfa6dbdbb0fb2df22adf9cf4d26883ec641faf449438dc",
+            "pc": 1481,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "432547e6b8c8b7ca70bd8f108f126c09e7e1c9f33f8eaed1c47aef195a3bd32f"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "code_hash": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc",
+        "contract": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ]
+      },
+      "rank": 441,
+      "review_basis": "Complete source balanceOf returns exactly _balances[account]; no override in derived contract, scaling, fallback, caller/time dependency or external call. Compiler layout binds declared fields; fixed metadata and reviewed allowance/allowlist roots are separate. Historical bytes equal reconstructed compiler runtime; replacements confined to declared CBOR suffix. TWT owner is packed at byte1 with uint8 decimals at byte0; FRT treasury/pair/allowlist only govern writes, not balanceOf.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc"
+        },
+        {
+          "block": 122288103,
+          "hash": "0xa7581dfde1b7d2a453858245092ebb9f766504abfc6531c44591a61768e776e1",
+          "runtime_hash": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0x69ef7362d64d3b23d71bebd36eb1fc73af210f344fcf953fb481a318c467b8fc"
+        }
+      ],
+      "runtime_reconstruction": [
+        {
+          "length": 52,
+          "offset": 4361,
+          "reason": "cborAuxdata suffix only"
+        }
+      ],
+      "source_file_sha256": "ea4250b33526fa2333b00ee3e10329f6f9ba208bde93f146d2ada141bbca36e2",
+      "source_response_sha256": "1e428002330ae84739f689adb2634c493b44492cec1082fcc3c8ae6e7643f405",
+      "symbol": "LTC"
+    },
+    {
+      "block": 122288925,
+      "contract": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+      "hash": "0x117d01a5644ef9b80483dfd4bfb7a108655926d5ad469701454305217c56d095",
+      "holder": "0x0000000000001ff3684f28c67538d4d072c22734",
+      "inspection": {
+        "address": "0x0000000000001ff3684f28c67538d4d072c22734",
+        "balance_of": "0",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "block": 122288925,
+        "contract": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+        "elapsed_seconds": 0.301373833,
+        "execution_code": [
+          {
+            "address": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+            "checked_instructions": 1,
+            "runtime_hash": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+              "depth": 1,
+              "key": "0xd76f48d9604132b071fdf1899afff017d98290dd7efc8bc9bba1feeb12f068de",
+              "pc": 1503,
+              "storage_address": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+              "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ]
+        },
+        "hash": "0x117d01a5644ef9b80483dfd4bfb7a108655926d5ad469701454305217c56d095",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0",
+        "status": "inspected",
+        "storage_key": "0xd76f48d9604132b071fdf1899afff017d98290dd7efc8bc9bba1feeb12f068de",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xd76f48d9604132b071fdf1899afff017d98290dd7efc8bc9bba1feeb12f068de",
+            "pc": 1503,
+            "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "storage_word": "0",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "9deb6b0d6641f0f7b344e1fa82204a3b1c9cd0d812d9b586022f7a9269345d7f"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "code_hash": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0",
+        "contract": "0x96dd399f9c3afda1f194182f71600f1b65946501",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005",
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ]
+      },
+      "rank": 443,
+      "review_basis": "Complete source balanceOf returns exactly _balances[account]; no override in derived contract, scaling, fallback, caller/time dependency or external call. Compiler layout binds declared fields; fixed metadata and reviewed allowance/allowlist roots are separate. Historical bytes equal reconstructed compiler runtime; replacements confined to declared CBOR suffix. TWT owner is packed at byte1 with uint8 decimals at byte0; FRT treasury/pair/allowlist only govern writes, not balanceOf.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0"
+        },
+        {
+          "block": 122288925,
+          "hash": "0x117d01a5644ef9b80483dfd4bfb7a108655926d5ad469701454305217c56d095",
+          "runtime_hash": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0xc1eb9d3bd55eca89a6e158f9e4ab3d68491486bda95b2794461b98209dc685f0"
+        }
+      ],
+      "runtime_reconstruction": [
+        {
+          "length": 52,
+          "offset": 4128,
+          "reason": "cborAuxdata suffix only"
+        }
+      ],
+      "source_file_sha256": "41da8e579a5605ebf9e28159bad283e414f05328b74b300b52df1ccc09b7ac7e",
+      "source_response_sha256": "80d01bc7673446b6012a8dc4a234fc965f59d684ff313353a2e3ed2e5ec838ba",
+      "symbol": "COS"
+    },
+    {
+      "block": 122288030,
+      "contract": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+      "hash": "0x44e274c0f3e1da376dc2079bf9d18c34944017b8551dd03f99437fdd5fb591be",
+      "holder": "0xa09ecab3d5340d5959c088d6fe3e770fe1af9592",
+      "inspection": {
+        "address": "0xa09ecab3d5340d5959c088d6fe3e770fe1af9592",
+        "balance_of": "58000000000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288030,
+        "contract": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+        "elapsed_seconds": 0.291518583,
+        "execution_code": [
+          {
+            "address": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+            "checked_instructions": 1,
+            "runtime_hash": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+              "depth": 1,
+              "key": "0xceac602781182718ac3d14f0b19ed4d6dd8e86001ad9b10022eee8a2865b4b76",
+              "pc": 1046,
+              "storage_address": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+              "value": "0x00000000000000000000000000000000000000000000000000ce0eb154f90000"
+            }
+          ]
+        },
+        "hash": "0x44e274c0f3e1da376dc2079bf9d18c34944017b8551dd03f99437fdd5fb591be",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1",
+        "status": "inspected",
+        "storage_key": "0xceac602781182718ac3d14f0b19ed4d6dd8e86001ad9b10022eee8a2865b4b76",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xceac602781182718ac3d14f0b19ed4d6dd8e86001ad9b10022eee8a2865b4b76",
+            "pc": 1046,
+            "value": "0x00000000000000000000000000000000000000000000000000ce0eb154f90000"
+          }
+        ],
+        "storage_word": "58000000000000000",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "71b635497a81e33c33987f5730762c155332a827452c84c26486dfb2e7b50751"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1",
+        "contract": "0x4b0f1812e5df2a09796481ff14017e6005508003",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "rank": 450,
+      "review_basis": "Complete source balanceOf returns exactly _balances[account]; no override in derived contract, scaling, fallback, caller/time dependency or external call. Compiler layout binds declared fields; fixed metadata and reviewed allowance/allowlist roots are separate. Historical bytes equal reconstructed compiler runtime; replacements confined to declared CBOR suffix. TWT owner is packed at byte1 with uint8 decimals at byte0; FRT treasury/pair/allowlist only govern writes, not balanceOf.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "runtime_hash": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1"
+        },
+        {
+          "block": 122288030,
+          "hash": "0x44e274c0f3e1da376dc2079bf9d18c34944017b8551dd03f99437fdd5fb591be",
+          "runtime_hash": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1"
+        },
+        {
+          "block": 122289029,
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "runtime_hash": "0xeaab1df6d46bcdda9d3ab63b7ddd4c4802ca5f7fc09438f95a0870e9f9bc07c1"
+        }
+      ],
+      "runtime_reconstruction": [
+        {
+          "length": 53,
+          "offset": 3709,
+          "reason": "cborAuxdata suffix only"
+        }
+      ],
+      "source_file_sha256": "fa7c691abc0483d5ab7ccc53136cc3b8800594050b2554ce2a7b2438de4e5fce",
+      "source_response_sha256": "8da5d9dc92b3368d41444f8066c36bb03fe547531207e7bb2bde51a8f7b66c2e",
+      "symbol": "TWT"
+    }
+  ],
+  "tool_language": "Rust"
+}

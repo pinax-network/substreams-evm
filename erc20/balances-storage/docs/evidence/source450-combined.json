@@ -1,0 +1,55 @@
+{
+  "aggregate_emitted_zero_checks": 15247,
+  "all_balance_event_fields_equal": true,
+  "baseline_package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "baseline_report_sha256": "e575cf51bf04ece85eb3b1edb8b983627e42d812a9935e6228b4bfac30816b5c",
+  "blocks": 1024,
+  "capture": {
+    "blocks_per_second_including_startup": 9.240484414500294,
+    "empty_output_delivery": null,
+    "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+    "seconds_including_startup": 110.816701167
+  },
+  "configured_profiles": 421,
+  "elapsed_seconds": 187.997247,
+  "events_sha256": "1e8f3ad22612345418d0a0ab61e09245276dcc5be5eb85cb4cd1c15351801e9f",
+  "first_hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67",
+  "fresh_balance_rpc_calls": 0,
+  "holder_observations_with_identical_event_history": 180135,
+  "initialized_carry_forward_matches": 70160,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "b31c701e1c8b41b0c1adb046ddb2a33b921b45044352c2fcc49233c73d8e6c24",
+  "package_change_scope": "Same packaged code; nine independently qualified source-bound direct layouts added to the previous immutable verified output",
+  "profiles_with_emitted_rows": 420,
+  "reused_verified_rpc_rows": 109976,
+  "scope": "Fresh 421-profile actual-WASM capture. Full-field comparison with the verified 412-profile capture and nine newly RPC-audited source-bound direct profiles. Fresh canonical headers, immutable evidence reuse; no repeated balance RPC calls or new full-421 holder checkpoint.",
+  "source_report_sha256": "8ea6caea7a45b6150cbed7bc7d0b1ccd8a430fbd344b5887dec73f0bbe909d46",
+  "sources": [
+    {
+      "checks_sha256": "897c7f58d1b16844b930923c342077adad153c234b3a285353504814fb89a5e9",
+      "cohort": "simple450",
+      "events_sha256": "f8c0f6e3e95012fcdd01604d12b1f93b0cf0265eac79d1d5966fd88138575a92",
+      "holder_report_sha256": "e7a1f5056fe70b6e6f4f925f0b005117d9b0a87baeb8b88709241e1d758676cd",
+      "layouts_sha256": "5dc397fc6d13e00349985ae29032c7dbc3c26c86087b35b0cc08ec62d4531636",
+      "rpc_report_sha256": "6b423ef824a7419ea0c01b54725c8b799e37891c332400322a366e1f9b480814"
+    },
+    {
+      "checks_sha256": "f763cfc5bf0c194b194731b2b04f3faa79429b725e55ad69cdbaba3fbedd4302",
+      "cohort": "public450",
+      "events_sha256": "8926840394c7b496f45c8a21a0b327ec1b316de1bf780194ab5c7702abbb539d",
+      "holder_report_sha256": "974cf98412a677bf8504f7419b8e986b17304a469daf3ebc5c8de98a410f202c",
+      "layouts_sha256": "ebd3b0dc4303ea5c5f5efcdc0a11db561b6c5e048fe50bc6a96734d1a093ac77",
+      "rpc_report_sha256": "defd8b0a57f8d58b6a94b2e4143f583446549ae6b53f99f44ca9f8bfd328e8b6"
+    },
+    {
+      "checks_sha256": "770f639dbafef44e38862f93bfa8c1ac2a7cff3ee21124773933b0f54f1b0988",
+      "cohort": "standard450",
+      "events_sha256": "f148b7fc2c8b7998b5c881068fbc3220f3cfa9086f93fbf42e82e616b8f2dbfd",
+      "holder_report_sha256": "1e963d90697b281769ebf626c26eff79319044f56c2ee205cf3bc6be0e5027e2",
+      "layouts_sha256": "0ec11af1fdc23a7f0d405ddbe0355627aafbfb8cc3b3c5e9cdb9fd3b5acea40f",
+      "rpc_report_sha256": "86e9e8acb68fec00a177904ef7614fd353e4ad9717eb4a329e07180ceb883c49"
+    }
+  ],
+  "status": "bounded_parity",
+  "tool_language": "Rust"
+}

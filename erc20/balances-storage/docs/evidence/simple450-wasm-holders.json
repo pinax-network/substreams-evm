@@ -1,0 +1,48 @@
+{
+  "checkpoint_sha256": "ee5af3831a1482cd766d87995f5ba34f1a29195234823b28ef0aea05c7a3872b",
+  "checks_sha256": "506cb8f0682e289b9ad12ec5ac8a47df89b7ac6047307e125d9cfc0fc6af57e4",
+  "configured_tokens": 2,
+  "deployment_initialization": [],
+  "events_sha256": "f8c0f6e3e95012fcdd01604d12b1f93b0cf0265eac79d1d5966fd88138575a92",
+  "final_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "initialized_carry_forward_matches": 19,
+  "layouts_sha256": "5dc397fc6d13e00349985ae29032c7dbc3c26c86087b35b0cc08ec62d4531636",
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "processing_balance_rpc_calls": 0,
+  "reference_observations": 56,
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Two independently reviewed source-bound direct getters with explicit metadata roots on the current packaged WASM. Actual output is bound to checked rows and complete canonical clocks. Reference rows never repair state. Final snapshot covers all initialized observed holders, not all possible addresses.",
+  "snapshot_holders": 20,
+  "snapshot_zeros": 1,
+  "source_report_sha256": "e7a1f5056fe70b6e6f4f925f0b005117d9b0a87baeb8b88709241e1d758676cd",
+  "start": 122288006,
+  "status": "actual_wasm_retained_holder_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "carry_forward_matches": 0,
+      "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+      "emitted_rows": 21,
+      "reference_rows": 27,
+      "seeded_matches": 27,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 6,
+      "unseeded_unknown_rows": 6,
+      "unseeded_value_mismatches": 0
+    },
+    {
+      "carry_forward_matches": 2,
+      "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+      "emitted_rows": 16,
+      "reference_rows": 29,
+      "seeded_matches": 29,
+      "seeded_unknown_rows": 0,
+      "seeded_value_mismatches": 0,
+      "unseeded_unknown_nonzero_rows": 2,
+      "unseeded_unknown_rows": 11,
+      "unseeded_value_mismatches": 0
+    }
+  ]
+}

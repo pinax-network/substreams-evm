@@ -1,0 +1,1048 @@
+{
+  "baseline_layouts_sha256": "0edfaa96073e29ebe7db313e85e304951fcc4229b752fde67e7d88f797eaba18",
+  "baseline_report_sha256": "e575cf51bf04ece85eb3b1edb8b983627e42d812a9935e6228b4bfac30816b5c",
+  "elapsed_seconds": 49.196294917,
+  "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+  "layouts_sha256": "5dc397fc6d13e00349985ae29032c7dbc3c26c86087b35b0cc08ec62d4531636",
+  "native_scan": {
+    "blocks": 1024,
+    "counts": {
+      "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43": 21,
+      "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7": 16
+    },
+    "errors": []
+  },
+  "parent_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Two exact source-bound direct runtimes, independent candidate-specific controls and complete native replay. Packaged RPC and initialized-holder gates remain required. No global enumeration or all-future-metadata claim.",
+  "source_report_sha256": "66f994de09640adb163c85e36c86c189bc4413d849d394cd804c8c3f55549339",
+  "status": "bounded_parity",
+  "tokens": [
+    {
+      "block": 122288176,
+      "byte_identical_to_compiled_source_at_sample": true,
+      "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+      "hash": "0x37195300d81df88bb02bc8c43ee72d343eeaf9eec8b712bee82910905e25d96a",
+      "holder": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+      "inspection": {
+        "address": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+        "balance_of": "88214470000000000000000000",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288176,
+        "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+        "elapsed_seconds": 0.298830959,
+        "execution_code": [
+          {
+            "address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+            "checked_instructions": 1,
+            "runtime_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+              "depth": 1,
+              "key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3",
+              "pc": 307,
+              "storage_address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+              "value": "0x00000000000000000000000000000000000000000048f824003d22ecc3580000"
+            }
+          ]
+        },
+        "hash": "0x37195300d81df88bb02bc8c43ee72d343eeaf9eec8b712bee82910905e25d96a",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+        "status": "inspected",
+        "storage_key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3",
+            "pc": 307,
+            "value": "0x00000000000000000000000000000000000000000048f824003d22ecc3580000"
+          }
+        ],
+        "storage_word": "88214470000000000000000000",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "a93447d9aaf3eed4202628096f9b916180a38837a0bdb9b6392b87c84d554d8d"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+        "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464": "000000000000000000000000000000000000000000000000000000000000deadd76d7ee20952284eacd2e6c576fc413079f8abc34e48d019258d3bd165079e7b",
+            "d76d7ee20952284eacd2e6c576fc413079f8abc34e48d019258d3bd165079e7b": "0000000000000000000000001888b73e6a2c36ffbd7acc4ad62909278c32f7370000000000000000000000000000000000000000000000000000000000000001"
+          },
+          "state_diff": {
+            "0x9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464": "000000000000000000000000000000000000000000000000000000000000deadd76d7ee20952284eacd2e6c576fc413079f8abc34e48d019258d3bd165079e7b",
+            "d76d7ee20952284eacd2e6c576fc413079f8abc34e48d019258d3bd165079e7b": "0000000000000000000000001888b73e6a2c36ffbd7acc4ad62909278c32f7370000000000000000000000000000000000000000000000000000000000000001"
+          },
+          "state_diff": {
+            "0x9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x9bbe2ac9ea9a21eb7221ecf8e7f7ed3dfae448f53e0f6a9dae3c8fb06468f464"
+        }
+      ],
+      "rank": 413,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3"
+        },
+        {
+          "address": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3"
+        },
+        {
+          "address": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3"
+        },
+        {
+          "address": "0x1888b73e6a2c36ffbd7acc4ad62909278c32f737",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xca363a08fb284e5c03ea5529606966b40b05a89c6927d13ec29641702e75a4d3"
+        },
+        {
+          "address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xf4b398d542faab32bbd5c6e4be55250f1dd242613186b5c88a6ebc66d4374a5a"
+        },
+        {
+          "address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xf4b398d542faab32bbd5c6e4be55250f1dd242613186b5c88a6ebc66d4374a5a"
+        },
+        {
+          "address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xf4b398d542faab32bbd5c6e4be55250f1dd242613186b5c88a6ebc66d4374a5a"
+        },
+        {
+          "address": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xf4b398d542faab32bbd5c6e4be55250f1dd242613186b5c88a6ebc66d4374a5a"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Complete reviewed MGOLite/NFTC child contracts contain constructors only and inherit the OpenZeppelin direct balanceOf getter. No overrides, fallback, delegatecall or external getter dependencies. Compiler balance mapping0, allowance mapping1, supply2/name3/symbol4 independently controlled. Dynamic string payloads remain unqualified. Verified source is exactly bound to historical runtime; source comments are not used as evidence for unstated behavior.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "source_proof": {
+        "balance_getter_candidates": [
+          {
+            "body_present": true,
+            "candidate_only": true,
+            "line": 87,
+            "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+            "text": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }"
+          },
+          {
+            "body_present": false,
+            "candidate_only": true,
+            "line": 32,
+            "source": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "text": "function balanceOf(address account) external view returns (uint256);"
+          }
+        ],
+        "compilation": {
+          "compiler": "solc",
+          "compilerSettings": {
+            "evmVersion": "paris",
+            "optimizer": {
+              "enabled": true,
+              "runs": 200
+            }
+          },
+          "compilerVersion": "0.8.20+commit.a1b79de6",
+          "fullyQualifiedName": "contracts/MGOLite.sol:MGOLite",
+          "language": "Solidity",
+          "name": "MGOLite"
+        },
+        "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+        "flattened_source_sha256": "6f9df5346a9a6e623248ed6184efacaa447a1fe95e91c21ea6f7caae50ccc5d5",
+        "full_match": "exact_match",
+        "historical_runtime_bound": true,
+        "immutable_references": {},
+        "link_references": {},
+        "next_gate": "Review complete reachable getter/metadata paths and all proxy/immutable dependencies; independent controls, strict complete replay, packaged RPC and initialized-holder gates remain unperformed.",
+        "proxy_resolution": {
+          "implementations": [],
+          "isProxy": false,
+          "proxyType": null
+        },
+        "qualified": false,
+        "rank": 413,
+        "recompiled_runtime_exact": true,
+        "recompiled_runtime_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+        "reference_rows": 29,
+        "runtime_bindings": [
+          {
+            "block": 122288005,
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "runtime_bytes": 1825,
+            "runtime_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d"
+          },
+          {
+            "block": 122289029,
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "runtime_bytes": 1825,
+            "runtime_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d"
+          }
+        ],
+        "runtime_inventory": {
+          "active_blocks": 9,
+          "contract": "0x750aed042ce71808bc1af9d06b5f2fa17edea3c7",
+          "first_empty": false,
+          "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "matching_profiles": [],
+          "rank": 413,
+          "reference_rows": 29,
+          "runtime_bytes": 1825,
+          "runtime_hash": "0xbc9bd54418a446988c66e26ca1231cdce28e003adc07c4e5a309cb795e65c25d",
+          "runtime_unchanged": true
+        },
+        "runtime_match": "exact_match",
+        "runtime_transformation_values": {},
+        "runtime_transformations": [],
+        "source_files": [
+          {
+            "file": "source-0.sol",
+            "sha256": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+            "source_name": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol"
+          },
+          {
+            "file": "source-1.sol",
+            "sha256": "9f906af4cba6e7e091dc12d45e6687e1239cf82d17678198424250fd64ab96bd",
+            "source_name": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+          },
+          {
+            "file": "source-2.sol",
+            "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+            "source_name": "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+          },
+          {
+            "file": "source-3.sol",
+            "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+            "source_name": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "file": "source-4.sol",
+            "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+            "source_name": "@openzeppelin/contracts/utils/Context.sol"
+          },
+          {
+            "file": "source-5.sol",
+            "sha256": "9ae96c8aad616cc301fdd37bcc441318f8fb7b0b9947de2f2494763373b88b2b",
+            "source_name": "contracts/MGOLite.sol"
+          }
+        ],
+        "source_http_status": 200,
+        "source_identity_matches": true,
+        "source_response_sha256": "0f7e2396cacc52ccc3ea5c5fce5f9fe517200b7e8afd0b7e9f714469391aba52",
+        "source_runtime_bound": true,
+        "source_status": "verified_source_exact_compiled_runtime",
+        "source_url": "https://sourcify.dev/server/v2/contract/56/0x750aed042ce71808bc1af9d06b5f2fa17edea3c7?fields=all",
+        "storage_fields": [
+          {
+            "astId": 159,
+            "contract": "contracts/MGOLite.sol:MGOLite",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 165,
+            "contract": "contracts/MGOLite.sol:MGOLite",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 167,
+            "contract": "contracts/MGOLite.sol:MGOLite",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 169,
+            "contract": "contracts/MGOLite.sol:MGOLite",
+            "label": "_name",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 171,
+            "contract": "contracts/MGOLite.sol:MGOLite",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_string_storage"
+          }
+        ],
+        "storage_types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "survey": {
+          "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "rpc_mismatches": 0,
+          "rpc_value_checks": 32,
+          "status": "candidate_matches_values_not_qualified",
+          "strict_mapper_errors": []
+        },
+        "symbol": "MGOL"
+      },
+      "source_proof_sha256": "c607e57cb329f2bc80ef43e95341651c7fe0fa9f850b4ae7c04d1cc174b5a228"
+    },
+    {
+      "block": 122288084,
+      "byte_identical_to_compiled_source_at_sample": true,
+      "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+      "hash": "0x50420e3fb1e6523e8b8511b836797f301684dd20d76958a73705978fdfbc8251",
+      "holder": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+      "inspection": {
+        "address": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+        "balance_of": "20071530183771204077670",
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "block": 122288084,
+        "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+        "elapsed_seconds": 0.299599333,
+        "execution_code": [
+          {
+            "address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+            "checked_instructions": 1,
+            "runtime_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224"
+          }
+        ],
+        "execution_contexts": {
+          "calls": [],
+          "scope": "Observed execution path only; unexecuted branches and uninitialized holder state are not qualified",
+          "storage_reads": [
+            {
+              "code_address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+              "depth": 1,
+              "key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d",
+              "pc": 307,
+              "storage_address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+              "value": "0x000000000000000000000000000000000000000000000440146fd69d8587c866"
+            }
+          ]
+        },
+        "hash": "0x50420e3fb1e6523e8b8511b836797f301684dd20d76958a73705978fdfbc8251",
+        "read_only_state_overrides": [
+          {
+            "balance_of": "0",
+            "overridden_mapping_word": "0"
+          },
+          {
+            "balance_of": "1",
+            "overridden_mapping_word": "1"
+          },
+          {
+            "balance_of": "123",
+            "overridden_mapping_word": "123"
+          },
+          {
+            "balance_of": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "overridden_mapping_word": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+          }
+        ],
+        "runtime_keccak256": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+        "status": "inspected",
+        "storage_key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d",
+        "storage_reads": [
+          {
+            "depth": 1,
+            "key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d",
+            "pc": 307,
+            "value": "0x000000000000000000000000000000000000000000000440146fd69d8587c866"
+          }
+        ],
+        "storage_word": "20071530183771204077670",
+        "tool_language": "Rust",
+        "trace_config": {
+          "disableStack": false,
+          "disableStorage": true,
+          "enableMemory": false,
+          "enableReturnData": false,
+          "timeout": "10s"
+        },
+        "trace_sha256": "a60c631760f02da822cfbdd5e2b312d9842c670a4afe23fc4d11055f4b487e41"
+      },
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "code_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+        "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000001"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004"
+        ]
+      },
+      "metadata_controls": [
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000002": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000002"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000003": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000003"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "fixed",
+          "preimages": {},
+          "state_diff": {
+            "0x0000000000000000000000000000000000000000000000000000000000000004": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b"
+          },
+          "storage_key": "0x0000000000000000000000000000000000000000000000000000000000000004"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "0dc6d4a6e2ead46e23a28c77f6244fac1d6f787aaf99e169053747e42e5eb29c": "0000000000000000000000000a486ae0b7d61d43b2d1559195c1e85b61e0bf8f0000000000000000000000000000000000000000000000000000000000000001",
+            "9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc": "000000000000000000000000000000000000000000000000000000000000dead0dc6d4a6e2ead46e23a28c77f6244fac1d6f787aaf99e169053747e42e5eb29c"
+          },
+          "state_diff": {
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "storage_key": "0x9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc"
+        },
+        {
+          "balance_of": "123",
+          "kind": "allowance",
+          "preimages": {
+            "0dc6d4a6e2ead46e23a28c77f6244fac1d6f787aaf99e169053747e42e5eb29c": "0000000000000000000000000a486ae0b7d61d43b2d1559195c1e85b61e0bf8f0000000000000000000000000000000000000000000000000000000000000001",
+            "9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc": "000000000000000000000000000000000000000000000000000000000000dead0dc6d4a6e2ead46e23a28c77f6244fac1d6f787aaf99e169053747e42e5eb29c"
+          },
+          "state_diff": {
+            "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d": "0x000000000000000000000000000000000000000000000000000000000000007b",
+            "0x9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "storage_key": "0x9fe9ee2f41d357394d69be654cf2f2a68160a7a4d70353ae7ecba4859572b4fc"
+        }
+      ],
+      "rank": 430,
+      "raw_controls": [
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x0000000000000000000000000000000000000000",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x000000000000000000000000000000000000dead",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x44ad89ba62b98ff34f51403ac22759b55759460c0bb5521eb4b6ee3cff49cf83"
+        },
+        {
+          "address": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d"
+        },
+        {
+          "address": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d"
+        },
+        {
+          "address": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d"
+        },
+        {
+          "address": "0x0a486ae0b7d61d43b2d1559195c1e85b61e0bf8f",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x60abb0154513c4053b3b93a71a853ffbefaee749a55d8d54e87f60e3e549037d"
+        },
+        {
+          "address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x8bd0bbab3a61b898598bff271aa299f4d246aa446f34c1fee1931d53c63e030a"
+        },
+        {
+          "address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x8bd0bbab3a61b898598bff271aa299f4d246aa446f34c1fee1931d53c63e030a"
+        },
+        {
+          "address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x8bd0bbab3a61b898598bff271aa299f4d246aa446f34c1fee1931d53c63e030a"
+        },
+        {
+          "address": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x8bd0bbab3a61b898598bff271aa299f4d246aa446f34c1fee1931d53c63e030a"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "0",
+          "rpc": "0",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "1",
+          "rpc": "1",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "123",
+          "rpc": "123",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        },
+        {
+          "address": "0xffffffffffffffffffffffffffffffffffffffff",
+          "raw": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "rpc": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "storage_key": "0x50c7a3d1a23c7ff4a61d37c3f2c4aeb36cf60b43ee893723db201d3eb941cbad"
+        }
+      ],
+      "review_basis": "Complete reviewed MGOLite/NFTC child contracts contain constructors only and inherit the OpenZeppelin direct balanceOf getter. No overrides, fallback, delegatecall or external getter dependencies. Compiler balance mapping0, allowance mapping1, supply2/name3/symbol4 independently controlled. Dynamic string payloads remain unqualified. Verified source is exactly bound to historical runtime; source comments are not used as evidence for unstated behavior.",
+      "runtime_bindings": [
+        {
+          "block": 122288005,
+          "code_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+          "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+        },
+        {
+          "block": 122289029,
+          "code_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+          "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+        }
+      ],
+      "source_proof": {
+        "balance_getter_candidates": [
+          {
+            "body_present": true,
+            "candidate_only": true,
+            "line": 87,
+            "source": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+            "text": "function balanceOf(address account) public view virtual returns (uint256) {\n        return _balances[account];\n    }"
+          },
+          {
+            "body_present": false,
+            "candidate_only": true,
+            "line": 32,
+            "source": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "text": "function balanceOf(address account) external view returns (uint256);"
+          }
+        ],
+        "compilation": {
+          "compiler": "solc",
+          "compilerSettings": {
+            "evmVersion": "paris",
+            "optimizer": {
+              "enabled": true,
+              "runs": 200
+            },
+            "remappings": []
+          },
+          "compilerVersion": "0.8.20+commit.a1b79de6",
+          "fullyQualifiedName": "contracts/NFTC.sol:NFTC",
+          "language": "Solidity",
+          "name": "NFTC"
+        },
+        "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+        "flattened_source_sha256": "6d30bba9fe785e2d25bba84605aae47a40088b0eaa471316aa03d95bd1f4c947",
+        "full_match": "exact_match",
+        "historical_runtime_bound": true,
+        "immutable_references": {},
+        "link_references": {},
+        "next_gate": "Review complete reachable getter/metadata paths and all proxy/immutable dependencies; independent controls, strict complete replay, packaged RPC and initialized-holder gates remain unperformed.",
+        "proxy_resolution": {
+          "implementations": [],
+          "isProxy": false,
+          "proxyType": null
+        },
+        "qualified": false,
+        "rank": 430,
+        "recompiled_runtime_exact": true,
+        "recompiled_runtime_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+        "reference_rows": 27,
+        "runtime_bindings": [
+          {
+            "block": 122288005,
+            "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+            "runtime_bytes": 1825,
+            "runtime_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224"
+          },
+          {
+            "block": 122289029,
+            "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+            "runtime_bytes": 1825,
+            "runtime_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224"
+          }
+        ],
+        "runtime_inventory": {
+          "active_blocks": 6,
+          "contract": "0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43",
+          "first_empty": false,
+          "first_hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf",
+          "last_hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b",
+          "matching_profiles": [],
+          "rank": 430,
+          "reference_rows": 27,
+          "runtime_bytes": 1825,
+          "runtime_hash": "0xd5e44564624ec8918bc29720559393d352e3fa38465e8f3a95815755f38cd224",
+          "runtime_unchanged": true
+        },
+        "runtime_match": "exact_match",
+        "runtime_transformation_values": {},
+        "runtime_transformations": [],
+        "source_files": [
+          {
+            "file": "source-0.sol",
+            "sha256": "df936240c9a5d342582cbda70dd773b1c1d0e0dda3042b1c17b902ef0c36827b",
+            "source_name": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol"
+          },
+          {
+            "file": "source-1.sol",
+            "sha256": "9f906af4cba6e7e091dc12d45e6687e1239cf82d17678198424250fd64ab96bd",
+            "source_name": "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+          },
+          {
+            "file": "source-2.sol",
+            "sha256": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+            "source_name": "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+          },
+          {
+            "file": "source-3.sol",
+            "sha256": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+            "source_name": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "file": "source-4.sol",
+            "sha256": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+            "source_name": "@openzeppelin/contracts/utils/Context.sol"
+          },
+          {
+            "file": "source-5.sol",
+            "sha256": "39d74730bec43425a77a296397eb1c4f119e78a978b674aa42c7b5190f3d4a9c",
+            "source_name": "contracts/NFTC.sol"
+          }
+        ],
+        "source_http_status": 200,
+        "source_identity_matches": true,
+        "source_response_sha256": "2d2bb560146753d8e311181b2c98b24ea4517194ebb4bdffec6c586e190092f2",
+        "source_runtime_bound": true,
+        "source_status": "verified_source_exact_compiled_runtime",
+        "source_url": "https://sourcify.dev/server/v2/contract/56/0x1868d0c4d8cabf094d76f5293cf2b2662e8cee43?fields=all",
+        "storage_fields": [
+          {
+            "astId": 159,
+            "contract": "contracts/NFTC.sol:NFTC",
+            "label": "_balances",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_address,t_uint256)"
+          },
+          {
+            "astId": 165,
+            "contract": "contracts/NFTC.sol:NFTC",
+            "label": "_allowances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+          },
+          {
+            "astId": 167,
+            "contract": "contracts/NFTC.sol:NFTC",
+            "label": "_totalSupply",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 169,
+            "contract": "contracts/NFTC.sol:NFTC",
+            "label": "_name",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 171,
+            "contract": "contracts/NFTC.sol:NFTC",
+            "label": "_symbol",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_string_storage"
+          }
+        ],
+        "storage_types": {
+          "t_address": {
+            "encoding": "inplace",
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => mapping(address => uint256))",
+            "numberOfBytes": "32",
+            "value": "t_mapping(t_address,t_uint256)"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "encoding": "mapping",
+            "key": "t_address",
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32",
+            "value": "t_uint256"
+          },
+          "t_string_storage": {
+            "encoding": "bytes",
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "encoding": "inplace",
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "survey": {
+          "candidate_balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "rpc_mismatches": 0,
+          "rpc_value_checks": 42,
+          "status": "candidate_matches_values_not_qualified",
+          "strict_mapper_errors": []
+        },
+        "symbol": "NFTC"
+      },
+      "source_proof_sha256": "5027c4570a8ff14acbf6df87129775314a1f1e0cee721996114419da484e49f0"
+    }
+  ],
+  "tool_language": "Rust"
+}

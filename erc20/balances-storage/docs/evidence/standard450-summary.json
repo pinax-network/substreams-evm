@@ -1,0 +1,33 @@
+{
+  "artifacts": {
+    "holders": "out/standard450-holder-coverage/report.json",
+    "layouts": "out/standard450-qualified/added.json",
+    "rpc": "out/standard450-rpc/report.json",
+    "wasm_holders": "out/standard450-wasm-holders/report.json"
+  },
+  "carry_forward": 63,
+  "checkpoint_holders": 61,
+  "checkpoint_reads": 122,
+  "cold_unknown": 59,
+  "cold_unknown_nonzero": 26,
+  "emitted_zeros": 9,
+  "exact_control_rpc_requests": 176,
+  "final_holders": 61,
+  "final_zeros": 25,
+  "fixture_balances": 15,
+  "fixture_cases": 5,
+  "holder_observations": 135,
+  "layouts_sha256": "0ec11af1fdc23a7f0d405ddbe0355627aafbfb8cc3b3c5e9cdb9fd3b5acea40f",
+  "metadata_controls": 60,
+  "mismatches": 0,
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "packed_controls": 2,
+  "processing_balance_rpc_calls": 0,
+  "profiles": 5,
+  "raw_controls": 100,
+  "rpc_checks": 72,
+  "scope": "Five source-reviewed direct token layouts qualified on the fixed window with independently initialized observed holders. No global enumeration, new combined checkpoint or broad future-administrative-path claim.",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030
+}

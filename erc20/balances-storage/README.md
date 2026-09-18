@@ -346,16 +346,20 @@ digests in the report. Repeat `--block-dir` to add more captured samples.
 
 ## Reviewed candidates and holder state
 
-The latest [nineteen-profile follow-up](docs/ranks450-coverage.md) brings the explicit
-test configuration to 412 profiles among the first 450 RPC-stream candidates in
-`tests/fixtures/bsc-ranks450-layouts.json`. The additions match 360 emitted RPC
-balances, 524 initialized observations and all 262 final holder balances.
+The latest [nine-profile source follow-up](docs/source450-coverage.md) brings the
+explicit test configuration to 421 profiles among the first 450 RPC-stream
+candidates in `tests/fixtures/bsc-source450-layouts.json`. MGOL, NFTC, WIN, THE,
+LTC, COS, TWT, X and FRT match 146 emitted RPC balances, 249 initialized
+observations and all 113 final holder balances. Complete getter source is bound
+to historical runtime, with separately checked ordinary and packed metadata.
+The preceding [nineteen-profile follow-up](docs/ranks450-coverage.md) retains
+its direct and proxy evidence.
 [APM's zero-word fallback](docs/apm450-coverage.md) corrects two original value
 mismatches; direct and proxy runtime matches retain independently checked
 metadata and dispatch guards. The unchanged package matches every protobuf
-event field for 109,830 previously
+event field for 109,976 previously
 RPC-verified balances across the combined configuration. This reuses preserved
-RPC evidence and does not establish a new full-412 holder checkpoint.
+RPC evidence and does not establish a new full-421 holder checkpoint.
 The preceding [ten-profile follow-up](docs/tail400-coverage.md) retains its
 packed swap/lock metadata and minimal-proxy evidence.
 The preceding [three Cake-LP profiles](docs/lp400-coverage.md) retain their

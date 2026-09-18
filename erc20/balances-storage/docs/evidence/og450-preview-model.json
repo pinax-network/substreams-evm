@@ -1,0 +1,1910 @@
+{
+  "arithmetic": {
+    "call_sites": "Preview iff stored reward0 and carriedtotal>0, before testing user>0. Preview updates simulated pool; nonzero stored rewards and total0 skips leave it unchanged. Hourly/daily top-level helpers each begin from original poolbalance independently.",
+    "daily": "At most24 iterations; stop for pool0 or burn0. Each iteration computes same current-day rate, burn=floor(pool*rate/100000), adds floor(burn*15000/100000), then remaining=pool-burn (or0 ifburn>pool).",
+    "hourly": "pool0=>reward0,pool0. burn=floor(pool*rate/100000). burn0=>reward0,pool unchanged. reward=floor(burn*30000/100000); remaining=checked(pool-burn).",
+    "initial_daily_zero": "Initial user rate0 falls back to holder field6 iff holder field8>0; otherwise carries0 until a nonzero period user rate arrives.",
+    "preview_rate": "currentDay=floor((timestamp-epoch29)/86400); rate=floor(min(1200+240*floor(currentDay/10),3600)/24). Checked multiplication/addition precede clamp.",
+    "rate_overflow_bound": "For uint256 timestamp and valid epoch subtraction, currentDay<=MAX/86400, so floor(currentDay/10)*240+1200 cannot overflow. Pool*rate overflow is representable and tested."
+  },
+  "block": 122288107,
+  "canonical_timestamp": "0x6aab005f",
+  "controls_summary": [
+    {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "resolved_daily_initial_zero",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062450743533052430325"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12919752868553802883",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "resolved_hour_reward_zero",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062458359660946158580"
+        ]
+      },
+      "daily": {
+        "values": [
+          "112665838994909221"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "resolved_day_reward_zero",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_0",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_1",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_714",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_715",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_2857",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_2858",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_4761",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_4762",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_preview_pool_100000",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "match": true,
+      "name": "hour_preview_pool_827086351695115681596935607204913627523357033326004028853268457199379497428",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "match": true,
+      "name": "hour_preview_pool_827086351695115681596935607204913627523357033326004028853268457199379497429",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "match": true,
+      "name": "hour_preview_pool_115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_0",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_1",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_714",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_715",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_2857",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_2858",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_4761",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_4762",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_100000",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_827086351695115681596935607204913627523357033326004028853268457199379497428",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_827086351695115681596935607204913627523357033326004028853268457199379497429",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_preview_pool_115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_initial_zero_field8_0",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_initial_zero_field8_1",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062462782039865649749"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_initial_zero_field8_115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "daily": {
+        "rpc_error": {
+          "code": 3,
+          "data": "0x4e487b710000000000000000000000000000000000000000000000000000000000000011",
+          "message": "execution reverted: panic: arithmetic underflow or overflow (0x11)"
+        }
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_zero_user_still_previews_and_overflows",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062069798062050197943"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12538807397551570501",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hour_zero_total_skips_preview_overflow",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951249359"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "day_zero_total_skips_preview_overflow",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049530990664498627566"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "124",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hourly_three_periods_all_preview",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049530990664498627648"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "206",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hourly_three_periods_stored_middle",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049530990664498627525"
+        ]
+      },
+      "daily": {
+        "values": [
+          "117088217914400390"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "83",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "hourly_three_periods_skip_zero_total_first",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951250758"
+        ]
+      },
+      "daily": {
+        "values": [
+          "1399"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_three_periods_all_preview",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951250427"
+        ]
+      },
+      "daily": {
+        "values": [
+          "1068"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_three_periods_stored_middle",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951250304"
+        ]
+      },
+      "daily": {
+        "values": [
+          "945"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_three_periods_skip_zero_total_first",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951250277"
+        ]
+      },
+      "daily": {
+        "values": [
+          "918"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_three_periods_zero_user_first",
+      "timestamp": "0x6aab005f"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227067"
+        ]
+      },
+      "daily": {
+        "values": [
+          "0"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "15",
+          "1"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_0_preview_rate",
+      "timestamp": "0x6a2cf1e0"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227235"
+        ]
+      },
+      "daily": {
+        "values": [
+          "168"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "15",
+          "217"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_9_preview_rate",
+      "timestamp": "0x6a38cf60"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227263"
+        ]
+      },
+      "daily": {
+        "values": [
+          "193"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "18",
+          "241"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_10_preview_rate",
+      "timestamp": "0x6a3a20e0"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227575"
+        ]
+      },
+      "daily": {
+        "values": [
+          "481"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "42",
+          "2377"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_99_preview_rate",
+      "timestamp": "0x6aaf7660"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227615"
+        ]
+      },
+      "daily": {
+        "values": [
+          "518"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "45",
+          "2401"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_100_preview_rate",
+      "timestamp": "0x6ab0c7e0"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227615"
+        ]
+      },
+      "daily": {
+        "values": [
+          "518"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "45",
+          "2617"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_109_preview_rate",
+      "timestamp": "0x6abca560"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227615"
+        ]
+      },
+      "daily": {
+        "values": [
+          "518"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "45",
+          "2641"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_110_preview_rate",
+      "timestamp": "0x6abdf6e0"
+    },
+    {
+      "balance": {
+        "values": [
+          "1049413902446584227615"
+        ]
+      },
+      "daily": {
+        "values": [
+          "518"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "45",
+          "8761"
+        ]
+      },
+      "match": true,
+      "name": "clock_day_365_preview_rate",
+      "timestamp": "0x6c0e2560"
+    },
+    {
+      "balance": {
+        "values": [
+          "1062345693821951250758"
+        ]
+      },
+      "daily": {
+        "values": [
+          "1399"
+        ]
+      },
+      "hourly": {
+        "values": [
+          "12931791375367022307",
+          "2295"
+        ]
+      },
+      "match": true,
+      "name": "daily_three_previews_stop_before_fourth_overflow",
+      "timestamp": "0x6aab005f"
+    }
+  ],
+  "fresh_controls": 49,
+  "hash": "0xad5ff34ecba1aba25cb98cd4cff415303077831399cb4c171fe8eadeec100dc7",
+  "helper_bytecode_excerpts": [
+    "1401: JUMPDEST ",
+    "1402: PUSH0 ",
+    "1403: DUP1 ",
+    "1404: PUSH1 01",
+    "1406: PUSH0 ",
+    "1407: SWAP1 ",
+    "1408: SLOAD ",
+    "1409: SWAP1 ",
+    "1410: PUSH2 0100",
+    "1413: 0x0a ",
+    "1414: SWAP1 ",
+    "1415: DIV ",
+    "1416: PUSH1 01",
+    "1418: PUSH1 01",
+    "1420: PUSH1 a0",
+    "1422: SHL ",
+    "1423: SUB ",
+    "1424: AND ",
+    "1425: PUSH1 01",
+    "1427: PUSH1 01",
+    "1429: PUSH1 a0",
+    "1431: SHL ",
+    "1432: SUB ",
+    "1433: AND ",
+    "1434: PUSH4 a94dc7b1",
+    "1439: PUSH1 40",
+    "1441: MLOAD ",
+    "1442: DUP2 ",
+    "1443: PUSH4 ffffffff",
+    "1448: AND ",
+    "1449: PUSH1 e0",
+    "1451: SHL ",
+    "1452: DUP2 ",
+    "1453: MSTORE ",
+    "1454: PUSH1 04",
+    "1456: ADD ",
+    "1457: PUSH1 20",
+    "1459: PUSH1 40",
+    "1461: MLOAD ",
+    "1462: DUP1 ",
+    "1463: DUP4 ",
+    "1464: SUB ",
+    "1465: DUP2 ",
+    "1466: DUP7 ",
+    "1467: GAS ",
+    "1468: STATICCALL ",
+    "1469: ISZERO ",
+    "1470: DUP1 ",
+    "1471: ISZERO ",
+    "1472: PUSH2 05cb",
+    "1475: JUMPI ",
+    "1476: RETURNDATASIZE ",
+    "1477: PUSH0 ",
+    "1478: DUP1 ",
+    "1479: RETURNDATACOPY ",
+    "1480: RETURNDATASIZE ",
+    "1481: PUSH0 ",
+    "1482: REVERT ",
+    "1483: JUMPDEST ",
+    "1484: POP ",
+    "1485: POP ",
+    "1486: POP ",
+    "1487: POP ",
+    "1488: PUSH1 40",
+    "1490: MLOAD ",
+    "1491: RETURNDATASIZE ",
+    "1492: PUSH1 1f",
+    "1494: NOT ",
+    "1495: PUSH1 1f",
+    "1497: DUP3 ",
+    "1498: ADD ",
+    "1499: AND ",
+    "1500: DUP3 ",
+    "1501: ADD ",
+    "1502: DUP1 ",
+    "1503: PUSH1 40",
+    "1505: MSTORE ",
+    "1506: POP ",
+    "1507: DUP2 ",
+    "1508: ADD ",
+    "1509: SWAP1 ",
+    "1510: PUSH2 05ef",
+    "1513: SWAP2 ",
+    "1514: SWAP1 ",
+    "1515: PUSH2 2d41",
+    "1518: JUMP ",
+    "1519: JUMPDEST ",
+    "1520: SWAP1 ",
+    "1521: POP ",
+    "1522: PUSH0 ",
+    "1523: PUSH2 05fd",
+    "1526: PUSH1 0a",
+    "1528: DUP4 ",
+    "1529: PUSH2 2d6c",
+    "1532: JUMP ",
+    "1533: JUMPDEST ",
+    "1534: PUSH2 0608",
+    "1537: SWAP1 ",
+    "1538: PUSH1 f0",
+    "1540: PUSH2 2d8b",
+    "1543: JUMP ",
+    "1544: JUMPDEST ",
+    "1545: PUSH2 0614",
+    "1548: SWAP1 ",
+    "1549: PUSH2 04b0",
+    "1552: PUSH2 2da2",
+    "1555: JUMP ",
+    "1556: JUMPDEST ",
+    "1557: SWAP1 ",
+    "1558: POP ",
+    "1559: PUSH2 0e10",
+    "1562: DUP2 ",
+    "1563: GT ",
+    "1564: ISZERO ",
+    "1565: PUSH2 0625",
+    "1568: JUMPI ",
+    "1569: POP ",
+    "1570: PUSH2 0e10",
+    "1573: JUMPDEST ",
+    "1574: PUSH2 0630",
+    "1577: PUSH1 18",
+    "1579: DUP3 ",
+    "1580: PUSH2 2d6c",
+    "1583: JUMP ",
+    "1584: JUMPDEST ",
+    "1585: SWAP3 ",
+    "1586: POP ",
+    "1587: POP ",
+    "1588: POP ",
+    "1589: SWAP1 ",
+    "1590: JUMP ",
+    "3852: DUP1 ",
+    "3853: ISZERO ",
+    "3854: DUP1 ",
+    "3855: ISZERO ",
+    "3856: PUSH2 0f1d",
+    "3859: JUMPI ",
+    "3860: POP ",
+    "3861: PUSH0 ",
+    "3862: DUP8 ",
+    "3863: PUSH2 0100",
+    "3866: ADD ",
+    "3867: MLOAD ",
+    "3868: GT ",
+    "3869: JUMPDEST ",
+    "3870: ISZERO ",
+    "3871: PUSH2 0f29",
+    "3874: JUMPI ",
+    "3875: POP ",
+    "3876: PUSH1 c0",
+    "3878: DUP7 ",
+    "3879: ADD ",
+    "3880: MLOAD ",
+    "3881: JUMPDEST ",
+    "6559: JUMPDEST ",
+    "6560: PUSH0 ",
+    "6561: DUP2 ",
+    "6562: PUSH1 18",
+    "6564: DUP3 ",
+    "6565: JUMPDEST ",
+    "6566: DUP2 ",
+    "6567: DUP2 ",
+    "6568: LT ",
+    "6569: ISZERO ",
+    "6570: PUSH2 0c5e",
+    "6573: JUMPI ",
+    "6574: DUP3 ",
+    "6575: ISZERO ",
+    "6576: PUSH2 0c5e",
+    "6579: JUMPI ",
+    "6580: PUSH0 ",
+    "6581: PUSH2 19bc",
+    "6584: PUSH2 0579",
+    "6587: JUMP ",
+    "6588: JUMPDEST ",
+    "6589: SWAP1 ",
+    "6590: POP ",
+    "6591: PUSH0 ",
+    "6592: PUSH3 0186a0",
+    "6596: PUSH2 19cd",
+    "6599: DUP4 ",
+    "6600: DUP8 ",
+    "6601: PUSH2 2d8b",
+    "6604: JUMP ",
+    "6605: JUMPDEST ",
+    "6606: PUSH2 19d7",
+    "6609: SWAP2 ",
+    "6610: SWAP1 ",
+    "6611: PUSH2 2d6c",
+    "6614: JUMP ",
+    "6615: JUMPDEST ",
+    "6616: SWAP1 ",
+    "6617: POP ",
+    "6618: DUP1 ",
+    "6619: PUSH0 ",
+    "6620: SUB ",
+    "6621: PUSH2 19e7",
+    "6624: JUMPI ",
+    "6625: POP ",
+    "6626: POP ",
+    "6627: PUSH2 0c5e",
+    "6630: JUMP ",
+    "6631: JUMPDEST ",
+    "6632: PUSH3 0186a0",
+    "6636: PUSH2 19f7",
+    "6639: DUP3 ",
+    "6640: PUSH2 3a98",
+    "6643: PUSH2 2d8b",
+    "6646: JUMP ",
+    "6647: JUMPDEST ",
+    "6648: PUSH2 1a01",
+    "6651: SWAP2 ",
+    "6652: SWAP1 ",
+    "6653: PUSH2 2d6c",
+    "6656: JUMP ",
+    "6657: JUMPDEST ",
+    "6658: PUSH2 1a0b",
+    "6661: SWAP1 ",
+    "6662: DUP8 ",
+    "6663: PUSH2 2da2",
+    "6666: JUMP ",
+    "6667: JUMPDEST ",
+    "6668: SWAP6 ",
+    "6669: POP ",
+    "6670: DUP1 ",
+    "6671: DUP6 ",
+    "6672: LT ",
+    "6673: PUSH2 1a25",
+    "6676: JUMPI ",
+    "6677: PUSH2 1a1e",
+    "6680: DUP2 ",
+    "6681: DUP7 ",
+    "6682: PUSH2 2de5",
+    "6685: JUMP ",
+    "6686: JUMPDEST ",
+    "6687: SWAP5 ",
+    "6688: POP ",
+    "6689: PUSH2 1a29",
+    "6692: JUMP ",
+    "6693: JUMPDEST ",
+    "6694: PUSH0 ",
+    "6695: SWAP5 ",
+    "6696: POP ",
+    "6697: JUMPDEST ",
+    "6698: POP ",
+    "6699: POP ",
+    "6700: PUSH1 01",
+    "6702: ADD ",
+    "6703: PUSH2 19a5",
+    "6706: JUMP ",
+    "10392: DUP3 ",
+    "10393: PUSH0 ",
+    "10394: SUB ",
+    "10395: PUSH2 28a6",
+    "10398: JUMPI ",
+    "10399: DUP9 ",
+    "10400: SWAP3 ",
+    "10401: POP ",
+    "10402: PUSH2 28aa",
+    "10405: JUMP ",
+    "10406: JUMPDEST ",
+    "10407: DUP3 ",
+    "10408: SWAP9 ",
+    "10409: POP ",
+    "10410: JUMPDEST ",
+    "10411: DUP1 ",
+    "10412: PUSH0 ",
+    "10413: SUB ",
+    "10414: PUSH2 28b8",
+    "10417: JUMPI ",
+    "10418: POP ",
+    "10419: DUP7 ",
+    "10420: PUSH2 28bc",
+    "10423: JUMP ",
+    "10424: JUMPDEST ",
+    "10425: DUP1 ",
+    "10426: SWAP8 ",
+    "10427: POP ",
+    "10428: JUMPDEST ",
+    "10429: DUP2 ",
+    "10430: ISZERO ",
+    "10431: DUP1 ",
+    "10432: ISZERO ",
+    "10433: PUSH2 28c9",
+    "10436: JUMPI ",
+    "10437: POP ",
+    "10438: PUSH0 ",
+    "10439: DUP4 ",
+    "10440: GT ",
+    "10441: JUMPDEST ",
+    "10442: ISZERO ",
+    "10443: PUSH2 28dc",
+    "10446: JUMPI ",
+    "10447: PUSH2 28d7",
+    "10450: DUP7 ",
+    "10451: PUSH2 199f",
+    "10454: JUMP ",
+    "10455: JUMPDEST ",
+    "10456: SWAP7 ",
+    "10457: POP ",
+    "10458: SWAP2 ",
+    "10459: POP ",
+    "10460: JUMPDEST ",
+    "10461: PUSH0 ",
+    "10462: DUP4 ",
+    "10463: GT ",
+    "10464: DUP1 ",
+    "10465: ISZERO ",
+    "10466: PUSH2 28ea",
+    "10469: JUMPI ",
+    "10470: POP ",
+    "10471: PUSH0 ",
+    "10472: DUP3 ",
+    "10473: GT ",
+    "10474: JUMPDEST ",
+    "10475: DUP1 ",
+    "10476: ISZERO ",
+    "10477: PUSH2 28f5",
+    "10480: JUMPI ",
+    "10481: POP ",
+    "10482: PUSH0 ",
+    "10483: DUP2 ",
+    "10484: GT ",
+    "10485: JUMPDEST ",
+    "10486: ISZERO ",
+    "10487: PUSH2 2929",
+    "10490: JUMPI ",
+    "10964: DUP3 ",
+    "10965: PUSH0 ",
+    "10966: SUB ",
+    "10967: PUSH2 2ae2",
+    "10970: JUMPI ",
+    "10971: DUP9 ",
+    "10972: SWAP3 ",
+    "10973: POP ",
+    "10974: PUSH2 2ae6",
+    "10977: JUMP ",
+    "10978: JUMPDEST ",
+    "10979: DUP3 ",
+    "10980: SWAP9 ",
+    "10981: POP ",
+    "10982: JUMPDEST ",
+    "10983: DUP1 ",
+    "10984: PUSH0 ",
+    "10985: SUB ",
+    "10986: PUSH2 2af4",
+    "10989: JUMPI ",
+    "10990: POP ",
+    "10991: DUP7 ",
+    "10992: PUSH2 2af8",
+    "10995: JUMP ",
+    "10996: JUMPDEST ",
+    "10997: DUP1 ",
+    "10998: SWAP8 ",
+    "10999: POP ",
+    "11000: JUMPDEST ",
+    "11001: DUP2 ",
+    "11002: ISZERO ",
+    "11003: DUP1 ",
+    "11004: ISZERO ",
+    "11005: PUSH2 2b05",
+    "11008: JUMPI ",
+    "11009: POP ",
+    "11010: PUSH0 ",
+    "11011: DUP4 ",
+    "11012: GT ",
+    "11013: JUMPDEST ",
+    "11014: ISZERO ",
+    "11015: PUSH2 2b18",
+    "11018: JUMPI ",
+    "11019: PUSH2 2b13",
+    "11022: DUP8 ",
+    "11023: PUSH2 2b6f",
+    "11026: JUMP ",
+    "11027: JUMPDEST ",
+    "11028: SWAP8 ",
+    "11029: POP ",
+    "11030: SWAP2 ",
+    "11031: POP ",
+    "11032: JUMPDEST ",
+    "11033: PUSH0 ",
+    "11034: DUP4 ",
+    "11035: GT ",
+    "11036: DUP1 ",
+    "11037: ISZERO ",
+    "11038: PUSH2 2b26",
+    "11041: JUMPI ",
+    "11042: POP ",
+    "11043: PUSH0 ",
+    "11044: DUP3 ",
+    "11045: GT ",
+    "11046: JUMPDEST ",
+    "11047: DUP1 ",
+    "11048: ISZERO ",
+    "11049: PUSH2 2b31",
+    "11052: JUMPI ",
+    "11053: POP ",
+    "11054: PUSH0 ",
+    "11055: DUP2 ",
+    "11056: GT ",
+    "11057: JUMPDEST ",
+    "11058: ISZERO ",
+    "11059: PUSH2 2b58",
+    "11062: JUMPI ",
+    "11119: JUMPDEST ",
+    "11120: PUSH0 ",
+    "11121: DUP1 ",
+    "11122: DUP3 ",
+    "11123: PUSH0 ",
+    "11124: SUB ",
+    "11125: PUSH2 2b82",
+    "11128: JUMPI ",
+    "11129: POP ",
+    "11130: PUSH0 ",
+    "11131: SWAP3 ",
+    "11132: DUP4 ",
+    "11133: SWAP3 ",
+    "11134: POP ",
+    "11135: SWAP1 ",
+    "11136: POP ",
+    "11137: JUMP ",
+    "11138: JUMPDEST ",
+    "11139: PUSH0 ",
+    "11140: PUSH2 2b8b",
+    "11143: PUSH2 0579",
+    "11146: JUMP ",
+    "11147: JUMPDEST ",
+    "11148: SWAP1 ",
+    "11149: POP ",
+    "11150: PUSH0 ",
+    "11151: PUSH3 0186a0",
+    "11155: PUSH2 2b9c",
+    "11158: DUP4 ",
+    "11159: DUP8 ",
+    "11160: PUSH2 2d8b",
+    "11163: JUMP ",
+    "11164: JUMPDEST ",
+    "11165: PUSH2 2ba6",
+    "11168: SWAP2 ",
+    "11169: SWAP1 ",
+    "11170: PUSH2 2d6c",
+    "11173: JUMP ",
+    "11174: JUMPDEST ",
+    "11175: SWAP1 ",
+    "11176: POP ",
+    "11177: DUP1 ",
+    "11178: PUSH0 ",
+    "11179: SUB ",
+    "11180: PUSH2 2bb8",
+    "11183: JUMPI ",
+    "11184: POP ",
+    "11185: PUSH0 ",
+    "11186: SWAP5 ",
+    "11187: SWAP3 ",
+    "11188: POP ",
+    "11189: POP ",
+    "11190: POP ",
+    "11191: JUMP ",
+    "11192: JUMPDEST ",
+    "11193: PUSH3 0186a0",
+    "11197: PUSH2 2bc8",
+    "11200: DUP3 ",
+    "11201: PUSH2 7530",
+    "11204: PUSH2 2d8b",
+    "11207: JUMP ",
+    "11208: JUMPDEST ",
+    "11209: PUSH2 2bd2",
+    "11212: SWAP2 ",
+    "11213: SWAP1 ",
+    "11214: PUSH2 2d6c",
+    "11217: JUMP ",
+    "11218: JUMPDEST ",
+    "11219: SWAP4 ",
+    "11220: POP ",
+    "11221: PUSH2 2bde",
+    "11224: DUP2 ",
+    "11225: DUP7 ",
+    "11226: PUSH2 2de5",
+    "11229: JUMP ",
+    "11230: JUMPDEST ",
+    "11231: SWAP3 ",
+    "11232: POP ",
+    "11233: POP ",
+    "11234: POP ",
+    "11235: SWAP2 ",
+    "11236: POP ",
+    "11237: SWAP2 ",
+    "11238: JUMP "
+  ],
+  "limitations": [
+    "Host model only; no layout promotion, retained state, holder enumeration, cross-network support or production RPC removal.",
+    "Pool with nonzero hourly reward rate requires recursive modeling and remains rejected.",
+    "Runtime/address bindings, complete raw snapshots, and bounded fixture daily horizon remain required; arbitrary unreviewed runtime/revert ABI behavior is not supported."
+  ],
+  "matching_controls": 49,
+  "new_dependency": "Existing raw root-0 balance of poolA. Pool reward paths remain guarded to take zero-rate early exits. No new storage root or RPC-return input.",
+  "new_fixture": {
+    "path": "tests/fixtures/og-model/preview.json",
+    "sha256": "b4601b52db02e3a8f7c069f489837e0986be4f6791ad3ec55e43d426936faf6e"
+  },
+  "original_unsupported_controls_now_modeled": 3,
+  "preserved_initial_controls": 43,
+  "preserved_original_evidence": {
+    "historical_fixture_sha256": "b1816517fc9299975e93f43d00bec0fa29e2e5faa05fd8073b388aea4422900e",
+    "initial_controls_sha256": "ac5597f5160409f808a8fb5463a8b58e514689cfeaeb55aa9e20cc4088175d41",
+    "initial_evidence_sha256": "c5074ffa75f99d3cc762984a64f56b89894c618b13a7d3639cbbade94c70c9ee"
+  },
+  "promoted_layouts": 0,
+  "runtime_bindings": [
+    {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "checked_instructions": 4,
+      "runtime_hash": "0x69aef35de7236f9ae83edadff736f01ea40edd8919b2e73d87dea5d3255b8c3e"
+    },
+    {
+      "address": "0x1430c0bd0d023690f7aee3666daf265c498cc6a5",
+      "checked_instructions": 274,
+      "runtime_hash": "0x1c8507bc61f3c46a5d90674b6172d2384b657059d49c3f39621a9cb10c5c06e5"
+    },
+    {
+      "address": "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+      "checked_instructions": 6,
+      "runtime_hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8"
+    },
+    {
+      "address": "0xe18102869d32181aea317a40c5c4ce90ca591913",
+      "checked_instructions": 240,
+      "runtime_hash": "0xe904e21712652b72bb09176cbfa0ef41be3cbbf56121e292cb86bacde74b9373"
+    },
+    {
+      "address": "0xe82c917d216d15dd88ae65300d53c2a202dd41c6",
+      "checked_instructions": 6,
+      "runtime_hash": "0x60e4bcb14447615ab7c14fda2c2d70ca4191570e8841c75618e627c8f72662f8"
+    }
+  ],
+  "source_artifacts": [
+    "out/og450-preview-traces/report.json",
+    "out/og450-preview-controls/report.json",
+    "out/og450-model-review/helper-runtime.txt"
+  ],
+  "status": "bounded_preview_model_not_qualified",
+  "trace_summary": [
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [],
+      "name": "daily_initial_zero",
+      "observed_sloads": 91,
+      "return_value": "0x000000000000000000000000000000000000000000000000019ffb1d242bde86",
+      "selected_path_sha256": "30d5050e39e30d71abd7fcb466537ca15a283b16910cc798d791cadf71a22727",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x082f2e8add57a307c3c0e9abab7446c2ddf65a672851d093939c569b7dfaf410": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "d092fdc4fc56150a83b00b4a1fe49a39e63b3135bd8732d3d01909a16011f30f"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": false,
+          "expected_remaining_pool": "2671348141344577755178293",
+          "expected_reward": "1123539174208614717779",
+          "input_pool": "2675093271925273137570892",
+          "name": "hour_reward_zero",
+          "return_pc": 11027
+        }
+      ],
+      "name": "hour_reward_zero",
+      "observed_sloads": 291,
+      "return_value": "0x000000000000000000000000000000000000000000000000b34c2ec83bfbc48300000000000000000000000000000000000000000000000000000000000008f7",
+      "selected_path_sha256": "dc28c8bf8e16c7faeba78ef92eebcca9060da4982a2743f771bc7d2f77d9002c",
+      "selector": "e8e8fe04",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "67c44e5c46252e44e42b6abd7bcab9f5920cb881622fd47d4896c7715f437d78"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": true,
+          "expected_remaining_pool": "2586642507952888333947070",
+          "expected_reward": "13267614595857720543562",
+          "input_pool": "2675093271925273137570892",
+          "name": "day_reward_zero",
+          "return_pc": 10455
+        }
+      ],
+      "name": "day_reward_zero",
+      "observed_sloads": 139,
+      "return_value": "0x000000000000000000000000000000000000000000000000019044fbcf9ce825",
+      "selected_path_sha256": "39cb794daf4489e4d8c843fd4b9b16898026f441d8f0c3b2a5c60ce92e5a0886",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "d78d36f2dce6b3ce23e893a83059804b3079a74a48631e190dbe30ee295797c1"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": false,
+          "expected_remaining_pool": "0",
+          "expected_reward": "0",
+          "input_pool": "0",
+          "name": "hour_reward_zero_pool_0",
+          "return_pc": 11027
+        }
+      ],
+      "name": "hour_reward_zero_pool_0",
+      "observed_sloads": 289,
+      "return_value": "0x000000000000000000000000000000000000000000000000ae02cae50619fe4500000000000000000000000000000000000000000000000000000000000008f7",
+      "selected_path_sha256": "0544503dd629b78ea6cae758dc9cec06e9f7cf6fecb350d293b749c05899823c",
+      "selector": "e8e8fe04",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "39db40b7c3d5a16769a700edc5ef007d619ec46266a906a2246f223b5ad789e7"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": false,
+          "expected_remaining_pool": "1",
+          "expected_reward": "0",
+          "input_pool": "1",
+          "name": "hour_reward_zero_pool_1",
+          "return_pc": 11027
+        }
+      ],
+      "name": "hour_reward_zero_pool_1",
+      "observed_sloads": 291,
+      "return_value": "0x000000000000000000000000000000000000000000000000ae02cae50619fe4500000000000000000000000000000000000000000000000000000000000008f7",
+      "selected_path_sha256": "ee67325726f71c02ca1fb30c068c407ad605088b6bcff4b87368e51397307eb0",
+      "selector": "e8e8fe04",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "401f4c497564c1832d443bac4df86bc9cdcc5fa0e1fc34468e38655c1b9e7fa1"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": false,
+          "expected_remaining_pool": "714",
+          "expected_reward": "0",
+          "input_pool": "714",
+          "name": "hour_reward_zero_pool_714",
+          "return_pc": 11027
+        }
+      ],
+      "name": "hour_reward_zero_pool_714",
+      "observed_sloads": 291,
+      "return_value": "0x000000000000000000000000000000000000000000000000ae02cae50619fe4500000000000000000000000000000000000000000000000000000000000008f7",
+      "selected_path_sha256": "ad4ac273bc5d02d9798366745d05fc1dd7e55c3b3526d5467b60b0b6343621d7",
+      "selector": "e8e8fe04",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x00000000000000000000000000000000000000000000000000000000000002ca",
+            "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "8952ca3f40ceef7d4e8ea5f8973237bf64475db8336aba7cb58b9023a6bbd1e2"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": false,
+          "expected_remaining_pool": "714",
+          "expected_reward": "0",
+          "input_pool": "715",
+          "name": "hour_reward_zero_pool_715",
+          "return_pc": 11027
+        }
+      ],
+      "name": "hour_reward_zero_pool_715",
+      "observed_sloads": 291,
+      "return_value": "0x000000000000000000000000000000000000000000000000ae02cae50619fe4500000000000000000000000000000000000000000000000000000000000008f7",
+      "selected_path_sha256": "907c53f697a21d6d7d3592ed64abff14af9a3095e9578c9e120b0d24478a0571",
+      "selector": "e8e8fe04",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x00000000000000000000000000000000000000000000000000000000000002cb",
+            "0xe23634a3a5643d3bdffbcb4a3fec101011f9822d2ae9a155fa8e7dd38fec0309": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "d5a180462b85e95c0038753aff6ce2666881dac92556d4eae92350eb107e1f04"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": true,
+          "expected_remaining_pool": "0",
+          "expected_reward": "0",
+          "input_pool": "0",
+          "name": "day_reward_zero_pool_0",
+          "return_pc": 10455
+        }
+      ],
+      "name": "day_reward_zero_pool_0",
+      "observed_sloads": 91,
+      "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selected_path_sha256": "0d7d51232824e7ab5cc89eed6c610208f299b4cdac5b5f4858d82217bae09c8a",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "85e58babc0e0cbefa6b423e91db06eb8abd6bc4b4be41b8dc8e679ebc0b88b84"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": true,
+          "expected_remaining_pool": "1",
+          "expected_reward": "0",
+          "input_pool": "1",
+          "name": "day_reward_zero_pool_1",
+          "return_pc": 10455
+        }
+      ],
+      "name": "day_reward_zero_pool_1",
+      "observed_sloads": 93,
+      "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selected_path_sha256": "d1ee8ce9233895d58d97229b5a426ccf76d8e9744ae21ecdb7b06847661e990f",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x0000000000000000000000000000000000000000000000000000000000000001",
+            "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "ee34a6380051c7c53e79457bbe4a6b80766d08eef7c4c957ac53fc9bfcdd6600"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": true,
+          "expected_remaining_pool": "714",
+          "expected_reward": "0",
+          "input_pool": "714",
+          "name": "day_reward_zero_pool_714",
+          "return_pc": 10455
+        }
+      ],
+      "name": "day_reward_zero_pool_714",
+      "observed_sloads": 93,
+      "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selected_path_sha256": "bdfefecf3bc0d30715932c90d7201845ef112b2929a83c5d55d7e26143a2c0a0",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x00000000000000000000000000000000000000000000000000000000000002ca",
+            "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "2a53ad885e16c5e753bccd78839222f748b5ae4d49f44ff4d7dd08e5d1e53865"
+    },
+    {
+      "all_storage_reads_bound_to_raw_or_explicit_override": true,
+      "failed": false,
+      "internal_returns": [
+        {
+          "daily": true,
+          "expected_remaining_pool": "714",
+          "expected_reward": "0",
+          "input_pool": "715",
+          "name": "day_reward_zero_pool_715",
+          "return_pc": 10455
+        }
+      ],
+      "name": "day_reward_zero_pool_715",
+      "observed_sloads": 95,
+      "return_value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "selected_path_sha256": "dfd62fdd793c5009f1cfeb299c9a100bfae9f2e42b7bd0fa0524608a8454746a",
+      "selector": "7ac1f9f8",
+      "state_overrides": {
+        "0xe18102869d32181aea317a40c5c4ce90ca591913": {
+          "stateDiff": {
+            "0x813998e44ea1c133f7c76cda13bad808619c7b6ad6ab3df4643aa3643b61a756": "0x00000000000000000000000000000000000000000000000000000000000002cb",
+            "0x83eac1e64339ae7c04f1ee22aff46a98695c6248ac293e3f90771806ffe6ec33": "0x0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "trace_sha256": "d49775d9524f94ab7bf0044609da031a1fbcd52b29f313db39cddf017077a851"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "canonical_boundaries": [
+    {
+      "block": 122288005,
+      "hash": "0xdf9d02ee1c9e345bfcdb971e488a20f7f51dc03d3d8e2e7bbc8fc9f0bb0814cf"
+    },
+    {
+      "block": 122288006,
+      "hash": "0x41468818b386e28f8b3ff65f8f423de03805d6d4a3efd04785fc51bba1db0c67"
+    },
+    {
+      "block": 122289029,
+      "hash": "0xf2bf88656f6bf718e734f6a09ad54100446e2a8447aaae2342f243bc8729a39b"
+    }
+  ],
+  "completed_gates": {
+    "actual_wasm_holders": {
+      "initialized_carry_forward_matches": 21,
+      "mismatches": 0,
+      "observations": 58,
+      "report_sha256": "974cf98412a677bf8504f7419b8e986b17304a469daf3ebc5c8de98a410f202c",
+      "snapshot_holders": 32,
+      "snapshot_sha256": "736555b910f737ce5470ad80c3b4d46582a2b5ea48b2c80d491d584f530a0376",
+      "snapshot_zeros": 5,
+      "status": "actual_wasm_retained_holder_parity"
+    },
+    "fixtures": {
+      "cases": 2,
+      "cases_sha256": "303e63348dda171fc2413509a00ae7ef28f38524c957803b56fdabccfb6fddd6",
+      "controls_sha256": "5b6e6fceb304a8823fe53d9250c975f9121c62091bb4fea883812b24684b1385",
+      "rpc_balances": 4
+    },
+    "native": {
+      "blocks": 1024,
+      "emitted_rows": 37,
+      "errors": 0,
+      "report_sha256": "3f083b0d5bef3645d8520c1d60c781fc1ef34a757d412cd7226aadc99a278f7a",
+      "status": "bounded_parity"
+    },
+    "native_holders": {
+      "checkpoint_holders": 32,
+      "checkpoint_reads": 64,
+      "checkpoint_sha256": "a80c653212f02ba8cf089002467a5c9558a713b6dc520e79d32d9d6916ea7c86",
+      "report_sha256": "3f1c33755563a5bc768889dc968491b63dfa4e4cc1c0063857c7fe5ee579304c",
+      "status": "bounded_parity"
+    },
+    "rpc": {
+      "checked_blocks": 1024,
+      "checks": 37,
+      "checks_sha256": "f763cfc5bf0c194b194731b2b04f3faa79429b725e55ad69cdbaba3fbedd4302",
+      "clocks_sha256": "8f2f9f5fdd0527076bb24447e13006744fcfd9e9d609cbad23403a602ebda802",
+      "events_sha256": "8926840394c7b496f45c8a21a0b327ec1b316de1bf780194ab5c7702abbb539d",
+      "mismatches": 0,
+      "report_sha256": "defd8b0a57f8d58b6a94b2e4143f583446549ae6b53f99f44ca9f8bfd328e8b6",
+      "status": "rpc_parity",
+      "zeros": 2
+    }
+  },
+  "configured_profiles": 2,
+  "elapsed_seconds": 2.699545417,
+  "independent_controls": {
+    "invalid_call": 6,
+    "metadata": 52,
+    "packed_field": 9,
+    "raw": 40
+  },
+  "initial_native_qualification_sha256": "3f083b0d5bef3645d8520c1d60c781fc1ef34a757d412cd7226aadc99a278f7a",
+  "layouts_sha256": "ebd3b0dc4303ea5c5f5efcdc0a11db561b6c5e048fe50bc6a96734d1a093ac77",
+  "package_sha256": "f1d57bdff549947cd69e47d117ad8cd74933c1e065b687f958fea4de39004d81",
+  "reference_sha256": "ebfff9a998618b3e7e9f7802d20d49c9890f7295de189315393e636a65fc88d9",
+  "scope": "Completed standalone qualification of two pinned WIN/THE direct compiler-generated public mapping getters, complete verified source/runtime equality and explicit fixed/packed metadata/allowance rules. Complete canonical production-WASM emitted parity and initialized observed-holder parity passed. Source/control/native evidence remains immutable provenance. No deployment, global-holder enumeration, dynamic long-string data or combined-cohort claim.",
+  "source_report_sha256": "2c4a637cd209f39644b1733350744e0311e06dc1334bdfef807c762c2568585a",
+  "start": 122288006,
+  "status": "bounded_parity",
+  "stop_exclusive": 122289030,
+  "tokens": [
+    {
+      "contract": "0xb10cb07ca2cdac77fbb5707f6690301f9d036f45",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000005",
+        "code_hash": "0xd48d3ea654ef91a29a2e60c13f019336ee3c3ed877311244540cee733a22f858",
+        "contract": "0xb10cb07ca2cdac77fbb5707f6690301f9d036f45",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000008"
+        ]
+      },
+      "rank": 409,
+      "source_sha256": "14c2e3c4ce158c5075f9cdc10872da055eba8fcc54928d28c731133cd1268d6e",
+      "symbol": "WIN"
+    },
+    {
+      "contract": "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+      "layout": {
+        "balance_slot": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "code_hash": "0x588a5eb407a5f00e15566f207ca3af3f0aa6c2fd4c969118164a07df7f462a70",
+        "contract": "0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+        "other_mapping_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000002"
+        ],
+        "other_slots": [
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000000000000000000000000003",
+          "0x0000000000000000000000000000000000000000000000000000000000000004",
+          "0x0000000000000000000000000000000000000000000000000000000000000005"
+        ]
+      },
+      "rank": 428,
+      "source_sha256": "14a57bcb40f58f73dc541121da7cb13cf803e85f183cd5166122364dbb03cf3c",
+      "symbol": "THE"
+    }
+  ],
+  "tool_language": "Rust"
+}
