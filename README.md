@@ -15,7 +15,7 @@ blocks/           # Block metadata + clickhouse/
 dex/              # Individual DEX map_events modules
 dex-pool-state/   # Complete-block V2 reserves + ordered V3 pool changes
 dex-nfts/         # NFT market protocol modules (for example, Seaport)
-erc20/            # ERC-20 modules (transfers/ balances/ balances-storage/ supply/ tokens/)
+erc20/            # ERC-20 modules (transfers/ balances/ supply/ tokens/)
 native/           # Native transfer/balance modules (transfers/ balances/)
 erc4626/          # ERC-4626 tokenized-vault events (map_events)
 erc1155/          # ERC-1155 multi-token events
@@ -119,8 +119,11 @@ that need both protocols before calculating a block-level result.
 | `transfers` | `Transfer` and `Approval` events |
 | `tokens` | Protocol-specific events: WETH, USDC, USDT, WBTC, SAI, stETH |
 | `balances` | Token balances via batched RPC `balanceOf` calls |
-| [`balances-storage`](erc20/balances-storage/README.md) | Single RPC-free `map_events` with the same protobuf as `balances`; configurable verified token layouts |
 | `supply` | Token supply tracking |
+
+The RPC-free `balances-storage` module for Firehose Extended blocks is maintained
+in [substreams-evm-extended](https://github.com/pinax-network/substreams-evm-extended).
+It uses the same balances protobuf as this repository's RPC-based `balances` module.
 
 ### Native (`/native`)
 | Module | Description |
