@@ -25,11 +25,4 @@ modules:
     output:
       type: proto:uniswap.v2.Events
 
-  - name: map_pool_closes
-    kind: map
-    inputs:
-      - source: sf.ethereum.type.v2.Block
-    output:
-      type: proto:uniswap.v2.BlockPoolCloses
-
 network: mainnet

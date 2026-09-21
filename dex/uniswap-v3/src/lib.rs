@@ -1,16 +1,9 @@
-mod changes;
-
 use common::create::{CreateLog, CreateTransaction};
 use common::{bigint_to_i32, bigint_to_u64};
 use proto::pb::uniswap::v3 as pb;
 use substreams_abis::dex::uniswap::v3 as uniswap;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
-#[substreams::handlers::map]
-fn map_pool_changes(block: Block) -> Result<pb::BlockPoolChanges, substreams::errors::Error> {
-    changes::extract(&block)
-}
 
 #[substreams::handlers::map]
 fn map_events(block: Block) -> Result<pb::Events, substreams::errors::Error> {

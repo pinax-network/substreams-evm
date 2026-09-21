@@ -8,7 +8,7 @@ This guide captures practical repo knowledge for fast orientation and implementa
 - `proto/`: protobuf types used across packages.
 - `common/`: shared Rust helpers used by multiple modules.
 - `dex/`: protocol-specific DEX extractors (Uniswap, Balancer, Curve, etc.).
-- `dex-pool-state/`: complete-block raw V2 reserves and ordered V3 changes in one envelope; see its README for semantics and packaging.
+- Complete-block V2/V3 pool state is maintained in [`substreams-evm-extended/dex/pool-state`](https://github.com/pinax-network/substreams-evm-extended/tree/main/dex/pool-state), with an Extended-only `map_events` module. It is no longer a workspace member here.
 - `erc20/`, `native/`, `erc1155/`, `dex-nfts/seaport/`: domain event modules.
 - `evm-*` aggregators: database-oriented `db_out` pipelines that compose lower-level modules.
 - `blocks/clickhouse/`: block-level dataset package.
@@ -23,6 +23,7 @@ This guide captures practical repo knowledge for fast orientation and implementa
 
 ## Where to edit for common tasks
 
+- Add reusable contract ABI structs/bindings in [`substreams-abis`](https://github.com/pinax-network/substreams-abis); reuse that dependency here.
 - Add/adjust event decoding for one protocol: `dex/<protocol>/src/lib.rs` and that module's `substreams.yaml`.
 - Change shared protobuf fields: `proto/v1/*.proto` then regenerate/build affected modules.
 - Update DB schema mapping: `<aggregator>/clickhouse/schema.*.sql` or `<aggregator>/postgres/schema.*.sql` plus aggregator Rust mapping code.
