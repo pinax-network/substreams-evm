@@ -297,15 +297,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dex-pool-state"
-version = "0.1.0"
-dependencies = [
- "prost 0.13.5",
- "proto",
- "substreams",
-]
-
-[[package]]
 name = "dex-swaps"
 version = "0.8.0"
 dependencies = [
