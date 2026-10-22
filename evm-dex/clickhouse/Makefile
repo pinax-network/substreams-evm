@@ -1,4 +1,4 @@
-ENDPOINT ?= eth-substreams-tier1-fs.kan-sst2.pinax.io:80
+ENDPOINT ?= eth.substreams.kan-prod-firehose-a.pinax.io:80
 START_BLOCK ?= 12000000
 STOP_BLOCK ?= 12010000
 PARALLEL_JOBS ?= 100
