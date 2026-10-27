@@ -1,0 +1,23 @@
+{
+  "source": "https://ethereum.publicnode.com",
+  "captured_at_utc": "2026-10-27T15:04:07.910955+00:00",
+  "rpc_methods": [
+    "eth_getLogs (blocks 26283819..26284818, exact factory and PairCreated topic)",
+    "eth_getTransactionReceipt",
+    "eth_getBlockByHash"
+  ],
+  "transaction_hash": "0x62c52cd4c81f190aaa83a4d786ce6a18d2593051e742037e897708c8addc8ca6",
+  "block_number": 26283930,
+  "block_hash": "0x8833685dd4481ade7a7fd3e029bdcb3e5efeedd128101119311f7522e23124c3",
+  "block_parent_hash": "0x711c4964c2beb048b9992b29f9f0e1ec7e1f20b2419472683afa09961b4f6ea9",
+  "block_timestamp": 1793102711,
+  "transaction_index": 114,
+  "receipt_sha256": "84401f0d6c3909954fd7d58804282168d603a82ea599ad09dc211c9b0a6a6158",
+  "selected_log_index": 235,
+  "pool_address": "0xa64cab535075bb67432d650e6fb9049e7534cec0",
+  "factory_address": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+  "tokens": [
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xf34fe3655aaef1f0c15547d14ba723eed97e7e1b"
+  ]
+}
