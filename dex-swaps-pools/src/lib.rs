@@ -1,130 +1,127 @@
-//! Legacy key-value store of DEX pool metadata.
-//!
-//! Functionally ~1:1 with `evm-dex-foundational-store` (`map_entries`), except the output
-//! is a **legacy key-value store** instead of foundational `SinkEntries`:
-//!   - key   = hex-encoded pool address (lowercase, no `0x`)
-//!   - value = `dex.foundational_store.v1.Pool { tokens[], factory }`
-//!   - policy = `set_if_not_exists` (first writer wins, mirrors `if_not_exist: true`)
-//!
-//! Pool data is extracted directly from a single `sf.ethereum.type.v2.Block` using the
-//! `substreams-abis` event decoders — it does NOT import per-protocol spkg packages.
-//!
-//! Like the foundational store, the payload is intentionally restricted to shared pool
-//! metadata only: `tokens[]` plus `factory` when available. Protocol-specific init fields
-//! (Aerodrome `stable`, TraderJoe `bin_step`, Kyber `swap_fee_units`/`tick_distance`, …)
-//! remain available on the original pool-creation events.
-//!
-//! Each protocol's pool-creation decoding lives in its own module. A log maps to at most one
-//! pool, so each collector returns a single `Option<PoolEntry>` rather than writing directly.
+//! One pool decoder map feeding independent Hosted Store and legacy stores.
+//! The EVM Pool wire payload and legacy lowercase-hex keys remain unchanged.
+use std::collections::HashSet;
 
-mod aerodrome;
-mod balancer;
-mod bancor;
-mod curvefi;
-mod kyber;
-mod sunpump;
-mod traderjoe;
-mod uniswap;
-
-use proto::pb::dex::foundational_store::v1::{Pool, PoolCreated, Pools};
+use dex_pools::Block;
+use prost::Message;
+use prost_types::Any;
+pub use proto::pb::dex::foundational_store::v1 as pb;
+use substreams::errors::Error;
+use substreams::pb::sf::substreams::foundational_store::model::v2::{Entry, Key, SinkEntries};
 use substreams::pb::substreams::store_delta::Operation;
-use substreams::store::{DeltaProto, Deltas};
-use substreams::store::{StoreNew, StoreSetIfNotExists, StoreSetIfNotExistsProto};
-use substreams::Hex;
-use substreams_ethereum::pb::eth::v2::{Block, CallType, Log, TransactionTrace};
+use substreams::store::{DeltaProto, Deltas, StoreSetIfNotExists};
 
-/// A decoded pool ready to be written to the store.
-pub(crate) struct PoolEntry {
-    pub address: Vec<u8>,
-    pub tokens: Vec<Vec<u8>>,
-    pub factory: Vec<u8>,
+pub const POOL_TYPE_URL: &str = "type.googleapis.com/dex.foundational_store.v1.Pool";
+
+/// Decode once in the legacy scan order. Keep the first observation of an
+/// identity in this block, matching the legacy store's first-write policy.
+/// Execution/identity qualification retains the documented legacy limits.
+pub fn map_pool_creations_impl(block: &Block) -> pb::Pools {
+    let mut seen = HashSet::new();
+    pb::Pools {
+        pools: dex_pools::project(block)
+            .into_iter()
+            .filter(|entry| seen.insert(entry.address.clone()))
+            .map(|entry| pb::PoolCreated {
+                address: hex::encode(entry.address),
+                pool: Some(pb::Pool {
+                    tokens: entry.tokens,
+                    factory: entry.factory,
+                }),
+            })
+            .collect(),
+    }
 }
 
-#[substreams::handlers::store]
-pub fn store_pools(block: Block, store: StoreSetIfNotExistsProto<Pool>) {
-    for trx in block.transactions() {
-        // CurveFi direct deployments expose pool metadata via the constructor calldata,
-        // not via a log — decode it once per transaction before walking the logs.
-        if let Some(entry) = curvefi::collect_curvefi_init(trx) {
-            set_pool(&store, entry);
+/// Convenience composition for native/wrapper parity checks. The manifest
+/// routes the decoded Pools message to the two storage adapters independently.
+pub fn map_pool_entries_impl(block: &Block) -> Result<SinkEntries, Error> {
+    pool_entries(&map_pool_creations_impl(block))
+}
+
+/// Validate an already decoded batch before writing any entry. Addresses are
+/// 20 bytes for contracts or 32 bytes for Uniswap V4 pool IDs; leading zeros
+/// remain significant. Duplicate identities retain their first payload.
+fn records(pools: &pb::Pools) -> Result<Vec<(&str, Vec<u8>, &pb::Pool)>, Error> {
+    let mut seen = HashSet::new();
+    let mut records = Vec::with_capacity(pools.pools.len());
+    for entry in &pools.pools {
+        let address = hex::decode(&entry.address).map_err(|_| Error::msg("invalid pool key: expected lowercase hex"))?;
+        if !matches!(address.len(), 20 | 32) || hex::encode(&address) != entry.address {
+            return Err(Error::msg("invalid pool key: expected a canonical 20-byte address or 32-byte pool ID"));
         }
-
-        // CurveFi factory events identify the pool by the freshly-CREATE'd contract address,
-        // which lives in the call traces rather than the event itself.
-        let create_address = get_create_address(trx);
-
-        for log in trx_logs(trx) {
-            if let Some(entry) = collect_log(log, create_address.as_deref()) {
-                set_pool(&store, entry);
-            }
+        let pool = entry.pool.as_ref().ok_or_else(|| Error::msg("missing pool payload"))?;
+        if seen.insert(entry.address.as_str()) {
+            records.push((entry.address.as_str(), address, pool));
         }
     }
+    Ok(records)
 }
 
-/// Surface every pool first seen in this block. Since `store_pools` uses `set_if_not_exists`,
-/// only the first write per pool produces a `Create` delta — later blocks never re-emit it.
-#[substreams::handlers::map]
-pub fn map_pools(deltas: Deltas<DeltaProto<Pool>>) -> Pools {
-    let pools = deltas
-        .deltas
-        .into_iter()
-        .filter(|delta| delta.operation == Operation::Create)
-        .map(|delta| PoolCreated {
-            address: delta.key,
-            pool: Some(delta.new_value),
-        })
-        .collect();
-    Pools { pools }
+/// Hosted Store: raw pool keys, unchanged Pool bytes, first-write semantics.
+/// Empty blocks still return if_not_exist=true so ingestion can advance.
+pub fn pool_entries(pools: &pb::Pools) -> Result<SinkEntries, Error> {
+    Ok(SinkEntries {
+        entries: records(pools)?
+            .into_iter()
+            .map(|(_, address, pool)| Entry {
+                key: Some(Key { bytes: address }),
+                value: Some(Any {
+                    type_url: POOL_TYPE_URL.to_owned(),
+                    value: pool.encode_to_vec(),
+                }),
+            })
+            .collect(),
+        if_not_exist: true,
+    })
 }
 
-/// Decode the (at most one) supported pool-creation event from a single log.
-fn collect_log(log: &Log, create_address: Option<&[u8]>) -> Option<PoolEntry> {
-    uniswap::collect_uniswap_v1(log)
-        .or_else(|| uniswap::collect_uniswap_v2(log))
-        .or_else(|| uniswap::collect_uniswap_v3(log))
-        .or_else(|| uniswap::collect_uniswap_v4(log))
-        .or_else(|| aerodrome::collect_aerodrome(log))
-        .or_else(|| kyber::collect_kyber_elastic(log))
-        .or_else(|| traderjoe::collect_traderjoe(log))
-        .or_else(|| balancer::collect_balancer(log))
-        .or_else(|| bancor::collect_bancor(log))
-        .or_else(|| sunpump::collect_sunpump(log))
-        .or_else(|| curvefi::collect_curvefi_factory(log, create_address))
-}
-
-/// Write a pool entry keyed by its hex-encoded address. Empty addresses are skipped.
-///
-/// The ordinal is always `0`: we only ever store the first value seen for a pool and never
-/// overwrite it afterwards, so there is no need to track intra-block ordering.
-fn set_pool(store: &StoreSetIfNotExistsProto<Pool>, entry: PoolEntry) {
-    if entry.address.is_empty() {
-        return;
+/// Legacy branch: preserve canonical hex keys, Pool bytes and ordinal zero.
+/// This immutable registry does not establish ordering within a block.
+pub fn store_pools_impl<S: StoreSetIfNotExists<pb::Pool>>(pools: &pb::Pools, store: &S) -> Result<(), Error> {
+    for (key, _, pool) in records(pools)? {
+        store.set_if_not_exists(0, key, pool);
     }
-    store.set_if_not_exists(
-        0,
-        Hex::encode(&entry.address),
-        &Pool {
-            tokens: entry.tokens,
-            factory: entry.factory,
-        },
-    );
+    Ok(())
 }
 
-// ── Block / transaction helpers ───────────────────────────────────────────────────────────
-
-/// Iterate a transaction's logs whether or not call traces are present.
-fn trx_logs(trx: &TransactionTrace) -> Vec<&Log> {
-    if trx.calls.is_empty() {
-        trx.receipt().logs().map(|view| view.log).collect()
-    } else {
-        trx.logs_with_calls().map(|(log, _)| log).collect()
+/// Preserve the existing public Create-only delta stream and wire schema.
+pub fn map_pools_impl(deltas: Deltas<DeltaProto<pb::Pool>>) -> pb::Pools {
+    pb::Pools {
+        pools: deltas
+            .deltas
+            .into_iter()
+            .filter(|delta| delta.operation == Operation::Create)
+            .map(|delta| pb::PoolCreated {
+                address: delta.key,
+                pool: Some(delta.new_value),
+            })
+            .collect(),
     }
 }
 
-/// Address of the first contract CREATE'd in this transaction, if any.
-fn get_create_address(trx: &TransactionTrace) -> Option<Vec<u8>> {
-    trx.calls
-        .iter()
-        .find(|call| call.call_type == CallType::Create as i32)
-        .map(|call| call.address.to_vec())
+#[cfg(target_arch = "wasm32")]
+mod handlers {
+    use super::*;
+    use substreams::store::{StoreNew, StoreSetIfNotExistsProto};
+
+    #[substreams::handlers::map]
+    fn map_pool_creations(block: Block) -> Result<pb::Pools, Error> {
+        Ok(map_pool_creations_impl(&block))
+    }
+
+    #[substreams::handlers::map]
+    fn map_pool_entries(pools: pb::Pools) -> Result<SinkEntries, Error> {
+        pool_entries(&pools)
+    }
+
+    #[substreams::handlers::store]
+    fn store_pools(pools: pb::Pools, store: StoreSetIfNotExistsProto<pb::Pool>) {
+        store_pools_impl(&pools, &store).expect("valid decoded pool records");
+    }
+
+    #[substreams::handlers::map]
+    fn map_pools(deltas: Deltas<DeltaProto<pb::Pool>>) -> Result<pb::Pools, Error> {
+        Ok(map_pools_impl(deltas))
+    }
 }

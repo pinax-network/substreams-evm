@@ -6,11 +6,11 @@ PARALLEL_JOBS ?= 2500
 
 .PHONY: build
 build:
-	cargo build --target wasm32-unknown-unknown --release
+	cargo build --locked --target wasm32-unknown-unknown --release -p dex-swaps-pools
 
 .PHONY: pack
 pack: build
-	substreams pack -o ../spkg/dex-swaps-pools-v0.8.0.spkg
+	substreams pack -o ../spkg/dex-swaps-pools-v0.9.0.spkg
 
 .PHONY: noop
 noop: build

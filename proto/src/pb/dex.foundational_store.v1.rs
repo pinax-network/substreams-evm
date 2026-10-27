@@ -10,7 +10,7 @@ pub struct Pool {
     #[prost(bytes="vec", tag="2")]
     pub factory: ::prost::alloc::vec::Vec<u8>,
 }
-/// A pool surfaced from the legacy `store_pools` store, keyed by its hex-encoded address.
+/// A pool observation keyed by its lowercase hex address or pool ID, without `0x`.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PoolCreated {
@@ -20,7 +20,8 @@ pub struct PoolCreated {
     #[prost(message, optional, tag="2")]
     pub pool: ::core::option::Option<Pool>,
 }
-/// All pools first seen in a single block (one entry per `set_if_not_exists` store delta).
+/// map_pool_creations emits this block's observations before storage. map_pools emits
+/// only new registry keys from the legacy store's Create deltas.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Pools {

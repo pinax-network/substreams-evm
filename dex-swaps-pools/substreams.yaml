@@ -1,12 +1,12 @@
 specVersion: v0.1.0
 package:
   name: dex_swaps_pools
-  version: v0.8.0
+  version: v0.9.0
   url: https://github.com/pinax-network/substreams-evm
   description: |
-    Legacy key-value store of DEX pool metadata (tokens[] plus optional factory).
-    Pool data is extracted directly from a single `sf.ethereum.type.v2.Block` via
-    `substreams-abis` decoders — no foundational modules or per-protocol spkg imports.
+    DEX pool creation metadata from one Ethereum Block input, feeding independent
+    Hosted Store and legacy key-value store branches. Shared values retain the
+    EVM tokens[] and factory wire contract, without per-protocol map imports.
   image: ../image.png
 
 binaries:
@@ -19,11 +19,34 @@ protobuf:
     - foundational-store.proto
   importPaths:
     - ../proto/v1/dex
+  descriptorSets:
+    - module: buf.build/streamingfast/substreams-foundational-store@f3ab5976b9ba4f9bac28b26271fca7d7
   excludePaths:
     - sf/substreams
     - google
 
 modules:
+  - name: map_pool_creations
+    kind: map
+    doc: |
+      Decode per-block pool observations once from the Ethereum Block. This
+      output does not imply that a pool is new across previously processed blocks.
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:dex.foundational_store.v1.Pools
+
+  - name: map_pool_entries
+    kind: map
+    doc: |
+      Hosted Store branch: raw 20-byte pool addresses or 32-byte pool IDs,
+      dex.foundational_store.v1.Pool values and if_not_exist=true. Independent
+      of store_pools and its deltas.
+    inputs:
+      - map: map_pool_creations
+    output:
+      type: proto:sf.substreams.foundational_store.model.v2.SinkEntries
+
   # Legacy key-value store.
   #   key   = hex-encoded pool address (lowercase, no `0x`)
   #   value = dex.foundational_store.v1.Pool { tokens[], factory }
@@ -33,7 +56,7 @@ modules:
     updatePolicy: set_if_not_exists
     valueType: proto:dex.foundational_store.v1.Pool
     inputs:
-      - source: sf.ethereum.type.v2.Block
+      - map: map_pool_creations
 
   # Basic consumer: emit the pools first seen in each block (store `Create` deltas).
   - name: map_pools

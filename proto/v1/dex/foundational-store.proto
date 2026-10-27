@@ -9,13 +9,14 @@ message Pool {
   bytes factory = 2;
 }
 
-// A pool surfaced from the legacy `store_pools` store, keyed by its hex-encoded address.
+// A pool observation keyed by its lowercase hex address or pool ID, without `0x`.
 message PoolCreated {
   string address = 1; // hex-encoded pool address (lowercase, no `0x`)
   Pool pool = 2;
 }
 
-// All pools first seen in a single block (one entry per `set_if_not_exists` store delta).
+// map_pool_creations emits this block's observations before storage. map_pools emits
+// only new registry keys from the legacy store's Create deltas.
 message Pools {
   repeated PoolCreated pools = 1;
 }

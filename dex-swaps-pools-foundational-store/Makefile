@@ -6,11 +6,11 @@ PARALLEL_JOBS ?= 500
 
 .PHONY: build
 build:
-	cargo build --target wasm32-unknown-unknown --release
+	$(MAKE) -C ../dex-swaps-pools pack
 
 .PHONY: pack
 pack: build
-	substreams pack -o ../spkg/{spkgDefaultName}
+	substreams pack -o ../spkg/evm-dex-foundational-store-v0.7.0.spkg
 
 .PHONY: noop
 noop: build

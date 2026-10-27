@@ -1,0 +1,13 @@
+[package]
+name = "dex-pools"
+description = "Reusable EVM pool creation decoding with the legacy workspace ABI contract"
+edition = { workspace = true }
+version = "0.1.0"
+license = { workspace = true }
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+substreams-abis = { workspace = true }
+substreams-ethereum = { workspace = true }

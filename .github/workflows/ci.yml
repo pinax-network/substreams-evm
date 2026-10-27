@@ -20,4 +20,5 @@ jobs:
           targets: wasm32-unknown-unknown
       - uses: Swatinem/rust-cache@v2
       - run: cargo test --locked --workspace --lib --bins
-      - run: cargo check --workspace --target wasm32-unknown-unknown
+      - run: cargo test --locked -p dex-pools -p dex-swaps-pools --tests
+      - run: cargo check --locked --workspace --target wasm32-unknown-unknown

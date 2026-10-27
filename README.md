@@ -13,6 +13,8 @@ evm-nfts/         # NFT aggregator (db_out) + clickhouse/ + postgres/
 evm-contracts/    # Contract metadata aggregator (db_out) + clickhouse/ + postgres/
 blocks/           # Block metadata + clickhouse/
 dex/              # Individual DEX map_events modules
+dex-pools/        # Native-callable shared pool creation decoder
+dex-swaps-pools/  # One Block input -> Hosted Store + legacy pool store
 dex-nfts/         # NFT market protocol modules (for example, Seaport)
 erc20/            # ERC-20 modules (transfers/ balances/ supply/ tokens/)
 native/           # Native transfer/balance modules (transfers/ balances/)
@@ -155,6 +157,18 @@ Each aggregator combines individual modules into a single `db_out` for database 
 | `evm-nfts` | NFT events (ERC-721, ERC-1155, Seaport, CryptoPunks) | Clickhouse, Postgres |
 | `evm-contracts` | Contract metadata and creation events | Clickhouse, Postgres |
 | `blocks` | Block metadata | Clickhouse |
+
+Pool creation metadata is provided separately by
+[`dex-swaps-pools`](dex-swaps-pools/README.md). Its four-module API matches the SVM
+package: one `map_pool_creations` node reads an Ethereum Block, then independent
+`map_pool_entries` and `store_pools` branches produce Hosted Store entries and a
+legacy store. `map_pools` emits the legacy store's new-key deltas. The EVM
+`tokens[]`/`factory` schema and hexadecimal legacy keys remain unchanged.
+
+Native callers can use [`dex-pools`](dex-pools) before either storage adapter;
+the EVM SDK dependencies remain part of that crate's dependency graph. The
+[foundational-store compatibility manifest](dex-swaps-pools-foundational-store/README.md)
+preserves `map_entries` as an alias, without importing eleven protocol maps.
 
 ## Event Signatures
 
